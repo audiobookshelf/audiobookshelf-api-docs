@@ -12,25 +12,16 @@ jobs:
 
     strategy:
       matrix:
-        ruby-version: [2.3, 2.4, 2.5, 2.6, 2.7]
+        node-version: [10, 12, 14]
 
     steps:
     - uses: actions/checkout@v2
-    - name: Set up Ruby
-      uses: ruby/setup-ruby@v1
+    - name: Set up node
+      uses: actions/setup-node@v1
       with:
-        ruby-version: ${{ matrix.ruby-version }}
+        node-version: ${{ matrix.node-version }}
 
-    - uses: actions/cache@v1
-      with:
-        path: vendor/bundle
-        key: gems-${{ runner.os }}-${{ matrix.ruby-version }}-${{ hashFiles('**/Gemfile.lock') }}
+    - run: npm i
+    - run: npm run lint
+    - run: npm run test
 
-    # necessary to get ruby 2.3 to work nicely with bundler vendor/bundle cache
-    # can remove once ruby 2.3 is no longer supported
-    - run: gem update --system
-
-    - run: bundle config set deployment 'true'
-    - run: bundle install
-
-    - run: bundle exec middleman build

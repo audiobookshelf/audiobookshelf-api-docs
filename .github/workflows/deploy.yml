@@ -2,33 +2,27 @@ name: Deploy
 
 on:
   push:
-    branches: [ 'main' ]
-
+    branches-ignore:
+      - '**'
 jobs:
   deploy:
     runs-on: ubuntu-latest
     env:
-      ruby-version: 2.5
+      node-version: 12
 
     steps:
     - uses: actions/checkout@v2
-    - name: Set up Ruby
-      uses: ruby/setup-ruby@v1
+    - name: Set up node
+      uses: actions/setup-node@v1
       with:
-        ruby-version: ${{ env.ruby-version }}
+        node-version: ${{ env.node-version }}
 
-    - uses: actions/cache@v1
-      with:
-        path: vendor/bundle
-        key: gems-${{ runner.os }}-${{ env.ruby-version }}-${{ hashFiles('**/Gemfile.lock') }}
-
-    - run: bundle config set deployment 'true'
-    - run: bundle install
-
-    - run: bundle exec middleman build
+    - run: npm i
+    - run: npm run build
 
     - name: Deploy
       uses: peaceiris/actions-gh-pages@v3
       with:
         github_token: ${{ secrets.GITHUB_TOKEN }}
-        publish_dir: ./build
+        publish_dir: ./_site
+

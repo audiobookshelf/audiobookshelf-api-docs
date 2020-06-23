@@ -133,6 +133,22 @@ under the License.
   }
 
   function setupLanguages(l) {
+
+    // for compatibility with Ruby Slate 2.x
+    $("pre").each(function() {
+      var pre = this;
+      $(pre).addClass("highlight");
+      $(pre).addClass("tab");
+      var classList = $(pre).attr('class').split(/\s+/);
+      $.each(classList, function(index, item) {
+        if (item.startsWith('language-')) {
+          var newClass = item.replace('language-', 'tab-');
+          $(pre).addClass(newClass);
+        }
+      });
+    });
+    if (setupCodeCopy) setupCodeCopy();
+
     var defaultLanguage = localStorage.getItem("language");
 
     languages = l;
