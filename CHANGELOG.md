@@ -5,6 +5,7 @@
 *Work-in-progress*
 
 * Rewrite in Node.js using [eleventy](https://github.com/11ty/eleventy)
+* Thanks to [@bruegth](https://github.com/bruegth), [@jasonadkison](https://github.com/jasonadkison), [@ahuggins-nhs](https://github.com/ahuggins-nhs) for fixes
 
 ## Version 2.9.0
 
