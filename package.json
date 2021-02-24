@@ -1,6 +1,6 @@
 {
   "name": "@slatedocs/slate",
-  "version": "3.0.0-dev.0",
+  "version": "3.0.0-0",
   "description": "Beautiful API Documentation",
   "main": "./slate.js",
   "bin": "./slate.js",
