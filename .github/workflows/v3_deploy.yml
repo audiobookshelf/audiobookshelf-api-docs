@@ -2,8 +2,8 @@ name: Deploy
 
 on:
   push:
-    branches-ignore:
-      - '**'
+    branches: [ 'v3' ]
+
 jobs:
   deploy:
     runs-on: ubuntu-latest
@@ -17,6 +17,7 @@ jobs:
       with:
         node-version: ${{ env.node-version }}
 
+    - run: npx package-lock-audit ./package-lock.json
     - run: npm i
     - run: npm run build
 
@@ -24,5 +25,6 @@ jobs:
       uses: peaceiris/actions-gh-pages@v3
       with:
         github_token: ${{ secrets.GITHUB_TOKEN }}
+        destination_dir: v3
         publish_dir: ./_site
 

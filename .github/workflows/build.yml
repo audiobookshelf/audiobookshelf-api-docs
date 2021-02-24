@@ -2,9 +2,9 @@ name: Build
 
 on:
   push:
-    branches: [ '*' ]
+    branches: [ 'v3' ]
   pull_request:
-    branches: [ '*' ]
+    branches: [ 'v3' ]
 
 jobs:
   test:
