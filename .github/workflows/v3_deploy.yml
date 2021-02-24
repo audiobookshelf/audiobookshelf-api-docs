@@ -27,4 +27,5 @@ jobs:
         github_token: ${{ secrets.GITHUB_TOKEN }}
         destination_dir: v3
         publish_dir: ./_site
+        keep_files: true
 
