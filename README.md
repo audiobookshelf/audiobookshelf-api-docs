@@ -6,7 +6,7 @@
 
 Proof-of-concept Slate v3 using [eleventy](https://www.11ty.dev/) as the static site generator.
 
-![screenshot](https://github.com/slatedocs/slate/blob/v3/docs/screenshot.jpg?raw=true)
+![screenshot](https://raw.githubusercontent.com/slatedocs/slate/v3/docs/screenshot.png)
 
 ## Features
 
