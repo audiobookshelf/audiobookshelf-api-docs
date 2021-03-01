@@ -4,3 +4,6 @@ _site/
 build/
 source/slate/js/lib/*.min.js
 source/slate/css/*.css
+*.patch
+*.orig
+*.rej
