@@ -34,52 +34,6 @@ curl "https://abs.yourserver.com/api/libraries" \
 		"lastUpdate": 1646520916818
 	},
 	{
-		"id": "libkug8ylp8",
-		"name": "Books",
-		"folders": [
-			{
-				"id": "folkug8ylqz",
-				"fullPath": "/books",
-				"libraryId": "libkug8ylp8",
-				"addedAt": 1633569261477
-			}
-		],
-		"displayOrder": 2,
-		"icon": "book",
-		"mediaType": "book",
-		"provider": "google",
-		"settings": {
-			"disableWatcher": false,
-			"skipMatchingMediaWithAsin": false,
-			"skipMatchingMediaWithIsbn": false
-		},
-		"createdAt": 1633569261477,
-		"lastUpdate": 1646520922976
-	},
-	{
-		"id": "libkuujrhzf",
-		"name": "Comics",
-		"folders": [
-			{
-				"id": "folkuujrhyp",
-				"fullPath": "/comics",
-				"libraryId": "libkuujrhzf",
-				"addedAt": 1634433932839
-			}
-		],
-		"displayOrder": 3,
-		"icon": "comic",
-		"mediaType": "book",
-		"provider": "google",
-		"settings": {
-			"disableWatcher": false,
-			"skipMatchingMediaWithAsin": false,
-			"skipMatchingMediaWithIsbn": false
-		},
-		"createdAt": 1634433932839,
-		"lastUpdate": 1646520929464
-	},
-	{
 		"id": "lib_c1u6t4p45c35rf0nzd",
 		"name": "Podcasts",
 		"folders": [
