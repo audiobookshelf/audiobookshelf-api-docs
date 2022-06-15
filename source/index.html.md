@@ -9,6 +9,7 @@ toc_footers:
 
 includes:
   - libraries
+  - items
 
 search: true
 
