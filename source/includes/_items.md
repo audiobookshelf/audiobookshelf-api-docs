@@ -7,12 +7,6 @@ curl "https://abs.example.com/api/items/li_8gch9ve09orgn4fdz8" \
   -H "Authorization: Bearer exJhbGciOiJI6IkpXVCJ9.eyJ1c2Vyi5NDEyODc4fQ.ZraBFohS4Tg39NszY"
 ```
 
-OR
-
-```shell
-curl "https://abs.example.com/api/items/li_8gch9ve09orgn4fdz8?token=exJhbGciOiJI6IkpXVCJ9.eyJ1c2Vyi5NDEyODc4fQ.ZraBFohS4Tg39NszY"
-```
-
 > The above command returns JSON structured like this:
 
 ```json

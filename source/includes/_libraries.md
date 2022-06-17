@@ -7,13 +7,6 @@ curl "https://abs.example.com/api/libraries" \
   -H "Authorization: Bearer exJhbGciOiJI6IkpXVCJ9.eyJ1c2Vyi5NDEyODc4fQ.ZraBFohS4Tg39NszY"
 ```
 
-OR
-
-```shell
-curl "https://abs.example.com/api/libraries?token=exJhbGciOiJI6IkpXVCJ9.eyJ1c2Vyi5NDEyODc4fQ.ZraBFohS4Tg39NszY"
-```
-
-
 > The above command returns JSON structured like this:
 
 ```json
@@ -126,8 +119,8 @@ ID | The ID of the library to retrieve
 ```shell
 curl -X PATCH "https://abs.example.com/api/libraries/lib_c1u6t4p45c35rf0nzd" \
   -H "Authorization: Bearer exJhbGciOiJI6IkpXVCJ9.eyJ1c2Vyi5NDEyODc4fQ.ZraBFohS4Tg39NszY" \
-	-H "Content-Type: application/json"
-	-d '{"name": "Pods", "icon": "podcast"}'
+  -H "Content-Type: application/json"
+  -d '{"name": "Pods", "icon": "podcast"}'
 ```
 
 > The above command returns JSON structured like this:
@@ -171,7 +164,7 @@ Parameter | Type | Description
 name | String | The name of the library
 folders | Array | See notice below
 displayOrder | Number | Library order shown in clients
-icon | String | Library icon \[database|podcast|book|audiobook|comic\]
+icon | String | Library icon (database|podcast|book|audiobook|comic)
 provider | String | Preferred provider for library
 
 <aside class="notice">When updating folders you must pass in the full array of folders. Any missing folders from the array will be removed. New folders must not have an "id" set because this will be set automatically.</aside>
