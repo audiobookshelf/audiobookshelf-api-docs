@@ -295,7 +295,7 @@
     </script>
   </head>
 
-  <body class="index" data-languages="[&quot;javascript&quot;]">
+  <body class="index" data-languages="[&quot;shell&quot;]">
     <a href="#" id="nav-button">
       <span>
         NAV
@@ -305,7 +305,7 @@
     <div class="toc-wrapper">
       <img src="images/logo-b1abb37a.png" class="logo" alt="" />
         <div class="lang-selector">
-              <a href="#" data-language-name="javascript">javascript</a>
+              <a href="#" data-language-name="shell">shell</a>
         </div>
         <div class="search">
           <input type="text" class="search" id="input-search" placeholder="Search">
@@ -326,6 +326,9 @@
                   </li>
                   <li>
                     <a href="#get-a-specific-library" class="toc-h2 toc-link" data-title="Get a Specific Library">Get a Specific Library</a>
+                  </li>
+                  <li>
+                    <a href="#update-a-specific-library" class="toc-h2 toc-link" data-title="Update a Specific Library">Update a Specific Library</a>
                   </li>
               </ul>
           </li>
@@ -363,8 +366,11 @@
 <aside class="notice">
 Your API token will be much longer then the one in the examples.
 </aside>
-<h1 id='libraries'>Libraries</h1><h2 id='get-all-libraries'>Get All Libraries</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://abs.yourserver.com/api/libraries"</span> <span class="se">\</span>
+<h1 id='libraries'>Libraries</h1><h2 id='get-all-libraries'>Get All Libraries</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://abs.example.com/api/libraries"</span> <span class="se">\</span>
   <span class="nt">-H</span> <span class="s2">"Authorization: Bearer exJhbGciOiJI6IkpXVCJ9.eyJ1c2Vyi5NDEyODc4fQ.ZraBFohS4Tg39NszY"</span>
+</code></pre></div>
+<p>OR</p>
+<div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://abs.example.com/api/libraries?token=exJhbGciOiJI6IkpXVCJ9.eyJ1c2Vyi5NDEyODc4fQ.ZraBFohS4Tg39NszY"</span>
 </code></pre></div>
 <blockquote>
 <p>The above command returns JSON structured like this:</p>
@@ -419,8 +425,8 @@ Your API token will be much longer then the one in the examples.
 </span></code></pre></div>
 <p>This endpoint retrieves all libraries accessible to the user.</p>
 <h3 id='http-request'>HTTP Request</h3>
-<p><code>GET http://abs.yourserver.com/api/libraries</code></p>
-<h2 id='get-a-specific-library'>Get a Specific Library</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://abs.yourserver.com/api/libraries/lib_c1u6t4p45c35rf0nzd"</span> <span class="se">\</span>
+<p><code>GET http://abs.example.com/api/libraries</code></p>
+<h2 id='get-a-specific-library'>Get a Specific Library</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://abs.example.com/api/libraries/lib_c1u6t4p45c35rf0nzd"</span> <span class="se">\</span>
   <span class="nt">-H</span> <span class="s2">"Authorization: Bearer exJhbGciOiJI6IkpXVCJ9.eyJ1c2Vyi5NDEyODc4fQ.ZraBFohS4Tg39NszY"</span>
 </code></pre></div>
 <blockquote>
@@ -454,7 +460,7 @@ Your API token will be much longer then the one in the examples.
 
 <aside class="notice">If the library is not accessible to the user a 404 status code is returned.</aside>
 <h3 id='http-request-2'>HTTP Request</h3>
-<p><code>GET https://abs.yourserver.com/libraries/&lt;ID&gt;</code></p>
+<p><code>GET https://abs.example.com/libraries/&lt;ID&gt;</code></p>
 <h3 id='url-parameters'>URL Parameters</h3>
 <table><thead>
 <tr>
@@ -467,8 +473,82 @@ Your API token will be much longer then the one in the examples.
 <td>The ID of the library to retrieve</td>
 </tr>
 </tbody></table>
-<h1 id='library-items'>Library Items</h1><h2 id='get-a-specific-library-item'>Get a Specific Library Item</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://abs.yourserver.com/api/items/li_8gch9ve09orgn4fdz8"</span> <span class="se">\</span>
+<h2 id='update-a-specific-library'>Update a Specific Library</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">-X</span> PATCH <span class="s2">"https://abs.example.com/api/libraries/lib_c1u6t4p45c35rf0nzd"</span> <span class="se">\</span>
+  <span class="nt">-H</span> <span class="s2">"Authorization: Bearer exJhbGciOiJI6IkpXVCJ9.eyJ1c2Vyi5NDEyODc4fQ.ZraBFohS4Tg39NszY"</span> <span class="se">\</span>
+    <span class="nt">-H</span> <span class="s2">"Content-Type: application/json"</span>
+    <span class="nt">-d</span> <span class="s1">'{"name": "Pods", "icon": "podcast"}'</span>
+</code></pre></div>
+<blockquote>
+<p>The above command returns JSON structured like this:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"lib_c1u6t4p45c35rf0nzd"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Pods"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"folders"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+            </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"fol_bev1zuxhb0j0s1wehr"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"fullPath"</span><span class="p">:</span><span class="w"> </span><span class="s2">"/podcasts"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"libraryId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"lib_c1u6t4p45c35rf0nzd"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"addedAt"</span><span class="p">:</span><span class="w"> </span><span class="mi">1650462940610</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+    </span><span class="p">],</span><span class="w">
+    </span><span class="nl">"displayOrder"</span><span class="p">:</span><span class="w"> </span><span class="mi">4</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"icon"</span><span class="p">:</span><span class="w"> </span><span class="s2">"podcast"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"mediaType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"podcast"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"provider"</span><span class="p">:</span><span class="w"> </span><span class="s2">"itunes"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"settings"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"disableWatcher"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"skipMatchingMediaWithAsin"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"skipMatchingMediaWithIsbn"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="nl">"createdAt"</span><span class="p">:</span><span class="w"> </span><span class="mi">1650462940610</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"lastUpdate"</span><span class="p">:</span><span class="w"> </span><span class="mi">1655423464567</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<p>This endpoint updates a specific library.</p>
+<h3 id='http-request-3'>HTTP Request</h3>
+<p><code>PATCH https://abs.example.com/libraries/&lt;ID&gt;</code></p>
+<h3 id='parameters'>Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>name</td>
+<td>String</td>
+<td>The name of the library</td>
+</tr>
+<tr>
+<td>folders</td>
+<td>Array</td>
+<td>See notice below</td>
+</tr>
+<tr>
+<td>displayOrder</td>
+<td>Number</td>
+<td>Library order shown in clients</td>
+</tr>
+<tr>
+<td>icon</td>
+<td>String</td>
+<td>Library icon [database</td>
+</tr>
+<tr>
+<td>provider</td>
+<td>String</td>
+<td>Preferred provider for library</td>
+</tr>
+</tbody></table>
+
+<aside class="notice">When updating folders you must pass in the full array of folders. Any missing folders from the array will be removed. New folders must not have an "id" set because this will be set automatically.</aside>
+<h1 id='library-items'>Library Items</h1><h2 id='get-a-specific-library-item'>Get a Specific Library Item</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://abs.example.com/api/items/li_8gch9ve09orgn4fdz8"</span> <span class="se">\</span>
   <span class="nt">-H</span> <span class="s2">"Authorization: Bearer exJhbGciOiJI6IkpXVCJ9.eyJ1c2Vyi5NDEyODc4fQ.ZraBFohS4Tg39NszY"</span>
+</code></pre></div>
+<p>OR</p>
+<div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://abs.example.com/api/items/li_8gch9ve09orgn4fdz8?token=exJhbGciOiJI6IkpXVCJ9.eyJ1c2Vyi5NDEyODc4fQ.ZraBFohS4Tg39NszY"</span>
 </code></pre></div>
 <blockquote>
 <p>The above command returns JSON structured like this:</p>
@@ -492,7 +572,7 @@ Your API token will be much longer then the one in the examples.
     </span><span class="nl">"isInvalid"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
     </span><span class="nl">"mediaType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"book"</span><span class="p">,</span><span class="w">
     </span><span class="nl">"media"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-        </span><span class="nl">"libraryItemId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"li_8gch9ve09orgn4fdz9"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"libraryItemId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"li_8gch9ve09orgn4fdz8"</span><span class="p">,</span><span class="w">
         </span><span class="nl">"metadata"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
             </span><span class="nl">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Wizards First Rule"</span><span class="p">,</span><span class="w">
             </span><span class="nl">"subtitle"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
@@ -687,7 +767,7 @@ Your API token will be much longer then the one in the examples.
 </span></code></pre></div>
 <p>This endpoint retrieves a specific library item.</p>
 <h3 id='http-request'>HTTP Request</h3>
-<p><code>GET http://abs.yourserver.com/api/items/&lt;ID&gt;</code></p>
+<p><code>GET http://abs.example.com/api/items/&lt;ID&gt;</code></p>
 <h3 id='url-parameters'>URL Parameters</h3>
 <table><thead>
 <tr>
@@ -704,7 +784,7 @@ Your API token will be much longer then the one in the examples.
       </div>
       <div class="dark-box">
           <div class="lang-selector">
-                <a href="#" data-language-name="javascript">javascript</a>
+                <a href="#" data-language-name="shell">shell</a>
           </div>
       </div>
     </div>
