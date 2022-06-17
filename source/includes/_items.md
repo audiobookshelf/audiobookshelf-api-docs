@@ -3,8 +3,14 @@
 ## Get a Specific Library Item
 
 ```shell
-curl "https://abs.yourserver.com/api/items/li_8gch9ve09orgn4fdz8" \
+curl "https://abs.example.com/api/items/li_8gch9ve09orgn4fdz8" \
   -H "Authorization: Bearer exJhbGciOiJI6IkpXVCJ9.eyJ1c2Vyi5NDEyODc4fQ.ZraBFohS4Tg39NszY"
+```
+
+OR
+
+```shell
+curl "https://abs.example.com/api/items/li_8gch9ve09orgn4fdz8?token=exJhbGciOiJI6IkpXVCJ9.eyJ1c2Vyi5NDEyODc4fQ.ZraBFohS4Tg39NszY"
 ```
 
 > The above command returns JSON structured like this:
@@ -29,7 +35,7 @@ curl "https://abs.yourserver.com/api/items/li_8gch9ve09orgn4fdz8" \
 	"isInvalid": false,
 	"mediaType": "book",
 	"media": {
-		"libraryItemId": "li_8gch9ve09orgn4fdz9",
+		"libraryItemId": "li_8gch9ve09orgn4fdz8",
 		"metadata": {
 			"title": "Wizards First Rule",
 			"subtitle": null,
@@ -227,7 +233,7 @@ This endpoint retrieves a specific library item.
 
 ### HTTP Request
 
-`GET http://abs.yourserver.com/api/items/<ID>`
+`GET http://abs.example.com/api/items/<ID>`
 
 ### URL Parameters
 
