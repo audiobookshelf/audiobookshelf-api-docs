@@ -330,6 +330,9 @@
                   <li>
                     <a href="#update-a-specific-library" class="toc-h2 toc-link" data-title="Update a Specific Library">Update a Specific Library</a>
                   </li>
+                  <li>
+                    <a href="#delete-a-specific-library" class="toc-h2 toc-link" data-title="Delete a Specific Library">Delete a Specific Library</a>
+                  </li>
               </ul>
           </li>
           <li>
@@ -510,6 +513,18 @@ Your API token will be much longer then the one in the examples.
 <p>This endpoint updates a specific library.</p>
 <h3 id='http-request-3'>HTTP Request</h3>
 <p><code>PATCH https://abs.example.com/libraries/&lt;ID&gt;</code></p>
+<h3 id='url-parameters-2'>URL Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>ID</td>
+<td>The ID of the library to retrieve</td>
+</tr>
+</tbody></table>
 <h3 id='parameters'>Parameters</h3>
 <table><thead>
 <tr>
@@ -546,6 +561,53 @@ Your API token will be much longer then the one in the examples.
 </tbody></table>
 
 <aside class="notice">When updating folders you must pass in the full array of folders. Any missing folders from the array will be removed. New folders must not have an "id" set because this will be set automatically.</aside>
+<h2 id='delete-a-specific-library'>Delete a Specific Library</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">-X</span> DELETE <span class="s2">"https://abs.example.com/api/libraries/lib_5yvub9dqvctlcrza6h"</span> <span class="se">\</span>
+  <span class="nt">-H</span> <span class="s2">"Authorization: Bearer exJhbGciOiJI6IkpXVCJ9.eyJ1c2Vyi5NDEyODc4fQ.ZraBFohS4Tg39NszY"</span>
+</code></pre></div>
+<blockquote>
+<p>If successful the deleted library will be returned like this:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"lib_5yvub9dqvctlcrza6h"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"audiobooks"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"folders"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+            </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"fol_zdat63120karrt7i52"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"fullPath"</span><span class="p">:</span><span class="w"> </span><span class="s2">"/audiobooks"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"libraryId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"lib_5yvub9dqvctlcrza6g"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"addedAt"</span><span class="p">:</span><span class="w"> </span><span class="mi">1653396692539</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+    </span><span class="p">],</span><span class="w">
+    </span><span class="nl">"displayOrder"</span><span class="p">:</span><span class="w"> </span><span class="mi">5</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"icon"</span><span class="p">:</span><span class="w"> </span><span class="s2">"database"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"mediaType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"book"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"provider"</span><span class="p">:</span><span class="w"> </span><span class="s2">"audible"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"settings"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"disableWatcher"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"skipMatchingMediaWithAsin"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"skipMatchingMediaWithIsbn"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="nl">"createdAt"</span><span class="p">:</span><span class="w"> </span><span class="mi">1653396692539</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"lastUpdate"</span><span class="p">:</span><span class="w"> </span><span class="mi">1653396692539</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<p>This endpoint updates a specific library.</p>
+<h3 id='http-request-4'>HTTP Request</h3>
+<p><code>DELETE https://abs.example.com/libraries/&lt;ID&gt;</code></p>
+<h3 id='url-parameters-3'>URL Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>ID</td>
+<td>The ID of the library to retrieve</td>
+</tr>
+</tbody></table>
+
+<aside class="notice">Deleting a library will remove all library items including any user progress for those items.</aside>
 <h1 id='library-items'>Library Items</h1><h2 id='get-a-specific-library-item'>Get a Specific Library Item</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://abs.example.com/api/items/li_8gch9ve09orgn4fdz8"</span> <span class="se">\</span>
   <span class="nt">-H</span> <span class="s2">"Authorization: Bearer exJhbGciOiJI6IkpXVCJ9.eyJ1c2Vyi5NDEyODc4fQ.ZraBFohS4Tg39NszY"</span>
 </code></pre></div>
