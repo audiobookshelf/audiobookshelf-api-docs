@@ -157,6 +157,12 @@ This endpoint updates a specific library.
 
 `PATCH https://abs.example.com/libraries/<ID>`
 
+### URL Parameters
+
+Parameter | Description
+--------- | -----------
+ID | The ID of the library to retrieve
+
 ### Parameters
 
 Parameter | Type | Description
@@ -168,3 +174,53 @@ icon | String | Library icon (database|podcast|book|audiobook|comic)
 provider | String | Preferred provider for library
 
 <aside class="notice">When updating folders you must pass in the full array of folders. Any missing folders from the array will be removed. New folders must not have an "id" set because this will be set automatically.</aside>
+
+
+## Delete a Specific Library
+
+```shell
+curl -X DELETE "https://abs.example.com/api/libraries/lib_5yvub9dqvctlcrza6h" \
+  -H "Authorization: Bearer exJhbGciOiJI6IkpXVCJ9.eyJ1c2Vyi5NDEyODc4fQ.ZraBFohS4Tg39NszY"
+```
+
+> If successful the deleted library will be returned like this:
+
+```json
+{
+	"id": "lib_5yvub9dqvctlcrza6h",
+	"name": "audiobooks",
+	"folders": [
+		{
+			"id": "fol_zdat63120karrt7i52",
+			"fullPath": "/audiobooks",
+			"libraryId": "lib_5yvub9dqvctlcrza6g",
+			"addedAt": 1653396692539
+		}
+	],
+	"displayOrder": 5,
+	"icon": "database",
+	"mediaType": "book",
+	"provider": "audible",
+	"settings": {
+		"disableWatcher": false,
+		"skipMatchingMediaWithAsin": false,
+		"skipMatchingMediaWithIsbn": false
+	},
+	"createdAt": 1653396692539,
+	"lastUpdate": 1653396692539
+}
+```
+
+This endpoint updates a specific library.
+
+### HTTP Request
+
+`DELETE https://abs.example.com/libraries/<ID>`
+
+### URL Parameters
+
+Parameter | Description
+--------- | -----------
+ID | The ID of the library to retrieve
+
+<aside class="notice">Deleting a library will remove all library items including any user progress for those items.</aside>
