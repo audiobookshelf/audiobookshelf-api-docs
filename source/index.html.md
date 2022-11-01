@@ -11,6 +11,7 @@ toc_footers:
 includes:
   - libraries
   - items
+  - schemas
 
 search: true
 
