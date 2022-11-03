@@ -65,6 +65,13 @@ This endpoint retrieves all libraries accessible to the user.
 
 `GET http://abs.example.com/api/libraries`
 
+### Response
+
+Status | Meaning | Description | Schema
+------ | ------- | ----------- | ------
+200 | OK | Success | Array of [Library](#library)
+
+
 ## Get a Specific Library
 
 ```shell
@@ -113,6 +120,13 @@ This endpoint retrieves a specific library.
 Parameter | Description
 --------- | -----------
 ID | The ID of the library to retrieve
+
+### Response
+
+Status | Meaning | Description | Schema
+------ | ------- | ----------- | ------
+200 | OK | Success | [Library](#library)
+
 
 ## Update a Specific Library
 
@@ -175,6 +189,12 @@ provider | String | Preferred provider for library
 
 <aside class="notice">When updating folders you must pass in the full array of folders. Any missing folders from the array will be removed. New folders must not have an "id" set because this will be set automatically.</aside>
 
+### Response
+
+Status | Meaning | Description | Schema
+------ | ------- | ----------- | ------
+200 | OK | Success | [Library](#library)
+
 
 ## Delete a Specific Library
 
@@ -211,7 +231,7 @@ curl -X DELETE "https://abs.example.com/api/libraries/lib_5yvub9dqvctlcrza6h" \
 }
 ```
 
-This endpoint updates a specific library.
+This endpoint deletes a specific library.
 
 ### HTTP Request
 
@@ -224,3 +244,9 @@ Parameter | Description
 ID | The ID of the library to retrieve
 
 <aside class="notice">Deleting a library will remove all library items including any user progress for those items.</aside>
+
+### Response
+
+Status | Meaning | Description | Schema
+------ | ------- | ----------- | ------
+200 | OK | Success | [Library](#library)

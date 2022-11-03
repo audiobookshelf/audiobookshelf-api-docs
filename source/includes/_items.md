@@ -234,3 +234,9 @@ This endpoint retrieves a specific library item.
 Parameter | Description
 --------- | -----------
 ID | The ID of the library item to retrieve
+
+### Response
+
+Status | Meaning | Description | Schema
+------ | ------- | ----------- | ------
+200 | OK | Success | [Library Item](#library-item)
