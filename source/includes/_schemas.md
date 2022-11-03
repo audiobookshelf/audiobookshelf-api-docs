@@ -892,7 +892,7 @@ Only non-null tags will be returned in requests.
   "title": "Terry Goodkind - SOT Bk01 - Wizards First Rule 01.mp3",
   "contentUrl": "/s/item/li_8gch9ve09orgn4fdz8/Terry Goodkind - SOT Bk01 - Wizards First Rule 01.mp3",
   "mimeType": "audio/mpeg",
-  "metadata": {...} // audioFile.metadata
+  "metadata": {...}
 }
 ```
 
