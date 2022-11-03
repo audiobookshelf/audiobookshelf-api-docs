@@ -343,6 +343,65 @@
                   </li>
               </ul>
           </li>
+          <li>
+            <a href="#schemas" class="toc-h1 toc-link" data-title="Schemas">Schemas</a>
+              <ul class="toc-list-h2">
+                  <li>
+                    <a href="#library" class="toc-h2 toc-link" data-title="Library">Library</a>
+                  </li>
+                  <li>
+                    <a href="#library-settings" class="toc-h2 toc-link" data-title="Library Settings">Library Settings</a>
+                  </li>
+                  <li>
+                    <a href="#folder" class="toc-h2 toc-link" data-title="Folder">Folder</a>
+                  </li>
+                  <li>
+                    <a href="#library-item" class="toc-h2 toc-link" data-title="Library Item">Library Item</a>
+                  </li>
+                  <li>
+                    <a href="#book" class="toc-h2 toc-link" data-title="Book">Book</a>
+                  </li>
+                  <li>
+                    <a href="#book-metadata" class="toc-h2 toc-link" data-title="Book Metadata">Book Metadata</a>
+                  </li>
+                  <li>
+                    <a href="#book-chapter" class="toc-h2 toc-link" data-title="Book Chapter">Book Chapter</a>
+                  </li>
+                  <li>
+                    <a href="#podcast" class="toc-h2 toc-link" data-title="Podcast">Podcast</a>
+                  </li>
+                  <li>
+                    <a href="#podcast-metadata" class="toc-h2 toc-link" data-title="Podcast Metadata">Podcast Metadata</a>
+                  </li>
+                  <li>
+                    <a href="#podcast-episode" class="toc-h2 toc-link" data-title="Podcast Episode">Podcast Episode</a>
+                  </li>
+                  <li>
+                    <a href="#podcast-episode-enclosure" class="toc-h2 toc-link" data-title="Podcast Episode Enclosure">Podcast Episode Enclosure</a>
+                  </li>
+                  <li>
+                    <a href="#audio-file" class="toc-h2 toc-link" data-title="Audio File">Audio File</a>
+                  </li>
+                  <li>
+                    <a href="#audio-meta-tags" class="toc-h2 toc-link" data-title="Audio Meta Tags">Audio Meta Tags</a>
+                  </li>
+                  <li>
+                    <a href="#audio-track" class="toc-h2 toc-link" data-title="Audio Track">Audio Track</a>
+                  </li>
+                  <li>
+                    <a href="#library-file" class="toc-h2 toc-link" data-title="Library File">Library File</a>
+                  </li>
+                  <li>
+                    <a href="#file-metadata" class="toc-h2 toc-link" data-title="File Metadata">File Metadata</a>
+                  </li>
+                  <li>
+                    <a href="#author" class="toc-h2 toc-link" data-title="Author">Author</a>
+                  </li>
+                  <li>
+                    <a href="#series" class="toc-h2 toc-link" data-title="Series">Series</a>
+                  </li>
+              </ul>
+          </li>
       </ul>
         <ul class="toc-footer">
             <li><a href='https://github.com/advplyr/audiobookshelf-slate'>View Doc Source</a></li>
@@ -431,6 +490,22 @@ Your API token will be much longer then the one in the examples.
 <p>This endpoint retrieves all libraries accessible to the user.</p>
 <h3 id='http-request'>HTTP Request</h3>
 <p><code>GET http://abs.example.com/api/libraries</code></p>
+<h3 id='response'>Response</h3>
+<table><thead>
+<tr>
+<th>Status</th>
+<th>Meaning</th>
+<th>Description</th>
+<th>Schema</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>200</td>
+<td>OK</td>
+<td>Success</td>
+<td>Array of <a href="#library">Library</a></td>
+</tr>
+</tbody></table>
 <h2 id='get-a-specific-library'>Get a Specific Library</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://abs.example.com/api/libraries/lib_c1u6t4p45c35rf0nzd"</span> <span class="se">\</span>
   <span class="nt">-H</span> <span class="s2">"Authorization: Bearer exJhbGciOiJI6IkpXVCJ9.eyJ1c2Vyi5NDEyODc4fQ.ZraBFohS4Tg39NszY"</span>
 </code></pre></div>
@@ -476,6 +551,22 @@ Your API token will be much longer then the one in the examples.
 <tr>
 <td>ID</td>
 <td>The ID of the library to retrieve</td>
+</tr>
+</tbody></table>
+<h3 id='response-2'>Response</h3>
+<table><thead>
+<tr>
+<th>Status</th>
+<th>Meaning</th>
+<th>Description</th>
+<th>Schema</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>200</td>
+<td>OK</td>
+<td>Success</td>
+<td><a href="#library">Library</a></td>
 </tr>
 </tbody></table>
 <h2 id='update-a-specific-library'>Update a Specific Library</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">-X</span> PATCH <span class="s2">"https://abs.example.com/api/libraries/lib_c1u6t4p45c35rf0nzd"</span> <span class="se">\</span>
@@ -561,6 +652,22 @@ Your API token will be much longer then the one in the examples.
 </tbody></table>
 
 <aside class="notice">When updating folders you must pass in the full array of folders. Any missing folders from the array will be removed. New folders must not have an "id" set because this will be set automatically.</aside>
+<h3 id='response-3'>Response</h3>
+<table><thead>
+<tr>
+<th>Status</th>
+<th>Meaning</th>
+<th>Description</th>
+<th>Schema</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>200</td>
+<td>OK</td>
+<td>Success</td>
+<td><a href="#library">Library</a></td>
+</tr>
+</tbody></table>
 <h2 id='delete-a-specific-library'>Delete a Specific Library</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">-X</span> DELETE <span class="s2">"https://abs.example.com/api/libraries/lib_5yvub9dqvctlcrza6h"</span> <span class="se">\</span>
   <span class="nt">-H</span> <span class="s2">"Authorization: Bearer exJhbGciOiJI6IkpXVCJ9.eyJ1c2Vyi5NDEyODc4fQ.ZraBFohS4Tg39NszY"</span>
 </code></pre></div>
@@ -591,7 +698,7 @@ Your API token will be much longer then the one in the examples.
     </span><span class="nl">"lastUpdate"</span><span class="p">:</span><span class="w"> </span><span class="mi">1653396692539</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div>
-<p>This endpoint updates a specific library.</p>
+<p>This endpoint deletes a specific library.</p>
 <h3 id='http-request-4'>HTTP Request</h3>
 <p><code>DELETE https://abs.example.com/libraries/&lt;ID&gt;</code></p>
 <h3 id='url-parameters-3'>URL Parameters</h3>
@@ -608,6 +715,22 @@ Your API token will be much longer then the one in the examples.
 </tbody></table>
 
 <aside class="notice">Deleting a library will remove all library items including any user progress for those items.</aside>
+<h3 id='response-4'>Response</h3>
+<table><thead>
+<tr>
+<th>Status</th>
+<th>Meaning</th>
+<th>Description</th>
+<th>Schema</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>200</td>
+<td>OK</td>
+<td>Success</td>
+<td><a href="#library">Library</a></td>
+</tr>
+</tbody></table>
 <h1 id='library-items'>Library Items</h1><h2 id='get-a-specific-library-item'>Get a Specific Library Item</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://abs.example.com/api/items/li_8gch9ve09orgn4fdz8"</span> <span class="se">\</span>
   <span class="nt">-H</span> <span class="s2">"Authorization: Bearer exJhbGciOiJI6IkpXVCJ9.eyJ1c2Vyi5NDEyODc4fQ.ZraBFohS4Tg39NszY"</span>
 </code></pre></div>
@@ -839,6 +962,1923 @@ Your API token will be much longer then the one in the examples.
 <tr>
 <td>ID</td>
 <td>The ID of the library item to retrieve</td>
+</tr>
+</tbody></table>
+<h3 id='response'>Response</h3>
+<table><thead>
+<tr>
+<th>Status</th>
+<th>Meaning</th>
+<th>Description</th>
+<th>Schema</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>200</td>
+<td>OK</td>
+<td>Success</td>
+<td><a href="#library-item">Library Item</a></td>
+</tr>
+</tbody></table>
+<h1 id='schemas'>Schemas</h1><h2 id='library'>Library</h2>
+<blockquote>
+<p>Library</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"lib_c1u6t4p45c35rf0nzd"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Main"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"folders"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="err">...</span><span class="p">],</span><span class="w">
+  </span><span class="nl">"displayOrder"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"icon"</span><span class="p">:</span><span class="w"> </span><span class="s2">"audiobook"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"mediaType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"book"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"provider"</span><span class="p">:</span><span class="w"> </span><span class="s2">"audible"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"settings"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="err">...</span><span class="p">},</span><span class="w">
+  </span><span class="nl">"createdAt"</span><span class="p">:</span><span class="w"> </span><span class="mi">1633522963509</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"lastUpdate"</span><span class="p">:</span><span class="w"> </span><span class="mi">1646520916818</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<table><thead>
+<tr>
+<th>Attribute</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>id</code></td>
+<td>String</td>
+<td>The ID of the library. (Read Only)</td>
+</tr>
+<tr>
+<td><code>name</code></td>
+<td>String</td>
+<td>The name of the library.</td>
+</tr>
+<tr>
+<td><code>folders</code></td>
+<td>Array of <a href="#folder">Folder</a></td>
+<td>The folders that the library is composed of on the server.</td>
+</tr>
+<tr>
+<td><code>displayOrder</code></td>
+<td>Integer</td>
+<td>Display position of the library in the list of libraries. Must be <code>&gt;= 1</code>.</td>
+</tr>
+<tr>
+<td><code>icon</code></td>
+<td>String</td>
+<td>The selected icon for the library. Must be <code>database</code>, <code>podcast</code>, <code>book</code>, <code>audiobook</code>, or <code>comic</code>.</td>
+</tr>
+<tr>
+<td><code>mediaType</code></td>
+<td>String</td>
+<td>The type of media that the library contains. Will be <code>book</code> or <code>podcast</code>. (Read Only)</td>
+</tr>
+<tr>
+<td><code>provider</code></td>
+<td>String</td>
+<td>Perferred metadata provider for the library. For book libraries, it must be <code>google</code>, <code>openlibrary</code>, <code>itunes</code>, <code>audible</code>, <code>audible.ca</code>, <code>audible.uk</code>, <code>audible.au</code>, <code>audible.fr</code>, <code>audible.de</code>, <code>audible.jp</code>, <code>audible.it</code>, <code>audible.in</code>, or <code>audible.es</code>. For podcast libraries, it must be <code>itunes</code>.</td>
+</tr>
+<tr>
+<td><code>settings</code></td>
+<td><a href="#library-settings">Library Settings</a> Object</td>
+<td>The settings for the library.</td>
+</tr>
+<tr>
+<td><code>createdAt</code></td>
+<td>Integer</td>
+<td>The time (in ms since POSIX epoch) when the library was created. (Read Only)</td>
+</tr>
+<tr>
+<td><code>lastUpdate</code></td>
+<td>Integer</td>
+<td>The time (in ms since POSIX epoch) when the library was last updated. (Read Only)</td>
+</tr>
+</tbody></table>
+<h2 id='library-settings'>Library Settings</h2>
+<blockquote>
+<p>Library Settings</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"coverAspectRatio"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"disableWatcher"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"skipMatchingMediaWithAsin"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"skipMatchingMediaWithIsbn"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"autoScanCronExpression"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<table><thead>
+<tr>
+<th>Attribute</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>coverAspectRatio</code></td>
+<td>Integer</td>
+<td>Whether or not the library should use square book covers. Must be <code>0</code> (for false) or <code>1</code> (for true).</td>
+</tr>
+<tr>
+<td><code>disableWatcher</code></td>
+<td>Boolean</td>
+<td>Whether or not to disable the folder watcher for the library.</td>
+</tr>
+<tr>
+<td><code>skipMatchingMediaWithAsin</code></td>
+<td>Boolean</td>
+<td>Whether or not to skip matching books that already have an ASIN.</td>
+</tr>
+<tr>
+<td><code>skipMatchingMediaWithIsbn</code></td>
+<td>Boolean</td>
+<td>Whether or not to skip matching books that already have an ISBN.</td>
+</tr>
+<tr>
+<td><code>autoScanCronExpression</code></td>
+<td>String or null</td>
+<td>The <a href="https://en.wikipedia.org/wiki/Cron#CRON_expression">cron expression</a> for when to automatically scan the library folders. If <code>null</code>, automatic scanning will be disabled.</td>
+</tr>
+</tbody></table>
+<h2 id='folder'>Folder</h2>
+<blockquote>
+<p>Folder</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"fol_bev1zuxhb0j0s1wehr"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"fullPath"</span><span class="p">:</span><span class="w"> </span><span class="s2">"/podcasts"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"libraryId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"lib_c1u6t4p45c35rf0nzd"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"addedAt"</span><span class="p">:</span><span class="w"> </span><span class="mi">1650462940610</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<table><thead>
+<tr>
+<th>Attribute</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>id</code></td>
+<td>String</td>
+<td>The ID of the folder. (Read Only)</td>
+</tr>
+<tr>
+<td><code>fullPath</code></td>
+<td>String</td>
+<td>The path on the server for the folder. (Read Only)</td>
+</tr>
+<tr>
+<td><code>libraryId</code></td>
+<td>String</td>
+<td>The ID of the library the folder belongs to. (Read Only)</td>
+</tr>
+<tr>
+<td><code>addedAt</code></td>
+<td>Integer</td>
+<td>The time (in ms since POSIX epoch) when the folder was added. (Read Only)</td>
+</tr>
+</tbody></table>
+
+<aside class="notice">
+  Only provide <code>fullPath</code> when creating a new folder. The other attributes will be automatically set.
+</aside>
+<h2 id='library-item'>Library Item</h2>
+<blockquote>
+<p>Library Item</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"li_8gch9ve09orgn4fdz8"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"ino"</span><span class="p">:</span><span class="w"> </span><span class="s2">"649641337522215266"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"libraryId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"lib_c1u6t4p45c35rf0nzd"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"folderId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"fol_bev1zuxhb0j0s1wehr"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"path"</span><span class="p">:</span><span class="w"> </span><span class="s2">"/audiobooks/Terry Goodkind/Sword of Truth/Wizards First Rule"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"relPath"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Terry Goodkind/Sword of Truth/Wizards First Rule"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"isFile"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"mtimeMs"</span><span class="p">:</span><span class="w"> </span><span class="mi">1650621074299</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"ctimeMs"</span><span class="p">:</span><span class="w"> </span><span class="mi">1650621074299</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"birthtimeMs"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"addedAt"</span><span class="p">:</span><span class="w"> </span><span class="mi">1650621073750</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"updatedAt"</span><span class="p">:</span><span class="w"> </span><span class="mi">1650621110769</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"lastScan"</span><span class="p">:</span><span class="w"> </span><span class="mi">1651830827825</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"scanVersion"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2.0.21"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"isMissing"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"isInvalid"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"mediaType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"book"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"media"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="err">...</span><span class="p">},</span><span class="w">
+    </span><span class="nl">"libraryFiles"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="err">...</span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<blockquote>
+<p>Library Item Minified</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"li_8gch9ve09orgn4fdz8"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"ino"</span><span class="p">:</span><span class="w"> </span><span class="s2">"649641337522215266"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"libraryId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"lib_c1u6t4p45c35rf0nzd"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"folderId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"fol_bev1zuxhb0j0s1wehr"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"path"</span><span class="p">:</span><span class="w"> </span><span class="s2">"/audiobooks/Terry Goodkind/Sword of Truth/Wizards First Rule"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"relPath"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Terry Goodkind/Sword of Truth/Wizards First Rule"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"isFile"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"mtimeMs"</span><span class="p">:</span><span class="w"> </span><span class="mi">1650621074299</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"ctimeMs"</span><span class="p">:</span><span class="w"> </span><span class="mi">1650621074299</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"birthtimeMs"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"addedAt"</span><span class="p">:</span><span class="w"> </span><span class="mi">1650621073750</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"updatedAt"</span><span class="p">:</span><span class="w"> </span><span class="mi">1650621110769</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"isMissing"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"isInvalid"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"mediaType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"book"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"media"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="err">...</span><span class="p">},</span><span class="w">
+  </span><span class="nl">"numFiles"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"size"</span><span class="p">:</span><span class="w"> </span><span class="mi">268990279</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<blockquote>
+<p>Library Item Expanded</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"li_8gch9ve09orgn4fdz8"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"ino"</span><span class="p">:</span><span class="w"> </span><span class="s2">"649641337522215266"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"libraryId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"lib_c1u6t4p45c35rf0nzd"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"folderId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"fol_bev1zuxhb0j0s1wehr"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"path"</span><span class="p">:</span><span class="w"> </span><span class="s2">"/audiobooks/Terry Goodkind/Sword of Truth/Wizards First Rule"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"relPath"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Terry Goodkind/Sword of Truth/Wizards First Rule"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"isFile"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"mtimeMs"</span><span class="p">:</span><span class="w"> </span><span class="mi">1650621074299</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"ctimeMs"</span><span class="p">:</span><span class="w"> </span><span class="mi">1650621074299</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"birthtimeMs"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"addedAt"</span><span class="p">:</span><span class="w"> </span><span class="mi">1650621073750</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"updatedAt"</span><span class="p">:</span><span class="w"> </span><span class="mi">1650621110769</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"lastScan"</span><span class="p">:</span><span class="w"> </span><span class="mi">1651830827825</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"scanVersion"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2.0.21"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"isMissing"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"isInvalid"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"mediaType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"book"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"media"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="err">...</span><span class="p">},</span><span class="w">
+    </span><span class="nl">"libraryFiles"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="err">...</span><span class="p">],</span><span class="w">
+  </span><span class="nl">"size"</span><span class="p">:</span><span class="w"> </span><span class="mi">268990279</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<table><thead>
+<tr>
+<th>Attribute</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>id</code></td>
+<td>String</td>
+<td>The ID of the library item.</td>
+</tr>
+<tr>
+<td><code>ino</code></td>
+<td>String</td>
+<td>The inode of the library item.</td>
+</tr>
+<tr>
+<td><code>libraryId</code></td>
+<td>String</td>
+<td>The ID of the library the library item belongs to.</td>
+</tr>
+<tr>
+<td><code>folderId</code></td>
+<td>String</td>
+<td>The ID of the folder the library item is in.</td>
+</tr>
+<tr>
+<td><code>path</code></td>
+<td>String</td>
+<td>The path of the library item on the server.</td>
+</tr>
+<tr>
+<td><code>relPath</code></td>
+<td>String</td>
+<td>The path, relative to the library folder, of the library item.</td>
+</tr>
+<tr>
+<td><code>isFile</code></td>
+<td>Boolean</td>
+<td>Whether or not the library item is a single file in the root of the library folder.</td>
+</tr>
+<tr>
+<td><code>mtimeMs</code></td>
+<td>Integer</td>
+<td>The time (in ms since POSIX epoch) when the library item was last modified on disk.</td>
+</tr>
+<tr>
+<td><code>ctimeMs</code></td>
+<td>Integer</td>
+<td>The time (in ms since POSIX epoch) when the library item status was changed on disk.</td>
+</tr>
+<tr>
+<td><code>birthtimeMs</code></td>
+<td>Integer</td>
+<td>The time (in ms since POSIX epoch) when the library item was created on disk. Will be <code>0</code> if unknown.</td>
+</tr>
+<tr>
+<td><code>addedAt</code></td>
+<td>Integer</td>
+<td>The time (in ms since POSIX epoch) when the library item was added to the library.</td>
+</tr>
+<tr>
+<td><code>updatedAt</code></td>
+<td>Integer</td>
+<td>The time (in ms since POSIX epoch) when the library item was last updated. (Read Only)</td>
+</tr>
+<tr>
+<td><code>lastScan</code></td>
+<td>Integer or null</td>
+<td>The time (in ms since POSIX epoch) when the library item was last scanned. Will be <code>null</code> if it has not been scanned.</td>
+</tr>
+<tr>
+<td><code>scanVersion</code></td>
+<td>String or null</td>
+<td>The version of the scanner when last scanned. Will be <code>null</code> if it has not been scanned.</td>
+</tr>
+<tr>
+<td><code>isMissing</code></td>
+<td>Boolean</td>
+<td>Whether or not the library item was scanned and no longer exists.</td>
+</tr>
+<tr>
+<td><code>isInvalid</code></td>
+<td>Boolean</td>
+<td>Whether or not the library item was scanned and no longer has media files.</td>
+</tr>
+<tr>
+<td><code>mediaType</code></td>
+<td>String</td>
+<td>What kind of media the library item contains. Will be <code>book</code> or <code>podcast</code>.</td>
+</tr>
+<tr>
+<td><code>media</code></td>
+<td><a href="#book">Book</a> or <a href="#podcast">Podcast</a> Object</td>
+<td>The media of the library item.</td>
+</tr>
+<tr>
+<td><code>libraryFiles</code></td>
+<td>Array of <a href="#library-file">Library File</a></td>
+<td>The files of the library item.</td>
+</tr>
+</tbody></table>
+<h3 id='library-item-minified'>Library Item Minified</h3><h4 id='removed-attributes'>Removed Attributes</h4>
+<ul>
+<li><code>lastScan</code></li>
+<li><code>scanVersion</code></li>
+<li><code>libraryFiles</code></li>
+</ul>
+<h4 id='modified-attributes'>Modified Attributes</h4>
+<ul>
+<li><code>media</code> is <a href="#book-minified">Book Minified</a> or <a href="#podcast-minified">Podcast Minified</a></li>
+</ul>
+<h4 id='added-attributes'>Added Attributes</h4>
+<table><thead>
+<tr>
+<th>Attribute</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>numFiles</code></td>
+<td>Integer</td>
+<td>The number of library files for the library item.</td>
+</tr>
+<tr>
+<td><code>size</code></td>
+<td>Integer</td>
+<td>The total size (in bytes) of the library item.</td>
+</tr>
+</tbody></table>
+<h3 id='library-item-expanded'>Library Item Expanded</h3><h4 id='modified-attributes-2'>Modified Attributes</h4>
+<ul>
+<li><code>media</code> is <a href="#book-expanded">Book Expanded</a> or <a href="#podcast-expanded">Podcast Expanded</a></li>
+</ul>
+<h4 id='added-attributes-2'>Added Attributes</h4>
+<table><thead>
+<tr>
+<th>Attribute</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>size</code></td>
+<td>Integer</td>
+<td>The total size (in bytes) of the library item.</td>
+</tr>
+</tbody></table>
+<h2 id='book'>Book</h2>
+<blockquote>
+<p>Book</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"libraryItemId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"li_8gch9ve09orgn4fdz8"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"metadata"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="err">...</span><span class="p">},</span><span class="w">
+  </span><span class="nl">"coverPath"</span><span class="p">:</span><span class="w"> </span><span class="s2">"/audiobooks/Terry Goodkind/Sword of Truth/Wizards First Rule/cover.jpg"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"tags"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="s2">"Favorite"</span><span class="w">
+  </span><span class="p">],</span><span class="w">
+  </span><span class="nl">"audioFiles"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="err">...</span><span class="p">],</span><span class="w">
+  </span><span class="nl">"chapters"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="err">...</span><span class="p">],</span><span class="w">
+  </span><span class="nl">"missingParts"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="err">...</span><span class="p">],</span><span class="w">
+  </span><span class="nl">"ebookFile"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<blockquote>
+<p>Book Minified</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"metadata"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="err">...</span><span class="p">},</span><span class="w">
+  </span><span class="nl">"coverPath"</span><span class="p">:</span><span class="w"> </span><span class="s2">"/audiobooks/Terry Goodkind/Sword of Truth/Wizards First Rule/cover.jpg"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"tags"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="s2">"Favorite"</span><span class="w">
+  </span><span class="p">],</span><span class="w">
+  </span><span class="nl">"numTracks"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"numAudioFiles"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"numChapters"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"numMissingParts"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"numInvalidAudioFiles"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"duration"</span><span class="p">:</span><span class="w"> </span><span class="mf">33854.905</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"size"</span><span class="p">:</span><span class="w"> </span><span class="mi">268824228</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"ebookFormat"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<blockquote>
+<p>Book Expanded</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"libraryItemId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"li_8gch9ve09orgn4fdz8"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"metadata"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="err">...</span><span class="p">},</span><span class="w">
+  </span><span class="nl">"coverPath"</span><span class="p">:</span><span class="w"> </span><span class="s2">"/audiobooks/Terry Goodkind/Sword of Truth/Wizards First Rule/cover.jpg"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"tags"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="s2">"Favorite"</span><span class="w">
+  </span><span class="p">],</span><span class="w">
+  </span><span class="nl">"audioFiles"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="err">...</span><span class="p">],</span><span class="w">
+  </span><span class="nl">"chapters"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="err">...</span><span class="p">],</span><span class="w">
+  </span><span class="nl">"duration"</span><span class="p">:</span><span class="w"> </span><span class="mf">33854.905</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"size"</span><span class="p">:</span><span class="w"> </span><span class="mi">268824228</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"tracks"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="err">...</span><span class="p">],</span><span class="w">
+  </span><span class="nl">"missingParts"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="err">...</span><span class="p">],</span><span class="w">
+  </span><span class="nl">"ebookFile"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<table><thead>
+<tr>
+<th>Attribute</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>libraryItemId</code></td>
+<td>String</td>
+<td>The ID of the library item that contains the book.</td>
+</tr>
+<tr>
+<td><code>metadata</code></td>
+<td><a href="#book-metadata">Book Metadata</a> Object</td>
+<td>The book&#39;s metadata.</td>
+</tr>
+<tr>
+<td><code>coverPath</code></td>
+<td>String or null</td>
+<td>The absolute path on the server of the cover file. Will be <code>null</code> if there is no cover.</td>
+</tr>
+<tr>
+<td><code>tags</code></td>
+<td>Array of String</td>
+<td>The book&#39;s tags.</td>
+</tr>
+<tr>
+<td><code>audioFiles</code></td>
+<td>Array of <a href="#audio-file">Audio File</a></td>
+<td>The book&#39;s audio files.</td>
+</tr>
+<tr>
+<td><code>chapters</code></td>
+<td>Array of <a href="#book-chapter">Book Chapter</a></td>
+<td>The book&#39;s chapters.</td>
+</tr>
+<tr>
+<td><code>missingParts</code></td>
+<td>Array of Integer</td>
+<td>Any parts missing from the book by track index.</td>
+</tr>
+<tr>
+<td><code>ebookFile</code></td>
+<td><a href="#ebook-file">EBook File</a> Object or null</td>
+<td>The book&#39;s ebook file. Will be <code>null</code> if this is an audiobook.</td>
+</tr>
+</tbody></table>
+<h3 id='book-minified'>Book Minified</h3><h4 id='removed-attributes-2'>Removed Attributes</h4>
+<ul>
+<li><code>libraryItemId</code></li>
+<li><code>audioFiles</code></li>
+<li><code>chapters</code></li>
+<li><code>missingParts</code></li>
+<li><code>ebookFile</code></li>
+</ul>
+<h4 id='modified-attributes-3'>Modified Attributes</h4>
+<ul>
+<li><code>metadata</code> is <a href="#book-metadata-minified">Book Metadata Minified</a></li>
+</ul>
+<h4 id='added-attributes-3'>Added Attributes</h4>
+<table><thead>
+<tr>
+<th>Attribute</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>numTracks</code></td>
+<td>Integer</td>
+<td>The number of tracks the book&#39;s audio files have.</td>
+</tr>
+<tr>
+<td><code>numAudioFiles</code></td>
+<td>Integer</td>
+<td>The number of audio files the book has.</td>
+</tr>
+<tr>
+<td><code>numChapters</code></td>
+<td>Integer</td>
+<td>The number of chapters the book has.</td>
+</tr>
+<tr>
+<td><code>numMissingParts</code></td>
+<td>Integer</td>
+<td>The total number of missing parts the book has.</td>
+</tr>
+<tr>
+<td><code>numInvalidAudioFiles</code></td>
+<td>Integer</td>
+<td>The number of invalid audio files the book has.</td>
+</tr>
+<tr>
+<td><code>duration</code></td>
+<td>Float</td>
+<td>The total length (in seconds) of the book.</td>
+</tr>
+<tr>
+<td><code>size</code></td>
+<td>Integer</td>
+<td>The total size (in bytes) of the book.</td>
+</tr>
+<tr>
+<td><code>ebookFormat</code></td>
+<td>String or null</td>
+<td>The format of ebook of the book. Will be <code>null</code> if the book is an audiobook.</td>
+</tr>
+</tbody></table>
+<h3 id='book-expanded'>Book Expanded</h3><h4 id='modified-attributes-4'>Modified Attributes</h4>
+<ul>
+<li><code>metadata</code> is <a href="#book-metadata-expanded">Book Metadata Expanded</a></li>
+</ul>
+<h4 id='added-attributes-4'>Added Attributes</h4>
+<table><thead>
+<tr>
+<th>Attribute</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>duration</code></td>
+<td>Float</td>
+<td>The total length (in seconds) of the book.</td>
+</tr>
+<tr>
+<td><code>size</code></td>
+<td>Integer</td>
+<td>The total size (in bytes) of the book.</td>
+</tr>
+<tr>
+<td><code>tracks</code></td>
+<td>Array of <a href="#audio-track">Audio Track</a></td>
+<td>The book&#39;s audio tracks from the audio files.</td>
+</tr>
+</tbody></table>
+<h2 id='book-metadata'>Book Metadata</h2>
+<blockquote>
+<p>Book Metadata</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Wizards First Rule"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"subtitle"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"authors"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="err">...</span><span class="p">],</span><span class="w">
+  </span><span class="nl">"narrators"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="s2">"Sam Tsoutsouvas"</span><span class="w">
+  </span><span class="p">],</span><span class="w">
+  </span><span class="nl">"series"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="err">...</span><span class="p">],</span><span class="w">
+  </span><span class="nl">"genres"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="s2">"Fantasy"</span><span class="w">
+  </span><span class="p">],</span><span class="w">
+  </span><span class="nl">"publishedYear"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2008"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"publishedDate"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"publisher"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Brilliance Audio"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"The masterpiece that started Terry Goodkind's New York Times bestselling epic Sword of Truth In the aftermath of the brutal murder of his father, a mysterious woman, Kahlan Amnell, appears in Richard Cypher's forest sanctuary seeking help...and more. His world, his very beliefs, are shattered when ancient debts come due with thundering violence. In a dark age it takes courage to live, and more than mere courage to challenge those who hold dominion, Richard and Kahlan must take up that challenge or become the next victims. Beyond awaits a bewitching land where even the best of their hearts could betray them. Yet, Richard fears nothing so much as what secrets his sword might reveal about his own soul. Falling in love would destroy them - for reasons Richard can't imagine and Kahlan dare not say. In their darkest hour, hunted relentlessly, tormented by treachery and loss, Kahlan calls upon Richard to reach beyond his sword - to invoke within himself something more noble. Neither knows that the rules of battle have just changed...or that their time has run out. Wizard's First Rule is the beginning. One book. One Rule. Witness the birth of a legend."</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"isbn"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"asin"</span><span class="p">:</span><span class="w"> </span><span class="s2">"B002V0QK4C"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"language"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"explicit"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<blockquote>
+<p>Book Metadata Minified</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Wizards First Rule"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"titleIgnorePrefix"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Wizards First Rule"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"subtitle"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"authorName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Terry Goodkind"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"authorNameLF"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Goodkind, Terry"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"narratorName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Sam Tsoutsouvas"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"seriesName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Sword of Truth"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"genres"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="s2">"Fantasy"</span><span class="w">
+  </span><span class="p">],</span><span class="w">
+  </span><span class="nl">"publishedYear"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2008"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"publishedDate"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"publisher"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Brilliance Audio"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"The masterpiece that started Terry Goodkind's New York Times bestselling epic Sword of Truth In the aftermath of the brutal murder of his father, a mysterious woman, Kahlan Amnell, appears in Richard Cypher's forest sanctuary seeking help...and more. His world, his very beliefs, are shattered when ancient debts come due with thundering violence. In a dark age it takes courage to live, and more than mere courage to challenge those who hold dominion, Richard and Kahlan must take up that challenge or become the next victims. Beyond awaits a bewitching land where even the best of their hearts could betray them. Yet, Richard fears nothing so much as what secrets his sword might reveal about his own soul. Falling in love would destroy them - for reasons Richard can't imagine and Kahlan dare not say. In their darkest hour, hunted relentlessly, tormented by treachery and loss, Kahlan calls upon Richard to reach beyond his sword - to invoke within himself something more noble. Neither knows that the rules of battle have just changed...or that their time has run out. Wizard's First Rule is the beginning. One book. One Rule. Witness the birth of a legend."</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"isbn"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"asin"</span><span class="p">:</span><span class="w"> </span><span class="s2">"B002V0QK4C"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"language"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"explicit"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<blockquote>
+<p>Book Metadata Expanded</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Wizards First Rule"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"titleIgnorePrefix"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Wizards First Rule"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"subtitle"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"authors"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="err">...</span><span class="p">],</span><span class="w">
+  </span><span class="nl">"narrators"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="s2">"Sam Tsoutsouvas"</span><span class="w">
+  </span><span class="p">],</span><span class="w">
+  </span><span class="nl">"series"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="err">...</span><span class="p">],</span><span class="w">
+  </span><span class="nl">"genres"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="s2">"Fantasy"</span><span class="w">
+  </span><span class="p">],</span><span class="w">
+  </span><span class="nl">"publishedYear"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2008"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"publishedDate"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"publisher"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Brilliance Audio"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"The masterpiece that started Terry Goodkind's New York Times bestselling epic Sword of Truth In the aftermath of the brutal murder of his father, a mysterious woman, Kahlan Amnell, appears in Richard Cypher's forest sanctuary seeking help...and more. His world, his very beliefs, are shattered when ancient debts come due with thundering violence. In a dark age it takes courage to live, and more than mere courage to challenge those who hold dominion, Richard and Kahlan must take up that challenge or become the next victims. Beyond awaits a bewitching land where even the best of their hearts could betray them. Yet, Richard fears nothing so much as what secrets his sword might reveal about his own soul. Falling in love would destroy them - for reasons Richard can't imagine and Kahlan dare not say. In their darkest hour, hunted relentlessly, tormented by treachery and loss, Kahlan calls upon Richard to reach beyond his sword - to invoke within himself something more noble. Neither knows that the rules of battle have just changed...or that their time has run out. Wizard's First Rule is the beginning. One book. One Rule. Witness the birth of a legend."</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"isbn"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"asin"</span><span class="p">:</span><span class="w"> </span><span class="s2">"B002V0QK4C"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"language"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"explicit"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"authorName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Terry Goodkind"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"authorNameLF"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Goodkind, Terry"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"narratorName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Sam Tsoutsouvas"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"seriesName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Sword of Truth"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<table><thead>
+<tr>
+<th>Attribute</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>title</code></td>
+<td>String or null</td>
+<td>The title of the book. Will be <code>null</code> if unknown.</td>
+</tr>
+<tr>
+<td><code>subtitle</code></td>
+<td>String or null</td>
+<td>The subtitle of the book. Will be <code>null</code> if there is no subtitle.</td>
+</tr>
+<tr>
+<td><code>authors</code></td>
+<td>Array of <a href="#author-minified">Author Minified</a></td>
+<td>The authors of the book.</td>
+</tr>
+<tr>
+<td><code>narrators</code></td>
+<td>Array of String</td>
+<td>The narrators of the audiobook.</td>
+</tr>
+<tr>
+<td><code>series</code></td>
+<td>Array of <a href="#series-minified">Series Minified</a></td>
+<td>The series the book belongs to.</td>
+</tr>
+<tr>
+<td><code>genres</code></td>
+<td>Array of String</td>
+<td>The genres of the book.</td>
+</tr>
+<tr>
+<td><code>publishedYear</code></td>
+<td>String or null</td>
+<td>The year the book was published. Will be <code>null</code> if unknown.</td>
+</tr>
+<tr>
+<td><code>publishedDate</code></td>
+<td>String or null</td>
+<td>The date the book was published. Will be <code>null</code> if unknown.</td>
+</tr>
+<tr>
+<td><code>publisher</code></td>
+<td>String or null</td>
+<td>The publisher of the book. Will be <code>null</code> if unknown.</td>
+</tr>
+<tr>
+<td><code>description</code></td>
+<td>String or null</td>
+<td>A description for the book. Will be <code>null</code> if empty.</td>
+</tr>
+<tr>
+<td><code>isbn</code></td>
+<td>String or null</td>
+<td>The ISBN of the book. Will be <code>null</code> if unknown.</td>
+</tr>
+<tr>
+<td><code>asin</code></td>
+<td>String or null</td>
+<td>The ASIN of the book. Will be <code>null</code> if unknown.</td>
+</tr>
+<tr>
+<td><code>language</code></td>
+<td>String or null</td>
+<td>The language of the book. Will be <code>null</code> if unknown.</td>
+</tr>
+<tr>
+<td><code>explicit</code></td>
+<td>Boolean</td>
+<td>Whether or not the book has been marked as explicit.</td>
+</tr>
+</tbody></table>
+<h3 id='book-metadata-minified'>Book Metadata Minified</h3><h4 id='removed-attributes-3'>Removed Attributes</h4>
+<ul>
+<li><code>authors</code></li>
+<li><code>narrators</code></li>
+<li><code>series</code></li>
+</ul>
+<h4 id='added-attributes-5'>Added Attributes</h4>
+<table><thead>
+<tr>
+<th>Attribute</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>titleIgnorePrefix</code></td>
+<td>String</td>
+<td>The title of the book with any prefix moved to the end.</td>
+</tr>
+<tr>
+<td><code>authorName</code></td>
+<td>String</td>
+<td>The name of the book&#39;s author(s).</td>
+</tr>
+<tr>
+<td><code>authorNameLF</code></td>
+<td>String</td>
+<td>The name of the book&#39;s author(s) with last names first.</td>
+</tr>
+<tr>
+<td><code>narratorName</code></td>
+<td>String</td>
+<td>The name of the audiobook&#39;s narrator(s).</td>
+</tr>
+<tr>
+<td><code>seriesName</code></td>
+<td>String</td>
+<td>The name of the book&#39;s series.</td>
+</tr>
+</tbody></table>
+<h3 id='book-metadata-expanded'>Book Metadata Expanded</h3><h4 id='added-attributes-6'>Added Attributes</h4>
+<table><thead>
+<tr>
+<th>Attribute</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>titleIgnorePrefix</code></td>
+<td>String</td>
+<td>The title of the book with any prefix moved to the end.</td>
+</tr>
+<tr>
+<td><code>authorName</code></td>
+<td>String</td>
+<td>The name of the book&#39;s author(s).</td>
+</tr>
+<tr>
+<td><code>authorNameLF</code></td>
+<td>String</td>
+<td>The name of the book&#39;s author(s) with last names first.</td>
+</tr>
+<tr>
+<td><code>narratorName</code></td>
+<td>String</td>
+<td>The name of the audiobook&#39;s narrator(s).</td>
+</tr>
+<tr>
+<td><code>seriesName</code></td>
+<td>String</td>
+<td>The name of the book&#39;s series.</td>
+</tr>
+</tbody></table>
+<h2 id='book-chapter'>Book Chapter</h2>
+<blockquote>
+<p>Book Chapter</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"start"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"end"</span><span class="p">:</span><span class="w"> </span><span class="mf">6004.6675</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Terry Goodkind - SOT Bk01 - Wizards First Rule 01"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<table><thead>
+<tr>
+<th>Attribute</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>id</code></td>
+<td>Integer</td>
+<td>The ID of the book chapter.</td>
+</tr>
+<tr>
+<td><code>start</code></td>
+<td>Float</td>
+<td>When in the book (in seconds) the chapter starts.</td>
+</tr>
+<tr>
+<td><code>end</code></td>
+<td>Float</td>
+<td>When in the book (in seconds) the chapter ends.</td>
+</tr>
+<tr>
+<td><code>title</code></td>
+<td>String</td>
+<td>The title of the chapter.</td>
+</tr>
+</tbody></table>
+<h2 id='podcast'>Podcast</h2>
+<blockquote>
+<p>Podcast</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"libraryItemId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"li_bufnnmp4y5o2gbbxfm"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"metadata"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="err">...</span><span class="p">},</span><span class="w">
+  </span><span class="nl">"coverPath"</span><span class="p">:</span><span class="w"> </span><span class="s2">"/podcasts/Welcome to Night Vale/cover.jpg"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"tags"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="s2">"Favorite"</span><span class="w">
+  </span><span class="p">],</span><span class="w">
+  </span><span class="nl">"episodes"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="err">...</span><span class="p">],</span><span class="w">
+  </span><span class="nl">"autoDownloadEpisodes"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"autoDownloadSchedule"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0 0 * * 1"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"lastEpisodeCheck"</span><span class="p">:</span><span class="w"> </span><span class="mi">1667326662087</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"maxEpisodesToKeep"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"maxNewEpisodesToDownload"</span><span class="p">:</span><span class="w"> </span><span class="mi">3</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<blockquote>
+<p>Podcast Minified</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"metadata"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="err">...</span><span class="p">},</span><span class="w">
+  </span><span class="nl">"coverPath"</span><span class="p">:</span><span class="w"> </span><span class="s2">"/podcasts/Welcome to Night Vale/cover.jpg"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"tags"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="s2">"Favorite"</span><span class="w">
+  </span><span class="p">],</span><span class="w">
+  </span><span class="nl">"numEpisodes"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"autoDownloadEpisodes"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"autoDownloadSchedule"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0 0 * * 1"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"lastEpisodeCheck"</span><span class="p">:</span><span class="w"> </span><span class="mi">1667326662087</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"maxEpisodesToKeep"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"maxNewEpisodesToDownload"</span><span class="p">:</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"size"</span><span class="p">:</span><span class="w"> </span><span class="mi">23706728</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<blockquote>
+<p>Podcast Expanded</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"libraryItemId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"li_bufnnmp4y5o2gbbxfm"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"metadata"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="err">...</span><span class="p">},</span><span class="w">
+  </span><span class="nl">"coverPath"</span><span class="p">:</span><span class="w"> </span><span class="s2">"/podcasts/Welcome to Night Vale/cover.jpg"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"tags"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="s2">"Favorite"</span><span class="w">
+  </span><span class="p">],</span><span class="w">
+  </span><span class="nl">"episodes"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="err">...</span><span class="p">],</span><span class="w">
+  </span><span class="nl">"autoDownloadEpisodes"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"autoDownloadSchedule"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0 0 * * 1"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"lastEpisodeCheck"</span><span class="p">:</span><span class="w"> </span><span class="mi">1667326662087</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"maxEpisodesToKeep"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"maxNewEpisodesToDownload"</span><span class="p">:</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"size"</span><span class="p">:</span><span class="w"> </span><span class="mi">23706728</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<table><thead>
+<tr>
+<th>Attribute</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>libraryItemId</code></td>
+<td>String</td>
+<td>The ID of the library item that contains the podcast.</td>
+</tr>
+<tr>
+<td><code>metadata</code></td>
+<td><a href="#podcast-metadata">Podcast Metadata</a> Object</td>
+<td>The metadata for the podcast.</td>
+</tr>
+<tr>
+<td><code>coverPath</code></td>
+<td>String or null</td>
+<td>The absolute path on the server of the cover file. Will be <code>null</code> if there is no cover.</td>
+</tr>
+<tr>
+<td><code>tags</code></td>
+<td>Array of String</td>
+<td>The podcast&#39;s tags.</td>
+</tr>
+<tr>
+<td><code>episodes</code></td>
+<td>Array of <a href="#podcast-episode">Podcast Episode</a></td>
+<td>The downloaded episodes of the podcast.</td>
+</tr>
+<tr>
+<td><code>autoDownloadEpisodes</code></td>
+<td>Boolean</td>
+<td>Whether or not the server will automatically download podcast episodes according to the schedule.</td>
+</tr>
+<tr>
+<td><code>autoDownloadSchedule</code></td>
+<td>String</td>
+<td>The <a href="https://en.wikipedia.org/wiki/Cron#CRON_expression">cron expression</a> for when to automatically download podcast episodes. Will not exist if <code>autoDownloadEpisodes</code> is <code>false</code>.</td>
+</tr>
+<tr>
+<td><code>lastEpisodeCheck</code></td>
+<td>Integer</td>
+<td>The time (in ms since POSIX epoch) when the podcast was checked for new episodes.</td>
+</tr>
+<tr>
+<td><code>maxEpisodesToKeep</code></td>
+<td>Integer</td>
+<td>The maximum number of podcast episodes to keep when automatically downloading new episodes. Episodes beyond this limit will be deleted. If <code>0</code>, all episodes will be kept.</td>
+</tr>
+<tr>
+<td><code>maxNewEpisodesToDownload</code></td>
+<td>Integer</td>
+<td>The maximum number of podcast episodes to download when automatically downloading new episodes. If <code>0</code>, all episodes will be downloaded.</td>
+</tr>
+</tbody></table>
+<h3 id='podcast-minified'>Podcast Minified</h3><h4 id='removed-attributes-4'>Removed Attributes</h4>
+<ul>
+<li><code>libraryItemId</code></li>
+<li><code>episodes</code></li>
+</ul>
+<h4 id='modified-attributes-5'>Modified Attributes</h4>
+<ul>
+<li><code>metadata</code> is <a href="#podcast-metadata-minified">Podcast Metadata Minified</a></li>
+</ul>
+<h4 id='added-attributes-7'>Added Attributes</h4>
+<table><thead>
+<tr>
+<th>Attribute</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>numEpisodes</code></td>
+<td>Integer</td>
+<td>The number of downloaded episodes for the podcast.</td>
+</tr>
+<tr>
+<td><code>size</code></td>
+<td>Integer</td>
+<td>The total size (in bytes) of the podcast.</td>
+</tr>
+</tbody></table>
+<h3 id='podcast-expanded'>Podcast Expanded</h3><h4 id='modified-attributes-6'>Modified Attributes</h4>
+<ul>
+<li><code>metadata</code> is <a href="#podcast-metadata-expanded">Podcast Metadata Expanded</a></li>
+<li><code>episodes</code> is an Array of <a href="#podcast-episode-expanded">Podcast Episodes Expanded</a></li>
+</ul>
+<h4 id='added-attributes-8'>Added Attributes</h4>
+<table><thead>
+<tr>
+<th>Attribute</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>size</code></td>
+<td>Integer</td>
+<td>The total size (in bytes) of the podcast.</td>
+</tr>
+</tbody></table>
+<h2 id='podcast-metadata'>Podcast Metadata</h2>
+<blockquote>
+<p>Podcast Metadata</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Welcome to Night Vale"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"author"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Night Vale Presents"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"</span><span class="se">\n</span><span class="s2">      Twice-monthly community updates for the small desert town of Night Vale, where every conspiracy theory is true. Turn on your radio and hide. Never listened before? It's an ongoing radio show. Start with the current episode, and you'll catch on in no time. Or, go right to Episode 1 if you wanna binge-listen.</span><span class="se">\n</span><span class="s2">    "</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"releaseDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2022-10-20T19:00:00Z"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"genres"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="s2">"Science Fiction"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"Podcasts"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"Fiction"</span><span class="w">
+  </span><span class="p">],</span><span class="w">
+  </span><span class="nl">"feedUrl"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://feeds.nightvalepresents.com/welcometonightvalepodcast"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"imageUrl"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://is4-ssl.mzstatic.com/image/thumb/Podcasts125/v4/4a/31/35/4a3135d0-1fe7-a2d7-fb43-d182ec175402/mza_8232698753950666850.jpg/600x600bb.jpg"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"itunesPageUrl"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://podcasts.apple.com/us/podcast/welcome-to-night-vale/id536258179?uo=4"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"itunesId"</span><span class="p">:</span><span class="w"> </span><span class="mi">536258179</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"itunesArtistId"</span><span class="p">:</span><span class="w"> </span><span class="mi">718704794</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"explicit"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"language"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<blockquote>
+<p>Podcast Metadata Minified</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Welcome to Night Vale"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"titleIgnorePrefix"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Welcome to Night Vale"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"author"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Night Vale Presents"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"</span><span class="se">\n</span><span class="s2">      Twice-monthly community updates for the small desert town of Night Vale, where every conspiracy theory is true. Turn on your radio and hide. Never listened before? It's an ongoing radio show. Start with the current episode, and you'll catch on in no time. Or, go right to Episode 1 if you wanna binge-listen.</span><span class="se">\n</span><span class="s2">    "</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"releaseDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2022-10-20T19:00:00Z"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"genres"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="s2">"Science Fiction"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"Podcasts"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"Fiction"</span><span class="w">
+  </span><span class="p">],</span><span class="w">
+  </span><span class="nl">"feedUrl"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://feeds.nightvalepresents.com/welcometonightvalepodcast"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"imageUrl"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://is4-ssl.mzstatic.com/image/thumb/Podcasts125/v4/4a/31/35/4a3135d0-1fe7-a2d7-fb43-d182ec175402/mza_8232698753950666850.jpg/600x600bb.jpg"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"itunesPageUrl"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://podcasts.apple.com/us/podcast/welcome-to-night-vale/id536258179?uo=4"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"itunesId"</span><span class="p">:</span><span class="w"> </span><span class="mi">536258179</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"itunesArtistId"</span><span class="p">:</span><span class="w"> </span><span class="mi">718704794</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"explicit"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"language"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<blockquote>
+<p>Podcast Metadata Expanded</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Welcome to Night Vale"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"titleIgnorePrefix"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Welcome to Night Vale"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"author"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Night Vale Presents"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"</span><span class="se">\n</span><span class="s2">      Twice-monthly community updates for the small desert town of Night Vale, where every conspiracy theory is true. Turn on your radio and hide. Never listened before? It's an ongoing radio show. Start with the current episode, and you'll catch on in no time. Or, go right to Episode 1 if you wanna binge-listen.</span><span class="se">\n</span><span class="s2">    "</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"releaseDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2022-10-20T19:00:00Z"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"genres"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="s2">"Science Fiction"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"Podcasts"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"Fiction"</span><span class="w">
+  </span><span class="p">],</span><span class="w">
+  </span><span class="nl">"feedUrl"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://feeds.nightvalepresents.com/welcometonightvalepodcast"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"imageUrl"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://is4-ssl.mzstatic.com/image/thumb/Podcasts125/v4/4a/31/35/4a3135d0-1fe7-a2d7-fb43-d182ec175402/mza_8232698753950666850.jpg/600x600bb.jpg"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"itunesPageUrl"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://podcasts.apple.com/us/podcast/welcome-to-night-vale/id536258179?uo=4"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"itunesId"</span><span class="p">:</span><span class="w"> </span><span class="mi">536258179</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"itunesArtistId"</span><span class="p">:</span><span class="w"> </span><span class="mi">718704794</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"explicit"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"language"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<table><thead>
+<tr>
+<th>Attribute</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>title</code></td>
+<td>String or null</td>
+<td>The title of the podcast. Will be <code>null</code> if unknown.</td>
+</tr>
+<tr>
+<td><code>author</code></td>
+<td>String or null</td>
+<td>The author of the podcast. Will be <code>null</code> if unknown.</td>
+</tr>
+<tr>
+<td><code>description</code></td>
+<td>String or null</td>
+<td>The description for the podcast. Will be <code>null</code> if unknown.</td>
+</tr>
+<tr>
+<td><code>releaseDate</code></td>
+<td>String or null</td>
+<td>The release date of the podcast. Will be <code>null</code> if unknown.</td>
+</tr>
+<tr>
+<td><code>genres</code></td>
+<td>Array of String</td>
+<td>The podcast&#39;s genres.</td>
+</tr>
+<tr>
+<td><code>feedUrl</code></td>
+<td>String or null</td>
+<td>A URL of an RSS feed for the podcast. Will be <code>null</code> if unknown.</td>
+</tr>
+<tr>
+<td><code>imageUrl</code></td>
+<td>String or null</td>
+<td>A URL of a cover image for the podcast. Will be <code>null</code> if unknown.</td>
+</tr>
+<tr>
+<td><code>itunesPageUrl</code></td>
+<td>String or null</td>
+<td>A URL of an iTunes page for the podcast. Will be <code>null</code> if unknown.</td>
+</tr>
+<tr>
+<td><code>itunesId</code></td>
+<td>Integer or null</td>
+<td>The iTunes ID for the podcast. Will be <code>null</code> if unknown.</td>
+</tr>
+<tr>
+<td><code>itunesArtistId</code></td>
+<td>Integer or null</td>
+<td>The iTunes Artist ID for the author of the podcast. Will be <code>null</code> if unknown.</td>
+</tr>
+<tr>
+<td><code>explicit</code></td>
+<td>Boolean</td>
+<td>Whether or not the podcast has been marked as explicit.</td>
+</tr>
+<tr>
+<td><code>language</code></td>
+<td>String or null</td>
+<td>The language of the podcast. Will be <code>null</code> if unknown.</td>
+</tr>
+</tbody></table>
+<h3 id='podcast-metadata-minified'>Podcast Metadata Minified</h3><h4 id='added-attributes-9'>Added Attributes</h4>
+<table><thead>
+<tr>
+<th>Attribute</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>titleIgnorePrefix</code></td>
+<td>String</td>
+<td>The title of the podcast with any prefix moved to the end.</td>
+</tr>
+</tbody></table>
+<h3 id='podcast-metadata-expanded'>Podcast Metadata Expanded</h3><h4 id='added-attributes-10'>Added Attributes</h4>
+<table><thead>
+<tr>
+<th>Attribute</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>titleIgnorePrefix</code></td>
+<td>String</td>
+<td>The title of the podcast with any prefix moved to the end.</td>
+</tr>
+</tbody></table>
+<h2 id='podcast-episode'>Podcast Episode</h2>
+<blockquote>
+<p>Podcast Episode</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"libraryItemId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"li_bufnnmp4y5o2gbbxfm"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ep_lh6ko39pumnrma3dhv"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"index"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"season"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"episode"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"episodeType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"full"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1 - Pilot"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"subtitle"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Pilot Episode. A new dog park opens in Night Vale. Carlos, a scientist, visits and discovers some interesting things. Seismic things. Plus, a helpful guide to surveillance helicopter-spotting. Weather: </span><span class="se">\"</span><span class="s2">These and More Than These</span><span class="se">\"</span><span class="s2"> by Joseph Fink Music:..."</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"</span><span class="se">\n</span><span class="s2">        &lt;p&gt;Pilot Episode. A new dog park opens in Night Vale. Carlos, a scientist, visits and discovers some interesting things. Seismic things. Plus, a helpful guide to surveillance helicopter-spotting.&lt;/p&gt;</span><span class="se">\n\n</span><span class="s2">&lt;p&gt;Weather: </span><span class="se">\"</span><span class="s2">These and More Than These</span><span class="se">\"</span><span class="s2"> by Joseph Fink&lt;/p&gt;</span><span class="se">\n\n</span><span class="s2">&lt;p&gt;Music: Disparition, &lt;a target=</span><span class="se">\"</span><span class="s2">_blank</span><span class="se">\"</span><span class="s2">&gt;disparition.info&lt;/a&gt;&lt;/p&gt;</span><span class="se">\n\n</span><span class="s2">&lt;p&gt;Logo: Rob Wilson, &lt;a target=</span><span class="se">\"</span><span class="s2">_blank</span><span class="se">\"</span><span class="s2">&gt;silastom.com&lt;/a&gt;&lt;/p&gt;</span><span class="se">\n\n</span><span class="s2">&lt;p&gt;Produced by Night Vale Presents. Written by Joseph Fink and Jeffrey Cranor. Narrated by Cecil Baldwin. More Info: &lt;a target=</span><span class="se">\"</span><span class="s2">_blank</span><span class="se">\"</span><span class="s2">&gt;welcometonightvale.com&lt;/a&gt;, and follow &lt;a target=</span><span class="se">\"</span><span class="s2">_blank</span><span class="se">\"</span><span class="s2">&gt;@NightValeRadio&lt;/a&gt; on Twitter or &lt;a target=</span><span class="se">\"</span><span class="s2">_blank</span><span class="se">\"</span><span class="s2">&gt;Facebook&lt;/a&gt;.&lt;/p&gt;</span><span class="se">\n</span><span class="s2">      "</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"enclosure"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="err">...</span><span class="p">},</span><span class="w">
+  </span><span class="nl">"pubDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Fri, 15 Jun 2012 12:00:00 -0000"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"audioFile"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="err">...</span><span class="p">},</span><span class="w">
+  </span><span class="nl">"publishedAt"</span><span class="p">:</span><span class="w"> </span><span class="mi">1339761600000</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"addedAt"</span><span class="p">:</span><span class="w"> </span><span class="mi">1667326679503</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"updatedAt"</span><span class="p">:</span><span class="w"> </span><span class="mi">1667326679503</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<blockquote>
+<p>Podcast Episode Expanded</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"libraryItemId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"li_bufnnmp4y5o2gbbxfm"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ep_lh6ko39pumnrma3dhv"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"index"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"season"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"episode"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"episodeType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"full"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1 - Pilot"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"subtitle"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Pilot Episode. A new dog park opens in Night Vale. Carlos, a scientist, visits and discovers some interesting things. Seismic things. Plus, a helpful guide to surveillance helicopter-spotting. Weather: </span><span class="se">\"</span><span class="s2">These and More Than These</span><span class="se">\"</span><span class="s2"> by Joseph Fink Music:..."</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"</span><span class="se">\n</span><span class="s2">        &lt;p&gt;Pilot Episode. A new dog park opens in Night Vale. Carlos, a scientist, visits and discovers some interesting things. Seismic things. Plus, a helpful guide to surveillance helicopter-spotting.&lt;/p&gt;</span><span class="se">\n\n</span><span class="s2">&lt;p&gt;Weather: </span><span class="se">\"</span><span class="s2">These and More Than These</span><span class="se">\"</span><span class="s2"> by Joseph Fink&lt;/p&gt;</span><span class="se">\n\n</span><span class="s2">&lt;p&gt;Music: Disparition, &lt;a target=</span><span class="se">\"</span><span class="s2">_blank</span><span class="se">\"</span><span class="s2">&gt;disparition.info&lt;/a&gt;&lt;/p&gt;</span><span class="se">\n\n</span><span class="s2">&lt;p&gt;Logo: Rob Wilson, &lt;a target=</span><span class="se">\"</span><span class="s2">_blank</span><span class="se">\"</span><span class="s2">&gt;silastom.com&lt;/a&gt;&lt;/p&gt;</span><span class="se">\n\n</span><span class="s2">&lt;p&gt;Produced by Night Vale Presents. Written by Joseph Fink and Jeffrey Cranor. Narrated by Cecil Baldwin. More Info: &lt;a target=</span><span class="se">\"</span><span class="s2">_blank</span><span class="se">\"</span><span class="s2">&gt;welcometonightvale.com&lt;/a&gt;, and follow &lt;a target=</span><span class="se">\"</span><span class="s2">_blank</span><span class="se">\"</span><span class="s2">&gt;@NightValeRadio&lt;/a&gt; on Twitter or &lt;a target=</span><span class="se">\"</span><span class="s2">_blank</span><span class="se">\"</span><span class="s2">&gt;Facebook&lt;/a&gt;.&lt;/p&gt;</span><span class="se">\n</span><span class="s2">      "</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"enclosure"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="err">...</span><span class="p">},</span><span class="w">
+  </span><span class="nl">"pubDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Fri, 15 Jun 2012 12:00:00 -0000"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"audioFile"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="err">...</span><span class="p">},</span><span class="w">
+  </span><span class="nl">"audioTrack"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="err">...</span><span class="p">},</span><span class="w">
+  </span><span class="nl">"publishedAt"</span><span class="p">:</span><span class="w"> </span><span class="mi">1339761600000</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"addedAt"</span><span class="p">:</span><span class="w"> </span><span class="mi">1667326679503</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"updatedAt"</span><span class="p">:</span><span class="w"> </span><span class="mi">1667326679503</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"duration"</span><span class="p">:</span><span class="w"> </span><span class="mf">1454.18449</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"size"</span><span class="p">:</span><span class="w"> </span><span class="mi">23653735</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<table><thead>
+<tr>
+<th>Attribute</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>libraryItemId</code></td>
+<td>String</td>
+<td>The ID of the library item that contains the podcast.</td>
+</tr>
+<tr>
+<td><code>id</code></td>
+<td>String</td>
+<td>The ID of the podcast episode.</td>
+</tr>
+<tr>
+<td><code>index</code></td>
+<td>Integer</td>
+<td>The index of the podcast episode.</td>
+</tr>
+<tr>
+<td><code>season</code></td>
+<td>String</td>
+<td>The season of the podcast episode, if known.</td>
+</tr>
+<tr>
+<td><code>episode</code></td>
+<td>String</td>
+<td>The episode of the season of the podcast, if known.</td>
+</tr>
+<tr>
+<td><code>episodeType</code></td>
+<td>String</td>
+<td>The type of episode that the podcast episode is.</td>
+</tr>
+<tr>
+<td><code>title</code></td>
+<td>String</td>
+<td>The title of the podcast episode.</td>
+</tr>
+<tr>
+<td><code>subtitle</code></td>
+<td>String</td>
+<td>The subtitle of the podcast episode.</td>
+</tr>
+<tr>
+<td><code>description</code></td>
+<td>String</td>
+<td>A HTML encoded, description of the podcast episode.</td>
+</tr>
+<tr>
+<td><code>enclosure</code></td>
+<td><a href="#podcast-episode-enclosure">Podcast Episode Enclosure</a> Object</td>
+<td>Information about the podcast episode from when it was downloaded.</td>
+</tr>
+<tr>
+<td><code>pubDate</code></td>
+<td>String</td>
+<td>When the podcast episode was published.</td>
+</tr>
+<tr>
+<td><code>audioFile</code></td>
+<td><a href="#audio-file">Audio File</a> Object</td>
+<td>The audio file for the podcast episode.</td>
+</tr>
+<tr>
+<td><code>publishedAt</code></td>
+<td>Integer</td>
+<td>The time (in ms since POSIX epoch) when the podcast episode was published.</td>
+</tr>
+<tr>
+<td><code>addedAt</code></td>
+<td>Integer</td>
+<td>The time (in ms since POSIX epoch) when the podcast episode was added to the library.</td>
+</tr>
+<tr>
+<td><code>updatedAt</code></td>
+<td>Integer</td>
+<td>The time (in ms since POSIX epoch) when the podcast episode was last updated.</td>
+</tr>
+</tbody></table>
+<h3 id='podcast-episode-expanded'>Podcast Episode Expanded</h3><h4 id='added-attributes-11'>Added Attributes</h4>
+<table><thead>
+<tr>
+<th>Attribute</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>audioTrack</code></td>
+<td><a href="#audio-track">Audio Track</a> Object</td>
+<td>The podcast episode&#39;s audio tracks from the audio file.</td>
+</tr>
+<tr>
+<td><code>duration</code></td>
+<td>Float</td>
+<td>The total length (in seconds) of the podcast episode.</td>
+</tr>
+<tr>
+<td><code>size</code></td>
+<td>Integer</td>
+<td>The total size (in bytes) of the podcast episode.</td>
+</tr>
+</tbody></table>
+<h2 id='podcast-episode-enclosure'>Podcast Episode Enclosure</h2><div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://www.podtrac.com/pts/redirect.mp3/dovetail.prxu.org/_/126/1fadf1ad-aad8-449f-843b-6e8bb6949622/1_Pilot.mp3"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"audio/mpeg"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"length"</span><span class="p">:</span><span class="w"> </span><span class="s2">"20588611"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<table><thead>
+<tr>
+<th>Attribute</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>url</code></td>
+<td>String</td>
+<td>The URL where the podcast episode&#39;s audio file was downloaded from.</td>
+</tr>
+<tr>
+<td><code>type</code></td>
+<td>String</td>
+<td>The MIME type of the podcast episode&#39;s audio file.</td>
+</tr>
+<tr>
+<td><code>length</code></td>
+<td>The size (in bytes) that was reported when downloading the podcast episode&#39;s audio file.</td>
+<td></td>
+</tr>
+</tbody></table>
+<h2 id='audio-file'>Audio File</h2>
+<blockquote>
+<p>Audio File</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"index"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"ino"</span><span class="p">:</span><span class="w"> </span><span class="s2">"649644248522215260"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"metadata"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="err">...</span><span class="p">},</span><span class="w">
+  </span><span class="nl">"addedAt"</span><span class="p">:</span><span class="w"> </span><span class="mi">1650621074131</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"updatedAt"</span><span class="p">:</span><span class="w"> </span><span class="mi">1651830828023</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"trackNumFromMeta"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"discNumFromMeta"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"trackNumFromFilename"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"discNumFromFilename"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"manuallyVerified"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"invalid"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"exclude"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"error"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"format"</span><span class="p">:</span><span class="w"> </span><span class="s2">"MP2/3 (MPEG audio layer 2/3)"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"duration"</span><span class="p">:</span><span class="w"> </span><span class="mf">6004.6675</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"bitRate"</span><span class="p">:</span><span class="w"> </span><span class="mi">64000</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"language"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"codec"</span><span class="p">:</span><span class="w"> </span><span class="s2">"mp3"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"timeBase"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1/14112000"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"channels"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"channelLayout"</span><span class="p">:</span><span class="w"> </span><span class="s2">"stereo"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"chapters"</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span><span class="w">
+  </span><span class="nl">"embeddedCoverArt"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"metaTags"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="err">...</span><span class="p">},</span><span class="w">
+  </span><span class="nl">"mimeType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"audio/mpeg"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<table><thead>
+<tr>
+<th>Attribute</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>index</code></td>
+<td>Integer</td>
+<td>The index of the audio file.</td>
+</tr>
+<tr>
+<td><code>ino</code></td>
+<td>String</td>
+<td>The inode of the audio file.</td>
+</tr>
+<tr>
+<td><code>metadata</code></td>
+<td><a href="#file-metadata">File Metadata</a> Object</td>
+<td>The audio file&#39;s metadata.</td>
+</tr>
+<tr>
+<td><code>addedAt</code></td>
+<td>Integer</td>
+<td>The time (in ms since POSIX epoch) when the audio file was added to the library.</td>
+</tr>
+<tr>
+<td><code>updatedAt</code></td>
+<td>Integer</td>
+<td>The time (in ms since POSIX epoch) when the audio file last updated. (Read Only)</td>
+</tr>
+<tr>
+<td><code>trackNumFromMeta</code></td>
+<td>Integer or null</td>
+<td>The track number of the audio file as pulled from the file&#39;s metadata. Will be <code>null</code> if unknown.</td>
+</tr>
+<tr>
+<td><code>discNumFromMeta</code></td>
+<td>Integer or null</td>
+<td>The disc number of the audio file as pulled from the file&#39;s metadata. Will be <code>null</code> if unknown.</td>
+</tr>
+<tr>
+<td><code>trackNumFromFilename</code></td>
+<td>Integer or null</td>
+<td>The track number of the audio file as determined from the file&#39;s name. Will be <code>null</code> if unknown.</td>
+</tr>
+<tr>
+<td><code>discNumFromFilename</code></td>
+<td>Integer or null</td>
+<td>The track number of the audio file as determined from the file&#39;s name. Will be <code>null</code> if unknown.</td>
+</tr>
+<tr>
+<td><code>manuallyVerified</code></td>
+<td>Boolean</td>
+<td>Whether or not the audio file has been manually verified by a user.</td>
+</tr>
+<tr>
+<td><code>invalid</code></td>
+<td>Boolean</td>
+<td>Whether or not the audio file is missing from the server.</td>
+</tr>
+<tr>
+<td><code>exclude</code></td>
+<td>Boolean</td>
+<td>Whether or not the audio file has been marked for exclusion.</td>
+</tr>
+<tr>
+<td><code>error</code></td>
+<td>String or null</td>
+<td>Any error with the audio file. Will be <code>null</code> if there is none.</td>
+</tr>
+<tr>
+<td><code>format</code></td>
+<td>String</td>
+<td>The format of the audio file.</td>
+</tr>
+<tr>
+<td><code>duration</code></td>
+<td>Float</td>
+<td>The total length (in seconds) of the audio file.</td>
+</tr>
+<tr>
+<td><code>bitRate</code></td>
+<td>Integer</td>
+<td>The bit rate (in bit/s) of the audio file.</td>
+</tr>
+<tr>
+<td><code>language</code></td>
+<td>String or null</td>
+<td>The language of the audio file.</td>
+</tr>
+<tr>
+<td><code>codec</code></td>
+<td>String</td>
+<td>The codec of the audio file.</td>
+</tr>
+<tr>
+<td><code>timeBase</code></td>
+<td>String</td>
+<td>The time base of the audio file.</td>
+</tr>
+<tr>
+<td><code>channels</code></td>
+<td>Integer</td>
+<td>The number of channels the audio file has.</td>
+</tr>
+<tr>
+<td><code>channelLayout</code></td>
+<td>String</td>
+<td>The layout of the audio file&#39;s channels.</td>
+</tr>
+<tr>
+<td><code>chapters</code></td>
+<td>Array of <a href="#book-chapter">Book Chapter</a></td>
+<td>If the audio file is part of an audiobook, the chapters the file contains.</td>
+</tr>
+<tr>
+<td><code>embeddedCoverArt</code></td>
+<td>String or null</td>
+<td>The type of embedded cover art in the audio file. Will be <code>null</code> if none exists.</td>
+</tr>
+<tr>
+<td><code>metaTags</code></td>
+<td><a href="#audio-meta-tags">Audio Meta Tags</a> Object</td>
+<td>The audio metadata tags from the audio file.</td>
+</tr>
+<tr>
+<td><code>mimeType</code></td>
+<td>String</td>
+<td>The MIME type of the audio file.</td>
+</tr>
+</tbody></table>
+<h2 id='audio-meta-tags'>Audio Meta Tags</h2>
+<blockquote>
+<p>Audio Meta Tags</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"tagAlbum"</span><span class="p">:</span><span class="w"> </span><span class="s2">"SOT Bk01"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"tagArtist"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Terry Goodkind"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"tagGenre"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Audiobook Fantasy"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"tagTitle"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Wizards First Rule 01"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"tagSeries"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"tagSeriesPart"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"tagTrack"</span><span class="p">:</span><span class="w"> </span><span class="s2">"01/20"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"tagDisc"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"tagSubtitle"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"tagAlbumArtist"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Terry Goodkind"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"tagDate"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"tagComposer"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Terry Goodkind"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"tagPublisher"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"tagComment"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"tagDescription"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"tagEncoder"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"tagEncodedBy"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"tagIsbn"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"tagLanguage"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"tagASIN"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"tagOverdriveMediaMarker"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<p><a href="https://en.wikipedia.org/wiki/ID3">ID3</a> metadata tags pulled from the audio file on import.
+Only non-null tags will be returned in requests.</p>
+<h2 id='audio-track'>Audio Track</h2>
+<blockquote>
+<p>Audio Track</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"index"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"startOffset"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"duration"</span><span class="p">:</span><span class="w"> </span><span class="mf">33854.905</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Terry Goodkind - SOT Bk01 - Wizards First Rule 01.mp3"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"contentUrl"</span><span class="p">:</span><span class="w"> </span><span class="s2">"/s/item/li_8gch9ve09orgn4fdz8/Terry Goodkind - SOT Bk01 - Wizards First Rule 01.mp3"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"mimeType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"audio/mpeg"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"metadata"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="err">...</span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<table><thead>
+<tr>
+<th>Attribute</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>index</code></td>
+<td>Integer</td>
+<td>The index of the audio track.</td>
+</tr>
+<tr>
+<td><code>startOffset</code></td>
+<td>Float</td>
+<td>When in the audio file (in seconds) the track starts.</td>
+</tr>
+<tr>
+<td><code>duration</code></td>
+<td>Float</td>
+<td>The length (in seconds) of the audio track.</td>
+</tr>
+<tr>
+<td><code>title</code></td>
+<td>String</td>
+<td>The filename of the audio file the audio track belongs to.</td>
+</tr>
+<tr>
+<td><code>contentUrl</code></td>
+<td>String</td>
+<td>The URL on the serve of the audio file.</td>
+</tr>
+<tr>
+<td><code>mimeType</code></td>
+<td>String</td>
+<td>The MIME type of the audio file.</td>
+</tr>
+<tr>
+<td><code>metadata</code></td>
+<td><a href="#file-metadata">File Metadta</a> Object or null</td>
+<td>The metadata of the audio file.</td>
+</tr>
+</tbody></table>
+<h2 id='library-file'>Library File</h2>
+<blockquote>
+<p>Library File</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"ino"</span><span class="p">:</span><span class="w"> </span><span class="s2">"649644248522215260"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"metadata"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="err">...</span><span class="p">},</span><span class="w">
+  </span><span class="nl">"addedAt"</span><span class="p">:</span><span class="w"> </span><span class="mi">1650621052494</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"updatedAt"</span><span class="p">:</span><span class="w"> </span><span class="mi">1650621052494</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"fileType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"audio"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<table><thead>
+<tr>
+<th>Attribute</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>ino</code></td>
+<td>String</td>
+<td>The inode of the library file.</td>
+</tr>
+<tr>
+<td><code>metadata</code></td>
+<td><a href="#file-metadata">File Metadata</a> Object</td>
+<td>The metadata for the library file.</td>
+</tr>
+<tr>
+<td><code>addedAt</code></td>
+<td>Integer</td>
+<td>The time (in ms since POSIX epoch) when the library file was added.</td>
+</tr>
+<tr>
+<td><code>updatedAt</code></td>
+<td>Integer</td>
+<td>The time (in ms since POSIX epoch) when the library file was last updated.</td>
+</tr>
+<tr>
+<td><code>fileType</code></td>
+<td>String</td>
+<td>The type of file that the library file is (audio, image, etc.).</td>
+</tr>
+</tbody></table>
+<h2 id='file-metadata'>File Metadata</h2>
+<blockquote>
+<p>File Metadata</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"filename"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Terry Goodkind - SOT Bk01 - Wizards First Rule 01.mp3"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"ext"</span><span class="p">:</span><span class="w"> </span><span class="s2">".mp3"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"path"</span><span class="p">:</span><span class="w"> </span><span class="s2">"/audiobooks/Terry Goodkind/Sword of Truth/Wizards First Rule/Terry Goodkind - SOT Bk01 - Wizards First Rule 01.mp3"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"relPath"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Terry Goodkind - SOT Bk01 - Wizards First Rule 01.mp3"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"size"</span><span class="p">:</span><span class="w"> </span><span class="mi">48037888</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"mtimeMs"</span><span class="p">:</span><span class="w"> </span><span class="mi">1632223180278</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"ctimeMs"</span><span class="p">:</span><span class="w"> </span><span class="mi">1645978261001</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"birthtimeMs"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<table><thead>
+<tr>
+<th>Attribute</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>filename</code></td>
+<td>String</td>
+<td>The filename of the file.</td>
+</tr>
+<tr>
+<td><code>ext</code></td>
+<td>String</td>
+<td>The file extension of the file.</td>
+</tr>
+<tr>
+<td><code>path</code></td>
+<td>String</td>
+<td>The absolute path on the server of the file.</td>
+</tr>
+<tr>
+<td><code>relPath</code></td>
+<td>String</td>
+<td>The path of the file, relative to the book&#39;s or podcast&#39;s folder.</td>
+</tr>
+<tr>
+<td><code>size</code></td>
+<td>Integer</td>
+<td>The size (in bytes) of the file.</td>
+</tr>
+<tr>
+<td><code>mtimeMs</code></td>
+<td>Integer</td>
+<td>The time (in ms since POSIX epoch) when the file was last modified on disk.</td>
+</tr>
+<tr>
+<td><code>ctimeMs</code></td>
+<td>Integer</td>
+<td>The time (in ms since POSIX epoch) when the file status was changed on disk.</td>
+</tr>
+<tr>
+<td><code>birthtimeMs</code></td>
+<td>Integer</td>
+<td>The time (in ms since POSIX epoch) when the file was created on disk. Will be <code>0</code> if unknown.</td>
+</tr>
+</tbody></table>
+<h2 id='author'>Author</h2>
+<blockquote>
+<p>Author</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"aut_z3leimgybl7uf3y4ab"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"asin"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Terry Goodkind"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"description"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"imagePath"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"relImagePath"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"addedAt"</span><span class="p">:</span><span class="w"> </span><span class="mi">1650621073750</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"updatedAt"</span><span class="p">:</span><span class="w"> </span><span class="mi">1650621073750</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<blockquote>
+<p>Author Minified</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"aut_z3leimgybl7uf3y4ab"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Terry Goodkind"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<blockquote>
+<p>Author Expanded</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"aut_z3leimgybl7uf3y4ab"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"asin"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Terry Goodkind"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"description"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"imagePath"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"relImagePath"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"addedAt"</span><span class="p">:</span><span class="w"> </span><span class="mi">1650621073750</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"updatedAt"</span><span class="p">:</span><span class="w"> </span><span class="mi">1650621073750</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"numBooks"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<table><thead>
+<tr>
+<th>Attribute</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>id</code></td>
+<td>String</td>
+<td>The ID of the author.</td>
+</tr>
+<tr>
+<td><code>asin</code></td>
+<td>String or null</td>
+<td>The ASIN of the author. Will be <code>null</code> if unknown.</td>
+</tr>
+<tr>
+<td><code>name</code></td>
+<td>String</td>
+<td>The name of the author.</td>
+</tr>
+<tr>
+<td><code>description</code></td>
+<td>String or null</td>
+<td>A description of the author. Will be <code>null</code> if there is none.</td>
+</tr>
+<tr>
+<td><code>imagePath</code></td>
+<td>String or null</td>
+<td>The absolute path for the author image. Will be <code>null</code> if there is no image.</td>
+</tr>
+<tr>
+<td><code>relImagePath</code></td>
+<td>String or null</td>
+<td>The path for the author image. Will be <code>null</code> if there is no image.</td>
+</tr>
+<tr>
+<td><code>addedAt</code></td>
+<td>Integer</td>
+<td>The time (in ms since POSIX epoch) when the author was added.</td>
+</tr>
+<tr>
+<td><code>updatedAt</code></td>
+<td>Integer</td>
+<td>The time (in ms since POSIX epoch) when the author was last updated.</td>
+</tr>
+</tbody></table>
+<h3 id='author-minified'>Author Minified</h3><h4 id='removed-attributes-5'>Removed Attributes</h4>
+<ul>
+<li><code>asin</code></li>
+<li><code>description</code></li>
+<li><code>imagePath</code></li>
+<li><code>relImagePath</code></li>
+<li><code>addedAt</code></li>
+<li><code>updatedAt</code></li>
+</ul>
+<h3 id='author-expanded'>Author Expanded</h3><h4 id='added-attributes-12'>Added Attributes</h4>
+<table><thead>
+<tr>
+<th>Attribute</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>numBooks</code></td>
+<td>Integer</td>
+<td>The number of books associated with the author in the library.</td>
+</tr>
+</tbody></table>
+<h2 id='series'>Series</h2>
+<blockquote>
+<p>Series</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ser_cabkj4jeu8be3rap4g"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Sword of Truth"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"description"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"addedAt"</span><span class="p">:</span><span class="w"> </span><span class="mi">1650621073750</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"updatedAt"</span><span class="p">:</span><span class="w"> </span><span class="mi">1650621073750</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<blockquote>
+<p>Series Minified</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ser_cabkj4jeu8be3rap4g"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Sword of Truth"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"sequence"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<table><thead>
+<tr>
+<th>Attribute</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>id</code></td>
+<td>String</td>
+<td>The ID of the series.</td>
+</tr>
+<tr>
+<td><code>name</code></td>
+<td>String</td>
+<td>The name of the series.</td>
+</tr>
+<tr>
+<td><code>description</code></td>
+<td>String or null</td>
+<td>A description for the series. Will be <code>null</code> if there is none.</td>
+</tr>
+<tr>
+<td><code>addedAt</code></td>
+<td>Integer</td>
+<td>The time (in ms since POSIX epoch) when the series was added.</td>
+</tr>
+<tr>
+<td><code>updatedAt</code></td>
+<td>Integer</td>
+<td>The time (in ms since POSIX epoch) when the series was last updated.</td>
+</tr>
+</tbody></table>
+<h3 id='series-minified'>Series Minified</h3><h4 id='removed-attributes-6'>Removed Attributes</h4>
+<ul>
+<li><code>description</code></li>
+<li><code>addedAt</code></li>
+<li><code>updatedAt</code></li>
+</ul>
+<h4 id='added-attributes-13'>Added Attributes</h4>
+<table><thead>
+<tr>
+<th>Attribute</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>squence</code></td>
+<td>String or null</td>
+<td>The position in the series the book is.</td>
 </tr>
 </tbody></table>
 
