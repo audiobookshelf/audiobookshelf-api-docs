@@ -128,6 +128,77 @@ Status | Meaning | Description | Schema
 200 | OK | Success | [Library](#library)
 
 
+## Create a Library
+
+```shell
+curl -X POST "https://abs.example.com/api/libraries" \
+  -H "Authorization: Bearer exJhbGciOiJI6IkpXVCJ9.eyJ1c2Vyi5NDEyODc4fQ.ZraBFohS4Tg39NszY" \
+  -H "Content-Type: application/json" \
+  -d '{"name": "Podcasts", "folders": [{"fullPath": "/podcasts"}], "icon": "podcast", "mediaType": "podcast", "provider": "itunes"}'
+```
+
+> The above command returns JSON structured like this:
+
+```json
+{
+	"id": "lib_c1u6t4p45c35rf0nzd",
+	"name": "Podcasts",
+	"folders": [
+		{
+			"id": "fol_bev1zuxhb0j0s1wehr",
+			"fullPath": "/podcasts",
+			"libraryId": "lib_c1u6t4p45c35rf0nzd",
+			"addedAt": 1650462940610
+		}
+	],
+	"displayOrder": 4,
+	"icon": "podcast",
+	"mediaType": "podcast",
+	"provider": "itunes",
+	"settings": {
+    "coverAspectRatio": 1,
+    "disableWatcher": false,
+    "skipMatchingMediaWithAsin": false,
+    "skipMatchingMediaWithIsbn": false,
+    "autoScanCronExpression": null
+  },
+	"createdAt": 1650462940610,
+	"lastUpdate": 1655423464567
+}
+```
+
+This endpoint creates a library with the specified options.
+
+`POST https://abs.example.com/libraries`
+
+### Parameters
+
+Parameter | Type | Default | Description
+--------- | ---- | ------- | -----------
+`name` | String | **Required** | The name of the library.
+`folders` | Array of [Folder](#folder) | **Required** | The folders of the library. Only specify the `fullPath`.
+`icon` | String | `database` | The icon of the library. Must be `database`, `podcast`, `book`, `audiobook`, or `comic`.
+`mediaType` | String | `book` | The type of media that the library contains. Must be `book` or `podcast`.
+`provider` | String | `google` | Perferred metadata provider for the library. For book libraries, it must be `google`, `openlibrary`, `itunes`, `audible`, `audible.ca`, `audible.uk`, `audible.au`, `audible.fr`, `audible.de`, `audible.jp`, `audible.it`, `audible.in`, or `audible.es`. For podcast libraries, it must be `itunes`.
+`settings` | [Library Settings](#library-settings) Object | See Below | The settings for the library.
+
+#### Library Settings Parameters
+
+Parameter | Type | Default | Description
+--------- | ---- | ------- | -----------
+`coverAspectRatio` | Integer | `1` | Whether or not the library should use square book covers. Must be `0` (for false) or `1` (for true).
+`disableWatcher` | Boolean | `false` | Whether or not to disable the folder watcher for the library.
+`skipMatchingMediaWithAsin` | Boolean | `false` | Whether or not to skip matching books that already have an ASIN.
+`skipMatchingMediaWithIsbn` | Boolean | `false` | Whether or not to skip matching books that already have an ISBN.
+`autoScanCronExpression` | String or null | `null` | The [cron expression](https://en.wikipedia.org/wiki/Cron#CRON_expression) for when to automatically scan the library folders. If `null`, automatic scanning will be disabled.
+
+### Response
+
+Status | Meaning | Description | Schema
+------ | ------- | ----------- | ------
+200 | OK | Success | [Library](#library)
+
+
 ## Update a Specific Library
 
 ```shell
