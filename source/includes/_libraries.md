@@ -98,10 +98,12 @@ curl "https://abs.example.com/api/libraries/lib_c1u6t4p45c35rf0nzd" \
 	"mediaType": "podcast",
 	"provider": "itunes",
 	"settings": {
-		"disableWatcher": false,
-		"skipMatchingMediaWithAsin": false,
-		"skipMatchingMediaWithIsbn": false
-	},
+    "coverAspectRatio": 1,
+    "disableWatcher": false,
+    "skipMatchingMediaWithAsin": false,
+    "skipMatchingMediaWithIsbn": false,
+    "autoScanCronExpression": null
+  },
 	"createdAt": 1650462940610,
 	"lastUpdate": 1650462940610
 }
