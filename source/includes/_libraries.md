@@ -12,7 +12,7 @@ curl "https://abs.example.com/api/libraries" \
 ```json
 [
 	{
-		"id": "main",
+		"id": "lib_5yvub9dqvctlcrza6h",
 		"name": "Main",
 		"folders": [
 			{
@@ -26,10 +26,12 @@ curl "https://abs.example.com/api/libraries" \
 		"mediaType": "book",
 		"provider": "audible",
 		"settings": {
-			"disableWatcher": false,
-			"skipMatchingMediaWithAsin": false,
-			"skipMatchingMediaWithIsbn": false
-		},
+      "coverAspectRatio": 1,
+      "disableWatcher": false,
+      "skipMatchingMediaWithAsin": false,
+      "skipMatchingMediaWithIsbn": false,
+      "autoScanCronExpression": null
+    },
 		"createdAt": 1633522963509,
 		"lastUpdate": 1646520916818
 	},
@@ -49,10 +51,12 @@ curl "https://abs.example.com/api/libraries" \
 		"mediaType": "podcast",
 		"provider": "itunes",
 		"settings": {
-			"disableWatcher": false,
-			"skipMatchingMediaWithAsin": false,
-			"skipMatchingMediaWithIsbn": false
-		},
+      "coverAspectRatio": 1,
+      "disableWatcher": false,
+      "skipMatchingMediaWithAsin": false,
+      "skipMatchingMediaWithIsbn": false,
+      "autoScanCronExpression": null
+    },
 		"createdAt": 1650462940610,
 		"lastUpdate": 1650462940610
 	}
@@ -229,10 +233,12 @@ curl -X PATCH "https://abs.example.com/api/libraries/lib_c1u6t4p45c35rf0nzd" \
 	"mediaType": "podcast",
 	"provider": "itunes",
 	"settings": {
-		"disableWatcher": false,
-		"skipMatchingMediaWithAsin": false,
-		"skipMatchingMediaWithIsbn": false
-	},
+    "coverAspectRatio": 1,
+    "disableWatcher": false,
+    "skipMatchingMediaWithAsin": false,
+    "skipMatchingMediaWithIsbn": false,
+    "autoScanCronExpression": null
+  },
 	"createdAt": 1650462940610,
 	"lastUpdate": 1655423464567
 }
@@ -295,10 +301,12 @@ curl -X DELETE "https://abs.example.com/api/libraries/lib_5yvub9dqvctlcrza6h" \
 	"mediaType": "book",
 	"provider": "audible",
 	"settings": {
-		"disableWatcher": false,
-		"skipMatchingMediaWithAsin": false,
-		"skipMatchingMediaWithIsbn": false
-	},
+    "coverAspectRatio": 1,
+    "disableWatcher": false,
+    "skipMatchingMediaWithAsin": false,
+    "skipMatchingMediaWithIsbn": false,
+    "autoScanCronExpression": null
+  },
 	"createdAt": 1653396692539,
 	"lastUpdate": 1653396692539
 }
