@@ -260,13 +260,24 @@ ID | The ID of the library to retrieve
 
 Parameter | Type | Description
 --------- | ---- | -----------
-name | String | The name of the library
-folders | Array | See notice below
-displayOrder | Number | Library order shown in clients
-icon | String | Library icon (database|podcast|book|audiobook|comic)
-provider | String | Preferred provider for library
+`name` | String | The name of the library.
+`folders` | Array of [Folder](#folder) | See the notice below. Only specify the `fullPath` for new folders.
+`displayOrder` | Integer | Display position of the library in the list of libraries. Must be `>= 1`.
+`icon` | String | The icon of the library. Must be `database`, `podcast`, `book`, `audiobook`, or `comic`.
+`provider` | String | Perferred metadata provider for the library. For book libraries, it must be `google`, `openlibrary`, `itunes`, `audible`, `audible.ca`, `audible.uk`, `audible.au`, `audible.fr`, `audible.de`, `audible.jp`, `audible.it`, `audible.in`, or `audible.es`. For podcast libraries, it must be `itunes`.
+`settings` | [Library Settings](#library-settings) Object | The settings for the library.
 
-<aside class="notice">When updating folders you must pass in the full array of folders. Any missing folders from the array will be removed. New folders must not have an "id" set because this will be set automatically.</aside>
+#### Library Settings Parameters
+
+Parameter | Type | Description
+--------- | ---- | -----------
+`coverAspectRatio` | Integer | Whether or not the library should use square book covers. Must be `0` (for false) or `1` (for true).
+`disableWatcher` | Boolean | Whether or not to disable the folder watcher for the library.
+`skipMatchingMediaWithAsin` | Boolean | Whether or not to skip matching books that already have an ASIN.
+`skipMatchingMediaWithIsbn` | Boolean | Whether or not to skip matching books that already have an ISBN.
+`autoScanCronExpression` | String or null | The [cron expression](https://en.wikipedia.org/wiki/Cron#CRON_expression) for when to automatically scan the library folders. If `null`, automatic scanning will be disabled.
+
+<aside class="notice">When updating folders you must pass in the full array of folders. Any missing folders from the array will be removed. New folders must not have an <code>id</code> set because this will be set automatically.</aside>
 
 ### Response
 
