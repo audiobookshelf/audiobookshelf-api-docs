@@ -445,56 +445,9 @@ limit | Integer | Limit the number of returned results per page. If `0`, no limi
 page | Integer | The page number (0 indexed) to request. If there is no limit applied, then page will have no effect and all results will be returned.
 sort | String | What to sort the results by. Specify the attribute to sort by using JavaScript object notation. For example, to sort by title use `sort=media.metadata.title`.
 desc | Binary | Whether or not to reverse the sort order. `0` for false, `1` for true.
-filter | String | What to filter the results by. See note below.
+filter | String | What to filter the results by. See [Filtering](#filtering).
 minified | Binary | Whether or not to request minified objects. `0` for false, `1` for true.
-collapseseries | Binary | Whether or not to collapse books in a series to a single entry. `0` for false, `1` for true.g
-
-#### Filtering
-
-Most filters are composed of two parts, a group and a value, put together as `group.value`. The groups are: genres, tags, series, authors, progress, narrators, missing, and languages.
-
-* For the genres, tags, narrators, and languages groups, the value is what genre, tag, narrator, or language to filter by.
-* For the series and authors groups, the value is the ID of the series or author.
-* For the series group, the value can also be No Series.
-* For the progress group, the value can be:
-  * Finished
-  * Not Started
-  * Not Finished
-  * In Progress
-* For the missing group, the value can be:
-  * ASIN
-  * ISBN
-  * Subtitle
-  * Author
-  * Publisher Year
-  * Series
-  * Description
-  * Genres
-  * Tags
-  * Narrator
-  * Publisher
-  * Language
-
-All values must be first Base64 encoded and then URL encoded.
-
-Other filters are issues and feed-open.
-
-Examples:
-
-* To filter for the Sci Fi genre:
-  * `Sci Fi` is Base64 encoded as `U2NpIEZp` 
-  * Already URL encoded.
-  * Then use `filter=genres.U2NpIEZp`.
-* To filter for the author Terry Goodkind who has the ID of aut_z3leimgybl7uf3y4ab:
-  * `aut_z3leimgybl7uf3y4ab` is Base64 encoded as `YXV0X3ozbGVpbWd5Ymw3dWYzeTRhYg==`.
-  * `YXV0X3ozbGVpbWd5Ymw3dWYzeTRhYg==` is URL encoded as `YXV0X3ozbGVpbWd5Ymw3dWYzeTRhYg%3D%3D`.
-  * Then use `filter=authors.YXV0X3ozbGVpbWd5Ymw3dWYzeTRhYg%3D%3D`.
-* To filter for items that are in progress:
-  * `In Progress` is Base64 encoded as `SW4gUHJvZ3Jlc3M=`.
-  * `SW4gUHJvZ3Jlc3M=` is URL encoded as `SW4gUHJvZ3Jlc3M%3D`.
-  * Then use `filter=progress.SW4gUHJvZ3Jlc3M%3D`.
-* To filter for items with their RSS feed open:
-  * Use `filter=feed-open`.
+collapseseries | Binary | Whether or not to collapse books in a series to a single entry. `0` for false, `1` for true.
 
 ### Response
 
