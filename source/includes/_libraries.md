@@ -119,7 +119,7 @@ This endpoint retrieves a specific library.
 
 ### HTTP Request
 
-`GET https://abs.example.com/libraries/<ID>`
+`GET https://abs.example.com/api/libraries/<ID>`
 
 ### URL Parameters
 
@@ -175,7 +175,7 @@ curl -X POST "https://abs.example.com/api/libraries" \
 
 This endpoint creates a library with the specified options.
 
-`POST https://abs.example.com/libraries`
+`POST https://abs.example.com/api/libraries`
 
 ### Parameters
 
@@ -248,7 +248,7 @@ This endpoint updates a specific library.
 
 ### HTTP Request
 
-`PATCH https://abs.example.com/libraries/<ID>`
+`PATCH https://abs.example.com/api/libraries/<ID>`
 
 ### URL Parameters
 
@@ -327,7 +327,7 @@ This endpoint deletes a specific library.
 
 ### HTTP Request
 
-`DELETE https://abs.example.com/libraries/<ID>`
+`DELETE https://abs.example.com/api/libraries/<ID>`
 
 ### URL Parameters
 
