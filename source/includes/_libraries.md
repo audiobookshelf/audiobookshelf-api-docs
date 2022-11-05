@@ -516,3 +516,29 @@ Attribute | Type | Description
 `mediaType` | String | The media type of the library. Will be `book` or `podcast`.
 `minified` | Boolean | Whether or not minified was set in the request.
 `collapseseries` | Boolean | Whether or not collapseseries was set in the request.
+
+
+## Remove a Library's Items With Issues
+
+```shell
+curl -X DELETE "https://abs.example.com/api/libraries/lib_c1u6t4p45c35rf0nzd/issues" \
+  -H "Authorization: Bearer exJhbGciOiJI6IkpXVCJ9.eyJ1c2Vyi5NDEyODc4fQ.ZraBFohS4Tg39NszY"
+```
+
+This endpoint removes a library's items that have issues.
+
+### HTTP Request
+
+`DELETE https://abs.example.com/api/libraries/<ID>/issues`
+
+### URL Parameters
+
+Parameter | Description
+--------- | -----------
+ID | The ID of the library.
+
+### Response
+
+Status | Meaning | Description
+------ | ------- | -----------
+200 | OK | Success
