@@ -1057,6 +1057,21 @@ Attribute | Type | Description
 }
 ```
 
+> Series Books
+
+```json
+{
+  "id": "ser_cabkj4jeu8be3rap4g",
+  "name": "Sword of Truth",
+  "nameIgnorePrefix": "Sword of Truth",
+  "nameIgnorePrefixSort": "Sword of Truth",
+  "type": "series",
+  "books": [...],
+  "addedAt": 1650621073750,
+  "totalDuration": 12000.946
+}
+```
+
 > Series Sequence
 
 ```json
@@ -1089,6 +1104,23 @@ Attribute | Type | Description
 --------- | ---- | -----------
 `nameIgnorePrefix` | String | The name of the series with any prefix moved to the end.
 `numBooks` | Integer | The number of books in the series.
+
+### Series Books
+
+#### Removed Attributes
+
+* `description`
+* `updatedAt`
+
+#### Added Attributes
+
+Attribute | Type | Description
+--------- | ---- | -----------
+`nameIgnorePrefix` | String | The name of the series with any prefix moved to the end.
+`nameIgnorePrefixSort` | String | The name of the series with any prefix removed.
+`type` | String | Will always be `series`.
+`books` | Array of [Library Item](#library-item) | The library items that contain the books in the series. A `sequence` attribute that denotes the position in the series the book is in, is tacked on.
+`totalDuration` | Float | The combined duration (in seconds) of all books in the series.
 
 ### Series Sequence
 
