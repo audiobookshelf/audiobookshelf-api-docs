@@ -415,7 +415,7 @@ Attribute | Type | Description
 `subtitle` | String or null | The subtitle of the book. Will be `null` if there is no subtitle.
 `authors` | Array of [Author Minified](#author-minified) | The authors of the book.
 `narrators` | Array of String | The narrators of the audiobook.
-`series` | Array of [Series Minified](#series-minified) | The series the book belongs to.
+`series` | Array of [Series Sequence](#series-sequence) | The series the book belongs to.
 `genres` | Array of String | The genres of the book.
 `publishedYear` | String or null | The year the book was published. Will be `null` if unknown.
 `publishedDate` | String or null | The date the book was published. Will be `null` if unknown.
@@ -1046,7 +1046,18 @@ Attribute | Type | Description
 }
 ```
 
-> Series Minified
+> Series Num Books
+
+```json
+{
+  "id": "ser_cabkj4jeu8be3rap4g",
+  "name": "Sword of Truth",
+  "nameIgnorePrefix": "Sword of Truth",
+  "numBooks": 1
+}
+```
+
+> Series Sequence
 
 ```json
 {
@@ -1064,7 +1075,22 @@ Attribute | Type | Description
 `addedAt` | Integer | The time (in ms since POSIX epoch) when the series was added.
 `updatedAt` | Integer | The time (in ms since POSIX epoch) when the series was last updated.
 
-### Series Minified
+### Series Num Books
+
+#### Removed Attributes
+
+* `description`
+* `addedAt`
+* `updatedAt`
+
+#### Added Attributes
+
+Attribute | Type | Description
+--------- | ---- | -----------
+`nameIgnorePrefix` | String | The name of the series with any prefix moved to the end.
+`numBooks` | Integer | The number of books in the series.
+
+### Series Sequence
 
 #### Removed Attributes
 
