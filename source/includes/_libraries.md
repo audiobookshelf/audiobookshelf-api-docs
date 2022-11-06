@@ -1542,3 +1542,99 @@ Attribute | Type | Description
 `tags` | Array of String | The tag results of the search.
 `authors` | Array of [Author Expanded](#author-expanded) | The author results of the search.
 `sereis` | Array of [Series Books](#series-books) | The series results of the search.
+
+
+## Get a Library's Stats
+
+```shell
+curl "https://abs.example.com/api/libraries/lib_c1u6t4p45c35rf0nzd/stats" \
+  -H "Authorization: Bearer exJhbGciOiJI6IkpXVCJ9.eyJ1c2Vyi5NDEyODc4fQ.ZraBFohS4Tg39NszY"
+```
+
+> The above command returns JSON structured like this:
+
+```json
+{
+  "totalItems": 1,
+  "totalAuthors": 1,
+  "totalGenres": 1,
+  "totalDuration": 12000.946,
+  "longestItems": [
+    {
+      "id": "li_8gch9ve09orgn4fdz8",
+      "title": "Wizards First Rule",
+      "duration": 12000.946
+    }
+  ],
+  "numAudioTrack": 2,
+  "totalSize": 268990279,
+  "authorsWithCount": [
+    {
+      "id": "aut_z3leimgybl7uf3y4ab",
+      "name": "Terry Goodkind",
+      "count": 1
+    }
+  ],
+  "genresWithCount": [
+    {
+      "genre": "Fantasy",
+      "count": 1
+    }
+  ]
+}
+```
+
+This endpoint returns a library's stats.
+
+### HTTP Request
+
+`GET https://abs.example.com/api/libraries/<ID>/stats`
+
+### URL Parameters
+
+Parameter | Description
+--------- | -----------
+ID | The ID of the library.
+
+### Response
+
+Status | Meaning | Description | Schema
+------ | ------- | ----------- | ------
+200 | OK | Success | See Below
+
+#### Response Schema
+
+Attribute | Type | Description
+--------- | ---- | -----------
+`totalItems` | Integer | The total amount of library items in the library.
+`totalAuthors` | Integer | The total amount of authors in the library.
+`totalGenres` | Integer | The total amount of genres in the library.
+`totalDuration` | Float | The total duration (in seconds) of all items in the library.
+`longestItems` | Array of Library Item Stats (See Below) | The items with the longest durations in the library.
+`numAudioTrack` | Integer | The total number of audio tracks in the library.
+`totalSize` | Integer | The total size (in bytes) of all items in the library.
+`authorsWithCount` | Array of Author Stats (See Below) | The authors in the library.
+`genresWithCount` | Array of Genre Stats (See Below) | The genres in the library.
+
+#### Library Item Stats
+
+Attribute | Type | Description
+--------- | ---- | -----------
+`id` | String | The ID of the library item.
+`title` | String | The title of the library item.
+`duration` | Float | The duration (in seconds) of the library item.
+
+#### Author Stats
+
+Attribute | Type | Description
+--------- | ---- | -----------
+`id` | String | The ID of the author.
+`name` | String | The title of the author.
+`count` | Integer | The number of books by the author in the library.
+
+#### Genre Stats
+
+Attribute | Type | Description
+--------- | ---- | -----------
+`genre` | String | The name of the genre.
+`count` | Integer | The number of items in the library with the genre.
