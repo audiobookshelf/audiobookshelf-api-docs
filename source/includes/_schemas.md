@@ -1135,3 +1135,59 @@ Attribute | Type | Description
 Attribute | Type | Description
 --------- | ---- | -----------
 `squence` | String or null | The position in the series the book is.
+
+
+## Collection
+
+> Collection
+
+```json
+{
+  "id": "usr_fpfstanv6gd7tq2qz7",
+  "libraryId": "lib_c1u6t4p45c35rf0nzd",
+  "userId": "root",
+  "name": "Favorites",
+  "description": null,
+  "cover": null,
+  "coverFullPath": null,
+  "books": [...],
+  "lastUpdate": 1650621110769,
+  "createdAt": 1650621073750
+}
+```
+
+> Collection Expanded
+
+```json
+{
+  "id": "usr_fpfstanv6gd7tq2qz7",
+  "libraryId": "lib_c1u6t4p45c35rf0nzd",
+  "userId": "root",
+  "name": "Favorites",
+  "description": null,
+  "cover": null,
+  "coverFullPath": null,
+  "books": [...],
+  "lastUpdate": 1650621110769,
+  "createdAt": 1650621073750
+}
+```
+
+Attribute | Type | Description
+--------- | ---- | -----------
+`id` | String | The ID of the collection.
+`libraryId` | String | The ID of the library the collection belongs to.
+`userId` | String | The ID of the user that the created the collection.
+`name` | String | The name of the collection.
+`description` | String or null | The collection's description. Will be `null` if there is none.
+`cover` | String or null | The path to the collection's cover. Will be `null` if there is no cover.
+`coverFullPath` | String or null | The full path to collection's cover. Will be `null` if there is no cover.
+`books` | Array of [Library Item](#library-item) | The books that belong to the collection.
+`lastUpdate` | Integer | The time (in ms since POSIX epoch) when the collection was last updated.
+`createdAt` | Integer | The time (in ms since POSIX epoch) when the collection was created.
+
+### Collection Expanded
+
+#### Modified Attributes
+
+* `books` is an Array of [Library Item Expanded](#library-item-expanded).
