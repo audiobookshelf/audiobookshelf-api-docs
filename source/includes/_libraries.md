@@ -746,3 +746,409 @@ Attribute | Type | Description
 `sortDesc` | Boolean | Whether or not the sort is reversed.
 `filterBy` | String | The filter set in the request, URL decoded. Will not exist if no filter was set.
 `minified` | Boolean | Whether or not minified was set in the request.
+
+
+## Get a Library's Personalized View
+
+```shell
+curl "https://abs.example.com/api/libraries/lib_c1u6t4p45c35rf0nzd/personalized" \
+  -H "Authorization: Bearer exJhbGciOiJI6IkpXVCJ9.eyJ1c2Vyi5NDEyODc4fQ.ZraBFohS4Tg39NszY"
+```
+
+> The above command returns JSON structured like this:
+
+```json
+[
+  {
+    "id": "continue-listening",
+    "label": "Continue Listening",
+    "type": "book",
+    "entities": [
+      {
+        "id": "li_8gch9ve09orgn4fdz8",
+        "ino": "649641337522215266",
+        "libraryId": "main",
+        "folderId": "audiobooks",
+        "path": "/audiobooks/Terry Goodkind/Sword of Truth/Wizards First Rule",
+        "relPath": "Terry Goodkind/Sword of Truth/Wizards First Rule",
+        "isFile": false,
+        "mtimeMs": 1650621074299,
+        "ctimeMs": 1650621074299,
+        "birthtimeMs": 0,
+        "addedAt": 1650621073750,
+        "updatedAt": 1650621110769,
+        "isMissing": false,
+        "isInvalid": false,
+        "mediaType": "book",
+        "media": {
+          "metadata": {
+            "title": "Wizards First Rule",
+            "titleIgnorePrefix": "Wizards First Rule",
+            "subtitle": null,
+            "authorName": "Terry Goodkind",
+            "narratorName": "Sam Tsoutsouvas",
+            "seriesName": "Sword of Truth",
+            "genres": [
+              "Fantasy"
+            ],
+            "publishedYear": "2008",
+            "publishedDate": null,
+            "publisher": "Brilliance Audio",
+            "description": "The masterpiece that started Terry Goodkind's New York Times bestselling epic Sword of Truth In the aftermath of the brutal murder of his father, a mysterious woman, Kahlan Amnell, appears in Richard Cypher's forest sanctuary seeking help...and more. His world, his very beliefs, are shattered when ancient debts come due with thundering violence. In a dark age it takes courage to live, and more than mere courage to challenge those who hold dominion, Richard and Kahlan must take up that challenge or become the next victims. Beyond awaits a bewitching land where even the best of their hearts could betray them. Yet, Richard fears nothing so much as what secrets his sword might reveal about his own soul. Falling in love would destroy them - for reasons Richard can't imagine and Kahlan dare not say. In their darkest hour, hunted relentlessly, tormented by treachery and loss, Kahlan calls upon Richard to reach beyond his sword - to invoke within himself something more noble. Neither knows that the rules of battle have just changed...or that their time has run out. Wizard's First Rule is the beginning. One book. One Rule. Witness the birth of a legend.",
+            "isbn": null,
+            "asin": "B002V0QK4C",
+            "language": null,
+            "explicit": false
+          },
+          "coverPath": "/audiobooks/Terry Goodkind/Sword of Truth/Wizards First Rule/cover.jpg",
+          "tags": [],
+          "numTracks": 2,
+          "numAudioFiles": 2,
+          "numChapters": 2,
+          "numMissingParts": 0,
+          "numInvalidAudioFiles": 0,
+          "duration": 12000.946,
+          "size": 96010240,
+          "ebookFileFormat": null
+        },
+        "numFiles": 3,
+        "size": 96335771,
+        "progressLastUpdate": 1650621110769
+      }
+    ],
+    "category": "recentlyListened"
+  },
+  {
+    "id": "continue-series",
+    "label": "Continue Series",
+    "type": "book",
+    "entities": [
+      {
+        "id": "li_8gch9ve09orgn4fdz8",
+        "ino": "649641337522215266",
+        "libraryId": "main",
+        "folderId": "audiobooks",
+        "path": "/audiobooks/Terry Goodkind/Sword of Truth/Wizards First Rule",
+        "relPath": "Terry Goodkind/Sword of Truth/Wizards First Rule",
+        "isFile": false,
+        "mtimeMs": 1650621074299,
+        "ctimeMs": 1650621074299,
+        "birthtimeMs": 0,
+        "addedAt": 1650621073750,
+        "updatedAt": 1650621110769,
+        "isMissing": false,
+        "isInvalid": false,
+        "mediaType": "book",
+        "media": {
+          "metadata": {
+            "title": "Wizards First Rule",
+            "titleIgnorePrefix": "Wizards First Rule",
+            "subtitle": null,
+            "authorName": "Terry Goodkind",
+            "narratorName": "Sam Tsoutsouvas",
+            "seriesName": "Sword of Truth",
+            "genres": [
+              "Fantasy"
+            ],
+            "publishedYear": "2008",
+            "publishedDate": null,
+            "publisher": "Brilliance Audio",
+            "description": "The masterpiece that started Terry Goodkind's New York Times bestselling epic Sword of Truth In the aftermath of the brutal murder of his father, a mysterious woman, Kahlan Amnell, appears in Richard Cypher's forest sanctuary seeking help...and more. His world, his very beliefs, are shattered when ancient debts come due with thundering violence. In a dark age it takes courage to live, and more than mere courage to challenge those who hold dominion, Richard and Kahlan must take up that challenge or become the next victims. Beyond awaits a bewitching land where even the best of their hearts could betray them. Yet, Richard fears nothing so much as what secrets his sword might reveal about his own soul. Falling in love would destroy them - for reasons Richard can't imagine and Kahlan dare not say. In their darkest hour, hunted relentlessly, tormented by treachery and loss, Kahlan calls upon Richard to reach beyond his sword - to invoke within himself something more noble. Neither knows that the rules of battle have just changed...or that their time has run out. Wizard's First Rule is the beginning. One book. One Rule. Witness the birth of a legend.",
+            "isbn": null,
+            "asin": "B002V0QK4C",
+            "language": null,
+            "explicit": false,
+            "series": {
+              "id": "ser_cabkj4jeu8be3rap4g",
+              "name": "Sword of Truth",
+              "sequence": "1"
+            }
+          },
+          "coverPath": "/audiobooks/Terry Goodkind/Sword of Truth/Wizards First Rule/cover.jpg",
+          "tags": [],
+          "numTracks": 2,
+          "numAudioFiles": 2,
+          "numChapters": 2,
+          "numMissingParts": 0,
+          "numInvalidAudioFiles": 0,
+          "duration": 12000.946,
+          "size": 96010240,
+          "ebookFileFormat": null
+        },
+        "numFiles": 3,
+        "size": 96335771,
+        "prevBookInProgressLastUpdate": 1650621110769
+      }
+    ],
+    "category": "continueSeries"
+  },
+  {
+    "id": "recently-added",
+    "label": "Recently Added",
+    "type": "book",
+    "entities": [
+      {
+        "id": "li_8gch9ve09orgn4fdz8",
+        "ino": "649641337522215266",
+        "libraryId": "main",
+        "folderId": "audiobooks",
+        "path": "/audiobooks/Terry Goodkind/Sword of Truth/Wizards First Rule",
+        "relPath": "Terry Goodkind/Sword of Truth/Wizards First Rule",
+        "isFile": false,
+        "mtimeMs": 1650621074299,
+        "ctimeMs": 1650621074299,
+        "birthtimeMs": 0,
+        "addedAt": 1650621073750,
+        "updatedAt": 1650621110769,
+        "isMissing": false,
+        "isInvalid": false,
+        "mediaType": "book",
+        "media": {
+          "metadata": {
+            "title": "Wizards First Rule",
+            "titleIgnorePrefix": "Wizards First Rule",
+            "subtitle": null,
+            "authorName": "Terry Goodkind",
+            "narratorName": "Sam Tsoutsouvas",
+            "seriesName": "Sword of Truth",
+            "genres": [
+              "Fantasy"
+            ],
+            "publishedYear": "2008",
+            "publishedDate": null,
+            "publisher": "Brilliance Audio",
+            "description": "The masterpiece that started Terry Goodkind's New York Times bestselling epic Sword of Truth In the aftermath of the brutal murder of his father, a mysterious woman, Kahlan Amnell, appears in Richard Cypher's forest sanctuary seeking help...and more. His world, his very beliefs, are shattered when ancient debts come due with thundering violence. In a dark age it takes courage to live, and more than mere courage to challenge those who hold dominion, Richard and Kahlan must take up that challenge or become the next victims. Beyond awaits a bewitching land where even the best of their hearts could betray them. Yet, Richard fears nothing so much as what secrets his sword might reveal about his own soul. Falling in love would destroy them - for reasons Richard can't imagine and Kahlan dare not say. In their darkest hour, hunted relentlessly, tormented by treachery and loss, Kahlan calls upon Richard to reach beyond his sword - to invoke within himself something more noble. Neither knows that the rules of battle have just changed...or that their time has run out. Wizard's First Rule is the beginning. One book. One Rule. Witness the birth of a legend.",
+            "isbn": null,
+            "asin": "B002V0QK4C",
+            "language": null,
+            "explicit": false
+          },
+          "coverPath": "/audiobooks/Terry Goodkind/Sword of Truth/Wizards First Rule/cover.jpg",
+          "tags": [],
+          "numTracks": 2,
+          "numAudioFiles": 2,
+          "numChapters": 2,
+          "numMissingParts": 0,
+          "numInvalidAudioFiles": 0,
+          "duration": 12000.946,
+          "size": 96010240,
+          "ebookFileFormat": null
+        },
+        "numFiles": 3,
+        "size": 96335771
+      }
+    ],
+    "category": "newestItems"
+  },
+  {
+    "id": "recent-series",
+    "label": "Recent Series",
+    "type": "series",
+    "entities": [
+      {
+        "id": "ser_cabkj4jeu8be3rap4g",
+        "name": "Sword of Truth",
+        "description": null,
+        "addedAt": 1650621073750,
+        "updatedAt": 1650621073750,
+        "books": [
+          {
+            "id": "li_8gch9ve09orgn4fdz8",
+            "ino": "649641337522215266",
+            "libraryId": "main",
+            "folderId": "audiobooks",
+            "path": "/audiobooks/Terry Goodkind/Sword of Truth/Wizards First Rule",
+            "relPath": "Terry Goodkind/Sword of Truth/Wizards First Rule",
+            "isFile": false,
+            "mtimeMs": 1650621074299,
+            "ctimeMs": 1650621074299,
+            "birthtimeMs": 0,
+            "addedAt": 1650621073750,
+            "updatedAt": 1650621110769,
+            "isMissing": false,
+            "isInvalid": false,
+            "mediaType": "book",
+            "media": {
+              "metadata": {
+                "title": "Wizards First Rule",
+                "titleIgnorePrefix": "Wizards First Rule",
+                "subtitle": null,
+                "authorName": "Terry Goodkind",
+                "narratorName": "Sam Tsoutsouvas",
+                "seriesName": "Sword of Truth",
+                "genres": [
+                  "Fantasy"
+                ],
+                "publishedYear": "2008",
+                "publishedDate": null,
+                "publisher": "Brilliance Audio",
+                "description": "The masterpiece that started Terry Goodkind's New York Times bestselling epic Sword of Truth In the aftermath of the brutal murder of his father, a mysterious woman, Kahlan Amnell, appears in Richard Cypher's forest sanctuary seeking help...and more. His world, his very beliefs, are shattered when ancient debts come due with thundering violence. In a dark age it takes courage to live, and more than mere courage to challenge those who hold dominion, Richard and Kahlan must take up that challenge or become the next victims. Beyond awaits a bewitching land where even the best of their hearts could betray them. Yet, Richard fears nothing so much as what secrets his sword might reveal about his own soul. Falling in love would destroy them - for reasons Richard can't imagine and Kahlan dare not say. In their darkest hour, hunted relentlessly, tormented by treachery and loss, Kahlan calls upon Richard to reach beyond his sword - to invoke within himself something more noble. Neither knows that the rules of battle have just changed...or that their time has run out. Wizard's First Rule is the beginning. One book. One Rule. Witness the birth of a legend.",
+                "isbn": null,
+                "asin": "B002V0QK4C",
+                "language": null,
+                "explicit": false
+              },
+              "coverPath": "/audiobooks/Terry Goodkind/Sword of Truth/Wizards First Rule/cover.jpg",
+              "tags": [],
+              "numTracks": 2,
+              "numAudioFiles": 2,
+              "numChapters": 2,
+              "numMissingParts": 0,
+              "numInvalidAudioFiles": 0,
+              "duration": 12000.946,
+              "size": 96010240,
+              "ebookFileFormat": null
+            },
+            "numFiles": 3,
+            "size": 96335771,
+            "seriesSequence": "1"
+          }
+        ],
+        "inProgress": true,
+        "hideFromContinueListening": false,
+        "bookInProgressLastUpdate": 1650621110769,
+        "firstBookUnread": null
+      }
+    ],
+    "category": "newestSeries"
+  },
+  {
+    "id": "listen-again",
+    "label": "Listen Again",
+    "type": "book",
+    "entities": [
+      {
+        "id": "li_8gch9ve09orgn4fdz8",
+        "ino": "649641337522215266",
+        "libraryId": "main",
+        "folderId": "audiobooks",
+        "path": "/audiobooks/Terry Goodkind/Sword of Truth/Wizards First Rule",
+        "relPath": "Terry Goodkind/Sword of Truth/Wizards First Rule",
+        "isFile": false,
+        "mtimeMs": 1650621074299,
+        "ctimeMs": 1650621074299,
+        "birthtimeMs": 0,
+        "addedAt": 1650621073750,
+        "updatedAt": 1650621110769,
+        "isMissing": false,
+        "isInvalid": false,
+        "mediaType": "book",
+        "media": {
+          "metadata": {
+            "title": "Wizards First Rule",
+            "titleIgnorePrefix": "Wizards First Rule",
+            "subtitle": null,
+            "authorName": "Terry Goodkind",
+            "narratorName": "Sam Tsoutsouvas",
+            "seriesName": "Sword of Truth",
+            "genres": [
+              "Fantasy"
+            ],
+            "publishedYear": "2008",
+            "publishedDate": null,
+            "publisher": "Brilliance Audio",
+            "description": "The masterpiece that started Terry Goodkind's New York Times bestselling epic Sword of Truth In the aftermath of the brutal murder of his father, a mysterious woman, Kahlan Amnell, appears in Richard Cypher's forest sanctuary seeking help...and more. His world, his very beliefs, are shattered when ancient debts come due with thundering violence. In a dark age it takes courage to live, and more than mere courage to challenge those who hold dominion, Richard and Kahlan must take up that challenge or become the next victims. Beyond awaits a bewitching land where even the best of their hearts could betray them. Yet, Richard fears nothing so much as what secrets his sword might reveal about his own soul. Falling in love would destroy them - for reasons Richard can't imagine and Kahlan dare not say. In their darkest hour, hunted relentlessly, tormented by treachery and loss, Kahlan calls upon Richard to reach beyond his sword - to invoke within himself something more noble. Neither knows that the rules of battle have just changed...or that their time has run out. Wizard's First Rule is the beginning. One book. One Rule. Witness the birth of a legend.",
+            "isbn": null,
+            "asin": "B002V0QK4C",
+            "language": null,
+            "explicit": false
+          },
+          "coverPath": "/audiobooks/Terry Goodkind/Sword of Truth/Wizards First Rule/cover.jpg",
+          "tags": [],
+          "numTracks": 2,
+          "numAudioFiles": 2,
+          "numChapters": 2,
+          "numMissingParts": 0,
+          "numInvalidAudioFiles": 0,
+          "duration": 12000.946,
+          "size": 96010240,
+          "ebookFileFormat": null
+        },
+        "numFiles": 3,
+        "size": 96335771,
+        "finishedAt": 1650621110769
+      }
+    ],
+    "category": "recentlyFinished"
+  },
+  {
+    "id": "newest-authors",
+    "label": "Newest Authors",
+    "type": "authors",
+    "entities": [
+      {
+        "id": "aut_z3leimgybl7uf3y4ab",
+        "asin": null,
+        "name": "Terry Goodkind",
+        "description": null,
+        "imagePath": null,
+        "relImagePath": null,
+        "addedAt": 1650621073750,
+        "updatedAt": 1650621073750,
+        "numBooks": 1
+      }
+    ],
+    "category": "newestAuthors"
+  }
+]
+```
+
+This endpoint returns a library's personalized view for home page display.
+
+### HTTP Request
+
+`GET https://abs.example.com/api/libraries/<ID>/personalized`
+
+### URL Parameters
+
+Parameter | Description
+--------- | -----------
+ID | The ID of the library.
+
+### Optional Query Parameters
+
+Parameter | Type | Description
+--------- | ---- | -----------
+limit | Integer | Limit the number of items in each 'shelf' of the response. Default value is `10`.
+
+### Response
+
+Status | Meaning | Description | Schema
+------ | ------- | ----------- | ------
+200 | OK | Success | Array of Shelf (See Below)
+
+#### Response Schema: Shelf
+
+Attribute | Type | Description
+--------- | ---- | -----------
+`id` | String | The ID of the shelf.
+`label` | String | The label of the shelf.
+`type` | String | The type of items the shelf represents. Can be `book`, `series`, `authors`, `episode`, or `podcast`.
+`entities` | Array | The entities to be displayed on the shelf. See below.
+`category` | String | The category of the shelf.
+
+#### Shelf Enitities
+
+* `type` is `book`, `podcast`, or `episode`:
+    * `entities` will be an array of [Library Item Minified](#library-item-minified).
+* `type` is `episode`:
+    * `id` is `continue-listening`, `listen-again`, or `episodes-recently-added`:
+        * Library items will have a `recentEpisode` attribute, a [Podcast Episode](#podcast-episode), the episode to display.
+* `type` is `series`:
+    * `entities` will be an array of [Series](#series), with added attributes:
+        * `books`, an array of [Library Item Minified](#library-item-minified), the books in the series.
+            * Each library item in `books` will have a `seriesSequence` attribute, a String or null, the position of the book in the series.
+        * `inProgress`, a Boolean, whether or not the user has started listening to the series.
+        * `hideFromContinueListening`, a Boolean, whether or not the series has been marked to hide it from the "Continue Series" shelf.
+        * `bookInProgressLastUpdate`, an Integer, the latest time (in ms since POSIX epoch) when the progress of a book in the series was updated.
+        * `firstBookUnread`, a [Library Item Minified](#library-item-minified) or null, the first book in the series (by sequence) to have not been started or finished. Will be `null` if all books in the series are finished.
+            * This library item will also have a `seriesSequence` attribute.
+* `type` is `author`:
+    * `entities` will be an array of [Author Expanded](#author-expanded).
+* `id` is `listen-again`:
+    * Library items will have a `finishedAt` attribute, an Integer, the time (in ms since POSIX epoch) when the book or episode was finished.
+* `id` is `continue-listening`:
+    * Library items will have a `progressLastUpdate` attribute, an Integer, the time (in ms since POSIX epoch) when the book's or episode's progress was last updated.
+* `id` is `continue-series`:
+    * Library items will have a `prevBookInProgressLastUpdate` attribute, an Integer, the time (in ms since POSIX epoch) of the most recent progress update of any book in the series.
+    * The [Book Metadata Minified](#book-metadata-minified) in each library item will have a `series` attribute, a [Series Sequence](#series-sequence).
