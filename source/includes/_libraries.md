@@ -1638,3 +1638,47 @@ Attribute | Type | Description
 --------- | ---- | -----------
 `genre` | String | The name of the genre.
 `count` | Integer | The number of items in the library with the genre.
+
+
+## Get a Library's Authors
+
+```shell
+curl "https://abs.example.com/api/libraries/lib_c1u6t4p45c35rf0nzd/authors" \
+  -H "Authorization: Bearer exJhbGciOiJI6IkpXVCJ9.eyJ1c2Vyi5NDEyODc4fQ.ZraBFohS4Tg39NszY"
+```
+
+> The above command returns JSON structured like this:
+
+```json
+[
+  {
+    "id": "aut_z3leimgybl7uf3y4ab",
+    "asin": null,
+    "name": "Terry Goodkind",
+    "description": null,
+    "imagePath": null,
+    "relImagePath": null,
+    "addedAt": 1650621073750,
+    "updatedAt": 1650621073750,
+    "numBooks": 1
+  }
+]
+```
+
+This endpoint returns a library's authors.
+
+### HTTP Request
+
+`GET https://abs.example.com/api/libraries/<ID>/authors`
+
+### URL Parameters
+
+Parameter | Description
+--------- | -----------
+ID | The ID of the library.
+
+### Response
+
+Status | Meaning | Description | Schema
+------ | ------- | ----------- | ------
+200 | OK | Success | Array of [Author Expanded](#author-expanded)
