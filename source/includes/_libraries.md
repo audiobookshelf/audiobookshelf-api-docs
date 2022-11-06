@@ -1682,3 +1682,30 @@ ID | The ID of the library.
 Status | Meaning | Description | Schema
 ------ | ------- | ----------- | ------
 200 | OK | Success | Array of [Author Expanded](#author-expanded)
+
+
+## Match all of a Library's Items
+
+```shell
+curl "https://abs.example.com/api/libraries/lib_c1u6t4p45c35rf0nzd/matchall" \
+  -H "Authorization: Bearer exJhbGciOiJI6IkpXVCJ9.eyJ1c2Vyi5NDEyODc4fQ.ZraBFohS4Tg39NszY"
+```
+
+This endpoint matches all items in a library using quick match. Quick match populates empty book details and the cover with the first book result from the library's default metadata provider. Does not overwrite details unless the "Prefer matched metadata" server setting is enabled.
+
+### HTTP Request
+
+`GET https://abs.example.com/api/libraries/<ID>/matchall`
+
+### URL Parameters
+
+Parameter | Description
+--------- | -----------
+ID | The ID of the library.
+
+### Response
+
+Status | Meaning | Description
+------ | ------- | -----------
+200 | OK | Success
+403 | Forbidden | An admin user is required to match library items.
