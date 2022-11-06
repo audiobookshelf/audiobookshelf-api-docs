@@ -1709,3 +1709,36 @@ Status | Meaning | Description
 ------ | ------- | -----------
 200 | OK | Success
 403 | Forbidden | An admin user is required to match library items.
+
+
+## Scan a Library's Folders
+
+```shell
+curl "https://abs.example.com/api/libraries/lib_c1u6t4p45c35rf0nzd/scan" \
+  -H "Authorization: Bearer exJhbGciOiJI6IkpXVCJ9.eyJ1c2Vyi5NDEyODc4fQ.ZraBFohS4Tg39NszY"
+```
+
+This endpoint starts a scan of a library's folders for new library items and changes to existing library items.
+
+### HTTP Request
+
+`GET https://abs.example.com/api/libraries/<ID>/scan`
+
+### URL Parameters
+
+Parameter | Description
+--------- | -----------
+ID | The ID of the library.
+
+### Optional Query Parameters
+
+Parameter | Type | Description
+--------- | ---- | -----------
+force | Binary | Whether or not to force a rescan for all of a library's items. `0` for false, `1` for true.
+
+### Response
+
+Status | Meaning | Description
+------ | ------- | -----------
+200 | OK | Success
+403 | Forbidden | An admin user is required to start a scan.
