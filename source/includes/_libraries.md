@@ -1152,3 +1152,67 @@ Attribute | Type | Description
 * `id` is `continue-series`:
     * Library items will have a `prevBookInProgressLastUpdate` attribute, an Integer, the time (in ms since POSIX epoch) of the most recent progress update of any book in the series.
     * The [Book Metadata Minified](#book-metadata-minified) in each library item will have a `series` attribute, a [Series Sequence](#series-sequence).
+
+
+## Get a Library's Filter Data
+
+```shell
+curl "https://abs.example.com/api/libraries/lib_c1u6t4p45c35rf0nzd/filterdata" \
+  -H "Authorization: Bearer exJhbGciOiJI6IkpXVCJ9.eyJ1c2Vyi5NDEyODc4fQ.ZraBFohS4Tg39NszY"
+```
+
+> The above command returns JSON structured like this:
+
+```json
+{
+  "authors": [
+    {
+      "id": "aut_z3leimgybl7uf3y4ab",
+      "name": "Terry Goodkind"
+    }
+  ],
+  "genres": [
+    "Fantasy"
+  ],
+  "tags": [],
+  "series": [
+    {
+      "id": "ser_cabkj4jeu8be3rap4g",
+      "name": "Sword of Truth"
+    }
+  ],
+  "narrators": [
+    "Sam Tsoutsouvas"
+  ],
+  "languages": []
+}
+```
+
+This endpoint returns a library's filter data that can be used for displaying a filter list.
+
+### HTTP Request
+
+`GET https://abs.example.com/api/libraries/<ID>/filterdata`
+
+### URL Parameters
+
+Parameter | Description
+--------- | -----------
+ID | The ID of the library.
+
+### Response
+
+Status | Meaning | Description | Schema
+------ | ------- | ----------- | ------
+200 | OK | Success | See Below
+
+#### Response Schema
+
+Attribute | Type | Description
+--------- | ---- | -----------
+`authors` | Array of [Author Minified](#author-minified) | The authors of books in the library.
+`genres` | Array of String | The genres of books in the library.
+`tags` | Array of String | The tags in the library.
+`series` | Array of [Series](#series) | The series in the library. The series will only have their `id` and `name`.
+`narrators` | Array of String | The narrators of books in the library.
+`languages` | Array of String | The languages of books in the library.
