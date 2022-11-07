@@ -10,7 +10,7 @@
   "name": "Main",
   "folders": [...],
   "displayOrder": 1,
-  "icon": "audiobook",
+  "icon": "audiobookshelf",
   "mediaType": "book",
   "provider": "audible",
   "settings": {...},
@@ -25,9 +25,9 @@ Attribute | Type | Description
 `name` | String | The name of the library.
 `folders` | Array of [Folder](#folder) | The folders that the library is composed of on the server.
 `displayOrder` | Integer | Display position of the library in the list of libraries. Must be `>= 1`.  
-`icon` | String | The selected icon for the library. Must be `database`, `podcast`, `book`, `audiobook`, or `comic`.
+`icon` | String | The selected icon for the library. See [Library Icons](#library-icons) for a list of possible icons.
 `mediaType` | String | The type of media that the library contains. Will be `book` or `podcast`. (Read Only)
-`provider` | String | Perferred metadata provider for the library. For book libraries, it must be `google`, `openlibrary`, `itunes`, `audible`, `audible.ca`, `audible.uk`, `audible.au`, `audible.fr`, `audible.de`, `audible.jp`, `audible.it`, `audible.in`, or `audible.es`. For podcast libraries, it must be `itunes`.
+`provider` | String | Perferred metadata provider for the library. See [Library Metadata Providers](#library-metadata-providers) for a list of possible providers.
 `settings` | [Library Settings](#library-settings) Object | The settings for the library.
 `createdAt` | Integer | The time (in ms since POSIX epoch) when the library was created. (Read Only)
 `lastUpdate` | Integer | The time (in ms since POSIX epoch) when the library was last updated. (Read Only)

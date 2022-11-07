@@ -49,9 +49,9 @@ Parameter | Type | Default | Description
 --------- | ---- | ------- | -----------
 `name` | String | **Required** | The name of the library.
 `folders` | Array of [Folder](#folder) | **Required** | The folders of the library. Only specify the `fullPath`.
-`icon` | String | `database` | The icon of the library. Must be `database`, `podcast`, `book`, `audiobook`, or `comic`.
+`icon` | String | `database` | The icon of the library. See [Library Icons](#library-icons) for a list of possible icons.
 `mediaType` | String | `book` | The type of media that the library contains. Must be `book` or `podcast`.
-`provider` | String | `google` | Perferred metadata provider for the library. For book libraries, it must be `google`, `openlibrary`, `itunes`, `audible`, `audible.ca`, `audible.uk`, `audible.au`, `audible.fr`, `audible.de`, `audible.jp`, `audible.it`, `audible.in`, or `audible.es`. For podcast libraries, it must be `itunes`.
+`provider` | String | `google` | Perferred metadata provider for the library. See [Library Metadata Providers](#library-metadata-providers) for a list of possible providers.
 `settings` | [Library Settings](#library-settings) Object | See Below | The settings for the library.
 
 #### Library Settings Parameters
@@ -93,7 +93,7 @@ curl "https://abs.example.com/api/libraries" \
       }
     ],
     "displayOrder": 1,
-    "icon": "audiobook",
+    "icon": "audiobookshelf",
     "mediaType": "book",
     "provider": "audible",
     "settings": {
@@ -263,8 +263,8 @@ Parameter | Type | Description
 `name` | String | The name of the library.
 `folders` | Array of [Folder](#folder) | See the notice below. Only specify the `fullPath` for new folders.
 `displayOrder` | Integer | Display position of the library in the list of libraries. Must be `>= 1`.
-`icon` | String | The icon of the library. Must be `database`, `podcast`, `book`, `audiobook`, or `comic`.
-`provider` | String | Perferred metadata provider for the library. For book libraries, it must be `google`, `openlibrary`, `itunes`, `audible`, `audible.ca`, `audible.uk`, `audible.au`, `audible.fr`, `audible.de`, `audible.jp`, `audible.it`, `audible.in`, or `audible.es`. For podcast libraries, it must be `itunes`.
+`icon` | String | The icon of the library. See [Library Icons](#library-icons) for a list of possible icons.
+`provider` | String | Perferred metadata provider for the library. See [Library Metadata Providers](#library-metadata-providers) for a list of possible providers.
 `settings` | [Library Settings](#library-settings) Object | The settings for the library.
 
 #### Library Settings Parameters
@@ -1935,7 +1935,7 @@ curl -X POST "https://abs.example.com/api/libraries/order" \
       }
     ],
     "displayOrder": 1,
-    "icon": "audiobook",
+    "icon": "audiobookshelf",
     "mediaType": "book",
     "provider": "audible",
     "settings": {
@@ -1998,3 +1998,49 @@ Status | Meaning | Description | Schema
 200 | OK | Success | Array of [Library](#library)
 403 | Forbidden | An admin user is required to reorder libraries.
 500 | Internal Server Error | One or more of the IDs do not match any libraries.
+
+
+## Library Icons
+
+Available library icons are:
+
+* `database`
+* `audiobookshelf`
+* `books-1`
+* `books-2`
+* `book-1`
+* `microphone-1`
+* `microphone-3`
+* `radio`
+* `podcast`
+* `rss`
+* `headphones`
+* `music`
+* `file-picture`
+* `rocket`
+* `power`
+* `star`
+* `heart`
+
+
+## Library Metadata Providers
+
+For book libraries:
+
+* `google`
+* `openlibrary`
+* `itunes`
+* `audible`
+* `audible.ca`
+* `audible.uk`
+* `audible.au`
+* `audible.fr`
+* `audible.de`
+* `audible.jp`
+* `audible.it`
+* `audible.in`
+* `audible.es`
+
+For podcast libraries:
+
+* `itunes`
