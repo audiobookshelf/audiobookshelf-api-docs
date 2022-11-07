@@ -2004,23 +2004,23 @@ Status | Meaning | Description | Schema
 
 Available library icons are:
 
-* `database`
-* `audiobookshelf`
-* `books-1`
-* `books-2`
-* `book-1`
-* `microphone-1`
-* `microphone-3`
-* `radio`
-* `podcast`
-* `rss`
-* `headphones`
-* `music`
-* `file-picture`
-* `rocket`
-* `power`
-* `star`
-* `heart`
+* <span class="abs-icons icon-database"></span> `database`
+* <span class="abs-icons icon-audiobookshelf"></span> `audiobookshelf`
+* <span class="abs-icons icon-books-1"></span> `books-1`
+* <span class="abs-icons icon-books-2"></span> `books-2`
+* <span class="abs-icons icon-book-1"></span> `book-1`
+* <span class="abs-icons icon-microphone-1"></span> `microphone-1`
+* <span class="abs-icons icon-microphone-3"></span> `microphone-3`
+* <span class="abs-icons icon-radio"></span> `radio`
+* <span class="abs-icons icon-podcast"></span> `podcast`
+* <span class="abs-icons icon-rss"></span> `rss`
+* <span class="abs-icons icon-headphones"></span> `headphones`
+* <span class="abs-icons icon-music"></span> `music`
+* <span class="abs-icons icon-file-picture"></span> `file-picture`
+* <span class="abs-icons icon-rocket"></span> `rocket`
+* <span class="abs-icons icon-power"></span> `power`
+* <span class="abs-icons icon-star"></span> `star`
+* <span class="abs-icons icon-heart"></span> `heart`
 
 
 ## Library Metadata Providers
