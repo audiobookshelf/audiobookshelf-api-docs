@@ -13,29 +13,29 @@ curl -X POST "https://abs.example.com/api/libraries" \
 
 ```json
 {
-	"id": "lib_c1u6t4p45c35rf0nzd",
-	"name": "Podcasts",
-	"folders": [
-		{
-			"id": "fol_bev1zuxhb0j0s1wehr",
-			"fullPath": "/podcasts",
-			"libraryId": "lib_c1u6t4p45c35rf0nzd",
-			"addedAt": 1650462940610
-		}
-	],
-	"displayOrder": 4,
-	"icon": "podcast",
-	"mediaType": "podcast",
-	"provider": "itunes",
-	"settings": {
+  "id": "lib_c1u6t4p45c35rf0nzd",
+  "name": "Podcasts",
+  "folders": [
+    {
+      "id": "fol_bev1zuxhb0j0s1wehr",
+      "fullPath": "/podcasts",
+      "libraryId": "lib_c1u6t4p45c35rf0nzd",
+      "addedAt": 1650462940610
+    }
+  ],
+  "displayOrder": 4,
+  "icon": "podcast",
+  "mediaType": "podcast",
+  "provider": "itunes",
+  "settings": {
     "coverAspectRatio": 1,
     "disableWatcher": false,
     "skipMatchingMediaWithAsin": false,
     "skipMatchingMediaWithIsbn": false,
     "autoScanCronExpression": null
   },
-	"createdAt": 1650462940610,
-	"lastUpdate": 1655423464567
+  "createdAt": 1650462940610,
+  "lastUpdate": 1655423464567
 }
 ```
 
@@ -82,55 +82,55 @@ curl "https://abs.example.com/api/libraries" \
 
 ```json
 [
-	{
-		"id": "lib_5yvub9dqvctlcrza6h",
-		"name": "Main",
-		"folders": [
-			{
-				"id": "audiobooks",
-				"fullPath": "/audiobooks",
-				"libraryId": "main"
-			}
-		],
-		"displayOrder": 1,
-		"icon": "audiobook",
-		"mediaType": "book",
-		"provider": "audible",
-		"settings": {
+  {
+    "id": "lib_5yvub9dqvctlcrza6h",
+    "name": "Main",
+    "folders": [
+      {
+        "id": "audiobooks",
+        "fullPath": "/audiobooks",
+        "libraryId": "main"
+      }
+    ],
+    "displayOrder": 1,
+    "icon": "audiobook",
+    "mediaType": "book",
+    "provider": "audible",
+    "settings": {
       "coverAspectRatio": 1,
       "disableWatcher": false,
       "skipMatchingMediaWithAsin": false,
       "skipMatchingMediaWithIsbn": false,
       "autoScanCronExpression": null
     },
-		"createdAt": 1633522963509,
-		"lastUpdate": 1646520916818
-	},
-	{
-		"id": "lib_c1u6t4p45c35rf0nzd",
-		"name": "Podcasts",
-		"folders": [
-			{
-				"id": "fol_bev1zuxhb0j0s1wehr",
-				"fullPath": "/podcasts",
-				"libraryId": "lib_c1u6t4p45c35rf0nzd",
-				"addedAt": 1650462940610
-			}
-		],
-		"displayOrder": 4,
-		"icon": "database",
-		"mediaType": "podcast",
-		"provider": "itunes",
-		"settings": {
+    "createdAt": 1633522963509,
+    "lastUpdate": 1646520916818
+  },
+  {
+    "id": "lib_c1u6t4p45c35rf0nzd",
+    "name": "Podcasts",
+    "folders": [
+      {
+        "id": "fol_bev1zuxhb0j0s1wehr",
+        "fullPath": "/podcasts",
+        "libraryId": "lib_c1u6t4p45c35rf0nzd",
+        "addedAt": 1650462940610
+      }
+    ],
+    "displayOrder": 4,
+    "icon": "database",
+    "mediaType": "podcast",
+    "provider": "itunes",
+    "settings": {
       "coverAspectRatio": 1,
       "disableWatcher": false,
       "skipMatchingMediaWithAsin": false,
       "skipMatchingMediaWithIsbn": false,
       "autoScanCronExpression": null
     },
-		"createdAt": 1650462940610,
-		"lastUpdate": 1650462940610
-	}
+    "createdAt": 1650462940610,
+    "lastUpdate": 1650462940610
+  }
 ]
 ```
 
@@ -158,29 +158,29 @@ curl "https://abs.example.com/api/libraries/lib_c1u6t4p45c35rf0nzd" \
 
 ```json
 {
-	"id": "lib_c1u6t4p45c35rf0nzd",
-	"name": "Podcasts",
-	"folders": [
-		{
-			"id": "fol_bev1zuxhb0j0s1wehr",
-			"fullPath": "/podcasts",
-			"libraryId": "lib_c1u6t4p45c35rf0nzd",
-			"addedAt": 1650462940610
-		}
-	],
-	"displayOrder": 4,
-	"icon": "database",
-	"mediaType": "podcast",
-	"provider": "itunes",
-	"settings": {
+  "id": "lib_c1u6t4p45c35rf0nzd",
+  "name": "Podcasts",
+  "folders": [
+    {
+      "id": "fol_bev1zuxhb0j0s1wehr",
+      "fullPath": "/podcasts",
+      "libraryId": "lib_c1u6t4p45c35rf0nzd",
+      "addedAt": 1650462940610
+    }
+  ],
+  "displayOrder": 4,
+  "icon": "database",
+  "mediaType": "podcast",
+  "provider": "itunes",
+  "settings": {
     "coverAspectRatio": 1,
     "disableWatcher": false,
     "skipMatchingMediaWithAsin": false,
     "skipMatchingMediaWithIsbn": false,
     "autoScanCronExpression": null
   },
-	"createdAt": 1650462940610,
-	"lastUpdate": 1650462940610
+  "createdAt": 1650462940610,
+  "lastUpdate": 1650462940610
 }
 ```
 
@@ -218,29 +218,29 @@ curl -X PATCH "https://abs.example.com/api/libraries/lib_c1u6t4p45c35rf0nzd" \
 
 ```json
 {
-	"id": "lib_c1u6t4p45c35rf0nzd",
-	"name": "Pods",
-	"folders": [
-		{
-			"id": "fol_bev1zuxhb0j0s1wehr",
-			"fullPath": "/podcasts",
-			"libraryId": "lib_c1u6t4p45c35rf0nzd",
-			"addedAt": 1650462940610
-		}
-	],
-	"displayOrder": 4,
-	"icon": "podcast",
-	"mediaType": "podcast",
-	"provider": "itunes",
-	"settings": {
+  "id": "lib_c1u6t4p45c35rf0nzd",
+  "name": "Pods",
+  "folders": [
+    {
+      "id": "fol_bev1zuxhb0j0s1wehr",
+      "fullPath": "/podcasts",
+      "libraryId": "lib_c1u6t4p45c35rf0nzd",
+      "addedAt": 1650462940610
+    }
+  ],
+  "displayOrder": 4,
+  "icon": "podcast",
+  "mediaType": "podcast",
+  "provider": "itunes",
+  "settings": {
     "coverAspectRatio": 1,
     "disableWatcher": false,
     "skipMatchingMediaWithAsin": false,
     "skipMatchingMediaWithIsbn": false,
     "autoScanCronExpression": null
   },
-	"createdAt": 1650462940610,
-	"lastUpdate": 1655423464567
+  "createdAt": 1650462940610,
+  "lastUpdate": 1655423464567
 }
 ```
 
@@ -297,29 +297,29 @@ curl -X DELETE "https://abs.example.com/api/libraries/lib_5yvub9dqvctlcrza6h" \
 
 ```json
 {
-	"id": "lib_5yvub9dqvctlcrza6h",
-	"name": "audiobooks",
-	"folders": [
-		{
-			"id": "fol_zdat63120karrt7i52",
-			"fullPath": "/audiobooks",
-			"libraryId": "lib_5yvub9dqvctlcrza6g",
-			"addedAt": 1653396692539
-		}
-	],
-	"displayOrder": 5,
-	"icon": "database",
-	"mediaType": "book",
-	"provider": "audible",
-	"settings": {
+  "id": "lib_5yvub9dqvctlcrza6h",
+  "name": "audiobooks",
+  "folders": [
+    {
+      "id": "fol_zdat63120karrt7i52",
+      "fullPath": "/audiobooks",
+      "libraryId": "lib_5yvub9dqvctlcrza6g",
+      "addedAt": 1653396692539
+    }
+  ],
+  "displayOrder": 5,
+  "icon": "database",
+  "mediaType": "book",
+  "provider": "audible",
+  "settings": {
     "coverAspectRatio": 1,
     "disableWatcher": false,
     "skipMatchingMediaWithAsin": false,
     "skipMatchingMediaWithIsbn": false,
     "autoScanCronExpression": null
   },
-	"createdAt": 1653396692539,
-	"lastUpdate": 1653396692539
+  "createdAt": 1653396692539,
+  "lastUpdate": 1653396692539
 }
 ```
 
