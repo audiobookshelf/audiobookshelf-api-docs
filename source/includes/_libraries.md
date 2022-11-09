@@ -1541,7 +1541,7 @@ Attribute | Type | Description
 `book` or `podcast` | Array of [Library Item Expanded](#library-item-expanded) | The item results of the search. This attribute will be `book` or `podcast` depending on the library's media type.
 `tags` | Array of String | The tag results of the search.
 `authors` | Array of [Author Expanded](#author-expanded) | The author results of the search.
-`sereis` | Array of [Series Books](#series-books) | The series results of the search.
+`series` | Array of [Series Books](#series-books) | The series results of the search.
 
 
 ## Get a Library's Stats
