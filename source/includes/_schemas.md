@@ -10,7 +10,7 @@
   "name": "Main",
   "folders": [...],
   "displayOrder": 1,
-  "icon": "audiobook",
+  "icon": "audiobookshelf",
   "mediaType": "book",
   "provider": "audible",
   "settings": {...},
@@ -25,9 +25,9 @@ Attribute | Type | Description
 `name` | String | The name of the library.
 `folders` | Array of [Folder](#folder) | The folders that the library is composed of on the server.
 `displayOrder` | Integer | Display position of the library in the list of libraries. Must be `>= 1`.  
-`icon` | String | The selected icon for the library. Must be `database`, `podcast`, `book`, `audiobook`, or `comic`.
+`icon` | String | The selected icon for the library. See [Library Icons](#library-icons) for a list of possible icons.
 `mediaType` | String | The type of media that the library contains. Will be `book` or `podcast`. (Read Only)
-`provider` | String | Perferred metadata provider for the library. For book libraries, it must be `google`, `openlibrary`, `itunes`, `audible`, `audible.ca`, `audible.uk`, `audible.au`, `audible.fr`, `audible.de`, `audible.jp`, `audible.it`, `audible.in`, or `audible.es`. For podcast libraries, it must be `itunes`.
+`provider` | String | Perferred metadata provider for the library. See [Library Metadata Providers](#library-metadata-providers) for a list of possible providers.
 `settings` | [Library Settings](#library-settings) Object | The settings for the library.
 `createdAt` | Integer | The time (in ms since POSIX epoch) when the library was created. (Read Only)
 `lastUpdate` | Integer | The time (in ms since POSIX epoch) when the library was last updated. (Read Only)
@@ -87,25 +87,25 @@ Attribute | Type | Description
 
 ```json
 {
-	"id": "li_8gch9ve09orgn4fdz8",
-	"ino": "649641337522215266",
-	"libraryId": "lib_c1u6t4p45c35rf0nzd",
-	"folderId": "fol_bev1zuxhb0j0s1wehr",
-	"path": "/audiobooks/Terry Goodkind/Sword of Truth/Wizards First Rule",
-	"relPath": "Terry Goodkind/Sword of Truth/Wizards First Rule",
-	"isFile": false,
-	"mtimeMs": 1650621074299,
-	"ctimeMs": 1650621074299,
-	"birthtimeMs": 0,
-	"addedAt": 1650621073750,
-	"updatedAt": 1650621110769,
-	"lastScan": 1651830827825,
-	"scanVersion": "2.0.21",
-	"isMissing": false,
-	"isInvalid": false,
-	"mediaType": "book",
-	"media": {...},
-	"libraryFiles": [...]
+  "id": "li_8gch9ve09orgn4fdz8",
+  "ino": "649641337522215266",
+  "libraryId": "lib_c1u6t4p45c35rf0nzd",
+  "folderId": "fol_bev1zuxhb0j0s1wehr",
+  "path": "/audiobooks/Terry Goodkind/Sword of Truth/Wizards First Rule",
+  "relPath": "Terry Goodkind/Sword of Truth/Wizards First Rule",
+  "isFile": false,
+  "mtimeMs": 1650621074299,
+  "ctimeMs": 1650621074299,
+  "birthtimeMs": 0,
+  "addedAt": 1650621073750,
+  "updatedAt": 1650621110769,
+  "lastScan": 1651830827825,
+  "scanVersion": "2.0.21",
+  "isMissing": false,
+  "isInvalid": false,
+  "mediaType": "book",
+  "media": {...},
+  "libraryFiles": [...]
 }
 ```
 
@@ -113,22 +113,22 @@ Attribute | Type | Description
 
 ```json
 {
-	"id": "li_8gch9ve09orgn4fdz8",
-	"ino": "649641337522215266",
-	"libraryId": "lib_c1u6t4p45c35rf0nzd",
-	"folderId": "fol_bev1zuxhb0j0s1wehr",
-	"path": "/audiobooks/Terry Goodkind/Sword of Truth/Wizards First Rule",
-	"relPath": "Terry Goodkind/Sword of Truth/Wizards First Rule",
-	"isFile": false,
-	"mtimeMs": 1650621074299,
-	"ctimeMs": 1650621074299,
-	"birthtimeMs": 0,
-	"addedAt": 1650621073750,
-	"updatedAt": 1650621110769,
-	"isMissing": false,
-	"isInvalid": false,
-	"mediaType": "book",
-	"media": {...},
+  "id": "li_8gch9ve09orgn4fdz8",
+  "ino": "649641337522215266",
+  "libraryId": "lib_c1u6t4p45c35rf0nzd",
+  "folderId": "fol_bev1zuxhb0j0s1wehr",
+  "path": "/audiobooks/Terry Goodkind/Sword of Truth/Wizards First Rule",
+  "relPath": "Terry Goodkind/Sword of Truth/Wizards First Rule",
+  "isFile": false,
+  "mtimeMs": 1650621074299,
+  "ctimeMs": 1650621074299,
+  "birthtimeMs": 0,
+  "addedAt": 1650621073750,
+  "updatedAt": 1650621110769,
+  "isMissing": false,
+  "isInvalid": false,
+  "mediaType": "book",
+  "media": {...},
   "numFiles": 2,
   "size": 268990279
 }
@@ -138,25 +138,25 @@ Attribute | Type | Description
 
 ```json
 {
-	"id": "li_8gch9ve09orgn4fdz8",
-	"ino": "649641337522215266",
-	"libraryId": "lib_c1u6t4p45c35rf0nzd",
-	"folderId": "fol_bev1zuxhb0j0s1wehr",
-	"path": "/audiobooks/Terry Goodkind/Sword of Truth/Wizards First Rule",
-	"relPath": "Terry Goodkind/Sword of Truth/Wizards First Rule",
-	"isFile": false,
-	"mtimeMs": 1650621074299,
-	"ctimeMs": 1650621074299,
-	"birthtimeMs": 0,
-	"addedAt": 1650621073750,
-	"updatedAt": 1650621110769,
-	"lastScan": 1651830827825,
-	"scanVersion": "2.0.21",
-	"isMissing": false,
-	"isInvalid": false,
-	"mediaType": "book",
-	"media": {...},
-	"libraryFiles": [...],
+  "id": "li_8gch9ve09orgn4fdz8",
+  "ino": "649641337522215266",
+  "libraryId": "lib_c1u6t4p45c35rf0nzd",
+  "folderId": "fol_bev1zuxhb0j0s1wehr",
+  "path": "/audiobooks/Terry Goodkind/Sword of Truth/Wizards First Rule",
+  "relPath": "Terry Goodkind/Sword of Truth/Wizards First Rule",
+  "isFile": false,
+  "mtimeMs": 1650621074299,
+  "ctimeMs": 1650621074299,
+  "birthtimeMs": 0,
+  "addedAt": 1650621073750,
+  "updatedAt": 1650621110769,
+  "lastScan": 1651830827825,
+  "scanVersion": "2.0.21",
+  "isMissing": false,
+  "isInvalid": false,
+  "mediaType": "book",
+  "media": {...},
+  "libraryFiles": [...],
   "size": 268990279
 }
 ```
@@ -415,7 +415,7 @@ Attribute | Type | Description
 `subtitle` | String or null | The subtitle of the book. Will be `null` if there is no subtitle.
 `authors` | Array of [Author Minified](#author-minified) | The authors of the book.
 `narrators` | Array of String | The narrators of the audiobook.
-`series` | Array of [Series Minified](#series-minified) | The series the book belongs to.
+`series` | Array of [Series Sequence](#series-sequence) | The series the book belongs to.
 `genres` | Array of String | The genres of the book.
 `publishedYear` | String or null | The year the book was published. Will be `null` if unknown.
 `publishedDate` | String or null | The date the book was published. Will be `null` if unknown.
@@ -1046,7 +1046,33 @@ Attribute | Type | Description
 }
 ```
 
-> Series Minified
+> Series Num Books
+
+```json
+{
+  "id": "ser_cabkj4jeu8be3rap4g",
+  "name": "Sword of Truth",
+  "nameIgnorePrefix": "Sword of Truth",
+  "numBooks": 1
+}
+```
+
+> Series Books
+
+```json
+{
+  "id": "ser_cabkj4jeu8be3rap4g",
+  "name": "Sword of Truth",
+  "nameIgnorePrefix": "Sword of Truth",
+  "nameIgnorePrefixSort": "Sword of Truth",
+  "type": "series",
+  "books": [...],
+  "addedAt": 1650621073750,
+  "totalDuration": 12000.946
+}
+```
+
+> Series Sequence
 
 ```json
 {
@@ -1064,7 +1090,39 @@ Attribute | Type | Description
 `addedAt` | Integer | The time (in ms since POSIX epoch) when the series was added.
 `updatedAt` | Integer | The time (in ms since POSIX epoch) when the series was last updated.
 
-### Series Minified
+### Series Num Books
+
+#### Removed Attributes
+
+* `description`
+* `addedAt`
+* `updatedAt`
+
+#### Added Attributes
+
+Attribute | Type | Description
+--------- | ---- | -----------
+`nameIgnorePrefix` | String | The name of the series with any prefix moved to the end.
+`numBooks` | Integer | The number of books in the series.
+
+### Series Books
+
+#### Removed Attributes
+
+* `description`
+* `updatedAt`
+
+#### Added Attributes
+
+Attribute | Type | Description
+--------- | ---- | -----------
+`nameIgnorePrefix` | String | The name of the series with any prefix moved to the end.
+`nameIgnorePrefixSort` | String | The name of the series with any prefix removed.
+`type` | String | Will always be `series`.
+`books` | Array of [Library Item](#library-item) | The library items that contain the books in the series. A `sequence` attribute that denotes the position in the series the book is in, is tacked on.
+`totalDuration` | Float | The combined duration (in seconds) of all books in the series.
+
+### Series Sequence
 
 #### Removed Attributes
 
@@ -1077,3 +1135,59 @@ Attribute | Type | Description
 Attribute | Type | Description
 --------- | ---- | -----------
 `squence` | String or null | The position in the series the book is.
+
+
+## Collection
+
+> Collection
+
+```json
+{
+  "id": "usr_fpfstanv6gd7tq2qz7",
+  "libraryId": "lib_c1u6t4p45c35rf0nzd",
+  "userId": "root",
+  "name": "Favorites",
+  "description": null,
+  "cover": null,
+  "coverFullPath": null,
+  "books": [...],
+  "lastUpdate": 1650621110769,
+  "createdAt": 1650621073750
+}
+```
+
+> Collection Expanded
+
+```json
+{
+  "id": "usr_fpfstanv6gd7tq2qz7",
+  "libraryId": "lib_c1u6t4p45c35rf0nzd",
+  "userId": "root",
+  "name": "Favorites",
+  "description": null,
+  "cover": null,
+  "coverFullPath": null,
+  "books": [...],
+  "lastUpdate": 1650621110769,
+  "createdAt": 1650621073750
+}
+```
+
+Attribute | Type | Description
+--------- | ---- | -----------
+`id` | String | The ID of the collection.
+`libraryId` | String | The ID of the library the collection belongs to.
+`userId` | String | The ID of the user that the created the collection.
+`name` | String | The name of the collection.
+`description` | String or null | The collection's description. Will be `null` if there is none.
+`cover` | String or null | The path to the collection's cover. Will be `null` if there is no cover.
+`coverFullPath` | String or null | The full path to collection's cover. Will be `null` if there is no cover.
+`books` | Array of [Library Item](#library-item) | The books that belong to the collection.
+`lastUpdate` | Integer | The time (in ms since POSIX epoch) when the collection was last updated.
+`createdAt` | Integer | The time (in ms since POSIX epoch) when the collection was created.
+
+### Collection Expanded
+
+#### Modified Attributes
+
+* `books` is an Array of [Library Item Expanded](#library-item-expanded).
