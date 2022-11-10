@@ -51,7 +51,7 @@ Parameter | Type | Default | Description
 `folders` | Array of [Folder](#folder) | **Required** | The folders of the library. Only specify the `fullPath`.
 `icon` | String | `database` | The icon of the library. See [Library Icons](#library-icons) for a list of possible icons.
 `mediaType` | String | `book` | The type of media that the library contains. Must be `book` or `podcast`.
-`provider` | String | `google` | Perferred metadata provider for the library. See [Library Metadata Providers](#library-metadata-providers) for a list of possible providers.
+`provider` | String | `google` | Preferred metadata provider for the library. See [Library Metadata Providers](#library-metadata-providers) for a list of possible providers.
 `settings` | [Library Settings](#library-settings) Object | See Below | The settings for the library.
 
 #### Library Settings Parameters
@@ -264,7 +264,7 @@ Parameter | Type | Description
 `folders` | Array of [Folder](#folder) | See the notice below. Only specify the `fullPath` for new folders.
 `displayOrder` | Integer | Display position of the library in the list of libraries. Must be `>= 1`.
 `icon` | String | The icon of the library. See [Library Icons](#library-icons) for a list of possible icons.
-`provider` | String | Perferred metadata provider for the library. See [Library Metadata Providers](#library-metadata-providers) for a list of possible providers.
+`provider` | String | Preferred metadata provider for the library. See [Library Metadata Providers](#library-metadata-providers) for a list of possible providers.
 `settings` | [Library Settings](#library-settings) Object | The settings for the library.
 
 #### Library Settings Parameters
@@ -1127,7 +1127,7 @@ Attribute | Type | Description
 `entities` | Array | The entities to be displayed on the shelf. See below.
 `category` | String | The category of the shelf.
 
-#### Shelf Enitities
+#### Shelf Entities
 
 * `type` is `book`, `podcast`, or `episode`:
     * `entities` will be an array of [Library Item Minified](#library-item-minified).

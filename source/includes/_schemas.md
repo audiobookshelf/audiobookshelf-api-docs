@@ -27,7 +27,7 @@ Attribute | Type | Description
 `displayOrder` | Integer | Display position of the library in the list of libraries. Must be `>= 1`.  
 `icon` | String | The selected icon for the library. See [Library Icons](#library-icons) for a list of possible icons.
 `mediaType` | String | The type of media that the library contains. Will be `book` or `podcast`. (Read Only)
-`provider` | String | Perferred metadata provider for the library. See [Library Metadata Providers](#library-metadata-providers) for a list of possible providers.
+`provider` | String | Preferred metadata provider for the library. See [Library Metadata Providers](#library-metadata-providers) for a list of possible providers.
 `settings` | [Library Settings](#library-settings) Object | The settings for the library.
 `createdAt` | Integer | The time (in ms since POSIX epoch) when the library was created. (Read Only)
 `lastUpdate` | Integer | The time (in ms since POSIX epoch) when the library was last updated. (Read Only)
@@ -904,7 +904,7 @@ Attribute | Type | Description
 `title` | String | The filename of the audio file the audio track belongs to.
 `contentUrl` | String | The URL on the serve of the audio file.
 `mimeType` | String | The MIME type of the audio file.
-`metadata` | [File Metadta](#file-metadata) Object or null | The metadata of the audio file.
+`metadata` | [File Metadata](#file-metadata) Object or null | The metadata of the audio file.
 
 
 ## Library File
@@ -1134,7 +1134,7 @@ Attribute | Type | Description
 
 Attribute | Type | Description
 --------- | ---- | -----------
-`squence` | String or null | The position in the series the book is.
+`sequence` | String or null | The position in the series the book is.
 
 
 ## Collection
