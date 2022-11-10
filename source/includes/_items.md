@@ -288,3 +288,330 @@ ID | The ID of the library item to delete.
 Status | Meaning | Description
 ------ | ------- | -----------
 200 | OK | Success
+
+
+## Update a Library Item's Media
+
+```shell
+curl -X PATCH "https://abs.example.com/api/items/li_8gch9ve09orgn4fdz8/media" \
+  -H "Authorization: Bearer exJhbGciOiJI6IkpXVCJ9.eyJ1c2Vyi5NDEyODc4fQ.ZraBFohS4Tg39NszY"
+  -H "Content-Type: application/json"
+  -d '{"metadata": {"title": "Wizards First Rule"}}'
+```
+
+> The above command returns JSON structured like this:
+
+```json
+{
+  "updated": true,
+  "id": "li_8gch9ve09orgn4fdz8",
+  "ino": "649641337522215266",
+  "libraryId": "main",
+  "folderId": "audiobooks",
+  "path": "/audiobooks/Terry Goodkind/Sword of Truth/Wizards First Rule",
+  "relPath": "Terry Goodkind/Sword of Truth/Wizards First Rule",
+  "isFile": false,
+  "mtimeMs": 1650621074299,
+  "ctimeMs": 1650621074299,
+  "birthtimeMs": 0,
+  "addedAt": 1650621073750,
+  "updatedAt": 1650621110769,
+  "lastScan": 1651830827825,
+  "scanVersion": "2.0.21",
+  "isMissing": false,
+  "isInvalid": false,
+  "mediaType": "book",
+  "media": {
+    "libraryItemId": "li_8gch9ve09orgn4fdz8",
+    "metadata": {
+      "title": "Wizards First Rule",
+      "subtitle": null,
+      "authors": [
+        {
+          "id": "aut_z3leimgybl7uf3y4ab",
+          "name": "Terry Goodkind"
+        }
+      ],
+      "narrators": [
+        "Sam Tsoutsouvas"
+      ],
+      "series": [
+        {
+          "id": "ser_cabkj4jeu8be3rap4g",
+          "name": "Sword of Truth",
+          "sequence": null
+        }
+      ],
+      "genres": [
+        "Fantasy"
+      ],
+      "publishedYear": "2008",
+      "publishedDate": null,
+      "publisher": "Brilliance Audio",
+      "description": "The masterpiece that started Terry Goodkind's New York Times bestselling epic Sword of Truth In the aftermath of the brutal murder of his father, a mysterious woman, Kahlan Amnell, appears in Richard Cypher's forest sanctuary seeking help...and more. His world, his very beliefs, are shattered when ancient debts come due with thundering violence. In a dark age it takes courage to live, and more than mere courage to challenge those who hold dominion, Richard and Kahlan must take up that challenge or become the next victims. Beyond awaits a bewitching land where even the best of their hearts could betray them. Yet, Richard fears nothing so much as what secrets his sword might reveal about his own soul. Falling in love would destroy them - for reasons Richard can't imagine and Kahlan dare not say. In their darkest hour, hunted relentlessly, tormented by treachery and loss, Kahlan calls upon Richard to reach beyond his sword - to invoke within himself something more noble. Neither knows that the rules of battle have just changed...or that their time has run out. Wizard's First Rule is the beginning. One book. One Rule. Witness the birth of a legend.",
+      "isbn": null,
+      "asin": "B002V0QK4C",
+      "language": null,
+      "explicit": false
+    },
+    "coverPath": "/audiobooks/Terry Goodkind/Sword of Truth/Wizards First Rule/cover.jpg",
+    "tags": [],
+    "audioFiles": [
+      {
+        "index": 1,
+        "ino": "649644248522215260",
+        "metadata": {
+          "filename": "Terry Goodkind - SOT Bk01 - Wizards First Rule 01.mp3",
+          "ext": ".mp3",
+          "path": "/audiobooks/Terry Goodkind/Sword of Truth/Wizards First Rule/Terry Goodkind - SOT Bk01 - Wizards First Rule 01.mp3",
+          "relPath": "Terry Goodkind - SOT Bk01 - Wizards First Rule 01.mp3",
+          "size": 48037888,
+          "mtimeMs": 1632223180278,
+          "ctimeMs": 1645978261001,
+          "birthtimeMs": 0
+        },
+        "addedAt": 1650621074131,
+        "updatedAt": 1651830828023,
+        "trackNumFromMeta": 1,
+        "discNumFromMeta": null,
+        "trackNumFromFilename": 1,
+        "discNumFromFilename": null,
+        "manuallyVerified": false,
+        "invalid": false,
+        "exclude": false,
+        "error": null,
+        "format": "MP2/3 (MPEG audio layer 2/3)",
+        "duration": 6004.6675,
+        "bitRate": 64000,
+        "language": null,
+        "codec": "mp3",
+        "timeBase": "1/14112000",
+        "channels": 2,
+        "channelLayout": "stereo",
+        "chapters": [],
+        "embeddedCoverArt": null,
+        "metaTags": {
+          "tagAlbum": "SOT Bk01",
+          "tagArtist": "Terry Goodkind",
+          "tagGenre": "Audiobook Fantasy",
+          "tagTitle": "Wizards First Rule 01",
+          "tagTrack": "01/20",
+          "tagAlbumArtist": "Terry Goodkind",
+          "tagComposer": "Terry Goodkind"
+        },
+        "mimeType": "audio/mpeg"
+      },
+      {
+        "index": 2,
+        "ino": "649644248522215261",
+        "metadata": {
+          "filename": "Terry Goodkind - SOT Bk01 - Wizards First Rule 02.mp3",
+          "ext": ".mp3",
+          "path": "/audiobooks/Terry Goodkind/Sword of Truth/Wizards First Rule/Terry Goodkind - SOT Bk01 - Wizards First Rule 02.mp3",
+          "relPath": "Terry Goodkind - SOT Bk01 - Wizards First Rule 02.mp3",
+          "size": 47972352,
+          "mtimeMs": 1632223180281,
+          "ctimeMs": 1645978261001,
+          "birthtimeMs": 0
+        },
+        "addedAt": 1650621074130,
+        "updatedAt": 1651830828023,
+        "trackNumFromMeta": 2,
+        "discNumFromMeta": null,
+        "trackNumFromFilename": 1,
+        "discNumFromFilename": null,
+        "manuallyVerified": false,
+        "invalid": false,
+        "exclude": false,
+        "error": null,
+        "format": "MP2/3 (MPEG audio layer 2/3)",
+        "duration": 5996.2785,
+        "bitRate": 64000,
+        "language": null,
+        "codec": "mp3",
+        "timeBase": "1/14112000",
+        "channels": 2,
+        "channelLayout": "stereo",
+        "chapters": [],
+        "embeddedCoverArt": null,
+        "metaTags": {
+          "tagAlbum": "SOT Bk01",
+          "tagArtist": "Terry Goodkind",
+          "tagGenre": "Audiobook Fantasy",
+          "tagTitle": "Wizards First Rule 02",
+          "tagTrack": "02/20",
+          "tagAlbumArtist": "Terry Goodkind",
+          "tagComposer": "Terry Goodkind"
+        },
+        "mimeType": "audio/mpeg"
+      }
+    ],
+    "chapters": [
+      {
+        "id": 0,
+        "start": 0,
+        "end": 6004.6675,
+        "title": "Terry Goodkind - SOT Bk01 - Wizards First Rule 01"
+      },
+      {
+        "id": 1,
+        "start": 6004.6675,
+        "end": 12000.946,
+        "title": "Terry Goodkind - SOT Bk01 - Wizards First Rule 02"
+      }
+    ],
+    "missingParts": [],
+    "ebookFile": null
+  },
+  "libraryFiles": [
+    {
+      "ino": "649644248522215260",
+      "metadata": {
+        "filename": "Terry Goodkind - SOT Bk01 - Wizards First Rule 01.mp3",
+        "ext": ".mp3",
+        "path": "/audiobooks/Terry Goodkind/Sword of Truth/Wizards First Rule/Terry Goodkind - SOT Bk01 - Wizards First Rule 01.mp3",
+        "relPath": "Terry Goodkind - SOT Bk01 - Wizards First Rule 01.mp3",
+        "size": 48037888,
+        "mtimeMs": 1632223180278,
+        "ctimeMs": 1645978261001,
+        "birthtimeMs": 0
+      },
+      "addedAt": 1650621052494,
+      "updatedAt": 1650621052494,
+      "fileType": "audio"
+    },
+    {
+      "ino": "649644248522215261",
+      "metadata": {
+        "filename": "Terry Goodkind - SOT Bk01 - Wizards First Rule 02.mp3",
+        "ext": ".mp3",
+        "path": "/audiobooks/Terry Goodkind/Sword of Truth/Wizards First Rule/Terry Goodkind - SOT Bk01 - Wizards First Rule 02.mp3",
+        "relPath": "Terry Goodkind - SOT Bk01 - Wizards First Rule 02.mp3",
+        "size": 47972352,
+        "mtimeMs": 1632223180281,
+        "ctimeMs": 1645978261001,
+        "birthtimeMs": 0
+      },
+      "addedAt": 1650621052494,
+      "updatedAt": 1650621052494,
+      "fileType": "audio"
+    },
+    {
+      "ino": "649644248522215267",
+      "metadata": {
+        "filename": "cover.jpg",
+        "ext": ".jpg",
+        "path": "/audiobooks/Terry Goodkind/Sword of Truth/Wizards First Rule/cover.jpg",
+        "relPath": "cover.jpg",
+        "size": 325531,
+        "mtimeMs": 1638754803540,
+        "ctimeMs": 1645978261003,
+        "birthtimeMs": 0
+      },
+      "addedAt": 1650621052495,
+      "updatedAt": 1650621052495,
+      "fileType": "image"
+    }
+  ]
+}
+```
+
+This endpoint updates a library item's media and returns the updated library item.
+
+### HTTP Request
+
+`PATCH http://abs.example.com/api/items/<ID>/media`
+
+### URL Parameters
+
+Parameter | Description
+--------- | -----------
+ID | The ID of the library item.
+
+### Parameters
+
+A library item's media can be either a [Book](#book-parameters) or [Podcast](#podcast-parameters) (see below). Check the library item's `mediaType` before updating it.
+
+#### Book Parameters
+
+Parameter | Type | Description
+--------- | ---- | -----------
+`metadata` | [Book Metadata](#book-metadata-parameters) Object (See Below) | The book's metadata.
+`coverPath` | String or null | The absolute path on the server of the cover file. Use `null` to remove the cover. Prefer using the [Update a Library Item's Cover](#update-a-library-item-39-s-cover) endpoint.
+`tags` | Array of String | The book's tags.
+`chapters` | Array of [Book Chapter](#book-chapter-parameters) | The book's chapters. Prefer using the [Update a Library Item's Chapters](#update-a-library-item-39-s-chapters) endpoint.
+
+#### Book Metadata Parameters
+
+Parameter | Type | Description
+--------- | ---- | -----------
+`title` | String or null | The title of the book.
+`subtitle` | String or null | The subtitle of the book.
+`authors` | Array of [Author](#author-parameters) (See Below) | The authors of the book.
+`narrators` | Array of String | The narrators of the book.
+`series` | Array of [Series Sequence](#series-parameters) (See Below) | The series the book belongs to.
+`genres` | Array of String | The genres of the book.
+`publishedYear` | String or null | The year the book was published.
+`publishedDate` | String or null | The date the book was published.
+`publisher` | String or null | The publisher of the book.
+`description` | String or null | A description of the book.
+`isbn` | String or null | The ISBN of the book.
+`asin` | String or null | The ASIN of the book.
+`language` | String or null | The language of the book.
+`explicit` | Boolean | Whether or not to mark the book as explicit.
+
+#### Author Parameters
+
+The server will automatically find the ID of the author or create one.
+
+Parameter | Type | Description
+--------- | ---- | -----------
+`name` | String | The name of the author.
+
+#### Series Parameters
+
+The server will automatically find the ID of the series or create one.
+
+Parameter | Type | Description
+--------- | ---- | -----------
+`name` | String | The name of the series.
+`sequence` | String or null | The position in the series the book is.
+
+#### Podcast Parameters
+
+Parameter | Type | Description
+--------- | ---- | -----------
+`metadata` | [Podcast Metadata](#podcast-metadata-parameters) Object (See Below) | The podcast's metadata.
+`coverPath` | String or null | The absolute path on the server of the cover file. Use `null` to remove the cover. Prefer using the [Update a Library Item's Cover](#update-a-library-item-39-s-cover) endpoint.
+`tags` | Array of String | The podcast's tags.
+`autoDownloadEpisodes` | Boolean | Whether or not the server will automatically download podcast episodes according to the schedule.
+`autoDownloadSchedule` | String or null | The [cron expression](https://en.wikipedia.org/wiki/Cron#CRON_expression) for when to automatically download podcast episodes.
+`maxEpisodesToKeep` | Integer | The maximum number of podcast episodes to keep when automatically downloading new episodes. Episodes beyond this limit will be deleted. If `0`, all episodes will be kept.
+`maxNewEpisodesToDownload` | Integer | The maximum number of podcast episodes to download when automatically downloading new episodes. If `0`, all episodes will be downloaded.
+
+<aside class="notice">
+Use the <a href="#update-a-podcast-episode">Update a Podcast Episode</a> endpoint to update a podcast's episodes.
+</aside>
+
+#### Podcast Metadata Parameters
+
+Parameter | Type | Description
+--------- | ---- | -----------
+`title` | String or null | The title of the podcast.
+`author` | String or null | The author of the podcast.
+`description` | String or null | The description of the podcast.
+`releaseDate` | String or null | The release date of the podcast.
+`genres` | Array of String | The podcast's genres.
+`feedUrl` | String or null | A URL of an RSS feed for the podcast.
+`imageUrl` | String or null | A URL of a cover image for the podcast.
+`itunesPageUrl` | String or null | A URL of an iTunes page for the podcast.
+`itunesId` | Integer or null | The iTunes ID for the podcast.
+`itunesArtistId` | Integer or null | The iTunes Artist ID for the author of the podcast.
+`explicit` | Boolean | Whether or not to mark the podcast as explicit.
+`language` | String or null | The language of the podcast.
+
+### Response
+
+Status | Meaning | Description | Schema
+------ | ------- | ----------- | ------
+200 | OK | Success | [Library Item](#library-item) with a `updated` attribute, a Boolean, whether or not anything was actually changed.
