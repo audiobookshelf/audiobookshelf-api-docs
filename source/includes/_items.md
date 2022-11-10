@@ -1,5 +1,27 @@
 # Library Items
 
+## Delete All Library Items
+
+```shell
+curl -X DELETE "https://abs.example.com/api/items/all" \
+  -H "Authorization: Bearer exJhbGciOiJI6IkpXVCJ9.eyJ1c2Vyi5NDEyODc4fQ.ZraBFohS4Tg39NszY"
+```
+
+This endpoint will delete all library items from the database. No actual files will be deleted.
+
+### HTTP Request
+
+`DELETE http://abs.example.com/api/items/all`
+
+### Response
+
+Status | Meaning | Description
+------ | ------- | -----------
+200 | OK | Success
+403 | Forbidden | An admin user is required to delete all library items.
+500 | Internal Server Error | Something went wrong with recreating the library item database.
+
+
 ## Get a Specific Library Item
 
 ```shell
