@@ -907,6 +907,29 @@ Attribute | Type | Description
 `metadata` | [File Metadata](#file-metadata) Object or null | The metadata of the audio file.
 
 
+## EBook File
+
+> EBook File
+
+```json
+{
+  "ino" : "9463162",
+  "metadata": {...},
+  "ebookFormat": "epub",
+  "addedAt": 1650621073750,
+  "updatedAt": 1650621110769
+}
+```
+
+Attribute | Type | Description
+--------- | ---- | -----------
+`ino` | String | The inode of the ebook file.
+`metadata` | [File Metadata](#file-metadata) Object | The metadata of the ebook file.
+`ebookFormat` | String | The ebook format of the ebook file.
+`addedAt` | Integer | The time (in ms since POSIX epoch) when the library file was added.
+`updatedAt` | Integer | The time (in ms since POSIX epoch) when the library file was last updated.
+
+
 ## Library File
 
 > Library File
