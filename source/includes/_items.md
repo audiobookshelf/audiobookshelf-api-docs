@@ -255,10 +255,36 @@ This endpoint retrieves a specific library item.
 
 Parameter | Description
 --------- | -----------
-ID | The ID of the library item to retrieve
+ID | The ID of the library item to retrieve.
 
 ### Response
 
 Status | Meaning | Description | Schema
 ------ | ------- | ----------- | ------
 200 | OK | Success | [Library Item](#library-item)
+
+
+## Delete a Library Item
+
+```shell
+curl -X DELETE "https://abs.example.com/api/items/li_8gch9ve09orgn4fdz8" \
+  -H "Authorization: Bearer exJhbGciOiJI6IkpXVCJ9.eyJ1c2Vyi5NDEyODc4fQ.ZraBFohS4Tg39NszY"
+```
+
+This endpoint deletes a library item from the database. No files are deleted.
+
+### HTTP Request
+
+`DELETE http://abs.example.com/api/items/<ID>`
+
+### URL Parameters
+
+Parameter | Description
+--------- | -----------
+ID | The ID of the library item to delete.
+
+### Response
+
+Status | Meaning | Description
+------ | ------- | -----------
+200 | OK | Success
