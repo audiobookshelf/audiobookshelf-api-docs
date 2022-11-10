@@ -1214,3 +1214,38 @@ Attribute | Type | Description
 #### Modified Attributes
 
 * `books` is an Array of [Library Item Expanded](#library-item-expanded).
+
+
+## Media Progress
+
+> Media Progress
+
+```json
+{
+  "id": "li_bufnnmp4y5o2gbbxfm-ep_lh6ko39pumnrma3dhv",
+  "libraryItemId": "li_bufnnmp4y5o2gbbxfm",
+  "episodeId": "ep_lh6ko39pumnrma3dhv",
+  "duration": 1454.18449,
+  "progress": 0.011193983371394644,
+  "currentTime": 16.278117,
+  "isFinished": false,
+  "hideFromContinueListening": false,
+  "lastUpdate": 1668120246620,
+  "startedAt": 1668120083771,
+  "finishedAt": null
+}
+```
+
+Attribute | Type | Description
+--------- | ---- | -----------
+`id` | String | The ID of the media progress. If the media progress is for a book, this will just be the `libraryItemId`. If for a podcast episode, it will be a hyphenated combination of the `libraryItemId` and `episodeId`.
+`libraryItemId` | String | The ID of the library item the media progress is of.
+`episodeId` | String or null | The ID of the podcast episode the media progress is of. Will be `null` if the progress is for a book.
+`duration` | Float | The total duration (in seconds) of the media. Will be `0` if the media was marked as finished without the user listening to it.
+`progress` | Float | The percentage completion progress of the media. Will be `1` if the media is finished.
+`currentTime` | Float | The current time (in seconds) of the user's progress. If the media has been marked as finished, this will be the time the user was at beforehand.
+`isFinished` | Boolean | Whether or not the media is finished.
+`hideFromContinueListening` | Boolean | Whether or not the media will be hidden from the "Continue Listening" shelf.
+`lastUpdate` | Integer | The time (in ms since POSIX epoch) when the media progress was last updated.
+`startedAt` | Integer | The time (in ms since POSIX epoch) when the media progress was created.
+`finishedAt` | Integer or null | The time (in ms since POSIX epoch) when the media was finished. Will be `null` if the media has is not finished.
