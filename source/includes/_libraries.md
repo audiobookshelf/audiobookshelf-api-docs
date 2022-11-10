@@ -196,7 +196,7 @@ This endpoint retrieves a specific library.
 
 Parameter | Description
 --------- | -----------
-ID | The ID of the library to retrieve
+ID | The ID of the library to retrieve.
 
 ### Response
 
@@ -254,7 +254,7 @@ This endpoint updates a specific library.
 
 Parameter | Description
 --------- | -----------
-ID | The ID of the library to retrieve
+ID | The ID of the library to update.
 
 ### Parameters
 
@@ -333,7 +333,7 @@ This endpoint deletes a specific library.
 
 Parameter | Description
 --------- | -----------
-ID | The ID of the library to retrieve
+ID | The ID of the library to delete.
 
 <aside class="notice">Deleting a library will remove all library items including any user progress for those items.</aside>
 
