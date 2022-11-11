@@ -22,10 +22,10 @@ Status | Meaning | Description
 500 | Internal Server Error | Something went wrong with recreating the library item database.
 
 
-## Get a Specific Library Item
+## Get a Library Item
 
 ```shell
-curl "https://abs.example.com/api/items/li_8gch9ve09orgn4fdz8" \
+curl "https://abs.example.com/api/items/li_8gch9ve09orgn4fdz8?expanded=1&include=progress,rssfeed,authors" \
   -H "Authorization: Bearer exJhbGciOiJI6IkpXVCJ9.eyJ1c2Vyi5NDEyODc4fQ.ZraBFohS4Tg39NszY"
 ```
 
@@ -35,8 +35,8 @@ curl "https://abs.example.com/api/items/li_8gch9ve09orgn4fdz8" \
 {
   "id": "li_8gch9ve09orgn4fdz8",
   "ino": "649641337522215266",
-  "libraryId": "main",
-  "folderId": "audiobooks",
+  "libraryId": "lib_c1u6t4p45c35rf0nzd",
+  "folderId": "fol_bev1zuxhb0j0s1wehr",
   "path": "/audiobooks/Terry Goodkind/Sword of Truth/Wizards First Rule",
   "relPath": "Terry Goodkind/Sword of Truth/Wizards First Rule",
   "isFile": false,
@@ -54,11 +54,18 @@ curl "https://abs.example.com/api/items/li_8gch9ve09orgn4fdz8" \
     "libraryItemId": "li_8gch9ve09orgn4fdz8",
     "metadata": {
       "title": "Wizards First Rule",
+      "titleIgnorePrefix": "Wizards First Rule",
       "subtitle": null,
       "authors": [
         {
           "id": "aut_z3leimgybl7uf3y4ab",
-          "name": "Terry Goodkind"
+          "asin": null,
+          "name": "Terry Goodkind",
+          "description": null,
+          "imagePath": null,
+          "relImagePath": null,
+          "addedAt": 1650621073750,
+          "updatedAt": 1650621073750
         }
       ],
       "narrators": [
@@ -68,7 +75,7 @@ curl "https://abs.example.com/api/items/li_8gch9ve09orgn4fdz8" \
         {
           "id": "ser_cabkj4jeu8be3rap4g",
           "name": "Sword of Truth",
-          "sequence": null
+          "sequence": "1"
         }
       ],
       "genres": [
@@ -81,10 +88,16 @@ curl "https://abs.example.com/api/items/li_8gch9ve09orgn4fdz8" \
       "isbn": null,
       "asin": "B002V0QK4C",
       "language": null,
-      "explicit": false
+      "explicit": false,
+      "authorName": "Terry Goodkind",
+      "authorNameLF": "Goodkind, Terry",
+      "narratorName": "Sam Tsoutsouvas",
+      "seriesName": "Sword of Truth"
     },
     "coverPath": "/audiobooks/Terry Goodkind/Sword of Truth/Wizards First Rule/cover.jpg",
-    "tags": [],
+    "tags": [
+      "Favorite"
+    ],
     "audioFiles": [
       {
         "index": 1,
@@ -189,6 +202,46 @@ curl "https://abs.example.com/api/items/li_8gch9ve09orgn4fdz8" \
         "title": "Terry Goodkind - SOT Bk01 - Wizards First Rule 02"
       }
     ],
+    "duration": 33854.905,
+    "size": 268824228,
+    "tracks": [
+      {
+        "index": 1,
+        "startOffset": 0,
+        "duration": 6004.6675,
+        "title": "Terry Goodkind - SOT Bk01 - Wizards First Rule 01.mp3",
+        "contentUrl": "/s/item/li_8gch9ve09orgn4fdz8/Terry Goodkind - SOT Bk01 - Wizards First Rule 01.mp3",
+        "mimeType": "audio/mpeg",
+        "metadata": {
+          "filename": "Terry Goodkind - SOT Bk01 - Wizards First Rule 01.mp3",
+          "ext": ".mp3",
+          "path": "/audiobooks/Terry Goodkind/Sword of Truth/Wizards First Rule/Terry Goodkind - SOT Bk01 - Wizards First Rule 01.mp3",
+          "relPath": "Terry Goodkind - SOT Bk01 - Wizards First Rule 01.mp3",
+          "size": 48037888,
+          "mtimeMs": 1632223180278,
+          "ctimeMs": 1645978261001,
+          "birthtimeMs": 0
+        }
+      },
+      {
+        "index": 2,
+        "startOffset": 6004.6675,
+        "duration": 5996.2785,
+        "title": "Terry Goodkind - SOT Bk01 - Wizards First Rule 02.mp3",
+        "contentUrl": "/s/item/li_8gch9ve09orgn4fdz8/Terry Goodkind - SOT Bk01 - Wizards First Rule 02.mp3",
+        "mimeType": "audio/mpeg",
+        "metadata": {
+          "filename": "Terry Goodkind - SOT Bk01 - Wizards First Rule 02.mp3",
+          "ext": ".mp3",
+          "path": "/audiobooks/Terry Goodkind/Sword of Truth/Wizards First Rule/Terry Goodkind - SOT Bk01 - Wizards First Rule 02.mp3",
+          "relPath": "Terry Goodkind - SOT Bk01 - Wizards First Rule 03.mp3",
+          "size": 47972352,
+          "mtimeMs": 1632223180281,
+          "ctimeMs": 1645978261001,
+          "birthtimeMs": 0
+        }
+      }
+    ],
     "missingParts": [],
     "ebookFile": null
   },
@@ -241,11 +294,26 @@ curl "https://abs.example.com/api/items/li_8gch9ve09orgn4fdz8" \
       "updatedAt": 1650621052495,
       "fileType": "image"
     }
-  ]
+  ],
+  "size": 268990279,
+  "userMediaProgress": {
+    "id": "li_8gch9ve09orgn4fdz8",
+    "libraryItemId": "li_8gch9ve09orgn4fdz8",
+    "episodeId": null,
+    "duration": 6004.6675,
+    "progress": 0.002710910637433297,
+    "currentTime": 16.278117,
+    "isFinished": false,
+    "hideFromContinueListening": false,
+    "lastUpdate": 1650621052495,
+    "startedAt": 1650621052495,
+    "finishedAt": null
+  },
+  "rssFeedUrl": null
 }
 ```
 
-This endpoint retrieves a specific library item.
+This endpoint retrieves a library item.
 
 ### HTTP Request
 
@@ -257,11 +325,28 @@ Parameter | Description
 --------- | -----------
 ID | The ID of the library item to retrieve.
 
+### Optional Query Parameters
+
+Parameter | Type | Description
+--------- | ---- | -----------
+`expanded` | Binary | Whether or not to return [Library Item Expanded](#library-item-expanded) instead. `0` for false, `1` for true.
+`include` | String | A comma separated list of what to include with the library item. The options are: `progress`, `rssfeed`, `authors` (for books), and `downloads` (for podcasts). `expanded` must be `1` for `include` to have an effect.
+`episode` | String | If requesting `progress` for a podcast, the episode ID to get progress for.
+
 ### Response
 
 Status | Meaning | Description | Schema
 ------ | ------- | ----------- | ------
-200 | OK | Success | [Library Item](#library-item)
+200 | OK | Success | [Library Item](#library-item) or, if `expanded` was requested, [Library Item Expanded](#library-item-expanded) with optional extra attributes (see below).
+
+#### Extra Attributes
+
+Attribute | Type | Description
+--------- | ---- | -----------
+`userMediaProgress` | [Media Progress](#media-progress) Object | If `progress` was requested, the user's progress for the book or podcast episode. If no progress exists, neither will this attribute.
+`rssFeedUrl` | String or null | If `rssfeed` was requested, the rebroadcasting RSS feed URL of the library item. Will be `null` if the RSS feed for this library item is disabled.
+`media.metadata.authors` | Array of [Author](#author) | If `authors` was requested, replaces the normally minified authors in the metadata.
+`episodesDownloading` | Array of [Podcast Episode Download](#podcast-episode-download) | If `downloads` was requested, the podcast episodes currently in the download queue.
 
 
 ## Delete a Library Item
