@@ -56,6 +56,45 @@ Attribute | Type | Description
 `autoScanCronExpression` | String or null | The [cron expression](https://en.wikipedia.org/wiki/Cron#CRON_expression) for when to automatically scan the library folders. If `null`, automatic scanning will be disabled.
 
 
+## Library Filter Data
+
+> Library Filter Data
+
+```json
+{
+  "authors": [
+    {
+      "id": "aut_z3leimgybl7uf3y4ab",
+      "name": "Terry Goodkind"
+    }
+  ],
+  "genres": [
+    "Fantasy"
+  ],
+  "tags": [],
+  "series": [
+    {
+      "id": "ser_cabkj4jeu8be3rap4g",
+      "name": "Sword of Truth"
+    }
+  ],
+  "narrators": [
+    "Sam Tsoutsouvas"
+  ],
+  "languages": []
+}
+```
+
+Attribute | Type | Description
+--------- | ---- | -----------
+`authors` | Array of [Author Minified](#author-minified) | The authors of books in the library.
+`genres` | Array of String | The genres of books in the library.
+`tags` | Array of String | The tags in the library.
+`series` | Array of [Series](#series) | The series in the library. The series will only have their `id` and `name`.
+`narrators` | Array of String | The narrators of books in the library.
+`languages` | Array of String | The languages of books in the library.
+
+
 ## Folder
 
 > Folder

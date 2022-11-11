@@ -1203,18 +1203,7 @@ ID | The ID of the library.
 
 Status | Meaning | Description | Schema
 ------ | ------- | ----------- | ------
-200 | OK | Success | See Below
-
-#### Response Schema
-
-Attribute | Type | Description
---------- | ---- | -----------
-`authors` | Array of [Author Minified](#author-minified) | The authors of books in the library.
-`genres` | Array of String | The genres of books in the library.
-`tags` | Array of String | The tags in the library.
-`series` | Array of [Series](#series) | The series in the library. The series will only have their `id` and `name`.
-`narrators` | Array of String | The narrators of books in the library.
-`languages` | Array of String | The languages of books in the library.
+200 | OK | Success | [Library Filter Data](#library-filter-data)
 
 
 ## Search a Library
