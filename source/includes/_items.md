@@ -860,3 +860,29 @@ Attribute | Type | Description
 --------- | ---- | -----------
 `success` | Boolean | Whether or not the cover was updated successfully.
 `cover` | String | The absolute path on the server of the library item's cover.
+
+
+## Remove a Library Item's Cover
+
+```shell
+curl -X DELETE "https://abs.example.com/api/items/li_8gch9ve09orgn4fdz8/cover" \
+  -H "Authorization: Bearer exJhbGciOiJI6IkpXVCJ9.eyJ1c2Vyi5NDEyODc4fQ.ZraBFohS4Tg39NszY"
+```
+
+This endpoint removes a library item's cover.
+
+### HTTP Request
+
+`DELETE http://abs.example.com/api/items/<ID>/cover`
+
+### URL Parameters
+
+Parameter | Description
+--------- | -----------
+ID | The ID of the library item.
+
+### Response
+
+Status | Meaning | Description
+------ | ------- | -----------
+200 | OK | Success
