@@ -700,3 +700,42 @@ Parameter | Type | Description
 Status | Meaning | Description | Schema
 ------ | ------- | ----------- | ------
 200 | OK | Success | [Library Item](#library-item) with a `updated` attribute, a Boolean, whether or not anything was actually changed.
+
+
+## Get a Library Item's Cover
+
+```shell
+curl "https://abs.example.com/api/items/li_8gch9ve09orgn4fdz8/cover" \
+  -H "Authorization: Bearer exJhbGciOiJI6IkpXVCJ9.eyJ1c2Vyi5NDEyODc4fQ.ZraBFohS4Tg39NszY" \
+  --output cover.webp
+```
+
+> The above command writes an image file.
+
+This endpoint retrieves a library item's cover.
+
+### HTTP Request
+
+`GET http://abs.example.com/api/items/<ID>/cover`
+
+### URL Parameters
+
+Parameter | Description
+--------- | -----------
+ID | The ID of the library item.
+
+### Optional Query Parameters
+
+Parameter | Type | Default | Description
+--------- | ---- | ------- | -----------
+`width` | Integer | `400` | The requested width of the cover image.
+`height` | Integer or null | `null` | The requested height of the cover image. If `null` the image is scaled proportionately.
+`format` | String | `webp` or `jpeg` | The requested format of the cover image. The default value depends on the request headers.
+
+### Response
+
+Status | Meaning | Description
+------ | ------- | -----------
+200 | OK | Success
+400 | Bad Request | There was an internal server error when attempting to read the cover file.
+404 | Not Found | Either no library item exists with the given ID, or the item does not have a cover.
