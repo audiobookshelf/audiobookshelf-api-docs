@@ -379,8 +379,8 @@ Status | Meaning | Description
 
 ```shell
 curl -X PATCH "https://abs.example.com/api/items/li_8gch9ve09orgn4fdz8/media" \
-  -H "Authorization: Bearer exJhbGciOiJI6IkpXVCJ9.eyJ1c2Vyi5NDEyODc4fQ.ZraBFohS4Tg39NszY"
-  -H "Content-Type: application/json"
+  -H "Authorization: Bearer exJhbGciOiJI6IkpXVCJ9.eyJ1c2Vyi5NDEyODc4fQ.ZraBFohS4Tg39NszY" \
+  -H "Content-Type: application/json" \
   -d '{"metadata": {"title": "Wizards First Rule"}}'
 ```
 
@@ -739,3 +739,72 @@ Status | Meaning | Description
 200 | OK | Success
 400 | Bad Request | There was an internal server error when attempting to read the cover file.
 404 | Not Found | Either no library item exists with the given ID, or the item does not have a cover.
+
+
+## Upload a Library Item Cover
+
+> Upload a cover image:
+
+```shell
+curl -X POST "https://abs.example.com/api/items/li_8gch9ve09orgn4fdz8/cover" \
+  -H "Authorization: Bearer exJhbGciOiJI6IkpXVCJ9.eyJ1c2Vyi5NDEyODc4fQ.ZraBFohS4Tg39NszY" \
+  -F cover=@cover.jpg
+```
+
+> Or download a cover image from a URL:
+
+```shell
+curl -X POST "https://abs.example.com/api/items/li_8gch9ve09orgn4fdz8/cover" \
+  -H "Authorization: Bearer exJhbGciOiJI6IkpXVCJ9.eyJ1c2Vyi5NDEyODc4fQ.ZraBFohS4Tg39NszY" \
+  -H "Content-Type: application/json" \
+  -d '{"url": "https://m.media-amazon.com/images/I/51xUwj8eKVL._SL500_.jpg"}'
+```
+
+> The above commands return JSON structured like this:
+
+```json
+{
+  "success": true,
+  "cover": "/metadata/items/li_8gch9ve09orgn4fdz8/cover.jpg"
+}
+```
+
+This endpoint uploads a cover for a library item or requests the server to download a cover from a specified URL.
+
+### HTTP Request
+
+`POST http://abs.example.com/api/items/<ID>/cover`
+
+### URL Parameters
+
+Parameter | Description
+--------- | -----------
+ID | The ID of the library item.
+
+### Form Parameters
+
+Parameter | Type | Description
+--------- | ---- | -----------
+`cover` | Image Binary Data | The cover to upload.
+
+### JSON Parameters
+
+Parameter | Type | Description
+--------- | ---- | -----------
+`url` | String | The URL to download the cover from.
+
+### Response
+
+Status | Meaning | Description | Schema
+------ | ------- | ----------- | ------
+200 | OK | Success | See below.
+400 | Bad Request | The request did not contain a file or URL.
+403 | Forbidden | The user does not have permission to upload.
+500 | Internal Server Error | Unknown error.
+
+#### Response Schema
+
+Parameter | Type | Description
+--------- | ---- | -----------
+`success` | Boolean | Whether or not the upload was successful.
+`cover` | String | The full path of the cover on the server.
