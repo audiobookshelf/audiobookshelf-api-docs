@@ -147,7 +147,7 @@ Status | Meaning | Description | Schema
 200 | OK | Success | Array of [Library](#library)
 
 
-## Get a Specific Library
+## Get a Library
 
 ```shell
 curl "https://abs.example.com/api/libraries/lib_c1u6t4p45c35rf0nzd" \
@@ -184,9 +184,7 @@ curl "https://abs.example.com/api/libraries/lib_c1u6t4p45c35rf0nzd" \
 }
 ```
 
-This endpoint retrieves a specific library.
-
-<aside class="notice">If the library is not accessible to the user a 404 status code is returned.</aside>
+This endpoint retrieves a library.
 
 ### HTTP Request
 
@@ -203,9 +201,10 @@ ID | The ID of the library to retrieve.
 Status | Meaning | Description | Schema
 ------ | ------- | ----------- | ------
 200 | OK | Success | [Library](#library)
+404 | Not Found | The ID does not match any library.
 
 
-## Update a Specific Library
+## Update a Library
 
 ```shell
 curl -X PATCH "https://abs.example.com/api/libraries/lib_c1u6t4p45c35rf0nzd" \
@@ -244,7 +243,7 @@ curl -X PATCH "https://abs.example.com/api/libraries/lib_c1u6t4p45c35rf0nzd" \
 }
 ```
 
-This endpoint updates a specific library.
+This endpoint updates a library.
 
 ### HTTP Request
 
@@ -286,7 +285,7 @@ Status | Meaning | Description | Schema
 200 | OK | Success | [Library](#library)
 
 
-## Delete a Specific Library
+## Delete a Library
 
 ```shell
 curl -X DELETE "https://abs.example.com/api/libraries/lib_5yvub9dqvctlcrza6h" \
@@ -323,7 +322,7 @@ curl -X DELETE "https://abs.example.com/api/libraries/lib_5yvub9dqvctlcrza6h" \
 }
 ```
 
-This endpoint deletes a specific library.
+This endpoint deletes a library.
 
 ### HTTP Request
 
