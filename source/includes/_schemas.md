@@ -768,6 +768,8 @@ Attribute | Type | Description
 
 ## Podcast Episode Enclosure
 
+> Podcast Episode Enclosure
+
 ```json
 {
   "url": "https://www.podtrac.com/pts/redirect.mp3/dovetail.prxu.org/_/126/1fadf1ad-aad8-449f-843b-6e8bb6949622/1_Pilot.mp3",
@@ -781,6 +783,39 @@ Attribute | Type | Description
 `url` | String | The URL where the podcast episode's audio file was downloaded from.
 `type` | String | The MIME type of the podcast episode's audio file.
 `length` | The size (in bytes) that was reported when downloading the podcast episode's audio file.
+
+
+## Podcast Episode Download
+
+> Podcast Episode Download
+
+```json
+{
+  "id": "epdl_pgv4d47j6dtqpk4r0v",
+  "episodeDisplayTitle": "2 - Glow Cloud",
+  "url": "https://www.podtrac.com/pts/redirect.mp3/dovetail.prxu.org/_/126/cb1dd91f-5d8d-42e9-ba22-14ff335d2cbb/2_Glow_Cloud.mp3",
+  "libraryItemId": "li_bufnnmp4y5o2gbbxfm",
+  "isDownloading": false,
+  "isFinished": false,
+  "failed": false,
+  "startedAt": null,
+  "createdAt": 1668122813409,
+  "finishedAt": null
+}
+```
+
+Attribute | Type | Description
+--------- | ---- | -----------
+`id` | String | The ID of the podcast episode download.
+`episodeDisplayTitle` | String | The display title of the episode to be downloaded.
+`url` | String | The URL from which to download the episode.
+`libraryItemId` | String | The ID of the library item the episode belongs to.
+`isDownloading` | Boolean | Whether or not the episode is actively being downloaded.
+`isFinished` | Boolean | Whether or not the episode has finished downloading.
+`failed` | Boolean | Whether or not the episode failed to download.
+`startedAt` | Integer or null | The time (in ms since POSIX epoch) when the episode started downloading. Will be `null` if it has not started downloading yet.
+`createdAt` | Integer | The time (in ms since POSIX epoch) when the podcast episode download request was created.
+`finishedAt` | Integer or null | The time (in ms since POSIX epoch) when the episode finished downloading. Will be `null` if it has not finished.
 
 
 ## Audio File
