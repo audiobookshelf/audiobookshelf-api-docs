@@ -150,7 +150,7 @@ Status | Meaning | Description | Schema
 ## Get a Library
 
 ```shell
-curl "https://abs.example.com/api/libraries/lib_c1u6t4p45c35rf0nzd" \
+curl "https://abs.example.com/api/libraries/lib_c1u6t4p45c35rf0nzd?include=filterdata" \
   -H "Authorization: Bearer exJhbGciOiJI6IkpXVCJ9.eyJ1c2Vyi5NDEyODc4fQ.ZraBFohS4Tg39NszY"
 ```
 
@@ -158,29 +158,54 @@ curl "https://abs.example.com/api/libraries/lib_c1u6t4p45c35rf0nzd" \
 
 ```json
 {
-  "id": "lib_c1u6t4p45c35rf0nzd",
-  "name": "Podcasts",
-  "folders": [
-    {
-      "id": "fol_bev1zuxhb0j0s1wehr",
-      "fullPath": "/podcasts",
-      "libraryId": "lib_c1u6t4p45c35rf0nzd",
-      "addedAt": 1650462940610
-    }
-  ],
-  "displayOrder": 4,
-  "icon": "database",
-  "mediaType": "podcast",
-  "provider": "itunes",
-  "settings": {
-    "coverAspectRatio": 1,
-    "disableWatcher": false,
-    "skipMatchingMediaWithAsin": false,
-    "skipMatchingMediaWithIsbn": false,
-    "autoScanCronExpression": null
+  "filterdata": {
+    "authors": [
+      {
+        "id": "aut_z3leimgybl7uf3y4ab",
+        "name": "Terry Goodkind"
+      }
+    ],
+    "genres": [
+      "Fantasy"
+    ],
+    "tags": [],
+    "series": [
+      {
+        "id": "ser_cabkj4jeu8be3rap4g",
+        "name": "Sword of Truth"
+      }
+    ],
+    "narrators": [
+      "Sam Tsoutsouvas"
+    ],
+    "languages": []
   },
-  "createdAt": 1650462940610,
-  "lastUpdate": 1650462940610
+  "issues": 0,
+  "library": {
+    "id": "lib_c1u6t4p45c35rf0nzd",
+    "name": "Podcasts",
+    "folders": [
+      {
+        "id": "fol_bev1zuxhb0j0s1wehr",
+        "fullPath": "/podcasts",
+        "libraryId": "lib_c1u6t4p45c35rf0nzd",
+        "addedAt": 1650462940610
+      }
+    ],
+    "displayOrder": 4,
+    "icon": "database",
+    "mediaType": "podcast",
+    "provider": "itunes",
+    "settings": {
+      "coverAspectRatio": 1,
+      "disableWatcher": false,
+      "skipMatchingMediaWithAsin": false,
+      "skipMatchingMediaWithIsbn": false,
+      "autoScanCronExpression": null
+    },
+    "createdAt": 1650462940610,
+    "lastUpdate": 1650462940610
+  }
 }
 ```
 
@@ -196,12 +221,26 @@ Parameter | Description
 --------- | -----------
 ID | The ID of the library to retrieve.
 
+### Optional Query Parameters
+
+Parameter | Type | Description
+--------- | ---- | -----------
+`include` | String | A comma separated list of what to include with the library item. The only current option is `filterdata`.
+
 ### Response
 
 Status | Meaning | Description | Schema
 ------ | ------- | ----------- | ------
-200 | OK | Success | [Library](#library)
-404 | Not Found | The ID does not match any library.
+200 | OK | Success | [Library](#library) or, if `filterdata` was requested, see below.
+404 | Not Found | The ID does not match any library. |
+
+#### Response Schema
+
+Attribute | Type | Description
+--------- | ---- | -----------
+`filterdata` | [Library Filter Data](#library-filter-data) Object | The library's filter data that can be used for displaying a filter list.
+`issues` | Integer | The number of library items in the library that have issues.
+`library` | [Library](#library) Object | The requested library.
 
 
 ## Update a Library
