@@ -808,3 +808,55 @@ Parameter | Type | Description
 --------- | ---- | -----------
 `success` | Boolean | Whether or not the upload was successful.
 `cover` | String | The full path of the cover on the server.
+
+
+## Update a Library Item's Cover
+
+```shell
+curl -X PATCH "https://abs.example.com/api/items/li_8gch9ve09orgn4fdz8/cover" \
+  -H "Authorization: Bearer exJhbGciOiJI6IkpXVCJ9.eyJ1c2Vyi5NDEyODc4fQ.ZraBFohS4Tg39NszY" \
+  -H "Content-Type: application/json" \
+  -d '{"cover": "/audiobooks/Terry Goodkind/Sword of Truth/Wizards First Rule/cover.jpg"}'
+```
+
+> The above command returns JSON structured like this:
+
+```json
+{
+  "success": true,
+  "cover": "/audiobooks/Terry Goodkind/Sword of Truth/Wizards First Rule/cover.jpg"
+}
+```
+
+This endpoint updates a library item's cover with a image already on the server.
+
+### HTTP Request
+
+`PATCH http://abs.example.com/api/items/<ID>/cover`
+
+### URL Parameters
+
+Parameter | Description
+--------- | -----------
+ID | The ID of the library item.
+
+### Parameters
+
+Parameter | Type | Description
+--------- | ---- | -----------
+`cover` | String | The absolute path of the image on the server to change the library item's cover to.
+
+### Response
+
+Status | Meaning | Description | Schema
+------ | ------- | ----------- | ------
+200 | OK | Success | See below.
+400 | Bad Request | The request did not contain a file or URL.
+500 | Internal Server Error | Either the submitted path is invalid, does not exist, is not an image, or the server failed to copy the image to the library item's directory.
+
+#### Response Schema
+
+Attribute | Type | Description
+--------- | ---- | -----------
+`success` | Boolean | Whether or not the cover was updated successfully.
+`cover` | String | The absolute path on the server of the library item's cover.
