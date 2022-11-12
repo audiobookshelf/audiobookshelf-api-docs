@@ -1751,3 +1751,45 @@ Status | Meaning | Description | Schema
 ------ | ------- | ----------- | ------
 200 | OK | Success | [Library Item](#library-item)
 500 | Internal Server Error | The library item's media type must be `book` for this endpoint.
+
+
+## Scan a Library Item
+
+```shell
+curl "https://abs.example.com/api/items/li_bufnnmp4y5o2gbbxfm/scan" \
+  -H "Authorization: Bearer exJhbGciOiJI6IkpXVCJ9.eyJ1c2Vyi5NDEyODc4fQ.ZraBFohS4Tg39NszY"
+```
+
+> The above command returns JSON structured like this:
+
+```json
+{
+  "result": "UPDATED"
+}
+```
+
+This endpoint scans a library item's files for changes.
+
+### HTTP Request
+
+`GET http://abs.example.com/api/items/<ID>/scan`
+
+### URL Parameters
+
+Parameter | Description
+--------- | -----------
+ID | The ID of the library item.
+
+### Response
+
+Status | Meaning | Description | Schema
+------ | ------- | ----------- | ------
+200 | OK | Success | See below.
+403 | Forbidden | An admin user is required to scan a library item. |
+500 | Internal Server Error | Rescanning file library items is not yet supported. |
+
+#### Response Schema
+
+Attribute | Type | Description
+--------- | ---- | -----------
+`result` | String | The result of the scan operation. Can be `NOTHING`, `ADDED`, `UPDATED`, `REMOVED`, or `UPTODATE`.
