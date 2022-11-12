@@ -1793,3 +1793,79 @@ Status | Meaning | Description | Schema
 Attribute | Type | Description
 --------- | ---- | -----------
 `result` | String | The result of the scan operation. Can be `NOTHING`, `ADDED`, `UPDATED`, `REMOVED`, or `UPTODATE`.
+
+
+## Get a Library Item's Tone Metadata Object
+
+```shell
+curl "https://abs.example.com/api/items/li_bufnnmp4y5o2gbbxfm/tone-object" \
+  -H "Authorization: Bearer exJhbGciOiJI6IkpXVCJ9.eyJ1c2Vyi5NDEyODc4fQ.ZraBFohS4Tg39NszY"
+```
+
+> The above command returns JSON structured like this:
+
+```json
+{
+  "Title": "Wizards First Rule",
+  "Album": "Wizards First Rule",
+  "TrackTotal": 2,
+  "Artist": "Terry Goodkind",
+  "AlbumArtist": "Terry Goodkind",
+  "Comment": "The masterpiece that started Terry Goodkind's New York Times bestselling epic Sword of Truth In the aftermath of the brutal murder of his father, a mysterious woman, Kahlan Amnell, appears in Richard Cypher's forest sanctuary seeking help...and more. His world, his very beliefs, are shattered when ancient debts come due with thundering violence. In a dark age it takes courage to live, and more than mere courage to challenge those who hold dominion, Richard and Kahlan must take up that challenge or become the next victims. Beyond awaits a bewitching land where even the best of their hearts could betray them. Yet, Richard fears nothing so much as what secrets his sword might reveal about his own soul. Falling in love would destroy them - for reasons Richard can't imagine and Kahlan dare not say. In their darkest hour, hunted relentlessly, tormented by treachery and loss, Kahlan calls upon Richard to reach beyond his sword - to invoke within himself something more noble. Neither knows that the rules of battle have just changed...or that their time has run out. Wizard's First Rule is the beginning. One book. One Rule. Witness the birth of a legend.",
+  "Description": "The masterpiece that started Terry Goodkind's New York Times bestselling epic Sword of Truth In the aftermath of the brutal murder of his father, a mysterious woman, Kahlan Amnell, appears in Richard Cypher's forest sanctuary seeking help...and more. His world, his very beliefs, are shattered when ancient debts come due with thundering violence. In a dark age it takes courage to live, and more than mere courage to challenge those who hold dominion, Richard and Kahlan must take up that challenge or become the next victims. Beyond awaits a bewitching land where even the best of their hearts could betray them. Yet, Richard fears nothing so much as what secrets his sword might reveal about his own soul. Falling in love would destroy them - for reasons Richard can't imagine and Kahlan dare not say. In their darkest hour, hunted relentlessly, tormented by treachery and loss, Kahlan calls upon Richard to reach beyond his sword - to invoke within himself something more noble. Neither knows that the rules of battle have just changed...or that their time has run out. Wizard's First Rule is the beginning. One book. One Rule. Witness the birth of a legend.",
+  "Narrator": "Sam Tsoutsouvas",
+  "Composer": "Sam Tsoutsouvas",
+  "MovementName": "Sword of Truth",
+  "Movement": "1",
+  "Genre": "Fantasy",
+  "Publisher": "Brilliance Audio",
+  "CoverFile": "/audiobooks/Terry Goodkind/Sword of Truth/Wizards First Rule/cover.jpg",
+  "PublishingDate": "01/01/2008",
+  "AdditionalFields": [
+    "ASIN=B002V0QK4C"
+  ]
+}
+```
+
+This endpoint returns a library item's tone metadata object.
+
+### HTTP Request
+
+`GET http://abs.example.com/api/items/<ID>/tone-object`
+
+### URL Parameters
+
+Parameter | Description
+--------- | -----------
+ID | The ID of the library item.
+
+### Response
+
+Status | Meaning | Description | Schema
+------ | ------- | ----------- | ------
+200 | OK | Success | See below.
+403 | Forbidden | An admin user is required to get a library item's tone metadata object. |
+500 | Internal Server Error | The library item has missing parts, does not have audio files, or is not a book. |
+
+#### Response Schema
+
+Book metadata that is `null` will not exist in the response object, except for the title which will be replaced by an empty string.
+
+Attribute | Type | Description
+--------- | ---- | -----------
+`Title` | String | The book's title.
+`Album` | String | The book's title.
+`TrackTotal` | Integer | The number of audio tracks for the book.
+`Artist` | String | The book's author.
+`AlbumArtist` | String | The book's author.
+`Comment` | String | The book's description.
+`Description` | String | The book's description.
+`Narrator` | String | The book's narrators.
+`Composer` | String | The book's narrators.
+`MovementName` | String | The book's first series.
+`Movement` | String | The sequence of the book in its first series.
+`Genre` | String | All of the book's genres `/` separated.
+`Publisher` | String | The book's publisher.
+`CoverFile` | String | The book's cover path.
+`PublishingDate` | String | January 1st of the book's published year.
+`AdditionalFields` | Array of String | Additional metadata fields. Those are currently ASIN and ISBN.
