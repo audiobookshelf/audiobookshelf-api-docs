@@ -804,7 +804,7 @@ Status | Meaning | Description | Schema
 
 #### Response Schema
 
-Parameter | Type | Description
+Attribute | Type | Description
 --------- | ---- | -----------
 `success` | Boolean | Whether or not the upload was successful.
 `cover` | String | The full path of the cover on the server.
@@ -1904,3 +1904,56 @@ Status | Meaning | Description
 200 | OK | Success
 403 | Forbidden | An admin user is required to update a library item's audio file metadata.
 500 | Internal Server Error | The library item has missing parts, does not have audio files, or is not a book.
+
+
+## Update a Library Item's Chapters
+
+```shell
+curl -X POST "https://abs.example.com/api/items/li_bufnnmp4y5o2gbbxfm/chapters" \
+  -H "Authorization: Bearer exJhbGciOiJI6IkpXVCJ9.eyJ1c2Vyi5NDEyODc4fQ.ZraBFohS4Tg39NszY" \
+  -H "Content-Type: application/json" \
+  -d '{"chapters": [{"id": 0, "start": 0, "end": 6004.6675, "title": "Terry Goodkind - SOT Bk01 - Wizards First Rule 01"}, {"id": 1, "start": 6004.6675, "end": 12000.946, "title": "Terry Goodkind - SOT Bk01 - Wizards First Rule 02"}]}'
+```
+
+> The above command returns JSON structured like this:
+
+```json
+{
+  "success": true,
+  "updated": false
+}
+```
+
+This endpoint updates a library item's chapters. This only applies to books.
+
+### HTTP Request
+
+`POST http://abs.example.com/api/items/<ID>/chapters`
+
+### URL Parameters
+
+Parameter | Description
+--------- | -----------
+ID | The ID of the library item.
+
+### Parameters
+
+Parameter | Type | Description
+--------- | ---- | -----------
+`chapters` | Array of [Book Chapter](#book-chapter) | The requested book chapters, in order.
+
+### Response
+
+Status | Meaning | Description | Schema
+------ | ------- | ----------- | ------
+200 | OK | Success | See below.
+400 | Bad Request | The provided chapter list must have a non-zero length. |
+403 | Forbidden | The user does not have permission to update a library item. |
+500 | Internal Server Error | The library item has missing parts, does not have audio files, or is not a book. |
+
+#### Response Schema
+
+Attribute | Type | Description
+--------- | ---- | -----------
+`success` | Boolean | Whether or not the update succeeded.
+`updated` | Boolean | Whether or not the book's chapters were actually changed.
