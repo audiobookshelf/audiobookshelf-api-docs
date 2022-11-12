@@ -27,7 +27,7 @@ Attribute | Type | Description
 `displayOrder` | Integer | Display position of the library in the list of libraries. Must be `>= 1`.  
 `icon` | String | The selected icon for the library. See [Library Icons](#library-icons) for a list of possible icons.
 `mediaType` | String | The type of media that the library contains. Will be `book` or `podcast`. (Read Only)
-`provider` | String | Perferred metadata provider for the library. See [Library Metadata Providers](#library-metadata-providers) for a list of possible providers.
+`provider` | String | Preferred metadata provider for the library. See [Library Metadata Providers](#library-metadata-providers) for a list of possible providers.
 `settings` | [Library Settings](#library-settings) Object | The settings for the library.
 `createdAt` | Integer | The time (in ms since POSIX epoch) when the library was created. (Read Only)
 `lastUpdate` | Integer | The time (in ms since POSIX epoch) when the library was last updated. (Read Only)
@@ -54,6 +54,45 @@ Attribute | Type | Description
 `skipMatchingMediaWithAsin` | Boolean | Whether or not to skip matching books that already have an ASIN.
 `skipMatchingMediaWithIsbn` | Boolean | Whether or not to skip matching books that already have an ISBN.
 `autoScanCronExpression` | String or null | The [cron expression](https://en.wikipedia.org/wiki/Cron#CRON_expression) for when to automatically scan the library folders. If `null`, automatic scanning will be disabled.
+
+
+## Library Filter Data
+
+> Library Filter Data
+
+```json
+{
+  "authors": [
+    {
+      "id": "aut_z3leimgybl7uf3y4ab",
+      "name": "Terry Goodkind"
+    }
+  ],
+  "genres": [
+    "Fantasy"
+  ],
+  "tags": [],
+  "series": [
+    {
+      "id": "ser_cabkj4jeu8be3rap4g",
+      "name": "Sword of Truth"
+    }
+  ],
+  "narrators": [
+    "Sam Tsoutsouvas"
+  ],
+  "languages": []
+}
+```
+
+Attribute | Type | Description
+--------- | ---- | -----------
+`authors` | Array of [Author Minified](#author-minified) | The authors of books in the library.
+`genres` | Array of String | The genres of books in the library.
+`tags` | Array of String | The tags in the library.
+`series` | Array of [Series](#series) | The series in the library. The series will only have their `id` and `name`.
+`narrators` | Array of String | The narrators of books in the library.
+`languages` | Array of String | The languages of books in the library.
 
 
 ## Folder
@@ -768,6 +807,8 @@ Attribute | Type | Description
 
 ## Podcast Episode Enclosure
 
+> Podcast Episode Enclosure
+
 ```json
 {
   "url": "https://www.podtrac.com/pts/redirect.mp3/dovetail.prxu.org/_/126/1fadf1ad-aad8-449f-843b-6e8bb6949622/1_Pilot.mp3",
@@ -781,6 +822,39 @@ Attribute | Type | Description
 `url` | String | The URL where the podcast episode's audio file was downloaded from.
 `type` | String | The MIME type of the podcast episode's audio file.
 `length` | The size (in bytes) that was reported when downloading the podcast episode's audio file.
+
+
+## Podcast Episode Download
+
+> Podcast Episode Download
+
+```json
+{
+  "id": "epdl_pgv4d47j6dtqpk4r0v",
+  "episodeDisplayTitle": "2 - Glow Cloud",
+  "url": "https://www.podtrac.com/pts/redirect.mp3/dovetail.prxu.org/_/126/cb1dd91f-5d8d-42e9-ba22-14ff335d2cbb/2_Glow_Cloud.mp3",
+  "libraryItemId": "li_bufnnmp4y5o2gbbxfm",
+  "isDownloading": false,
+  "isFinished": false,
+  "failed": false,
+  "startedAt": null,
+  "createdAt": 1668122813409,
+  "finishedAt": null
+}
+```
+
+Attribute | Type | Description
+--------- | ---- | -----------
+`id` | String | The ID of the podcast episode download.
+`episodeDisplayTitle` | String | The display title of the episode to be downloaded.
+`url` | String | The URL from which to download the episode.
+`libraryItemId` | String | The ID of the library item the episode belongs to.
+`isDownloading` | Boolean | Whether or not the episode is actively being downloaded.
+`isFinished` | Boolean | Whether or not the episode has finished downloading.
+`failed` | Boolean | Whether or not the episode failed to download.
+`startedAt` | Integer or null | The time (in ms since POSIX epoch) when the episode started downloading. Will be `null` if it has not started downloading yet.
+`createdAt` | Integer | The time (in ms since POSIX epoch) when the podcast episode download request was created.
+`finishedAt` | Integer or null | The time (in ms since POSIX epoch) when the episode finished downloading. Will be `null` if it has not finished.
 
 
 ## Audio File
@@ -904,7 +978,30 @@ Attribute | Type | Description
 `title` | String | The filename of the audio file the audio track belongs to.
 `contentUrl` | String | The URL on the serve of the audio file.
 `mimeType` | String | The MIME type of the audio file.
-`metadata` | [File Metadta](#file-metadata) Object or null | The metadata of the audio file.
+`metadata` | [File Metadata](#file-metadata) Object or null | The metadata of the audio file.
+
+
+## EBook File
+
+> EBook File
+
+```json
+{
+  "ino" : "9463162",
+  "metadata": {...},
+  "ebookFormat": "epub",
+  "addedAt": 1650621073750,
+  "updatedAt": 1650621110769
+}
+```
+
+Attribute | Type | Description
+--------- | ---- | -----------
+`ino` | String | The inode of the ebook file.
+`metadata` | [File Metadata](#file-metadata) Object | The metadata of the ebook file.
+`ebookFormat` | String | The ebook format of the ebook file.
+`addedAt` | Integer | The time (in ms since POSIX epoch) when the library file was added.
+`updatedAt` | Integer | The time (in ms since POSIX epoch) when the library file was last updated.
 
 
 ## Library File
@@ -1134,7 +1231,7 @@ Attribute | Type | Description
 
 Attribute | Type | Description
 --------- | ---- | -----------
-`squence` | String or null | The position in the series the book is.
+`sequence` | String or null | The position in the series the book is.
 
 
 ## Collection
@@ -1191,3 +1288,180 @@ Attribute | Type | Description
 #### Modified Attributes
 
 * `books` is an Array of [Library Item Expanded](#library-item-expanded).
+
+
+## Media Progress
+
+> Media Progress
+
+```json
+{
+  "id": "li_bufnnmp4y5o2gbbxfm-ep_lh6ko39pumnrma3dhv",
+  "libraryItemId": "li_bufnnmp4y5o2gbbxfm",
+  "episodeId": "ep_lh6ko39pumnrma3dhv",
+  "duration": 1454.18449,
+  "progress": 0.011193983371394644,
+  "currentTime": 16.278117,
+  "isFinished": false,
+  "hideFromContinueListening": false,
+  "lastUpdate": 1668120246620,
+  "startedAt": 1668120083771,
+  "finishedAt": null
+}
+```
+
+Attribute | Type | Description
+--------- | ---- | -----------
+`id` | String | The ID of the media progress. If the media progress is for a book, this will just be the `libraryItemId`. If for a podcast episode, it will be a hyphenated combination of the `libraryItemId` and `episodeId`.
+`libraryItemId` | String | The ID of the library item the media progress is of.
+`episodeId` | String or null | The ID of the podcast episode the media progress is of. Will be `null` if the progress is for a book.
+`duration` | Float | The total duration (in seconds) of the media. Will be `0` if the media was marked as finished without the user listening to it.
+`progress` | Float | The percentage completion progress of the media. Will be `1` if the media is finished.
+`currentTime` | Float | The current time (in seconds) of the user's progress. If the media has been marked as finished, this will be the time the user was at beforehand.
+`isFinished` | Boolean | Whether or not the media is finished.
+`hideFromContinueListening` | Boolean | Whether or not the media will be hidden from the "Continue Listening" shelf.
+`lastUpdate` | Integer | The time (in ms since POSIX epoch) when the media progress was last updated.
+`startedAt` | Integer | The time (in ms since POSIX epoch) when the media progress was created.
+`finishedAt` | Integer or null | The time (in ms since POSIX epoch) when the media was finished. Will be `null` if the media has is not finished.
+
+
+## Playback Session
+
+> Playback Session
+
+```json
+{
+  "id": "play_c786zm3qtjz6bd5q3n",
+  "userId": "root",
+  "libraryId": "lib_p9wkw2i85qy9oltijt",
+  "libraryItemId": "li_bufnnmp4y5o2gbbxfm",
+  "episodeId": "ep_lh6ko39pumnrma3dhv",
+  "mediaType": "podcast",
+  "mediaMetadata": {...},
+  "chapters": [],
+  "displayTitle": "1 - Pilot",
+  "displayAuthor": "Night Vale Presents",
+  "coverPath": "/metadata/items/li_bufnnmp4y5o2gbbxfm/cover.jpg",
+  "duration": 1454.18449,
+  "playMethod": 0,
+  "mediaPlayer": "unknown",
+  "deviceInfo": {...},
+  "date": "2022-11-11",
+  "dayOfWeek": "Friday",
+  "timeListening": 0,
+  "startTime": 0,
+  "currentTime": 0,
+  "startedAt": 1668206493239,
+  "updatedAt": 1668206493239
+}
+```
+
+> Playback Session Expanded
+
+```json
+{
+  "id": "play_c786zm3qtjz6bd5q3n",
+  "userId": "root",
+  "libraryId": "lib_p9wkw2i85qy9oltijt",
+  "libraryItemId": "li_bufnnmp4y5o2gbbxfm",
+  "episodeId": "ep_lh6ko39pumnrma3dhv",
+  "mediaType": "podcast",
+  "mediaMetadata": {...},
+  "chapters": [],
+  "displayTitle": "1 - Pilot",
+  "displayAuthor": "Night Vale Presents",
+  "coverPath": "/metadata/items/li_bufnnmp4y5o2gbbxfm/cover.jpg",
+  "duration": 1454.18449,
+  "playMethod": 0,
+  "mediaPlayer": "unknown",
+  "deviceInfo": {...},
+  "date": "2022-11-11",
+  "dayOfWeek": "Friday",
+  "timeListening": 0,
+  "startTime": 0,
+  "currentTime": 0,
+  "startedAt": 1668206493239,
+  "updatedAt": 1668206493239,
+  "audioTracks": [...],
+  "videoTrack": null,
+  "libraryItem": {...}
+}
+```
+
+Attribute | Type | Description
+--------- | ---- | -----------
+`id` | String | The ID of the playback session.
+`userId` | String | The ID of the user the playback session is for.
+`libraryId` | String | The ID of the library that contains the library item.
+`libraryItemId` | String | The ID of the library item.
+`episodeId` | String or null | The ID of the podcast episode. Will be `null` if this playback session was started without an episode ID.
+`mediaType` | String | The media type of the library item. Will be `book` or `podcast`.
+`mediaMetadata` | [Book Metadata](#book-metadata) or [Podcast Metadata](#podcast-metadata) Object | The metadata of the library item's media.
+`chapters` | Array of [Book Chapter](#book-chapter) | If the library item is a book, the chapters it contains.
+`displayTitle` | String | The title of the playing item to show to the user.
+`displayAuthor` | String | The author of the playing item to show to the user.
+`coverPath` | String | The cover path of the library item's media.
+`duration` | Float | The total duration (in seconds) of the playing item.
+`playMethod` | [Play Method](#play-method) Enumerated Integer | What play method the playback session is using. See below for values.
+`mediaPlayer` | String | The given media player when the playback session was requested.
+`deviceInfo` | [Device Info](#device-info) Object | The given device info when the playback session was requested.
+`day` | String | The day (in the format YYYY-MM-DD) the playback session was started.
+`dayOfWeek` | String | The day of the week the playback session was started.
+`timeListening` | Float | The amount of time (in seconds) the user has spent listening using this playback session.
+`currentTime` | Float | The current time (in seconds) of the playback position.
+`startedAt` | Integer | The time (in ms since POSIX epoch) when the playback session was started.
+`updatedAt` | Integer | The time (in ms since POSIX epoch) when the playback session was last updated.
+
+#### Play Method
+
+Value | Meaning
+----- | -------
+`0` | Direct Play
+`1` | Direct Stream
+`2` | Transcode
+`3` | Local
+
+### Playback Session Expanded
+
+#### Added Attributes
+
+Attribute | Type | Description
+--------- | ---- | -----------
+`audioTracks` | Array of [Audio Tracks](#audio-track) | The audio tracks that are being played with the playback session.
+`videoTrack` | Video Track Object or null | The video track that is being played with the playback session. Will be `null` if the playback session is for a book or podcast.
+`libraryItem` | [Library Item Expanded](#library-item-expanded) Object | The library item of the playback session.
+
+
+## Device Info
+
+> Device Info
+
+```json
+{
+  "ipAddress": "192.168.1.118",
+  "browserName": "Firefox",
+  "browserVersion": "106.0",
+  "osName": "Linux",
+  "osVersion": "x86_64",
+  "deviceType": null,
+  "manufacturer": null,
+  "model": null,
+  "sdkVersion": null,
+  "serverVersion": "2.2.2"
+}
+```
+
+Any attributes with a `null` value will be filtered out in responses.
+
+Attribute | Type | Description
+--------- | ---- | -----------
+`ipAddress` | String or null | The IP address that the request came from.
+`browserName` | String or null | The browser name, taken from the user agent.
+`browserVersion` | String or null | The browser version, taken from the user agent.
+`osName` | String or null | The name of OS, taken from the user agent.
+`osVersion` | String or null | The version of the OS, taken from the user agent.
+`deviceType` | String or null | The device type, taken from the user agent.
+`manufacturer` | String or null | The client device's manufacturer, as provided in the request.
+`model` | String or null | The client device's model, as provided in the request.
+`sdkVersion` | Integer or null | For an Android device, the Android SDK version of the client, as provided in the request.
+`serverVersion` | String or null | The version of the server at the time of the request.
