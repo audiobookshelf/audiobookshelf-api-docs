@@ -1430,3 +1430,38 @@ Attribute | Type | Description
 `audioTracks` | Array of [Audio Tracks](#audio-track) | The audio tracks that are being played with the playback session.
 `videoTrack` | Video Track Object or null | The video track that is being played with the playback session. Will be `null` if the playback session is for a book or podcast.
 `libraryItem` | [Library Item Expanded](#library-item-expanded) Object | The library item of the playback session.
+
+
+## Device Info
+
+> Device Info
+
+```json
+{
+  "ipAddress": "192.168.1.118",
+  "browserName": "Firefox",
+  "browserVersion": "106.0",
+  "osName": "Linux",
+  "osVersion": "x86_64",
+  "deviceType": null,
+  "manufacturer": null,
+  "model": null,
+  "sdkVersion": null,
+  "serverVersion": "2.2.2"
+}
+```
+
+Any attributes with a `null` value will be filtered out in responses.
+
+Attribute | Type | Description
+--------- | ---- | -----------
+`ipAddress` | String or null | The IP address that the request came from.
+`browserName` | String or null | The browser name, taken from the user agent.
+`browserVersion` | String or null | The browser version, taken from the user agent.
+`osName` | String or null | The name of OS, taken from the user agent.
+`osVersion` | String or null | The version of the OS, taken from the user agent.
+`deviceType` | String or null | The device type, taken from the user agent.
+`manufacturer` | String or null | The client device's manufacturer, as provided in the request.
+`model` | String or null | The client device's model, as provided in the request.
+`sdkVersion` | Integer or null | For an Android device, the Android SDK version of the client, as provided in the request.
+`serverVersion` | String or null | The version of the server at the time of the request.
