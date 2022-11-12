@@ -1199,3 +1199,293 @@ Attribute | Type | Description
 --------- | ---- | -----------
 `updated` | Boolean | Whether or not the library item was actually updated with new information.
 `libraryItem` | [Library Item Expanded](#library-item-expanded) Object | The updated library item.
+
+
+## Play a Library Item or Podcast Episode
+
+```shell
+curl -X POST "https://abs.example.com/api/items/li_bufnnmp4y5o2gbbxfm/play/ep_lh6ko39pumnrma3dhv" \
+  -H "Authorization: Bearer exJhbGciOiJI6IkpXVCJ9.eyJ1c2Vyi5NDEyODc4fQ.ZraBFohS4Tg39NszY" \
+  -H "Content-Type: application/json" \
+  -d '{"deviceInfo": {"clientVersion": "0.0.1"}, "supportedMimeTypes": ["audio/flac", "audio/mpeg", "audio/mp4"]}'
+```
+
+> The above command returns JSON structured like this:
+
+```json
+{
+  "id": "play_c786zm3qtjz6bd5q3n",
+  "userId": "root",
+  "libraryId": "lib_p9wkw2i85qy9oltijt",
+  "libraryItemId": "li_bufnnmp4y5o2gbbxfm",
+  "episodeId": "ep_lh6ko39pumnrma3dhv",
+  "mediaType": "podcast",
+  "mediaMetadata": {
+    "title": "Welcome to Night Vale",
+    "author": "Night Vale Presents",
+    "description": "\n      Twice-monthly community updates for the small desert town of Night Vale, where every conspiracy theory is true. Turn on your radio and hide. Never listened before? It's an ongoing radio show. Start with the current episode, and you'll catch on in no time. Or, go right to Episode 1 if you wanna binge-listen.\n    ",
+    "releaseDate": "2022-10-20T19:00:00Z",
+    "genres": [
+      "Science Fiction",
+      "Podcasts",
+      "Fiction"
+    ],
+    "feedUrl": "http://feeds.nightvalepresents.com/welcometonightvalepodcast",
+    "imageUrl": "https://is4-ssl.mzstatic.com/image/thumb/Podcasts125/v4/4a/31/35/4a3135d0-1fe7-a2d7-fb43-d182ec175402/mza_8232698753950666850.jpg/600x600bb.jpg",
+    "itunesPageUrl": "https://podcasts.apple.com/us/podcast/welcome-to-night-vale/id536258179?uo=4",
+    "itunesId": 536258179,
+    "itunesArtistId": 718704794,
+    "explicit": false,
+    "language": null
+  },
+  "chapters": [],
+  "displayTitle": "1 - Pilot",
+  "displayAuthor": "Night Vale Presents",
+  "coverPath": "/metadata/items/li_bufnnmp4y5o2gbbxfm/cover.jpg",
+  "duration": 1454.18449,
+  "playMethod": 0,
+  "mediaPlayer": "unknown",
+  "deviceInfo": {
+    "ipAddress": "192.168.1.118",
+    "clientVersion": "0.0.1",
+    "serverVersion": "2.2.2"
+  },
+  "date": "2022-11-11",
+  "dayOfWeek": "Friday",
+  "timeListening": 0,
+  "startTime": 0,
+  "currentTime": 0,
+  "startedAt": 1668206493239,
+  "updatedAt": 1668206493239,
+  "audioTracks": [
+    {
+      "index": 1,
+      "startOffset": 0,
+      "duration": 1454.18449,
+      "title": "1 - Pilot.mp3",
+      "contentUrl": "/s/item/li_bufnnmp4y5o2gbbxfm/1 - Pilot.mp3",
+      "mimeType": "audio/mpeg",
+      "metadata": {
+        "filename": "1 - Pilot.mp3",
+        "ext": ".mp3",
+        "path": "/podcasts/Welcome to Night Vale/1 - Pilot.mp3",
+        "relPath": "1 - Pilot.mp3",
+        "size": 23653735,
+        "mtimeMs": 1667326682557,
+        "ctimeMs": 1667326682557,
+        "birthtimeMs": 1667326679508
+      }
+    }
+  ],
+  "videoTrack": null,
+  "libraryItem": {
+    "id": "li_bufnnmp4y5o2gbbxfm",
+    "ino": "652",
+    "libraryId": "lib_p9wkw2i85qy9oltijt",
+    "folderId": "fol_crxarzs17jtw5k7ie9",
+    "path": "/podcasts/Welcome to Night Vale",
+    "relPath": "Welcome to Night Vale",
+    "isFile": false,
+    "mtimeMs": 1667326679508,
+    "ctimeMs": 1667326679508,
+    "birthtimeMs": 1667326662083,
+    "addedAt": 1667326662087,
+    "updatedAt": 1668157565937,
+    "lastScan": 1667327311529,
+    "scanVersion": "2.2.1",
+    "isMissing": false,
+    "isInvalid": false,
+    "mediaType": "podcast",
+    "media": {
+      "libraryItemId": "li_bufnnmp4y5o2gbbxfm",
+      "metadata": {
+        "title": "Welcome to Night Vale",
+        "titleIgnorePrefix": "Welcome to Night Vale",
+        "author": "Night Vale Presents",
+        "description": "\n      Twice-monthly community updates for the small desert town of Night Vale, where every conspiracy theory is true. Turn on your radio and hide. Never listened before? It's an ongoing radio show. Start with the current episode, and you'll catch on in no time. Or, go right to Episode 1 if you wanna binge-listen.\n    ",
+        "releaseDate": "2022-10-20T19:00:00Z",
+        "genres": [
+          "Science Fiction",
+          "Podcasts",
+          "Fiction"
+        ],
+        "feedUrl": "http://feeds.nightvalepresents.com/welcometonightvalepodcast",
+        "imageUrl": "https://is4-ssl.mzstatic.com/image/thumb/Podcasts125/v4/4a/31/35/4a3135d0-1fe7-a2d7-fb43-d182ec175402/mza_8232698753950666850.jpg/600x600bb.jpg",
+        "itunesPageUrl": "https://podcasts.apple.com/us/podcast/welcome-to-night-vale/id536258179?uo=4",
+        "itunesId": 536258179,
+        "itunesArtistId": 718704794,
+        "explicit": false,
+        "language": null
+      },
+      "coverPath": "/metadata/items/li_bufnnmp4y5o2gbbxfm/cover.jpg",
+      "tags": [],
+      "episodes": [
+        {
+          "libraryItemId": "li_bufnnmp4y5o2gbbxfm",
+          "id": "ep_lh6ko39pumnrma3dhv",
+          "index": 1,
+          "season": "",
+          "episode": "",
+          "episodeType": "full",
+          "title": "1 - Pilot",
+          "subtitle": "Pilot Episode. A new dog park opens in Night Vale. Carlos, a scientist, visits and discovers some interesting things. Seismic things. Plus, a helpful guide to surveillance helicopter-spotting. Weather: \"These and More Than These\" by Joseph Fink Music:...",
+          "description": "<div><br>Pilot Episode. A new dog park opens in Night Vale. Carlos, a scientist, visits and discovers some interesting things. Seismic things. Plus, a helpful guide to surveillance helicopter-spotting.<br><br></div><div><br>Weather: \"These and More Than These\" by Joseph Fink<br><br></div><div><br>Music: Disparition, disparition.info<br><br></div><div><br>Logo: Rob Wilson, silastom.com<br><br></div><div><br>Produced by Night Vale Presents. Written by Joseph Fink and Jeffrey Cranor. Narrated by Cecil Baldwin. More Info: welcometonightvale.com, and follow @NightValeRadio on Twitter or Facebook.<br><br></div>",
+          "enclosure": {
+            "url": "https://www.podtrac.com/pts/redirect.mp3/dovetail.prxu.org/_/126/1fadf1ad-aad8-449f-843b-6e8bb6949622/1_Pilot.mp3",
+            "type": "audio/mpeg",
+            "length": "20588611"
+          },
+          "pubDate": "Fri, 15 Jun 2012 12:00:00 -0000",
+          "audioFile": {
+            "index": 1,
+            "ino": "22587",
+            "metadata": {
+              "filename": "1 - Pilot.mp3",
+              "ext": ".mp3",
+              "path": "/podcasts/Welcome to Night Vale/1 - Pilot.mp3",
+              "relPath": "1 - Pilot.mp3",
+              "size": 23653735,
+              "mtimeMs": 1667326682557,
+              "ctimeMs": 1667326682557,
+              "birthtimeMs": 1667326679508
+            },
+            "addedAt": 1667326682605,
+            "updatedAt": 1667327311570,
+            "trackNumFromMeta": null,
+            "discNumFromMeta": null,
+            "trackNumFromFilename": null,
+            "discNumFromFilename": null,
+            "manuallyVerified": false,
+            "invalid": false,
+            "exclude": false,
+            "error": null,
+            "format": "MP2/3 (MPEG audio layer 2/3)",
+            "duration": 1454.18449,
+            "bitRate": 128000,
+            "language": null,
+            "codec": "mp3",
+            "timeBase": "1/14112000",
+            "channels": 2,
+            "channelLayout": "stereo",
+            "chapters": [],
+            "embeddedCoverArt": "mjpeg",
+            "metaTags": {
+              "tagAlbum": "Welcome to Night Vale",
+              "tagArtist": "Night Vale Presents",
+              "tagGenre": "Podcast",
+              "tagTitle": "1 - Pilot",
+              "tagDate": "2012",
+              "tagEncoder": "Lavf58.45.100"
+            },
+            "mimeType": "audio/mpeg"
+          },
+          "audioTrack": {
+            "index": 1,
+            "startOffset": 0,
+            "duration": 1454.18449,
+            "title": "1 - Pilot.mp3",
+            "contentUrl": "/s/item/li_bufnnmp4y5o2gbbxfm/1 - Pilot.mp3",
+            "mimeType": "audio/mpeg",
+            "metadata": {
+              "filename": "1 - Pilot.mp3",
+              "ext": ".mp3",
+              "path": "/podcasts/Welcome to Night Vale/1 - Pilot.mp3",
+              "relPath": "1 - Pilot.mp3",
+              "size": 23653735,
+              "mtimeMs": 1667326682557,
+              "ctimeMs": 1667326682557,
+              "birthtimeMs": 1667326679508
+            }
+          },
+          "publishedAt": 1339761600000,
+          "addedAt": 1667326679503,
+          "updatedAt": 1667428186431,
+          "duration": 1454.18449,
+          "size": 23653735
+        }
+      ],
+      "autoDownloadEpisodes": false,
+      "autoDownloadSchedule": "0 0 * * 1",
+      "lastEpisodeCheck": 1667326662087,
+      "maxEpisodesToKeep": 0,
+      "maxNewEpisodesToDownload": 3,
+      "size": 23653735
+    },
+    "libraryFiles": [
+      {
+        "ino": "22587",
+        "metadata": {
+          "filename": "1 - Pilot.mp3",
+          "ext": ".mp3",
+          "path": "/podcasts/Welcome to Night Vale/1 - Pilot.mp3",
+          "relPath": "1 - Pilot.mp3",
+          "size": 23653735,
+          "mtimeMs": 1667326682557,
+          "ctimeMs": 1667326682557,
+          "birthtimeMs": 1667326679508
+        },
+        "addedAt": 1667326682561,
+        "updatedAt": 1667326682561,
+        "fileType": "audio"
+      },
+      {
+        "ino": "10113",
+        "metadata": {
+          "filename": "cover.jpg",
+          "ext": ".jpg",
+          "path": "/podcasts/Welcome to Night Vale/cover.jpg",
+          "relPath": "cover.jpg",
+          "size": 52993,
+          "mtimeMs": 1667326662178,
+          "ctimeMs": 1667326662184,
+          "birthtimeMs": 1667326662090
+        },
+        "addedAt": 1667327311529,
+        "updatedAt": 1667327311529,
+        "fileType": "image"
+      }
+    ],
+    "size": 23706728
+  }
+}
+```
+
+This endpoint starts a playback session for a library item or podcast episode.
+
+### HTTP Request
+
+* `POST http://abs.example.com/api/items/<ID>/play`
+* `POST http://abs.example.com/api/items/<ID>/play/<EpisodeID>`
+
+### URL Parameters
+
+Parameter | Description
+--------- | -----------
+ID | The ID of the library item.
+EpisodeID | The ID of the podcast episode.
+
+### Parameters
+
+Parameter | Type | Default | Description
+--------- | ---- | ------- | -----------
+`deviceInfo` | [Device Info Parameters](#device-info-parameters) Object (See Below) | | Information about the device.
+`forceDirectPlay` | Boolean | `false` | Whether or not to force direct play of the library item.
+`forceTranscode` | Boolean | `false` | Whether or not to force the server to transcode the audio.
+`supportedMimeTypes` | Array of String | `[]` | The MIME types that are supported by the client. If the MIME type of the audio file is not in this list, the server will transcode it.
+`mediaPlayer` | String | `unknown` | The media player the client is using.
+
+#### Device Info Parameters
+
+Parameter | Type | Description
+--------- | ---- | -----------
+`clientVersion` | String | The version of the client.
+`manufacturer` | String | The manufacturer of the client device.
+`model` | String | The model of the client device.
+`sdkVersion` | Integer | For an Android client, the Android SDK version of the client.
+
+### Response
+
+Status | Meaning | Description | Schema
+------ | ------- | ----------- | ------
+200 | OK | Success | [Playback Session Expanded](#playback-session-expanded)
+404 | Not Found | The library item does not have any audio tracks to play. |
