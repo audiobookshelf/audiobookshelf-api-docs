@@ -2139,3 +2139,34 @@ Attribute | Type | Description
 `file.access` | String | When the audio file was last accessed.
 `file.path` | String | The parent path of the audio file.
 `file.name` | String | The filename of the audio file.
+
+
+## Batch Delete Library Items
+
+```shell
+curl -X POST "https://abs.example.com/api/items/batch/delete" \
+  -H "Authorization: Bearer exJhbGciOiJI6IkpXVCJ9.eyJ1c2Vyi5NDEyODc4fQ.ZraBFohS4Tg39NszY" \
+  -H "Content-Type: application/json" \
+  -d '{"libraryItemIds: ["li_bufnnmp4y5o2gbbxfm"]}'
+```
+
+This endpoint batch deletes library items from the database. No files are deleted.
+
+### HTTP Request
+
+`POST http://abs.example.com/api/items/batch/delete`
+
+### Parameters
+
+Parameter | Type | Description
+--------- | ---- | -----------
+`libraryItemIds` | Array of String | The IDs of library items to delete.
+
+### Response
+
+Status | Meaning | Description
+------ | ------- | -----------
+200 | OK | Success
+403 | Forbidden | The user does not have permission to delete library items.
+404 | Not Found | None of the IDs provided match any library items.
+500 | Internal Server Error | The `libraryItemIds` array must have a non-zero length.
