@@ -2037,3 +2037,105 @@ Status | Meaning | Description
 ------ | ------- | -----------
 200 | OK | Success
 500 | Internal Server Error | An admin user is required to close a RSS feed.
+
+
+## Tone Scan a Library Item
+
+```shell
+curl -X POST "https://abs.example.com/api/items/li_bufnnmp4y5o2gbbxfm/tone-scan/1" \
+  -H "Authorization: Bearer exJhbGciOiJI6IkpXVCJ9.eyJ1c2Vyi5NDEyODc4fQ.ZraBFohS4Tg39NszY"
+```
+
+> The above command returns JSON structured like this:
+
+```json
+{
+  "audio": {
+    "bitrate": 64,
+    "format": "MPEG Audio (Layer III)",
+    "formatShort": "MPEG",
+    "sampleRate": 22050,
+    "duration": 6004667,
+    "channels": {
+      "count": 2,
+      "description": "Joint Stereo"
+    },
+    "frames": {
+      "offset": 3857,
+      "length": 66381321
+    },
+    "metaFormat": [
+      "id3V23",
+      "id3V1"
+    ]
+  },
+  "meta": {
+    "album": "Sword of Truth",
+    "albumArtist": "Terry Goodkind",
+    "artist": "Terry Goodkind",
+    "composer": "Sam Tsoutsouvas",
+    "comment": "The masterpiece that started Terry Goodkind's New York Times bestselling epic Sword of Truth In the aftermath of the brutal murder of his father, a mysterious woman, Kahlan Amnell, appears in Richard Cypher's forest sanctuary seeking help...and more. His world, his very beliefs, are shattered when ancient debts come due with thundering violence. In a dark age it takes courage to live, and more than mere courage to challenge those who hold dominion, Richard and Kahlan must take up that challenge or become the next victims. Beyond awaits a bewitching land where even the best of their hearts could betray them. Yet, Richard fears nothing so much as what secrets his sword might reveal about his own soul. Falling in love would destroy them - for reasons Richard can't imagine and Kahlan dare not say. In their darkest hour, hunted relentlessly, tormented by treachery and loss, Kahlan calls upon Richard to reach beyond his sword - to invoke within himself something more noble. Neither knows that the rules of battle have just changed...or that their time has run out. Wizard's First Rule is the beginning. One book. One Rule. Witness the birth of a legend.",
+    "encoderSettings": "LAME 32bits version 3.99.5 (http://lame.sf.net)",
+    "genre": "Fantasy",
+    "recordingDate": "2008-01-01T00:00:00",
+    "title": "Wizards First Rule",
+    "trackNumber": 1,
+    "additionalFields": {
+      "ufid": "FID",
+      "narratedby": "ARRATEDBY",
+      "woas": "OAS"
+    }
+  },
+  "file": {
+    "size": 48037888,
+    "created": "2022-04-22T09:51:14.299+00:00",
+    "modified": "2022-04-22T09:51:14.299+00:00",
+    "accessed": "2022-04-22T09:51:14.299+00:00",
+    "path": "/audiobooks/Terry Goodkind/Sword of Truth/Wizards First Rule",
+    "name": "Terry Goodkind - SOT Bk01 - Wizards First Rule 01.mp3"
+  }
+}
+```
+
+This endpoint uses [tone](https://github.com/sandreas/tone) to scan a library item and returns the results.
+
+### HTTP Request
+
+`POST http://abs.example.com/api/items/<ID>/tone-scan/<Index?>`
+
+### URL Parameters
+
+Parameter | Type | Default | Description
+--------- | ---- | ------- | -----------
+ID | String | **Required** | The ID of the library item.
+Index | Integer | `1` | The index of the audio file to tone scan.
+
+### Response
+
+Status | Meaning | Description | Schema
+------ | ------- | ----------- | ------
+200 | OK | Success | See below.
+404 | Not Found | The library does not have any audio files to scan or the requested audio file index does not exist. |
+
+#### Response Schema
+
+See [tone](https://github.com/sandreas/tone) for details.
+
+Attribute | Type | Description
+--------- | ---- | -----------
+`audio.bitrate` | Integer | The bitrate of the audio file.
+`audio.format` | String | The format of the audio file.
+`audio.formatShort` | String | The short format of the audio file.
+`audio.duration` | Integer | The duration (in ms) of the audio file.
+`audio.channels.count` | Integer | The number of audio channels in the audio file.
+`audio.channels.description` | String | The description of the channel setup of the audio file.
+`audio.frames.offset` | Integer | The frame offset of the audio file.
+`audio.frames.length` | Integer | The frame length of the audio file.
+`audio.metaFormat` | Array of String | The metadata formats of the audio file.
+`meta` | Object | The metadata tags of the audio file.
+`file.size` | Integer | The size (in bytes) of the audio file.
+`file.created` | String | When the audio file was created.
+`file.modified` | String | When the audio file was last modified.
+`file.access` | String | When the audio file was last accessed.
+`file.path` | String | The parent path of the audio file.
+`file.name` | String | The filename of the audio file.
