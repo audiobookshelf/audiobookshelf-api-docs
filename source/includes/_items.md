@@ -2010,3 +2010,30 @@ Attribute | Type | Description
 `success` | Boolean | Whether or not the RSS feed was successfully opened.
 `error` | String | The error that occurred. Will only exist if `success` is `false`.
 `feedUrl` | String | The URL where the feed was opened. Will only exist if `success` is `true`.
+
+
+## Close a RSS Feed for a Library Item
+
+```shell
+curl -X POST "https://abs.example.com/api/items/li_bufnnmp4y5o2gbbxfm/close-feed" \
+  -H "Authorization: Bearer exJhbGciOiJI6IkpXVCJ9.eyJ1c2Vyi5NDEyODc4fQ.ZraBFohS4Tg39NszY"
+```
+
+This endpoint closes the RSS feed for a library item.
+
+### HTTP Request
+
+`POST http://abs.example.com/api/items/<ID>/close-feed`
+
+### URL Parameters
+
+Parameter | Description
+--------- | -----------
+ID | The ID of the library item.
+
+### Response
+
+Status | Meaning | Description
+------ | ------- | -----------
+200 | OK | Success
+500 | Internal Server Error | An admin user is required to close a RSS feed.
