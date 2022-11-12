@@ -1323,3 +1323,110 @@ Attribute | Type | Description
 `lastUpdate` | Integer | The time (in ms since POSIX epoch) when the media progress was last updated.
 `startedAt` | Integer | The time (in ms since POSIX epoch) when the media progress was created.
 `finishedAt` | Integer or null | The time (in ms since POSIX epoch) when the media was finished. Will be `null` if the media has is not finished.
+
+
+## Playback Session
+
+> Playback Session
+
+```json
+{
+  "id": "play_c786zm3qtjz6bd5q3n",
+  "userId": "root",
+  "libraryId": "lib_p9wkw2i85qy9oltijt",
+  "libraryItemId": "li_bufnnmp4y5o2gbbxfm",
+  "episodeId": "ep_lh6ko39pumnrma3dhv",
+  "mediaType": "podcast",
+  "mediaMetadata": {...},
+  "chapters": [],
+  "displayTitle": "1 - Pilot",
+  "displayAuthor": "Night Vale Presents",
+  "coverPath": "/metadata/items/li_bufnnmp4y5o2gbbxfm/cover.jpg",
+  "duration": 1454.18449,
+  "playMethod": 0,
+  "mediaPlayer": "unknown",
+  "deviceInfo": {...},
+  "date": "2022-11-11",
+  "dayOfWeek": "Friday",
+  "timeListening": 0,
+  "startTime": 0,
+  "currentTime": 0,
+  "startedAt": 1668206493239,
+  "updatedAt": 1668206493239
+}
+```
+
+> Playback Session Expanded
+
+```json
+{
+  "id": "play_c786zm3qtjz6bd5q3n",
+  "userId": "root",
+  "libraryId": "lib_p9wkw2i85qy9oltijt",
+  "libraryItemId": "li_bufnnmp4y5o2gbbxfm",
+  "episodeId": "ep_lh6ko39pumnrma3dhv",
+  "mediaType": "podcast",
+  "mediaMetadata": {...},
+  "chapters": [],
+  "displayTitle": "1 - Pilot",
+  "displayAuthor": "Night Vale Presents",
+  "coverPath": "/metadata/items/li_bufnnmp4y5o2gbbxfm/cover.jpg",
+  "duration": 1454.18449,
+  "playMethod": 0,
+  "mediaPlayer": "unknown",
+  "deviceInfo": {...},
+  "date": "2022-11-11",
+  "dayOfWeek": "Friday",
+  "timeListening": 0,
+  "startTime": 0,
+  "currentTime": 0,
+  "startedAt": 1668206493239,
+  "updatedAt": 1668206493239,
+  "audioTracks": [...],
+  "videoTrack": null,
+  "libraryItem": {...}
+}
+```
+
+Attribute | Type | Description
+--------- | ---- | -----------
+`id` | String | The ID of the playback session.
+`userId` | String | The ID of the user the playback session is for.
+`libraryId` | String | The ID of the library that contains the library item.
+`libraryItemId` | String | The ID of the library item.
+`episodeId` | String or null | The ID of the podcast episode. Will be `null` if this playback session was started without an episode ID.
+`mediaType` | String | The media type of the library item. Will be `book` or `podcast`.
+`mediaMetadata` | [Book Metadata](#book-metadata) or [Podcast Metadata](#podcast-metadata) Object | The metadata of the library item's media.
+`chapters` | Array of [Book Chapter](#book-chapter) | If the library item is a book, the chapters it contains.
+`displayTitle` | String | The title of the playing item to show to the user.
+`displayAuthor` | String | The author of the playing item to show to the user.
+`coverPath` | String | The cover path of the library item's media.
+`duration` | Float | The total duration (in seconds) of the playing item.
+`playMethod` | [Play Method](#play-method) Enumerated Integer | What play method the playback session is using. See below for values.
+`mediaPlayer` | String | The given media player when the playback session was requested.
+`deviceInfo` | [Device Info](#device-info) Object | The given device info when the playback session was requested.
+`day` | String | The day (in the format YYYY-MM-DD) the playback session was started.
+`dayOfWeek` | String | The day of the week the playback session was started.
+`timeListening` | Float | The amount of time (in seconds) the user has spent listening using this playback session.
+`currentTime` | Float | The current time (in seconds) of the playback position.
+`startedAt` | Integer | The time (in ms since POSIX epoch) when the playback session was started.
+`updatedAt` | Integer | The time (in ms since POSIX epoch) when the playback session was last updated.
+
+#### Play Method
+
+Value | Meaning
+----- | -------
+`0` | Direct Play
+`1` | Direct Stream
+`2` | Transcode
+`3` | Local
+
+### Playback Session Expanded
+
+#### Added Attributes
+
+Attribute | Type | Description
+--------- | ---- | -----------
+`audioTracks` | Array of [Audio Tracks](#audio-track) | The audio tracks that are being played with the playback session.
+`videoTrack` | Video Track Object or null | The video track that is being played with the playback session. Will be `null` if the playback session is for a book or podcast.
+`libraryItem` | [Library Item Expanded](#library-item-expanded) Object | The library item of the playback session.
