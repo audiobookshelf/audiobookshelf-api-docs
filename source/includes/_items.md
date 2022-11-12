@@ -615,7 +615,7 @@ ID | The ID of the library item.
 
 ### Parameters
 
-A library item's media can be either a [Book](#book-parameters) or [Podcast](#podcast-parameters) (see below). Check the library item's `mediaType` before updating it.
+A library item's media can be either a [Book Parameters](#book-parameters) or [Podcast Parameters](#podcast-parameters) object (see below). Check the library item's `mediaType` before updating it.
 
 #### Book Parameters
 
@@ -2170,3 +2170,52 @@ Status | Meaning | Description
 403 | Forbidden | The user does not have permission to delete library items.
 404 | Not Found | None of the IDs provided match any library items.
 500 | Internal Server Error | The `libraryItemIds` array must have a non-zero length.
+
+
+## Batch Update Library Items
+
+```shell
+curl -X POST "https://abs.example.com/api/items/batch/update" \
+  -H "Authorization: Bearer exJhbGciOiJI6IkpXVCJ9.eyJ1c2Vyi5NDEyODc4fQ.ZraBFohS4Tg39NszY" \
+  -H "Content-Type: application/json" \
+  -d '["id": , "mediaPayload": {"metadata": {"title": "Wizards First Rule"}}]'
+```
+
+> The above command returns JSON structured like this:
+
+```json
+{
+  "success": true,
+  "updates": 1
+}
+```
+
+This endpoint batch updates library items.
+
+### HTTP Request
+
+`POST http://abs.example.com/api/items/batch/update`
+
+### Parameters
+
+Provide an array of objects with the following parameters:
+
+Parameter | Type | Description
+--------- | ---- | -----------
+`id` | String | The ID of the library item to update.
+`mediaPayload` | [Book Parameters](#book-parameters) or [Podcast Parameters](#podcast-parameters) | See [Update a Library Item's Media](#update-a-library-item-39-s-media) for details.
+
+### Response
+
+Status | Meaning | Description | Schema
+------ | ------- | ----------- | ------
+200 | OK | Success | See below.
+403 | Forbidden | The user does not have permission to update library items. |
+500 | Internal Server Error | The provided array must have a non-zero length. |
+
+#### Response Schema
+
+Attribute | Type | Description
+--------- | ---- | -----------
+`success` | Boolean | Whether or not library items were updated successfully.
+`updates` | Integer | The number library items that were actually changed.
