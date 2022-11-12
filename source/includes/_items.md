@@ -2514,3 +2514,41 @@ Status | Meaning | Description | Schema
 ------ | ------- | ----------- | ------
 200 | OK | Success | Array of [Library Item Expanded](#library-item-expanded)
 403 | Forbidden | The `libraryItemIds` array must have a non-zero length. |
+
+
+## Batch Quick Match Library Items
+
+```shell
+curl -X POST "https://abs.example.com/api/items/batch/quickmatch" \
+  -H "Authorization: Bearer exJhbGciOiJI6IkpXVCJ9.eyJ1c2Vyi5NDEyODc4fQ.ZraBFohS4Tg39NszY" \
+  -H "Content-Type: application/json" \
+  -d '{"options": {"provider": "openlibrary"}, "libraryItemIds: ["li_8gch9ve09orgn4fdz8"]}'
+```
+
+This endpoint batch matches library items using quick match. Quick match populates empty book details and the cover with the first book result. Does not overwrite existing details unless the "Prefer matched metadata" server setting is enabled or the `overrideDefaults` parameter is `true`.
+
+### HTTP Request
+
+`POST http://abs.example.com/api/items/batch/quickmatch`
+
+### Parameters
+
+Parameter | Type | Description
+--------- | ---- | -----------
+`options` | [Options Parameters](#options-parameters) Object (See Below) | The options to use when quick matching.
+`libraryItemIds` | Array of String | The IDs of library items to quick match.
+
+#### Options Parameters
+
+Parameter | Type | Default | Description
+--------- | ---- | ------- | -----------
+`provider` | String | `google` | The metadata provider to search. See [Library Metadata Providers](#library-metadata-providers) for a list of options.
+`overrideDefaults` | Boolean | `false` | Whether or not to override the existing book details and cover. This will be `true` if the "Prefer matched metadata" server setting is enabled.
+
+### Response
+
+Status | Meaning | Description
+------ | ------- | -----------
+200 | OK | Success
+403 | Forbidden | An admin user is required to quick match library items.
+500 | Internal Server Error | The `libraryItemIds` array must have a non-zero length.
