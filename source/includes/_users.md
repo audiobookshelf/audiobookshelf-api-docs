@@ -946,3 +946,71 @@ The keys of this object are each day (in the format YYYY-MM-DD) when the user li
 #### Day of Week Totals
 
 The keys of this object are each day of the week. The values are the total time (in seconds, Integer) the user listened to library items on that day of the week.
+
+
+## Purge a User's Media Progress
+
+```shell
+curl -X POST "https://abs.example.com/api/users/root/purge-media-progress" \
+  -H "Authorization: Bearer exJhbGciOiJI6IkpXVCJ9.eyJ1c2Vyi5NDEyODc4fQ.ZraBFohS4Tg39NszY"
+```
+
+> The above command returns JSON structured like this:
+
+```json
+{
+  "id": "root",
+  "username": "root",
+  "type": "root",
+  "token": "exJhbGciOiJI6IkpXVCJ9.eyJ1c2Vyi5NDEyODc4fQ.ZraBFohS4Tg39NszY",
+  "mediaProgress": [],
+  "seriesHideFromContinueListening": [],
+  "bookmarks": [],
+  "isActive": true,
+  "isLocked": false,
+  "lastSeen": 1667687240810,
+  "createdAt": 1666569607117,
+  "settings": {
+    "mobileOrderBy": "recent",
+    "mobileOrderDesc": true,
+    "mobileFilterBy": "all",
+    "orderBy": "media.metadata.title",
+    "orderDesc": false,
+    "filterBy": "all",
+    "playbackRate": 1,
+    "bookshelfCoverSize": 120,
+    "collapseSeries": false
+  },
+  "permissions": {
+    "download": true,
+    "update": true,
+    "delete": true,
+    "upload": true,
+    "accessAllLibraries": true,
+    "accessAllTags": true,
+    "accessExplicitContent": true
+  },
+  "librariesAccessible": [],
+  "itemTagsAccessible": []
+}
+```
+
+This endpoint removes the user's media progress for library items that no longer exist.
+
+### HTTP Request
+
+`POST http://abs.example.com/api/users/<ID>/purge-media-progress`
+
+### URL Parameters
+
+Parameter | Description
+--------- | -----------
+ID | The ID of the user.
+
+### Response
+
+Status | Meaning | Description | Schema
+------ | ------- | ----------- | ------
+200 | OK | Success | [User with Progress Details](#user-with-progress-details)
+403 | Forbidden | Only the root user can purge the root user's media progress. |
+404 | Not Found | No user with the provided ID exists. |
