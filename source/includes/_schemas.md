@@ -1540,3 +1540,30 @@ Attribute | Type | Description
 `playbackRate` | Float | What speed to play items.
 `bookshelfCoverSize` | Integer | What size to display covers at.
 `collapseSeries` | Boolean | Whether or not to collapse series when viewing library items.
+
+
+## User Permissions
+
+> User Permissions
+
+```json
+{
+  "download": true,
+  "update": true,
+  "delete": true,
+  "upload": true,
+  "accessAllLibraries": true,
+  "accessAllTags": true,
+  "accessExplicitContent": true
+}
+```
+
+Attribute | Type | Description
+--------- | ---- | -----------
+`download` | Boolean | Whether or not the user can download items to the server.
+`update` | Boolean | Whether or not the user can update library items.
+`delete` | Boolean | Whether or not the user can delete library items.
+`upload` | Boolean | Whether or not the user can upload items to the server.
+`accessAllLibraries` | Boolean | Whether or not the user can access all libraries.
+`accessAllTags` | Boolean | Whether or not the user can access all tags.
+`accessExplicitContent` | Boolean | Whether or not the user can access explicit content.
