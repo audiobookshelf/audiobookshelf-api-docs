@@ -1385,6 +1385,7 @@ Attribute | Type | Description
 }
 ```
 
+<!-- PlaybackSession.toJSONForClient() -->
 > Playback Session Expanded
 
 ```json
@@ -1437,6 +1438,7 @@ Attribute | Type | Description
 `day` | String | The day (in the format YYYY-MM-DD) the playback session was started.
 `dayOfWeek` | String | The day of the week the playback session was started.
 `timeListening` | Float | The amount of time (in seconds) the user has spent listening using this playback session.
+`startTime` | Float | The time (in seconds) where the playback session started.
 `currentTime` | Float | The current time (in seconds) of the playback position.
 `startedAt` | Integer | The time (in ms since POSIX epoch) when the playback session was started.
 `updatedAt` | Integer | The time (in ms since POSIX epoch) when the playback session was last updated.
