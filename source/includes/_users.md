@@ -22,7 +22,7 @@ curl -X POST "https://abs.example.com/api/users" \
   "bookmarks": [],
   "isActive": true,
   "isLocked": false,
-  "lastSeen": 1667687240810,
+  "lastSeen": null,
   "createdAt": 1666569607117,
   "settings": {
     "mobileOrderBy": "recent",
@@ -111,3 +111,66 @@ Status | Meaning | Description | Schema
 200 | OK | Success | [User](#user)
 403 | Forbidden | The user does not have permission to create new users. |
 500 | Internal Server Error | Either the username provided is already taken, or the server failed to save the new user. |
+
+
+## Get All Users
+
+```shell
+curl "https://abs.example.com/api/users" \
+  -H "Authorization: Bearer exJhbGciOiJI6IkpXVCJ9.eyJ1c2Vyi5NDEyODc4fQ.ZraBFohS4Tg39NszY"
+```
+
+> The above command returns JSON structured like this:
+
+```json
+[
+  {
+    "id": "root",
+    "username": "root",
+    "type": "root",
+    "token": "exJhbGciOiJI6IkpXVCJ9.eyJ1c2Vyi5NDEyODc4fQ.ZraBFohS4Tg39NszY",
+    "mediaProgress": [],
+    "seriesHideFromContinueListening": [],
+    "bookmarks": [],
+    "isActive": true,
+    "isLocked": false,
+    "lastSeen": 1667687240810,
+    "createdAt": 1666569607117,
+    "settings": {
+      "mobileOrderBy": "recent",
+      "mobileOrderDesc": true,
+      "mobileFilterBy": "all",
+      "orderBy": "media.metadata.title",
+      "orderDesc": false,
+      "filterBy": "all",
+      "playbackRate": 1,
+      "bookshelfCoverSize": 120,
+      "collapseSeries": false
+    },
+    "permissions": {
+      "download": true,
+      "update": true,
+      "delete": true,
+      "upload": true,
+      "accessAllLibraries": true,
+      "accessAllTags": true,
+      "accessExplicitContent": true
+    },
+    "librariesAccessible": [],
+    "itemTagsAccessible": []
+  }
+]
+```
+
+This endpoint retrieves all users.
+
+### HTTP Request
+
+`GET http://abs.example.com/api/users`
+
+### Response
+
+Status | Meaning | Description | Schema
+------ | ------- | ----------- | ------
+200 | OK | Success | Array of [User with Progress Details](#user-with-progress-details)
+403 | Forbidden | An admin user is required to get all users. |
