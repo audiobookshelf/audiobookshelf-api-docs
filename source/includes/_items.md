@@ -737,8 +737,8 @@ Parameter | Type | Default | Description
 Status | Meaning | Description
 ------ | ------- | -----------
 200 | OK | Success
-400 | Bad Request | There was an internal server error when attempting to read the cover file.
 404 | Not Found | Either no library item exists with the given ID, or the item does not have a cover.
+500 | Internal Server Error | There was an error when attempting to read the cover file.
 
 
 ## Upload a Library Item Cover
@@ -2001,7 +2001,7 @@ Parameter | Type | Description
 Status | Meaning | Description | Schema
 ------ | ------- | ----------- | ------
 200 | OK | Success | See below.
-500 | Internal Server Error | An admin user is required to open a RSS feed. |
+403 | Forbidden | An admin user is required to open a RSS feed. |
 
 #### Response Schema
 

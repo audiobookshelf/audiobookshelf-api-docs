@@ -1310,6 +1310,26 @@ Attribute | Type | Description
 }
 ```
 
+> Media Progress with Media
+
+```json
+{
+  "id": "li_bufnnmp4y5o2gbbxfm-ep_lh6ko39pumnrma3dhv",
+  "libraryItemId": "li_bufnnmp4y5o2gbbxfm",
+  "episodeId": "ep_lh6ko39pumnrma3dhv",
+  "duration": 1454.18449,
+  "progress": 0.011193983371394644,
+  "currentTime": 16.278117,
+  "isFinished": false,
+  "hideFromContinueListening": false,
+  "lastUpdate": 1668120246620,
+  "startedAt": 1668120083771,
+  "finishedAt": null,
+  "media": {...},
+  "episode": {...}
+}
+```
+
 Attribute | Type | Description
 --------- | ---- | -----------
 `id` | String | The ID of the media progress. If the media progress is for a book, this will just be the `libraryItemId`. If for a podcast episode, it will be a hyphenated combination of the `libraryItemId` and `episodeId`.
@@ -1323,6 +1343,15 @@ Attribute | Type | Description
 `lastUpdate` | Integer | The time (in ms since POSIX epoch) when the media progress was last updated.
 `startedAt` | Integer | The time (in ms since POSIX epoch) when the media progress was created.
 `finishedAt` | Integer or null | The time (in ms since POSIX epoch) when the media was finished. Will be `null` if the media has is not finished.
+
+### Media Progress with Media
+
+#### Added Attributes
+
+Attribute | Type | Description
+--------- | ---- | -----------
+`media` | [Book Expanded](#book-expanded) or [Podcast Expanded](#podcast-expanded) Object | The media of the library item the media progress is for.
+`episode` | [Podcast Episode](#podcast-episode) | The podcast episode the media progress is for. Will only exist if the media progress is for a podcast episode.
 
 
 ## Playback Session
@@ -1356,6 +1385,7 @@ Attribute | Type | Description
 }
 ```
 
+<!-- PlaybackSession.toJSONForClient() -->
 > Playback Session Expanded
 
 ```json
@@ -1408,6 +1438,7 @@ Attribute | Type | Description
 `day` | String | The day (in the format YYYY-MM-DD) the playback session was started.
 `dayOfWeek` | String | The day of the week the playback session was started.
 `timeListening` | Float | The amount of time (in seconds) the user has spent listening using this playback session.
+`startTime` | Float | The time (in seconds) where the playback session started.
 `currentTime` | Float | The current time (in seconds) of the playback position.
 `startedAt` | Integer | The time (in ms since POSIX epoch) when the playback session was started.
 `updatedAt` | Integer | The time (in ms since POSIX epoch) when the playback session was last updated.
@@ -1465,3 +1496,192 @@ Attribute | Type | Description
 `model` | String or null | The client device's model, as provided in the request.
 `sdkVersion` | Integer or null | For an Android device, the Android SDK version of the client, as provided in the request.
 `serverVersion` | String or null | The version of the server at the time of the request.
+
+
+## User
+
+<!-- This is actually the User.toJSONForBrowser() method as User.toJSON() is not accessible to the API. -->
+> User
+
+```json
+{
+  "id": "root",
+  "username": "root",
+  "type": "root",
+  "token": "exJhbGciOiJI6IkpXVCJ9.eyJ1c2Vyi5NDEyODc4fQ.ZraBFohS4Tg39NszY",
+  "mediaProgress": [...],
+  "seriesHideFromContinueListening": [],
+  "bookmarks": [...],
+  "isActive": true,
+  "isLocked": false,
+  "lastSeen": 1668296147437,
+  "createdAt": 1666543632566,
+  "settings": {...},
+  "permissions": {...},
+  "librariesAccessible": [...],
+  "itemTagsAccessible": [...]
+}
+```
+
+<!-- ApiRouter.userJsonWithItemProgressDetails() -->
+> User with Progress Details
+
+```json
+{
+  "id": "root",
+  "username": "root",
+  "type": "root",
+  "token": "exJhbGciOiJI6IkpXVCJ9.eyJ1c2Vyi5NDEyODc4fQ.ZraBFohS4Tg39NszY",
+  "mediaProgress": [...],
+  "seriesHideFromContinueListening": [],
+  "bookmarks": [...],
+  "isActive": true,
+  "isLocked": false,
+  "lastSeen": 1668296147437,
+  "createdAt": 1666543632566,
+  "settings": {...},
+  "permissions": {...},
+  "librariesAccessible": [...],
+  "itemTagsAccessible": [...]
+}
+```
+
+<!-- User.toJSONForPublic() -->
+> User with Session and Most Recent Progress
+
+```json
+{
+  "id": "root",
+  "username": "root",
+  "type": "root",
+  "session": null,
+  "mostRecent": {...},
+  "lastSeen": 1668296147437,
+  "createdAt": 1666543632566
+}
+```
+
+Attribute | Type | Description
+--------- | ---- | -----------
+`id` | String | The ID of the user. Only the root user has the `root` ID.
+`username` | String | The username of the user.
+`type` | String | The type of the user. Will be `root`, `guest`, `user`, or `admin`. There will be only one root user which is created when the server first starts.
+`token` | String | The authentication token of the user.
+`mediaProgress` | Array of [Media Progress](#media-progress) | The user's media progress.
+`seriesHideFromContinueListening` | Array of String | The IDs of series to hide from the user's "Continue Series" shelf.
+`bookmarks` | Array of [Audio Bookmark](#audio-bookmark) | The user's bookmarks.
+`isActive` | Boolean | Whether or not the user's account is active.
+`isLocked` | Boolean | Whether or not the user is locked.
+`lastSeen` | Integer or null | The time (in ms since POSIX epoch) when the user was last seen by the server. Will be `null` if the user has never logged in.
+`createdAt` | Integer | The time (in ms since POSIX epoch) when the user was created.
+`settings` | [User Settings](#user-settings) Object | The user's settings.
+`permissions` | [User Permissions](#user-permissions) Object | The user's permissions.
+`librariesAccessible` | Array of String | The IDs of libraries accessible to the user. An empty array means all libraries are accessible.
+`itemTagsAccessible` | Array of String | The tags accessible to the user. An empty array means all tags are accessible.
+
+### User with Progress Details
+
+#### Modified Attributes
+
+* `mediaProgress` is an Array of [Media Progress with Media](#media-progress-with-media)
+
+### User with Session and Most Recent Progress
+
+#### Removed Attributes
+
+* `token`
+* `mediaProgress`
+* `seriesHideFromContinueListening`
+* `bookmarks`
+* `isActive`
+* `isLocked`
+* `settings`
+* `permissions`
+* `librariesAccessible`
+* `itemTagsAccessible`
+
+#### Added Attributes
+
+Attribute | Type | Description
+--------- | ---- | -----------
+`session` | [Playback Session Expanded](#playback-session-expanded) Object or null | The user's currently playing session. Will be `null` if the user is not currently playing anything.
+`mostRecent` | [Media Progress with Media](#media-progress-with-media) Object or null | The user's most recent media progress. Will be `null` if the user has no media progress.
+
+
+## User Settings
+
+> User Settings
+
+```json
+{
+  "mobileOrderBy": "recent",
+  "mobileOrderDesc": true,
+  "mobileFilterBy": "all",
+  "orderBy": "media.metadata.title",
+  "orderDesc": false,
+  "filterBy": "all",
+  "playbackRate": 1,
+  "bookshelfCoverSize": 120,
+  "collapseSeries": false
+}
+```
+
+Attribute | Type | Description
+--------- | ---- | -----------
+`mobileOrderBy` | String | What to order library items by on mobile.
+`mobileOrderDesc` | Boolean | Whether or not to reverse the sort order on mobile.
+`mobileFilterBy` | String | What to filter library items by on mobile.
+`orderBy` | String | What to order library items by.
+`orderDesc` | Boolean | Whether or not to reverse the sort order.
+`filterBy` | String | What to filter library items by.
+`playbackRate` | Float | What speed to play items.
+`bookshelfCoverSize` | Integer | What size to display covers at.
+`collapseSeries` | Boolean | Whether or not to collapse series when viewing library items.
+
+
+## User Permissions
+
+> User Permissions
+
+```json
+{
+  "download": true,
+  "update": true,
+  "delete": true,
+  "upload": true,
+  "accessAllLibraries": true,
+  "accessAllTags": true,
+  "accessExplicitContent": true
+}
+```
+
+Attribute | Type | Description
+--------- | ---- | -----------
+`download` | Boolean | Whether or not the user can download items to the server.
+`update` | Boolean | Whether or not the user can update library items.
+`delete` | Boolean | Whether or not the user can delete library items.
+`upload` | Boolean | Whether or not the user can upload items to the server.
+`accessAllLibraries` | Boolean | Whether or not the user can access all libraries.
+`accessAllTags` | Boolean | Whether or not the user can access all tags.
+`accessExplicitContent` | Boolean | Whether or not the user can access explicit content.
+
+
+## Audio Bookmark
+
+> Audio Bookmark
+
+```json
+{
+  "libraryItemId": "li_8gch9ve09orgn4fdz8",
+  "title": "the good part",
+  "time": 16.278117,
+  "createdAt": 1668120083771
+}
+```
+
+Attribute | Type | Description
+--------- | ---- | -----------
+`libraryItemId` | String | The ID of the library item the bookmark is for.
+`title` | String | The title of the bookmark.
+`time` | Float | The time (in seconds) the bookmark is at in the book.
+`createdAt` | Integer | The time (in ms since POSIX epoch) when the bookmark was created.
