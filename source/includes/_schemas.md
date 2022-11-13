@@ -1544,6 +1544,21 @@ Attribute | Type | Description
 }
 ```
 
+<!-- User.toJSONForPublic() -->
+> User with Session and Most Recent Progress
+
+```json
+{
+  "id": "root",
+  "username": "root",
+  "type": "root",
+  "session": null,
+  "mostRecent": {...},
+  "lastSeen": 1668296147437,
+  "createdAt": 1666543632566
+}
+```
+
 Attribute | Type | Description
 --------- | ---- | -----------
 `id` | String | The ID of the user. Only the root user has the `root` ID.
@@ -1567,6 +1582,28 @@ Attribute | Type | Description
 #### Modified Attributes
 
 * `mediaProgress` is an Array of [Media Progress with Media](#media-progress-with-media)
+
+### User with Session and Most Recent Progress
+
+#### Removed Attributes
+
+* `token`
+* `mediaProgress`
+* `seriesHideFromContinueListening`
+* `bookmarks`
+* `isActive`
+* `isLocked`
+* `settings`
+* `permissions`
+* `librariesAccessible`
+* `itemTagsAccessible`
+
+#### Added Attributes
+
+Attribute | Type | Description
+--------- | ---- | -----------
+`session` | [Playback Session Expanded](#playback-session-expanded) Object or null | The user's currently playing session. Will be `null` if the user is not currently playing anything.
+`mostRecent` | [Media Progress with Media](#media-progress-with-media) Object or null | The user's most recent media progress. Will be `null` if the user has no media progress.
 
 
 ## User Settings
