@@ -1351,7 +1351,7 @@ Attribute | Type | Description
 Attribute | Type | Description
 --------- | ---- | -----------
 `media` | [Book Expanded](#book-expanded) or [Podcast Expanded](#podcast-expanded) Object | The media of the library item the media progress is for.
-`episode` | [Podcast Episode](#podcast-episode) | The podcast episode the media progress is for. Will not exist if the media progress is for a book.
+`episode` | [Podcast Episode](#podcast-episode) | The podcast episode the media progress is for. Will only exist if the media progress is for a podcast episode.
 
 
 ## Playback Session
@@ -1521,6 +1521,29 @@ Attribute | Type | Description
 }
 ```
 
+<!-- ApiRouter.userJsonWithItemProgressDetails() -->
+> User with Progress Details
+
+```json
+{
+  "id": "root",
+  "username": "root",
+  "type": "root",
+  "token": "exJhbGciOiJI6IkpXVCJ9.eyJ1c2Vyi5NDEyODc4fQ.ZraBFohS4Tg39NszY",
+  "mediaProgress": [...],
+  "seriesHideFromContinueListening": [],
+  "bookmarks": [...],
+  "isActive": true,
+  "isLocked": false,
+  "lastSeen": 1668296147437,
+  "createdAt": 1666543632566,
+  "settings": {...},
+  "permissions": {...},
+  "librariesAccessible": [...],
+  "itemTagsAccessible": [...]
+}
+```
+
 Attribute | Type | Description
 --------- | ---- | -----------
 `id` | String | The ID of the user. Only the root user has the `root` ID.
@@ -1538,6 +1561,12 @@ Attribute | Type | Description
 `permissions` | [User Permissions](#user-permissions) Object | The user's permissions.
 `librariesAccessible` | Array of String | The IDs of libraries accessible to the user. An empty array means all libraries are accessible.
 `itemTagsAccessible` | Array of String | The tags accessible to the user. An empty array means all tags are accessible.
+
+### User with Progress Details
+
+#### Modified Attributes
+
+* `mediaProgress` is an Array of [Media Progress with Media](#media-progress-with-media)
 
 
 ## User Settings
