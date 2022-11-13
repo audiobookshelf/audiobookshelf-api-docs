@@ -1503,7 +1503,7 @@ Attribute | Type | Description
 `bookmarks` | Array of [Audio Bookmark](#audio-bookmark) | The user's bookmarks.
 `isActive` | Boolean | Whether or not the user's account is active.
 `isLocked` | Boolean | Whether or not the user is locked.
-`lastSeen` | Integer | The time (in ms since POSIX epoch) when the user was last seen by the server.
+`lastSeen` | Integer or null | The time (in ms since POSIX epoch) when the user was last seen by the server. Will be `null` if the user has never logged in.
 `createdAt` | Integer | The time (in ms since POSIX epoch) when the user was created.
 `settings` | [User Settings](#user-settings) Object | The user's settings.
 `permissions` | [User Permissions](#user-permissions) Object | The user's permissions.
