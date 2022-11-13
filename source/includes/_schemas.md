@@ -1509,3 +1509,34 @@ Attribute | Type | Description
 `permissions` | [User Permissions](#user-permissions) Object | The user's permissions.
 `librariesAccessible` | Array of String | The IDs of libraries accessible to the user. An empty array means all libraries are accessible.
 `itemTagsAccessible` | Array of String | The tags accessible to the user. An empty array means all tags are accessible.
+
+
+## User Settings
+
+> User Settings
+
+```json
+{
+  "mobileOrderBy": "recent",
+  "mobileOrderDesc": true,
+  "mobileFilterBy": "all",
+  "orderBy": "media.metadata.title",
+  "orderDesc": false,
+  "filterBy": "all",
+  "playbackRate": 1,
+  "bookshelfCoverSize": 120,
+  "collapseSeries": false
+}
+```
+
+Attribute | Type | Description
+--------- | ---- | -----------
+`mobileOrderBy` | String | What to order library items by on mobile.
+`mobileOrderDesc` | Boolean | Whether or not to reverse the sort order on mobile.
+`mobileFilterBy` | String | What to filter library items by on mobile.
+`orderBy` | String | What to order library items by.
+`orderDesc` | Boolean | Whether or not to reverse the sort order.
+`filterBy` | String | What to filter library items by.
+`playbackRate` | Float | What speed to play items.
+`bookshelfCoverSize` | Integer | What size to display covers at.
+`collapseSeries` | Boolean | Whether or not to collapse series when viewing library items.
