@@ -1465,3 +1465,47 @@ Attribute | Type | Description
 `model` | String or null | The client device's model, as provided in the request.
 `sdkVersion` | Integer or null | For an Android device, the Android SDK version of the client, as provided in the request.
 `serverVersion` | String or null | The version of the server at the time of the request.
+
+
+## User
+
+<!-- This is actually the User.toJSONForBrowser() method as User.toJSON() is not accessible to the API. -->
+> User
+
+```json
+{
+  "id": "root",
+  "username": "root",
+  "type": "root",
+  "token": "exJhbGciOiJI6IkpXVCJ9.eyJ1c2Vyi5NDEyODc4fQ.ZraBFohS4Tg39NszY",
+  "mediaProgress": [...],
+  "seriesHideFromContinueListening": [],
+  "bookmarks": [...],
+  "isActive": true,
+  "isLocked": false,
+  "lastSeen": 1668296147437,
+  "createdAt": 1666543632566,
+  "settings": {...},
+  "permissions": {...},
+  "librariesAccessible": [...],
+  "itemTagsAccessible": [...]
+}
+```
+
+Attribute | Type | Description
+--------- | ---- | -----------
+`id` | String | The ID of the user. Only the root user has the `root` ID.
+`username` | String | The username of the user.
+`type` | String | The type of the user. Will be `root`, `guest`, `user`, or `admin`. There will be only one root user which is created when the server first starts.
+`token` | String | The authentication token of the user.
+`mediaProgress` | Array of [Media Progress](#media-progress) | The user's media progress.
+`seriesHideFromContinueListening` | Array of String | The IDs of series to hide from the user's "Continue Series" shelf.
+`bookmarks` | Array of [Audio Bookmark](#audio-bookmark) | The user's bookmarks.
+`isActive` | Boolean | Whether or not the user's account is active.
+`isLocked` | Boolean | Whether or not the user is locked.
+`lastSeen` | Integer | The time (in ms since POSIX epoch) when the user was last seen by the server.
+`createdAt` | Integer | The time (in ms since POSIX epoch) when the user was created.
+`settings` | [User Settings](#user-settings) Object | The user's settings.
+`permissions` | [User Permissions](#user-permissions) Object | The user's permissions.
+`librariesAccessible` | Array of String | The IDs of libraries accessible to the user. An empty array means all libraries are accessible.
+`itemTagsAccessible` | Array of String | The tags accessible to the user. An empty array means all tags are accessible.
