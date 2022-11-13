@@ -1310,6 +1310,26 @@ Attribute | Type | Description
 }
 ```
 
+> Media Progress with Media
+
+```json
+{
+  "id": "li_bufnnmp4y5o2gbbxfm-ep_lh6ko39pumnrma3dhv",
+  "libraryItemId": "li_bufnnmp4y5o2gbbxfm",
+  "episodeId": "ep_lh6ko39pumnrma3dhv",
+  "duration": 1454.18449,
+  "progress": 0.011193983371394644,
+  "currentTime": 16.278117,
+  "isFinished": false,
+  "hideFromContinueListening": false,
+  "lastUpdate": 1668120246620,
+  "startedAt": 1668120083771,
+  "finishedAt": null,
+  "media": {...},
+  "episode": {...}
+}
+```
+
 Attribute | Type | Description
 --------- | ---- | -----------
 `id` | String | The ID of the media progress. If the media progress is for a book, this will just be the `libraryItemId`. If for a podcast episode, it will be a hyphenated combination of the `libraryItemId` and `episodeId`.
@@ -1323,6 +1343,15 @@ Attribute | Type | Description
 `lastUpdate` | Integer | The time (in ms since POSIX epoch) when the media progress was last updated.
 `startedAt` | Integer | The time (in ms since POSIX epoch) when the media progress was created.
 `finishedAt` | Integer or null | The time (in ms since POSIX epoch) when the media was finished. Will be `null` if the media has is not finished.
+
+### Media Progress with Media
+
+#### Added Attributes
+
+Attribute | Type | Description
+--------- | ---- | -----------
+`media` | [Book Expanded](#book-expanded) or [Podcast Expanded](#podcast-expanded) Object | The media of the library item the media progress is for.
+`episode` | [Podcast Episode](#podcast-episode) | The podcast episode the media progress is for. Will not exist if the media progress is for a book.
 
 
 ## Playback Session
