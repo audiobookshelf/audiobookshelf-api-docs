@@ -455,6 +455,38 @@
               </ul>
           </li>
           <li>
+            <a href="#users" class="toc-h1 toc-link" data-title="Users">Users</a>
+              <ul class="toc-list-h2">
+                  <li>
+                    <a href="#create-a-user" class="toc-h2 toc-link" data-title="Create a User">Create a User</a>
+                  </li>
+                  <li>
+                    <a href="#get-all-users" class="toc-h2 toc-link" data-title="Get All Users">Get All Users</a>
+                  </li>
+                  <li>
+                    <a href="#get-online-users" class="toc-h2 toc-link" data-title="Get Online Users">Get Online Users</a>
+                  </li>
+                  <li>
+                    <a href="#get-a-user" class="toc-h2 toc-link" data-title="Get a User">Get a User</a>
+                  </li>
+                  <li>
+                    <a href="#update-a-user" class="toc-h2 toc-link" data-title="Update a User">Update a User</a>
+                  </li>
+                  <li>
+                    <a href="#delete-a-user" class="toc-h2 toc-link" data-title="Delete a User">Delete a User</a>
+                  </li>
+                  <li>
+                    <a href="#get-a-user-39-s-listening-sessions" class="toc-h2 toc-link" data-title="Get a User's Listening Sessions">Get a User's Listening Sessions</a>
+                  </li>
+                  <li>
+                    <a href="#get-a-user-39-s-listening-stats" class="toc-h2 toc-link" data-title="Get a User's Listening Stats">Get a User's Listening Stats</a>
+                  </li>
+                  <li>
+                    <a href="#purge-a-user-39-s-media-progress" class="toc-h2 toc-link" data-title="Purge a User's Media Progress">Purge a User's Media Progress</a>
+                  </li>
+              </ul>
+          </li>
+          <li>
             <a href="#filtering" class="toc-h1 toc-link" data-title="Filtering">Filtering</a>
           </li>
           <li>
@@ -534,6 +566,18 @@
                   </li>
                   <li>
                     <a href="#device-info" class="toc-h2 toc-link" data-title="Device Info">Device Info</a>
+                  </li>
+                  <li>
+                    <a href="#user" class="toc-h2 toc-link" data-title="User">User</a>
+                  </li>
+                  <li>
+                    <a href="#user-settings" class="toc-h2 toc-link" data-title="User Settings">User Settings</a>
+                  </li>
+                  <li>
+                    <a href="#user-permissions" class="toc-h2 toc-link" data-title="User Permissions">User Permissions</a>
+                  </li>
+                  <li>
+                    <a href="#audio-bookmark" class="toc-h2 toc-link" data-title="Audio Bookmark">Audio Bookmark</a>
                   </li>
               </ul>
           </li>
@@ -4399,14 +4443,14 @@ Use the <a href="#update-a-podcast-episode">Update a Podcast Episode</a> endpoin
 <td>Success</td>
 </tr>
 <tr>
-<td>400</td>
-<td>Bad Request</td>
-<td>There was an internal server error when attempting to read the cover file.</td>
-</tr>
-<tr>
 <td>404</td>
 <td>Not Found</td>
 <td>Either no library item exists with the given ID, or the item does not have a cover.</td>
+</tr>
+<tr>
+<td>500</td>
+<td>Internal Server Error</td>
+<td>There was an error when attempting to read the cover file.</td>
 </tr>
 </tbody></table>
 <h2 id='upload-a-library-item-cover'>Upload a Library Item Cover</h2>
@@ -6118,8 +6162,8 @@ Make sure to include all audio files of a library item in the array.
 <td>See below.</td>
 </tr>
 <tr>
-<td>500</td>
-<td>Internal Server Error</td>
+<td>403</td>
+<td>Forbidden</td>
 <td>An admin user is required to open a RSS feed.</td>
 <td></td>
 </tr>
@@ -6891,6 +6935,1482 @@ Make sure to include all audio files of a library item in the array.
 <td>500</td>
 <td>Internal Server Error</td>
 <td>The <code>libraryItemIds</code> array must have a non-zero length.</td>
+</tr>
+</tbody></table>
+<h1 id='users'>Users</h1><h2 id='create-a-user'>Create a User</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">-X</span> POST <span class="s2">"https://abs.example.com/api/users"</span> <span class="se">\</span>
+  <span class="nt">-H</span> <span class="s2">"Authorization: Bearer exJhbGciOiJI6IkpXVCJ9.eyJ1c2Vyi5NDEyODc4fQ.ZraBFohS4Tg39NszY"</span> <span class="se">\</span>
+  <span class="nt">-H</span> <span class="s2">"Content-Type: application/json"</span> <span class="se">\</span>
+  <span class="nt">-d</span> <span class="s1">'{"username": "bob", "password": "12345", "type": "admin"}'</span>
+</code></pre></div>
+<blockquote>
+<p>The above command returns JSON structured like this:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"usr_3vn1ywq2yc2aq4kfh4"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"username"</span><span class="p">:</span><span class="w"> </span><span class="s2">"bob"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"admin"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"token"</span><span class="p">:</span><span class="w"> </span><span class="s2">"exJhbGciOiJI6IkpXVCJ9.eyJ1c2Vyi5NDEyODc4fQ.ZraBFohS4Tg39NszY"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"mediaProgress"</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span><span class="w">
+  </span><span class="nl">"seriesHideFromContinueListening"</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span><span class="w">
+  </span><span class="nl">"bookmarks"</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span><span class="w">
+  </span><span class="nl">"isActive"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"isLocked"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"lastSeen"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"createdAt"</span><span class="p">:</span><span class="w"> </span><span class="mi">1666569607117</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"settings"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"mobileOrderBy"</span><span class="p">:</span><span class="w"> </span><span class="s2">"recent"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"mobileOrderDesc"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"mobileFilterBy"</span><span class="p">:</span><span class="w"> </span><span class="s2">"all"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"orderBy"</span><span class="p">:</span><span class="w"> </span><span class="s2">"media.metadata.title"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"orderDesc"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"filterBy"</span><span class="p">:</span><span class="w"> </span><span class="s2">"all"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"playbackRate"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"bookshelfCoverSize"</span><span class="p">:</span><span class="w"> </span><span class="mi">120</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"collapseSeries"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="nl">"permissions"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"download"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"update"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"delete"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"upload"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"accessAllLibraries"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"accessAllTags"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"accessExplicitContent"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="nl">"librariesAccessible"</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span><span class="w">
+  </span><span class="nl">"itemTagsAccessible"</span><span class="p">:</span><span class="w"> </span><span class="p">[]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<p>This endpoint creates a user.</p>
+<h3 id='http-request'>HTTP Request</h3>
+<p><code>POST http://abs.example.com/api/users</code></p>
+<h3 id='parameters'>Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>username</code></td>
+<td>String</td>
+<td><strong>Required</strong></td>
+<td>The new user&#39;s username.</td>
+</tr>
+<tr>
+<td><code>password</code></td>
+<td>String</td>
+<td><strong>Required</strong></td>
+<td>The new user&#39;s password.</td>
+</tr>
+<tr>
+<td><code>type</code></td>
+<td>String</td>
+<td><strong>Required</strong></td>
+<td>The new user&#39;s type. May be <code>guest</code>, <code>user</code>, or <code>admin</code>.</td>
+</tr>
+<tr>
+<td><code>mediaProgress</code></td>
+<td>Array of <a href="#media-progress">Media Progress</a></td>
+<td><code>[]</code></td>
+<td>The new user&#39;s media progress.</td>
+</tr>
+<tr>
+<td><code>bookmarks</code></td>
+<td>Array of <a href="#audio-bookmark">Audio Bookmark</a></td>
+<td><code>[]</code></td>
+<td>The new user&#39;s bookmarks.</td>
+</tr>
+<tr>
+<td><code>seriesHideFromContinueListening</code></td>
+<td>Array of String</td>
+<td><code>[]</code></td>
+<td>The IDs of series to hide from the new user&#39;s &quot;Continue Series&quot; shelf.</td>
+</tr>
+<tr>
+<td><code>isActive</code></td>
+<td>Boolean</td>
+<td><code>true</code></td>
+<td>Whether or not the new user&#39;s account is active.</td>
+</tr>
+<tr>
+<td><code>isLocked</code></td>
+<td>Boolean</td>
+<td><code>false</code></td>
+<td>Whether or not the new user is locked.</td>
+</tr>
+<tr>
+<td><code>lastSeen</code></td>
+<td>Integer or null</td>
+<td><code>null</code></td>
+<td>The time (in ms since POSIX epoch) when the new user was last seen.</td>
+</tr>
+<tr>
+<td><code>createdAt</code></td>
+<td>Integer</td>
+<td><code>Date.now()</code></td>
+<td>The time (in ms since POSIX epoch) when the new user was created.</td>
+</tr>
+<tr>
+<td><code>settings</code></td>
+<td><a href="#user-settings-parameters">User Settings Parameters</a> Object</td>
+<td>See Below</td>
+<td>The new user&#39;s settings.</td>
+</tr>
+<tr>
+<td><code>permissions</code></td>
+<td><a href="#user-permissions-parameters">User Permissions Parameters</a> Object</td>
+<td>See Below</td>
+<td>The new user&#39;s permissions.</td>
+</tr>
+<tr>
+<td><code>librariesAccessible</code></td>
+<td>Array of String</td>
+<td><code>[]</code></td>
+<td>The IDs of libraries that are accessible to the new user. An empty array means all libraries are accessible.</td>
+</tr>
+<tr>
+<td><code>itemTagsAccessible</code></td>
+<td>Array of String</td>
+<td><code>[]</code></td>
+<td>The tags that are accessible to the new user. An empty array means all tags are accessible.</td>
+</tr>
+</tbody></table>
+
+<aside class="notice">
+For <code>settings</code> and <code>permissions</code>, all parameters must be present if including them in the request.
+</aside>
+<h4 id='user-settings-parameters'>User Settings Parameters</h4>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>mobileOrderBy</code></td>
+<td>String</td>
+<td><code>recent</code></td>
+<td>What to order library items by on mobile.</td>
+</tr>
+<tr>
+<td><code>mobileOrderDesc</code></td>
+<td>Boolean</td>
+<td><code>true</code></td>
+<td>Whether or not to reverse the sort order on mobile.</td>
+</tr>
+<tr>
+<td><code>mobileFilterBy</code></td>
+<td>String</td>
+<td><code>all</code></td>
+<td>What to filter library items by on mobile.</td>
+</tr>
+<tr>
+<td><code>orderBy</code></td>
+<td>String</td>
+<td><code>media.metadata.title</code></td>
+<td>What to order library items by.</td>
+</tr>
+<tr>
+<td><code>orderDesc</code></td>
+<td>Boolean</td>
+<td><code>false</code></td>
+<td>Whether or not to reverse the sort order.</td>
+</tr>
+<tr>
+<td><code>filterBy</code></td>
+<td>String</td>
+<td><code>all</code></td>
+<td>What to filter library items by.</td>
+</tr>
+<tr>
+<td><code>playbackRate</code></td>
+<td>Float</td>
+<td><code>1</code></td>
+<td>What speed to play items.</td>
+</tr>
+<tr>
+<td><code>bookshelfCoverSize</code></td>
+<td>Integer</td>
+<td><code>120</code></td>
+<td>What size to display covers at.</td>
+</tr>
+<tr>
+<td><code>collapseSeries</code></td>
+<td>Boolean</td>
+<td><code>false</code></td>
+<td>Whether or not to collapse series when viewing library items.</td>
+</tr>
+</tbody></table>
+<h4 id='user-permissions-parameters'>User Permissions Parameters</h4>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>download</code></td>
+<td>Boolean</td>
+<td><code>true</code></td>
+<td>Whether or not the user can download items from the server.</td>
+</tr>
+<tr>
+<td><code>update</code></td>
+<td>Boolean</td>
+<td><code>true</code></td>
+<td>Whether or not the user can update library items.</td>
+</tr>
+<tr>
+<td><code>delete</code></td>
+<td>Boolean</td>
+<td><code>false</code></td>
+<td>Whether or not the user can delete library items.</td>
+</tr>
+<tr>
+<td><code>upload</code></td>
+<td>Boolean</td>
+<td><code>false</code></td>
+<td>Whether or not the user can upload items to the server. The default value is <code>true</code> if the user&#39;s <code>type</code> is <code>admin</code>.</td>
+</tr>
+<tr>
+<td><code>accessAllLibraries</code></td>
+<td>Boolean</td>
+<td><code>true</code></td>
+<td>Whether or not the user can access all libraries.</td>
+</tr>
+<tr>
+<td><code>accessAllTags</code></td>
+<td>Boolean</td>
+<td><code>true</code></td>
+<td>Whether or not the user can access all tags.</td>
+</tr>
+<tr>
+<td><code>accessExplicitContent</code></td>
+<td>Boolean</td>
+<td><code>true</code></td>
+<td>Whether or not the user can access explicit content.</td>
+</tr>
+</tbody></table>
+<h3 id='response'>Response</h3>
+<table><thead>
+<tr>
+<th>Status</th>
+<th>Meaning</th>
+<th>Description</th>
+<th>Schema</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>200</td>
+<td>OK</td>
+<td>Success</td>
+<td><a href="#user">User</a></td>
+</tr>
+<tr>
+<td>403</td>
+<td>Forbidden</td>
+<td>The user does not have permission to create new users.</td>
+<td></td>
+</tr>
+<tr>
+<td>500</td>
+<td>Internal Server Error</td>
+<td>Either the username provided is already taken, or the server failed to save the new user.</td>
+<td></td>
+</tr>
+</tbody></table>
+<h2 id='get-all-users'>Get All Users</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://abs.example.com/api/users"</span> <span class="se">\</span>
+  <span class="nt">-H</span> <span class="s2">"Authorization: Bearer exJhbGciOiJI6IkpXVCJ9.eyJ1c2Vyi5NDEyODc4fQ.ZraBFohS4Tg39NszY"</span>
+</code></pre></div>
+<blockquote>
+<p>The above command returns JSON structured like this:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">[</span><span class="w">
+  </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"root"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"username"</span><span class="p">:</span><span class="w"> </span><span class="s2">"root"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"root"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"token"</span><span class="p">:</span><span class="w"> </span><span class="s2">"exJhbGciOiJI6IkpXVCJ9.eyJ1c2Vyi5NDEyODc4fQ.ZraBFohS4Tg39NszY"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"mediaProgress"</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span><span class="w">
+    </span><span class="nl">"seriesHideFromContinueListening"</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span><span class="w">
+    </span><span class="nl">"bookmarks"</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span><span class="w">
+    </span><span class="nl">"isActive"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"isLocked"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"lastSeen"</span><span class="p">:</span><span class="w"> </span><span class="mi">1667687240810</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"createdAt"</span><span class="p">:</span><span class="w"> </span><span class="mi">1666569607117</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"settings"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"mobileOrderBy"</span><span class="p">:</span><span class="w"> </span><span class="s2">"recent"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"mobileOrderDesc"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"mobileFilterBy"</span><span class="p">:</span><span class="w"> </span><span class="s2">"all"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"orderBy"</span><span class="p">:</span><span class="w"> </span><span class="s2">"media.metadata.title"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"orderDesc"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"filterBy"</span><span class="p">:</span><span class="w"> </span><span class="s2">"all"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"playbackRate"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"bookshelfCoverSize"</span><span class="p">:</span><span class="w"> </span><span class="mi">120</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"collapseSeries"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="nl">"permissions"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"download"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"update"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"delete"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"upload"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"accessAllLibraries"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"accessAllTags"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"accessExplicitContent"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="nl">"librariesAccessible"</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span><span class="w">
+    </span><span class="nl">"itemTagsAccessible"</span><span class="p">:</span><span class="w"> </span><span class="p">[]</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">]</span><span class="w">
+</span></code></pre></div>
+<p>This endpoint retrieves all users.</p>
+<h3 id='http-request-2'>HTTP Request</h3>
+<p><code>GET http://abs.example.com/api/users</code></p>
+<h3 id='response-2'>Response</h3>
+<table><thead>
+<tr>
+<th>Status</th>
+<th>Meaning</th>
+<th>Description</th>
+<th>Schema</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>200</td>
+<td>OK</td>
+<td>Success</td>
+<td>Array of <a href="#user-with-progress-details">User with Progress Details</a></td>
+</tr>
+<tr>
+<td>403</td>
+<td>Forbidden</td>
+<td>An admin user is required to get all users.</td>
+<td></td>
+</tr>
+</tbody></table>
+<h2 id='get-online-users'>Get Online Users</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://abs.example.com/api/users/online"</span> <span class="se">\</span>
+  <span class="nt">-H</span> <span class="s2">"Authorization: Bearer exJhbGciOiJI6IkpXVCJ9.eyJ1c2Vyi5NDEyODc4fQ.ZraBFohS4Tg39NszY"</span>
+</code></pre></div>
+<blockquote>
+<p>The above command returns JSON structured like this:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"usersOnline"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"root"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"username"</span><span class="p">:</span><span class="w"> </span><span class="s2">"paul"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"root"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"session"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"mostRecent"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"li_bufnnmp4y5o2gbbxfm-ep_lh6ko39pumnrma3dhv"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"libraryItemId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"li_bufnnmp4y5o2gbbxfm"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"episodeId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ep_lh6ko39pumnrma3dhv"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"duration"</span><span class="p">:</span><span class="w"> </span><span class="mf">1454.18449</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"progress"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.41038768196461783</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"currentTime"</span><span class="p">:</span><span class="w"> </span><span class="mf">596.779402</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"isFinished"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"hideFromContinueListening"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"lastUpdate"</span><span class="p">:</span><span class="w"> </span><span class="mi">1668329493006</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"startedAt"</span><span class="p">:</span><span class="w"> </span><span class="mi">1668120083771</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"finishedAt"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"media"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+          </span><span class="nl">"libraryItemId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"li_bufnnmp4y5o2gbbxfm"</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"metadata"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+            </span><span class="nl">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Welcome to Night Vale"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"titleIgnorePrefix"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Welcome to Night Vale"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"author"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Night Vale Presents"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"</span><span class="se">\n</span><span class="s2">      Twice-monthly community updates for the small desert town of Night Vale, where every conspiracy theory is true. Turn on your radio and hide. Never listened before? It's an ongoing radio show. Start with the current episode, and you'll catch on in no time. Or, go right to Episode 1 if you wanna binge-listen.</span><span class="se">\n</span><span class="s2">    "</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"releaseDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2022-10-20T19:00:00Z"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"genres"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+              </span><span class="s2">"Science Fiction"</span><span class="p">,</span><span class="w">
+              </span><span class="s2">"Podcasts"</span><span class="p">,</span><span class="w">
+              </span><span class="s2">"Fiction"</span><span class="w">
+            </span><span class="p">],</span><span class="w">
+            </span><span class="nl">"feedUrl"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://feeds.nightvalepresents.com/welcometonightvalepodcast"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"imageUrl"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://is4-ssl.mzstatic.com/image/thumb/Podcasts125/v4/4a/31/35/4a3135d0-1fe7-a2d7-fb43-d182ec175402/mza_8232698753950666850.jpg/600x600bb.jpg"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"itunesPageUrl"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://podcasts.apple.com/us/podcast/welcome-to-night-vale/id536258179?uo=4"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"itunesId"</span><span class="p">:</span><span class="w"> </span><span class="mi">536258179</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"itunesArtistId"</span><span class="p">:</span><span class="w"> </span><span class="mi">718704794</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"explicit"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"language"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="w">
+          </span><span class="p">},</span><span class="w">
+          </span><span class="nl">"coverPath"</span><span class="p">:</span><span class="w"> </span><span class="s2">"/metadata/items/li_bufnnmp4y5o2gbbxfm/cover.jpg"</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"tags"</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span><span class="w">
+          </span><span class="nl">"episodes"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+            </span><span class="p">{</span><span class="w">
+              </span><span class="nl">"libraryItemId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"li_bufnnmp4y5o2gbbxfm"</span><span class="p">,</span><span class="w">
+              </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ep_lh6ko39pumnrma3dhv"</span><span class="p">,</span><span class="w">
+              </span><span class="nl">"index"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+              </span><span class="nl">"season"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+              </span><span class="nl">"episode"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+              </span><span class="nl">"episodeType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"full"</span><span class="p">,</span><span class="w">
+              </span><span class="nl">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1 - Pilot"</span><span class="p">,</span><span class="w">
+              </span><span class="nl">"subtitle"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Pilot Episode. A new dog park opens in Night Vale. Carlos, a scientist, visits and discovers some interesting things. Seismic things. Plus, a helpful guide to surveillance helicopter-spotting. Weather: </span><span class="se">\"</span><span class="s2">These and More Than These</span><span class="se">\"</span><span class="s2"> by Joseph Fink Music:..."</span><span class="p">,</span><span class="w">
+              </span><span class="nl">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"&lt;div&gt;&lt;br&gt;Pilot Episode. A new dog park opens in Night Vale. Carlos, a scientist, visits and discovers some interesting things. Seismic things. Plus, a helpful guide to surveillance helicopter-spotting.&lt;br&gt;&lt;br&gt;&lt;/div&gt;&lt;div&gt;&lt;br&gt;Weather: </span><span class="se">\"</span><span class="s2">These and More Than These</span><span class="se">\"</span><span class="s2"> by Joseph Fink&lt;br&gt;&lt;br&gt;&lt;/div&gt;&lt;div&gt;&lt;br&gt;Music: Disparition, disparition.info&lt;br&gt;&lt;br&gt;&lt;/div&gt;&lt;div&gt;&lt;br&gt;Logo: Rob Wilson, silastom.com&lt;br&gt;&lt;br&gt;&lt;/div&gt;&lt;div&gt;&lt;br&gt;Produced by Night Vale Presents. Written by Joseph Fink and Jeffrey Cranor. Narrated by Cecil Baldwin. More Info: welcometonightvale.com, and follow @NightValeRadio on Twitter or Facebook.&lt;br&gt;&lt;br&gt;&lt;/div&gt;"</span><span class="p">,</span><span class="w">
+              </span><span class="nl">"enclosure"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                </span><span class="nl">"url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://www.podtrac.com/pts/redirect.mp3/dovetail.prxu.org/_/126/1fadf1ad-aad8-449f-843b-6e8bb6949622/1_Pilot.mp3"</span><span class="p">,</span><span class="w">
+                </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"audio/mpeg"</span><span class="p">,</span><span class="w">
+                </span><span class="nl">"length"</span><span class="p">:</span><span class="w"> </span><span class="s2">"20588611"</span><span class="w">
+              </span><span class="p">},</span><span class="w">
+              </span><span class="nl">"pubDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Fri, 15 Jun 2012 12:00:00 -0000"</span><span class="p">,</span><span class="w">
+              </span><span class="nl">"audioFile"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                </span><span class="nl">"index"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+                </span><span class="nl">"ino"</span><span class="p">:</span><span class="w"> </span><span class="s2">"22587"</span><span class="p">,</span><span class="w">
+                </span><span class="nl">"metadata"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                  </span><span class="nl">"filename"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1 - Pilot.mp3"</span><span class="p">,</span><span class="w">
+                  </span><span class="nl">"ext"</span><span class="p">:</span><span class="w"> </span><span class="s2">".mp3"</span><span class="p">,</span><span class="w">
+                  </span><span class="nl">"path"</span><span class="p">:</span><span class="w"> </span><span class="s2">"/podcasts/Welcome to Night Vale/1 - Pilot.mp3"</span><span class="p">,</span><span class="w">
+                  </span><span class="nl">"relPath"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1 - Pilot.mp3"</span><span class="p">,</span><span class="w">
+                  </span><span class="nl">"size"</span><span class="p">:</span><span class="w"> </span><span class="mi">23653735</span><span class="p">,</span><span class="w">
+                  </span><span class="nl">"mtimeMs"</span><span class="p">:</span><span class="w"> </span><span class="mi">1667326682557</span><span class="p">,</span><span class="w">
+                  </span><span class="nl">"ctimeMs"</span><span class="p">:</span><span class="w"> </span><span class="mi">1667326682557</span><span class="p">,</span><span class="w">
+                  </span><span class="nl">"birthtimeMs"</span><span class="p">:</span><span class="w"> </span><span class="mi">1667326679508</span><span class="w">
+                </span><span class="p">},</span><span class="w">
+                </span><span class="nl">"addedAt"</span><span class="p">:</span><span class="w"> </span><span class="mi">1667326682605</span><span class="p">,</span><span class="w">
+                </span><span class="nl">"updatedAt"</span><span class="p">:</span><span class="w"> </span><span class="mi">1668234380150</span><span class="p">,</span><span class="w">
+                </span><span class="nl">"trackNumFromMeta"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+                </span><span class="nl">"discNumFromMeta"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+                </span><span class="nl">"trackNumFromFilename"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+                </span><span class="nl">"discNumFromFilename"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+                </span><span class="nl">"manuallyVerified"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+                </span><span class="nl">"invalid"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+                </span><span class="nl">"exclude"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+                </span><span class="nl">"error"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+                </span><span class="nl">"format"</span><span class="p">:</span><span class="w"> </span><span class="s2">"MP2/3 (MPEG audio layer 2/3)"</span><span class="p">,</span><span class="w">
+                </span><span class="nl">"duration"</span><span class="p">:</span><span class="w"> </span><span class="mf">1454.18449</span><span class="p">,</span><span class="w">
+                </span><span class="nl">"bitRate"</span><span class="p">:</span><span class="w"> </span><span class="mi">128000</span><span class="p">,</span><span class="w">
+                </span><span class="nl">"language"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+                </span><span class="nl">"codec"</span><span class="p">:</span><span class="w"> </span><span class="s2">"mp3"</span><span class="p">,</span><span class="w">
+                </span><span class="nl">"timeBase"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1/14112000"</span><span class="p">,</span><span class="w">
+                </span><span class="nl">"channels"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
+                </span><span class="nl">"channelLayout"</span><span class="p">:</span><span class="w"> </span><span class="s2">"stereo"</span><span class="p">,</span><span class="w">
+                </span><span class="nl">"chapters"</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span><span class="w">
+                </span><span class="nl">"embeddedCoverArt"</span><span class="p">:</span><span class="w"> </span><span class="s2">"mjpeg"</span><span class="p">,</span><span class="w">
+                </span><span class="nl">"metaTags"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                  </span><span class="nl">"tagAlbum"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Welcome to Night Vale"</span><span class="p">,</span><span class="w">
+                  </span><span class="nl">"tagArtist"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Night Vale Presents"</span><span class="p">,</span><span class="w">
+                  </span><span class="nl">"tagGenre"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Podcast"</span><span class="p">,</span><span class="w">
+                  </span><span class="nl">"tagTitle"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1 - Pilot"</span><span class="p">,</span><span class="w">
+                  </span><span class="nl">"tagDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2012"</span><span class="p">,</span><span class="w">
+                  </span><span class="nl">"tagEncoder"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Lavf58.45.100"</span><span class="w">
+                </span><span class="p">},</span><span class="w">
+                </span><span class="nl">"mimeType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"audio/mpeg"</span><span class="w">
+              </span><span class="p">},</span><span class="w">
+              </span><span class="nl">"audioTrack"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                </span><span class="nl">"index"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+                </span><span class="nl">"startOffset"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+                </span><span class="nl">"duration"</span><span class="p">:</span><span class="w"> </span><span class="mf">1454.18449</span><span class="p">,</span><span class="w">
+                </span><span class="nl">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1 - Pilot.mp3"</span><span class="p">,</span><span class="w">
+                </span><span class="nl">"contentUrl"</span><span class="p">:</span><span class="w"> </span><span class="s2">"/s/item/li_bufnnmp4y5o2gbbxfm/1 - Pilot.mp3"</span><span class="p">,</span><span class="w">
+                </span><span class="nl">"mimeType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"audio/mpeg"</span><span class="p">,</span><span class="w">
+                </span><span class="nl">"metadata"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                  </span><span class="nl">"filename"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1 - Pilot.mp3"</span><span class="p">,</span><span class="w">
+                  </span><span class="nl">"ext"</span><span class="p">:</span><span class="w"> </span><span class="s2">".mp3"</span><span class="p">,</span><span class="w">
+                  </span><span class="nl">"path"</span><span class="p">:</span><span class="w"> </span><span class="s2">"/podcasts/Welcome to Night Vale/1 - Pilot.mp3"</span><span class="p">,</span><span class="w">
+                  </span><span class="nl">"relPath"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1 - Pilot.mp3"</span><span class="p">,</span><span class="w">
+                  </span><span class="nl">"size"</span><span class="p">:</span><span class="w"> </span><span class="mi">23653735</span><span class="p">,</span><span class="w">
+                  </span><span class="nl">"mtimeMs"</span><span class="p">:</span><span class="w"> </span><span class="mi">1667326682557</span><span class="p">,</span><span class="w">
+                  </span><span class="nl">"ctimeMs"</span><span class="p">:</span><span class="w"> </span><span class="mi">1667326682557</span><span class="p">,</span><span class="w">
+                  </span><span class="nl">"birthtimeMs"</span><span class="p">:</span><span class="w"> </span><span class="mi">1667326679508</span><span class="w">
+                </span><span class="p">}</span><span class="w">
+              </span><span class="p">},</span><span class="w">
+              </span><span class="nl">"publishedAt"</span><span class="p">:</span><span class="w"> </span><span class="mi">1339761600000</span><span class="p">,</span><span class="w">
+              </span><span class="nl">"addedAt"</span><span class="p">:</span><span class="w"> </span><span class="mi">1667326679503</span><span class="p">,</span><span class="w">
+              </span><span class="nl">"updatedAt"</span><span class="p">:</span><span class="w"> </span><span class="mi">1667428186431</span><span class="p">,</span><span class="w">
+              </span><span class="nl">"duration"</span><span class="p">:</span><span class="w"> </span><span class="mf">1454.18449</span><span class="p">,</span><span class="w">
+              </span><span class="nl">"size"</span><span class="p">:</span><span class="w"> </span><span class="mi">23653735</span><span class="w">
+            </span><span class="p">}</span><span class="w">
+          </span><span class="p">],</span><span class="w">
+          </span><span class="nl">"autoDownloadEpisodes"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"autoDownloadSchedule"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0 0 * * 1"</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"lastEpisodeCheck"</span><span class="p">:</span><span class="w"> </span><span class="mi">1667326662087</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"maxEpisodesToKeep"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"maxNewEpisodesToDownload"</span><span class="p">:</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"size"</span><span class="p">:</span><span class="w"> </span><span class="mi">23653735</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="nl">"episode"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+          </span><span class="nl">"libraryItemId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"li_bufnnmp4y5o2gbbxfm"</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ep_lh6ko39pumnrma3dhv"</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"index"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"season"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"episode"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"episodeType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"full"</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1 - Pilot"</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"subtitle"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Pilot Episode. A new dog park opens in Night Vale. Carlos, a scientist, visits and discovers some interesting things. Seismic things. Plus, a helpful guide to surveillance helicopter-spotting. Weather: </span><span class="se">\"</span><span class="s2">These and More Than These</span><span class="se">\"</span><span class="s2"> by Joseph Fink Music:..."</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"&lt;div&gt;&lt;br&gt;Pilot Episode. A new dog park opens in Night Vale. Carlos, a scientist, visits and discovers some interesting things. Seismic things. Plus, a helpful guide to surveillance helicopter-spotting.&lt;br&gt;&lt;br&gt;&lt;/div&gt;&lt;div&gt;&lt;br&gt;Weather: </span><span class="se">\"</span><span class="s2">These and More Than These</span><span class="se">\"</span><span class="s2"> by Joseph Fink&lt;br&gt;&lt;br&gt;&lt;/div&gt;&lt;div&gt;&lt;br&gt;Music: Disparition, disparition.info&lt;br&gt;&lt;br&gt;&lt;/div&gt;&lt;div&gt;&lt;br&gt;Logo: Rob Wilson, silastom.com&lt;br&gt;&lt;br&gt;&lt;/div&gt;&lt;div&gt;&lt;br&gt;Produced by Night Vale Presents. Written by Joseph Fink and Jeffrey Cranor. Narrated by Cecil Baldwin. More Info: welcometonightvale.com, and follow @NightValeRadio on Twitter or Facebook.&lt;br&gt;&lt;br&gt;&lt;/div&gt;"</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"enclosure"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+            </span><span class="nl">"url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://www.podtrac.com/pts/redirect.mp3/dovetail.prxu.org/_/126/1fadf1ad-aad8-449f-843b-6e8bb6949622/1_Pilot.mp3"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"audio/mpeg"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"length"</span><span class="p">:</span><span class="w"> </span><span class="s2">"20588611"</span><span class="w">
+          </span><span class="p">},</span><span class="w">
+          </span><span class="nl">"pubDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Fri, 15 Jun 2012 12:00:00 -0000"</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"audioFile"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+            </span><span class="nl">"index"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"ino"</span><span class="p">:</span><span class="w"> </span><span class="s2">"22587"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"metadata"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+              </span><span class="nl">"filename"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1 - Pilot.mp3"</span><span class="p">,</span><span class="w">
+              </span><span class="nl">"ext"</span><span class="p">:</span><span class="w"> </span><span class="s2">".mp3"</span><span class="p">,</span><span class="w">
+              </span><span class="nl">"path"</span><span class="p">:</span><span class="w"> </span><span class="s2">"/podcasts/Welcome to Night Vale/1 - Pilot.mp3"</span><span class="p">,</span><span class="w">
+              </span><span class="nl">"relPath"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1 - Pilot.mp3"</span><span class="p">,</span><span class="w">
+              </span><span class="nl">"size"</span><span class="p">:</span><span class="w"> </span><span class="mi">23653735</span><span class="p">,</span><span class="w">
+              </span><span class="nl">"mtimeMs"</span><span class="p">:</span><span class="w"> </span><span class="mi">1667326682557</span><span class="p">,</span><span class="w">
+              </span><span class="nl">"ctimeMs"</span><span class="p">:</span><span class="w"> </span><span class="mi">1667326682557</span><span class="p">,</span><span class="w">
+              </span><span class="nl">"birthtimeMs"</span><span class="p">:</span><span class="w"> </span><span class="mi">1667326679508</span><span class="w">
+            </span><span class="p">},</span><span class="w">
+            </span><span class="nl">"addedAt"</span><span class="p">:</span><span class="w"> </span><span class="mi">1667326682605</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"updatedAt"</span><span class="p">:</span><span class="w"> </span><span class="mi">1668234380150</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"trackNumFromMeta"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"discNumFromMeta"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"trackNumFromFilename"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"discNumFromFilename"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"manuallyVerified"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"invalid"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"exclude"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"error"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"format"</span><span class="p">:</span><span class="w"> </span><span class="s2">"MP2/3 (MPEG audio layer 2/3)"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"duration"</span><span class="p">:</span><span class="w"> </span><span class="mf">1454.18449</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"bitRate"</span><span class="p">:</span><span class="w"> </span><span class="mi">128000</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"language"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"codec"</span><span class="p">:</span><span class="w"> </span><span class="s2">"mp3"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"timeBase"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1/14112000"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"channels"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"channelLayout"</span><span class="p">:</span><span class="w"> </span><span class="s2">"stereo"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"chapters"</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span><span class="w">
+            </span><span class="nl">"embeddedCoverArt"</span><span class="p">:</span><span class="w"> </span><span class="s2">"mjpeg"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"metaTags"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+              </span><span class="nl">"tagAlbum"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Welcome to Night Vale"</span><span class="p">,</span><span class="w">
+              </span><span class="nl">"tagArtist"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Night Vale Presents"</span><span class="p">,</span><span class="w">
+              </span><span class="nl">"tagGenre"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Podcast"</span><span class="p">,</span><span class="w">
+              </span><span class="nl">"tagTitle"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1 - Pilot"</span><span class="p">,</span><span class="w">
+              </span><span class="nl">"tagDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2012"</span><span class="p">,</span><span class="w">
+              </span><span class="nl">"tagEncoder"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Lavf58.45.100"</span><span class="w">
+            </span><span class="p">},</span><span class="w">
+            </span><span class="nl">"mimeType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"audio/mpeg"</span><span class="w">
+          </span><span class="p">},</span><span class="w">
+          </span><span class="nl">"publishedAt"</span><span class="p">:</span><span class="w"> </span><span class="mi">1339761600000</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"addedAt"</span><span class="p">:</span><span class="w"> </span><span class="mi">1667326679503</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"updatedAt"</span><span class="p">:</span><span class="w"> </span><span class="mi">1667428186431</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="nl">"lastSeen"</span><span class="p">:</span><span class="w"> </span><span class="mi">1668324661087</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"createdAt"</span><span class="p">:</span><span class="w"> </span><span class="mi">1666543632566</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">],</span><span class="w">
+  </span><span class="nl">"openSessions"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"play_3m7y81exxkpodebwvd"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"userId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"root"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"libraryId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"lib_p9wkw2i85qy9oltijt"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"libraryItemId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"li_bufnnmp4y5o2gbbxfm"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"episodeId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ep_lh6ko39pumnrma3dhv"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"mediaType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"podcast"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"mediaMetadata"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Welcome to Night Vale"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"author"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Night Vale Presents"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"</span><span class="se">\n</span><span class="s2">      Twice-monthly community updates for the small desert town of Night Vale, where every conspiracy theory is true. Turn on your radio and hide. Never listened before? It's an ongoing radio show. Start with the current episode, and you'll catch on in no time. Or, go right to Episode 1 if you wanna binge-listen.</span><span class="se">\n</span><span class="s2">    "</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"releaseDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2022-10-20T19:00:00Z"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"genres"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+          </span><span class="s2">"Science Fiction"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"Podcasts"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"Fiction"</span><span class="w">
+        </span><span class="p">],</span><span class="w">
+        </span><span class="nl">"feedUrl"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://feeds.nightvalepresents.com/welcometonightvalepodcast"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"imageUrl"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://is4-ssl.mzstatic.com/image/thumb/Podcasts125/v4/4a/31/35/4a3135d0-1fe7-a2d7-fb43-d182ec175402/mza_8232698753950666850.jpg/600x600bb.jpg"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"itunesPageUrl"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://podcasts.apple.com/us/podcast/welcome-to-night-vale/id536258179?uo=4"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"itunesId"</span><span class="p">:</span><span class="w"> </span><span class="mi">536258179</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"itunesArtistId"</span><span class="p">:</span><span class="w"> </span><span class="mi">718704794</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"explicit"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"language"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="nl">"chapters"</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span><span class="w">
+      </span><span class="nl">"displayTitle"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1 - Pilot"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"displayAuthor"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Night Vale Presents"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"coverPath"</span><span class="p">:</span><span class="w"> </span><span class="s2">"/metadata/items/li_bufnnmp4y5o2gbbxfm/cover.jpg"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"duration"</span><span class="p">:</span><span class="w"> </span><span class="mf">1454.18449</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"playMethod"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"mediaPlayer"</span><span class="p">:</span><span class="w"> </span><span class="s2">"html5"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"deviceInfo"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"ipAddress"</span><span class="p">:</span><span class="w"> </span><span class="s2">"192.168.1.118"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"browserName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Firefox"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"browserVersion"</span><span class="p">:</span><span class="w"> </span><span class="s2">"106.0"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"osName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Linux"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"osVersion"</span><span class="p">:</span><span class="w"> </span><span class="s2">"x86_64"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"serverVersion"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2.2.3"</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="nl">"date"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2022-11-13"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"dayOfWeek"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Sunday"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"timeListening"</span><span class="p">:</span><span class="w"> </span><span class="mi">595</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"startTime"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"currentTime"</span><span class="p">:</span><span class="w"> </span><span class="mi">595</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"startedAt"</span><span class="p">:</span><span class="w"> </span><span class="mi">1668329239515</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"updatedAt"</span><span class="p">:</span><span class="w"> </span><span class="mi">1668329240593</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<p>This endpoint retrieves all online users.</p>
+<h3 id='http-request-3'>HTTP Request</h3>
+<p><code>GET http://abs.example.com/api/users/online</code></p>
+<h3 id='response-3'>Response</h3>
+<table><thead>
+<tr>
+<th>Status</th>
+<th>Meaning</th>
+<th>Description</th>
+<th>Schema</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>200</td>
+<td>OK</td>
+<td>Success</td>
+<td>See below.</td>
+</tr>
+<tr>
+<td>404</td>
+<td>Not Found</td>
+<td>An admin user is required to get users.</td>
+<td></td>
+</tr>
+</tbody></table>
+<h4 id='response-schema'>Response Schema</h4>
+<table><thead>
+<tr>
+<th>Attribute</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>usersOnline</code></td>
+<td>Array of <a href="#user-with-session-and-most-recent-progress">User with Session and Most Recent Progress</a></td>
+<td>The users that are currently online. <code>session</code> will be <code>null</code>.</td>
+</tr>
+<tr>
+<td><code>openSessions</code></td>
+<td>Array of <a href="#playback-session">Playback Session</a></td>
+<td>The currently playing playback sessions.</td>
+</tr>
+</tbody></table>
+<h2 id='get-a-user'>Get a User</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://abs.example.com/api/users/root"</span> <span class="se">\</span>
+  <span class="nt">-H</span> <span class="s2">"Authorization: Bearer exJhbGciOiJI6IkpXVCJ9.eyJ1c2Vyi5NDEyODc4fQ.ZraBFohS4Tg39NszY"</span>
+</code></pre></div>
+<blockquote>
+<p>The above command returns JSON structured like this:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"root"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"username"</span><span class="p">:</span><span class="w"> </span><span class="s2">"root"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"root"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"token"</span><span class="p">:</span><span class="w"> </span><span class="s2">"exJhbGciOiJI6IkpXVCJ9.eyJ1c2Vyi5NDEyODc4fQ.ZraBFohS4Tg39NszY"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"mediaProgress"</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span><span class="w">
+  </span><span class="nl">"seriesHideFromContinueListening"</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span><span class="w">
+  </span><span class="nl">"bookmarks"</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span><span class="w">
+  </span><span class="nl">"isActive"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"isLocked"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"lastSeen"</span><span class="p">:</span><span class="w"> </span><span class="mi">1667687240810</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"createdAt"</span><span class="p">:</span><span class="w"> </span><span class="mi">1666569607117</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"settings"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"mobileOrderBy"</span><span class="p">:</span><span class="w"> </span><span class="s2">"recent"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"mobileOrderDesc"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"mobileFilterBy"</span><span class="p">:</span><span class="w"> </span><span class="s2">"all"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"orderBy"</span><span class="p">:</span><span class="w"> </span><span class="s2">"media.metadata.title"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"orderDesc"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"filterBy"</span><span class="p">:</span><span class="w"> </span><span class="s2">"all"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"playbackRate"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"bookshelfCoverSize"</span><span class="p">:</span><span class="w"> </span><span class="mi">120</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"collapseSeries"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="nl">"permissions"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"download"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"update"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"delete"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"upload"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"accessAllLibraries"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"accessAllTags"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"accessExplicitContent"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="nl">"librariesAccessible"</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span><span class="w">
+  </span><span class="nl">"itemTagsAccessible"</span><span class="p">:</span><span class="w"> </span><span class="p">[]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<p>This endpoint retrieves a user.</p>
+<h3 id='http-request-4'>HTTP Request</h3>
+<p><code>GET http://abs.example.com/api/users/&lt;ID&gt;</code></p>
+<h3 id='url-parameters'>URL Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>ID</td>
+<td>The ID of the user.</td>
+</tr>
+</tbody></table>
+<h3 id='response-4'>Response</h3>
+<table><thead>
+<tr>
+<th>Status</th>
+<th>Meaning</th>
+<th>Description</th>
+<th>Schema</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>200</td>
+<td>OK</td>
+<td>Success</td>
+<td><a href="#user-with-progress-details">User with Progress Details</a></td>
+</tr>
+<tr>
+<td>403</td>
+<td>Forbidden</td>
+<td>An admin user is required to get users.</td>
+<td></td>
+</tr>
+<tr>
+<td>404</td>
+<td>Not Found</td>
+<td>No user with the provided ID exists.</td>
+<td></td>
+</tr>
+</tbody></table>
+<h2 id='update-a-user'>Update a User</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">-X</span> PATCH <span class="s2">"https://abs.example.com/api/users/root"</span> <span class="se">\</span>
+  <span class="nt">-H</span> <span class="s2">"Authorization: Bearer exJhbGciOiJI6IkpXVCJ9.eyJ1c2Vyi5NDEyODc4fQ.ZraBFohS4Tg39NszY"</span> <span class="se">\</span>
+  <span class="nt">-H</span> <span class="s2">"Content-Type: application/json"</span> <span class="se">\</span>
+  <span class="nt">-d</span> <span class="s1">'{"username": "bob", "password": "12345"}'</span>
+</code></pre></div>
+<blockquote>
+<p>The above command returns JSON structured like this:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"root"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"username"</span><span class="p">:</span><span class="w"> </span><span class="s2">"bob"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"root"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"token"</span><span class="p">:</span><span class="w"> </span><span class="s2">"exJhbGciOiJI6IkpXVCJ9.eyJ1c2Vyi5NDEyODc4fQ.ZraBFohS4Tg39NszY"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"mediaProgress"</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span><span class="w">
+  </span><span class="nl">"seriesHideFromContinueListening"</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span><span class="w">
+  </span><span class="nl">"bookmarks"</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span><span class="w">
+  </span><span class="nl">"isActive"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"isLocked"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"lastSeen"</span><span class="p">:</span><span class="w"> </span><span class="mi">1667687240810</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"createdAt"</span><span class="p">:</span><span class="w"> </span><span class="mi">1666569607117</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"settings"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"mobileOrderBy"</span><span class="p">:</span><span class="w"> </span><span class="s2">"recent"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"mobileOrderDesc"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"mobileFilterBy"</span><span class="p">:</span><span class="w"> </span><span class="s2">"all"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"orderBy"</span><span class="p">:</span><span class="w"> </span><span class="s2">"media.metadata.title"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"orderDesc"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"filterBy"</span><span class="p">:</span><span class="w"> </span><span class="s2">"all"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"playbackRate"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"bookshelfCoverSize"</span><span class="p">:</span><span class="w"> </span><span class="mi">120</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"collapseSeries"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="nl">"permissions"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"download"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"update"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"delete"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"upload"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"accessAllLibraries"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"accessAllTags"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"accessExplicitContent"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="nl">"librariesAccessible"</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span><span class="w">
+  </span><span class="nl">"itemTagsAccessible"</span><span class="p">:</span><span class="w"> </span><span class="p">[]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<p>This endpoint updates a user.</p>
+<h3 id='http-request-5'>HTTP Request</h3>
+<p><code>PATCH http://abs.example.com/api/users/&lt;ID&gt;</code></p>
+<h3 id='url-parameters-2'>URL Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>ID</td>
+<td>The ID of the user.</td>
+</tr>
+</tbody></table>
+<h3 id='parameters-2'>Parameters</h3>
+<p>For the root user, only <code>username</code> and <code>password</code> are changeable.</p>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>username</code></td>
+<td>String</td>
+<td>The user&#39;s username.</td>
+</tr>
+<tr>
+<td><code>password</code></td>
+<td>String</td>
+<td>The user&#39;s password.</td>
+</tr>
+<tr>
+<td><code>type</code></td>
+<td>String</td>
+<td>The user&#39;s type. May be <code>guest</code>, <code>user</code>, or <code>admin</code>.</td>
+</tr>
+<tr>
+<td><code>seriesHideFromContinueListening</code></td>
+<td>Array of String</td>
+<td>The IDs of series to hide from the user&#39;s &quot;Continue Series&quot; shelf.</td>
+</tr>
+<tr>
+<td><code>isActive</code></td>
+<td>Boolean</td>
+<td>Whether or not the user&#39;s account is active.</td>
+</tr>
+<tr>
+<td><code>permissions</code></td>
+<td><a href="#user-permissions-parameters-2">User Permissions Parameters</a> Object (See Below)</td>
+<td>The user&#39;s permissions.</td>
+</tr>
+<tr>
+<td><code>librariesAccessible</code></td>
+<td>Array of String</td>
+<td>The IDs of libraries that are accessible to the user. An empty array means all libraries are accessible.</td>
+</tr>
+<tr>
+<td><code>itemTagsAccessible</code></td>
+<td>Array of String</td>
+<td>The tags that are accessible to the user. An empty array means all tags are accessible.</td>
+</tr>
+</tbody></table>
+
+<aside class="notice">
+When changing a user's username, their token will be regenerated.
+</aside>
+<h4 id='user-permissions-parameters-2'>User Permissions Parameters</h4>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>download</code></td>
+<td>Boolean</td>
+<td>Whether or not the user can download items from the server.</td>
+</tr>
+<tr>
+<td><code>update</code></td>
+<td>Boolean</td>
+<td>Whether or not the user can update library items.</td>
+</tr>
+<tr>
+<td><code>delete</code></td>
+<td>Boolean</td>
+<td>Whether or not the user can delete library items.</td>
+</tr>
+<tr>
+<td><code>upload</code></td>
+<td>Boolean</td>
+<td>Whether or not the user can upload items to the server.</td>
+</tr>
+<tr>
+<td><code>accessAllLibraries</code></td>
+<td>Boolean</td>
+<td>Whether or not the user can access all libraries.</td>
+</tr>
+<tr>
+<td><code>accessAllTags</code></td>
+<td>Boolean</td>
+<td>Whether or not the user can access all tags.</td>
+</tr>
+<tr>
+<td><code>accessExplicitContent</code></td>
+<td>Boolean</td>
+<td>Whether or not the user can access explicit content.</td>
+</tr>
+</tbody></table>
+<h3 id='response-5'>Response</h3>
+<table><thead>
+<tr>
+<th>Status</th>
+<th>Meaning</th>
+<th>Description</th>
+<th>Schema</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>200</td>
+<td>OK</td>
+<td>Success</td>
+<td>See below.</td>
+</tr>
+<tr>
+<td>403</td>
+<td>Forbidden</td>
+<td>An admin user is required to edit users and the root user is required to edit the root user.</td>
+<td></td>
+</tr>
+<tr>
+<td>404</td>
+<td>Not Found</td>
+<td>No user with the provided ID exists.</td>
+<td></td>
+</tr>
+<tr>
+<td>500</td>
+<td>Internal Server Error</td>
+<td>The provided username is already taken.</td>
+<td></td>
+</tr>
+</tbody></table>
+<h4 id='response-schema-2'>Response Schema</h4>
+<table><thead>
+<tr>
+<th>Attribute</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>success</code></td>
+<td>Boolean</td>
+<td>Whether or not the user was updated successfully.</td>
+</tr>
+<tr>
+<td><code>user</code></td>
+<td><a href="#user">User</a> Object</td>
+<td>The updated user.</td>
+</tr>
+</tbody></table>
+<h2 id='delete-a-user'>Delete a User</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">-X</span> DELETE <span class="s2">"https://abs.example.com/api/users/usr_rfk7dgyjp8kg4waewi"</span> <span class="se">\</span>
+  <span class="nt">-H</span> <span class="s2">"Authorization: Bearer exJhbGciOiJI6IkpXVCJ9.eyJ1c2Vyi5NDEyODc4fQ.ZraBFohS4Tg39NszY"</span>
+</code></pre></div>
+<blockquote>
+<p>The above command returns JSON structured like this:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"success"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<p>This endpoint deletes a user.</p>
+<h3 id='http-request-6'>HTTP Request</h3>
+<p><code>DELETE http://abs.example.com/api/users/&lt;ID&gt;</code></p>
+<h3 id='url-parameters-3'>URL Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>ID</td>
+<td>The ID of the user.</td>
+</tr>
+</tbody></table>
+<h3 id='response-6'>Response</h3>
+<table><thead>
+<tr>
+<th>Status</th>
+<th>Meaning</th>
+<th>Description</th>
+<th>Schema</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>200</td>
+<td>OK</td>
+<td>Success</td>
+<td>See below.</td>
+</tr>
+<tr>
+<td>404</td>
+<td>Not Found</td>
+<td>No user with the provided ID exists.</td>
+<td></td>
+</tr>
+<tr>
+<td>500</td>
+<td>Internal Server Error</td>
+<td>The root user cannot be deleted and users cannot delete themselves.</td>
+<td></td>
+</tr>
+</tbody></table>
+<h4 id='response-schema-3'>Response Schema</h4>
+<table><thead>
+<tr>
+<th>Attribute</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>success</code></td>
+<td>Boolean</td>
+<td>Whether or not the user was successfully deleted.</td>
+</tr>
+</tbody></table>
+<h2 id='get-a-user-39-s-listening-sessions'>Get a User&#39;s Listening Sessions</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://abs.example.com/api/users/root/listening-sessions?itemsPerPage=1"</span> <span class="se">\</span>
+  <span class="nt">-H</span> <span class="s2">"Authorization: Bearer exJhbGciOiJI6IkpXVCJ9.eyJ1c2Vyi5NDEyODc4fQ.ZraBFohS4Tg39NszY"</span>
+</code></pre></div>
+<blockquote>
+<p>The above command returns JSON structured like this:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"total"</span><span class="p">:</span><span class="w"> </span><span class="mi">37</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"numPages"</span><span class="p">:</span><span class="w"> </span><span class="mi">37</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"page"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"itemsPerPage"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"sessions"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"play_4oq00chunexu9s03jw"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"userId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"root"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"libraryId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"lib_p9wkw2i85qy9oltijt"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"libraryItemId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"li_bufnnmp4y5o2gbbxfm"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"episodeId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ep_lh6ko39pumnrma3dhv"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"mediaType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"podcast"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"mediaMetadata"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Welcome to Night Vale"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"author"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Night Vale Presents"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"</span><span class="se">\n</span><span class="s2">      Twice-monthly community updates for the small desert town of Night Vale, where every conspiracy theory is true. Turn on your radio and hide. Never listened before? It's an ongoing radio show. Start with the current episode, and you'll catch on in no time. Or, go right to Episode 1 if you wanna binge-listen.</span><span class="se">\n</span><span class="s2">    "</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"releaseDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2022-10-20T19:00:00Z"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"genres"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+          </span><span class="s2">"Science Fiction"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"Podcasts"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"Fiction"</span><span class="w">
+        </span><span class="p">],</span><span class="w">
+        </span><span class="nl">"feedUrl"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://feeds.nightvalepresents.com/welcometonightvalepodcast"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"imageUrl"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://is4-ssl.mzstatic.com/image/thumb/Podcasts125/v4/4a/31/35/4a3135d0-1fe7-a2d7-fb43-d182ec175402/mza_8232698753950666850.jpg/600x600bb.jpg"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"itunesPageUrl"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://podcasts.apple.com/us/podcast/welcome-to-night-vale/id536258179?uo=4"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"itunesId"</span><span class="p">:</span><span class="w"> </span><span class="mi">536258179</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"itunesArtistId"</span><span class="p">:</span><span class="w"> </span><span class="mi">718704794</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"explicit"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"language"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="nl">"chapters"</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span><span class="w">
+      </span><span class="nl">"displayTitle"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1 - Pilot"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"displayAuthor"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Night Vale Presents"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"coverPath"</span><span class="p">:</span><span class="w"> </span><span class="s2">"/metadata/items/li_bufnnmp4y5o2gbbxfm/cover.jpg"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"duration"</span><span class="p">:</span><span class="w"> </span><span class="mf">1454.18449</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"playMethod"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"mediaPlayer"</span><span class="p">:</span><span class="w"> </span><span class="s2">"html5"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"deviceInfo"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"ipAddress"</span><span class="p">:</span><span class="w"> </span><span class="s2">"192.168.1.118"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"browserName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Firefox"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"browserVersion"</span><span class="p">:</span><span class="w"> </span><span class="s2">"106.0"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"osName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Linux"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"osVersion"</span><span class="p">:</span><span class="w"> </span><span class="s2">"x86_64"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"serverVersion"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2.2.3"</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="nl">"date"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2022-11-13"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"dayOfWeek"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Sunday"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"timeListening"</span><span class="p">:</span><span class="w"> </span><span class="mi">15</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"startTime"</span><span class="p">:</span><span class="w"> </span><span class="mf">596.779402</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"currentTime"</span><span class="p">:</span><span class="w"> </span><span class="mf">611.590717</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"startedAt"</span><span class="p">:</span><span class="w"> </span><span class="mi">1668330137087</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"updatedAt"</span><span class="p">:</span><span class="w"> </span><span class="mi">1668330152157</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<p>This endpoint retrieves a user&#39;s listening sessions.</p>
+<h3 id='http-request-7'>HTTP Request</h3>
+<p><code>GET http://abs.example.com/api/users/&lt;ID&gt;/listening-sessions</code></p>
+<h3 id='url-parameters-4'>URL Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>ID</td>
+<td>The ID of the user.</td>
+</tr>
+</tbody></table>
+<h3 id='query-parameters'>Query Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>itemsPerPage</code></td>
+<td>Integer</td>
+<td><code>10</code></td>
+<td>The number of listening sessions to retrieve per page.</td>
+</tr>
+<tr>
+<td><code>page</code></td>
+<td>Integer</td>
+<td><code>0</code></td>
+<td>The page (0 indexed) to retrieve.</td>
+</tr>
+</tbody></table>
+<h3 id='response-7'>Response</h3>
+<table><thead>
+<tr>
+<th>Status</th>
+<th>Meaning</th>
+<th>Description</th>
+<th>Schema</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>200</td>
+<td>OK</td>
+<td>Success</td>
+<td>See below.</td>
+</tr>
+<tr>
+<td>404</td>
+<td>Not Found</td>
+<td>No user with the provided ID exists.</td>
+<td></td>
+</tr>
+</tbody></table>
+<h4 id='response-schema-4'>Response Schema</h4>
+<table><thead>
+<tr>
+<th>Attribute</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>total</code></td>
+<td>Integer</td>
+<td>The total number of listening sessions.</td>
+</tr>
+<tr>
+<td><code>numPages</code></td>
+<td>Integer</td>
+<td>The total number of pages when using this <code>itemsPerPage</code> limit.</td>
+</tr>
+<tr>
+<td><code>itemsPerPage</code></td>
+<td>Integer</td>
+<td>The provided <code>itemsPerPage</code> parameter.</td>
+</tr>
+<tr>
+<td><code>sessions</code></td>
+<td>Array of <a href="#playback-session">Playback Session</a></td>
+<td>The requested listening sessions.</td>
+</tr>
+</tbody></table>
+<h2 id='get-a-user-39-s-listening-stats'>Get a User&#39;s Listening Stats</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://abs.example.com/api/users/root/listening-stats"</span> <span class="se">\</span>
+  <span class="nt">-H</span> <span class="s2">"Authorization: Bearer exJhbGciOiJI6IkpXVCJ9.eyJ1c2Vyi5NDEyODc4fQ.ZraBFohS4Tg39NszY"</span>
+</code></pre></div>
+<blockquote>
+<p>The above command returns JSON structured like this:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"totalTime"</span><span class="p">:</span><span class="w"> </span><span class="mi">493</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"items"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"li_bufnnmp4y5o2gbbxfm"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"li_bufnnmp4y5o2gbbxfm"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"timeListening"</span><span class="p">:</span><span class="w"> </span><span class="mi">63</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"mediaMetadata"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Welcome to Night Vale"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"author"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Night Vale Presents"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"</span><span class="se">\n</span><span class="s2">      Twice-monthly community updates for the small desert town of Night Vale, where every conspiracy theory is true. Turn on your radio and hide. Never listened before? It's an ongoing radio show. Start with the current episode, and you'll catch on in no time. Or, go right to Episode 1 if you wanna binge-listen.</span><span class="se">\n</span><span class="s2">    "</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"releaseDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2022-10-20T19:00:00Z"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"genres"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+          </span><span class="s2">"Science Fiction"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"Podcasts"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"Fiction"</span><span class="w">
+        </span><span class="p">],</span><span class="w">
+        </span><span class="nl">"feedUrl"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://feeds.nightvalepresents.com/welcometonightvalepodcast"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"imageUrl"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://is4-ssl.mzstatic.com/image/thumb/Podcasts125/v4/4a/31/35/4a3135d0-1fe7-a2d7-fb43-d182ec175402/mza_8232698753950666850.jpg/600x600bb.jpg"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"itunesPageUrl"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://podcasts.apple.com/us/podcast/welcome-to-night-vale/id536258179?uo=4"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"itunesId"</span><span class="p">:</span><span class="w"> </span><span class="mi">536258179</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"itunesArtistId"</span><span class="p">:</span><span class="w"> </span><span class="mi">718704794</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"explicit"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"language"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="err">...</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="nl">"days"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"2022-11-13"</span><span class="p">:</span><span class="w"> </span><span class="mi">104</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"2022-11-12"</span><span class="p">:</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"2022-11-11"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"2022-11-10"</span><span class="p">:</span><span class="w"> </span><span class="mi">30</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"2022-11-06"</span><span class="p">:</span><span class="w"> </span><span class="mi">14</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"2022-11-05"</span><span class="p">:</span><span class="w"> </span><span class="mi">12</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"2022-11-04"</span><span class="p">:</span><span class="w"> </span><span class="mi">20</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"2022-10-26"</span><span class="p">:</span><span class="w"> </span><span class="mi">12</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"2022-10-25"</span><span class="p">:</span><span class="w"> </span><span class="mi">206</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"2022-10-24"</span><span class="p">:</span><span class="w"> </span><span class="mi">73</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"2022-10-23"</span><span class="p">:</span><span class="w"> </span><span class="mi">12</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="nl">"dayOfWeek"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"Sunday"</span><span class="p">:</span><span class="w"> </span><span class="mi">130</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"Saturday"</span><span class="p">:</span><span class="w"> </span><span class="mi">15</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"Friday"</span><span class="p">:</span><span class="w"> </span><span class="mi">21</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"Thursday"</span><span class="p">:</span><span class="w"> </span><span class="mi">30</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"Wednesday"</span><span class="p">:</span><span class="w"> </span><span class="mi">12</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"Tuesday"</span><span class="p">:</span><span class="w"> </span><span class="mi">206</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"Monday"</span><span class="p">:</span><span class="w"> </span><span class="mi">73</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="nl">"today"</span><span class="p">:</span><span class="w"> </span><span class="mi">104</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"recentSessions"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"play_4oq00chunexu9s03jw"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"userId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"root"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"libraryId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"lib_p9wkw2i85qy9oltijt"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"libraryItemId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"li_bufnnmp4y5o2gbbxfm"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"episodeId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ep_lh6ko39pumnrma3dhv"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"mediaType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"podcast"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"mediaMetadata"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Welcome to Night Vale"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"author"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Night Vale Presents"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"</span><span class="se">\n</span><span class="s2">      Twice-monthly community updates for the small desert town of Night Vale, where every conspiracy theory is true. Turn on your radio and hide. Never listened before? It's an ongoing radio show. Start with the current episode, and you'll catch on in no time. Or, go right to Episode 1 if you wanna binge-listen.</span><span class="se">\n</span><span class="s2">    "</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"releaseDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2022-10-20T19:00:00Z"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"genres"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+          </span><span class="s2">"Science Fiction"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"Podcasts"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"Fiction"</span><span class="w">
+        </span><span class="p">],</span><span class="w">
+        </span><span class="nl">"feedUrl"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://feeds.nightvalepresents.com/welcometonightvalepodcast"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"imageUrl"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://is4-ssl.mzstatic.com/image/thumb/Podcasts125/v4/4a/31/35/4a3135d0-1fe7-a2d7-fb43-d182ec175402/mza_8232698753950666850.jpg/600x600bb.jpg"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"itunesPageUrl"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://podcasts.apple.com/us/podcast/welcome-to-night-vale/id536258179?uo=4"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"itunesId"</span><span class="p">:</span><span class="w"> </span><span class="mi">536258179</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"itunesArtistId"</span><span class="p">:</span><span class="w"> </span><span class="mi">718704794</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"explicit"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"language"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="nl">"chapters"</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span><span class="w">
+      </span><span class="nl">"displayTitle"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1 - Pilot"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"displayAuthor"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Night Vale Presents"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"coverPath"</span><span class="p">:</span><span class="w"> </span><span class="s2">"/metadata/items/li_bufnnmp4y5o2gbbxfm/cover.jpg"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"duration"</span><span class="p">:</span><span class="w"> </span><span class="mf">1454.18449</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"playMethod"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"mediaPlayer"</span><span class="p">:</span><span class="w"> </span><span class="s2">"html5"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"deviceInfo"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"ipAddress"</span><span class="p">:</span><span class="w"> </span><span class="s2">"192.168.1.118"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"browserName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Firefox"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"browserVersion"</span><span class="p">:</span><span class="w"> </span><span class="s2">"106.0"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"osName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Linux"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"osVersion"</span><span class="p">:</span><span class="w"> </span><span class="s2">"x86_64"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"serverVersion"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2.2.3"</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="nl">"date"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2022-11-13"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"dayOfWeek"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Sunday"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"timeListening"</span><span class="p">:</span><span class="w"> </span><span class="mi">15</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"startTime"</span><span class="p">:</span><span class="w"> </span><span class="mf">596.779402</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"currentTime"</span><span class="p">:</span><span class="w"> </span><span class="mf">611.590717</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"startedAt"</span><span class="p">:</span><span class="w"> </span><span class="mi">1668330137087</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"updatedAt"</span><span class="p">:</span><span class="w"> </span><span class="mi">1668330152157</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="err">...</span><span class="w">
+  </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<p>This endpoint retrieves a user&#39;s listening statistics.</p>
+<h3 id='http-request-8'>HTTP Request</h3>
+<p><code>GET http://abs.example.com/api/users/&lt;ID&gt;/listening-stats</code></p>
+<h3 id='url-parameters-5'>URL Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>ID</td>
+<td>The ID of the user.</td>
+</tr>
+</tbody></table>
+<h3 id='response-8'>Response</h3>
+<table><thead>
+<tr>
+<th>Status</th>
+<th>Meaning</th>
+<th>Description</th>
+<th>Schema</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>200</td>
+<td>OK</td>
+<td>Success</td>
+<td>See below.</td>
+</tr>
+<tr>
+<td>404</td>
+<td>Not Found</td>
+<td>No user with the provided ID exists.</td>
+<td></td>
+</tr>
+</tbody></table>
+<h4 id='response-schema-5'>Response Schema</h4>
+<table><thead>
+<tr>
+<th>Attribute</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>totalTime</code></td>
+<td>Integer</td>
+<td>The total time (in seconds) the user has listened to library items.</td>
+</tr>
+<tr>
+<td><code>items</code></td>
+<td><a href="#items-listened-to">Items Listened To</a> Object (See Below)</td>
+<td>The library items that the user has listened to.</td>
+</tr>
+<tr>
+<td><code>days</code></td>
+<td><a href="#day-time-totals">Day Time Totals</a> Object (See Below)</td>
+<td>The total time the user has listened to library items on each day.</td>
+</tr>
+<tr>
+<td><code>dayOfWeek</code></td>
+<td><a href="#day-of-week-totals">Day of Week Totals</a> Object (See Below)</td>
+<td>The total time the user has listened to library items on each day of the week.</td>
+</tr>
+<tr>
+<td><code>today</code></td>
+<td>Integer</td>
+<td>The time (in seconds) the user has listened to library items today.</td>
+</tr>
+<tr>
+<td><code>recentSessions</code></td>
+<td>Array of <a href="#playback-session">Playback Session</a></td>
+<td>The 10 most recent playback sessions for the user.</td>
+</tr>
+</tbody></table>
+<h4 id='items-listened-to'>Items Listened To</h4>
+<p>The keys of this object are the library item IDs of the item listened to. The value of each key is an object of the following structure:</p>
+
+<table><thead>
+<tr>
+<th>Attribute</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>id</code></td>
+<td>String</td>
+<td>The ID of the library item that was listened to by the user.</td>
+</tr>
+<tr>
+<td><code>timeListening</code></td>
+<td>Integer</td>
+<td>The time (in seconds) the user listened to the library item.</td>
+</tr>
+<tr>
+<td><code>mediaMetadata</code></td>
+<td><a href="#book-metadata">Book Metadata</a> or <a href="#podcast-metadata">Podcast Metadata</a> Object</td>
+<td>The metadata of the library item&#39;s media.</td>
+</tr>
+</tbody></table>
+<h4 id='day-time-totals'>Day Time Totals</h4>
+<p>The keys of this object are each day (in the format YYYY-MM-DD) when the user listened to library items. The values are the total time (in seconds, Integer) the user listened to library items.</p>
+<h4 id='day-of-week-totals'>Day of Week Totals</h4>
+<p>The keys of this object are each day of the week. The values are the total time (in seconds, Integer) the user listened to library items on that day of the week.</p>
+<h2 id='purge-a-user-39-s-media-progress'>Purge a User&#39;s Media Progress</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">-X</span> POST <span class="s2">"https://abs.example.com/api/users/root/purge-media-progress"</span> <span class="se">\</span>
+  <span class="nt">-H</span> <span class="s2">"Authorization: Bearer exJhbGciOiJI6IkpXVCJ9.eyJ1c2Vyi5NDEyODc4fQ.ZraBFohS4Tg39NszY"</span>
+</code></pre></div>
+<blockquote>
+<p>The above command returns JSON structured like this:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"root"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"username"</span><span class="p">:</span><span class="w"> </span><span class="s2">"root"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"root"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"token"</span><span class="p">:</span><span class="w"> </span><span class="s2">"exJhbGciOiJI6IkpXVCJ9.eyJ1c2Vyi5NDEyODc4fQ.ZraBFohS4Tg39NszY"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"mediaProgress"</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span><span class="w">
+  </span><span class="nl">"seriesHideFromContinueListening"</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span><span class="w">
+  </span><span class="nl">"bookmarks"</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span><span class="w">
+  </span><span class="nl">"isActive"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"isLocked"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"lastSeen"</span><span class="p">:</span><span class="w"> </span><span class="mi">1667687240810</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"createdAt"</span><span class="p">:</span><span class="w"> </span><span class="mi">1666569607117</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"settings"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"mobileOrderBy"</span><span class="p">:</span><span class="w"> </span><span class="s2">"recent"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"mobileOrderDesc"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"mobileFilterBy"</span><span class="p">:</span><span class="w"> </span><span class="s2">"all"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"orderBy"</span><span class="p">:</span><span class="w"> </span><span class="s2">"media.metadata.title"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"orderDesc"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"filterBy"</span><span class="p">:</span><span class="w"> </span><span class="s2">"all"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"playbackRate"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"bookshelfCoverSize"</span><span class="p">:</span><span class="w"> </span><span class="mi">120</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"collapseSeries"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="nl">"permissions"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"download"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"update"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"delete"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"upload"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"accessAllLibraries"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"accessAllTags"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"accessExplicitContent"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="nl">"librariesAccessible"</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span><span class="w">
+  </span><span class="nl">"itemTagsAccessible"</span><span class="p">:</span><span class="w"> </span><span class="p">[]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<p>This endpoint removes the user&#39;s media progress for library items that no longer exist.</p>
+<h3 id='http-request-9'>HTTP Request</h3>
+<p><code>POST http://abs.example.com/api/users/&lt;ID&gt;/purge-media-progress</code></p>
+<h3 id='url-parameters-6'>URL Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>ID</td>
+<td>The ID of the user.</td>
+</tr>
+</tbody></table>
+<h3 id='response-9'>Response</h3>
+<table><thead>
+<tr>
+<th>Status</th>
+<th>Meaning</th>
+<th>Description</th>
+<th>Schema</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>200</td>
+<td>OK</td>
+<td>Success</td>
+<td><a href="#user-with-progress-details">User with Progress Details</a></td>
+</tr>
+<tr>
+<td>403</td>
+<td>Forbidden</td>
+<td>Only the root user can purge the root user&#39;s media progress.</td>
+<td></td>
+</tr>
+<tr>
+<td>404</td>
+<td>Not Found</td>
+<td>No user with the provided ID exists.</td>
+<td></td>
 </tr>
 </tbody></table>
 <h1 id='filtering'>Filtering</h1>
@@ -9251,6 +10771,25 @@ Only non-null tags will be returned in requests.</p>
   </span><span class="nl">"finishedAt"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div>
+<blockquote>
+<p>Media Progress with Media</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"li_bufnnmp4y5o2gbbxfm-ep_lh6ko39pumnrma3dhv"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"libraryItemId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"li_bufnnmp4y5o2gbbxfm"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"episodeId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ep_lh6ko39pumnrma3dhv"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"duration"</span><span class="p">:</span><span class="w"> </span><span class="mf">1454.18449</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"progress"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.011193983371394644</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"currentTime"</span><span class="p">:</span><span class="w"> </span><span class="mf">16.278117</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"isFinished"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"hideFromContinueListening"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"lastUpdate"</span><span class="p">:</span><span class="w"> </span><span class="mi">1668120246620</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"startedAt"</span><span class="p">:</span><span class="w"> </span><span class="mi">1668120083771</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"finishedAt"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"media"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="err">...</span><span class="p">},</span><span class="w">
+  </span><span class="nl">"episode"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="err">...</span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
 <table><thead>
 <tr>
 <th>Attribute</th>
@@ -9314,6 +10853,25 @@ Only non-null tags will be returned in requests.</p>
 <td>The time (in ms since POSIX epoch) when the media was finished. Will be <code>null</code> if the media has is not finished.</td>
 </tr>
 </tbody></table>
+<h3 id='media-progress-with-media'>Media Progress with Media</h3><h4 id='added-attributes-16'>Added Attributes</h4>
+<table><thead>
+<tr>
+<th>Attribute</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>media</code></td>
+<td><a href="#book-expanded">Book Expanded</a> or <a href="#podcast-expanded">Podcast Expanded</a> Object</td>
+<td>The media of the library item the media progress is for.</td>
+</tr>
+<tr>
+<td><code>episode</code></td>
+<td><a href="#podcast-episode">Podcast Episode</a></td>
+<td>The podcast episode the media progress is for. Will only exist if the media progress is for a podcast episode.</td>
+</tr>
+</tbody></table>
 <h2 id='playback-session'>Playback Session</h2>
 <blockquote>
 <p>Playback Session</p>
@@ -9343,6 +10901,8 @@ Only non-null tags will be returned in requests.</p>
   </span><span class="nl">"updatedAt"</span><span class="p">:</span><span class="w"> </span><span class="mi">1668206493239</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div>
+<!-- PlaybackSession.toJSONForClient() -->
+
 <blockquote>
 <p>Playback Session Expanded</p>
 </blockquote>
@@ -9472,6 +11032,11 @@ Only non-null tags will be returned in requests.</p>
 <td>The amount of time (in seconds) the user has spent listening using this playback session.</td>
 </tr>
 <tr>
+<td><code>startTime</code></td>
+<td>Float</td>
+<td>The time (in seconds) where the playback session started.</td>
+</tr>
+<tr>
 <td><code>currentTime</code></td>
 <td>Float</td>
 <td>The current time (in seconds) of the playback position.</td>
@@ -9511,7 +11076,7 @@ Only non-null tags will be returned in requests.</p>
 <td>Local</td>
 </tr>
 </tbody></table>
-<h3 id='playback-session-expanded'>Playback Session Expanded</h3><h4 id='added-attributes-16'>Added Attributes</h4>
+<h3 id='playback-session-expanded'>Playback Session Expanded</h3><h4 id='added-attributes-17'>Added Attributes</h4>
 <table><thead>
 <tr>
 <th>Attribute</th>
@@ -9610,6 +11175,352 @@ Only non-null tags will be returned in requests.</p>
 <td><code>serverVersion</code></td>
 <td>String or null</td>
 <td>The version of the server at the time of the request.</td>
+</tr>
+</tbody></table>
+<h2 id='user'>User</h2>
+<!-- This is actually the User.toJSONForBrowser() method as User.toJSON() is not accessible to the API. -->
+
+<blockquote>
+<p>User</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"root"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"username"</span><span class="p">:</span><span class="w"> </span><span class="s2">"root"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"root"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"token"</span><span class="p">:</span><span class="w"> </span><span class="s2">"exJhbGciOiJI6IkpXVCJ9.eyJ1c2Vyi5NDEyODc4fQ.ZraBFohS4Tg39NszY"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"mediaProgress"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="err">...</span><span class="p">],</span><span class="w">
+  </span><span class="nl">"seriesHideFromContinueListening"</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span><span class="w">
+  </span><span class="nl">"bookmarks"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="err">...</span><span class="p">],</span><span class="w">
+  </span><span class="nl">"isActive"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"isLocked"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"lastSeen"</span><span class="p">:</span><span class="w"> </span><span class="mi">1668296147437</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"createdAt"</span><span class="p">:</span><span class="w"> </span><span class="mi">1666543632566</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"settings"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="err">...</span><span class="p">},</span><span class="w">
+  </span><span class="nl">"permissions"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="err">...</span><span class="p">},</span><span class="w">
+  </span><span class="nl">"librariesAccessible"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="err">...</span><span class="p">],</span><span class="w">
+  </span><span class="nl">"itemTagsAccessible"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="err">...</span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<!-- ApiRouter.userJsonWithItemProgressDetails() -->
+
+<blockquote>
+<p>User with Progress Details</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"root"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"username"</span><span class="p">:</span><span class="w"> </span><span class="s2">"root"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"root"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"token"</span><span class="p">:</span><span class="w"> </span><span class="s2">"exJhbGciOiJI6IkpXVCJ9.eyJ1c2Vyi5NDEyODc4fQ.ZraBFohS4Tg39NszY"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"mediaProgress"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="err">...</span><span class="p">],</span><span class="w">
+  </span><span class="nl">"seriesHideFromContinueListening"</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span><span class="w">
+  </span><span class="nl">"bookmarks"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="err">...</span><span class="p">],</span><span class="w">
+  </span><span class="nl">"isActive"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"isLocked"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"lastSeen"</span><span class="p">:</span><span class="w"> </span><span class="mi">1668296147437</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"createdAt"</span><span class="p">:</span><span class="w"> </span><span class="mi">1666543632566</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"settings"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="err">...</span><span class="p">},</span><span class="w">
+  </span><span class="nl">"permissions"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="err">...</span><span class="p">},</span><span class="w">
+  </span><span class="nl">"librariesAccessible"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="err">...</span><span class="p">],</span><span class="w">
+  </span><span class="nl">"itemTagsAccessible"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="err">...</span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<!-- User.toJSONForPublic() -->
+
+<blockquote>
+<p>User with Session and Most Recent Progress</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"root"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"username"</span><span class="p">:</span><span class="w"> </span><span class="s2">"root"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"root"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"session"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"mostRecent"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="err">...</span><span class="p">},</span><span class="w">
+  </span><span class="nl">"lastSeen"</span><span class="p">:</span><span class="w"> </span><span class="mi">1668296147437</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"createdAt"</span><span class="p">:</span><span class="w"> </span><span class="mi">1666543632566</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<table><thead>
+<tr>
+<th>Attribute</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>id</code></td>
+<td>String</td>
+<td>The ID of the user. Only the root user has the <code>root</code> ID.</td>
+</tr>
+<tr>
+<td><code>username</code></td>
+<td>String</td>
+<td>The username of the user.</td>
+</tr>
+<tr>
+<td><code>type</code></td>
+<td>String</td>
+<td>The type of the user. Will be <code>root</code>, <code>guest</code>, <code>user</code>, or <code>admin</code>. There will be only one root user which is created when the server first starts.</td>
+</tr>
+<tr>
+<td><code>token</code></td>
+<td>String</td>
+<td>The authentication token of the user.</td>
+</tr>
+<tr>
+<td><code>mediaProgress</code></td>
+<td>Array of <a href="#media-progress">Media Progress</a></td>
+<td>The user&#39;s media progress.</td>
+</tr>
+<tr>
+<td><code>seriesHideFromContinueListening</code></td>
+<td>Array of String</td>
+<td>The IDs of series to hide from the user&#39;s &quot;Continue Series&quot; shelf.</td>
+</tr>
+<tr>
+<td><code>bookmarks</code></td>
+<td>Array of <a href="#audio-bookmark">Audio Bookmark</a></td>
+<td>The user&#39;s bookmarks.</td>
+</tr>
+<tr>
+<td><code>isActive</code></td>
+<td>Boolean</td>
+<td>Whether or not the user&#39;s account is active.</td>
+</tr>
+<tr>
+<td><code>isLocked</code></td>
+<td>Boolean</td>
+<td>Whether or not the user is locked.</td>
+</tr>
+<tr>
+<td><code>lastSeen</code></td>
+<td>Integer or null</td>
+<td>The time (in ms since POSIX epoch) when the user was last seen by the server. Will be <code>null</code> if the user has never logged in.</td>
+</tr>
+<tr>
+<td><code>createdAt</code></td>
+<td>Integer</td>
+<td>The time (in ms since POSIX epoch) when the user was created.</td>
+</tr>
+<tr>
+<td><code>settings</code></td>
+<td><a href="#user-settings">User Settings</a> Object</td>
+<td>The user&#39;s settings.</td>
+</tr>
+<tr>
+<td><code>permissions</code></td>
+<td><a href="#user-permissions">User Permissions</a> Object</td>
+<td>The user&#39;s permissions.</td>
+</tr>
+<tr>
+<td><code>librariesAccessible</code></td>
+<td>Array of String</td>
+<td>The IDs of libraries accessible to the user. An empty array means all libraries are accessible.</td>
+</tr>
+<tr>
+<td><code>itemTagsAccessible</code></td>
+<td>Array of String</td>
+<td>The tags accessible to the user. An empty array means all tags are accessible.</td>
+</tr>
+</tbody></table>
+<h3 id='user-with-progress-details'>User with Progress Details</h3><h4 id='modified-attributes-8'>Modified Attributes</h4>
+<ul>
+<li><code>mediaProgress</code> is an Array of <a href="#media-progress-with-media">Media Progress with Media</a></li>
+</ul>
+<h3 id='user-with-session-and-most-recent-progress'>User with Session and Most Recent Progress</h3><h4 id='removed-attributes-9'>Removed Attributes</h4>
+<ul>
+<li><code>token</code></li>
+<li><code>mediaProgress</code></li>
+<li><code>seriesHideFromContinueListening</code></li>
+<li><code>bookmarks</code></li>
+<li><code>isActive</code></li>
+<li><code>isLocked</code></li>
+<li><code>settings</code></li>
+<li><code>permissions</code></li>
+<li><code>librariesAccessible</code></li>
+<li><code>itemTagsAccessible</code></li>
+</ul>
+<h4 id='added-attributes-18'>Added Attributes</h4>
+<table><thead>
+<tr>
+<th>Attribute</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>session</code></td>
+<td><a href="#playback-session-expanded">Playback Session Expanded</a> Object or null</td>
+<td>The user&#39;s currently playing session. Will be <code>null</code> if the user is not currently playing anything.</td>
+</tr>
+<tr>
+<td><code>mostRecent</code></td>
+<td><a href="#media-progress-with-media">Media Progress with Media</a> Object or null</td>
+<td>The user&#39;s most recent media progress. Will be <code>null</code> if the user has no media progress.</td>
+</tr>
+</tbody></table>
+<h2 id='user-settings'>User Settings</h2>
+<blockquote>
+<p>User Settings</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"mobileOrderBy"</span><span class="p">:</span><span class="w"> </span><span class="s2">"recent"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"mobileOrderDesc"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"mobileFilterBy"</span><span class="p">:</span><span class="w"> </span><span class="s2">"all"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"orderBy"</span><span class="p">:</span><span class="w"> </span><span class="s2">"media.metadata.title"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"orderDesc"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"filterBy"</span><span class="p">:</span><span class="w"> </span><span class="s2">"all"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"playbackRate"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"bookshelfCoverSize"</span><span class="p">:</span><span class="w"> </span><span class="mi">120</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"collapseSeries"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<table><thead>
+<tr>
+<th>Attribute</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>mobileOrderBy</code></td>
+<td>String</td>
+<td>What to order library items by on mobile.</td>
+</tr>
+<tr>
+<td><code>mobileOrderDesc</code></td>
+<td>Boolean</td>
+<td>Whether or not to reverse the sort order on mobile.</td>
+</tr>
+<tr>
+<td><code>mobileFilterBy</code></td>
+<td>String</td>
+<td>What to filter library items by on mobile.</td>
+</tr>
+<tr>
+<td><code>orderBy</code></td>
+<td>String</td>
+<td>What to order library items by.</td>
+</tr>
+<tr>
+<td><code>orderDesc</code></td>
+<td>Boolean</td>
+<td>Whether or not to reverse the sort order.</td>
+</tr>
+<tr>
+<td><code>filterBy</code></td>
+<td>String</td>
+<td>What to filter library items by.</td>
+</tr>
+<tr>
+<td><code>playbackRate</code></td>
+<td>Float</td>
+<td>What speed to play items.</td>
+</tr>
+<tr>
+<td><code>bookshelfCoverSize</code></td>
+<td>Integer</td>
+<td>What size to display covers at.</td>
+</tr>
+<tr>
+<td><code>collapseSeries</code></td>
+<td>Boolean</td>
+<td>Whether or not to collapse series when viewing library items.</td>
+</tr>
+</tbody></table>
+<h2 id='user-permissions'>User Permissions</h2>
+<blockquote>
+<p>User Permissions</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"download"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"update"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"delete"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"upload"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"accessAllLibraries"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"accessAllTags"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"accessExplicitContent"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<table><thead>
+<tr>
+<th>Attribute</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>download</code></td>
+<td>Boolean</td>
+<td>Whether or not the user can download items to the server.</td>
+</tr>
+<tr>
+<td><code>update</code></td>
+<td>Boolean</td>
+<td>Whether or not the user can update library items.</td>
+</tr>
+<tr>
+<td><code>delete</code></td>
+<td>Boolean</td>
+<td>Whether or not the user can delete library items.</td>
+</tr>
+<tr>
+<td><code>upload</code></td>
+<td>Boolean</td>
+<td>Whether or not the user can upload items to the server.</td>
+</tr>
+<tr>
+<td><code>accessAllLibraries</code></td>
+<td>Boolean</td>
+<td>Whether or not the user can access all libraries.</td>
+</tr>
+<tr>
+<td><code>accessAllTags</code></td>
+<td>Boolean</td>
+<td>Whether or not the user can access all tags.</td>
+</tr>
+<tr>
+<td><code>accessExplicitContent</code></td>
+<td>Boolean</td>
+<td>Whether or not the user can access explicit content.</td>
+</tr>
+</tbody></table>
+<h2 id='audio-bookmark'>Audio Bookmark</h2>
+<blockquote>
+<p>Audio Bookmark</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"libraryItemId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"li_8gch9ve09orgn4fdz8"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"the good part"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"time"</span><span class="p">:</span><span class="w"> </span><span class="mf">16.278117</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"createdAt"</span><span class="p">:</span><span class="w"> </span><span class="mi">1668120083771</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<table><thead>
+<tr>
+<th>Attribute</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>libraryItemId</code></td>
+<td>String</td>
+<td>The ID of the library item the bookmark is for.</td>
+</tr>
+<tr>
+<td><code>title</code></td>
+<td>String</td>
+<td>The title of the bookmark.</td>
+</tr>
+<tr>
+<td><code>time</code></td>
+<td>Float</td>
+<td>The time (in seconds) the bookmark is at in the book.</td>
+</tr>
+<tr>
+<td><code>createdAt</code></td>
+<td>Integer</td>
+<td>The time (in ms since POSIX epoch) when the bookmark was created.</td>
 </tr>
 </tbody></table>
 
