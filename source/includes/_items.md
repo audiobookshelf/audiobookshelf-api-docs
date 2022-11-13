@@ -2001,7 +2001,7 @@ Parameter | Type | Description
 Status | Meaning | Description | Schema
 ------ | ------- | ----------- | ------
 200 | OK | Success | See below.
-500 | Internal Server Error | An admin user is required to open a RSS feed. |
+403 | Forbidden | An admin user is required to open a RSS feed. |
 
 #### Response Schema
 
