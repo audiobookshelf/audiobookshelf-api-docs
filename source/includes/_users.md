@@ -607,8 +607,8 @@ Parameter | Type | Description
 `itemTagsAccessible` | Array of String | The tags that are accessible to the user. An empty array means all tags are accessible.
 
 <aside class="notice">
-When changing a user's username, it's token will be regenerated.
-<aside>
+When changing a user's username, their token will be regenerated.
+</aside>
 
 #### User Permissions Parameters
 
@@ -637,3 +637,45 @@ Attribute | Type | Description
 --------- | ---- | -----------
 `success` | Boolean | Whether or not the user was updated successfully.
 `user` | [User](#user) Object | The updated user.
+
+
+## Delete a User
+
+```shell
+curl -X DELETE "https://abs.example.com/api/users/usr_rfk7dgyjp8kg4waewi" \
+  -H "Authorization: Bearer exJhbGciOiJI6IkpXVCJ9.eyJ1c2Vyi5NDEyODc4fQ.ZraBFohS4Tg39NszY"
+```
+
+> The above command returns JSON structured like this:
+
+```json
+{
+  "success": true
+}
+```
+
+This endpoint deletes a user.
+
+### HTTP Request
+
+`DELETE http://abs.example.com/api/users/<ID>`
+
+### URL Parameters
+
+Parameter | Description
+--------- | -----------
+ID | The ID of the user.
+
+### Response
+
+Status | Meaning | Description | Schema
+------ | ------- | ----------- | ------
+200 | OK | Success | See below.
+404 | Not Found | No user with the provided ID exists. |
+500 | Internal Server Error | The root user cannot be deleted and users cannot delete themselves. |
+
+#### Response Schema
+
+Attribute | Type | Description
+--------- | ---- | -----------
+`success` | Boolean | Whether or not the user was successfully deleted.
