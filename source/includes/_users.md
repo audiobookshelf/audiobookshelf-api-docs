@@ -174,3 +174,71 @@ Status | Meaning | Description | Schema
 ------ | ------- | ----------- | ------
 200 | OK | Success | Array of [User with Progress Details](#user-with-progress-details)
 403 | Forbidden | An admin user is required to get all users. |
+
+
+## Get a User
+
+```shell
+curl "https://abs.example.com/api/users/root" \
+  -H "Authorization: Bearer exJhbGciOiJI6IkpXVCJ9.eyJ1c2Vyi5NDEyODc4fQ.ZraBFohS4Tg39NszY"
+```
+
+> The above command returns JSON structured like this:
+
+```json
+{
+  "id": "root",
+  "username": "root",
+  "type": "root",
+  "token": "exJhbGciOiJI6IkpXVCJ9.eyJ1c2Vyi5NDEyODc4fQ.ZraBFohS4Tg39NszY",
+  "mediaProgress": [],
+  "seriesHideFromContinueListening": [],
+  "bookmarks": [],
+  "isActive": true,
+  "isLocked": false,
+  "lastSeen": 1667687240810,
+  "createdAt": 1666569607117,
+  "settings": {
+    "mobileOrderBy": "recent",
+    "mobileOrderDesc": true,
+    "mobileFilterBy": "all",
+    "orderBy": "media.metadata.title",
+    "orderDesc": false,
+    "filterBy": "all",
+    "playbackRate": 1,
+    "bookshelfCoverSize": 120,
+    "collapseSeries": false
+  },
+  "permissions": {
+    "download": true,
+    "update": true,
+    "delete": true,
+    "upload": true,
+    "accessAllLibraries": true,
+    "accessAllTags": true,
+    "accessExplicitContent": true
+  },
+  "librariesAccessible": [],
+  "itemTagsAccessible": []
+}
+```
+
+This endpoint retrieves a user.
+
+### HTTP Request
+
+`GET http://abs.example.com/api/users/<ID>`
+
+### URL Parameters
+
+Parameter | Description
+--------- | -----------
+ID | The ID of the user.
+
+### Response
+
+Status | Meaning | Description | Schema
+------ | ------- | ----------- | ------
+200 | OK | Success | [User with Progress Details](#user-with-progress-details)
+403 | Forbidden | An admin user is required to get users. |
+404 | Not Found | No user with the provided ID exists. |
