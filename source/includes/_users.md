@@ -96,7 +96,7 @@ Parameter | Type | Default | Description
 
 Parameter | Type | Default | Description
 --------- | ---- | ------- | -----------
-`download` | Boolean | `true` | Whether or not the user can download items to the server.
+`download` | Boolean | `true` | Whether or not the user can download items from the server.
 `update` | Boolean | `true` | Whether or not the user can update library items.
 `delete` | Boolean | `false` | Whether or not the user can delete library items.
 `upload` | Boolean | `false` | Whether or not the user can upload items to the server. The default value is `true` if the user's `type` is `admin`.
@@ -528,3 +528,112 @@ Status | Meaning | Description | Schema
 200 | OK | Success | [User with Progress Details](#user-with-progress-details)
 403 | Forbidden | An admin user is required to get users. |
 404 | Not Found | No user with the provided ID exists. |
+
+
+## Update a User
+
+```shell
+curl -X PATCH "https://abs.example.com/api/users/root" \
+  -H "Authorization: Bearer exJhbGciOiJI6IkpXVCJ9.eyJ1c2Vyi5NDEyODc4fQ.ZraBFohS4Tg39NszY" \
+  -H "Content-Type: application/json" \
+  -d '{"username": "bob", "password": "12345"}'
+```
+
+> The above command returns JSON structured like this:
+
+```json
+{
+  "id": "root",
+  "username": "bob",
+  "type": "root",
+  "token": "exJhbGciOiJI6IkpXVCJ9.eyJ1c2Vyi5NDEyODc4fQ.ZraBFohS4Tg39NszY",
+  "mediaProgress": [],
+  "seriesHideFromContinueListening": [],
+  "bookmarks": [],
+  "isActive": true,
+  "isLocked": false,
+  "lastSeen": 1667687240810,
+  "createdAt": 1666569607117,
+  "settings": {
+    "mobileOrderBy": "recent",
+    "mobileOrderDesc": true,
+    "mobileFilterBy": "all",
+    "orderBy": "media.metadata.title",
+    "orderDesc": false,
+    "filterBy": "all",
+    "playbackRate": 1,
+    "bookshelfCoverSize": 120,
+    "collapseSeries": false
+  },
+  "permissions": {
+    "download": true,
+    "update": true,
+    "delete": true,
+    "upload": true,
+    "accessAllLibraries": true,
+    "accessAllTags": true,
+    "accessExplicitContent": true
+  },
+  "librariesAccessible": [],
+  "itemTagsAccessible": []
+}
+```
+
+This endpoint updates a user.
+
+### HTTP Request
+
+`PATCH http://abs.example.com/api/users/<ID>`
+
+### URL Parameters
+
+Parameter | Description
+--------- | -----------
+ID | The ID of the user.
+
+### Parameters
+
+For the root user, only `username` and `password` are changeable.
+
+Parameter | Type | Description
+--------- | ---- | -----------
+`username` | String | The user's username.
+`password` | String | The user's password.
+`type` | String | The user's type. May be `guest`, `user`, or `admin`.
+`seriesHideFromContinueListening` | Array of String | The IDs of series to hide from the user's "Continue Series" shelf.
+`isActive` | Boolean | Whether or not the user's account is active.
+`permissions` | [User Permissions Parameters](#user-permissions-parameters-2) Object (See Below) | The user's permissions.
+`librariesAccessible` | Array of String | The IDs of libraries that are accessible to the user. An empty array means all libraries are accessible.
+`itemTagsAccessible` | Array of String | The tags that are accessible to the user. An empty array means all tags are accessible.
+
+<aside class="notice">
+When changing a user's username, it's token will be regenerated.
+<aside>
+
+#### User Permissions Parameters
+
+Parameter | Type | Description
+--------- | ---- | -----------
+`download` | Boolean | Whether or not the user can download items from the server.
+`update` | Boolean | Whether or not the user can update library items.
+`delete` | Boolean | Whether or not the user can delete library items.
+`upload` | Boolean | Whether or not the user can upload items to the server.
+`accessAllLibraries` | Boolean | Whether or not the user can access all libraries.
+`accessAllTags` | Boolean | Whether or not the user can access all tags.
+`accessExplicitContent` | Boolean | Whether or not the user can access explicit content.
+
+### Response
+
+Status | Meaning | Description | Schema
+------ | ------- | ----------- | ------
+200 | OK | Success | See below.
+403 | Forbidden | An admin user is required to edit users and the root user is required to edit the root user. |
+404 | Not Found | No user with the provided ID exists. |
+500 | Internal Server Error | The provided username is already taken. |
+
+#### Response Schema
+
+Attribute | Type | Description
+--------- | ---- | -----------
+`success` | Boolean | Whether or not the user was updated successfully.
+`user` | [User](#user) Object | The updated user.
