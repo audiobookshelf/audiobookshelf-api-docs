@@ -418,3 +418,45 @@ Status | Meaning | Description
 ------ | ------- | -----------
 200 | OK | Success
 500 | Internal Server Error | The provided array must have a non-zero length.
+
+
+## Create/Update Media Progress
+
+```shell
+curl -X PATCH "https://abs.example.com/api/me/progress/li_bufnnmp4y5o2gbbxfm/ep_lh6ko39pumnrma3dhv" \
+  -H "Authorization: Bearer exJhbGciOiJI6IkpXVCJ9.eyJ1c2Vyi5NDEyODc4fQ.ZraBFohS4Tg39NszY" \
+  -H "Content-Type: application/json" \
+  -d '{"isFinished": true}'
+```
+
+This endpoint creates/updates your media progress for a library item or podcast episode.
+
+### HTTP Request
+
+* `PATCH http://abs.example.com/api/me/progress/<LibraryItemID>`
+* `PATCH http://abs.example.com/api/me/progress/<LibraryItemID>/<EpisodeID>`
+
+### URL Parameters
+
+Parameter | Description
+--------- | -----------
+LibraryItemID | The ID of the library item to create/update media progress for.
+EpisodeID | The ID of the podcast episode to create/update media progress for.
+
+### Parameters
+
+Parameter | Type | Default | Description
+--------- | ---- | ------- | -----------
+`duration` | Float | `0` | The total duration (in seconds) of the media.
+`progress` | Float | `0` | The percentage completion progress of the media. Should be `1` if the media is finished.
+`currentTime` | Float | `0` | The current time (in seconds) of your progress.
+`isFinished` | Boolean | `false` | Whether or not the media is finished.
+`hideFromContinueListening` | Boolean | `false` | Whether or not the media will be hidden from the "Continue Listening" shelf.
+`lastUpdate` | Integer | `Date.now()` | The time (in ms since POSIX epoch) when the media progress was last updated.
+
+### Response
+
+Status | Meaning | Description
+------ | ------- | -----------
+200 | OK | Success
+404 | Not Found | No library items or podcast episodes were found with the given IDs.
