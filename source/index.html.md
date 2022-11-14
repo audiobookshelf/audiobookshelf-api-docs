@@ -12,6 +12,7 @@ includes:
   - libraries
   - items
   - users
+  - collections
   - filtering
   - schemas
 

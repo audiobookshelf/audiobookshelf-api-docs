@@ -452,13 +452,13 @@ This endpoint retrieves all online users.
 Status | Meaning | Description | Schema
 ------ | ------- | ----------- | ------
 200 | OK | Success | See below.
-404 | Not Found | An admin user is required to get users. |
+403 | Forbidden | An admin user is required to get users. |
 
 #### Response Schema
 
 Attribute | Type | Description
 --------- | ---- | -----------
-`usersOnline` | Array of [User with Session and Most Recent Progress](#user-with-session-and-most-recent-progress) | The users that are currently online. `session` will be `null`.
+`usersOnline` | Array of [User with Session and Most Recent Progress](#user-with-session-and-most-recent-progress) | The users that are currently online.
 `openSessions` | Array of [Playback Session](#playback-session) | The currently playing playback sessions.
 
 
