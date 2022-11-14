@@ -924,3 +924,86 @@ Attribute | Type | Description
 --------- | ---- | -----------
 `recentEpisode` | [Podcast Episode](#podcast-episode) Object | If the library item is for a podcast, the media progress's corresponding podcast episode. Will not exist for book library items.
 `progressLastUpdate` | Integer | The time (in ms since POSIX epoch) when the corresponding media progress was last updated.
+
+
+## Remove a Series From Continue Listening
+
+```shell
+curl "https://abs.example.com/api/me/series/ser_cabkj4jeu8be3rap4g/remove-from-continue-listening" \
+  -H "Authorization: Bearer exJhbGciOiJI6IkpXVCJ9.eyJ1c2Vyi5NDEyODc4fQ.ZraBFohS4Tg39NszY"
+```
+
+> The above command returns JSON structured like this:
+
+```json
+{
+  "id": "root",
+  "username": "root",
+  "type": "root",
+  "token": "exJhbGciOiJI6IkpXVCJ9.eyJ1c2Vyi5NDEyODc4fQ.ZraBFohS4Tg39NszY",
+  "mediaProgress": [
+    {
+      "id": "li_8gch9ve09orgn4fdz8",
+      "libraryItemId": "li_8gch9ve09orgn4fdz8",
+      "episodeId": null,
+      "duration": 33854.905,
+      "progress": 0,
+      "currentTime": 0,
+      "isFinished": false,
+      "hideFromContinueListening": false,
+      "lastUpdate": 1668330152157,
+      "startedAt": 1668120083771,
+      "finishedAt": null
+    }
+  ],
+  "seriesHideFromContinueListening": [
+    "ser_cabkj4jeu8be3rap4g"
+  ],
+  "bookmarks": [],
+  "isActive": true,
+  "isLocked": false,
+  "lastSeen": 1667687240810,
+  "createdAt": 1666569607117,
+  "settings": {
+    "mobileOrderBy": "recent",
+    "mobileOrderDesc": true,
+    "mobileFilterBy": "all",
+    "orderBy": "media.metadata.title",
+    "orderDesc": false,
+    "filterBy": "all",
+    "playbackRate": 1,
+    "bookshelfCoverSize": 120,
+    "collapseSeries": false
+  },
+  "permissions": {
+    "download": true,
+    "update": true,
+    "delete": true,
+    "upload": true,
+    "accessAllLibraries": true,
+    "accessAllTags": true,
+    "accessExplicitContent": true
+  },
+  "librariesAccessible": [],
+  "itemTagsAccessible": []
+}
+```
+
+This endpoint removes a series from your "Continue Series" shelf. Your user is returned.
+
+### HTTP Request
+
+`GET http://abs.example.com/api/me/series/<ID>/remove-from-continue-listening`
+
+### URL Parameters
+
+Parameter | Description
+--------- | -----------
+ID | The ID of the series to remove from continue listening.
+
+### Response
+
+Status | Meaning | Description | Schema
+------ | ------- | ----------- | ------
+200 | OK | Success | [User](#user)
+404 | Not Found | No series matching the provided ID was found. |
