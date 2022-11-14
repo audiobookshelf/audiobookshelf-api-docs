@@ -138,7 +138,7 @@ Status | Meaning | Description | Schema
 ## Update a Collection
 
 ```shell
-curl -X POST "https://abs.example.com/api/collections/col_fpfstanv6gd7tq2qz7" \
+curl -X PATCH "https://abs.example.com/api/collections/col_fpfstanv6gd7tq2qz7" \
   -H "Authorization: Bearer exJhbGciOiJI6IkpXVCJ9.eyJ1c2Vyi5NDEyODc4fQ.ZraBFohS4Tg39NszY" \
   -H "Content-Type: application/json" \
   -d '{"name": "The Best Books"}'
@@ -165,7 +165,7 @@ This endpoint updates a collection and returns it.
 
 ### HTTP Request
 
-`POST http://abs.example.com/api/collections/<ID>`
+`PATCH http://abs.example.com/api/collections/<ID>`
 
 ### URL Parameters
 
