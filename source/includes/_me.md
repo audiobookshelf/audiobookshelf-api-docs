@@ -486,3 +486,50 @@ ID | The ID of the media progress to remove.
 Status | Meaning | Description
 ------ | ------- | -----------
 200 | OK | Success
+
+
+## Create a Bookmark
+
+```shell
+curl -X POST "https://abs.example.com/api/me/item/li_bufnnmp4y5o2gbbxfm/bookmark" \
+  -H "Authorization: Bearer exJhbGciOiJI6IkpXVCJ9.eyJ1c2Vyi5NDEyODc4fQ.ZraBFohS4Tg39NszY" \
+  -H "Content-Type: application/json" \
+  -d '{"time": 16, "title": "the good part"}'
+```
+
+> The above command returns JSON structured like this:
+
+```json
+{
+  "libraryItemId": "li_8gch9ve09orgn4fdz8",
+  "title": "the good part",
+  "time": 16,
+  "createdAt": 1668120083771
+}
+```
+
+This endpoint creates a bookmark for a book library item.
+
+### HTTP Request
+
+`POST http://abs.example.com/api/me/item/<ID>/bookmark`
+
+### URL Parameters
+
+Parameter | Description
+--------- | -----------
+ID | The ID of the library item to create a bookmark for.
+
+### Parameters
+
+Parameter | Type | Description
+--------- | ---- | -----------
+`time` | Integer | The time (in seconds) in the book to create the bookmark at.
+`title` | String | The title of the bookmark.
+
+### Response
+
+Status | Meaning | Description | Schema
+------ | ------- | ----------- | ------
+200 | OK | Success | [Audio Bookmark](#audio-bookmark)
+404 | Not Found | No library item with the provided ID exists. |
