@@ -508,7 +508,7 @@ curl -X POST "https://abs.example.com/api/me/item/li_bufnnmp4y5o2gbbxfm/bookmark
 }
 ```
 
-This endpoint creates a bookmark for a book library item.
+This endpoint creates a bookmark for a book library item and returns the created bookmark.
 
 ### HTTP Request
 
@@ -533,3 +533,51 @@ Status | Meaning | Description | Schema
 ------ | ------- | ----------- | ------
 200 | OK | Success | [Audio Bookmark](#audio-bookmark)
 404 | Not Found | No library item with the provided ID exists. |
+
+
+## Update a Bookmark 
+
+```shell
+curl -X PATCH "https://abs.example.com/api/me/item/li_bufnnmp4y5o2gbbxfm/bookmark" \
+  -H "Authorization: Bearer exJhbGciOiJI6IkpXVCJ9.eyJ1c2Vyi5NDEyODc4fQ.ZraBFohS4Tg39NszY" \
+  -H "Content-Type: application/json" \
+  -d '{"time": 16, "title": "the better part"}'
+```
+
+> The above command returns JSON structured like this:
+
+```json
+{
+  "libraryItemId": "li_8gch9ve09orgn4fdz8",
+  "title": "the better part",
+  "time": 16,
+  "createdAt": 1668120083771
+}
+```
+
+This endpoint updates a bookmark and returns it.
+
+### HTTP Request
+
+`PATCH http://abs.example.com/api/me/item/<ID>/bookmark`
+
+### URL Parameters
+
+Parameter | Description
+--------- | -----------
+ID | The ID of the library item to update a bookmark for.
+
+### Parameters
+
+Parameter | Type | Description
+--------- | ---- | -----------
+`time` | Integer | The time (in seconds) of the bookmark.
+`title` | String | The title of the bookmark.
+
+### Response
+
+Status | Meaning | Description | Schema
+------ | ------- | ----------- | ------
+200 | OK | Success | [Audio Bookmark](#audio-bookmark)
+404 | Not Found | No library item with the provided ID exists or no bookmark at the given `time` exists. |
+500 | Internal Server Error | Could not find the bookmark.
