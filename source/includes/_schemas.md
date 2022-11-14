@@ -1240,7 +1240,7 @@ Attribute | Type | Description
 
 ```json
 {
-  "id": "usr_fpfstanv6gd7tq2qz7",
+  "id": "col_fpfstanv6gd7tq2qz7",
   "libraryId": "lib_c1u6t4p45c35rf0nzd",
   "userId": "root",
   "name": "Favorites",
@@ -1257,7 +1257,7 @@ Attribute | Type | Description
 
 ```json
 {
-  "id": "usr_fpfstanv6gd7tq2qz7",
+  "id": "col_fpfstanv6gd7tq2qz7",
   "libraryId": "lib_c1u6t4p45c35rf0nzd",
   "userId": "root",
   "name": "Favorites",
