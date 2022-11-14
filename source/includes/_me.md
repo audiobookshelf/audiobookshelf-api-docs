@@ -718,3 +718,48 @@ Attribute | Type | Description
 --------- | ---- | -----------
 `success` | Boolean | Whether or not your settings were updated successfully.
 `settings` | [User Settings](#user-settings) Object | Your updated settings.
+
+
+## Sync Local Media Progress
+
+```shell
+curl -X POST "https://abs.example.com/api/me/sync-local-progress" \
+  -H "Authorization: Bearer exJhbGciOiJI6IkpXVCJ9.eyJ1c2Vyi5NDEyODc4fQ.ZraBFohS4Tg39NszY" \
+  -H "Content-Type: application/json" \
+  -d '{"localMediaProgress": [{ "id": "li_bufnnmp4y5o2gbbxfm-ep_lh6ko39pumnrma3dhv", "libraryItemId": "li_bufnnmp4y5o2gbbxfm", "episodeId": "ep_lh6ko39pumnrma3dhv", "duration": 1454.18449, "progress": 0.011193983371394644, "currentTime": 16.278117, "isFinished": false, "hideFromContinueListening": false, "lastUpdate": 1668120246620, "startedAt": 1668120083771, "finishedAt": null}]}'
+```
+
+> The above command returns JSON structured like this:
+
+```json
+{
+  "numServerProgressUpdates": 1,
+  "localProgressUpdates": []
+}
+```
+
+This endpoint syncs a client's local media progress with the server. For any local media progress with a greater `lastUpdate` time than the `lastUpdate` time of the matching media progress on the server, the server's media progress is updated. If the server's `lastUpdate` time is greater, than the local media progress will be returned with the updated information.
+
+### HTTP Request
+
+`POST http://abs.example.com/api/me/sync-local-progress`
+
+### Parameters
+
+Parameter | Type | Description
+--------- | ---- | -----------
+`localMediaProgress` | Array of [Media Progress](#media-progress) | The client's local media progress.
+
+### Response
+
+Status | Meaning | Description | Schema
+------ | ------- | ----------- | ------
+200 | OK | Success | See below.
+500 | Internal Server Error | The `localMediaProgress` parameter is required. |
+
+#### Response Schema
+
+Attribute | Type | Description
+--------- | ---- | -----------
+`numServerProgressUpdates` | Integer | The number of media progress items that were updated on the server.
+`localProgressUpdates` | Array of [Media Progress](#media-progress) | Media progress items with updated information from the server.
