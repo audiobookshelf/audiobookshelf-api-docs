@@ -533,3 +533,49 @@ Status | Meaning | Description | Schema
 403 | Forbidden | A user with update permissions is required to update collections. |
 404 | Not Found | No collection with the specified ID exists. |
 500 | Internal Server Error | The provided library item ID could not be found, is in a different library, or is already in the collection. |
+
+
+## Remove a Book From a Collection
+
+```shell
+curl -X DELETE "https://abs.example.com/api/collections/col_fpfstanv6gd7tq2qz7/book/li_8gch9ve09orgn4fdz8" \
+  -H "Authorization: Bearer exJhbGciOiJI6IkpXVCJ9.eyJ1c2Vyi5NDEyODc4fQ.ZraBFohS4Tg39NszY"
+```
+
+> The above command returns JSON structured like this:
+
+```json
+{
+  "id": "col_fpfstanv6gd7tq2qz7",
+  "libraryId": "lib_c1u6t4p45c35rf0nzd",
+  "userId": "root",
+  "name": "Favorites",
+  "description": null,
+  "cover": null,
+  "coverFullPath": null,
+  "books": [],
+  "lastUpdate": 1650621073750,
+  "createdAt": 1650621073750
+}
+```
+
+This endpoint removes a book from a collection and returns the collection.
+
+### HTTP Request
+
+`DELETE http://abs.example.com/api/collections/<ID>/book/<BookID>`
+
+### URL Parameters
+
+Parameter | Description
+--------- | -----------
+ID | The ID of the collection.
+BookID | The ID of the book library item to remove from the collection.
+
+### Response
+
+Status | Meaning | Description | Schema
+------ | ------- | ----------- | ------
+200 | OK | Success | [Collection Expanded](#collection-expanded)
+403 | Forbidden | A user with delete permissions is required to remove a book from a collection. |
+404 | Not Found | No collection with the specified ID exists. |
