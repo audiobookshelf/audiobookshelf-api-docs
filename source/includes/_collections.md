@@ -49,3 +49,42 @@ Status | Meaning | Description | Schema
 ------ | ------- | ----------- | ------
 200 | OK | Success | [Collection Expanded](#collection-expanded)
 500 | Internal Server Error | `libraryId` and `name` are required parameters.
+
+
+## Get all Collections
+
+```shell
+curl "https://abs.example.com/api/collections" \
+  -H "Authorization: Bearer exJhbGciOiJI6IkpXVCJ9.eyJ1c2Vyi5NDEyODc4fQ.ZraBFohS4Tg39NszY"
+```
+
+> The above command returns JSON structured like this:
+
+```json
+[
+  {
+    "id": "col_fpfstanv6gd7tq2qz7",
+    "libraryId": "lib_c1u6t4p45c35rf0nzd",
+    "userId": "root",
+    "name": "Favorites",
+    "description": null,
+    "cover": null,
+    "coverFullPath": null,
+    "books": [],
+    "lastUpdate": 1650621073750,
+    "createdAt": 1650621073750
+  }
+]
+```
+
+This endpoint retrieves all collections.
+
+### HTTP Request
+
+`GET http://abs.example.com/api/collections`
+
+### Response
+
+Status | Meaning | Description | Schema
+------ | ------- | ----------- | ------
+200 | OK | Success | Array of [Collection Expanded](#collection-expanded)
