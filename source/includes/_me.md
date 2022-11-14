@@ -270,7 +270,21 @@ curl "https://abs.example.com/api/me/progress/li_bufnnmp4y5o2gbbxfm-ep_lh6ko39pu
   "username": "root",
   "type": "root",
   "token": "exJhbGciOiJI6IkpXVCJ9.eyJ1c2Vyi5NDEyODc4fQ.ZraBFohS4Tg39NszY",
-  "mediaProgress": [],
+  "mediaProgress": [
+    {
+      "id": "li_bufnnmp4y5o2gbbxfm-ep_lh6ko39pumnrma3dhv",
+      "libraryItemId": "li_bufnnmp4y5o2gbbxfm",
+      "episodeId": "ep_lh6ko39pumnrma3dhv",
+      "duration": 1454.18449,
+      "progress": 0.42057298864465265,
+      "currentTime": 611.590717,
+      "isFinished": false,
+      "hideFromContinueListening": true,
+      "lastUpdate": 1668330152157,
+      "startedAt": 1668120083771,
+      "finishedAt": null
+    }
+  ],
   "seriesHideFromContinueListening": [],
   "bookmarks": [],
   "isActive": true,
@@ -319,3 +333,50 @@ ID | The ID of the **media progress** that refers to the library item to remove.
 Status | Meaning | Description | Schema
 ------ | ------- | ----------- | ------
 200 | OK | Success | [User](#user)
+
+
+## Get a Media Progress
+
+```shell
+curl "https://abs.example.com/api/me/progress/li_bufnnmp4y5o2gbbxfm/ep_lh6ko39pumnrma3dhv" \
+  -H "Authorization: Bearer exJhbGciOiJI6IkpXVCJ9.eyJ1c2Vyi5NDEyODc4fQ.ZraBFohS4Tg39NszY"
+```
+
+> The above command returns JSON structured like this:
+
+```json
+{
+  "id": "li_bufnnmp4y5o2gbbxfm-ep_lh6ko39pumnrma3dhv",
+  "libraryItemId": "li_bufnnmp4y5o2gbbxfm",
+  "episodeId": "ep_lh6ko39pumnrma3dhv",
+  "duration": 1454.18449,
+  "progress": 0.42057298864465265,
+  "currentTime": 611.590717,
+  "isFinished": false,
+  "hideFromContinueListening": false,
+  "lastUpdate": 1668330152157,
+  "startedAt": 1668120083771,
+  "finishedAt": null
+}
+```
+
+This endpoint retrieves your media progress that is associated with the given library item ID or podcast episode ID.
+
+### HTTP Request
+
+* `GET http://abs.example.com/api/me/progress/<LibraryItemID>`
+* `GET http://abs.example.com/api/me/progress/<LibraryItemID>/<EpisodeID>`
+
+### URL Parameters
+
+Parameter | Description
+--------- | -----------
+LibraryItemID | The ID of the library item to retrieve a media progress for.
+EpisodeID | The ID of the podcast episode to retrieve a media progress for.
+
+### Response
+
+Status | Meaning | Description | Schema
+------ | ------- | ----------- | ------
+200 | OK | Success | [Media Progress](#media-progress)
+404 | Not Found | No media progress was found that matches the given IDs. |
