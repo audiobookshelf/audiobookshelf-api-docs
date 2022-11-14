@@ -253,3 +253,69 @@ The keys of this object are each day (in the format YYYY-MM-DD) when you listene
 #### Your Day of Week Totals
 
 The keys of this object are each day of the week. The values are the total time (in seconds, Integer) you listened to library items on that day of the week.
+
+
+## Remove an Item From Continue Listening
+
+```shell
+curl "https://abs.example.com/api/me/progress/li_bufnnmp4y5o2gbbxfm-ep_lh6ko39pumnrma3dhv/remove-from-continue-listening" \
+  -H "Authorization: Bearer exJhbGciOiJI6IkpXVCJ9.eyJ1c2Vyi5NDEyODc4fQ.ZraBFohS4Tg39NszY"
+```
+
+> The above command returns JSON structured like this:
+
+```json
+{
+  "id": "root",
+  "username": "root",
+  "type": "root",
+  "token": "exJhbGciOiJI6IkpXVCJ9.eyJ1c2Vyi5NDEyODc4fQ.ZraBFohS4Tg39NszY",
+  "mediaProgress": [],
+  "seriesHideFromContinueListening": [],
+  "bookmarks": [],
+  "isActive": true,
+  "isLocked": false,
+  "lastSeen": 1667687240810,
+  "createdAt": 1666569607117,
+  "settings": {
+    "mobileOrderBy": "recent",
+    "mobileOrderDesc": true,
+    "mobileFilterBy": "all",
+    "orderBy": "media.metadata.title",
+    "orderDesc": false,
+    "filterBy": "all",
+    "playbackRate": 1,
+    "bookshelfCoverSize": 120,
+    "collapseSeries": false
+  },
+  "permissions": {
+    "download": true,
+    "update": true,
+    "delete": true,
+    "upload": true,
+    "accessAllLibraries": true,
+    "accessAllTags": true,
+    "accessExplicitContent": true
+  },
+  "librariesAccessible": [],
+  "itemTagsAccessible": []
+}
+```
+
+This endpoint removes a library item, that has media progress associated with your user, from your "Continue Listening" shelf. Your user is returned.
+
+### HTTP Request
+
+`GET http://abs.example.com/api/me/progress/<ID>/remove-from-continue-listening`
+
+### URL Parameters
+
+Parameter | Description
+--------- | -----------
+ID | The ID of the **media progress** that refers to the library item to remove.
+
+### Response
+
+Status | Meaning | Description | Schema
+------ | ------- | ----------- | ------
+200 | OK | Success | [User](#user)
