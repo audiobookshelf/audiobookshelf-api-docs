@@ -460,3 +460,29 @@ Status | Meaning | Description
 ------ | ------- | -----------
 200 | OK | Success
 404 | Not Found | No library items or podcast episodes were found with the given IDs.
+
+
+## Remove a Media Progress
+
+```shell
+curl -X DELETE "https://abs.example.com/api/me/progress/li_bufnnmp4y5o2gbbxfm-ep_lh6ko39pumnrma3dhv" \
+  -H "Authorization: Bearer exJhbGciOiJI6IkpXVCJ9.eyJ1c2Vyi5NDEyODc4fQ.ZraBFohS4Tg39NszY"
+```
+
+This endpoint removes a media progress from your user.
+
+### HTTP Request
+
+`DELETE http://abs.example.com/api/me/progress/<ID>`
+
+### URL Parameters
+
+Parameter | Description
+--------- | -----------
+ID | The ID of the media progress to remove.
+
+### Response
+
+Status | Meaning | Description
+------ | ------- | -----------
+200 | OK | Success
