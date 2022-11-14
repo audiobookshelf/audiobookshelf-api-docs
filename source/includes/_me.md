@@ -580,4 +580,33 @@ Status | Meaning | Description | Schema
 ------ | ------- | ----------- | ------
 200 | OK | Success | [Audio Bookmark](#audio-bookmark)
 404 | Not Found | No library item with the provided ID exists or no bookmark at the given `time` exists. |
-500 | Internal Server Error | Could not find the bookmark.
+500 | Internal Server Error | Could not find the bookmark. |
+
+
+## Remove a Bookmark
+
+```shell
+curl -X DELETE "https://abs.example.com/api/me/item/li_bufnnmp4y5o2gbbxfm/bookmark/16" \
+  -H "Authorization: Bearer exJhbGciOiJI6IkpXVCJ9.eyJ1c2Vyi5NDEyODc4fQ.ZraBFohS4Tg39NszY"
+```
+
+This endpoint removes a bookmark.
+
+### HTTP Request
+
+`DELETE http://abs.example.com/api/me/item/<ID>/bookmark/<Time>`
+
+### URL Parameters
+
+Parameter | Description
+--------- | -----------
+ID | The ID of the library item to remove a bookmark from.
+Time | The time (in seconds) the bookmark is at.
+
+### Response
+
+Status | Meaning | Description
+------ | ------- | -----------
+200 | OK | Success
+404 | Not Found | No library item with the provided ID exists or no bookmark at the given Time exists.
+500 | Internal Server Error | The Time URL parameter must be a number.
