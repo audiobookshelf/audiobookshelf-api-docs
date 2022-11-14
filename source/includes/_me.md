@@ -380,3 +380,41 @@ Status | Meaning | Description | Schema
 ------ | ------- | ----------- | ------
 200 | OK | Success | [Media Progress](#media-progress)
 404 | Not Found | No media progress was found that matches the given IDs. |
+
+
+## Batch Create/Update Media Progress
+
+```shell
+curl -X PATCH "https://abs.example.com/api/me/progress/batch/update" \
+  -H "Authorization: Bearer exJhbGciOiJI6IkpXVCJ9.eyJ1c2Vyi5NDEyODc4fQ.ZraBFohS4Tg39NszY" \
+  -H "Content-Type: application/json" \
+  -d '[{"libraryItemId": "li_bufnnmp4y5o2gbbxfm", "episodeId": "ep_lh6ko39pumnrma3dhv", "isFinished": true}]'
+```
+
+This endpoint batch creates/updates your media progress.
+
+### HTTP Request
+
+`PATCH http://abs.example.com/api/me/progress/batch/update`
+
+### Parameters
+
+Provide an array of objects with the following parameters:
+
+Parameter | Type | Default | Description
+--------- | ---- | ------- | -----------
+`libraryItemId` | String | **Required** | The ID of the library item the media progress is for.
+`episodeId` | String or null | `null` | The ID of the podcast episode the media progress is for.
+`duration` | Float | `0` | The total duration (in seconds) of the media.
+`progress` | Float | `0` | The percentage completion progress of the media. Should be `1` if the media is finished.
+`currentTime` | Float | `0` | The current time (in seconds) of your progress.
+`isFinished` | Boolean | `false` | Whether or not the media is finished.
+`hideFromContinueListening` | Boolean | `false` | Whether or not the media will be hidden from the "Continue Listening" shelf.
+`lastUpdate` | Integer | `Date.now()` | The time (in ms since POSIX epoch) when the media progress was last updated.
+
+### Response
+
+Status | Meaning | Description
+------ | ------- | -----------
+200 | OK | Success
+500 | Internal Server Error | The provided array must have a non-zero length.
