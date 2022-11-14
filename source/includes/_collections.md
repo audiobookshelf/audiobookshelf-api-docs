@@ -191,3 +191,31 @@ Status | Meaning | Description | Schema
 200 | OK | Success | [Collection Expanded](#collection-expanded)
 403 | Forbidden | A user with update permissions is required to update collections. |
 404 | Not Found | No collection with the specified ID exists. |
+
+
+## Delete a Collection
+
+```shell
+curl -X DELETE "https://abs.example.com/api/collections/col_fpfstanv6gd7tq2qz7" \
+  -H "Authorization: Bearer exJhbGciOiJI6IkpXVCJ9.eyJ1c2Vyi5NDEyODc4fQ.ZraBFohS4Tg39NszY"
+```
+
+This endpoint deletes a collection from the database.
+
+### HTTP Request
+
+`DELETE http://abs.example.com/api/collections/<ID>`
+
+### URL Parameters
+
+Parameter | Description
+--------- | -----------
+ID | The ID of the collection.
+
+### Response
+
+Status | Meaning | Description
+------ | ------- | -----------
+200 | OK | Success
+403 | Forbidden | A user with delete permissions is required to delete a collection.
+404 | Not Found | No collection with the specified ID exists.
