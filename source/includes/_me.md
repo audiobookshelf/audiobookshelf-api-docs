@@ -655,3 +655,66 @@ Attribute | Type | Description
 --------- | ---- | -----------
 `success` | Boolean | Will only exist and be `true` if the password was updated successfully.
 `error` | String | The error that occurred. Will only exist if there was an error updating your password.
+
+
+## Update Your Settings
+
+```shell
+curl -X PATCH "https://abs.example.com/api/me/settings" \
+  -H "Authorization: Bearer exJhbGciOiJI6IkpXVCJ9.eyJ1c2Vyi5NDEyODc4fQ.ZraBFohS4Tg39NszY" \
+  -H "Content-Type: application/json" \
+  -d '{"orderBy": "media.metadata.authorName"}'
+```
+
+> The above command returns JSON structured like this:
+
+```json
+{
+  "success": true,
+  "settings": {
+    "mobileOrderBy": "recent",
+    "mobileOrderDesc": true,
+    "mobileFilterBy": "all",
+    "orderBy": "media.metadata.authorName",
+    "orderDesc": false,
+    "filterBy": "all",
+    "playbackRate": 1,
+    "bookshelfCoverSize": 120,
+    "collapseSeries": false
+  }
+}
+```
+
+This endpoint updates your settings.
+
+### HTTP Request
+
+`PATCH http://abs.example.com/api/me/settings`
+
+### Parameters
+
+Parameter | Type | Description
+--------- | ---- | -----------
+`mobileOrderBy` | String | What to order library items by on mobile.
+`mobileOrderDesc` | Boolean | Whether or not to reverse the sort order on mobile.
+`mobileFilterBy` | String | What to filter library items by on mobile.
+`orderBy` | String |  What to order library items by.
+`orderDesc` | Boolean |  Whether or not to reverse the sort order.
+`filterBy` | String | What to filter library items by.
+`playbackRate` | Float | What speed to play items.
+`bookshelfCoverSize` | Integer | What size to display covers at.
+`collapseSeries` | Boolean | Whether or not to collapse series when viewing library items.
+
+### Response
+
+Status | Meaning | Description | Schema
+------ | ------- | ----------- | ------
+200 | OK | Success | See below.
+500 | Internal Server Error | No object was provided. |
+
+#### Response Schema
+
+Attribute | Type | Description
+--------- | ---- | -----------
+`success` | Boolean | Whether or not your settings were updated successfully.
+`settings` | [User Settings](#user-settings) Object | Your updated settings.
