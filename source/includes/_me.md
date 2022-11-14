@@ -610,3 +610,48 @@ Status | Meaning | Description
 200 | OK | Success
 404 | Not Found | No library item with the provided ID exists or no bookmark at the given Time exists.
 500 | Internal Server Error | The Time URL parameter must be a number.
+
+
+## Change Your Password
+
+```shell
+curl -X PATCH "https://abs.example.com/api/me/password" \
+  -H "Authorization: Bearer exJhbGciOiJI6IkpXVCJ9.eyJ1c2Vyi5NDEyODc4fQ.ZraBFohS4Tg39NszY" \
+  -H "Content-Type: application/json" \
+  -d '{"password": "12345", "newPassword": "54321"}'
+```
+
+> The above command returns JSON structured like this:
+
+```json
+{
+  "success": true
+}
+```
+
+This endpoint changes your password.
+
+### HTTP Request
+
+`PATCH http://abs.example.com/api/me/password`
+
+### Parameters
+
+Parameter | Type | Description
+--------- | ---- | -----------
+`password` | String | Your current password.
+`newPassword` | String | Your new password.
+
+### Response
+
+Status | Meaning | Description | Schema
+------ | ------- | ----------- | ------
+200 | OK | Success | See below.
+500 | Internal Server Error | Guest users cannot change their password. |
+
+#### Response Schema
+
+Attribute | Type | Description
+--------- | ---- | -----------
+`success` | Boolean | Will only exist and be `true` if the password was updated successfully.
+`error` | String | The error that occurred. Will only exist if there was an error updating your password.
