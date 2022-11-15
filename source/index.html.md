@@ -18,6 +18,7 @@ includes:
   - filesystem
   - authors
   - series
+  - sessions
   - filtering
   - schemas
 
