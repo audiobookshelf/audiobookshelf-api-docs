@@ -15,6 +15,7 @@ includes:
   - collections
   - me
   - backups
+  - filesystem
   - filtering
   - schemas
 
