@@ -221,3 +221,68 @@ Attribute | Type | Description
 `id` | String | The ID of the series.
 `name` | String | The name of the series.
 `items` | Array of [Library Item Minified](#library-item-minified) | The items in the series. Each library item's media's metadata will have a `series` attribute, a [Series Sequence](#series-sequence), which is the matching series.
+
+
+## Update an Author
+
+```shell
+curl -X PATCH "https://abs.example.com/api/authors/aut_z3leimgybl7uf3y4ab" \
+  -H "Authorization: Bearer exJhbGciOiJI6IkpXVCJ9.eyJ1c2Vyi5NDEyODc4fQ.ZraBFohS4Tg39NszY" \
+  -H "Content-Type: application/json" \
+  -d '{"asin": "B000APZOQA"}'
+```
+
+> The above command returns JSON structured like this:
+
+```json
+{
+  "author": {
+    "id": "aut_z3leimgybl7uf3y4ab",
+    "asin": "B000APZOQA",
+    "name": "Terry Goodkind",
+    "description": null,
+    "imagePath": null,
+    "relImagePath": null,
+    "addedAt": 1650621073750,
+    "updatedAt": 1650621073750
+  },
+  "success": true
+}
+```
+
+This endpoint updates an author. It also allows for merging of two authors if the name of this author is set to the name of another author.
+
+### HTTP Request
+
+`PATCH http://abs.example.com/api/authors/<ID>`
+
+### URL Parameters
+
+Parameter | Description
+--------- | -----------
+ID | The ID of the author.
+
+### Parameters
+
+Parameter | Type | Description
+--------- | ---- | -----------
+`asin` | String or null | The ASIN of the author.
+`name` | String | The name of the author.
+`description` | String or null | A description of the author.
+`imagePath` | String or null | The absolute path for the author image.
+`relImagePath` | String or null | The path for the author image.
+
+### Response
+
+Status | Meaning | Description | Schema
+------ | ------- | ----------- | ------
+200 | OK | Success | See below.
+404 | Not Found | No author with provided ID exists. |
+
+#### Response Schema
+
+Attribute | Type | Description
+--------- | ---- | -----------
+`author` | [Author](#author) Object | The updated author.
+`merged` | Boolean | Will only exist and be `true` if the author was merged with another author.
+`updated` | Boolean | Whether or not the author was updated normally. Will only exist if the author was not merged.
