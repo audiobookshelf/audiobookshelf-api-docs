@@ -1685,3 +1685,36 @@ Attribute | Type | Description
 `title` | String | The title of the bookmark.
 `time` | Integer | The time (in seconds) the bookmark is at in the book.
 `createdAt` | Integer | The time (in ms since POSIX epoch) when the bookmark was created.
+
+
+## Backup
+
+> Backup
+
+```json
+{
+  "id": "2022-11-14T0130",
+  "backupMetadataCovers": true,
+  "backupDirPath": "/metadata/backups",
+  "datePretty": "Mon, Nov 14 2022 01:30",
+  "fullPath": "/metadata/backups/2022-11-14T0130.audiobookshelf",
+  "path": "backups/2022-11-14T0130.audiobookshelf",
+  "filename": "2022-11-14T0130.audiobookshelf",
+  "fileSize": 7776983,
+  "createdAt": 1668411000329,
+  "serverVersion": "2.2.4"
+}
+```
+
+Attribute | Type | Description
+--------- | ---- | -----------
+`id` | String | The ID of the backup. Will be the date and time when the backup was created.
+`backupMetadataCovers` | Boolean | Whether or not the backup includes library item covers and author images located in metadata.
+`backupDirPath` | String | The backup directory path.
+`datePretty` | String | The date and time when the backup was created in a human readable format.
+`fullPath` | String | The full path of the backup on the server.
+`path` | String | The path of the backup relative to the metadata directory.
+`filename` | String | The filename of the backup.
+`fileSize` | Integer | The size (in bytes) of the backup file.
+`createdAt` | Integer | The time (in ms since POSIX epoch) when the backup was created.
+`serverVersion` | String | The version of the server when the backup was created.
