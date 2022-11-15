@@ -92,7 +92,7 @@ Parameter | Type | Description
 Status | Meaning | Description | Schema
 ------ | ------- | ----------- | ------
 200 | OK | Success | [Series](#series) with optional extra attributes from `include` (see below).
-404 | Not Found | No author with provided ID exists. |
+404 | Not Found | No series with provided ID exists. |
 
 #### Extra Attributes
 
@@ -107,3 +107,51 @@ Attribute | Type | Description
 `libraryItemIds`| Array of String | The IDs of the library items in the series.
 `libraryItemIdsFinished` | Array of String | The IDs of the library items in the series that are finished.
 `isFinished` | Boolean | Whether or not the series is finished.
+
+
+## Update a Series
+
+```shell
+curl -X PATCH "https://abs.example.com/api/series/ser_cabkj4jeu8be3rap4g" \
+  -H "Authorization: Bearer exJhbGciOiJI6IkpXVCJ9.eyJ1c2Vyi5NDEyODc4fQ.ZraBFohS4Tg39NszY" \
+  -H "Content-Type: application/json" \
+  -d '{"description": "A really cool series."}'
+```
+
+> The above command returns JSON structured like this:
+
+```json
+{
+  "id": "ser_cabkj4jeu8be3rap4g",
+  "name": "Sword of Truth",
+  "description": "A really cool series.",
+  "addedAt": 1650621073750,
+  "updatedAt": 1650621073750
+}
+```
+
+This endpoint updates a series and returns it.
+
+### HTTP Request
+
+`PATCH http://abs.example.com/api/series/<ID>`
+
+### URL Parameters
+
+Parameter | Description
+--------- | -----------
+ID | The ID of the series.
+
+### Parameters
+
+Parameter | Type | Description
+--------- | ---- | -----------
+`name` | String | The name of the series.
+`description` | String or null | A description for the series.
+
+### Response
+
+Status | Meaning | Description | Schema
+------ | ------- | ----------- | ------
+200 | OK | Success | [Series](#series)
+404 | Not Found | No series with provided ID exists. |
