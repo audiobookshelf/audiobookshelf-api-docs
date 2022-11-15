@@ -16,6 +16,7 @@ includes:
   - me
   - backups
   - filesystem
+  - authors
   - filtering
   - schemas
 
