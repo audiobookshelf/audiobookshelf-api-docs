@@ -112,3 +112,31 @@ Attribute | Type | Description
 --------- | ---- | -----------
 `id` | String | The ID of the user.
 `username` | String | The username of the user.
+
+
+## Delete a Session
+
+```shell
+curl -X DELETE "https://abs.example.com/api/sessions/play_4oq00chunexu9s03jw" \
+  -H "Authorization: Bearer exJhbGciOiJI6IkpXVCJ9.eyJ1c2Vyi5NDEyODc4fQ.ZraBFohS4Tg39NszY"
+```
+
+This endpoint deletes a listening session.
+
+### HTTP Request
+
+`DELETE http://abs.example.com/api/sessions/<ID>`
+
+### URL Parameters
+
+Parameter | Description
+--------- | -----------
+ID | The ID of the listening session.
+
+### Response
+
+Status | Meaning | Description
+------ | ------- | -----------
+200 | OK | Success
+403 | Forbidden | A user with delete permissions is required to delete sessions.
+404 | Not Found | No session with provided ID exists.
