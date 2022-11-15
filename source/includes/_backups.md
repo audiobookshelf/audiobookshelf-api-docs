@@ -98,3 +98,31 @@ Status | Meaning | Description | Schema
 200 | OK | Success | Array of [Backup](#backup)
 403 | Forbidden | An admin user is required to delete backups. |
 404 | Not Found | No backup with the provided ID exists. |
+
+
+## Apply a Backup
+
+```shell
+curl "https://abs.example.com/api/backups/2022-11-15T0105/apply" \
+  -H "Authorization: Bearer exJhbGciOiJI6IkpXVCJ9.eyJ1c2Vyi5NDEyODc4fQ.ZraBFohS4Tg39NszY"
+```
+
+This endpoint applies a backup.
+
+### HTTP Request
+
+`GET http://abs.example.com/api/backups/<ID>/apply`
+
+### URL Parameters
+
+Parameter | Description
+--------- | -----------
+ID | The ID of the backup.
+
+### Response
+
+Status | Meaning | Description
+------ | ------- | -----------
+200 | OK | Success
+403 | Forbidden | An admin user is required to apply backups.
+404 | Not Found | No backup with the provided ID exists.
