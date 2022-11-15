@@ -244,7 +244,7 @@ curl -X PATCH "https://abs.example.com/api/authors/aut_z3leimgybl7uf3y4ab" \
     "imagePath": null,
     "relImagePath": null,
     "addedAt": 1650621073750,
-    "updatedAt": 1650621073750
+    "updatedAt": 1668506755298
   },
   "success": true
 }
@@ -286,3 +286,66 @@ Attribute | Type | Description
 `author` | [Author](#author) Object | The updated author.
 `merged` | Boolean | Will only exist and be `true` if the author was merged with another author.
 `updated` | Boolean | Whether or not the author was updated normally. Will only exist if the author was not merged.
+
+
+## Match an Author
+
+```shell
+curl -X POST "https://abs.example.com/api/authors/aut_z3leimgybl7uf3y4ab/match" \
+  -H "Authorization: Bearer exJhbGciOiJI6IkpXVCJ9.eyJ1c2Vyi5NDEyODc4fQ.ZraBFohS4Tg39NszY" \
+  -H "Content-Type: application/json" \
+  -d '{"q": "Terry Goodkind"}'
+```
+
+> The above command returns JSON structured like this:
+
+```json
+{
+  "updated": true,
+  "author": {
+    "id": "aut_z3leimgybl7uf3y4ab",
+    "asin": "B000APZOQA",
+    "name": "Terry Goodkind",
+    "description": "Terry Goodkind is a #1 New York Times Bestselling Author and creator of the critically acclaimed masterwork, ‘The Sword of Truth’. He has written 30+ major, bestselling novels, has been published in more than 20 languages world-wide, and has sold more than 26 Million books. ‘The Sword of Truth’ is a revered literary tour de force, comprised of 17 volumes, borne from over 25 years of dedicated writing. Terry Goodkind's brilliant books are character-driven stories, with a focus on the complexity of the human psyche. Goodkind has an uncanny grasp for crafting compelling stories about people like you and me, trapped in terrifying situations. With masterful storytelling, Goodkind brings us into the lives of his characters; characters that must rise to face not only challenges, but their deepest fears. For that reason, Goodkind’s characters speak to the best and worst in all of us. While ‘The Sword of Truth’ series is confirmation enough of Goodkind’s incredible storytelling abilities, his broad talents are also clearly evident in his contemporary novels, set within our own world. His post-‘Sword of Truth’ books are a thrilling, dizzying, mix of modern narrative, with every bit of Goodkind’s masterful voice intact. The bond built between the reader and one of the world’s great authors, rises above worlds and settings, mere backdrops for Goodkind’s uniquely intricate stories of life, love, challenge, and triumph. \"My privilege in life is the joy of writing books and telling stories about people who fascinate me, the good and the bad. I am grateful to all of my readers for the critical role they play in making these books possible. Your passion is my passion, and I thank you.\" - Terry Goodkind For more, please visit: http://terrygoodkind.com",
+    "imagePath": "/metadata/authors/aut_z3leimgybl7uf3y4ab.jpg",
+    "relImagePath": "/metadata/authors/aut_z3leimgybl7uf3y4ab.jpg",
+    "addedAt": 1650621073750,
+    "updatedAt": 1668506755298
+  }
+}
+```
+
+This endpoint matches the author using quick match. Quick match updates the author's description and image (if no image already existed) with information from audible.
+
+### HTTP Request
+
+`POST http://abs.example.com/api/authors/<ID>/match`
+
+### URL Parameters
+
+Parameter | Description
+--------- | -----------
+ID | The ID of the author.
+
+### Parameters
+
+Either `asin` or `q` are **required**. If both are provided, `asin` will be used.
+
+Parameter | Type | Description
+--------- | ---- | -----------
+`asin` | String | The ASIN to search for.
+`q` | String | The author name to search for.
+
+### Response
+
+Status | Meaning | Description | Schema
+------ | ------- | ----------- | ------
+200 | OK | Success | See below.
+404 | Not Found | No author with provided ID exists. |
+
+#### Response Schema
+
+Attribute | Type | Description
+--------- | ---- | -----------
+`updated` | Boolean | Whether or not the author was updated.
+`author` | [Author](#author) Object | The updated author.
