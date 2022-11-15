@@ -762,7 +762,7 @@ Status | Meaning | Description | Schema
 Attribute | Type | Description
 --------- | ---- | -----------
 `numServerProgressUpdates` | Integer | The number of media progress items that were updated on the server.
-`localProgressUpdates` | Array of [Media Progress](#media-progress) | Media progress items with updated information from the server.
+`localProgressUpdates` | Array of [Media Progress](#media-progress) | Local media progress items with updated information from the server.
 
 
 ## Get Library Items In Progress
