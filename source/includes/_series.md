@@ -39,3 +39,71 @@ limit | Integer | `25` | Limit the number of returned results.
 Status | Meaning | Description | Schema
 ------ | ------- | ----------- | ------
 200 | OK | Success | Array of [Series](#series)
+
+
+## Get a Series
+
+```shell
+curl "https://abs.example.com/api/series/ser_cabkj4jeu8be3rap4g?include=progress" \
+  -H "Authorization: Bearer exJhbGciOiJI6IkpXVCJ9.eyJ1c2Vyi5NDEyODc4fQ.ZraBFohS4Tg39NszY"
+```
+
+> The above command returns JSON structured like this:
+
+```json
+{
+  "id": "ser_cabkj4jeu8be3rap4g",
+  "name": "Sword of Truth",
+  "description": null,
+  "addedAt": 1650621073750,
+  "updatedAt": 1650621073750,
+  "progress": {
+    "libraryItemIds": [
+      "li_8gch9ve09orgn4fdz8"
+    ],
+    "libraryItemIdsFinished": [
+      "li_8gch9ve09orgn4fdz8"
+    ],
+    "isFinished": true
+  }
+}
+```
+
+This endpoint retrieves a series.
+
+### HTTP Request
+
+`GET https://abs.example.com/api/series/<ID>`
+
+### URL Parameters
+
+Parameter | Description
+--------- | -----------
+ID | The ID of the series.
+
+### Optional Query Parameters
+
+Parameter | Type | Description
+--------- | ---- | -----------
+`include` | String | A comma separated list of what to include with the series. Currently, the only option is `progress`.
+
+### Response
+
+Status | Meaning | Description | Schema
+------ | ------- | ----------- | ------
+200 | OK | Success | [Series](#series) with optional extra attributes from `include` (see below).
+404 | Not Found | No author with provided ID exists. |
+
+#### Extra Attributes
+
+Attribute | Type | Description
+--------- | ---- | -----------
+`progress` | [Series Progress](#series-progress) Object (See Below) | If `progress` was requested, the series' progress.
+
+#### Series Progress
+
+Attribute | Type | Description
+--------- | ---- | -----------
+`libraryItemIds`| Array of String | The IDs of the library items in the series.
+`libraryItemIdsFinished` | Array of String | The IDs of the library items in the series that are finished.
+`isFinished` | Boolean | Whether or not the series is finished.
