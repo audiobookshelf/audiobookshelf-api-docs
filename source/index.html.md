@@ -17,6 +17,7 @@ includes:
   - backups
   - filesystem
   - authors
+  - series
   - filtering
   - schemas
 
