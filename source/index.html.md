@@ -14,6 +14,7 @@ includes:
   - users
   - collections
   - me
+  - backups
   - filtering
   - schemas
 
