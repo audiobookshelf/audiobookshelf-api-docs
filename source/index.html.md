@@ -13,6 +13,7 @@ includes:
   - items
   - users
   - collections
+  - me
   - filtering
   - schemas
 

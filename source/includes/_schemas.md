@@ -1674,7 +1674,7 @@ Attribute | Type | Description
 {
   "libraryItemId": "li_8gch9ve09orgn4fdz8",
   "title": "the good part",
-  "time": 16.278117,
+  "time": 16,
   "createdAt": 1668120083771
 }
 ```
@@ -1683,5 +1683,5 @@ Attribute | Type | Description
 --------- | ---- | -----------
 `libraryItemId` | String | The ID of the library item the bookmark is for.
 `title` | String | The title of the bookmark.
-`time` | Float | The time (in seconds) the bookmark is at in the book.
+`time` | Integer | The time (in seconds) the bookmark is at in the book.
 `createdAt` | Integer | The time (in ms since POSIX epoch) when the bookmark was created.
