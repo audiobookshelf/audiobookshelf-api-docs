@@ -738,7 +738,7 @@ curl -X POST "https://abs.example.com/api/me/sync-local-progress" \
 }
 ```
 
-This endpoint syncs a client's local media progress with the server. For any local media progress with a greater `lastUpdate` time than the `lastUpdate` time of the matching media progress on the server, the server's media progress is updated. If the server's `lastUpdate` time is greater, than the local media progress will be returned with the updated information.
+This endpoint syncs a mobile client's local media progress with the server. For any local media progress with a greater `lastUpdate` time than the `lastUpdate` time of the matching media progress on the server, the server's media progress is updated. If the server's `lastUpdate` time is greater, than the local media progress will be returned with the updated information.
 
 ### HTTP Request
 
