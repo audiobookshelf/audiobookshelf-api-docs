@@ -349,3 +349,42 @@ Attribute | Type | Description
 --------- | ---- | -----------
 `updated` | Boolean | Whether or not the author was updated.
 `author` | [Author](#author) Object | The updated author.
+
+
+## Get an Author's Image
+
+```shell
+curl "https://abs.example.com/api/authors/aut_z3leimgybl7uf3y4ab/image" \
+  -H "Authorization: Bearer exJhbGciOiJI6IkpXVCJ9.eyJ1c2Vyi5NDEyODc4fQ.ZraBFohS4Tg39NszY" \
+  --output author.webp
+```
+
+> The above command writes an image file.
+
+This endpoint retrieves an author's image.
+
+### HTTP Request
+
+`GET http://abs.example.com/api/authors/<ID>/iamge`
+
+### URL Parameters
+
+Parameter | Description
+--------- | -----------
+ID | The ID of the author.
+
+### Optional Query Parameters
+
+Parameter | Type | Default | Description
+--------- | ---- | ------- | -----------
+`width` | Integer | `400` | The requested width of the image.
+`height` | Integer or null | `null` | The requested height of the image. If `null` the image is scaled proportionately.
+`format` | String | `webp` or `jpeg` | The requested format of the image. The default value depends on the request headers.
+
+### Response
+
+Status | Meaning | Description
+------ | ------- | -----------
+200 | OK | Success
+404 | Not Found | No author with provided ID exists. |
+500 | Internal Server Error | There was an error when attempting to read the image file.
