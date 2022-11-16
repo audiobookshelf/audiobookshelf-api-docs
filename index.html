@@ -569,6 +569,65 @@
               </ul>
           </li>
           <li>
+            <a href="#backups" class="toc-h1 toc-link" data-title="Backups">Backups</a>
+              <ul class="toc-list-h2">
+                  <li>
+                    <a href="#create-a-backup" class="toc-h2 toc-link" data-title="Create a Backup">Create a Backup</a>
+                  </li>
+                  <li>
+                    <a href="#delete-a-backup" class="toc-h2 toc-link" data-title="Delete a Backup">Delete a Backup</a>
+                  </li>
+                  <li>
+                    <a href="#apply-a-backup" class="toc-h2 toc-link" data-title="Apply a Backup">Apply a Backup</a>
+                  </li>
+                  <li>
+                    <a href="#upload-a-backup" class="toc-h2 toc-link" data-title="Upload a Backup">Upload a Backup</a>
+                  </li>
+              </ul>
+          </li>
+          <li>
+            <a href="#filesystem" class="toc-h1 toc-link" data-title="Filesystem">Filesystem</a>
+              <ul class="toc-list-h2">
+                  <li>
+                    <a href="#get-all-filesystem-paths" class="toc-h2 toc-link" data-title="Get all Filesystem Paths">Get all Filesystem Paths</a>
+                  </li>
+              </ul>
+          </li>
+          <li>
+            <a href="#authors" class="toc-h1 toc-link" data-title="Authors">Authors</a>
+              <ul class="toc-list-h2">
+                  <li>
+                    <a href="#search-for-authors" class="toc-h2 toc-link" data-title="Search for Authors">Search for Authors</a>
+                  </li>
+                  <li>
+                    <a href="#get-an-author" class="toc-h2 toc-link" data-title="Get an Author">Get an Author</a>
+                  </li>
+                  <li>
+                    <a href="#update-an-author" class="toc-h2 toc-link" data-title="Update an Author">Update an Author</a>
+                  </li>
+                  <li>
+                    <a href="#match-an-author" class="toc-h2 toc-link" data-title="Match an Author">Match an Author</a>
+                  </li>
+                  <li>
+                    <a href="#get-an-author-39-s-image" class="toc-h2 toc-link" data-title="Get an Author's Image">Get an Author's Image</a>
+                  </li>
+              </ul>
+          </li>
+          <li>
+            <a href="#series-endpoints" class="toc-h1 toc-link" data-title="Series Endpoints">Series Endpoints</a>
+              <ul class="toc-list-h2">
+                  <li>
+                    <a href="#search-for-series" class="toc-h2 toc-link" data-title="Search for Series">Search for Series</a>
+                  </li>
+                  <li>
+                    <a href="#get-a-series" class="toc-h2 toc-link" data-title="Get a Series">Get a Series</a>
+                  </li>
+                  <li>
+                    <a href="#update-a-series" class="toc-h2 toc-link" data-title="Update a Series">Update a Series</a>
+                  </li>
+              </ul>
+          </li>
+          <li>
             <a href="#filtering" class="toc-h1 toc-link" data-title="Filtering">Filtering</a>
           </li>
           <li>
@@ -660,6 +719,9 @@
                   </li>
                   <li>
                     <a href="#audio-bookmark" class="toc-h2 toc-link" data-title="Audio Bookmark">Audio Bookmark</a>
+                  </li>
+                  <li>
+                    <a href="#backup" class="toc-h2 toc-link" data-title="Backup">Backup</a>
                   </li>
               </ul>
           </li>
@@ -11114,6 +11176,1210 @@ When changing a user's username, their token will be regenerated.
 <td></td>
 </tr>
 </tbody></table>
+<h1 id='backups'>Backups</h1><h2 id='create-a-backup'>Create a Backup</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">-X</span> POST <span class="s2">"https://abs.example.com/api/backups"</span> <span class="se">\</span>
+  <span class="nt">-H</span> <span class="s2">"Authorization: Bearer exJhbGciOiJI6IkpXVCJ9.eyJ1c2Vyi5NDEyODc4fQ.ZraBFohS4Tg39NszY"</span>
+</code></pre></div>
+<blockquote>
+<p>The above command returns JSON structured like this:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">[</span><span class="w">
+  </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2022-11-14T0130"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"backupMetadataCovers"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"backupDirPath"</span><span class="p">:</span><span class="w"> </span><span class="s2">"/metadata/backups"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"datePretty"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Mon, Nov 14 2022 01:30"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"fullPath"</span><span class="p">:</span><span class="w"> </span><span class="s2">"/metadata/backups/2022-11-14T0130.audiobookshelf"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"path"</span><span class="p">:</span><span class="w"> </span><span class="s2">"backups/2022-11-14T0130.audiobookshelf"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"filename"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2022-11-14T0130.audiobookshelf"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"fileSize"</span><span class="p">:</span><span class="w"> </span><span class="mi">7776983</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"createdAt"</span><span class="p">:</span><span class="w"> </span><span class="mi">1668411000329</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"serverVersion"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2.2.4"</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2022-11-15T0105"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"backupMetadataCovers"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"backupDirPath"</span><span class="p">:</span><span class="w"> </span><span class="s2">"/metadata/backups"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"datePretty"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Tue, Nov 15 2022 01:05"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"fullPath"</span><span class="p">:</span><span class="w"> </span><span class="s2">"/metadata/backups/2022-11-15T0105.audiobookshelf"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"path"</span><span class="p">:</span><span class="w"> </span><span class="s2">"backups/2022-11-15T0105.audiobookshelf"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"filename"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2022-11-15T0105.audiobookshelf"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"fileSize"</span><span class="p">:</span><span class="w"> </span><span class="mi">7777148</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"createdAt"</span><span class="p">:</span><span class="w"> </span><span class="mi">1668495954701</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"serverVersion"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2.2.4"</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">]</span><span class="w">
+</span></code></pre></div>
+<p>This endpoint creates a backup. All existing backups will be returned.</p>
+<h3 id='http-request'>HTTP Request</h3>
+<p><code>POST http://abs.example.com/api/backups</code></p>
+<h3 id='response'>Response</h3>
+<table><thead>
+<tr>
+<th>Status</th>
+<th>Meaning</th>
+<th>Description</th>
+<th>Schema</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>200</td>
+<td>OK</td>
+<td>Success</td>
+<td>Array of <a href="#backup">Backup</a></td>
+</tr>
+<tr>
+<td>403</td>
+<td>Forbidden</td>
+<td>An admin user is required to create backups.</td>
+<td></td>
+</tr>
+<tr>
+<td>500</td>
+<td>Internal Server Error</td>
+<td>The server failed to create a backup.</td>
+<td></td>
+</tr>
+</tbody></table>
+<h2 id='delete-a-backup'>Delete a Backup</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">-X</span> DELETE <span class="s2">"https://abs.example.com/api/backups/2022-11-14T0130"</span> <span class="se">\</span>
+  <span class="nt">-H</span> <span class="s2">"Authorization: Bearer exJhbGciOiJI6IkpXVCJ9.eyJ1c2Vyi5NDEyODc4fQ.ZraBFohS4Tg39NszY"</span>
+</code></pre></div>
+<blockquote>
+<p>The above command returns JSON structured like this:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">[</span><span class="w">
+  </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2022-11-15T0105"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"backupMetadataCovers"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"backupDirPath"</span><span class="p">:</span><span class="w"> </span><span class="s2">"/metadata/backups"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"datePretty"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Tue, Nov 15 2022 01:05"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"fullPath"</span><span class="p">:</span><span class="w"> </span><span class="s2">"/metadata/backups/2022-11-15T0105.audiobookshelf"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"path"</span><span class="p">:</span><span class="w"> </span><span class="s2">"backups/2022-11-15T0105.audiobookshelf"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"filename"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2022-11-15T0105.audiobookshelf"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"fileSize"</span><span class="p">:</span><span class="w"> </span><span class="mi">7777148</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"createdAt"</span><span class="p">:</span><span class="w"> </span><span class="mi">1668495954701</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"serverVersion"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2.2.4"</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">]</span><span class="w">
+</span></code></pre></div>
+<p>This endpoint deletes a backup. All existing backups will be returned.</p>
+<h3 id='http-request-2'>HTTP Request</h3>
+<p><code>DELETE http://abs.example.com/api/backups/&lt;ID&gt;</code></p>
+<h3 id='url-parameters'>URL Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>ID</td>
+<td>The ID of the backup.</td>
+</tr>
+</tbody></table>
+<h3 id='response-2'>Response</h3>
+<table><thead>
+<tr>
+<th>Status</th>
+<th>Meaning</th>
+<th>Description</th>
+<th>Schema</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>200</td>
+<td>OK</td>
+<td>Success</td>
+<td>Array of <a href="#backup">Backup</a></td>
+</tr>
+<tr>
+<td>403</td>
+<td>Forbidden</td>
+<td>An admin user is required to delete backups.</td>
+<td></td>
+</tr>
+<tr>
+<td>404</td>
+<td>Not Found</td>
+<td>No backup with the provided ID exists.</td>
+<td></td>
+</tr>
+</tbody></table>
+<h2 id='apply-a-backup'>Apply a Backup</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://abs.example.com/api/backups/2022-11-15T0105/apply"</span> <span class="se">\</span>
+  <span class="nt">-H</span> <span class="s2">"Authorization: Bearer exJhbGciOiJI6IkpXVCJ9.eyJ1c2Vyi5NDEyODc4fQ.ZraBFohS4Tg39NszY"</span>
+</code></pre></div>
+<p>This endpoint applies a backup.</p>
+<h3 id='http-request-3'>HTTP Request</h3>
+<p><code>GET http://abs.example.com/api/backups/&lt;ID&gt;/apply</code></p>
+<h3 id='url-parameters-2'>URL Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>ID</td>
+<td>The ID of the backup.</td>
+</tr>
+</tbody></table>
+<h3 id='response-3'>Response</h3>
+<table><thead>
+<tr>
+<th>Status</th>
+<th>Meaning</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>200</td>
+<td>OK</td>
+<td>Success</td>
+</tr>
+<tr>
+<td>403</td>
+<td>Forbidden</td>
+<td>An admin user is required to apply backups.</td>
+</tr>
+<tr>
+<td>404</td>
+<td>Not Found</td>
+<td>No backup with the provided ID exists.</td>
+</tr>
+</tbody></table>
+<h2 id='upload-a-backup'>Upload a Backup</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">-X</span> POST <span class="s2">"https://abs.example.com/api/backups/upload"</span> <span class="se">\</span>
+  <span class="nt">-H</span> <span class="s2">"Authorization: Bearer exJhbGciOiJI6IkpXVCJ9.eyJ1c2Vyi5NDEyODc4fQ.ZraBFohS4Tg39NszY"</span> <span class="se">\</span>
+  <span class="nt">-F</span> <span class="nv">file</span><span class="o">=</span>@2022-11-15T0105.audiobookshelf
+</code></pre></div>
+<blockquote>
+<p>The above command returns JSON structured like this:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">[</span><span class="w">
+  </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2022-11-14T0130"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"backupMetadataCovers"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"backupDirPath"</span><span class="p">:</span><span class="w"> </span><span class="s2">"/metadata/backups"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"datePretty"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Mon, Nov 14 2022 01:30"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"fullPath"</span><span class="p">:</span><span class="w"> </span><span class="s2">"/metadata/backups/2022-11-14T0130.audiobookshelf"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"path"</span><span class="p">:</span><span class="w"> </span><span class="s2">"backups/2022-11-14T0130.audiobookshelf"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"filename"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2022-11-14T0130.audiobookshelf"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"fileSize"</span><span class="p">:</span><span class="w"> </span><span class="mi">7776983</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"createdAt"</span><span class="p">:</span><span class="w"> </span><span class="mi">1668411000329</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"serverVersion"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2.2.4"</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2022-11-15T0105"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"backupMetadataCovers"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"backupDirPath"</span><span class="p">:</span><span class="w"> </span><span class="s2">"/metadata/backups"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"datePretty"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Tue, Nov 15 2022 01:05"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"fullPath"</span><span class="p">:</span><span class="w"> </span><span class="s2">"/metadata/backups/2022-11-15T0105.audiobookshelf"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"path"</span><span class="p">:</span><span class="w"> </span><span class="s2">"backups/2022-11-15T0105.audiobookshelf"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"filename"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2022-11-15T0105.audiobookshelf"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"fileSize"</span><span class="p">:</span><span class="w"> </span><span class="mi">7777148</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"createdAt"</span><span class="p">:</span><span class="w"> </span><span class="mi">1668495954701</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"serverVersion"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2.2.4"</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">]</span><span class="w">
+</span></code></pre></div>
+<p>This endpoint uploads a backup to the server. All backups will be returned.</p>
+<h3 id='http-request-4'>HTTP Request</h3>
+<p><code>POST http://abs.example.com/api/backups/upload</code></p>
+<h3 id='form-parameters'>Form Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>file</code></td>
+<td>audiobookshelf Backup File</td>
+<td>The backup to upload.</td>
+</tr>
+</tbody></table>
+<h3 id='response-4'>Response</h3>
+<table><thead>
+<tr>
+<th>Status</th>
+<th>Meaning</th>
+<th>Description</th>
+<th>Schema</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>200</td>
+<td>OK</td>
+<td>Success</td>
+<td>Array of <a href="#backup">Backup</a></td>
+</tr>
+<tr>
+<td>403</td>
+<td>Forbidden</td>
+<td>An admin user is required to upload backups.</td>
+<td></td>
+</tr>
+<tr>
+<td>500</td>
+<td>Internal Server Error</td>
+<td>The backup data is invalid or the server failed to save it.</td>
+<td></td>
+</tr>
+</tbody></table>
+<h1 id='filesystem'>Filesystem</h1><h2 id='get-all-filesystem-paths'>Get all Filesystem Paths</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://abs.example.com/api/filesystem"</span> <span class="se">\</span>
+  <span class="nt">-H</span> <span class="s2">"Authorization: Bearer exJhbGciOiJI6IkpXVCJ9.eyJ1c2Vyi5NDEyODc4fQ.ZraBFohS4Tg39NszY"</span>
+</code></pre></div>
+<blockquote>
+<p>The above command returns JSON structured like this:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">[</span><span class="w">
+  </span><span class="err">...</span><span class="p">,</span><span class="w">
+  </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"path"</span><span class="p">:</span><span class="w"> </span><span class="s2">"/home"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"dirname"</span><span class="p">:</span><span class="w"> </span><span class="s2">"home"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"fullPath"</span><span class="p">:</span><span class="w"> </span><span class="s2">"/home"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"level"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"dirs"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+      </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"path"</span><span class="p">:</span><span class="w"> </span><span class="s2">"/home/node"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"dirname"</span><span class="p">:</span><span class="w"> </span><span class="s2">"node"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"fullPath"</span><span class="p">:</span><span class="w"> </span><span class="s2">"/home/node"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"level"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"dirs"</span><span class="p">:</span><span class="w"> </span><span class="p">[]</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+    </span><span class="p">]</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"path"</span><span class="p">:</span><span class="w"> </span><span class="s2">"/lib"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"dirname"</span><span class="p">:</span><span class="w"> </span><span class="s2">"lib"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"fullPath"</span><span class="p">:</span><span class="w"> </span><span class="s2">"/lib"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"level"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"dirs"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+      </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"path"</span><span class="p">:</span><span class="w"> </span><span class="s2">"/lib/apk"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"dirname"</span><span class="p">:</span><span class="w"> </span><span class="s2">"apk"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"fullPath"</span><span class="p">:</span><span class="w"> </span><span class="s2">"/lib/apk"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"level"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"dirs"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+          </span><span class="p">{</span><span class="w">
+            </span><span class="nl">"path"</span><span class="p">:</span><span class="w"> </span><span class="s2">"/lib/apk/db"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"dirname"</span><span class="p">:</span><span class="w"> </span><span class="s2">"db"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"fullPath"</span><span class="p">:</span><span class="w"> </span><span class="s2">"/lib/apk/db"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"level"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"dirs"</span><span class="p">:</span><span class="w"> </span><span class="p">[]</span><span class="w">
+          </span><span class="p">}</span><span class="w">
+        </span><span class="p">]</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"path"</span><span class="p">:</span><span class="w"> </span><span class="s2">"/lib/firmware"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"dirname"</span><span class="p">:</span><span class="w"> </span><span class="s2">"firmware"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"fullPath"</span><span class="p">:</span><span class="w"> </span><span class="s2">"/lib/firmware"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"level"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"dirs"</span><span class="p">:</span><span class="w"> </span><span class="p">[]</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"path"</span><span class="p">:</span><span class="w"> </span><span class="s2">"/lib/mdev"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"dirname"</span><span class="p">:</span><span class="w"> </span><span class="s2">"mdev"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"fullPath"</span><span class="p">:</span><span class="w"> </span><span class="s2">"/lib/mdev"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"level"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"dirs"</span><span class="p">:</span><span class="w"> </span><span class="p">[]</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"path"</span><span class="p">:</span><span class="w"> </span><span class="s2">"/lib/modules-load.d"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"dirname"</span><span class="p">:</span><span class="w"> </span><span class="s2">"modules-load.d"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"fullPath"</span><span class="p">:</span><span class="w"> </span><span class="s2">"/lib/modules-load.d"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"level"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"dirs"</span><span class="p">:</span><span class="w"> </span><span class="p">[]</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"path"</span><span class="p">:</span><span class="w"> </span><span class="s2">"/lib/sysctl.d"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"dirname"</span><span class="p">:</span><span class="w"> </span><span class="s2">"sysctl.d"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"fullPath"</span><span class="p">:</span><span class="w"> </span><span class="s2">"/lib/sysctl.d"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"level"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"dirs"</span><span class="p">:</span><span class="w"> </span><span class="p">[]</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+    </span><span class="p">]</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="err">...</span><span class="w">
+</span><span class="p">]</span><span class="w">
+</span></code></pre></div>
+<p>This endpoint retrieves the filesystem paths of the server.</p>
+<h3 id='http-request'>HTTP Request</h3>
+<p><code>GET http://abs.example.com/api/filesystem</code></p>
+<h3 id='response'>Response</h3>
+<table><thead>
+<tr>
+<th>Status</th>
+<th>Meaning</th>
+<th>Description</th>
+<th>Schema</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>200</td>
+<td>OK</td>
+<td>Success</td>
+<td>See below.</td>
+</tr>
+</tbody></table>
+<h4 id='response-schema'>Response Schema</h4>
+<p>The response will be an array of objects representing the directories of the server&#39;s filesystem. Each directory object will be of the following format:</p>
+
+<table><thead>
+<tr>
+<th>Attribute</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>path</code></td>
+<td>String</td>
+<td>The path of the directory.</td>
+</tr>
+<tr>
+<td><code>dirname</code></td>
+<td>String</td>
+<td>The name of the directory.</td>
+</tr>
+<tr>
+<td><code>fullPath</code></td>
+<td>String</td>
+<td>The full path of the directory.</td>
+</tr>
+<tr>
+<td><code>level</code></td>
+<td>Integer</td>
+<td>The depth of the directory. <code>0</code> means a root level directory.</td>
+</tr>
+<tr>
+<td><code>dirs</code></td>
+<td>Array of Directory</td>
+<td>The directories contained in this directory.</td>
+</tr>
+</tbody></table>
+<h1 id='authors'>Authors</h1><h2 id='search-for-authors'>Search for Authors</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://abs.example.com/api/authors/search?q=Terry%20Goodkind"</span> <span class="se">\</span>
+  <span class="nt">-H</span> <span class="s2">"Authorization: Bearer exJhbGciOiJI6IkpXVCJ9.eyJ1c2Vyi5NDEyODc4fQ.ZraBFohS4Tg39NszY"</span>
+</code></pre></div>
+<blockquote>
+<p>The above command returns JSON structured like this:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">[</span><span class="w">
+  </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"aut_z3leimgybl7uf3y4ab"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"asin"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Terry Goodkind"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"description"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"imagePath"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"relImagePath"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"addedAt"</span><span class="p">:</span><span class="w"> </span><span class="mi">1650621073750</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"updatedAt"</span><span class="p">:</span><span class="w"> </span><span class="mi">1650621073750</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">]</span><span class="w">
+</span></code></pre></div>
+<p>This endpoint searches for authors that match the query and returns the results.</p>
+<h3 id='http-request'>HTTP Request</h3>
+<p><code>GET https://abs.example.com/api/authors/search?&lt;q&gt;</code></p>
+<h3 id='query-parameters'>Query Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>q</td>
+<td>String</td>
+<td><strong>Required</strong></td>
+<td>The URL encoded search query.</td>
+</tr>
+<tr>
+<td>limit</td>
+<td>Integer</td>
+<td><code>25</code></td>
+<td>Limit the number of returned results.</td>
+</tr>
+</tbody></table>
+<h3 id='response'>Response</h3>
+<table><thead>
+<tr>
+<th>Status</th>
+<th>Meaning</th>
+<th>Description</th>
+<th>Schema</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>200</td>
+<td>OK</td>
+<td>Success</td>
+<td>Array of <a href="#author">Author</a></td>
+</tr>
+</tbody></table>
+<h2 id='get-an-author'>Get an Author</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://abs.example.com/api/authors/aut_z3leimgybl7uf3y4ab?include=items,series"</span> <span class="se">\</span>
+  <span class="nt">-H</span> <span class="s2">"Authorization: Bearer exJhbGciOiJI6IkpXVCJ9.eyJ1c2Vyi5NDEyODc4fQ.ZraBFohS4Tg39NszY"</span>
+</code></pre></div>
+<blockquote>
+<p>The above command returns JSON structured like this:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"aut_z3leimgybl7uf3y4ab"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"asin"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Terry Goodkind"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"description"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"imagePath"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"relImagePath"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"addedAt"</span><span class="p">:</span><span class="w"> </span><span class="mi">1650621073750</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"updatedAt"</span><span class="p">:</span><span class="w"> </span><span class="mi">1650621073750</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"libraryItems"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"li_8gch9ve09orgn4fdz8"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"ino"</span><span class="p">:</span><span class="w"> </span><span class="s2">"649641337522215266"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"libraryId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"main"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"folderId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"audiobooks"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"path"</span><span class="p">:</span><span class="w"> </span><span class="s2">"/audiobooks/Terry Goodkind/Sword of Truth/Wizards First Rule"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"relPath"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Terry Goodkind/Sword of Truth/Wizards First Rule"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"isFile"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"mtimeMs"</span><span class="p">:</span><span class="w"> </span><span class="mi">1650621074299</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"ctimeMs"</span><span class="p">:</span><span class="w"> </span><span class="mi">1650621074299</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"birthtimeMs"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"addedAt"</span><span class="p">:</span><span class="w"> </span><span class="mi">1650621073750</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"updatedAt"</span><span class="p">:</span><span class="w"> </span><span class="mi">1650621110769</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"isMissing"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"isInvalid"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"mediaType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"book"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"media"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"metadata"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+          </span><span class="nl">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Wizards First Rule"</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"titleIgnorePrefix"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Wizards First Rule"</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"subtitle"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"authorName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Terry Goodkind"</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"narratorName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Sam Tsoutsouvas"</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"seriesName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Sword of Truth"</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"genres"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+            </span><span class="s2">"Fantasy"</span><span class="w">
+          </span><span class="p">],</span><span class="w">
+          </span><span class="nl">"publishedYear"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2008"</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"publishedDate"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"publisher"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Brilliance Audio"</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"The masterpiece that started Terry Goodkind's New York Times bestselling epic Sword of Truth In the aftermath of the brutal murder of his father, a mysterious woman, Kahlan Amnell, appears in Richard Cypher's forest sanctuary seeking help...and more. His world, his very beliefs, are shattered when ancient debts come due with thundering violence. In a dark age it takes courage to live, and more than mere courage to challenge those who hold dominion, Richard and Kahlan must take up that challenge or become the next victims. Beyond awaits a bewitching land where even the best of their hearts could betray them. Yet, Richard fears nothing so much as what secrets his sword might reveal about his own soul. Falling in love would destroy them - for reasons Richard can't imagine and Kahlan dare not say. In their darkest hour, hunted relentlessly, tormented by treachery and loss, Kahlan calls upon Richard to reach beyond his sword - to invoke within himself something more noble. Neither knows that the rules of battle have just changed...or that their time has run out. Wizard's First Rule is the beginning. One book. One Rule. Witness the birth of a legend."</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"isbn"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"asin"</span><span class="p">:</span><span class="w"> </span><span class="s2">"B002V0QK4C"</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"language"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"explicit"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="nl">"coverPath"</span><span class="p">:</span><span class="w"> </span><span class="s2">"/audiobooks/Terry Goodkind/Sword of Truth/Wizards First Rule/cover.jpg"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"tags"</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span><span class="w">
+        </span><span class="nl">"numTracks"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"numAudioFiles"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"numChapters"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"numMissingParts"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"numInvalidAudioFiles"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"duration"</span><span class="p">:</span><span class="w"> </span><span class="mf">12000.946</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"size"</span><span class="p">:</span><span class="w"> </span><span class="mi">96010240</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"ebookFileFormat"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="nl">"numFiles"</span><span class="p">:</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"size"</span><span class="p">:</span><span class="w"> </span><span class="mi">96335771</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">],</span><span class="w">
+  </span><span class="nl">"series"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ser_cabkj4jeu8be3rap4g"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Sword of Truth"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"items"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+          </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"li_8gch9ve09orgn4fdz8"</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"ino"</span><span class="p">:</span><span class="w"> </span><span class="s2">"649641337522215266"</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"libraryId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"main"</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"folderId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"audiobooks"</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"path"</span><span class="p">:</span><span class="w"> </span><span class="s2">"/audiobooks/Terry Goodkind/Sword of Truth/Wizards First Rule"</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"relPath"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Terry Goodkind/Sword of Truth/Wizards First Rule"</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"isFile"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"mtimeMs"</span><span class="p">:</span><span class="w"> </span><span class="mi">1650621074299</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"ctimeMs"</span><span class="p">:</span><span class="w"> </span><span class="mi">1650621074299</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"birthtimeMs"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"addedAt"</span><span class="p">:</span><span class="w"> </span><span class="mi">1650621073750</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"updatedAt"</span><span class="p">:</span><span class="w"> </span><span class="mi">1650621110769</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"isMissing"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"isInvalid"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"mediaType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"book"</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"media"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+            </span><span class="nl">"metadata"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+              </span><span class="nl">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Wizards First Rule"</span><span class="p">,</span><span class="w">
+              </span><span class="nl">"titleIgnorePrefix"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Wizards First Rule"</span><span class="p">,</span><span class="w">
+              </span><span class="nl">"subtitle"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+              </span><span class="nl">"authorName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Terry Goodkind"</span><span class="p">,</span><span class="w">
+              </span><span class="nl">"narratorName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Sam Tsoutsouvas"</span><span class="p">,</span><span class="w">
+              </span><span class="nl">"seriesName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Sword of Truth"</span><span class="p">,</span><span class="w">
+              </span><span class="nl">"genres"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+                </span><span class="s2">"Fantasy"</span><span class="w">
+              </span><span class="p">],</span><span class="w">
+              </span><span class="nl">"publishedYear"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2008"</span><span class="p">,</span><span class="w">
+              </span><span class="nl">"publishedDate"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+              </span><span class="nl">"publisher"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Brilliance Audio"</span><span class="p">,</span><span class="w">
+              </span><span class="nl">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"The masterpiece that started Terry Goodkind's New York Times bestselling epic Sword of Truth In the aftermath of the brutal murder of his father, a mysterious woman, Kahlan Amnell, appears in Richard Cypher's forest sanctuary seeking help...and more. His world, his very beliefs, are shattered when ancient debts come due with thundering violence. In a dark age it takes courage to live, and more than mere courage to challenge those who hold dominion, Richard and Kahlan must take up that challenge or become the next victims. Beyond awaits a bewitching land where even the best of their hearts could betray them. Yet, Richard fears nothing so much as what secrets his sword might reveal about his own soul. Falling in love would destroy them - for reasons Richard can't imagine and Kahlan dare not say. In their darkest hour, hunted relentlessly, tormented by treachery and loss, Kahlan calls upon Richard to reach beyond his sword - to invoke within himself something more noble. Neither knows that the rules of battle have just changed...or that their time has run out. Wizard's First Rule is the beginning. One book. One Rule. Witness the birth of a legend."</span><span class="p">,</span><span class="w">
+              </span><span class="nl">"isbn"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+              </span><span class="nl">"asin"</span><span class="p">:</span><span class="w"> </span><span class="s2">"B002V0QK4C"</span><span class="p">,</span><span class="w">
+              </span><span class="nl">"language"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+              </span><span class="nl">"explicit"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+              </span><span class="nl">"series"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ser_cabkj4jeu8be3rap4g"</span><span class="p">,</span><span class="w">
+                </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Sword of Truth"</span><span class="p">,</span><span class="w">
+                </span><span class="nl">"sequence"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1"</span><span class="w">
+              </span><span class="p">}</span><span class="w">
+            </span><span class="p">},</span><span class="w">
+            </span><span class="nl">"coverPath"</span><span class="p">:</span><span class="w"> </span><span class="s2">"/audiobooks/Terry Goodkind/Sword of Truth/Wizards First Rule/cover.jpg"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"tags"</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span><span class="w">
+            </span><span class="nl">"numTracks"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"numAudioFiles"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"numChapters"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"numMissingParts"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"numInvalidAudioFiles"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"duration"</span><span class="p">:</span><span class="w"> </span><span class="mf">12000.946</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"size"</span><span class="p">:</span><span class="w"> </span><span class="mi">96010240</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"ebookFileFormat"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="w">
+          </span><span class="p">},</span><span class="w">
+          </span><span class="nl">"numFiles"</span><span class="p">:</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"size"</span><span class="p">:</span><span class="w"> </span><span class="mi">96335771</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+      </span><span class="p">]</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<p>This endpoint retrieves an author.</p>
+<h3 id='http-request-2'>HTTP Request</h3>
+<p><code>GET https://abs.example.com/api/authors/&lt;ID&gt;</code></p>
+<h3 id='url-parameters'>URL Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>ID</td>
+<td>The ID of the author.</td>
+</tr>
+</tbody></table>
+<h3 id='optional-query-parameters'>Optional Query Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>include</code></td>
+<td>String</td>
+<td>A comma separated list of what to include with the author. The options are <code>items</code> and <code>series</code>. <code>series</code> will only have an effect if <code>items</code> are included.</td>
+</tr>
+<tr>
+<td><code>library</code></td>
+<td>String</td>
+<td>The ID of the library to filter included items from.</td>
+</tr>
+</tbody></table>
+<h3 id='response-2'>Response</h3>
+<table><thead>
+<tr>
+<th>Status</th>
+<th>Meaning</th>
+<th>Description</th>
+<th>Schema</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>200</td>
+<td>OK</td>
+<td>Success</td>
+<td><a href="#author">Author</a> with optional extra attributes from <code>include</code> (see below).</td>
+</tr>
+<tr>
+<td>404</td>
+<td>Not Found</td>
+<td>No author with provided ID exists.</td>
+<td></td>
+</tr>
+</tbody></table>
+<h4 id='extra-attributes'>Extra Attributes</h4>
+<table><thead>
+<tr>
+<th>Attribute</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>libraryItems</code></td>
+<td>Array of <a href="#library-item-minified">Library Item Minified</a></td>
+<td>If <code>items</code> was requested, the library items written by the author.</td>
+</tr>
+<tr>
+<td><code>series</code></td>
+<td>Array of <a href="#author-series">Author Series</a> (See Below)</td>
+<td>If <code>items</code> and <code>series</code> were requested, the series that have books written by the author.</td>
+</tr>
+</tbody></table>
+<h4 id='author-series'>Author Series</h4>
+<table><thead>
+<tr>
+<th>Attribute</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>id</code></td>
+<td>String</td>
+<td>The ID of the series.</td>
+</tr>
+<tr>
+<td><code>name</code></td>
+<td>String</td>
+<td>The name of the series.</td>
+</tr>
+<tr>
+<td><code>items</code></td>
+<td>Array of <a href="#library-item-minified">Library Item Minified</a></td>
+<td>The items in the series. Each library item&#39;s media&#39;s metadata will have a <code>series</code> attribute, a <a href="#series-sequence">Series Sequence</a>, which is the matching series.</td>
+</tr>
+</tbody></table>
+<h2 id='update-an-author'>Update an Author</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">-X</span> PATCH <span class="s2">"https://abs.example.com/api/authors/aut_z3leimgybl7uf3y4ab"</span> <span class="se">\</span>
+  <span class="nt">-H</span> <span class="s2">"Authorization: Bearer exJhbGciOiJI6IkpXVCJ9.eyJ1c2Vyi5NDEyODc4fQ.ZraBFohS4Tg39NszY"</span> <span class="se">\</span>
+  <span class="nt">-H</span> <span class="s2">"Content-Type: application/json"</span> <span class="se">\</span>
+  <span class="nt">-d</span> <span class="s1">'{"asin": "B000APZOQA"}'</span>
+</code></pre></div>
+<blockquote>
+<p>The above command returns JSON structured like this:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"author"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"aut_z3leimgybl7uf3y4ab"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"asin"</span><span class="p">:</span><span class="w"> </span><span class="s2">"B000APZOQA"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Terry Goodkind"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"description"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"imagePath"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"relImagePath"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"addedAt"</span><span class="p">:</span><span class="w"> </span><span class="mi">1650621073750</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"updatedAt"</span><span class="p">:</span><span class="w"> </span><span class="mi">1668506755298</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="nl">"success"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<p>This endpoint updates an author. It also allows for merging of two authors if the name of this author is set to the name of another author.</p>
+<h3 id='http-request-3'>HTTP Request</h3>
+<p><code>PATCH http://abs.example.com/api/authors/&lt;ID&gt;</code></p>
+<h3 id='url-parameters-2'>URL Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>ID</td>
+<td>The ID of the author.</td>
+</tr>
+</tbody></table>
+<h3 id='parameters'>Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>asin</code></td>
+<td>String or null</td>
+<td>The ASIN of the author.</td>
+</tr>
+<tr>
+<td><code>name</code></td>
+<td>String</td>
+<td>The name of the author.</td>
+</tr>
+<tr>
+<td><code>description</code></td>
+<td>String or null</td>
+<td>A description of the author.</td>
+</tr>
+<tr>
+<td><code>imagePath</code></td>
+<td>String or null</td>
+<td>The absolute path for the author image.</td>
+</tr>
+<tr>
+<td><code>relImagePath</code></td>
+<td>String or null</td>
+<td>The path for the author image.</td>
+</tr>
+</tbody></table>
+<h3 id='response-3'>Response</h3>
+<table><thead>
+<tr>
+<th>Status</th>
+<th>Meaning</th>
+<th>Description</th>
+<th>Schema</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>200</td>
+<td>OK</td>
+<td>Success</td>
+<td>See below.</td>
+</tr>
+<tr>
+<td>404</td>
+<td>Not Found</td>
+<td>No author with provided ID exists.</td>
+<td></td>
+</tr>
+</tbody></table>
+<h4 id='response-schema'>Response Schema</h4>
+<table><thead>
+<tr>
+<th>Attribute</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>author</code></td>
+<td><a href="#author">Author</a> Object</td>
+<td>The updated author.</td>
+</tr>
+<tr>
+<td><code>merged</code></td>
+<td>Boolean</td>
+<td>Will only exist and be <code>true</code> if the author was merged with another author.</td>
+</tr>
+<tr>
+<td><code>updated</code></td>
+<td>Boolean</td>
+<td>Whether or not the author was updated normally. Will only exist if the author was not merged.</td>
+</tr>
+</tbody></table>
+<h2 id='match-an-author'>Match an Author</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">-X</span> POST <span class="s2">"https://abs.example.com/api/authors/aut_z3leimgybl7uf3y4ab/match"</span> <span class="se">\</span>
+  <span class="nt">-H</span> <span class="s2">"Authorization: Bearer exJhbGciOiJI6IkpXVCJ9.eyJ1c2Vyi5NDEyODc4fQ.ZraBFohS4Tg39NszY"</span> <span class="se">\</span>
+  <span class="nt">-H</span> <span class="s2">"Content-Type: application/json"</span> <span class="se">\</span>
+  <span class="nt">-d</span> <span class="s1">'{"q": "Terry Goodkind"}'</span>
+</code></pre></div>
+<blockquote>
+<p>The above command returns JSON structured like this:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"updated"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"author"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"aut_z3leimgybl7uf3y4ab"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"asin"</span><span class="p">:</span><span class="w"> </span><span class="s2">"B000APZOQA"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Terry Goodkind"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Terry Goodkind is a #1 New York Times Bestselling Author and creator of the critically acclaimed masterwork, ‘The Sword of Truth’. He has written 30+ major, bestselling novels, has been published in more than 20 languages world-wide, and has sold more than 26 Million books. ‘The Sword of Truth’ is a revered literary tour de force, comprised of 17 volumes, borne from over 25 years of dedicated writing. Terry Goodkind's brilliant books are character-driven stories, with a focus on the complexity of the human psyche. Goodkind has an uncanny grasp for crafting compelling stories about people like you and me, trapped in terrifying situations. With masterful storytelling, Goodkind brings us into the lives of his characters; characters that must rise to face not only challenges, but their deepest fears. For that reason, Goodkind’s characters speak to the best and worst in all of us. While ‘The Sword of Truth’ series is confirmation enough of Goodkind’s incredible storytelling abilities, his broad talents are also clearly evident in his contemporary novels, set within our own world. His post-‘Sword of Truth’ books are a thrilling, dizzying, mix of modern narrative, with every bit of Goodkind’s masterful voice intact. The bond built between the reader and one of the world’s great authors, rises above worlds and settings, mere backdrops for Goodkind’s uniquely intricate stories of life, love, challenge, and triumph. </span><span class="se">\"</span><span class="s2">My privilege in life is the joy of writing books and telling stories about people who fascinate me, the good and the bad. I am grateful to all of my readers for the critical role they play in making these books possible. Your passion is my passion, and I thank you.</span><span class="se">\"</span><span class="s2"> - Terry Goodkind For more, please visit: http://terrygoodkind.com"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"imagePath"</span><span class="p">:</span><span class="w"> </span><span class="s2">"/metadata/authors/aut_z3leimgybl7uf3y4ab.jpg"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"relImagePath"</span><span class="p">:</span><span class="w"> </span><span class="s2">"/metadata/authors/aut_z3leimgybl7uf3y4ab.jpg"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"addedAt"</span><span class="p">:</span><span class="w"> </span><span class="mi">1650621073750</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"updatedAt"</span><span class="p">:</span><span class="w"> </span><span class="mi">1668506755298</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<p>This endpoint matches the author using quick match. Quick match updates the author&#39;s description and image (if no image already existed) with information from audible.</p>
+<h3 id='http-request-4'>HTTP Request</h3>
+<p><code>POST http://abs.example.com/api/authors/&lt;ID&gt;/match</code></p>
+<h3 id='url-parameters-3'>URL Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>ID</td>
+<td>The ID of the author.</td>
+</tr>
+</tbody></table>
+<h3 id='parameters-2'>Parameters</h3>
+<p>Either <code>asin</code> or <code>q</code> are <strong>required</strong>. If both are provided, <code>asin</code> will be used.</p>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>asin</code></td>
+<td>String</td>
+<td>The ASIN to search for.</td>
+</tr>
+<tr>
+<td><code>q</code></td>
+<td>String</td>
+<td>The author name to search for.</td>
+</tr>
+</tbody></table>
+<h3 id='response-4'>Response</h3>
+<table><thead>
+<tr>
+<th>Status</th>
+<th>Meaning</th>
+<th>Description</th>
+<th>Schema</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>200</td>
+<td>OK</td>
+<td>Success</td>
+<td>See below.</td>
+</tr>
+<tr>
+<td>404</td>
+<td>Not Found</td>
+<td>No author with provided ID exists.</td>
+<td></td>
+</tr>
+</tbody></table>
+<h4 id='response-schema-2'>Response Schema</h4>
+<table><thead>
+<tr>
+<th>Attribute</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>updated</code></td>
+<td>Boolean</td>
+<td>Whether or not the author was updated.</td>
+</tr>
+<tr>
+<td><code>author</code></td>
+<td><a href="#author">Author</a> Object</td>
+<td>The updated author.</td>
+</tr>
+</tbody></table>
+<h2 id='get-an-author-39-s-image'>Get an Author&#39;s Image</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://abs.example.com/api/authors/aut_z3leimgybl7uf3y4ab/image"</span> <span class="se">\</span>
+  <span class="nt">-H</span> <span class="s2">"Authorization: Bearer exJhbGciOiJI6IkpXVCJ9.eyJ1c2Vyi5NDEyODc4fQ.ZraBFohS4Tg39NszY"</span> <span class="se">\</span>
+  <span class="nt">--output</span> author.webp
+</code></pre></div>
+<blockquote>
+<p>The above command writes an image file.</p>
+</blockquote>
+
+<p>This endpoint retrieves an author&#39;s image.</p>
+<h3 id='http-request-5'>HTTP Request</h3>
+<p><code>GET http://abs.example.com/api/authors/&lt;ID&gt;/image</code></p>
+<h3 id='url-parameters-4'>URL Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>ID</td>
+<td>The ID of the author.</td>
+</tr>
+</tbody></table>
+<h3 id='optional-query-parameters-2'>Optional Query Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>width</code></td>
+<td>Integer</td>
+<td><code>400</code></td>
+<td>The requested width of the image.</td>
+</tr>
+<tr>
+<td><code>height</code></td>
+<td>Integer or null</td>
+<td><code>null</code></td>
+<td>The requested height of the image. If <code>null</code> the image is scaled proportionately.</td>
+</tr>
+<tr>
+<td><code>format</code></td>
+<td>String</td>
+<td><code>webp</code> or <code>jpeg</code></td>
+<td>The requested format of the image. The default value depends on the request headers.</td>
+</tr>
+</tbody></table>
+<h3 id='response-5'>Response</h3>
+<table><thead>
+<tr>
+<th>Status</th>
+<th>Meaning</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>200</td>
+<td>OK</td>
+<td>Success</td>
+</tr>
+<tr>
+<td>404</td>
+<td>Not Found</td>
+<td>No author with provided ID exists.</td>
+</tr>
+<tr>
+<td>500</td>
+<td>Internal Server Error</td>
+<td>There was an error when attempting to read the image file.</td>
+</tr>
+</tbody></table>
+<h1 id='series-endpoints'>Series Endpoints</h1><h2 id='search-for-series'>Search for Series</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://abs.example.com/api/series/search?q=Sword"</span> <span class="se">\</span>
+  <span class="nt">-H</span> <span class="s2">"Authorization: Bearer exJhbGciOiJI6IkpXVCJ9.eyJ1c2Vyi5NDEyODc4fQ.ZraBFohS4Tg39NszY"</span>
+</code></pre></div>
+<blockquote>
+<p>The above command returns JSON structured like this:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">[</span><span class="w">
+  </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ser_cabkj4jeu8be3rap4g"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Sword of Truth"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"description"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"addedAt"</span><span class="p">:</span><span class="w"> </span><span class="mi">1650621073750</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"updatedAt"</span><span class="p">:</span><span class="w"> </span><span class="mi">1650621073750</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">]</span><span class="w">
+</span></code></pre></div>
+<p>This endpoint searches for series that match the query and returns the results.</p>
+<h3 id='http-request'>HTTP Request</h3>
+<p><code>GET https://abs.example.com/api/series/search?&lt;q&gt;</code></p>
+<h3 id='query-parameters'>Query Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>q</td>
+<td>String</td>
+<td><strong>Required</strong></td>
+<td>The URL encoded search query.</td>
+</tr>
+<tr>
+<td>limit</td>
+<td>Integer</td>
+<td><code>25</code></td>
+<td>Limit the number of returned results.</td>
+</tr>
+</tbody></table>
+<h3 id='response'>Response</h3>
+<table><thead>
+<tr>
+<th>Status</th>
+<th>Meaning</th>
+<th>Description</th>
+<th>Schema</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>200</td>
+<td>OK</td>
+<td>Success</td>
+<td>Array of <a href="#series">Series</a></td>
+</tr>
+</tbody></table>
+<h2 id='get-a-series'>Get a Series</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://abs.example.com/api/series/ser_cabkj4jeu8be3rap4g?include=progress"</span> <span class="se">\</span>
+  <span class="nt">-H</span> <span class="s2">"Authorization: Bearer exJhbGciOiJI6IkpXVCJ9.eyJ1c2Vyi5NDEyODc4fQ.ZraBFohS4Tg39NszY"</span>
+</code></pre></div>
+<blockquote>
+<p>The above command returns JSON structured like this:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ser_cabkj4jeu8be3rap4g"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Sword of Truth"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"description"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"addedAt"</span><span class="p">:</span><span class="w"> </span><span class="mi">1650621073750</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"updatedAt"</span><span class="p">:</span><span class="w"> </span><span class="mi">1650621073750</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"progress"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"libraryItemIds"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+      </span><span class="s2">"li_8gch9ve09orgn4fdz8"</span><span class="w">
+    </span><span class="p">],</span><span class="w">
+    </span><span class="nl">"libraryItemIdsFinished"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+      </span><span class="s2">"li_8gch9ve09orgn4fdz8"</span><span class="w">
+    </span><span class="p">],</span><span class="w">
+    </span><span class="nl">"isFinished"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<p>This endpoint retrieves a series.</p>
+<h3 id='http-request-2'>HTTP Request</h3>
+<p><code>GET https://abs.example.com/api/series/&lt;ID&gt;</code></p>
+<h3 id='url-parameters'>URL Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>ID</td>
+<td>The ID of the series.</td>
+</tr>
+</tbody></table>
+<h3 id='optional-query-parameters'>Optional Query Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>include</code></td>
+<td>String</td>
+<td>A comma separated list of what to include with the series. Currently, the only option is <code>progress</code>.</td>
+</tr>
+</tbody></table>
+<h3 id='response-2'>Response</h3>
+<table><thead>
+<tr>
+<th>Status</th>
+<th>Meaning</th>
+<th>Description</th>
+<th>Schema</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>200</td>
+<td>OK</td>
+<td>Success</td>
+<td><a href="#series">Series</a> with optional extra attributes from <code>include</code> (see below).</td>
+</tr>
+<tr>
+<td>404</td>
+<td>Not Found</td>
+<td>No series with provided ID exists.</td>
+<td></td>
+</tr>
+</tbody></table>
+<h4 id='extra-attributes'>Extra Attributes</h4>
+<table><thead>
+<tr>
+<th>Attribute</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>progress</code></td>
+<td><a href="#series-progress">Series Progress</a> Object (See Below)</td>
+<td>If <code>progress</code> was requested, the series&#39; progress.</td>
+</tr>
+</tbody></table>
+<h4 id='series-progress'>Series Progress</h4>
+<table><thead>
+<tr>
+<th>Attribute</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>libraryItemIds</code></td>
+<td>Array of String</td>
+<td>The IDs of the library items in the series.</td>
+</tr>
+<tr>
+<td><code>libraryItemIdsFinished</code></td>
+<td>Array of String</td>
+<td>The IDs of the library items in the series that are finished.</td>
+</tr>
+<tr>
+<td><code>isFinished</code></td>
+<td>Boolean</td>
+<td>Whether or not the series is finished.</td>
+</tr>
+</tbody></table>
+<h2 id='update-a-series'>Update a Series</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">-X</span> PATCH <span class="s2">"https://abs.example.com/api/series/ser_cabkj4jeu8be3rap4g"</span> <span class="se">\</span>
+  <span class="nt">-H</span> <span class="s2">"Authorization: Bearer exJhbGciOiJI6IkpXVCJ9.eyJ1c2Vyi5NDEyODc4fQ.ZraBFohS4Tg39NszY"</span> <span class="se">\</span>
+  <span class="nt">-H</span> <span class="s2">"Content-Type: application/json"</span> <span class="se">\</span>
+  <span class="nt">-d</span> <span class="s1">'{"description": "A really cool series."}'</span>
+</code></pre></div>
+<blockquote>
+<p>The above command returns JSON structured like this:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ser_cabkj4jeu8be3rap4g"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Sword of Truth"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"A really cool series."</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"addedAt"</span><span class="p">:</span><span class="w"> </span><span class="mi">1650621073750</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"updatedAt"</span><span class="p">:</span><span class="w"> </span><span class="mi">1650621073750</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<p>This endpoint updates a series and returns it.</p>
+<h3 id='http-request-3'>HTTP Request</h3>
+<p><code>PATCH http://abs.example.com/api/series/&lt;ID&gt;</code></p>
+<h3 id='url-parameters-2'>URL Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>ID</td>
+<td>The ID of the series.</td>
+</tr>
+</tbody></table>
+<h3 id='parameters'>Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>name</code></td>
+<td>String</td>
+<td>The name of the series.</td>
+</tr>
+<tr>
+<td><code>description</code></td>
+<td>String or null</td>
+<td>A description for the series.</td>
+</tr>
+</tbody></table>
+<h3 id='response-3'>Response</h3>
+<table><thead>
+<tr>
+<th>Status</th>
+<th>Meaning</th>
+<th>Description</th>
+<th>Schema</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>200</td>
+<td>OK</td>
+<td>Success</td>
+<td><a href="#series">Series</a></td>
+</tr>
+<tr>
+<td>404</td>
+<td>Not Found</td>
+<td>No series with provided ID exists.</td>
+<td></td>
+</tr>
+</tbody></table>
 <h1 id='filtering'>Filtering</h1>
 <p>Most filters are composed of two parts, a group and a value, put together as <code>group.value</code>. The groups are: genres, tags, series, authors, progress, narrators, missing, and languages.</p>
 
@@ -14222,6 +15488,81 @@ Only non-null tags will be returned in requests.</p>
 <td><code>createdAt</code></td>
 <td>Integer</td>
 <td>The time (in ms since POSIX epoch) when the bookmark was created.</td>
+</tr>
+</tbody></table>
+<h2 id='backup'>Backup</h2>
+<blockquote>
+<p>Backup</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2022-11-14T0130"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"backupMetadataCovers"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"backupDirPath"</span><span class="p">:</span><span class="w"> </span><span class="s2">"/metadata/backups"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"datePretty"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Mon, Nov 14 2022 01:30"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"fullPath"</span><span class="p">:</span><span class="w"> </span><span class="s2">"/metadata/backups/2022-11-14T0130.audiobookshelf"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"path"</span><span class="p">:</span><span class="w"> </span><span class="s2">"backups/2022-11-14T0130.audiobookshelf"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"filename"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2022-11-14T0130.audiobookshelf"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"fileSize"</span><span class="p">:</span><span class="w"> </span><span class="mi">7776983</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"createdAt"</span><span class="p">:</span><span class="w"> </span><span class="mi">1668411000329</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"serverVersion"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2.2.4"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<table><thead>
+<tr>
+<th>Attribute</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>id</code></td>
+<td>String</td>
+<td>The ID of the backup. Will be the date and time when the backup was created.</td>
+</tr>
+<tr>
+<td><code>backupMetadataCovers</code></td>
+<td>Boolean</td>
+<td>Whether or not the backup includes library item covers and author images located in metadata.</td>
+</tr>
+<tr>
+<td><code>backupDirPath</code></td>
+<td>String</td>
+<td>The backup directory path.</td>
+</tr>
+<tr>
+<td><code>datePretty</code></td>
+<td>String</td>
+<td>The date and time when the backup was created in a human readable format.</td>
+</tr>
+<tr>
+<td><code>fullPath</code></td>
+<td>String</td>
+<td>The full path of the backup on the server.</td>
+</tr>
+<tr>
+<td><code>path</code></td>
+<td>String</td>
+<td>The path of the backup relative to the metadata directory.</td>
+</tr>
+<tr>
+<td><code>filename</code></td>
+<td>String</td>
+<td>The filename of the backup.</td>
+</tr>
+<tr>
+<td><code>fileSize</code></td>
+<td>Integer</td>
+<td>The size (in bytes) of the backup file.</td>
+</tr>
+<tr>
+<td><code>createdAt</code></td>
+<td>Integer</td>
+<td>The time (in ms since POSIX epoch) when the backup was created.</td>
+</tr>
+<tr>
+<td><code>serverVersion</code></td>
+<td>String</td>
+<td>The version of the server when the backup was created.</td>
 </tr>
 </tbody></table>
 
