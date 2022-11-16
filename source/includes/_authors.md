@@ -365,7 +365,7 @@ This endpoint retrieves an author's image.
 
 ### HTTP Request
 
-`GET http://abs.example.com/api/authors/<ID>/iamge`
+`GET http://abs.example.com/api/authors/<ID>/image`
 
 ### URL Parameters
 
