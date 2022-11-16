@@ -14,6 +14,10 @@ includes:
   - users
   - collections
   - me
+  - backups
+  - filesystem
+  - authors
+  - series
   - filtering
   - schemas
 
