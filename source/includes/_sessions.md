@@ -690,3 +690,40 @@ Status | Meaning | Description | Schema
 ------ | ------- | ----------- | ------
 200 | OK | Success | [Playback Session Expanded](#playback-session-expanded)
 404 | Not Found | No listening session with the provided ID is open, or the session belongs to another user. |
+
+
+## Close an Open Session
+
+```shell
+curl -X POST "https://abs.example.com/api/session/play_i00492kps6ow4axlvq/close" \
+  -H "Authorization: Bearer exJhbGciOiJI6IkpXVCJ9.eyJ1c2Vyi5NDEyODc4fQ.ZraBFohS4Tg39NszY" \
+  -H "Content-Type: application/json" \
+  -d '{"currentTime": 636.09262, "timeListened": 5, "duration": 1454.18449}'
+```
+
+This endpoint closes an open listening session. Optionally provide sync data to update the session before closing it.
+
+### HTTP Request
+
+`POST http://abs.example.com/api/session/<ID>/close`
+
+### URL Parameters
+
+Parameter | Description
+--------- | -----------
+ID | The ID of the listening session.
+
+### Optional Parameters
+
+Parameter | Type | Description
+--------- | ---- | -----------
+`currentTime` | Float | The current time (in seconds) of the playback position.
+`timeListened` | Float | The amount of time (in seconds) the user has spent listening since the last session sync.
+`duration` | Float | The total duration (in seconds) of the playing item.
+
+### Response
+
+Status | Meaning | Description
+------ | ------- | -----------
+200 | OK | Success
+404 | Not Found | No listening session with the provided ID is open, or the session belongs to another user.
