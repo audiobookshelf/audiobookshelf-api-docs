@@ -329,7 +329,7 @@ ID | The ID of the library item to retrieve.
 
 Parameter | Type | Description
 --------- | ---- | -----------
-`expanded` | Binary | Whether or not to return [Library Item Expanded](#library-item-expanded) instead. `0` for false, `1` for true.
+`expanded` | Binary | Whether to return [Library Item Expanded](#library-item-expanded) instead. `0` for false, `1` for true.
 `include` | String | A comma separated list of what to include with the library item. The options are: `progress`, `rssfeed`, `authors` (for books), and `downloads` (for podcasts). `expanded` must be `1` for `include` to have an effect.
 `episode` | String | If requesting `progress` for a podcast, the episode ID to get progress for.
 
@@ -615,7 +615,7 @@ ID | The ID of the library item.
 
 ### Parameters
 
-A library item's media can be either a [Book Parameters](#book-parameters) or [Podcast Parameters](#podcast-parameters) object (see below). Check the library item's `mediaType` before updating it.
+A library item's media can be either [Book Parameters](#book-parameters) or [Podcast Parameters](#podcast-parameters) (see below). Check the library item's `mediaType` before updating it.
 
 #### Book Parameters
 
@@ -643,7 +643,7 @@ Parameter | Type | Description
 `isbn` | String or null | The ISBN of the book.
 `asin` | String or null | The ASIN of the book.
 `language` | String or null | The language of the book.
-`explicit` | Boolean | Whether or not to mark the book as explicit.
+`explicit` | Boolean | Whether to mark the book as explicit.
 
 #### Author Parameters
 
@@ -669,7 +669,7 @@ Parameter | Type | Description
 `metadata` | [Podcast Metadata](#podcast-metadata-parameters) Object (See Below) | The podcast's metadata.
 `coverPath` | String or null | The absolute path on the server of the cover file. Use `null` to remove the cover. Prefer using the [Update a Library Item's Cover](#update-a-library-item-39-s-cover) endpoint.
 `tags` | Array of String | The podcast's tags.
-`autoDownloadEpisodes` | Boolean | Whether or not the server will automatically download podcast episodes according to the schedule.
+`autoDownloadEpisodes` | Boolean | Whether the server will automatically download podcast episodes according to the schedule.
 `autoDownloadSchedule` | String or null | The [cron expression](https://en.wikipedia.org/wiki/Cron#CRON_expression) for when to automatically download podcast episodes.
 `maxEpisodesToKeep` | Integer | The maximum number of podcast episodes to keep when automatically downloading new episodes. Episodes beyond this limit will be deleted. If `0`, all episodes will be kept.
 `maxNewEpisodesToDownload` | Integer | The maximum number of podcast episodes to download when automatically downloading new episodes. If `0`, all episodes will be downloaded.
@@ -692,14 +692,14 @@ Parameter | Type | Description
 `itunesPageUrl` | String or null | A URL of an iTunes page for the podcast.
 `itunesId` | Integer or null | The iTunes ID for the podcast.
 `itunesArtistId` | Integer or null | The iTunes Artist ID for the author of the podcast.
-`explicit` | Boolean | Whether or not to mark the podcast as explicit.
+`explicit` | Boolean | Whether to mark the podcast as explicit.
 `language` | String or null | The language of the podcast.
 
 ### Response
 
 Status | Meaning | Description | Schema
 ------ | ------- | ----------- | ------
-200 | OK | Success | [Library Item](#library-item) with a `updated` attribute, a Boolean, whether or not anything was actually changed.
+200 | OK | Success | [Library Item](#library-item) with an `updated` attribute, a Boolean, whether anything was actually changed.
 
 
 ## Get a Library Item's Cover
@@ -806,7 +806,7 @@ Status | Meaning | Description | Schema
 
 Attribute | Type | Description
 --------- | ---- | -----------
-`success` | Boolean | Whether or not the upload was successful.
+`success` | Boolean | Whether the upload was successful.
 `cover` | String | The full path of the cover on the server.
 
 
@@ -828,7 +828,7 @@ curl -X PATCH "https://abs.example.com/api/items/li_8gch9ve09orgn4fdz8/cover" \
 }
 ```
 
-This endpoint updates a library item's cover with a image already on the server.
+This endpoint updates a library item's cover with an image already on the server.
 
 ### HTTP Request
 
@@ -858,7 +858,7 @@ Status | Meaning | Description | Schema
 
 Attribute | Type | Description
 --------- | ---- | -----------
-`success` | Boolean | Whether or not the cover was updated successfully.
+`success` | Boolean | Whether the cover was updated successfully.
 `cover` | String | The absolute path on the server of the library item's cover.
 
 
@@ -1183,7 +1183,7 @@ Parameter | Type | Default | Description
 `provider` | String | `google` | The metadata provider to search. See [Library Metadata Providers](#library-metadata-providers) for a list of options.
 `title` | String | The library item's title. | The title to search for.
 `author` | String | The library item's author. | The author to search for.
-`overrideDefaults` | Boolean | `false` | Whether or not to override the existing book details and cover. This will be `true` if the "Prefer matched metadata" server setting is enabled.
+`overrideDefaults` | Boolean | `false` | Whether to override the existing book details and cover. This will be `true` if the "Prefer matched metadata" server setting is enabled.
 `isbn` | String | The book's ISBN. | If the library item is a book, the ISBN to search for.
 `asin` | String | The book's ASIN. | If the library item is a book, the ASIN to search for.
 
@@ -1197,7 +1197,7 @@ Status | Meaning | Description | Schema
 
 Attribute | Type | Description
 --------- | ---- | -----------
-`updated` | Boolean | Whether or not the library item was actually updated with new information.
+`updated` | Boolean | Whether the library item was actually updated with new information.
 `libraryItem` | [Library Item Expanded](#library-item-expanded) Object | The updated library item.
 
 
@@ -1469,8 +1469,8 @@ EpisodeID | The ID of the podcast episode.
 Parameter | Type | Default | Description
 --------- | ---- | ------- | -----------
 `deviceInfo` | [Device Info Parameters](#device-info-parameters) Object (See Below) | | Information about the device.
-`forceDirectPlay` | Boolean | `false` | Whether or not to force direct play of the library item.
-`forceTranscode` | Boolean | `false` | Whether or not to force the server to transcode the audio.
+`forceDirectPlay` | Boolean | `false` | Whether to force direct play of the library item.
+`forceTranscode` | Boolean | `false` | Whether to force the server to transcode the audio.
 `supportedMimeTypes` | Array of String | `[]` | The MIME types that are supported by the client. If the MIME type of the audio file is not in this list, the server will transcode it.
 `mediaPlayer` | String | `unknown` | The media player the client is using.
 
@@ -1743,7 +1743,7 @@ Make sure to include all audio files of a library item in the array.
 Parameter | Type | Default | Description
 --------- | ---- | ------- | -----------
 `ino` | String | **Required** | The inode of the audio file. This is how the server matches this entry to the correct audio file.
-`exclude` | Boolean | `false` | Whether or not to the exclude the audio file from playback. Excluded audio files will have their `index` set to `-1`.
+`exclude` | Boolean | `false` | Whether to exclude the audio file from playback. Excluded audio files will have their `index` set to `-1`.
 
 ### Response
 
@@ -1894,8 +1894,8 @@ ID | The ID of the library item.
 
 Parameter | Type | Description
 --------- | ---- | -----------
-`tone` | Binary | Whether or not to use the library item's tone metadata to update it. Otherwise, ffmpeg will be used. `0` for false, `1` for true.
-`forceEmbedChapters` | Binary | Whether or not to forcefully embed a book's chapters into the audio file metadata. `0` for false, `1` for true.
+`tone` | Binary | Whether to use the library item's tone metadata to update it. Otherwise, ffmpeg will be used. `0` for false, `1` for true.
+`forceEmbedChapters` | Binary | Whether to forcefully embed a book's chapters into the audio file metadata. `0` for false, `1` for true.
 
 ### Response
 
@@ -1955,11 +1955,11 @@ Status | Meaning | Description | Schema
 
 Attribute | Type | Description
 --------- | ---- | -----------
-`success` | Boolean | Whether or not the update succeeded.
-`updated` | Boolean | Whether or not the book's chapters were actually changed.
+`success` | Boolean | Whether the update succeeded.
+`updated` | Boolean | Whether the book's chapters were actually changed.
 
 
-## Open a RSS Feed for a Library Item
+## Open an RSS Feed for a Library Item
 
 ```shell
 curl -X POST "https://abs.example.com/api/items/li_bufnnmp4y5o2gbbxfm/open-feed" \
@@ -1977,7 +1977,7 @@ curl -X POST "https://abs.example.com/api/items/li_bufnnmp4y5o2gbbxfm/open-feed"
 }
 ```
 
-This endpoint opens a RSS feed for a library item.
+This endpoint opens an RSS feed for a library item.
 
 ### HTTP Request
 
@@ -2001,18 +2001,18 @@ Parameter | Type | Description
 Status | Meaning | Description | Schema
 ------ | ------- | ----------- | ------
 200 | OK | Success | See below.
-403 | Forbidden | An admin user is required to open a RSS feed. |
+403 | Forbidden | An admin user is required to open an RSS feed. |
 
 #### Response Schema
 
 Attribute | Type | Description
 --------- | ---- | -----------
-`success` | Boolean | Whether or not the RSS feed was successfully opened.
+`success` | Boolean | Whether the RSS feed was successfully opened.
 `error` | String | The error that occurred. Will only exist if `success` is `false`.
 `feedUrl` | String | The URL where the feed was opened. Will only exist if `success` is `true`.
 
 
-## Close a RSS Feed for a Library Item
+## Close an RSS Feed for a Library Item
 
 ```shell
 curl -X POST "https://abs.example.com/api/items/li_bufnnmp4y5o2gbbxfm/close-feed" \
@@ -2036,7 +2036,7 @@ ID | The ID of the library item.
 Status | Meaning | Description
 ------ | ------- | -----------
 200 | OK | Success
-500 | Internal Server Error | An admin user is required to close a RSS feed.
+500 | Internal Server Error | An admin user is required to close an RSS feed.
 
 
 ## Tone Scan a Library Item
@@ -2217,7 +2217,7 @@ Status | Meaning | Description | Schema
 
 Attribute | Type | Description
 --------- | ---- | -----------
-`success` | Boolean | Whether or not library items were updated successfully.
+`success` | Boolean | Whether library items were updated successfully.
 `updates` | Integer | The number library items that were actually changed.
 
 
@@ -2543,7 +2543,7 @@ Parameter | Type | Description
 Parameter | Type | Default | Description
 --------- | ---- | ------- | -----------
 `provider` | String | `google` | The metadata provider to search. See [Library Metadata Providers](#library-metadata-providers) for a list of options.
-`overrideDefaults` | Boolean | `false` | Whether or not to override the existing book details and cover. This will be `true` if the "Prefer matched metadata" server setting is enabled.
+`overrideDefaults` | Boolean | `false` | Whether to override the existing book details and cover. This will be `true` if the "Prefer matched metadata" server setting is enabled.
 
 ### Response
 

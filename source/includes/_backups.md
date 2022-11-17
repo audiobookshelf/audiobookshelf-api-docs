@@ -185,4 +185,4 @@ Status | Meaning | Description | Schema
 ------ | ------- | ----------- | ------
 200 | OK | Success | Array of [Backup](#backup)
 403 | Forbidden | An admin user is required to upload backups. |
-500 | Internal Server Error | The backup data is invalid or the server failed to save it. |
+500 | Internal Server Error | The backup data is invalid, or the server failed to save it. |

@@ -58,10 +58,10 @@ Parameter | Type | Default | Description
 
 Parameter | Type | Default | Description
 --------- | ---- | ------- | -----------
-`coverAspectRatio` | Integer | `1` | Whether or not the library should use square book covers. Must be `0` (for false) or `1` (for true).
-`disableWatcher` | Boolean | `false` | Whether or not to disable the folder watcher for the library.
-`skipMatchingMediaWithAsin` | Boolean | `false` | Whether or not to skip matching books that already have an ASIN.
-`skipMatchingMediaWithIsbn` | Boolean | `false` | Whether or not to skip matching books that already have an ISBN.
+`coverAspectRatio` | Integer | `1` | Whether the library should use square book covers. Must be `0` (for false) or `1` (for true).
+`disableWatcher` | Boolean | `false` | Whether to disable the folder watcher for the library.
+`skipMatchingMediaWithAsin` | Boolean | `false` | Whether to skip matching books that already have an ASIN.
+`skipMatchingMediaWithIsbn` | Boolean | `false` | Whether to skip matching books that already have an ISBN.
 `autoScanCronExpression` | String or null | `null` | The [cron expression](https://en.wikipedia.org/wiki/Cron#CRON_expression) for when to automatically scan the library folders. If `null`, automatic scanning will be disabled.
 
 ### Response
@@ -309,10 +309,10 @@ Parameter | Type | Description
 
 Parameter | Type | Description
 --------- | ---- | -----------
-`coverAspectRatio` | Integer | Whether or not the library should use square book covers. Must be `0` (for false) or `1` (for true).
-`disableWatcher` | Boolean | Whether or not to disable the folder watcher for the library.
-`skipMatchingMediaWithAsin` | Boolean | Whether or not to skip matching books that already have an ASIN.
-`skipMatchingMediaWithIsbn` | Boolean | Whether or not to skip matching books that already have an ISBN.
+`coverAspectRatio` | Integer | Whether the library should use square book covers. Must be `0` (for false) or `1` (for true).
+`disableWatcher` | Boolean | Whether to disable the folder watcher for the library.
+`skipMatchingMediaWithAsin` | Boolean | Whether to skip matching books that already have an ASIN.
+`skipMatchingMediaWithIsbn` | Boolean | Whether to skip matching books that already have an ISBN.
 `autoScanCronExpression` | String or null | The [cron expression](https://en.wikipedia.org/wiki/Cron#CRON_expression) for when to automatically scan the library folders. If `null`, automatic scanning will be disabled.
 
 <aside class="notice">When updating folders you must pass in the full array of folders. Any missing folders from the array will be removed. New folders must not have an <code>id</code> set because this will be set automatically.</aside>
@@ -482,10 +482,10 @@ Parameter | Type | Description
 limit | Integer | Limit the number of returned results per page. If `0`, no limit will be applied.
 page | Integer | The page number (0 indexed) to request. If there is no limit applied, then page will have no effect and all results will be returned.
 sort | String | What to sort the results by. Specify the attribute to sort by using JavaScript object notation. For example, to sort by title use `sort=media.metadata.title`.
-desc | Binary | Whether or not to reverse the sort order. `0` for false, `1` for true.
+desc | Binary | Whether to reverse the sort order. `0` for false, `1` for true.
 filter | String | What to filter the results by. See [Filtering](#filtering).
-minified | Binary | Whether or not to request minified objects. `0` for false, `1` for true.
-collapseseries | Binary | Whether or not to collapse books in a series to a single entry. `0` for false, `1` for true.
+minified | Binary | Whether to request minified objects. `0` for false, `1` for true.
+collapseseries | Binary | Whether to collapse books in a series to a single entry. `0` for false, `1` for true.
 
 ### Response
 
@@ -502,11 +502,11 @@ Attribute | Type | Description
 `limit` | Integer | The limit set in the request.
 `page` | Integer | The page set in request.
 `sortBy` | String | The sort set in the request. Will not exist if no sort was set.
-`sortDesc` | Boolean | Whether or not the sort is reversed.
+`sortDesc` | Boolean | Whether to reverse the sort order.
 `filterBy` | String | The filter set in the request, URL decoded. Will not exist if no filter was set.
 `mediaType` | String | The media type of the library. Will be `book` or `podcast`.
-`minified` | Boolean | Whether or not minified was set in the request.
-`collapseseries` | Boolean | Whether or not collapseseries was set in the request.
+`minified` | Boolean | Whether minified was set in the request.
+`collapseseries` | Boolean | Whether collapseseries was set in the request.
 
 
 ## Remove a Library's Items With Issues
@@ -641,9 +641,9 @@ Parameter | Type | Description
 limit | Integer | Limit the number of returned results per page. If `0`, no limit will be applied.
 page | Integer | The page number (0 indexed) to request. If there is no limit applied, then page will have no effect and all results will be returned.
 sort | String | What to sort the results by. By default, the results will be sorted by series name. Other sort options are: numBooks, totalDuration, and addedAt.
-desc | Binary | Whether or not to reverse the sort order. `0` for false, `1` for true.
+desc | Binary | Whether to reverse the sort order. `0` for false, `1` for true.
 filter | String | What to filter the results by. See [Filtering](#filtering). The issues and feed-open filters are not available for this endpoint.
-minified | Binary | Whether or not to request minified objects. `0` for false, `1` for true.
+minified | Binary | Whether to request minified objects. `0` for false, `1` for true.
 
 ### Response
 
@@ -660,9 +660,9 @@ Attribute | Type | Description
 `limit` | Integer | The limit set in the request.
 `page` | Integer | The page set in request.
 `sortBy` | String | The sort set in the request. Will not exist if no sort was set.
-`sortDesc` | Boolean | Whether or not the sort is reversed.
+`sortDesc` | Boolean | Whether to reverse the sort order.
 `filterBy` | String | The filter set in the request, URL decoded. Will not exist if no filter was set.
-`minified` | Boolean | Whether or not minified was set in the request.
+`minified` | Boolean | Whether minified was set in the request.
 
 
 ## Get a Library's Collections
@@ -759,9 +759,9 @@ Parameter | Type | Description
 limit | Integer | Limit the number of returned results per page. If `0`, no limit will be applied.
 page | Integer | The page number (0 indexed) to request. If there is no limit applied, then page will have no effect and all results will be returned.
 sort | String | What to sort the results by.
-desc | Binary | Whether or not to reverse the sort order. `0` for false, `1` for true.
+desc | Binary | Whether to reverse the sort order. `0` for false, `1` for true.
 filter | String | What to filter the results by. See [Filtering](#filtering).
-minified | Binary | Whether or not to request minified objects. `0` for false, `1` for true.
+minified | Binary | Whether to request minified objects. `0` for false, `1` for true.
 
 <!-- TODO: remove warning once sorting and filtering are implemented in LibraryController.getCollectionsForLibrary -->
 <aside class="warning">Sorting and filtering are not yet implemented.</aside>
@@ -781,9 +781,9 @@ Attribute | Type | Description
 `limit` | Integer | The limit set in the request.
 `page` | Integer | The page set in request.
 `sortBy` | String | The sort set in the request. Will not exist if no sort was set.
-`sortDesc` | Boolean | Whether or not the sort is reversed.
+`sortDesc` | Boolean | Whether to reverse the sort order.
 `filterBy` | String | The filter set in the request, URL decoded. Will not exist if no filter was set.
-`minified` | Boolean | Whether or not minified was set in the request.
+`minified` | Boolean | Whether minified was set in the request.
 
 
 ## Get a Library's Personalized View
@@ -1173,14 +1173,16 @@ Attribute | Type | Description
     * `id` is `continue-listening`, `listen-again`, or `episodes-recently-added`:
         * Library items will have a `recentEpisode` attribute, a [Podcast Episode](#podcast-episode), the episode to display.
 * `type` is `series`:
-    * `entities` will be an array of [Series](#series), with added attributes:
-        * `books`, an array of [Library Item Minified](#library-item-minified), the books in the series.
-            * Each library item in `books` will have a `seriesSequence` attribute, a String or null, the position of the book in the series.
-        * `inProgress`, a Boolean, whether or not the user has started listening to the series.
-        * `hideFromContinueListening`, a Boolean, whether or not the series has been marked to hide it from the "Continue Series" shelf.
-        * `bookInProgressLastUpdate`, an Integer, the latest time (in ms since POSIX epoch) when the progress of a book in the series was updated.
-        * `firstBookUnread`, a [Library Item Minified](#library-item-minified) or null, the first book in the series (by sequence) to have not been started or finished. Will be `null` if all books in the series are finished.
-            * This library item will also have a `seriesSequence` attribute.
+    * `entities` will be an array of [Series](#series), with the following added attributes:
+
+Attribute | Type | Description
+--------- | ---- | -----------
+`books` | Array of [Library Item Minified](#library-item-minified) | The books in the series. Each library item in `books` will have a `seriesSequence` attribute, a String or null, the position of the book in the series.
+`inProgress` | Boolean | Whether the user has started listening to the series.
+`hideFromContinueListening` | Boolean | Whether the series has been marked to hide it from the "Continue Series" shelf.
+`bookInProgressLastUpdate` | Integer | The latest time (in ms since POSIX epoch) when the progress of a book in the series was updated.
+`firstBookUnread` | [Library Item Minified](#library-item-minified) or null | The first book in the series (by sequence) to have not been started or finished. Will be `null` if the user has started or finished all books in the series. This library item will also have a `seriesSequence` attribute.
+
 * `type` is `author`:
     * `entities` will be an array of [Author Expanded](#author-expanded).
 * `id` is `listen-again`:
@@ -1773,7 +1775,7 @@ ID | The ID of the library.
 
 Parameter | Type | Description
 --------- | ---- | -----------
-force | Binary | Whether or not to force a rescan for all of a library's items. `0` for false, `1` for true.
+force | Binary | Whether to force a rescan for all of a library's items. `0` for false, `1` for true.
 
 ### Response
 

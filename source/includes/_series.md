@@ -106,7 +106,7 @@ Attribute | Type | Description
 --------- | ---- | -----------
 `libraryItemIds`| Array of String | The IDs of the library items in the series.
 `libraryItemIdsFinished` | Array of String | The IDs of the library items in the series that are finished.
-`isFinished` | Boolean | Whether or not the series is finished.
+`isFinished` | Boolean | Whether the series is finished.
 
 
 ## Update a Series
