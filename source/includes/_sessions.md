@@ -753,3 +753,4 @@ Provide the local [Playback Session](#playback-session) as the body.
 Status | Meaning | Description
 ------ | ------- | -----------
 200 | OK | Success
+500 | Internal Server Error | Either the local session is already syncing, or the library item was not found.
