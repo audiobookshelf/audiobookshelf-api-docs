@@ -285,7 +285,7 @@ Attribute | Type | Description
 --------- | ---- | -----------
 `author` | [Author](#author) Object | The updated author.
 `merged` | Boolean | Will only exist and be `true` if the author was merged with another author.
-`updated` | Boolean | Whether or not the author was updated normally. Will only exist if the author was not merged.
+`updated` | Boolean | Whether the author was updated normally. Will only exist if the author was not merged.
 
 
 ## Match an Author
@@ -347,7 +347,7 @@ Status | Meaning | Description | Schema
 
 Attribute | Type | Description
 --------- | ---- | -----------
-`updated` | Boolean | Whether or not the author was updated.
+`updated` | Boolean | Whether the author was updated.
 `author` | [Author](#author) Object | The updated author.
 
 

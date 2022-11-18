@@ -49,10 +49,10 @@ Attribute | Type | Description
 
 Attribute | Type | Description
 --------- | ---- | -----------
-`coverAspectRatio` | Integer | Whether or not the library should use square book covers. Must be `0` (for false) or `1` (for true).
-`disableWatcher` | Boolean | Whether or not to disable the folder watcher for the library.
-`skipMatchingMediaWithAsin` | Boolean | Whether or not to skip matching books that already have an ASIN.
-`skipMatchingMediaWithIsbn` | Boolean | Whether or not to skip matching books that already have an ISBN.
+`coverAspectRatio` | Integer | Whether the library should use square book covers. Must be `0` (for false) or `1` (for true).
+`disableWatcher` | Boolean | Whether to disable the folder watcher for the library.
+`skipMatchingMediaWithAsin` | Boolean | Whether to skip matching books that already have an ASIN.
+`skipMatchingMediaWithIsbn` | Boolean | Whether to skip matching books that already have an ISBN.
 `autoScanCronExpression` | String or null | The [cron expression](https://en.wikipedia.org/wiki/Cron#CRON_expression) for when to automatically scan the library folders. If `null`, automatic scanning will be disabled.
 
 
@@ -204,20 +204,20 @@ Attribute | Type | Description
 --------- | ---- | -----------
 `id` | String | The ID of the library item.
 `ino` | String | The inode of the library item.
-`libraryId` | String | The ID of the library the library item belongs to.
+`libraryId` | String | The ID of the library the item belongs to.
 `folderId` | String | The ID of the folder the library item is in.
 `path` | String | The path of the library item on the server.
 `relPath` | String | The path, relative to the library folder, of the library item.
-`isFile` | Boolean | Whether or not the library item is a single file in the root of the library folder.
+`isFile` | Boolean | Whether the library item is a single file in the root of the library folder.
 `mtimeMs` | Integer | The time (in ms since POSIX epoch) when the library item was last modified on disk.
 `ctimeMs` | Integer | The time (in ms since POSIX epoch) when the library item status was changed on disk.
 `birthtimeMs` | Integer | The time (in ms since POSIX epoch) when the library item was created on disk. Will be `0` if unknown.
 `addedAt` | Integer | The time (in ms since POSIX epoch) when the library item was added to the library.
 `updatedAt` | Integer | The time (in ms since POSIX epoch) when the library item was last updated. (Read Only)
-`lastScan` | Integer or null | The time (in ms since POSIX epoch) when the library item was last scanned. Will be `null` if it has not been scanned.
+`lastScan` | Integer or null | The time (in ms since POSIX epoch) when the library item was last scanned. Will be `null` if the server has not yet scanned the library item.
 `scanVersion` | String or null | The version of the scanner when last scanned. Will be `null` if it has not been scanned.
-`isMissing` | Boolean | Whether or not the library item was scanned and no longer exists.
-`isInvalid` | Boolean | Whether or not the library item was scanned and no longer has media files.
+`isMissing` | Boolean | Whether the library item was scanned and no longer exists.
+`isInvalid` | Boolean | Whether the library item was scanned and no longer has media files.
 `mediaType` | String | What kind of media the library item contains. Will be `book` or `podcast`.
 `media` | [Book](#book) or [Podcast](#podcast) Object | The media of the library item.
 `libraryFiles` | Array of [Library File](#library-file) | The files of the library item.
@@ -463,7 +463,7 @@ Attribute | Type | Description
 `isbn` | String or null | The ISBN of the book. Will be `null` if unknown.
 `asin` | String or null | The ASIN of the book. Will be `null` if unknown.
 `language` | String or null | The language of the book. Will be `null` if unknown.
-`explicit` | Boolean | Whether or not the book has been marked as explicit.
+`explicit` | Boolean | Whether the book has been marked as explicit.
 
 ### Book Metadata Minified
 
@@ -584,7 +584,7 @@ Attribute | Type | Description
 `coverPath` | String or null | The absolute path on the server of the cover file. Will be `null` if there is no cover.
 `tags` | Array of String | The podcast's tags.
 `episodes` | Array of [Podcast Episode](#podcast-episode) | The downloaded episodes of the podcast.
-`autoDownloadEpisodes` | Boolean | Whether or not the server will automatically download podcast episodes according to the schedule.
+`autoDownloadEpisodes` | Boolean | Whether the server will automatically download podcast episodes according to the schedule.
 `autoDownloadSchedule` | String | The [cron expression](https://en.wikipedia.org/wiki/Cron#CRON_expression) for when to automatically download podcast episodes. Will not exist if `autoDownloadEpisodes` is `false`.
 `lastEpisodeCheck` | Integer | The time (in ms since POSIX epoch) when the podcast was checked for new episodes.
 `maxEpisodesToKeep` | Integer | The maximum number of podcast episodes to keep when automatically downloading new episodes. Episodes beyond this limit will be deleted. If `0`, all episodes will be kept.
@@ -707,7 +707,7 @@ Attribute | Type | Description
 `itunesPageUrl` | String or null | A URL of an iTunes page for the podcast. Will be `null` if unknown.
 `itunesId` | Integer or null | The iTunes ID for the podcast. Will be `null` if unknown.
 `itunesArtistId` | Integer or null | The iTunes Artist ID for the author of the podcast. Will be `null` if unknown.
-`explicit` | Boolean | Whether or not the podcast has been marked as explicit.
+`explicit` | Boolean | Whether the podcast has been marked as explicit.
 `language` | String or null | The language of the podcast. Will be `null` if unknown.
 
 ### Podcast Metadata Minified
@@ -849,9 +849,9 @@ Attribute | Type | Description
 `episodeDisplayTitle` | String | The display title of the episode to be downloaded.
 `url` | String | The URL from which to download the episode.
 `libraryItemId` | String | The ID of the library item the episode belongs to.
-`isDownloading` | Boolean | Whether or not the episode is actively being downloaded.
-`isFinished` | Boolean | Whether or not the episode has finished downloading.
-`failed` | Boolean | Whether or not the episode failed to download.
+`isDownloading` | Boolean | Whether the episode is actively being downloaded.
+`isFinished` | Boolean | Whether the episode has finished downloading.
+`failed` | Boolean | Whether the episode failed to download.
 `startedAt` | Integer or null | The time (in ms since POSIX epoch) when the episode started downloading. Will be `null` if it has not started downloading yet.
 `createdAt` | Integer | The time (in ms since POSIX epoch) when the podcast episode download request was created.
 `finishedAt` | Integer or null | The time (in ms since POSIX epoch) when the episode finished downloading. Will be `null` if it has not finished.
@@ -902,9 +902,9 @@ Attribute | Type | Description
 `discNumFromMeta` | Integer or null | The disc number of the audio file as pulled from the file's metadata. Will be `null` if unknown.
 `trackNumFromFilename` | Integer or null | The track number of the audio file as determined from the file's name. Will be `null` if unknown.
 `discNumFromFilename` | Integer or null | The track number of the audio file as determined from the file's name. Will be `null` if unknown.
-`manuallyVerified` | Boolean | Whether or not the audio file has been manually verified by a user.
-`invalid` | Boolean | Whether or not the audio file is missing from the server.
-`exclude` | Boolean | Whether or not the audio file has been marked for exclusion.
+`manuallyVerified` | Boolean | Whether the audio file has been manually verified by a user.
+`invalid` | Boolean | Whether the audio file is missing from the server.
+`exclude` | Boolean | Whether the audio file has been marked for exclusion.
 `error` | String or null | Any error with the audio file. Will be `null` if there is none.
 `format` | String | The format of the audio file.
 `duration` | Float | The total length (in seconds) of the audio file.
@@ -1338,8 +1338,8 @@ Attribute | Type | Description
 `duration` | Float | The total duration (in seconds) of the media. Will be `0` if the media was marked as finished without the user listening to it.
 `progress` | Float | The percentage completion progress of the media. Will be `1` if the media is finished.
 `currentTime` | Float | The current time (in seconds) of the user's progress. If the media has been marked as finished, this will be the time the user was at beforehand.
-`isFinished` | Boolean | Whether or not the media is finished.
-`hideFromContinueListening` | Boolean | Whether or not the media will be hidden from the "Continue Listening" shelf.
+`isFinished` | Boolean | Whether the media is finished.
+`hideFromContinueListening` | Boolean | Whether the media will be hidden from the "Continue Listening" shelf.
 `lastUpdate` | Integer | The time (in ms since POSIX epoch) when the media progress was last updated.
 `startedAt` | Integer | The time (in ms since POSIX epoch) when the media progress was created.
 `finishedAt` | Integer or null | The time (in ms since POSIX epoch) when the media was finished. Will be `null` if the media has is not finished.
@@ -1570,8 +1570,8 @@ Attribute | Type | Description
 `mediaProgress` | Array of [Media Progress](#media-progress) | The user's media progress.
 `seriesHideFromContinueListening` | Array of String | The IDs of series to hide from the user's "Continue Series" shelf.
 `bookmarks` | Array of [Audio Bookmark](#audio-bookmark) | The user's bookmarks.
-`isActive` | Boolean | Whether or not the user's account is active.
-`isLocked` | Boolean | Whether or not the user is locked.
+`isActive` | Boolean | Whether the user's account is active.
+`isLocked` | Boolean | Whether the user is locked.
 `lastSeen` | Integer or null | The time (in ms since POSIX epoch) when the user was last seen by the server. Will be `null` if the user has never logged in.
 `createdAt` | Integer | The time (in ms since POSIX epoch) when the user was created.
 `settings` | [User Settings](#user-settings) Object | The user's settings.
@@ -1629,14 +1629,14 @@ Attribute | Type | Description
 Attribute | Type | Description
 --------- | ---- | -----------
 `mobileOrderBy` | String | What to order library items by on mobile.
-`mobileOrderDesc` | Boolean | Whether or not to reverse the sort order on mobile.
+`mobileOrderDesc` | Boolean | Whether to reverse the sort order on mobile.
 `mobileFilterBy` | String | What to filter library items by on mobile.
 `orderBy` | String | What to order library items by.
-`orderDesc` | Boolean | Whether or not to reverse the sort order.
+`orderDesc` | Boolean | Whether to reverse the sort order.
 `filterBy` | String | What to filter library items by.
 `playbackRate` | Float | What speed to play items.
 `bookshelfCoverSize` | Integer | What size to display covers at.
-`collapseSeries` | Boolean | Whether or not to collapse series when viewing library items.
+`collapseSeries` | Boolean | Whether to collapse series when viewing library items.
 
 
 ## User Permissions
@@ -1657,13 +1657,13 @@ Attribute | Type | Description
 
 Attribute | Type | Description
 --------- | ---- | -----------
-`download` | Boolean | Whether or not the user can download items to the server.
-`update` | Boolean | Whether or not the user can update library items.
-`delete` | Boolean | Whether or not the user can delete library items.
-`upload` | Boolean | Whether or not the user can upload items to the server.
-`accessAllLibraries` | Boolean | Whether or not the user can access all libraries.
-`accessAllTags` | Boolean | Whether or not the user can access all tags.
-`accessExplicitContent` | Boolean | Whether or not the user can access explicit content.
+`download` | Boolean | Whether the user can download items to the server.
+`update` | Boolean | Whether the user can update library items.
+`delete` | Boolean | Whether the user can delete library items.
+`upload` | Boolean | Whether the user can upload items to the server.
+`accessAllLibraries` | Boolean | Whether the user can access all libraries.
+`accessAllTags` | Boolean | Whether the user can access all tags.
+`accessExplicitContent` | Boolean | Whether the user can access explicit content.
 
 
 ## Audio Bookmark
@@ -1709,9 +1709,9 @@ Attribute | Type | Description
 Attribute | Type | Description
 --------- | ---- | -----------
 `id` | String | The ID of the backup. Will be the date and time when the backup was created.
-`backupMetadataCovers` | Boolean | Whether or not the backup includes library item covers and author images located in metadata.
+`backupMetadataCovers` | Boolean | Whether the backup includes library item covers and author images located in metadata.
 `backupDirPath` | String | The backup directory path.
-`datePretty` | String | The date and time when the backup was created in a human readable format.
+`datePretty` | String | The date and time when the backup was created in a human-readable format.
 `fullPath` | String | The full path of the backup on the server.
 `path` | String | The path of the backup relative to the metadata directory.
 `filename` | String | The filename of the backup.

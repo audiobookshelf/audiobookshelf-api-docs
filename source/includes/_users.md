@@ -65,8 +65,8 @@ Parameter | Type | Default | Description
 `mediaProgress` | Array of [Media Progress](#media-progress) | `[]` | The new user's media progress.
 `bookmarks` | Array of [Audio Bookmark](#audio-bookmark) | `[]` | The new user's bookmarks.
 `seriesHideFromContinueListening` | Array of String | `[]` | The IDs of series to hide from the new user's "Continue Series" shelf.
-`isActive` | Boolean | `true` | Whether or not the new user's account is active.
-`isLocked` | Boolean | `false` | Whether or not the new user is locked.
+`isActive` | Boolean | `true` | Whether the new user's account is active.
+`isLocked` | Boolean | `false` | Whether the new user is locked.
 `lastSeen` | Integer or null | `null` | The time (in ms since POSIX epoch) when the new user was last seen.
 `createdAt` | Integer | `Date.now()` | The time (in ms since POSIX epoch) when the new user was created.
 `settings` | [User Settings Parameters](#user-settings-parameters) Object | See Below | The new user's settings. 
@@ -83,26 +83,26 @@ For <code>settings</code> and <code>permissions</code>, all parameters must be p
 Parameter | Type | Default | Description
 --------- | ---- | ------- | -----------
 `mobileOrderBy` | String | `recent` | What to order library items by on mobile.
-`mobileOrderDesc` | Boolean | `true` | Whether or not to reverse the sort order on mobile.
+`mobileOrderDesc` | Boolean | `true` | Whether to reverse the sort order on mobile.
 `mobileFilterBy` | String | `all` | What to filter library items by on mobile.
 `orderBy` | String | `media.metadata.title` | What to order library items by.
-`orderDesc` | Boolean | `false` | Whether or not to reverse the sort order.
+`orderDesc` | Boolean | `false` | Whether to reverse the sort order.
 `filterBy` | String | `all` | What to filter library items by.
 `playbackRate` | Float | `1` | What speed to play items.
 `bookshelfCoverSize` | Integer | `120` | What size to display covers at.
-`collapseSeries` | Boolean | `false` | Whether or not to collapse series when viewing library items.
+`collapseSeries` | Boolean | `false` | Whether to collapse series when viewing library items.
 
 #### User Permissions Parameters
 
 Parameter | Type | Default | Description
 --------- | ---- | ------- | -----------
-`download` | Boolean | `true` | Whether or not the user can download items from the server.
-`update` | Boolean | `true` | Whether or not the user can update library items.
-`delete` | Boolean | `false` | Whether or not the user can delete library items.
-`upload` | Boolean | `false` | Whether or not the user can upload items to the server. The default value is `true` if the user's `type` is `admin`.
-`accessAllLibraries` | Boolean | `true` | Whether or not the user can access all libraries.
-`accessAllTags` | Boolean | `true` | Whether or not the user can access all tags.
-`accessExplicitContent` | Boolean | `true` | Whether or not the user can access explicit content.
+`download` | Boolean | `true` | Whether the user can download items from the server.
+`update` | Boolean | `true` | Whether the user can update library items.
+`delete` | Boolean | `false` | Whether the user can delete library items.
+`upload` | Boolean | `false` | Whether the user can upload items to the server. The default value is `true` if the user's `type` is `admin`.
+`accessAllLibraries` | Boolean | `true` | Whether the user can access all libraries.
+`accessAllTags` | Boolean | `true` | Whether the user can access all tags.
+`accessExplicitContent` | Boolean | `true` | Whether the user can access explicit content.
 
 ### Response
 
@@ -601,7 +601,7 @@ Parameter | Type | Description
 `password` | String | The user's password.
 `type` | String | The user's type. May be `guest`, `user`, or `admin`.
 `seriesHideFromContinueListening` | Array of String | The IDs of series to hide from the user's "Continue Series" shelf.
-`isActive` | Boolean | Whether or not the user's account is active.
+`isActive` | Boolean | Whether the user's account is active.
 `permissions` | [User Permissions Parameters](#user-permissions-parameters-2) Object (See Below) | The user's permissions.
 `librariesAccessible` | Array of String | The IDs of libraries that are accessible to the user. An empty array means all libraries are accessible.
 `itemTagsAccessible` | Array of String | The tags that are accessible to the user. An empty array means all tags are accessible.
@@ -614,13 +614,13 @@ When changing a user's username, their token will be regenerated.
 
 Parameter | Type | Description
 --------- | ---- | -----------
-`download` | Boolean | Whether or not the user can download items from the server.
-`update` | Boolean | Whether or not the user can update library items.
-`delete` | Boolean | Whether or not the user can delete library items.
-`upload` | Boolean | Whether or not the user can upload items to the server.
-`accessAllLibraries` | Boolean | Whether or not the user can access all libraries.
-`accessAllTags` | Boolean | Whether or not the user can access all tags.
-`accessExplicitContent` | Boolean | Whether or not the user can access explicit content.
+`download` | Boolean | Whether the user can download items from the server.
+`update` | Boolean | Whether the user can update library items.
+`delete` | Boolean | Whether the user can delete library items.
+`upload` | Boolean | Whether the user can upload items to the server.
+`accessAllLibraries` | Boolean | Whether the user can access all libraries.
+`accessAllTags` | Boolean | Whether the user can access all tags.
+`accessExplicitContent` | Boolean | Whether the user can access explicit content.
 
 ### Response
 
@@ -635,7 +635,7 @@ Status | Meaning | Description | Schema
 
 Attribute | Type | Description
 --------- | ---- | -----------
-`success` | Boolean | Whether or not the user was updated successfully.
+`success` | Boolean | Whether the user was updated successfully.
 `user` | [User](#user) Object | The updated user.
 
 
@@ -678,7 +678,7 @@ Status | Meaning | Description | Schema
 
 Attribute | Type | Description
 --------- | ---- | -----------
-`success` | Boolean | Whether or not the user was successfully deleted.
+`success` | Boolean | Whether the user was successfully deleted.
 
 
 ## Get a User's Listening Sessions

@@ -1,6 +1,6 @@
 # Me
 
-All of the "Me" endpoints are based off of the authenticated user. In these docs, "you" will refer to the authenticated user.
+All the "Me" endpoints are based off of the authenticated user. In these docs, "you" will refer to the authenticated user.
 
 ## Get Your Listening Sessions
 
@@ -371,8 +371,8 @@ This endpoint retrieves your media progress that is associated with the given li
 
 Parameter | Description
 --------- | -----------
-LibraryItemID | The ID of the library item to retrieve a media progress for.
-EpisodeID | The ID of the podcast episode to retrieve a media progress for.
+LibraryItemID | The ID of the library item to retrieve the media progress for.
+EpisodeID | The ID of the podcast episode to retrieve the media progress for.
 
 ### Response
 
@@ -408,8 +408,8 @@ Parameter | Type | Default | Description
 `duration` | Float | `0` | The total duration (in seconds) of the media.
 `progress` | Float | `0` | The percentage completion progress of the media. Should be `1` if the media is finished.
 `currentTime` | Float | `0` | The current time (in seconds) of your progress.
-`isFinished` | Boolean | `false` | Whether or not the media is finished.
-`hideFromContinueListening` | Boolean | `false` | Whether or not the media will be hidden from the "Continue Listening" shelf.
+`isFinished` | Boolean | `false` | Whether the media is finished.
+`hideFromContinueListening` | Boolean | `false` | Whether the media will be hidden from the "Continue Listening" shelf.
 `lastUpdate` | Integer | `Date.now()` | The time (in ms since POSIX epoch) when the media progress was last updated.
 
 ### Response
@@ -450,8 +450,8 @@ Parameter | Type | Default | Description
 `duration` | Float | `0` | The total duration (in seconds) of the media.
 `progress` | Float | `0` | The percentage completion progress of the media. Should be `1` if the media is finished.
 `currentTime` | Float | `0` | The current time (in seconds) of your progress.
-`isFinished` | Boolean | `false` | Whether or not the media is finished.
-`hideFromContinueListening` | Boolean | `false` | Whether or not the media will be hidden from the "Continue Listening" shelf.
+`isFinished` | Boolean | `false` | Whether the media is finished.
+`hideFromContinueListening` | Boolean | `false` | Whether the media will be hidden from the "Continue Listening" shelf.
 `lastUpdate` | Integer | `Date.now()` | The time (in ms since POSIX epoch) when the media progress was last updated.
 
 ### Response
@@ -469,7 +469,7 @@ curl -X DELETE "https://abs.example.com/api/me/progress/li_bufnnmp4y5o2gbbxfm-ep
   -H "Authorization: Bearer exJhbGciOiJI6IkpXVCJ9.eyJ1c2Vyi5NDEyODc4fQ.ZraBFohS4Tg39NszY"
 ```
 
-This endpoint removes a media progress from your user.
+This endpoint removes a media progress entry from your user.
 
 ### HTTP Request
 
@@ -696,14 +696,14 @@ This endpoint updates your settings.
 Parameter | Type | Description
 --------- | ---- | -----------
 `mobileOrderBy` | String | What to order library items by on mobile.
-`mobileOrderDesc` | Boolean | Whether or not to reverse the sort order on mobile.
+`mobileOrderDesc` | Boolean | Whether to reverse the sort order on mobile.
 `mobileFilterBy` | String | What to filter library items by on mobile.
-`orderBy` | String |  What to order library items by.
-`orderDesc` | Boolean |  Whether or not to reverse the sort order.
+`orderBy` | String | What to order library items by.
+`orderDesc` | Boolean | Whether to reverse the sort order.
 `filterBy` | String | What to filter library items by.
 `playbackRate` | Float | What speed to play items.
 `bookshelfCoverSize` | Integer | What size to display covers at.
-`collapseSeries` | Boolean | Whether or not to collapse series when viewing library items.
+`collapseSeries` | Boolean | Whether to collapse series when viewing library items.
 
 ### Response
 
@@ -716,7 +716,7 @@ Status | Meaning | Description | Schema
 
 Attribute | Type | Description
 --------- | ---- | -----------
-`success` | Boolean | Whether or not your settings were updated successfully.
+`success` | Boolean | Whether your settings were updated successfully.
 `settings` | [User Settings](#user-settings) Object | Your updated settings.
 
 
