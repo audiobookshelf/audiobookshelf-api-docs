@@ -19,6 +19,7 @@ includes:
   - authors
   - series
   - sessions
+  - podcasts
   - filtering
   - schemas
 

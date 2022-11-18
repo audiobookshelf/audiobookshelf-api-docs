@@ -1,0 +1,147 @@
+# Podcasts
+
+## Create a Podcast
+
+```shell
+curl -X POST "https://abs.example.com/api/podcasts" \
+  -H "Authorization: Bearer exJhbGciOiJI6IkpXVCJ9.eyJ1c2Vyi5NDEyODc4fQ.ZraBFohS4Tg39NszY" \
+  -H "Content-Type: application/json" \
+  -d $'{"libraryId": "lib_p9wkw2i85qy9oltijt", "folderId": "fol_crxarzs17jtw5k7ie9", "path": "/podcasts/Welcome to Night Vale", "media": {"metadata": {"title": "Welcome to Night Vale", "author": "Night Vale Presents", "description": "\\n      Twice-monthly community updates for the small desert town of Night Vale, where every conspiracy theory is true. Turn on your radio and hide. Never listened before? It\'s an ongoing radio show. Start with the current episode, and you\'ll catch on in no time. Or, go right to Episode 1 if you wanna binge-listen.\\n    ", "releaseDate": "2022-10-20T19:00:00Z", "genres": ["Science Fiction", "Podcasts", "Fiction"], "feedUrl": "http://feeds.nightvalepresents.com/welcometonightvalepodcast", "imageUrl": "https://is4-ssl.mzstatic.com/image/thumb/Podcasts125/v4/4a/31/35/4a3135d0-1fe7-a2d7-fb43-d182ec175402/mza_8232698753950666850.jpg/600x600bb.jpg", "itunesPageUrl": "https://podcasts.apple.com/us/podcast/welcome-to-night-vale/id536258179?uo=4", "itunesId": 536258179, "itunesArtistId": 718704794, "explicit": false, "language": null}}}'
+```
+
+> The above command returns JSON structured like this:
+
+```json
+{
+  "id": "li_bufnnmp4y5o2gbbxfm",
+  "ino": "652",
+  "libraryId": "lib_p9wkw2i85qy9oltijt",
+  "folderId": "fol_crxarzs17jtw5k7ie9",
+  "path": "/podcasts/Welcome to Night Vale",
+  "relPath": "Welcome to Night Vale",
+  "isFile": false,
+  "mtimeMs": 1668124892694,
+  "ctimeMs": 1668124892694,
+  "birthtimeMs": 1667326662083,
+  "addedAt": 1667326662087,
+  "updatedAt": 1668157565937,
+  "lastScan": 1668234374487,
+  "scanVersion": "2.2.2",
+  "isMissing": false,
+  "isInvalid": false,
+  "mediaType": "podcast",
+  "media": {
+    "libraryItemId": "li_bufnnmp4y5o2gbbxfm",
+    "metadata": {
+      "title": "Welcome to Night Vale",
+      "titleIgnorePrefix": "Welcome to Night Vale",
+      "author": "Night Vale Presents",
+      "description": "\n      Twice-monthly community updates for the small desert town of Night Vale, where every conspiracy theory is true. Turn on your radio and hide. Never listened before? It's an ongoing radio show. Start with the current episode, and you'll catch on in no time. Or, go right to Episode 1 if you wanna binge-listen.\n    ",
+      "releaseDate": "2022-10-20T19:00:00Z",
+      "genres": [
+        "Science Fiction",
+        "Podcasts",
+        "Fiction"
+      ],
+      "feedUrl": "http://feeds.nightvalepresents.com/welcometonightvalepodcast",
+      "imageUrl": "https://is4-ssl.mzstatic.com/image/thumb/Podcasts125/v4/4a/31/35/4a3135d0-1fe7-a2d7-fb43-d182ec175402/mza_8232698753950666850.jpg/600x600bb.jpg",
+      "itunesPageUrl": "https://podcasts.apple.com/us/podcast/welcome-to-night-vale/id536258179?uo=4",
+      "itunesId": 536258179,
+      "itunesArtistId": 718704794,
+      "explicit": false,
+      "language": null
+    },
+    "coverPath": "/metadata/items/li_bufnnmp4y5o2gbbxfm/cover.jpg",
+    "tags": [],
+    "episodes": [],
+    "autoDownloadEpisodes": false,
+    "autoDownloadSchedule": "0 * * * *",
+    "lastEpisodeCheck": 1667326662087,
+    "maxEpisodesToKeep": 0,
+    "maxNewEpisodesToDownload": 3,
+    "size": 52993
+  },
+  "libraryFiles": [
+    {
+      "ino": "10113",
+      "metadata": {
+        "filename": "cover.jpg",
+        "ext": ".jpg",
+        "path": "/podcasts/Welcome to Night Vale/cover.jpg",
+        "relPath": "cover.jpg",
+        "size": 52993,
+        "mtimeMs": 1667326662178,
+        "ctimeMs": 1667326662184,
+        "birthtimeMs": 1667326662090
+      },
+      "addedAt": 1667327311529,
+      "updatedAt": 1667327311529,
+      "fileType": "image"
+    }
+  ],
+  "size": 52993
+}
+```
+
+This endpoint creates a podcast and returns it.
+
+### HTTP Request
+
+`POST http://abs.example.com/api/podcasts`
+
+### Parameters
+
+Parameter | Type | Description
+--------- | ---- | -----------
+`path` | String | The path of the new podcast library item on the server.
+`folderId` | String | The ID of the folder to put the new podcast library item in.
+`libraryId` | String | The ID of the library the new podcast item will belong to.
+`media` | [New Podcast Parameters](#new-podcast-parameters) Object (See Below) | The created library item's podcast media.
+`episodesToDownload` | Array of [Podcast Episode Parameters](#podcast-episode-parameters) (See Below) | Podcast episodes to download and add to the new podcast.
+
+#### New Podcast Parameters
+
+Parameter | Type | Default | Description
+--------- | ---- | ------- | -----------
+`metadata` | [New Podcast Metadata Parameters](#new-podcast-metadata-parameters) Object (See Below) | See Below | The podcast's metadata.
+`coverPath` | String or null | `null` | The absolute path on the server of the cover file.
+`autoDownloadEpisodes` | Boolean | `false` | Whether the server will automatically download podcast episodes according to the schedule.
+`autoDownloadSchedule` | String | The "Podcast Episode Schedule" server setting. | The [cron expression](https://en.wikipedia.org/wiki/Cron#CRON_expression) for when to automatically download new podcast episodes.
+
+#### New Podcast Metadata Parameters
+
+Parameter | Type | Default | Description
+--------- | ---- | ------- | -----------
+`title` | String or null | `null` | The title of the podcast.
+`author` | String or null | `null` | The author of the podcast.
+`description` | String or null | `null` | The description for the podcast.
+`releaseDate` | String or null | `null` | The release date of the podcast.
+`genres` | Array of String | `[]` | The podcast's genres.
+`feedUrl` | String or null | `null` | A URL of an RSS feed for the podcast.
+`imageUrl` | String or null | `null` | A URL of a cover image for the podcast.
+`itunesPageUrl` | String or null | `null` | A URL of an iTunes page for the podcast.
+`itunesId` | Integer or null | `null` | The iTunes ID for the podcast.
+`itunesArtistId` | Integer or null | `null` | The iTunes Artist ID for the author of the podcast.
+`explicit` | Boolean | `false` | Whether to mark the podcast as explicit.
+`language` | String or null | `null` | The language of the podcast.
+
+#### Podcast Episode Parameters
+
+Parameter | Type | Default | Description
+--------- | ---- | ------- | -----------
+`season` | String | `''` | The season of the podcast episode, if known.
+`episode` | String | `''` | The episode of the season of the podcast, if known.
+`episodeType` | String | `''` | The type of episode that the podcast episode is.
+`title` | String | `''` | The title of the podcast episode.
+`subtitle` | String | `''` | The subtitle of the podcast episode.
+`description` | String | `''` | A HTML encoded, description of the podcast episode.
+`pubDate` | String | `''` | When the podcast episode was published.
+`publishedAt` | Integer | `0` | The time (in ms since POSIX epoch) when the podcast episode was published.
+
+### Response
+
+Status | Meaning | Description | Schema
+------ | ------- | ----------- | ------
+200 | OK | Success | [Library Item Expanded](#library-item-expanded)
+400 | Bad Request | The given library ID or folder ID does not exist, the podcast already exists, or the podcast's path is invalid. |
+500 | Internal Server Error | An admin user is required to create podcasts. |
