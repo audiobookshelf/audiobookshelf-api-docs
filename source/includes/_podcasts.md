@@ -296,3 +296,72 @@ Or if there is an error (i.e. no RSS feeds were in the OPML text):
 Attribute | Type | Description
 --------- | ---- | -----------
 `error` | String | The error that occurred.
+
+
+## Check for New Podcast Episodes
+
+```shell
+curl "https://abs.example.com/api/podcasts/li_bufnnmp4y5o2gbbxfm/checknew" \
+  -H "Authorization: Bearer exJhbGciOiJI6IkpXVCJ9.eyJ1c2Vyi5NDEyODc4fQ.ZraBFohS4Tg39NszY"
+```
+
+> The above command returns JSON structured like this:
+
+```json
+{
+  "episodes": [
+    {
+      "title": "1 - Pilot",
+      "subtitle": "Pilot Episode. A new dog park opens in Night Vale. Carlos, a scientist, visits and discovers some interesting things. Seismic things. Plus, a helpful guide to surveillance helicopter-spotting. Weather: \"These and More Than These\" by Joseph Fink Music:...",
+      "description": "\n        <p>Pilot Episode. A new dog park opens in Night Vale. Carlos, a scientist, visits and discovers some interesting things. Seismic things. Plus, a helpful guide to surveillance helicopter-spotting.</p>\n\n<p>Weather: \"These and More Than These\" by Joseph Fink</p>\n\n<p>Music: Disparition, <a target=\"_blank\">disparition.info</a></p>\n\n<p>Logo: Rob Wilson, <a target=\"_blank\">silastom.com</a></p>\n\n<p>Produced by Night Vale Presents. Written by Joseph Fink and Jeffrey Cranor. Narrated by Cecil Baldwin. More Info: <a target=\"_blank\">welcometonightvale.com</a>, and follow <a target=\"_blank\">@NightValeRadio</a> on Twitter or <a target=\"_blank\">Facebook</a>.</p>\n      ",
+      "descriptionPlain": "\n        Pilot Episode. A new dog park opens in Night Vale. Carlos, a scientist, visits and discovers some interesting things. Seismic things. Plus, a helpful guide to surveillance helicopter-spotting.\n\nWeather: \"These and More Than These\" by Joseph Fink\n\nMusic: Disparition, disparition.info\n\nLogo: Rob Wilson, silastom.com\n\nProduced by Night Vale Presents. Written by Joseph Fink and Jeffrey Cranor. Narrated by Cecil Baldwin. More Info: welcometonightvale.com, and follow @NightValeRadio on Twitter or Facebook.\n      ",
+      "pubDate": "Fri, 15 Jun 2012 12:00:00 -0000",
+      "episodeType": "full",
+      "season": "",
+      "episode": "",
+      "author": "",
+      "duration": "21:02",
+      "explicit": "",
+      "publishedAt": 1339761600000,
+      "enclosure": {
+        "url": "https://www.podtrac.com/pts/redirect.mp3/dovetail.prxu.org/_/126/1fadf1ad-aad8-449f-843b-6e8bb6949622/1_Pilot.mp3",
+        "type": "audio/mpeg",
+        "length": "20588611"
+      }
+    }
+  ]
+}
+```
+
+This endpoint checks for new episodes for a podcast, which the server downloads, and returns the podcast episode feed data.
+
+### HTTP Request
+
+`GET http://abs.example.com/api/podcasts/<ID>/checknew`
+
+### URL Parameters
+
+Parameter | Description
+--------- | -----------
+ID | The ID of the podcast library item.
+
+### Optional Query Parameters
+
+Parameter | Type | Default | Description
+--------- | ---- | ------- | -----------
+`limit` | Integer | `3` | The maximum number of new episodes to download. If `0`, all episodes will be downloaded.
+
+### Response
+
+Status | Meaning | Description | Schema
+------ | ------- | ----------- | ------
+200 | OK | Success | See below.
+403 | Forbidden | The user is not allowed to access the library item. An admin user is required to check for new podcast episodes. The podcast must have an RSS feed URL. |
+404 | Not Found | No library item with the given ID exists. |
+500 | Internal Server Error | The library item is not a podcast. |
+
+#### Response Schema
+
+Attribute | Type | Description
+--------- | ---- | -----------
+`episodes` | Array of [Podcast Feed Episode](#podcast-feed-episode) | The new podcast episodes that will be downloaded.
