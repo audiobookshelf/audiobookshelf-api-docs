@@ -145,3 +145,127 @@ Status | Meaning | Description | Schema
 200 | OK | Success | [Library Item Expanded](#library-item-expanded)
 400 | Bad Request | The given library ID or folder ID does not exist, the podcast already exists, or the podcast's path is invalid. |
 500 | Internal Server Error | An admin user is required to create podcasts. |
+
+
+## Get a Podcast's Feed
+
+```shell
+curl -X POST "https://abs.example.com/api/podcasts/feed" \
+  -H "Authorization: Bearer exJhbGciOiJI6IkpXVCJ9.eyJ1c2Vyi5NDEyODc4fQ.ZraBFohS4Tg39NszY" \
+  -H "Content-Type: application/json" \
+  -d '{"rssFeed": "http://feeds.nightvalepresents.com/welcometonightvalepodcast"}'
+```
+
+> The above command returns JSON structured like this:
+
+```json
+{
+  "podcast": {
+    "metadata": {
+      "image": "https://f.prxu.org/126/images/1f749c5d-c83a-4db9-8112-a3245da49c54/nightvalelogo-web4.jpg",
+      "categories": [
+        "Fiction:Science Fiction"
+      ],
+      "feedUrl": "http://feeds.nightvalepresents.com/welcometonightvalepodcast",
+      "description": "\n      <p>Twice-monthly community updates for the small desert town of Night Vale, where every conspiracy theory is true. Turn on your radio and hide. Never listened before? It's an ongoing radio show. Start with the current episode, and you'll catch on in no time. Or, go right to Episode 1 if you wanna binge-listen.</p>\n    ",
+      "descriptionPlain": "\n      Twice-monthly community updates for the small desert town of Night Vale, where every conspiracy theory is true. Turn on your radio and hide. Never listened before? It's an ongoing radio show. Start with the current episode, and you'll catch on in no time. Or, go right to Episode 1 if you wanna binge-listen.\n    ",
+      "title": "Welcome to Night Vale",
+      "language": "en",
+      "explicit": "false",
+      "author": "Night Vale Presents",
+      "pubDate": "Thu, 17 Nov 2022 16:04:42 -0000",
+      "link": "http://welcometonightvale.com"
+    },
+    "episodes": [
+      ...,
+      {
+        "title": "1 - Pilot",
+        "subtitle": "Pilot Episode. A new dog park opens in Night Vale. Carlos, a scientist, visits and discovers some interesting things. Seismic things. Plus, a helpful guide to surveillance helicopter-spotting. Weather: \"These and More Than These\" by Joseph Fink Music:...",
+        "description": "\n        <p>Pilot Episode. A new dog park opens in Night Vale. Carlos, a scientist, visits and discovers some interesting things. Seismic things. Plus, a helpful guide to surveillance helicopter-spotting.</p>\n\n<p>Weather: \"These and More Than These\" by Joseph Fink</p>\n\n<p>Music: Disparition, <a target=\"_blank\">disparition.info</a></p>\n\n<p>Logo: Rob Wilson, <a target=\"_blank\">silastom.com</a></p>\n\n<p>Produced by Night Vale Presents. Written by Joseph Fink and Jeffrey Cranor. Narrated by Cecil Baldwin. More Info: <a target=\"_blank\">welcometonightvale.com</a>, and follow <a target=\"_blank\">@NightValeRadio</a> on Twitter or <a target=\"_blank\">Facebook</a>.</p>\n      ",
+        "descriptionPlain": "\n        Pilot Episode. A new dog park opens in Night Vale. Carlos, a scientist, visits and discovers some interesting things. Seismic things. Plus, a helpful guide to surveillance helicopter-spotting.\n\nWeather: \"These and More Than These\" by Joseph Fink\n\nMusic: Disparition, disparition.info\n\nLogo: Rob Wilson, silastom.com\n\nProduced by Night Vale Presents. Written by Joseph Fink and Jeffrey Cranor. Narrated by Cecil Baldwin. More Info: welcometonightvale.com, and follow @NightValeRadio on Twitter or Facebook.\n      ",
+        "pubDate": "Fri, 15 Jun 2012 12:00:00 -0000",
+        "episodeType": "full",
+        "season": "",
+        "episode": "",
+        "author": "",
+        "duration": "21:02",
+        "explicit": "",
+        "publishedAt": 1339761600000,
+        "enclosure": {
+          "url": "https://www.podtrac.com/pts/redirect.mp3/dovetail.prxu.org/_/126/1fadf1ad-aad8-449f-843b-6e8bb6949622/1_Pilot.mp3",
+          "type": "audio/mpeg",
+          "length": "20588611"
+        }
+      },
+      ...
+    ]
+  }
+}
+```
+
+This endpoint takes a podcast's RSS feed and returns the feed's data.
+
+### HTTP Request
+
+`POST http://abs.example.com/api/podcasts/feed`
+
+### Parameters
+
+Parameter | Type | Description
+--------- | ---- | -----------
+`rssFeed` | String | A URL of an RSS feed for the podcast.
+
+### Response
+
+Status | Meaning | Description | Schema
+------ | ------- | ----------- | ------
+200 | OK | Success | See below.
+400 | Bad Request | The `rssFeed` parameter is required. |
+404 | Not Found | The podcast RSS feed request failed or had invalid response data. |
+
+#### Response Schema
+
+Attribute | Type | Description
+--------- | ---- | -----------
+`podcast` | [Podcast Feed](#podcast-feed) Object (See Below) | The requested podcast feed data.
+
+#### Podcast Feed
+
+Attribute | Type | Description
+--------- | ---- | -----------
+`metadata` | [Podcast Feed Metadata](#podcast-feed-metadata) Object (See Below) | The podcast's metadata from the feed.
+`episodes` | Array of [Podcast Feed Episode](#podcast-feed-episode) (See Below) | The podcast's episodes from the feed.
+
+#### Podcast Feed Metadata
+
+Attribute | Type | Description
+--------- | ---- | -----------
+`image` | String | A URL for the podcast's cover image.
+`categories` | Array of String | The podcast's categories. Can be similar to genres.
+`feedUrl` | String | A URL of an RSS feed for the podcast.
+`description` | String | A HTML encoded description of the podcast.
+`descriptionPlain` | String | A plain text description of the podcast.
+`title` | String | The podcast's title.
+`language` | String | The podcast's language.
+`explicit` | String | Whether the podcast is explicit. Will probably be `"true"` or `"false"`.
+`author` | String | The podcast's author.
+`pubDate` | String | The podcast's publication date.
+`link` | String | A URL the RSS feed provided for possible display to the user.
+
+#### Podcast Feed Episode
+
+Attribute | Type | Description
+--------- | ---- | -----------
+`title` | String | The podcast episode's title.
+`subtitle` | String | The podcast episode's subtitle.
+`description` | String | A HTML encoded description of the podcast episode.
+`descriptionPlain` | String | A plain text description of the podcast episode.
+`pubDate` | String | The podcast episode's publication date.
+`episodeType` | String | The type of episode that the podcast episode is.
+`season` | String | The season of the podcast episode.
+`episode` | String | The episode of the season of the podcast.
+`author` | String | The author of the podcast episode.
+`duration` | String | The duration of the podcast episode as reported by the RSS feed.
+`explicit` | String | Whether the podcast episode is explicit.
+`publishedAt` | Integer | The time (in ms since POSIX epoch) when the podcast episode was published.
+`enclosure` | [Podcast Episode Enclosure](#podcast-episode-enclosure) Object | Download information for the podcast episode.
