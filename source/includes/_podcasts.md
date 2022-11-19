@@ -365,3 +365,59 @@ Status | Meaning | Description | Schema
 Attribute | Type | Description
 --------- | ---- | -----------
 `episodes` | Array of [Podcast Feed Episode](#podcast-feed-episode) | The new podcast episodes that will be downloaded.
+
+
+## Get Podcast Episode Downloads
+
+```shell
+curl "https://abs.example.com/api/podcasts/li_bufnnmp4y5o2gbbxfm/downloads" \
+  -H "Authorization: Bearer exJhbGciOiJI6IkpXVCJ9.eyJ1c2Vyi5NDEyODc4fQ.ZraBFohS4Tg39NszY"
+```
+
+> The above command returns JSON structured like this:
+
+```json
+{
+  "downloads": [
+    {
+      "id": "epdl_pgv4d47j6dtqpk4r0v",
+      "episodeDisplayTitle": "2 - Glow Cloud",
+      "url": "https://www.podtrac.com/pts/redirect.mp3/dovetail.prxu.org/_/126/cb1dd91f-5d8d-42e9-ba22-14ff335d2cbb/2_Glow_Cloud.mp3",
+      "libraryItemId": "li_bufnnmp4y5o2gbbxfm",
+      "isDownloading": false,
+      "isFinished": false,
+      "failed": false,
+      "startedAt": null,
+      "createdAt": 1668122813409,
+      "finishedAt": null
+    }
+  ]
+}
+```
+
+This endpoint retrieves the episodes currently in the download queue for the podcast.
+
+### HTTP Request
+
+`GET http://abs.example.com/api/podcasts/<ID>/downloads`
+
+### URL Parameters
+
+Parameter | Description
+--------- | -----------
+ID | The ID of the podcast library item.
+
+### Response
+
+Status | Meaning | Description | Schema
+------ | ------- | ----------- | ------
+200 | OK | Success | See below.
+403 | Forbidden | The user is not allowed to access the library item. |
+404 | Not Found | No library item with the given ID exists. |
+500 | Internal Server Error | The library item is not a podcast. |
+
+#### Response Schema
+
+Attribute | Type | Description
+--------- | ---- | -----------
+`downloads` | Array of [Podcast Episode Download](#podcast-episode-download) | The episodes currently in the download queue for the podcast.
