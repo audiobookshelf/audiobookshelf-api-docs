@@ -135,6 +135,7 @@ Parameter | Type | Default | Description
 `title` | String | `''` | The title of the podcast episode.
 `subtitle` | String | `''` | The subtitle of the podcast episode.
 `description` | String | `''` | A HTML encoded, description of the podcast episode.
+`enclosure` | [Podcast Episode Enclosure](#podcast-episode-enclosure) Object or null | `null` | The podcast episode download information.
 `pubDate` | String | `''` | When the podcast episode was published.
 `publishedAt` | Integer | `0` | The time (in ms since POSIX epoch) when the podcast episode was published.
 
@@ -529,3 +530,51 @@ Attribute | Type | Description
 --------- | ---- | -----------
 `episode` | [Podcast Feed Episode](#podcast-feed-episode) Object | The podcast episode feed data.
 `levenshtein` | Integer | The [Levenshtein distance](https://en.wikipedia.org/wiki/Levenshtein_distance) between the search title and the podcast episode's title.
+
+
+## Download Podcast Episodes
+
+```shell
+curl -X POST "https://abs.example.com/api/podcasts/li_bufnnmp4y5o2gbbxfm/download-episodes" \
+  -H "Authorization: Bearer exJhbGciOiJI6IkpXVCJ9.eyJ1c2Vyi5NDEyODc4fQ.ZraBFohS4Tg39NszY" \
+  -H "Content-Type: application/json" \
+  -d '[{"episodeType": "full", "title": "2 - Glow Cloud", "subtitle": "A mysterious, glowing cloud makes its way across Night Vale. Plus, new Boy Scouts hierarchy, community events calendar, and a PTA bake sale for a great cause! Weather: \"The Bus is Late\" by Satellite High, satellite-high.com Music: Disparition,...", "description": "\n        <p>A mysterious, glowing cloud makes its way across Night Vale. Plus, new Boy Scouts hierarchy, community events calendar, and a PTA bake sale for a great cause!</p>\n\n<p>Weather: \"The Bus is Late\" by Satellite High, <a target=\"_blank\">satellite-high.com</a></p>\n\n<p>Music: Disparition, <a target=\"_blank\">disparition.info</a></p>\n\n<p>Logo: Rob Wilson, <a target=\"_blank\">silastom.com</a></p>\n\n<p>Produced by Night Vale Presents. Written by Joseph Fink and Jeffrey Cranor. Narrated by Cecil Baldwin. More Info: <a target=\"_blank\">welcometonightvale.com</a>, and follow <a target=\"_blank\">@NightValeRadio</a> on Twitter or <a target=\"_blank\">Facebook</a>.</p>\n      ", "enclosure": {"url": "https://www.podtrac.com/pts/redirect.mp3/dovetail.prxu.org/_/126/cb1dd91f-5d8d-42e9-ba22-14ff335d2cbb/2_Glow_Cloud.mp3", "type": "audio/mpeg", "length": "19937018"}, "pubDate": "Sun, 01 Jul 2012 12:00:00 -0000", "publishedAt": 1341144000000}]'
+```
+
+This endpoint downloads new episodes for a podcast to the server.
+
+### HTTP Request
+
+`POST http://abs.example.com/api/podcasts/<ID>/download-episodes`
+
+### URL Parameters
+
+Parameter | Description
+--------- | -----------
+ID | The ID of the podcast library item.
+
+### Parameters
+
+Provided an array of objects with the following parameters for each episode to download.
+
+Parameter | Type | Default | Description
+--------- | ---- | ------- | -----------
+`season` | String | `''` | The season of the podcast episode, if known.
+`episode` | String | `''` | The episode of the season of the podcast, if known.
+`episodeType` | String | `''` | The type of episode that the podcast episode is.
+`title` | String | `''` | The title of the podcast episode.
+`subtitle` | String | `''` | The subtitle of the podcast episode.
+`description` | String | `''` | A HTML encoded, description of the podcast episode.
+`enclosure` | [Podcast Episode Enclosure](#podcast-episode-enclosure) Object or null | `null` | The podcast episode download information.
+`pubDate` | String | `''` | When the podcast episode was published.
+`publishedAt` | Integer | `0` | The time (in ms since POSIX epoch) when the podcast episode was published.
+
+### Response
+
+Status | Meaning | Description
+------ | ------- | -----------
+200 | OK | Success
+400 | Bad Request | The provided array must have a non-zero length.
+403 | Forbidden | The user is not allowed to access the library item. An admin user is required to download new podcast episodes.
+404 | Not Found | No library item with the given ID exists.
+500 | Internal Server Error | The library item is not a podcast.
