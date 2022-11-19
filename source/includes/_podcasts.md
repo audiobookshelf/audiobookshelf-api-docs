@@ -800,3 +800,110 @@ Status | Meaning | Description | Schema
 403 | Forbidden | The user is not allowed to access the library item. A user with update permissions is required to update podcast episodes. |
 404 | Not Found | No library item with the given ID exists, or no episode with the given ID exists. |
 500 | Internal Server Error | The library item is not a podcast. |
+
+
+## Delete a Podcast Episode
+
+```shell
+curl -X DELETE "https://abs.example.com/api/podcasts/li_bufnnmp4y5o2gbbxfm/episode/ep_lh6ko39pumnrma3dhv?hard=1" \
+  -H "Authorization: Bearer exJhbGciOiJI6IkpXVCJ9.eyJ1c2Vyi5NDEyODc4fQ.ZraBFohS4Tg39NszY"
+```
+
+> The above command returns JSON structured like this:
+
+```json
+{
+  "id": "li_bufnnmp4y5o2gbbxfm",
+  "ino": "652",
+  "libraryId": "lib_p9wkw2i85qy9oltijt",
+  "folderId": "fol_crxarzs17jtw5k7ie9",
+  "path": "/podcasts/Welcome to Night Vale",
+  "relPath": "Welcome to Night Vale",
+  "isFile": false,
+  "mtimeMs": 1668124892694,
+  "ctimeMs": 1668124892694,
+  "birthtimeMs": 1667326662083,
+  "addedAt": 1667326662087,
+  "updatedAt": 1668853355724,
+  "lastScan": 1668234374487,
+  "scanVersion": "2.2.2",
+  "isMissing": false,
+  "isInvalid": false,
+  "mediaType": "podcast",
+  "media": {
+    "libraryItemId": "li_bufnnmp4y5o2gbbxfm",
+    "metadata": {
+      "title": "Welcome to Night Vale",
+      "author": "Night Vale Presents",
+      "description": "\n      Twice-monthly community updates for the small desert town of Night Vale, where every conspiracy theory is true. Turn on your radio and hide. Never listened before? It's an ongoing radio show. Start with the current episode, and you'll catch on in no time. Or, go right to Episode 1 if you wanna binge-listen.\n    ",
+      "releaseDate": "2022-10-20T19:00:00Z",
+      "genres": [
+        "Science Fiction",
+        "Podcasts",
+        "Fiction"
+      ],
+      "feedUrl": "http://feeds.nightvalepresents.com/welcometonightvalepodcast",
+      "imageUrl": "https://is4-ssl.mzstatic.com/image/thumb/Podcasts125/v4/4a/31/35/4a3135d0-1fe7-a2d7-fb43-d182ec175402/mza_8232698753950666850.jpg/600x600bb.jpg",
+      "itunesPageUrl": "https://podcasts.apple.com/us/podcast/welcome-to-night-vale/id536258179?uo=4",
+      "itunesId": 536258179,
+      "itunesArtistId": 718704794,
+      "explicit": false,
+      "language": null
+    },
+    "coverPath": "/metadata/items/li_bufnnmp4y5o2gbbxfm/cover.jpg",
+    "tags": [],
+    "episodes": [],
+    "autoDownloadEpisodes": false,
+    "autoDownloadSchedule": "0 0 * * 1",
+    "lastEpisodeCheck": 1667326662087,
+    "maxEpisodesToKeep": 0,
+    "maxNewEpisodesToDownload": 3
+  },
+  "libraryFiles": [
+    {
+      "ino": "10113",
+      "metadata": {
+        "filename": "cover.jpg",
+        "ext": ".jpg",
+        "path": "/podcasts/Welcome to Night Vale/cover.jpg",
+        "relPath": "cover.jpg",
+        "size": 52993,
+        "mtimeMs": 1667326662178,
+        "ctimeMs": 1667326662184,
+        "birthtimeMs": 1667326662090
+      },
+      "addedAt": 1667327311529,
+      "updatedAt": 1667327311529,
+      "fileType": "image"
+    }
+  ]
+}
+```
+
+This endpoint deletes a podcast episode from the database. If providing the `hard` parameter, the file will be deleted as well.
+
+### HTTP Request
+
+`PATCH http://abs.example.com/api/podcasts/<ID>/episode/<EpisodeID>`
+
+### URL Parameters
+
+Parameter | Description
+--------- | -----------
+ID | The ID of the podcast library item.
+EpisodeID | The ID of the podcast episode.
+
+### Query Parameters
+
+Parameter | Type | Description
+--------- | ---- | -----------
+`hard` | Binary | Whether to delete the podcast episode files from the server. `0` for false, `1` for true.
+
+### Response
+
+Status | Meaning | Description | Schema
+------ | ------- | ----------- | ------
+200 | OK | Success | [Library Item](#library-item)
+403 | Forbidden | The user is not allowed to access the library item. A user with delete permissions is required to delete podcast episodes. |
+404 | Not Found | No library item with the given ID exists, or no episode with the given ID exists. |
+500 | Internal Server Error | The library item is not a podcast. |
