@@ -821,7 +821,7 @@ Attribute | Type | Description
 --------- | ---- | -----------
 `url` | String | The URL where the podcast episode's audio file was downloaded from.
 `type` | String | The MIME type of the podcast episode's audio file.
-`length` | The size (in bytes) that was reported when downloading the podcast episode's audio file.
+`length` | String | The size (in bytes) that was reported when downloading the podcast episode's audio file.
 
 
 ## Podcast Episode Download
