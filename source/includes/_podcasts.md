@@ -421,3 +421,32 @@ Status | Meaning | Description | Schema
 Attribute | Type | Description
 --------- | ---- | -----------
 `downloads` | Array of [Podcast Episode Download](#podcast-episode-download) | The episodes currently in the download queue for the podcast.
+
+
+## Clear a Podcast's Episode Download Queue
+
+```shell
+curl "https://abs.example.com/api/podcasts/li_bufnnmp4y5o2gbbxfm/clear-queue" \
+  -H "Authorization: Bearer exJhbGciOiJI6IkpXVCJ9.eyJ1c2Vyi5NDEyODc4fQ.ZraBFohS4Tg39NszY"
+```
+
+This endpoint clears a podcast's episode download queue.
+
+### HTTP Request
+
+`GET http://abs.example.com/api/podcasts/<ID>/clear-queue`
+
+### URL Parameters
+
+Parameter | Description
+--------- | -----------
+ID | The ID of the podcast library item.
+
+### Response
+
+Status | Meaning | Description
+------ | ------- | -----------
+200 | OK | Success
+403 | Forbidden | The user is not allowed to access the library item. An admin user is required to clear a podcast's episode download queue.
+404 | Not Found | No library item with the given ID exists.
+500 | Internal Server Error | The library item is not a podcast.
