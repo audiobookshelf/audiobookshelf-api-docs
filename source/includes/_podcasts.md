@@ -227,48 +227,7 @@ Status | Meaning | Description | Schema
 
 Attribute | Type | Description
 --------- | ---- | -----------
-`podcast` | [Podcast Feed](#podcast-feed) Object (See Below) | The requested podcast feed data.
-
-#### Podcast Feed
-
-Attribute | Type | Description
---------- | ---- | -----------
-`metadata` | [Podcast Feed Metadata](#podcast-feed-metadata) Object (See Below) | The podcast's metadata from the feed.
-`episodes` | Array of [Podcast Feed Episode](#podcast-feed-episode) (See Below) | The podcast's episodes from the feed.
-
-#### Podcast Feed Metadata
-
-Attribute | Type | Description
---------- | ---- | -----------
-`image` | String | A URL for the podcast's cover image.
-`categories` | Array of String | The podcast's categories. Can be similar to genres.
-`feedUrl` | String | A URL of an RSS feed for the podcast.
-`description` | String | A HTML encoded description of the podcast.
-`descriptionPlain` | String | A plain text description of the podcast.
-`title` | String | The podcast's title.
-`language` | String | The podcast's language.
-`explicit` | String | Whether the podcast is explicit. Will probably be `"true"` or `"false"`.
-`author` | String | The podcast's author.
-`pubDate` | String | The podcast's publication date.
-`link` | String | A URL the RSS feed provided for possible display to the user.
-
-#### Podcast Feed Episode
-
-Attribute | Type | Description
---------- | ---- | -----------
-`title` | String | The podcast episode's title.
-`subtitle` | String | The podcast episode's subtitle.
-`description` | String | A HTML encoded description of the podcast episode.
-`descriptionPlain` | String | A plain text description of the podcast episode.
-`pubDate` | String | The podcast episode's publication date.
-`episodeType` | String | The type of episode that the podcast episode is.
-`season` | String | The season of the podcast episode.
-`episode` | String | The episode of the season of the podcast.
-`author` | String | The author of the podcast episode.
-`duration` | String | The duration of the podcast episode as reported by the RSS feed.
-`explicit` | String | Whether the podcast episode is explicit.
-`publishedAt` | Integer | The time (in ms since POSIX epoch) when the podcast episode was published.
-`enclosure` | [Podcast Episode Enclosure](#podcast-episode-enclosure) Object | Download information for the podcast episode.
+`podcast` | [Podcast Feed](#podcast-feed) Object | The requested podcast feed data.
 
 
 ## Get Podcast Feeds from OPML
@@ -330,17 +289,10 @@ Status | Meaning | Description | Schema
 
 Attribute | Type | Description
 --------- | ---- | -----------
-`feeds` | Array of [Podcast Feed Minimized](#podcast-feed-minimized) (See Below) | The podcast feeds retrieved from the RSS feeds in the OPML text.
+`feeds` | Array of [Podcast Feed Minimized](#podcast-feed-minimized) | The podcast feeds retrieved from the RSS feeds in the OPML text.
 
 Or if there is an error (i.e. no RSS feeds were in the OPML text): 
 
 Attribute | Type | Description
 --------- | ---- | -----------
 `error` | String | The error that occurred.
-
-#### Podcast Feed Minimized
-
-Attribute | Type | Description
---------- | ---- | -----------
-`metadata` | [Podcast Feed Metadata](#podcast-feed-metadata) Object (See Above) | The podcast's metadata from the feed.
-`numEpisodes` | Integer | The number of episodes the podcast has.
