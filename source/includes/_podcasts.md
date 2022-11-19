@@ -269,3 +269,78 @@ Attribute | Type | Description
 `explicit` | String | Whether the podcast episode is explicit.
 `publishedAt` | Integer | The time (in ms since POSIX epoch) when the podcast episode was published.
 `enclosure` | [Podcast Episode Enclosure](#podcast-episode-enclosure) Object | Download information for the podcast episode.
+
+
+## Get Podcast Feeds from OPML
+
+```shell
+curl -X POST "https://abs.example.com/api/podcasts/opml" \
+  -H "Authorization: Bearer exJhbGciOiJI6IkpXVCJ9.eyJ1c2Vyi5NDEyODc4fQ.ZraBFohS4Tg39NszY" \
+  -H "Content-Type: application/json" \
+  -d $'{"opmlText": "<?xml version=\'1.0\' encoding=\'UTF-8\' standalone=\'yes\' ?><opml version=\'1.0\'><head><title>Pocket Casts Feeds</title></head><body><outline type=\'rss\' text=\'Welcome to Night Vale\' xmlUrl=\'http://feeds.nightvalepresents.com/welcometonightvalepodcast\' /></body></opml>"}'
+```
+
+> The above command returns JSON structured like this:
+
+```json
+{
+  "feeds": [
+    {
+      "metadata": {
+        "image": "https://f.prxu.org/126/images/1f749c5d-c83a-4db9-8112-a3245da49c54/nightvalelogo-web4.jpg",
+        "categories": [
+          "Fiction:Science Fiction"
+        ],
+        "feedUrl": "http://feeds.nightvalepresents.com/welcometonightvalepodcast",
+        "description": "\n      <p>Twice-monthly community updates for the small desert town of Night Vale, where every conspiracy theory is true. Turn on your radio and hide. Never listened before? It's an ongoing radio show. Start with the current episode, and you'll catch on in no time. Or, go right to Episode 1 if you wanna binge-listen.</p>\n    ",
+        "descriptionPlain": "\n      Twice-monthly community updates for the small desert town of Night Vale, where every conspiracy theory is true. Turn on your radio and hide. Never listened before? It's an ongoing radio show. Start with the current episode, and you'll catch on in no time. Or, go right to Episode 1 if you wanna binge-listen.\n    ",
+        "title": "Welcome to Night Vale",
+        "language": "en",
+        "explicit": "false",
+        "author": "Night Vale Presents",
+        "pubDate": "Thu, 17 Nov 2022 16:04:42 -0000",
+        "link": "http://welcometonightvale.com"
+      },
+      "numEpisodes": 280
+    }
+  ]
+}
+```
+
+This endpoint takes OPML text and returns the contained RSS feeds' data.
+
+### HTTP Request
+
+`POST http://abs.example.com/api/podcasts/opml`
+
+### Parameters
+
+Parameter | Type | Description
+--------- | ---- | -----------
+`opmlText` | String | OPML text containing podcast RSS feeds.
+
+### Response
+
+Status | Meaning | Description | Schema
+------ | ------- | ----------- | ------
+200 | OK | Success | See below.
+400 | Bad Request | The `opmlText` parameter is required. |
+
+#### Response Schema
+
+Attribute | Type | Description
+--------- | ---- | -----------
+`feeds` | Array of [Podcast Feed Minimized](#podcast-feed-minimized) (See Below) | The podcast feeds retrieved from the RSS feeds in the OPML text.
+
+Or if there is an error (i.e. no RSS feeds were in the OPML text): 
+
+Attribute | Type | Description
+--------- | ---- | -----------
+`error` | String | The error that occurred.
+
+#### Podcast Feed Minimized
+
+Attribute | Type | Description
+--------- | ---- | -----------
+`metadata` | [Podcast Feed Metadata](#podcast-feed-metadata) Object (See Above) | The podcast's metadata from the feed.
+`numEpisodes` | Integer | The number of episodes the podcast has.
