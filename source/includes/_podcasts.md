@@ -884,7 +884,7 @@ This endpoint deletes a podcast episode from the database. If providing the `har
 
 ### HTTP Request
 
-`PATCH http://abs.example.com/api/podcasts/<ID>/episode/<EpisodeID>`
+`DELETE http://abs.example.com/api/podcasts/<ID>/episode/<EpisodeID>`
 
 ### URL Parameters
 
