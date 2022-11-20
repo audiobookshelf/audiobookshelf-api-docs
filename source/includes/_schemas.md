@@ -1832,3 +1832,30 @@ Attribute | Type | Description
 `fileSize` | Integer | The size (in bytes) of the backup file.
 `createdAt` | Integer | The time (in ms since POSIX epoch) when the backup was created.
 `serverVersion` | String | The version of the server when the backup was created.
+
+
+## Notification Settings
+
+> Notification Settings
+
+```json
+{
+  "id": "notification-settings",
+  "appriseType": "api",
+  "appriseApiUrl": "https://apprise.example.com/notify",
+  "notifications": [...],
+  "maxFailedAttempts": 5,
+  "maxNotificationQueue": 20,
+  "notificationDelay": 1000
+}
+```
+
+Attribute | Type | Description
+--------- | ---- | -----------
+`id` | String | The ID of the notification settings.
+`appriseType` | String | The type of Apprise that will be used. At the moment, only `api` is available.
+`appriseApiUrl` | String or null | The full URL where the Apprise API to use is located.
+`notifications` | Array of [Notification](#notification) | The set notifications.
+`maxFailedAttempts` | Integer | The maximum number of times a notification fails before being disabled.
+`maxNotificationQueue` | Integer | The maximum number of notifications in the notification queue before events are ignored.
+`notificationDelay` | Integer | The time (in ms) between notification pushes.
