@@ -186,7 +186,7 @@ curl "https://abs.example.com/api/notificationdata" \
         "body": "Test notificataion body for abs {{version}}."
       },
       "testData": {
-        "version": "v2.2.4"
+        "version": "v2.2.5"
       }
     }
   ]
@@ -238,3 +238,70 @@ Status | Meaning | Description
 ------ | ------- | -----------
 200 | OK | Success
 404 | Not Found | An admin user is required to fire notification events.
+
+
+## Create a Notification
+
+```shell
+curl -X POST "https://abs.example.com/api/notifications" \
+  -H "Authorization: Bearer exJhbGciOiJI6IkpXVCJ9.eyJ1c2Vyi5NDEyODc4fQ.ZraBFohS4Tg39NszY" \
+  -H "Content-Type: application/json" \
+  -d '{"eventName": "onPodcastEpisodeDownloaded", "urls": ["apprises://apprise.example.com/email"], "titleTemplate": "New {{podcastTitle}} Episode!", "bodyTemplate": "{{episodeTitle}} has been added to {{libraryName}} library.", "enabled": true, "type": "info"}'
+```
+
+> The above command returns JSON structured like this:
+
+```json
+{
+  "id": "notification-settings",
+  "appriseType": "api",
+  "appriseApiUrl": "https://apprise.example.com/notify",
+  "notifications": [
+    {
+      "id": "noti_nod281qwkj5ow7h7fi",
+      "libraryId": null,
+      "eventName": "onPodcastEpisodeDownloaded",
+      "urls": [
+        "apprises://apprise.example.com/email"
+      ],
+      "titleTemplate": "New {{podcastTitle}} Episode!",
+      "bodyTemplate": "{{episodeTitle}} has been added to {{libraryName}} library.",
+      "enabled": true,
+      "type": "info",
+      "lastFiredAt": 1668776410792,
+      "lastAttemptFailed": false,
+      "numConsecutiveFailedAttempts": 0,
+      "numTimesFired": 5,
+      "createdAt": 1666545142424
+    }
+  ],
+  "maxFailedAttempts": 5,
+  "maxNotificationQueue": 20,
+  "notificationDelay": 1000
+}
+```
+
+This endpoint creates a notification and returns the server's updated notification settings.
+
+### HTTP Request
+
+`POST http://abs.example.com/api/notifications`
+
+### Parameters
+
+Parameter | Type | Default | Description
+--------- | ---- | ------- | -----------
+`libraryID` | String or null | `null` | The ID of the library the notification is associated with.
+`eventName` | String | **Required** | The name of the event the notification will fire on.
+`urls` | Array of String | **Required** | The Apprise URLs to use for the notification.
+`titleTemplate` | String | **Required** | The template for the notification title.
+`bodyTemplate` | String | **Required** | The template for the notification body.
+`enabled` | Boolean | `false` | Whether the notification is enabled.
+`type` | String or null | `null` | The notification's type.
+
+### Response
+
+Status | Meaning | Description | Schema
+------ | ------- | ----------- | ------
+200 | OK | Success | [Notification Settings](#notification-settings)
+404 | Not Found | An admin user is required create notifications. |
