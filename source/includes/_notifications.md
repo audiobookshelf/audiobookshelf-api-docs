@@ -1,6 +1,6 @@
 # Notifications
 
-## Get Notifications
+## Get Notification Settings
 
 ```shell
 curl "https://abs.example.com/api/notifications" \
@@ -105,3 +105,32 @@ Attribute | Type | Description
 --------- | ---- | -----------
 `data.events` | Array of [Notification Event](#notification-event) | The notification event data.
 `settings` | [Notification Settings](#notification-settings) Object | The notification settings of the server.
+
+
+## Update Notification Settings
+
+```shell
+curl -X PATCH "https://abs.example.com/api/notifications" \
+  -H "Authorization: Bearer exJhbGciOiJI6IkpXVCJ9.eyJ1c2Vyi5NDEyODc4fQ.ZraBFohS4Tg39NszY" \
+  -H "Content-Type: application/json" \
+  -d '{"appriseApiUrl": "https://apprise.example.com/notify"}'
+```
+
+### HTTP Request
+
+`PATCH http://abs.example.com/api/notifications`
+
+### Parameters
+
+Parameter | Type | Default | Description
+--------- | ---- | ------- | -----------
+`appriseApiUrl` | String or null | | The full URL where the Apprise API to use is located.
+`maxFailedAttempts` | Integer | `5` | The maximum number of times a notification fails before being disabled.
+`maxNotificationQueue` | Integer | `20` | The maximum number of notifications in the notification queue before events are ignored.
+
+### Response
+
+Status | Meaning | Description
+------ | ------- | -----------
+200 | OK | Success
+404 | Not Found | An admin user is required to update notification settings.
