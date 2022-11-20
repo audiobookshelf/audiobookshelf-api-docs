@@ -50,3 +50,229 @@ Parameter | Type | Default | Description
 Status | Meaning | Description | Schema
 ------ | ------- | ----------- | ------
 200 | OK | Success | Array of String
+
+
+## Search for Books
+
+> Metadata Provider: Google
+
+```shell
+curl "https://abs.example.com/api/search/books?title=Wizard's%20First%20Rule&author=Terry%20Goodkind&provider=google" \
+  -H "Authorization: Bearer exJhbGciOiJI6IkpXVCJ9.eyJ1c2Vyi5NDEyODc4fQ.ZraBFohS4Tg39NszY"
+```
+
+> The above command returns JSON structured like this:
+
+```json
+[
+  {
+    "id": "WzO7jSs6XTYC",
+    "title": "Wizard's First Rule",
+    "subtitle": null,
+    "author": "Terry Goodkind",
+    "publisher": "RosettaBooks",
+    "publishedYear": null,
+    "description": "The “wonderfully creative, seamless, and stirring” debut novel in the Sword of Truth epic fantasy series by the #1 New York Times bestselling author (Kirkus). Terry Goodkind’s debut novel, Wizard’s First Rule, was a phenomenon from the moment it was first published by Tor Books in 1994. In it, readers are drawn into the magical New World, where ordinary Westland forest guide Richard Cypher accepts his extraordinary destiny. As a Seeker of Truth, Richard is the only one who can stop the tyrannical wizard Darken Rahl from seizing the all-powerful Boxes of Orden. When the beautiful and mysterious Kahlan Amnell appears in Richard's forest seeking help, his humble world is turned on its head. After proving that he can wield the Sword of Truth, Richard knows that a confrontation with Darken Rahl looms. But Kahlan beseeches him to reach beyond his sword and invoke his inner nobility in order to face the dangerous challenges ahead.",
+    "cover": "http://books.google.com/books/content?id=WzO7jSs6XTYC&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api",
+    "genres": [
+      "Fiction"
+    ],
+    "isbn": "9780795330766"
+  },
+  ...
+]
+```
+
+> Metadata Provider: Open Library
+
+```shell
+curl "https://abs.example.com/api/search/books?title=Wizard's%20First%20Rule&author=Terry%20Goodkind&provider=openlibrary" \
+  -H "Authorization: Bearer exJhbGciOiJI6IkpXVCJ9.eyJ1c2Vyi5NDEyODc4fQ.ZraBFohS4Tg39NszY"
+```
+
+> The above command returns JSON structured like this:
+
+```json
+[
+  {
+    "title": "Wizard's First Rule",
+    "author": "Terry Goodkind",
+    "publishedYear": null,
+    "cover": null,
+    "id": "OL20134604W",
+    "key": "/works/OL20134604W",
+    "covers": [
+      "https://covers.openlibrary.org/b/id/8785389-L.jpg"
+    ],
+    "description": null,
+    "cleanedTitle": "wizards first rule",
+    "titleDistance": 1,
+    "totalPossibleDistance": 33,
+    "cleanedAuthor": "terry goodkind",
+    "authorDistance": 0,
+    "includesAuthor": "terry goodkind",
+    "totalDistance": 1,
+    "includesTitle": "wizards first rule"
+  },
+  ...
+]
+```
+
+> Metadata Provider: iTunes
+
+```shell
+curl "https://abs.example.com/api/search/books?title=Wizard's%20First%20Rule&author=Terry%20Goodkind&provider=itunes" \
+  -H "Authorization: Bearer exJhbGciOiJI6IkpXVCJ9.eyJ1c2Vyi5NDEyODc4fQ.ZraBFohS4Tg39NszY"
+```
+
+> The above command returns JSON structured like this:
+
+```json
+[
+  {
+    "id": 293863242,
+    "artistId": 279725677,
+    "title": "Wizard's First Rule: Sword of Truth, Book 1 (Unabridged)",
+    "author": "Terry Goodkind",
+    "description": "The masterpiece that started Terry Goodkind's New York Times bestselling epic Sword of TruthIn the aftermath of the brutal murder of his father, a mysterious woman, Kahlan Amnell, appears in Richard Cypher's forest sanctuary seeking help...and more. His world, his very beliefs, are shattered when ancient debts come due with thundering violence.In a dark age it takes courage to live, and more than mere courage to challenge those who hold dominion, Richard and Kahlan must take up that challenge or become the next victims. Beyond awaits a bewitching land where even the best of their hearts could betray them. Yet, Richard fears nothing so much as what secrets his sword might reveal about his own soul. Falling in love would destroy them - for reasons Richard can't imagine and Kahlan dare not say.In their darkest hour, hunted relentlessly, tormented by treachery and loss, Kahlan calls upon Richard to reach beyond his sword - to invoke within himself something more noble. Neither knows that the rules of battle have just changed...or that their time has run out.Wizard's First Rule is the beginning. One book. One Rule. Witness the birth of a legend.",
+    "publishedYear": "2008",
+    "genres": [
+      "Sci-Fi & Fantasy"
+    ],
+    "cover": "https://is1-ssl.mzstatic.com/image/thumb/Music123/v4/e7/f9/05/e7f90571-b5be-be74-064e-81da7ce94143/rm_image.jpg/600x600bb.jpg"
+  }
+]
+```
+
+> Metadata Provider: Audible
+
+```shell
+curl "https://abs.example.com/api/search/books?title=Wizard's%20First%20Rule&author=Terry%20Goodkind&provider=audible" \
+  -H "Authorization: Bearer exJhbGciOiJI6IkpXVCJ9.eyJ1c2Vyi5NDEyODc4fQ.ZraBFohS4Tg39NszY"
+```
+
+> The above command returns JSON structured like this:
+
+```json
+[
+  {
+    "title": "Wizard's First Rule",
+    "subtitle": "Sword of Truth, Book 1",
+    "author": "Terry Goodkind",
+    "narrator": "Sam Tsoutsouvas",
+    "publisher": "Brilliance Audio",
+    "publishedYear": "2008",
+    "description": "The masterpiece that started Terry Goodkind's New York Times bestselling epic Sword of Truth In the aftermath of the brutal murder of his father, a mysterious woman, Kahlan Amnell, appears in Richard Cypher's forest sanctuary seeking help...and more. His world, his very beliefs, are shattered when ancient debts come due with thundering violence. In a dark age it takes courage to live, and more than mere courage to challenge those who hold dominion, Richard and Kahlan must take up that challenge or become the next victims. Beyond awaits a bewitching land where even the best of their hearts could betray them. Yet, Richard fears nothing so much as what secrets his sword might reveal about his own soul. Falling in love would destroy them - for reasons Richard can't imagine and Kahlan dare not say. In their darkest hour, hunted relentlessly, tormented by treachery and loss, Kahlan calls upon Richard to reach beyond his sword - to invoke within himself something more noble. Neither knows that the rules of battle have just changed...or that their time has run out. Wizard's First Rule is the beginning. One book. One Rule. Witness the birth of a legend.",
+    "cover": "https://m.media-amazon.com/images/I/81E153-vqwL.jpg",
+    "asin": "B002V0QK4C",
+    "genres": [
+      "Literature & Fiction",
+      "Science Fiction & Fantasy"
+    ],
+    "tags": "Genre Fiction, Movie, TV & Video Game Tie-Ins, Fantasy, Epic",
+    "series": [
+      {
+        "series": "Sword of Truth",
+        "sequence": "1"
+      }
+    ],
+    "language": "English",
+    "duration": 2046,
+    "region": null,
+    "rating": "4.5"
+  }
+]
+```
+
+This endpoint searches a metadata provider for a book. An array of book search results is returned.
+
+### HTTP Request
+
+`GET http://abs.example.com/api/search/books`
+
+### Query Parameters
+
+Parameter | Type | Default | Description
+--------- | ---- | ------- | -----------
+`title` | String | `''` | The book title to search for. If using Audible for `provider`, can also be the book's ASIN.
+`author` | String | `''` | The author to search for.
+`provider` | String | `google` | The metadata provider to use. See [Library Metadata Providers](#library-metadata-providers) for options.
+
+### Response
+
+Status | Meaning | Description | Schema
+------ | ------- | ----------- | ------
+200 | OK | Success | See Below
+
+#### Response Schema
+
+Each response will be an array of objects with the attributes depending on the requested metadata provider.
+
+#### Metadata Provider: Google
+
+Attribute | Type | Description
+--------- | ---- | -----------
+`id` | String | The book's Google ID.
+`title` | String | The book's title.
+`subtitle` | String or null | The book's subtitle.
+`author` | String or null | The book's author.
+`publisher` | String or null | The book's publisher.
+`description` | String or null | The book's description.
+`cover` | String or null | The URL of the book's cover image.
+`genres` | Array of String | The book's genres.
+`isbn` | String | The book's ISBN.
+
+#### Metadata Provider: Open Library
+
+Attribute | Type | Description
+--------- | ---- | -----------
+`title` | String | The book's title.
+`author` | String or null | The book's author.
+`publishedYear` | Integer | The year the book was published.
+`cover` | String or null | The URL of the book's cover image.
+`id` | String | The book's Open Library ID.
+`key` | String | The path of the book's Open Library URL.
+`covers` | Array of String | URLs of cover images for the book.
+`description` | String or null | The book's description.
+`cleanedTitle` | String | A cleaned version of the query title used for searching.
+`titleDistance` | Integer | The Levenshtein distance between `cleanedTitle` and `title`.
+`totalPossibleDistance` | Integer | The maximum for `totalDistance`.
+`cleanedAuthor` | String | A cleaned version of the query author used for searching.
+`authorDistance` | Integer | The Levenshtein distance between `cleanedAuthor` and `author`.
+`includesAuthor` | String | The query author contained in `author`.
+`totalDistance` | Integer | `titleDistance` + `authorDistance`
+`includesTitle` | String | The query title contained in `title`.
+
+#### Metadata Provider: iTunes
+
+Attribute | Type | Description
+--------- | ---- | -----------
+`id` | Integer | The book's iTunes ID.
+`artistId` | Integer | The book's author's iTunes ID.
+`title` | String | The book's title.
+`author` | String or null | The book's author.
+`description` | String or null | The book's description.
+`publishedYear` | String or null | The year the book was published.
+`genres` | Array of String | The book's genres.
+`cover` | String or null | The URL of the book's cover image.
+
+#### Metadata Provider: Audible
+
+Attribute | Type | Description
+--------- | ---- | -----------
+`title` | String | The book's title.
+`subtitle` | String or null | The book's subtitle.
+`author` | String or null | The book's author.
+`narrator` | String or null | The book's narrator.
+`publisher` | String or null | The book's publisher.
+`publishedYear` | String or null | The year the book was published.
+`description` | String or null | The book's description.
+`cover` | String or null | The URL of the book's cover image.
+`asin` | String | The book's ASIN.
+`genres` | Array of String | The book's genres.
+`tags` | String | A comma and space separated list of the book's tags.
+`series` | Array of [Series Sequence](#series-sequence) | The book's series.
+`language` | String | The book's language.
+`duration` | Integer | The total duration (in minutes) of the book.
+`region` | String or null | The Audible region that was searched.
+`rating` | String or null | The book's Audible rating.
