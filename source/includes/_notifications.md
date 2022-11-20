@@ -305,3 +305,44 @@ Status | Meaning | Description | Schema
 ------ | ------- | ----------- | ------
 200 | OK | Success | [Notification Settings](#notification-settings)
 404 | Not Found | An admin user is required create notifications. |
+
+
+## Delete a Notification
+
+```shell
+curl -X DELETE "https://abs.example.com/api/notifications/noti_nod281qwkj5ow7h7fi" \
+  -H "Authorization: Bearer exJhbGciOiJI6IkpXVCJ9.eyJ1c2Vyi5NDEyODc4fQ.ZraBFohS4Tg39NszY"
+```
+
+> The above command returns JSON structured like this:
+
+```json
+{
+  "id": "notification-settings",
+  "appriseType": "api",
+  "appriseApiUrl": "https://apprise.example.com/notify",
+  "notifications": [],
+  "maxFailedAttempts": 5,
+  "maxNotificationQueue": 20,
+  "notificationDelay": 1000
+}
+```
+
+This endpoint deletes a notification and returns the server's updated notification settings.
+
+### HTTP Request
+
+`DELETE http://abs.example.com/api/notifications/<ID>`
+
+### URL Parameters
+
+Parameter | Description
+--------- | -----------
+ID | The ID of the notification.
+
+### Response
+
+Status | Meaning | Description | Schema
+------ | ------- | ----------- | ------
+200 | OK | Success | [Notification Settings](#notification-settings)
+404 | Not Found | An admin user is required delete notifications, or no notification with the given ID exists. |
