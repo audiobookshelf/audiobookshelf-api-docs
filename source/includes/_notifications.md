@@ -428,3 +428,31 @@ Status | Meaning | Description | Schema
 ------ | ------- | ----------- | ------
 200 | OK | Success | [Notification Settings](#notification-settings)
 404 | Not Found | An admin user is required update notifications, or no notification with the given ID exists. |
+
+
+## Send Notification Test
+
+```shell
+curl "https://abs.example.com/api/notifications/noti_nod281qwkj5ow7h7fi/test" \
+  -H "Authorization: Bearer exJhbGciOiJI6IkpXVCJ9.eyJ1c2Vyi5NDEyODc4fQ.ZraBFohS4Tg39NszY"
+```
+
+This endpoint sends a test to the given notification.
+
+### HTTP Request
+
+`GET http://abs.example.com/api/notifications/<ID>/test`
+
+### URL Parameters
+
+Parameter | Description
+--------- | -----------
+ID | The ID of the notification.
+
+### Response
+
+Status | Meaning | Description
+------ | ------- | -----------
+200 | OK | Success
+404 | Not Found | An admin user is required to send notification tests, or no notification with the given ID exists.
+500 | Internal Server Error | The Apprise URL is not set, or the notification failed to send.
