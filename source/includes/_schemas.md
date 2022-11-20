@@ -1900,3 +1900,50 @@ Attribute | Type | Description
 `numConsecutiveFailedAttempts` | Integer | The number of consecutive times the notification has failed.
 `numTimesFired` | Integer | The number of times the notification has fired.
 `createdAt` | Integer | The time (in ms since POSIX epoch) when the notification was created.
+
+
+## Notification Event
+
+> Notification Event
+
+```json
+{
+  "name": "onPodcastEpisodeDownloaded",
+  "requiresLibrary": true,
+  "libraryMediaType": "podcast",
+  "description": "Triggered when a podcast episode is auto-downloaded",
+  "variables": [
+    "libraryItemId",
+    "libraryId",
+    "podcastTitle",
+    "episodeTitle",
+    "libraryName",
+    "episodeId"
+  ],
+  "defaults": {
+    "title": "New {{podcastTitle}} Episode!",
+    "body": "{{episodeTitle}} has been added to {{libraryName}} library."
+  },
+  "testData": {
+    "libraryItemId": "li_notification_test",
+    "libraryId": "lib_test",
+    "libraryName": "Podcasts",
+    "podcastTitle": "Abs Test Podcast",
+    "episodeId": "ep_notification_test",
+    "episodeTitle": "Successful Test"
+  }
+}
+```
+
+The notification events that are available are [predefined here](https://github.com/advplyr/audiobookshelf/blob/master/server/utils/notifications.js).
+
+Attribute | Type | Description
+--------- | ---- | -----------
+`name` | String | The name of the notification event.
+`requiresLibrary` | Boolean | Whether the notification event depends on a library existing.
+`libraryMediaType` | String | The type of media of the library the notification depends on existing. Will not exist if `requiresLibrary` is `false`.
+`description` | String | The description of the notification event.
+`variables` | Array of String | The variables of the notification event that can be used in the notification templates.
+`defaults.title` | String | The default title template for notifications using the notification event.
+`defaults.body` | String | The default body template for notifications using the notification event.
+`testData` | Object | The keys of the `testData` object will match the list of `variables`. The values will be the data used when sending a test notification.
