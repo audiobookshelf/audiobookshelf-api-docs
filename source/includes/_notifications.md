@@ -410,7 +410,7 @@ ID | The ID of the notification.
 Parameter | Type | Description
 --------- | ---- | -----------
 `id` | String | **Required** The ID of the notification.
-`libraryID` | String or null | The ID of the library the notification is associated with.
+`libraryId` | String or null | The ID of the library the notification is associated with.
 `eventName` | String | The name of the event the notification will fire on.
 `urls` | Array of String | The Apprise URLs to use for the notification.
 `titleTemplate` | String | The template for the notification title.
