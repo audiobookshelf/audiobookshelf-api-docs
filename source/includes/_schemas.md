@@ -1832,3 +1832,118 @@ Attribute | Type | Description
 `fileSize` | Integer | The size (in bytes) of the backup file.
 `createdAt` | Integer | The time (in ms since POSIX epoch) when the backup was created.
 `serverVersion` | String | The version of the server when the backup was created.
+
+
+## Notification Settings
+
+> Notification Settings
+
+```json
+{
+  "id": "notification-settings",
+  "appriseType": "api",
+  "appriseApiUrl": "https://apprise.example.com/notify",
+  "notifications": [...],
+  "maxFailedAttempts": 5,
+  "maxNotificationQueue": 20,
+  "notificationDelay": 1000
+}
+```
+
+Attribute | Type | Description
+--------- | ---- | -----------
+`id` | String | The ID of the notification settings.
+`appriseType` | String | The type of Apprise that will be used. At the moment, only `api` is available.
+`appriseApiUrl` | String or null | The full URL where the Apprise API to use is located.
+`notifications` | Array of [Notification](#notification) | The set notifications.
+`maxFailedAttempts` | Integer | The maximum number of times a notification fails before being disabled.
+`maxNotificationQueue` | Integer | The maximum number of notifications in the notification queue before events are ignored.
+`notificationDelay` | Integer | The time (in ms) between notification pushes.
+
+
+## Notification
+
+> Notification
+
+```json
+{
+  "id": "noti_nod281qwkj5ow7h7fi",
+  "libraryId": null,
+  "eventName": "onPodcastEpisodeDownloaded",
+  "urls": [
+    "apprises://apprise.example.com/email"
+  ],
+  "titleTemplate": "New {{podcastTitle}} Episode!",
+  "bodyTemplate": "{{episodeTitle}} has been added to {{libraryName}} library.",
+  "enabled": true,
+  "type": "info",
+  "lastFiredAt": 1668776410792,
+  "lastAttemptFailed": false,
+  "numConsecutiveFailedAttempts": 0,
+  "numTimesFired": 5,
+  "createdAt": 1666545142424
+}
+```
+
+Attribute | Type | Description
+--------- | ---- | -----------
+`id` | String | The ID of the notification.
+`libraryId` | String or null | The ID of the library the notification is associated with.
+`eventName` | String | The name of the event the notification will fire on.
+`urls` | Array of String | The Apprise URLs to use for the notification.
+`titleTemplate` | String | The template for the notification title.
+`bodyTemplate` | String | The template for the notification body.
+`enabled` | Boolean | Whether the notification is enabled.
+`type` | String | The notification's type.
+`lastFiredAt` | String or null | The time (in ms since POSIX epoch) when the notification was last fired. Will be `null` if the notification has not fired.
+`lastAttemptFailed` | Boolean | Whether the last notification attempt failed.
+`numConsecutiveFailedAttempts` | Integer | The number of consecutive times the notification has failed.
+`numTimesFired` | Integer | The number of times the notification has fired.
+`createdAt` | Integer | The time (in ms since POSIX epoch) when the notification was created.
+
+
+## Notification Event
+
+> Notification Event
+
+```json
+{
+  "name": "onPodcastEpisodeDownloaded",
+  "requiresLibrary": true,
+  "libraryMediaType": "podcast",
+  "description": "Triggered when a podcast episode is auto-downloaded",
+  "variables": [
+    "libraryItemId",
+    "libraryId",
+    "podcastTitle",
+    "episodeTitle",
+    "libraryName",
+    "episodeId"
+  ],
+  "defaults": {
+    "title": "New {{podcastTitle}} Episode!",
+    "body": "{{episodeTitle}} has been added to {{libraryName}} library."
+  },
+  "testData": {
+    "libraryItemId": "li_notification_test",
+    "libraryId": "lib_test",
+    "libraryName": "Podcasts",
+    "podcastTitle": "Abs Test Podcast",
+    "episodeId": "ep_notification_test",
+    "episodeTitle": "Successful Test"
+  }
+}
+```
+
+The notification events that are available are [predefined here](https://github.com/advplyr/audiobookshelf/blob/master/server/utils/notifications.js).
+
+Attribute | Type | Description
+--------- | ---- | -----------
+`name` | String | The name of the notification event.
+`requiresLibrary` | Boolean | Whether the notification event depends on a library existing.
+`libraryMediaType` | String | The type of media of the library the notification depends on existing. Will not exist if `requiresLibrary` is `false`.
+`description` | String | The description of the notification event.
+`variables` | Array of String | The variables of the notification event that can be used in the notification templates.
+`defaults.title` | String | The default title template for notifications using the notification event.
+`defaults.body` | String | The default body template for notifications using the notification event.
+`testData` | Object | The keys of the `testData` object will match the list of `variables`. The values will be the data used when sending a test notification.

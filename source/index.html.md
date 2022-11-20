@@ -20,6 +20,7 @@ includes:
   - series
   - sessions
   - podcasts
+  - notifications
   - filtering
   - schemas
 
