@@ -715,6 +715,26 @@
               </ul>
           </li>
           <li>
+            <a href="#search" class="toc-h1 toc-link" data-title="Search">Search</a>
+              <ul class="toc-list-h2">
+                  <li>
+                    <a href="#search-for-covers" class="toc-h2 toc-link" data-title="Search for Covers">Search for Covers</a>
+                  </li>
+                  <li>
+                    <a href="#search-for-books" class="toc-h2 toc-link" data-title="Search for Books">Search for Books</a>
+                  </li>
+                  <li>
+                    <a href="#search-for-podcasts" class="toc-h2 toc-link" data-title="Search for Podcasts">Search for Podcasts</a>
+                  </li>
+                  <li>
+                    <a href="#search-for-an-author" class="toc-h2 toc-link" data-title="Search for an Author">Search for an Author</a>
+                  </li>
+                  <li>
+                    <a href="#search-for-a-book-39-s-chapters" class="toc-h2 toc-link" data-title="Search for a Book's Chapters">Search for a Book's Chapters</a>
+                  </li>
+              </ul>
+          </li>
+          <li>
             <a href="#filtering" class="toc-h1 toc-link" data-title="Filtering">Filtering</a>
           </li>
           <li>
@@ -15517,6 +15537,1093 @@ The <code>id</code> parameter must be included for the notification to be saved.
 <td>500</td>
 <td>Internal Server Error</td>
 <td>The Apprise URL is not set, or the notification failed to send.</td>
+</tr>
+</tbody></table>
+<h1 id='search'>Search</h1><h2 id='search-for-covers'>Search for Covers</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://abs.example.com/api/search/covers?title=Wizards%20First%20Rule&amp;author=Terry%20Goodkind&amp;provider=openlibrary"</span> <span class="se">\</span>
+  <span class="nt">-H</span> <span class="s2">"Authorization: Bearer exJhbGciOiJI6IkpXVCJ9.eyJ1c2Vyi5NDEyODc4fQ.ZraBFohS4Tg39NszY"</span>
+</code></pre></div>
+<blockquote>
+<p>The above command returns JSON structured like this:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">[</span><span class="w">
+  </span><span class="s2">"https://covers.openlibrary.org/b/id/1005963-L.jpg"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"https://covers.openlibrary.org/b/id/791977-L.jpg"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"https://covers.openlibrary.org/b/id/766531-L.jpg"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"https://covers.openlibrary.org/b/id/910943-L.jpg"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"https://covers.openlibrary.org/b/id/8782857-L.jpg"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"https://covers.openlibrary.org/b/id/8788596-L.jpg"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"https://covers.openlibrary.org/b/id/8783892-L.jpg"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"https://covers.openlibrary.org/b/id/8993240-L.jpg"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"https://covers.openlibrary.org/b/id/10505009-L.jpg"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"https://covers.openlibrary.org/b/id/1005881-L.jpg"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"https://covers.openlibrary.org/b/id/8776837-L.jpg"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"https://covers.openlibrary.org/b/id/10778344-L.jpg"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"https://covers.openlibrary.org/b/id/11239659-L.jpg"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"https://covers.openlibrary.org/b/id/12224404-L.jpg"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"https://covers.openlibrary.org/b/OLID/OL9034948M-L.jpg"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"https://covers.openlibrary.org/b/id/8785389-L.jpg"</span><span class="w">
+</span><span class="p">]</span><span class="w">
+</span></code></pre></div>
+<p>This endpoint searches a metadata provider for covers. An array of URLs for cover images is returned.</p>
+<h3 id='http-request'>HTTP Request</h3>
+<p><code>GET http://abs.example.com/api/search/covers</code></p>
+<h3 id='query-parameters'>Query Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>podcast</code></td>
+<td>Binary</td>
+<td><code>0</code></td>
+<td>Whether to search for podcast covers. Only the <code>title</code> parameter is needed for podcasts. <code>0</code> for false, <code>1</code> for true.</td>
+</tr>
+<tr>
+<td><code>title</code></td>
+<td>String</td>
+<td><strong>Required</strong></td>
+<td>The media title to search for.</td>
+</tr>
+<tr>
+<td><code>author</code></td>
+<td>String or null</td>
+<td><code>null</code></td>
+<td>If searching for a book cover, the author to search for.</td>
+</tr>
+<tr>
+<td><code>provider</code></td>
+<td>String</td>
+<td><code>google</code></td>
+<td>If searching for a book cover, the metadata provider to use. See <a href="#library-metadata-providers">Library Metadata Providers</a> for options.</td>
+</tr>
+</tbody></table>
+<h3 id='response'>Response</h3>
+<table><thead>
+<tr>
+<th>Status</th>
+<th>Meaning</th>
+<th>Description</th>
+<th>Schema</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>200</td>
+<td>OK</td>
+<td>Success</td>
+<td>Array of String</td>
+</tr>
+</tbody></table>
+<h2 id='search-for-books'>Search for Books</h2>
+<blockquote>
+<p>Metadata Provider: Google</p>
+</blockquote>
+<div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://abs.example.com/api/search/books?title=Wizard's%20First%20Rule&amp;author=Terry%20Goodkind&amp;provider=google"</span> <span class="se">\</span>
+  <span class="nt">-H</span> <span class="s2">"Authorization: Bearer exJhbGciOiJI6IkpXVCJ9.eyJ1c2Vyi5NDEyODc4fQ.ZraBFohS4Tg39NszY"</span>
+</code></pre></div>
+<blockquote>
+<p>The above command returns JSON structured like this:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">[</span><span class="w">
+  </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"WzO7jSs6XTYC"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Wizard's First Rule"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"subtitle"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"author"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Terry Goodkind"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"publisher"</span><span class="p">:</span><span class="w"> </span><span class="s2">"RosettaBooks"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"publishedYear"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"The “wonderfully creative, seamless, and stirring” debut novel in the Sword of Truth epic fantasy series by the #1 New York Times bestselling author (Kirkus). Terry Goodkind’s debut novel, Wizard’s First Rule, was a phenomenon from the moment it was first published by Tor Books in 1994. In it, readers are drawn into the magical New World, where ordinary Westland forest guide Richard Cypher accepts his extraordinary destiny. As a Seeker of Truth, Richard is the only one who can stop the tyrannical wizard Darken Rahl from seizing the all-powerful Boxes of Orden. When the beautiful and mysterious Kahlan Amnell appears in Richard's forest seeking help, his humble world is turned on its head. After proving that he can wield the Sword of Truth, Richard knows that a confrontation with Darken Rahl looms. But Kahlan beseeches him to reach beyond his sword and invoke his inner nobility in order to face the dangerous challenges ahead."</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"cover"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://books.google.com/books/content?id=WzO7jSs6XTYC&amp;printsec=frontcover&amp;img=1&amp;zoom=1&amp;edge=curl&amp;source=gbs_api"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"genres"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+      </span><span class="s2">"Fiction"</span><span class="w">
+    </span><span class="p">],</span><span class="w">
+    </span><span class="nl">"isbn"</span><span class="p">:</span><span class="w"> </span><span class="s2">"9780795330766"</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="err">...</span><span class="w">
+</span><span class="p">]</span><span class="w">
+</span></code></pre></div>
+<blockquote>
+<p>Metadata Provider: Open Library</p>
+</blockquote>
+<div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://abs.example.com/api/search/books?title=Wizard's%20First%20Rule&amp;author=Terry%20Goodkind&amp;provider=openlibrary"</span> <span class="se">\</span>
+  <span class="nt">-H</span> <span class="s2">"Authorization: Bearer exJhbGciOiJI6IkpXVCJ9.eyJ1c2Vyi5NDEyODc4fQ.ZraBFohS4Tg39NszY"</span>
+</code></pre></div>
+<blockquote>
+<p>The above command returns JSON structured like this:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">[</span><span class="w">
+  </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Wizard's First Rule"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"author"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Terry Goodkind"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"publishedYear"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"cover"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"OL20134604W"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"key"</span><span class="p">:</span><span class="w"> </span><span class="s2">"/works/OL20134604W"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"covers"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+      </span><span class="s2">"https://covers.openlibrary.org/b/id/8785389-L.jpg"</span><span class="w">
+    </span><span class="p">],</span><span class="w">
+    </span><span class="nl">"description"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"cleanedTitle"</span><span class="p">:</span><span class="w"> </span><span class="s2">"wizards first rule"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"titleDistance"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"totalPossibleDistance"</span><span class="p">:</span><span class="w"> </span><span class="mi">33</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"cleanedAuthor"</span><span class="p">:</span><span class="w"> </span><span class="s2">"terry goodkind"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"authorDistance"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"includesAuthor"</span><span class="p">:</span><span class="w"> </span><span class="s2">"terry goodkind"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"totalDistance"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"includesTitle"</span><span class="p">:</span><span class="w"> </span><span class="s2">"wizards first rule"</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="err">...</span><span class="w">
+</span><span class="p">]</span><span class="w">
+</span></code></pre></div>
+<blockquote>
+<p>Metadata Provider: iTunes</p>
+</blockquote>
+<div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://abs.example.com/api/search/books?title=Wizard's%20First%20Rule&amp;author=Terry%20Goodkind&amp;provider=itunes"</span> <span class="se">\</span>
+  <span class="nt">-H</span> <span class="s2">"Authorization: Bearer exJhbGciOiJI6IkpXVCJ9.eyJ1c2Vyi5NDEyODc4fQ.ZraBFohS4Tg39NszY"</span>
+</code></pre></div>
+<blockquote>
+<p>The above command returns JSON structured like this:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">[</span><span class="w">
+  </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">293863242</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"artistId"</span><span class="p">:</span><span class="w"> </span><span class="mi">279725677</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Wizard's First Rule: Sword of Truth, Book 1 (Unabridged)"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"author"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Terry Goodkind"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"The masterpiece that started Terry Goodkind's New York Times bestselling epic Sword of TruthIn the aftermath of the brutal murder of his father, a mysterious woman, Kahlan Amnell, appears in Richard Cypher's forest sanctuary seeking help...and more. His world, his very beliefs, are shattered when ancient debts come due with thundering violence.In a dark age it takes courage to live, and more than mere courage to challenge those who hold dominion, Richard and Kahlan must take up that challenge or become the next victims. Beyond awaits a bewitching land where even the best of their hearts could betray them. Yet, Richard fears nothing so much as what secrets his sword might reveal about his own soul. Falling in love would destroy them - for reasons Richard can't imagine and Kahlan dare not say.In their darkest hour, hunted relentlessly, tormented by treachery and loss, Kahlan calls upon Richard to reach beyond his sword - to invoke within himself something more noble. Neither knows that the rules of battle have just changed...or that their time has run out.Wizard's First Rule is the beginning. One book. One Rule. Witness the birth of a legend."</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"publishedYear"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2008"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"genres"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+      </span><span class="s2">"Sci-Fi &amp; Fantasy"</span><span class="w">
+    </span><span class="p">],</span><span class="w">
+    </span><span class="nl">"cover"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://is1-ssl.mzstatic.com/image/thumb/Music123/v4/e7/f9/05/e7f90571-b5be-be74-064e-81da7ce94143/rm_image.jpg/600x600bb.jpg"</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">]</span><span class="w">
+</span></code></pre></div>
+<blockquote>
+<p>Metadata Provider: Audible</p>
+</blockquote>
+<div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://abs.example.com/api/search/books?title=Wizard's%20First%20Rule&amp;author=Terry%20Goodkind&amp;provider=audible"</span> <span class="se">\</span>
+  <span class="nt">-H</span> <span class="s2">"Authorization: Bearer exJhbGciOiJI6IkpXVCJ9.eyJ1c2Vyi5NDEyODc4fQ.ZraBFohS4Tg39NszY"</span>
+</code></pre></div>
+<blockquote>
+<p>The above command returns JSON structured like this:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">[</span><span class="w">
+  </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Wizard's First Rule"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"subtitle"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Sword of Truth, Book 1"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"author"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Terry Goodkind"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"narrator"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Sam Tsoutsouvas"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"publisher"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Brilliance Audio"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"publishedYear"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2008"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"The masterpiece that started Terry Goodkind's New York Times bestselling epic Sword of Truth In the aftermath of the brutal murder of his father, a mysterious woman, Kahlan Amnell, appears in Richard Cypher's forest sanctuary seeking help...and more. His world, his very beliefs, are shattered when ancient debts come due with thundering violence. In a dark age it takes courage to live, and more than mere courage to challenge those who hold dominion, Richard and Kahlan must take up that challenge or become the next victims. Beyond awaits a bewitching land where even the best of their hearts could betray them. Yet, Richard fears nothing so much as what secrets his sword might reveal about his own soul. Falling in love would destroy them - for reasons Richard can't imagine and Kahlan dare not say. In their darkest hour, hunted relentlessly, tormented by treachery and loss, Kahlan calls upon Richard to reach beyond his sword - to invoke within himself something more noble. Neither knows that the rules of battle have just changed...or that their time has run out. Wizard's First Rule is the beginning. One book. One Rule. Witness the birth of a legend."</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"cover"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://m.media-amazon.com/images/I/81E153-vqwL.jpg"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"asin"</span><span class="p">:</span><span class="w"> </span><span class="s2">"B002V0QK4C"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"genres"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+      </span><span class="s2">"Literature &amp; Fiction"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"Science Fiction &amp; Fantasy"</span><span class="w">
+    </span><span class="p">],</span><span class="w">
+    </span><span class="nl">"tags"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Genre Fiction, Movie, TV &amp; Video Game Tie-Ins, Fantasy, Epic"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"series"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+      </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"series"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Sword of Truth"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"sequence"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1"</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+    </span><span class="p">],</span><span class="w">
+    </span><span class="nl">"language"</span><span class="p">:</span><span class="w"> </span><span class="s2">"English"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"duration"</span><span class="p">:</span><span class="w"> </span><span class="mi">2046</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"region"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"rating"</span><span class="p">:</span><span class="w"> </span><span class="s2">"4.5"</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">]</span><span class="w">
+</span></code></pre></div>
+<p>This endpoint searches a metadata provider for a book. An array of book search results is returned.</p>
+<h3 id='http-request-2'>HTTP Request</h3>
+<p><code>GET http://abs.example.com/api/search/books</code></p>
+<h3 id='query-parameters-2'>Query Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>title</code></td>
+<td>String</td>
+<td><code>&#39;&#39;</code></td>
+<td>The book title to search for. If using Audible for <code>provider</code>, can also be the book&#39;s ASIN.</td>
+</tr>
+<tr>
+<td><code>author</code></td>
+<td>String</td>
+<td><code>&#39;&#39;</code></td>
+<td>The author to search for.</td>
+</tr>
+<tr>
+<td><code>provider</code></td>
+<td>String</td>
+<td><code>google</code></td>
+<td>The metadata provider to use. See <a href="#library-metadata-providers">Library Metadata Providers</a> for options.</td>
+</tr>
+</tbody></table>
+<h3 id='response-2'>Response</h3>
+<table><thead>
+<tr>
+<th>Status</th>
+<th>Meaning</th>
+<th>Description</th>
+<th>Schema</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>200</td>
+<td>OK</td>
+<td>Success</td>
+<td>See Below</td>
+</tr>
+</tbody></table>
+<h4 id='response-schema'>Response Schema</h4>
+<p>Each response will be an array of objects with the attributes depending on the requested metadata provider.</p>
+<h4 id='metadata-provider-google'>Metadata Provider: Google</h4>
+<table><thead>
+<tr>
+<th>Attribute</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>id</code></td>
+<td>String</td>
+<td>The book&#39;s Google ID.</td>
+</tr>
+<tr>
+<td><code>title</code></td>
+<td>String</td>
+<td>The book&#39;s title.</td>
+</tr>
+<tr>
+<td><code>subtitle</code></td>
+<td>String or null</td>
+<td>The book&#39;s subtitle.</td>
+</tr>
+<tr>
+<td><code>author</code></td>
+<td>String or null</td>
+<td>The book&#39;s author.</td>
+</tr>
+<tr>
+<td><code>publisher</code></td>
+<td>String or null</td>
+<td>The book&#39;s publisher.</td>
+</tr>
+<tr>
+<td><code>description</code></td>
+<td>String or null</td>
+<td>The book&#39;s description.</td>
+</tr>
+<tr>
+<td><code>cover</code></td>
+<td>String or null</td>
+<td>The URL of the book&#39;s cover image.</td>
+</tr>
+<tr>
+<td><code>genres</code></td>
+<td>Array of String</td>
+<td>The book&#39;s genres.</td>
+</tr>
+<tr>
+<td><code>isbn</code></td>
+<td>String</td>
+<td>The book&#39;s ISBN.</td>
+</tr>
+</tbody></table>
+<h4 id='metadata-provider-open-library'>Metadata Provider: Open Library</h4>
+<table><thead>
+<tr>
+<th>Attribute</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>title</code></td>
+<td>String</td>
+<td>The book&#39;s title.</td>
+</tr>
+<tr>
+<td><code>author</code></td>
+<td>String or null</td>
+<td>The book&#39;s author.</td>
+</tr>
+<tr>
+<td><code>publishedYear</code></td>
+<td>Integer</td>
+<td>The year the book was published.</td>
+</tr>
+<tr>
+<td><code>cover</code></td>
+<td>String or null</td>
+<td>The URL of the book&#39;s cover image.</td>
+</tr>
+<tr>
+<td><code>id</code></td>
+<td>String</td>
+<td>The book&#39;s Open Library ID.</td>
+</tr>
+<tr>
+<td><code>key</code></td>
+<td>String</td>
+<td>The path of the book&#39;s Open Library URL.</td>
+</tr>
+<tr>
+<td><code>covers</code></td>
+<td>Array of String</td>
+<td>URLs of cover images for the book.</td>
+</tr>
+<tr>
+<td><code>description</code></td>
+<td>String or null</td>
+<td>The book&#39;s description.</td>
+</tr>
+<tr>
+<td><code>cleanedTitle</code></td>
+<td>String</td>
+<td>A cleaned version of the query title used for searching.</td>
+</tr>
+<tr>
+<td><code>titleDistance</code></td>
+<td>Integer</td>
+<td>The Levenshtein distance between <code>cleanedTitle</code> and <code>title</code>.</td>
+</tr>
+<tr>
+<td><code>totalPossibleDistance</code></td>
+<td>Integer</td>
+<td>The maximum for <code>totalDistance</code>.</td>
+</tr>
+<tr>
+<td><code>cleanedAuthor</code></td>
+<td>String</td>
+<td>A cleaned version of the query author used for searching.</td>
+</tr>
+<tr>
+<td><code>authorDistance</code></td>
+<td>Integer</td>
+<td>The Levenshtein distance between <code>cleanedAuthor</code> and <code>author</code>.</td>
+</tr>
+<tr>
+<td><code>includesAuthor</code></td>
+<td>String</td>
+<td>The query author contained in <code>author</code>.</td>
+</tr>
+<tr>
+<td><code>totalDistance</code></td>
+<td>Integer</td>
+<td><code>titleDistance</code> + <code>authorDistance</code></td>
+</tr>
+<tr>
+<td><code>includesTitle</code></td>
+<td>String</td>
+<td>The query title contained in <code>title</code>.</td>
+</tr>
+</tbody></table>
+<h4 id='metadata-provider-itunes'>Metadata Provider: iTunes</h4>
+<table><thead>
+<tr>
+<th>Attribute</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>id</code></td>
+<td>Integer</td>
+<td>The book&#39;s iTunes ID.</td>
+</tr>
+<tr>
+<td><code>artistId</code></td>
+<td>Integer</td>
+<td>The book&#39;s author&#39;s iTunes ID.</td>
+</tr>
+<tr>
+<td><code>title</code></td>
+<td>String</td>
+<td>The book&#39;s title.</td>
+</tr>
+<tr>
+<td><code>author</code></td>
+<td>String or null</td>
+<td>The book&#39;s author.</td>
+</tr>
+<tr>
+<td><code>description</code></td>
+<td>String or null</td>
+<td>The book&#39;s description.</td>
+</tr>
+<tr>
+<td><code>publishedYear</code></td>
+<td>String or null</td>
+<td>The year the book was published.</td>
+</tr>
+<tr>
+<td><code>genres</code></td>
+<td>Array of String</td>
+<td>The book&#39;s genres.</td>
+</tr>
+<tr>
+<td><code>cover</code></td>
+<td>String or null</td>
+<td>The URL of the book&#39;s cover image.</td>
+</tr>
+</tbody></table>
+<h4 id='metadata-provider-audible'>Metadata Provider: Audible</h4>
+<table><thead>
+<tr>
+<th>Attribute</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>title</code></td>
+<td>String</td>
+<td>The book&#39;s title.</td>
+</tr>
+<tr>
+<td><code>subtitle</code></td>
+<td>String or null</td>
+<td>The book&#39;s subtitle.</td>
+</tr>
+<tr>
+<td><code>author</code></td>
+<td>String or null</td>
+<td>The book&#39;s author.</td>
+</tr>
+<tr>
+<td><code>narrator</code></td>
+<td>String or null</td>
+<td>The book&#39;s narrator.</td>
+</tr>
+<tr>
+<td><code>publisher</code></td>
+<td>String or null</td>
+<td>The book&#39;s publisher.</td>
+</tr>
+<tr>
+<td><code>publishedYear</code></td>
+<td>String or null</td>
+<td>The year the book was published.</td>
+</tr>
+<tr>
+<td><code>description</code></td>
+<td>String or null</td>
+<td>The book&#39;s description.</td>
+</tr>
+<tr>
+<td><code>cover</code></td>
+<td>String or null</td>
+<td>The URL of the book&#39;s cover image.</td>
+</tr>
+<tr>
+<td><code>asin</code></td>
+<td>String</td>
+<td>The book&#39;s ASIN.</td>
+</tr>
+<tr>
+<td><code>genres</code></td>
+<td>Array of String</td>
+<td>The book&#39;s genres.</td>
+</tr>
+<tr>
+<td><code>tags</code></td>
+<td>String</td>
+<td>A comma and space separated list of the book&#39;s tags.</td>
+</tr>
+<tr>
+<td><code>series</code></td>
+<td>Array of <a href="#series-sequence">Series Sequence</a></td>
+<td>The book&#39;s series.</td>
+</tr>
+<tr>
+<td><code>language</code></td>
+<td>String</td>
+<td>The book&#39;s language.</td>
+</tr>
+<tr>
+<td><code>duration</code></td>
+<td>Integer</td>
+<td>The total duration (in minutes) of the book.</td>
+</tr>
+<tr>
+<td><code>region</code></td>
+<td>String or null</td>
+<td>The Audible region that was searched.</td>
+</tr>
+<tr>
+<td><code>rating</code></td>
+<td>String or null</td>
+<td>The book&#39;s Audible rating.</td>
+</tr>
+</tbody></table>
+<h2 id='search-for-podcasts'>Search for Podcasts</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://abs.example.com/api/search/podcast?term=Welcome%20To%20Night%20Vale"</span> <span class="se">\</span>
+  <span class="nt">-H</span> <span class="s2">"Authorization: Bearer exJhbGciOiJI6IkpXVCJ9.eyJ1c2Vyi5NDEyODc4fQ.ZraBFohS4Tg39NszY"</span>
+</code></pre></div>
+<blockquote>
+<p>The above command returns JSON structured like this:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">[</span><span class="w">
+  </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">536258179</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"artistId"</span><span class="p">:</span><span class="w"> </span><span class="mi">718704794</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Welcome to Night Vale"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"artistName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Night Vale Presents"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"descriptionPlain"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"releaseDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2022-11-15T05:00:00Z"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"genres"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+      </span><span class="s2">"Science Fiction"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"Podcasts"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"Fiction"</span><span class="w">
+    </span><span class="p">],</span><span class="w">
+    </span><span class="nl">"cover"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://is4-ssl.mzstatic.com/image/thumb/Podcasts125/v4/4a/31/35/4a3135d0-1fe7-a2d7-fb43-d182ec175402/mza_8232698753950666850.jpg/600x600bb.jpg"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"trackCount"</span><span class="p">:</span><span class="w"> </span><span class="mi">280</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"feedUrl"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://feeds.nightvalepresents.com/welcometonightvalepodcast"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"pageUrl"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://podcasts.apple.com/us/podcast/welcome-to-night-vale/id536258179?uo=4"</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="err">...</span><span class="w">
+</span><span class="p">]</span><span class="w">
+</span></code></pre></div>
+<p>This endpoint searches iTunes for podcasts and returns an array of the results.</p>
+<h3 id='http-request-3'>HTTP Request</h3>
+<p><code>GET http://abs.example.com/api/search/podcast</code></p>
+<h3 id='query-parameters-3'>Query Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>term</code></td>
+<td>String</td>
+<td>The search term to search for (i.e. the title of the podcast).</td>
+</tr>
+</tbody></table>
+<h3 id='response-3'>Response</h3>
+<table><thead>
+<tr>
+<th>Status</th>
+<th>Meaning</th>
+<th>Description</th>
+<th>Schema</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>200</td>
+<td>OK</td>
+<td>Success</td>
+<td>See Below</td>
+</tr>
+</tbody></table>
+<h4 id='response-schema-2'>Response Schema</h4>
+<p>The response will be an array of objects with the following attributes:</p>
+
+<table><thead>
+<tr>
+<th>Attribute</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>id</code></td>
+<td>Integer</td>
+<td>The iTunes ID of the podcast.</td>
+</tr>
+<tr>
+<td><code>artistId</code></td>
+<td>Integer</td>
+<td>The podcast&#39;s author&#39;s iTunes ID.</td>
+</tr>
+<tr>
+<td><code>title</code></td>
+<td>String</td>
+<td>The tile of the podcast.</td>
+</tr>
+<tr>
+<td><code>artistName</code></td>
+<td>String</td>
+<td>The podcast&#39;s author.</td>
+</tr>
+<tr>
+<td><code>description</code></td>
+<td>String</td>
+<td>An HTML encoded description of the podcast.</td>
+</tr>
+<tr>
+<td><code>descriptionPlain</code></td>
+<td>String</td>
+<td>A plain text description of the podcast.</td>
+</tr>
+<tr>
+<td><code>releaseDate</code></td>
+<td>String</td>
+<td>The podcast&#39;s release date.</td>
+</tr>
+<tr>
+<td><code>genres</code></td>
+<td>Array of String</td>
+<td>The podcast&#39;s genres.</td>
+</tr>
+<tr>
+<td><code>cover</code></td>
+<td>String</td>
+<td>The URL of the podcast&#39;s cover image.</td>
+</tr>
+<tr>
+<td><code>trackCount</code></td>
+<td>Integer</td>
+<td>The number of episodes the podcast has.</td>
+</tr>
+<tr>
+<td><code>feedUrl</code></td>
+<td>String</td>
+<td>The URL of the podcast&#39;s RSS feed.</td>
+</tr>
+<tr>
+<td><code>pageUrl</code></td>
+<td>String</td>
+<td>The URL of the podcast&#39;s iTunes page.</td>
+</tr>
+</tbody></table>
+<h2 id='search-for-an-author'>Search for an Author</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://abs.example.com/api/search/authors?q=Terry%20Goodkind"</span> <span class="se">\</span>
+  <span class="nt">-H</span> <span class="s2">"Authorization: Bearer exJhbGciOiJI6IkpXVCJ9.eyJ1c2Vyi5NDEyODc4fQ.ZraBFohS4Tg39NszY"</span>
+</code></pre></div>
+<blockquote>
+<p>The above command returns JSON structured like this:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"asin"</span><span class="p">:</span><span class="w"> </span><span class="s2">"B000APZOQA"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Terry Goodkind is a #1 New York Times Bestselling Author and creator of the critically acclaimed masterwork, ‘The Sword of Truth’. He has written 30+ major, bestselling novels, has been published in more than 20 languages world-wide, and has sold more than 26 Million books. ‘The Sword of Truth’ is a revered literary tour de force, comprised of 17 volumes, borne from over 25 years of dedicated writing. Terry Goodkind's brilliant books are character-driven stories, with a focus on the complexity of the human psyche. Goodkind has an uncanny grasp for crafting compelling stories about people like you and me, trapped in terrifying situations. With masterful storytelling, Goodkind brings us into the lives of his characters; characters that must rise to face not only challenges, but their deepest fears. For that reason, Goodkind’s characters speak to the best and worst in all of us. While ‘The Sword of Truth’ series is confirmation enough of Goodkind’s incredible storytelling abilities, his broad talents are also clearly evident in his contemporary novels, set within our own world. His post-‘Sword of Truth’ books are a thrilling, dizzying, mix of modern narrative, with every bit of Goodkind’s masterful voice intact. The bond built between the reader and one of the world’s great authors, rises above worlds and settings, mere backdrops for Goodkind’s uniquely intricate stories of life, love, challenge, and triumph. </span><span class="se">\"</span><span class="s2">My privilege in life is the joy of writing books and telling stories about people who fascinate me, the good and the bad. I am grateful to all of my readers for the critical role they play in making these books possible. Your passion is my passion, and I thank you.</span><span class="se">\"</span><span class="s2"> - Terry Goodkind For more, please visit: http://terrygoodkind.com"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"image"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://images-na.ssl-images-amazon.com/images/I/51NoQTm33OL.jpg"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Terry Goodkind"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<p>This endpoint searches <a href="https://github.com/laxamentumtech/audnexus">Audnexus</a> (which mostly uses Audible for its data) for authors.</p>
+<h3 id='http-request-4'>HTTP Request</h3>
+<p><code>GET http://abs.example.com/api/search/authors</code></p>
+<h3 id='query-parameters-4'>Query Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>q</code></td>
+<td>String</td>
+<td>The search query. The provided name must match the author&#39;s name on Audnexus exactly to get a result.</td>
+</tr>
+</tbody></table>
+<h3 id='response-4'>Response</h3>
+<table><thead>
+<tr>
+<th>Status</th>
+<th>Meaning</th>
+<th>Description</th>
+<th>Schema</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>200</td>
+<td>OK</td>
+<td>Success</td>
+<td>See Below</td>
+</tr>
+</tbody></table>
+<h4 id='response-schema-3'>Response Schema</h4>
+<p>Either <code>null</code> or an object with the following attributes will be returned.</p>
+
+<table><thead>
+<tr>
+<th>Attribute</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>asin</code></td>
+<td>String</td>
+<td>The author&#39;s ASIN.</td>
+</tr>
+<tr>
+<td><code>description</code></td>
+<td>String</td>
+<td>The author&#39;s description.</td>
+</tr>
+<tr>
+<td><code>image</code></td>
+<td>String</td>
+<td>The URL of the author&#39;s image.</td>
+</tr>
+<tr>
+<td><code>name</code></td>
+<td>String</td>
+<td>The author&#39;s name.</td>
+</tr>
+</tbody></table>
+<h2 id='search-for-a-book-39-s-chapters'>Search for a Book&#39;s Chapters</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://abs.example.com/api/search/chapters?asin=B000APZOQA"</span> <span class="se">\</span>
+  <span class="nt">-H</span> <span class="s2">"Authorization: Bearer exJhbGciOiJI6IkpXVCJ9.eyJ1c2Vyi5NDEyODc4fQ.ZraBFohS4Tg39NszY"</span>
+</code></pre></div>
+<blockquote>
+<p>The above command returns JSON structured like this:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"asin"</span><span class="p">:</span><span class="w"> </span><span class="s2">"B08G9PRS1K"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"brandIntroDurationMs"</span><span class="p">:</span><span class="w"> </span><span class="mi">2043</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"brandOutroDurationMs"</span><span class="p">:</span><span class="w"> </span><span class="mi">5061</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"chapters"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"lengthMs"</span><span class="p">:</span><span class="w"> </span><span class="mi">13307</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"startOffsetMs"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"startOffsetSec"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Opening Credits"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"lengthMs"</span><span class="p">:</span><span class="w"> </span><span class="mi">5909</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"startOffsetMs"</span><span class="p">:</span><span class="w"> </span><span class="mi">13307</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"startOffsetSec"</span><span class="p">:</span><span class="w"> </span><span class="mi">13</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Dedication"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"lengthMs"</span><span class="p">:</span><span class="w"> </span><span class="mi">2203908</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"startOffsetMs"</span><span class="p">:</span><span class="w"> </span><span class="mi">19216</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"startOffsetSec"</span><span class="p">:</span><span class="w"> </span><span class="mi">19</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Chapter 1"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"lengthMs"</span><span class="p">:</span><span class="w"> </span><span class="mi">1721527</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"startOffsetMs"</span><span class="p">:</span><span class="w"> </span><span class="mi">2223124</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"startOffsetSec"</span><span class="p">:</span><span class="w"> </span><span class="mi">2223</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Chapter 2"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"lengthMs"</span><span class="p">:</span><span class="w"> </span><span class="mi">2241282</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"startOffsetMs"</span><span class="p">:</span><span class="w"> </span><span class="mi">3944651</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"startOffsetSec"</span><span class="p">:</span><span class="w"> </span><span class="mi">3945</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Chapter 3"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"lengthMs"</span><span class="p">:</span><span class="w"> </span><span class="mi">2460850</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"startOffsetMs"</span><span class="p">:</span><span class="w"> </span><span class="mi">6185933</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"startOffsetSec"</span><span class="p">:</span><span class="w"> </span><span class="mi">6186</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Chapter 4"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"lengthMs"</span><span class="p">:</span><span class="w"> </span><span class="mi">3189400</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"startOffsetMs"</span><span class="p">:</span><span class="w"> </span><span class="mi">8646783</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"startOffsetSec"</span><span class="p">:</span><span class="w"> </span><span class="mi">8647</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Chapter 5"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"lengthMs"</span><span class="p">:</span><span class="w"> </span><span class="mi">2650650</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"startOffsetMs"</span><span class="p">:</span><span class="w"> </span><span class="mi">11836183</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"startOffsetSec"</span><span class="p">:</span><span class="w"> </span><span class="mi">11836</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Chapter 6"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"lengthMs"</span><span class="p">:</span><span class="w"> </span><span class="mi">1806744</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"startOffsetMs"</span><span class="p">:</span><span class="w"> </span><span class="mi">14486833</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"startOffsetSec"</span><span class="p">:</span><span class="w"> </span><span class="mi">14487</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Chapter 7"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"lengthMs"</span><span class="p">:</span><span class="w"> </span><span class="mi">2189734</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"startOffsetMs"</span><span class="p">:</span><span class="w"> </span><span class="mi">16293577</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"startOffsetSec"</span><span class="p">:</span><span class="w"> </span><span class="mi">16294</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Chapter 8"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"lengthMs"</span><span class="p">:</span><span class="w"> </span><span class="mi">1759608</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"startOffsetMs"</span><span class="p">:</span><span class="w"> </span><span class="mi">18483311</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"startOffsetSec"</span><span class="p">:</span><span class="w"> </span><span class="mi">18483</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Chapter 9"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"lengthMs"</span><span class="p">:</span><span class="w"> </span><span class="mi">2120817</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"startOffsetMs"</span><span class="p">:</span><span class="w"> </span><span class="mi">20242919</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"startOffsetSec"</span><span class="p">:</span><span class="w"> </span><span class="mi">20243</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Chapter 10"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"lengthMs"</span><span class="p">:</span><span class="w"> </span><span class="mi">1566928</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"startOffsetMs"</span><span class="p">:</span><span class="w"> </span><span class="mi">22363736</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"startOffsetSec"</span><span class="p">:</span><span class="w"> </span><span class="mi">22364</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Chapter 11"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"lengthMs"</span><span class="p">:</span><span class="w"> </span><span class="mi">1744236</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"startOffsetMs"</span><span class="p">:</span><span class="w"> </span><span class="mi">23930664</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"startOffsetSec"</span><span class="p">:</span><span class="w"> </span><span class="mi">23931</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Chapter 12"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"lengthMs"</span><span class="p">:</span><span class="w"> </span><span class="mi">1954655</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"startOffsetMs"</span><span class="p">:</span><span class="w"> </span><span class="mi">25674900</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"startOffsetSec"</span><span class="p">:</span><span class="w"> </span><span class="mi">25675</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Chapter 13"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"lengthMs"</span><span class="p">:</span><span class="w"> </span><span class="mi">2405262</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"startOffsetMs"</span><span class="p">:</span><span class="w"> </span><span class="mi">27629555</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"startOffsetSec"</span><span class="p">:</span><span class="w"> </span><span class="mi">27630</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Chapter 14"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"lengthMs"</span><span class="p">:</span><span class="w"> </span><span class="mi">1429838</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"startOffsetMs"</span><span class="p">:</span><span class="w"> </span><span class="mi">30034817</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"startOffsetSec"</span><span class="p">:</span><span class="w"> </span><span class="mi">30035</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Chapter 15"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"lengthMs"</span><span class="p">:</span><span class="w"> </span><span class="mi">1950336</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"startOffsetMs"</span><span class="p">:</span><span class="w"> </span><span class="mi">31464655</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"startOffsetSec"</span><span class="p">:</span><span class="w"> </span><span class="mi">31465</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Chapter 16"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"lengthMs"</span><span class="p">:</span><span class="w"> </span><span class="mi">1928602</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"startOffsetMs"</span><span class="p">:</span><span class="w"> </span><span class="mi">33414991</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"startOffsetSec"</span><span class="p">:</span><span class="w"> </span><span class="mi">33415</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Chapter 17"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"lengthMs"</span><span class="p">:</span><span class="w"> </span><span class="mi">1863772</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"startOffsetMs"</span><span class="p">:</span><span class="w"> </span><span class="mi">35343593</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"startOffsetSec"</span><span class="p">:</span><span class="w"> </span><span class="mi">35344</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Chapter 18"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"lengthMs"</span><span class="p">:</span><span class="w"> </span><span class="mi">2176359</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"startOffsetMs"</span><span class="p">:</span><span class="w"> </span><span class="mi">37207365</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"startOffsetSec"</span><span class="p">:</span><span class="w"> </span><span class="mi">37207</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Chapter 19"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"lengthMs"</span><span class="p">:</span><span class="w"> </span><span class="mi">1984841</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"startOffsetMs"</span><span class="p">:</span><span class="w"> </span><span class="mi">39383724</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"startOffsetSec"</span><span class="p">:</span><span class="w"> </span><span class="mi">39384</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Chapter 20"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"lengthMs"</span><span class="p">:</span><span class="w"> </span><span class="mi">2536919</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"startOffsetMs"</span><span class="p">:</span><span class="w"> </span><span class="mi">41368565</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"startOffsetSec"</span><span class="p">:</span><span class="w"> </span><span class="mi">41369</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Chapter 21"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"lengthMs"</span><span class="p">:</span><span class="w"> </span><span class="mi">2396531</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"startOffsetMs"</span><span class="p">:</span><span class="w"> </span><span class="mi">43905484</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"startOffsetSec"</span><span class="p">:</span><span class="w"> </span><span class="mi">43905</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Chapter 22"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"lengthMs"</span><span class="p">:</span><span class="w"> </span><span class="mi">1726217</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"startOffsetMs"</span><span class="p">:</span><span class="w"> </span><span class="mi">46302015</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"startOffsetSec"</span><span class="p">:</span><span class="w"> </span><span class="mi">46302</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Chapter 23"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"lengthMs"</span><span class="p">:</span><span class="w"> </span><span class="mi">1672672</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"startOffsetMs"</span><span class="p">:</span><span class="w"> </span><span class="mi">48028232</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"startOffsetSec"</span><span class="p">:</span><span class="w"> </span><span class="mi">48028</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Chapter 24"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"lengthMs"</span><span class="p">:</span><span class="w"> </span><span class="mi">2376608</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"startOffsetMs"</span><span class="p">:</span><span class="w"> </span><span class="mi">49700904</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"startOffsetSec"</span><span class="p">:</span><span class="w"> </span><span class="mi">49701</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Chapter 25"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"lengthMs"</span><span class="p">:</span><span class="w"> </span><span class="mi">1290100</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"startOffsetMs"</span><span class="p">:</span><span class="w"> </span><span class="mi">52077512</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"startOffsetSec"</span><span class="p">:</span><span class="w"> </span><span class="mi">52078</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Chapter 26"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"lengthMs"</span><span class="p">:</span><span class="w"> </span><span class="mi">613331</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"startOffsetMs"</span><span class="p">:</span><span class="w"> </span><span class="mi">53367612</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"startOffsetSec"</span><span class="p">:</span><span class="w"> </span><span class="mi">53368</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Chapter 27"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"lengthMs"</span><span class="p">:</span><span class="w"> </span><span class="mi">1191369</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"startOffsetMs"</span><span class="p">:</span><span class="w"> </span><span class="mi">53980943</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"startOffsetSec"</span><span class="p">:</span><span class="w"> </span><span class="mi">53981</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Chapter 28"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"lengthMs"</span><span class="p">:</span><span class="w"> </span><span class="mi">2198976</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"startOffsetMs"</span><span class="p">:</span><span class="w"> </span><span class="mi">55172312</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"startOffsetSec"</span><span class="p">:</span><span class="w"> </span><span class="mi">55172</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Chapter 29"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"lengthMs"</span><span class="p">:</span><span class="w"> </span><span class="mi">838616</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"startOffsetMs"</span><span class="p">:</span><span class="w"> </span><span class="mi">57371288</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"startOffsetSec"</span><span class="p">:</span><span class="w"> </span><span class="mi">57371</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Chapter 30"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"lengthMs"</span><span class="p">:</span><span class="w"> </span><span class="mi">43091</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"startOffsetMs"</span><span class="p">:</span><span class="w"> </span><span class="mi">58209904</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"startOffsetSec"</span><span class="p">:</span><span class="w"> </span><span class="mi">58210</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"End Credits"</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">],</span><span class="w">
+  </span><span class="nl">"isAccurate"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"runtimeLengthMs"</span><span class="p">:</span><span class="w"> </span><span class="mi">58252995</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"runtimeLengthSec"</span><span class="p">:</span><span class="w"> </span><span class="mi">58253</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<p>This endpoint searches <a href="https://github.com/laxamentumtech/audnexus">Audnexus</a> for a book&#39;s chapters.</p>
+<h3 id='http-request-5'>HTTP Request</h3>
+<p><code>GET http://abs.example.com/api/search/chapters</code></p>
+<h3 id='query-parameters-5'>Query Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>asin</code></td>
+<td>String</td>
+<td><strong>Required</strong></td>
+<td>The book&#39;s ASIN.</td>
+</tr>
+<tr>
+<td><code>region</code></td>
+<td>String</td>
+<td><code>us</code></td>
+<td>The book&#39;s region.</td>
+</tr>
+</tbody></table>
+<h3 id='response-5'>Response</h3>
+<table><thead>
+<tr>
+<th>Status</th>
+<th>Meaning</th>
+<th>Description</th>
+<th>Schema</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>200</td>
+<td>OK</td>
+<td>Success</td>
+<td>See Below</td>
+</tr>
+</tbody></table>
+<h4 id='response-schema-4'>Response Schema</h4>
+<p>Either the response will be an error: </p>
+
+<table><thead>
+<tr>
+<th>Attribute</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>error</code></td>
+<td>String</td>
+<td>The error that occurred.</td>
+</tr>
+</tbody></table>
+
+<p>Or a result:</p>
+
+<table><thead>
+<tr>
+<th>Attribute</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>asin</code></td>
+<td>String</td>
+<td>The book&#39;s ASIN.</td>
+</tr>
+<tr>
+<td><code>brandIntroDurationMs</code></td>
+<td>Integer</td>
+<td>The duration (in ms) of the audiobook brand&#39;s intro (i.e. the &quot;This is Audible.&quot; at the beginning).</td>
+</tr>
+<tr>
+<td><code>brandOutroDurationMs</code></td>
+<td>Integer</td>
+<td>The duration (in ms) of the audiobook brand&#39;s outro (i.e. the &quot;Audible hopes you have enjoyed this program.&quot; at the end).</td>
+</tr>
+<tr>
+<td><code>chapters</code></td>
+<td>Array of <a href="#search-result-chapter">Search Result Chapter</a> (See Below)</td>
+<td>The book&#39;s chapters.</td>
+</tr>
+<tr>
+<td><code>isAccurate</code></td>
+<td>Boolean</td>
+<td>Whether Audnexus thinks the chapters are accurate.</td>
+</tr>
+<tr>
+<td><code>runtimeLengthMs</code></td>
+<td>Integer</td>
+<td>The total runtime length (in ms) of the book.</td>
+</tr>
+<tr>
+<td><code>runtimeLengthSec</code></td>
+<td>Integer</td>
+<td>The total runtime length (in seconds) of the book.</td>
+</tr>
+</tbody></table>
+<h4 id='search-result-chapter'>Search Result Chapter</h4>
+<table><thead>
+<tr>
+<th>Attribute</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>lengthMs</code></td>
+<td>Integer</td>
+<td>The length (in ms) of the chapter.</td>
+</tr>
+<tr>
+<td><code>startOffsetMs</code></td>
+<td>Integer</td>
+<td>The start offset (in ms) of the chapter.</td>
+</tr>
+<tr>
+<td><code>startOffsetSec</code></td>
+<td>Integer</td>
+<td>The start offset (in seconds) of the chapter.</td>
+</tr>
+<tr>
+<td><code>title</code></td>
+<td>String</td>
+<td>The chapter&#39;s title.</td>
 </tr>
 </tbody></table>
 <h1 id='filtering'>Filtering</h1>
