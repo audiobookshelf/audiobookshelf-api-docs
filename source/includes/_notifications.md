@@ -211,3 +211,30 @@ Status | Meaning | Description | Schema
 Attribute | Type | Description
 --------- | ---- | -----------
 `events` | Array of [Notification Event](#notification-event) | The notification event data.
+
+
+## Fire Test Notification Event
+
+```shell
+curl "https://abs.example.com/api/notifications/test" \
+  -H "Authorization: Bearer exJhbGciOiJI6IkpXVCJ9.eyJ1c2Vyi5NDEyODc4fQ.ZraBFohS4Tg39NszY"
+```
+
+This endpoint fires the test notification event.
+
+### HTTP Request
+
+`GET http://abs.example.com/api/notifications/test`
+
+### Optional Query Parameters
+
+Parameter | Type | Description
+--------- | ---- | -----------
+`fail` | Binary | Whether to intentionally cause the notification to fail. `0` for false, `1` for true.
+
+### Response
+
+Status | Meaning | Description
+------ | ------- | -----------
+200 | OK | Success
+404 | Not Found | An admin user is required to fire notification events.
