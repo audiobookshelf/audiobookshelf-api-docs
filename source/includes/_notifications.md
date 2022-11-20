@@ -134,3 +134,80 @@ Status | Meaning | Description
 ------ | ------- | -----------
 200 | OK | Success
 404 | Not Found | An admin user is required to update notification settings.
+
+
+## Get Notification Event Data
+
+```shell
+curl "https://abs.example.com/api/notificationdata" \
+  -H "Authorization: Bearer exJhbGciOiJI6IkpXVCJ9.eyJ1c2Vyi5NDEyODc4fQ.ZraBFohS4Tg39NszY"
+```
+
+> The above command returns JSON structured like this:
+
+```json
+{
+  "events": [
+    {
+      "name": "onPodcastEpisodeDownloaded",
+      "requiresLibrary": true,
+      "libraryMediaType": "podcast",
+      "description": "Triggered when a podcast episode is auto-downloaded",
+      "variables": [
+        "libraryItemId",
+        "libraryId",
+        "podcastTitle",
+        "episodeTitle",
+        "libraryName",
+        "episodeId"
+      ],
+      "defaults": {
+        "title": "New {{podcastTitle}} Episode!",
+        "body": "{{episodeTitle}} has been added to {{libraryName}} library."
+      },
+      "testData": {
+        "libraryItemId": "li_notification_test",
+        "libraryId": "lib_test",
+        "libraryName": "Podcasts",
+        "podcastTitle": "Abs Test Podcast",
+        "episodeId": "ep_notification_test",
+        "episodeTitle": "Successful Test"
+      }
+    },
+    {
+      "name": "onTest",
+      "requiresLibrary": false,
+      "description": "Event for testing the notification system",
+      "variables": [
+        "version"
+      ],
+      "defaults": {
+        "title": "Test Notification on Abs {{version}}",
+        "body": "Test notificataion body for abs {{version}}."
+      },
+      "testData": {
+        "version": "v2.2.4"
+      }
+    }
+  ]
+}
+```
+
+This endpoint retrieves the server's notification event data.
+
+### HTTP Request
+
+`GET http://abs.example.com/api/notificationdata`
+
+### Response
+
+Status | Meaning | Description | Schema
+------ | ------- | ----------- | ------
+200 | OK | Success | See below.
+404 | Not Found | An admin user is required get notification event data. |
+
+#### Response Schema
+
+Attribute | Type | Description
+--------- | ---- | -----------
+`events` | Array of [Notification Event](#notification-event) | The notification event data.
