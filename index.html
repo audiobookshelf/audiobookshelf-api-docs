@@ -686,6 +686,35 @@
               </ul>
           </li>
           <li>
+            <a href="#notifications" class="toc-h1 toc-link" data-title="Notifications">Notifications</a>
+              <ul class="toc-list-h2">
+                  <li>
+                    <a href="#get-notification-settings" class="toc-h2 toc-link" data-title="Get Notification Settings">Get Notification Settings</a>
+                  </li>
+                  <li>
+                    <a href="#update-notification-settings" class="toc-h2 toc-link" data-title="Update Notification Settings">Update Notification Settings</a>
+                  </li>
+                  <li>
+                    <a href="#get-notification-event-data" class="toc-h2 toc-link" data-title="Get Notification Event Data">Get Notification Event Data</a>
+                  </li>
+                  <li>
+                    <a href="#fire-test-notification-event" class="toc-h2 toc-link" data-title="Fire Test Notification Event">Fire Test Notification Event</a>
+                  </li>
+                  <li>
+                    <a href="#create-a-notification" class="toc-h2 toc-link" data-title="Create a Notification">Create a Notification</a>
+                  </li>
+                  <li>
+                    <a href="#delete-a-notification" class="toc-h2 toc-link" data-title="Delete a Notification">Delete a Notification</a>
+                  </li>
+                  <li>
+                    <a href="#update-a-notification" class="toc-h2 toc-link" data-title="Update a Notification">Update a Notification</a>
+                  </li>
+                  <li>
+                    <a href="#send-notification-test" class="toc-h2 toc-link" data-title="Send Notification Test">Send Notification Test</a>
+                  </li>
+              </ul>
+          </li>
+          <li>
             <a href="#filtering" class="toc-h1 toc-link" data-title="Filtering">Filtering</a>
           </li>
           <li>
@@ -789,6 +818,15 @@
                   </li>
                   <li>
                     <a href="#backup" class="toc-h2 toc-link" data-title="Backup">Backup</a>
+                  </li>
+                  <li>
+                    <a href="#notification-settings" class="toc-h2 toc-link" data-title="Notification Settings">Notification Settings</a>
+                  </li>
+                  <li>
+                    <a href="#notification" class="toc-h2 toc-link" data-title="Notification">Notification</a>
+                  </li>
+                  <li>
+                    <a href="#notification-event" class="toc-h2 toc-link" data-title="Notification Event">Notification Event</a>
                   </li>
               </ul>
           </li>
@@ -14770,7 +14808,7 @@ When changing a user's username, their token will be regenerated.
 </span></code></pre></div>
 <p>This endpoint deletes a podcast episode from the database. If providing the <code>hard</code> parameter, the file will be deleted as well.</p>
 <h3 id='http-request-10'>HTTP Request</h3>
-<p><code>PATCH http://abs.example.com/api/podcasts/&lt;ID&gt;/episode/&lt;EpisodeID&gt;</code></p>
+<p><code>DELETE http://abs.example.com/api/podcasts/&lt;ID&gt;/episode/&lt;EpisodeID&gt;</code></p>
 <h3 id='url-parameters-7'>URL Parameters</h3>
 <table><thead>
 <tr>
@@ -14833,6 +14871,652 @@ When changing a user's username, their token will be regenerated.
 <td>Internal Server Error</td>
 <td>The library item is not a podcast.</td>
 <td></td>
+</tr>
+</tbody></table>
+<h1 id='notifications'>Notifications</h1><h2 id='get-notification-settings'>Get Notification Settings</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://abs.example.com/api/notifications"</span> <span class="se">\</span>
+  <span class="nt">-H</span> <span class="s2">"Authorization: Bearer exJhbGciOiJI6IkpXVCJ9.eyJ1c2Vyi5NDEyODc4fQ.ZraBFohS4Tg39NszY"</span>
+</code></pre></div>
+<blockquote>
+<p>The above command returns JSON structured like this:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"events"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+      </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"onPodcastEpisodeDownloaded"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"requiresLibrary"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"libraryMediaType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"podcast"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Triggered when a podcast episode is auto-downloaded"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"variables"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+          </span><span class="s2">"libraryItemId"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"libraryId"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"podcastTitle"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"episodeTitle"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"libraryName"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"episodeId"</span><span class="w">
+        </span><span class="p">],</span><span class="w">
+        </span><span class="nl">"defaults"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+          </span><span class="nl">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"New {{podcastTitle}} Episode!"</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"body"</span><span class="p">:</span><span class="w"> </span><span class="s2">"{{episodeTitle}} has been added to {{libraryName}} library."</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="nl">"testData"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+          </span><span class="nl">"libraryItemId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"li_notification_test"</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"libraryId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"lib_test"</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"libraryName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Podcasts"</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"podcastTitle"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Abs Test Podcast"</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"episodeId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ep_notification_test"</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"episodeTitle"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Successful Test"</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"onTest"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"requiresLibrary"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Event for testing the notification system"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"variables"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+          </span><span class="s2">"version"</span><span class="w">
+        </span><span class="p">],</span><span class="w">
+        </span><span class="nl">"defaults"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+          </span><span class="nl">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Test Notification on Abs {{version}}"</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"body"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Test notificataion body for abs {{version}}."</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="nl">"testData"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+          </span><span class="nl">"version"</span><span class="p">:</span><span class="w"> </span><span class="s2">"v2.2.5"</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+    </span><span class="p">]</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="nl">"settings"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"notification-settings"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"appriseType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"api"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"appriseApiUrl"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://apprise.example.com/notify"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"notifications"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+      </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"noti_nod281qwkj5ow7h7fi"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"libraryId"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"eventName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"onPodcastEpisodeDownloaded"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"urls"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+          </span><span class="s2">"apprises://apprise.example.com/email"</span><span class="w">
+        </span><span class="p">],</span><span class="w">
+        </span><span class="nl">"titleTemplate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"New {{podcastTitle}} Episode!"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"bodyTemplate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"{{episodeTitle}} has been added to {{libraryName}} library."</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"enabled"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"info"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"lastFiredAt"</span><span class="p">:</span><span class="w"> </span><span class="mi">1668776410792</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"lastAttemptFailed"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"numConsecutiveFailedAttempts"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"numTimesFired"</span><span class="p">:</span><span class="w"> </span><span class="mi">5</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"createdAt"</span><span class="p">:</span><span class="w"> </span><span class="mi">1666545142424</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+    </span><span class="p">],</span><span class="w">
+    </span><span class="nl">"maxFailedAttempts"</span><span class="p">:</span><span class="w"> </span><span class="mi">5</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"maxNotificationQueue"</span><span class="p">:</span><span class="w"> </span><span class="mi">20</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"notificationDelay"</span><span class="p">:</span><span class="w"> </span><span class="mi">1000</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<p>This endpoint retrieves the server&#39;s <a href="https://github.com/caronc/apprise-api">Apprise</a> notification settings and event data.</p>
+<h3 id='http-request'>HTTP Request</h3>
+<p><code>GET http://abs.example.com/api/notifications</code></p>
+<h3 id='response'>Response</h3>
+<table><thead>
+<tr>
+<th>Status</th>
+<th>Meaning</th>
+<th>Description</th>
+<th>Schema</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>200</td>
+<td>OK</td>
+<td>Success</td>
+<td>See below.</td>
+</tr>
+<tr>
+<td>404</td>
+<td>Not Found</td>
+<td>An admin user is required get notification settings.</td>
+<td></td>
+</tr>
+</tbody></table>
+<h4 id='response-schema'>Response Schema</h4>
+<table><thead>
+<tr>
+<th>Attribute</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>data.events</code></td>
+<td>Array of <a href="#notification-event">Notification Event</a></td>
+<td>The notification event data.</td>
+</tr>
+<tr>
+<td><code>settings</code></td>
+<td><a href="#notification-settings">Notification Settings</a> Object</td>
+<td>The notification settings of the server.</td>
+</tr>
+</tbody></table>
+<h2 id='update-notification-settings'>Update Notification Settings</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">-X</span> PATCH <span class="s2">"https://abs.example.com/api/notifications"</span> <span class="se">\</span>
+  <span class="nt">-H</span> <span class="s2">"Authorization: Bearer exJhbGciOiJI6IkpXVCJ9.eyJ1c2Vyi5NDEyODc4fQ.ZraBFohS4Tg39NszY"</span> <span class="se">\</span>
+  <span class="nt">-H</span> <span class="s2">"Content-Type: application/json"</span> <span class="se">\</span>
+  <span class="nt">-d</span> <span class="s1">'{"appriseApiUrl": "https://apprise.example.com/notify"}'</span>
+</code></pre></div><h3 id='http-request-2'>HTTP Request</h3>
+<p><code>PATCH http://abs.example.com/api/notifications</code></p>
+<h3 id='parameters'>Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>appriseApiUrl</code></td>
+<td>String or null</td>
+<td></td>
+<td>The full URL where the Apprise API to use is located.</td>
+</tr>
+<tr>
+<td><code>maxFailedAttempts</code></td>
+<td>Integer</td>
+<td><code>5</code></td>
+<td>The maximum number of times a notification fails before being disabled.</td>
+</tr>
+<tr>
+<td><code>maxNotificationQueue</code></td>
+<td>Integer</td>
+<td><code>20</code></td>
+<td>The maximum number of notifications in the notification queue before events are ignored.</td>
+</tr>
+</tbody></table>
+<h3 id='response-2'>Response</h3>
+<table><thead>
+<tr>
+<th>Status</th>
+<th>Meaning</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>200</td>
+<td>OK</td>
+<td>Success</td>
+</tr>
+<tr>
+<td>404</td>
+<td>Not Found</td>
+<td>An admin user is required to update notification settings.</td>
+</tr>
+</tbody></table>
+<h2 id='get-notification-event-data'>Get Notification Event Data</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://abs.example.com/api/notificationdata"</span> <span class="se">\</span>
+  <span class="nt">-H</span> <span class="s2">"Authorization: Bearer exJhbGciOiJI6IkpXVCJ9.eyJ1c2Vyi5NDEyODc4fQ.ZraBFohS4Tg39NszY"</span>
+</code></pre></div>
+<blockquote>
+<p>The above command returns JSON structured like this:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"events"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"onPodcastEpisodeDownloaded"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"requiresLibrary"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"libraryMediaType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"podcast"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Triggered when a podcast episode is auto-downloaded"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"variables"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="s2">"libraryItemId"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"libraryId"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"podcastTitle"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"episodeTitle"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"libraryName"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"episodeId"</span><span class="w">
+      </span><span class="p">],</span><span class="w">
+      </span><span class="nl">"defaults"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"New {{podcastTitle}} Episode!"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"body"</span><span class="p">:</span><span class="w"> </span><span class="s2">"{{episodeTitle}} has been added to {{libraryName}} library."</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="nl">"testData"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"libraryItemId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"li_notification_test"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"libraryId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"lib_test"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"libraryName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Podcasts"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"podcastTitle"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Abs Test Podcast"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"episodeId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ep_notification_test"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"episodeTitle"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Successful Test"</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"onTest"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"requiresLibrary"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Event for testing the notification system"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"variables"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="s2">"version"</span><span class="w">
+      </span><span class="p">],</span><span class="w">
+      </span><span class="nl">"defaults"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Test Notification on Abs {{version}}"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"body"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Test notificataion body for abs {{version}}."</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="nl">"testData"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"version"</span><span class="p">:</span><span class="w"> </span><span class="s2">"v2.2.5"</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<p>This endpoint retrieves the server&#39;s notification event data.</p>
+<h3 id='http-request-3'>HTTP Request</h3>
+<p><code>GET http://abs.example.com/api/notificationdata</code></p>
+<h3 id='response-3'>Response</h3>
+<table><thead>
+<tr>
+<th>Status</th>
+<th>Meaning</th>
+<th>Description</th>
+<th>Schema</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>200</td>
+<td>OK</td>
+<td>Success</td>
+<td>See below.</td>
+</tr>
+<tr>
+<td>404</td>
+<td>Not Found</td>
+<td>An admin user is required get notification event data.</td>
+<td></td>
+</tr>
+</tbody></table>
+<h4 id='response-schema-2'>Response Schema</h4>
+<table><thead>
+<tr>
+<th>Attribute</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>events</code></td>
+<td>Array of <a href="#notification-event">Notification Event</a></td>
+<td>The notification event data.</td>
+</tr>
+</tbody></table>
+<h2 id='fire-test-notification-event'>Fire Test Notification Event</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://abs.example.com/api/notifications/test"</span> <span class="se">\</span>
+  <span class="nt">-H</span> <span class="s2">"Authorization: Bearer exJhbGciOiJI6IkpXVCJ9.eyJ1c2Vyi5NDEyODc4fQ.ZraBFohS4Tg39NszY"</span>
+</code></pre></div>
+<p>This endpoint fires the test notification event.</p>
+<h3 id='http-request-4'>HTTP Request</h3>
+<p><code>GET http://abs.example.com/api/notifications/test</code></p>
+<h3 id='optional-query-parameters'>Optional Query Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>fail</code></td>
+<td>Binary</td>
+<td>Whether to intentionally cause the notification to fail. <code>0</code> for false, <code>1</code> for true.</td>
+</tr>
+</tbody></table>
+<h3 id='response-4'>Response</h3>
+<table><thead>
+<tr>
+<th>Status</th>
+<th>Meaning</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>200</td>
+<td>OK</td>
+<td>Success</td>
+</tr>
+<tr>
+<td>404</td>
+<td>Not Found</td>
+<td>An admin user is required to fire notification events.</td>
+</tr>
+</tbody></table>
+<h2 id='create-a-notification'>Create a Notification</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">-X</span> POST <span class="s2">"https://abs.example.com/api/notifications"</span> <span class="se">\</span>
+  <span class="nt">-H</span> <span class="s2">"Authorization: Bearer exJhbGciOiJI6IkpXVCJ9.eyJ1c2Vyi5NDEyODc4fQ.ZraBFohS4Tg39NszY"</span> <span class="se">\</span>
+  <span class="nt">-H</span> <span class="s2">"Content-Type: application/json"</span> <span class="se">\</span>
+  <span class="nt">-d</span> <span class="s1">'{"eventName": "onPodcastEpisodeDownloaded", "urls": ["apprises://apprise.example.com/email"], "titleTemplate": "New {{podcastTitle}} Episode!", "bodyTemplate": "{{episodeTitle}} has been added to {{libraryName}} library.", "enabled": true, "type": "info"}'</span>
+</code></pre></div>
+<blockquote>
+<p>The above command returns JSON structured like this:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"notification-settings"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"appriseType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"api"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"appriseApiUrl"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://apprise.example.com/notify"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"notifications"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"noti_nod281qwkj5ow7h7fi"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"libraryId"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"eventName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"onPodcastEpisodeDownloaded"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"urls"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="s2">"apprises://apprise.example.com/email"</span><span class="w">
+      </span><span class="p">],</span><span class="w">
+      </span><span class="nl">"titleTemplate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"New {{podcastTitle}} Episode!"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"bodyTemplate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"{{episodeTitle}} has been added to {{libraryName}} library."</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"enabled"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"info"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"lastFiredAt"</span><span class="p">:</span><span class="w"> </span><span class="mi">1668776410792</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"lastAttemptFailed"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"numConsecutiveFailedAttempts"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"numTimesFired"</span><span class="p">:</span><span class="w"> </span><span class="mi">5</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"createdAt"</span><span class="p">:</span><span class="w"> </span><span class="mi">1666545142424</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">],</span><span class="w">
+  </span><span class="nl">"maxFailedAttempts"</span><span class="p">:</span><span class="w"> </span><span class="mi">5</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"maxNotificationQueue"</span><span class="p">:</span><span class="w"> </span><span class="mi">20</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"notificationDelay"</span><span class="p">:</span><span class="w"> </span><span class="mi">1000</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<p>This endpoint creates a notification and returns the server&#39;s updated notification settings.</p>
+<h3 id='http-request-5'>HTTP Request</h3>
+<p><code>POST http://abs.example.com/api/notifications</code></p>
+<h3 id='parameters-2'>Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>libraryId</code></td>
+<td>String or null</td>
+<td><code>null</code></td>
+<td>The ID of the library the notification is associated with.</td>
+</tr>
+<tr>
+<td><code>eventName</code></td>
+<td>String</td>
+<td><strong>Required</strong></td>
+<td>The name of the event the notification will fire on.</td>
+</tr>
+<tr>
+<td><code>urls</code></td>
+<td>Array of String</td>
+<td><strong>Required</strong></td>
+<td>The Apprise URLs to use for the notification.</td>
+</tr>
+<tr>
+<td><code>titleTemplate</code></td>
+<td>String</td>
+<td><strong>Required</strong></td>
+<td>The template for the notification title.</td>
+</tr>
+<tr>
+<td><code>bodyTemplate</code></td>
+<td>String</td>
+<td><strong>Required</strong></td>
+<td>The template for the notification body.</td>
+</tr>
+<tr>
+<td><code>enabled</code></td>
+<td>Boolean</td>
+<td><code>false</code></td>
+<td>Whether the notification is enabled.</td>
+</tr>
+<tr>
+<td><code>type</code></td>
+<td>String or null</td>
+<td><code>null</code></td>
+<td>The notification&#39;s type.</td>
+</tr>
+</tbody></table>
+
+<aside class="notice">
+The <code>urls</code> array parameter must have a non-zero length for the notification to be saved.
+</aside>
+<h3 id='response-5'>Response</h3>
+<table><thead>
+<tr>
+<th>Status</th>
+<th>Meaning</th>
+<th>Description</th>
+<th>Schema</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>200</td>
+<td>OK</td>
+<td>Success</td>
+<td><a href="#notification-settings">Notification Settings</a></td>
+</tr>
+<tr>
+<td>404</td>
+<td>Not Found</td>
+<td>An admin user is required create notifications.</td>
+<td></td>
+</tr>
+</tbody></table>
+<h2 id='delete-a-notification'>Delete a Notification</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">-X</span> DELETE <span class="s2">"https://abs.example.com/api/notifications/noti_nod281qwkj5ow7h7fi"</span> <span class="se">\</span>
+  <span class="nt">-H</span> <span class="s2">"Authorization: Bearer exJhbGciOiJI6IkpXVCJ9.eyJ1c2Vyi5NDEyODc4fQ.ZraBFohS4Tg39NszY"</span>
+</code></pre></div>
+<blockquote>
+<p>The above command returns JSON structured like this:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"notification-settings"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"appriseType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"api"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"appriseApiUrl"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://apprise.example.com/notify"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"notifications"</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span><span class="w">
+  </span><span class="nl">"maxFailedAttempts"</span><span class="p">:</span><span class="w"> </span><span class="mi">5</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"maxNotificationQueue"</span><span class="p">:</span><span class="w"> </span><span class="mi">20</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"notificationDelay"</span><span class="p">:</span><span class="w"> </span><span class="mi">1000</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<p>This endpoint deletes a notification and returns the server&#39;s updated notification settings.</p>
+<h3 id='http-request-6'>HTTP Request</h3>
+<p><code>DELETE http://abs.example.com/api/notifications/&lt;ID&gt;</code></p>
+<h3 id='url-parameters'>URL Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>ID</td>
+<td>The ID of the notification.</td>
+</tr>
+</tbody></table>
+<h3 id='response-6'>Response</h3>
+<table><thead>
+<tr>
+<th>Status</th>
+<th>Meaning</th>
+<th>Description</th>
+<th>Schema</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>200</td>
+<td>OK</td>
+<td>Success</td>
+<td><a href="#notification-settings">Notification Settings</a></td>
+</tr>
+<tr>
+<td>404</td>
+<td>Not Found</td>
+<td>An admin user is required delete notifications, or no notification with the given ID exists.</td>
+<td></td>
+</tr>
+</tbody></table>
+<h2 id='update-a-notification'>Update a Notification</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">-X</span> PATCH <span class="s2">"https://abs.example.com/api/notifications/noti_nod281qwkj5ow7h7fi"</span> <span class="se">\</span>
+  <span class="nt">-H</span> <span class="s2">"Authorization: Bearer exJhbGciOiJI6IkpXVCJ9.eyJ1c2Vyi5NDEyODc4fQ.ZraBFohS4Tg39NszY"</span> <span class="se">\</span>
+  <span class="nt">-H</span> <span class="s2">"Content-Type: application/json"</span> <span class="se">\</span>
+  <span class="nt">-d</span> <span class="s1">'{"id": "noti_nod281qwkj5ow7h7fi", "titleTemplate": "New {{podcastTitle}} Episode: {{episodeTitle}}"}'</span>
+</code></pre></div>
+<blockquote>
+<p>The above command returns JSON structured like this:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"notification-settings"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"appriseType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"api"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"appriseApiUrl"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://apprise.example.com/notify"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"notifications"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"noti_nod281qwkj5ow7h7fi"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"libraryId"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"eventName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"onPodcastEpisodeDownloaded"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"urls"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="s2">"apprises://apprise.example.com/email"</span><span class="w">
+      </span><span class="p">],</span><span class="w">
+      </span><span class="nl">"titleTemplate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"New {{podcastTitle}} Episode: {{episodeTitle}}"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"bodyTemplate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"{{episodeTitle}} has been added to {{libraryName}} library."</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"enabled"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"info"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"lastFiredAt"</span><span class="p">:</span><span class="w"> </span><span class="mi">1668776410792</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"lastAttemptFailed"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"numConsecutiveFailedAttempts"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"numTimesFired"</span><span class="p">:</span><span class="w"> </span><span class="mi">5</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"createdAt"</span><span class="p">:</span><span class="w"> </span><span class="mi">1666545142424</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">],</span><span class="w">
+  </span><span class="nl">"maxFailedAttempts"</span><span class="p">:</span><span class="w"> </span><span class="mi">5</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"maxNotificationQueue"</span><span class="p">:</span><span class="w"> </span><span class="mi">20</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"notificationDelay"</span><span class="p">:</span><span class="w"> </span><span class="mi">1000</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<p>This endpoint updates a notification and returns the server&#39;s updated notification settings.</p>
+<h3 id='http-request-7'>HTTP Request</h3>
+<p><code>PATCH http://abs.example.com/api/notifications/&lt;ID&gt;</code></p>
+<h3 id='url-parameters-2'>URL Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>ID</td>
+<td>The ID of the notification.</td>
+</tr>
+</tbody></table>
+<h3 id='parameters-3'>Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>id</code></td>
+<td>String</td>
+<td><strong>Required</strong> The ID of the notification.</td>
+</tr>
+<tr>
+<td><code>libraryId</code></td>
+<td>String or null</td>
+<td>The ID of the library the notification is associated with.</td>
+</tr>
+<tr>
+<td><code>eventName</code></td>
+<td>String</td>
+<td>The name of the event the notification will fire on.</td>
+</tr>
+<tr>
+<td><code>urls</code></td>
+<td>Array of String</td>
+<td>The Apprise URLs to use for the notification.</td>
+</tr>
+<tr>
+<td><code>titleTemplate</code></td>
+<td>String</td>
+<td>The template for the notification title.</td>
+</tr>
+<tr>
+<td><code>bodyTemplate</code></td>
+<td>String</td>
+<td>The template for the notification body.</td>
+</tr>
+<tr>
+<td><code>enabled</code></td>
+<td>Boolean</td>
+<td>Whether the notification is enabled.</td>
+</tr>
+<tr>
+<td><code>type</code></td>
+<td>String or null</td>
+<td>The notification&#39;s type.</td>
+</tr>
+</tbody></table>
+
+<aside class="notice">
+The <code>id</code> parameter must be included for the notification to be saved.
+</aside>
+<h3 id='response-7'>Response</h3>
+<table><thead>
+<tr>
+<th>Status</th>
+<th>Meaning</th>
+<th>Description</th>
+<th>Schema</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>200</td>
+<td>OK</td>
+<td>Success</td>
+<td><a href="#notification-settings">Notification Settings</a></td>
+</tr>
+<tr>
+<td>404</td>
+<td>Not Found</td>
+<td>An admin user is required update notifications, or no notification with the given ID exists.</td>
+<td></td>
+</tr>
+</tbody></table>
+<h2 id='send-notification-test'>Send Notification Test</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://abs.example.com/api/notifications/noti_nod281qwkj5ow7h7fi/test"</span> <span class="se">\</span>
+  <span class="nt">-H</span> <span class="s2">"Authorization: Bearer exJhbGciOiJI6IkpXVCJ9.eyJ1c2Vyi5NDEyODc4fQ.ZraBFohS4Tg39NszY"</span>
+</code></pre></div>
+<p>This endpoint sends a test to the given notification.</p>
+<h3 id='http-request-8'>HTTP Request</h3>
+<p><code>GET http://abs.example.com/api/notifications/&lt;ID&gt;/test</code></p>
+<h3 id='url-parameters-3'>URL Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>ID</td>
+<td>The ID of the notification.</td>
+</tr>
+</tbody></table>
+<h3 id='response-8'>Response</h3>
+<table><thead>
+<tr>
+<th>Status</th>
+<th>Meaning</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>200</td>
+<td>OK</td>
+<td>Success</td>
+</tr>
+<tr>
+<td>404</td>
+<td>Not Found</td>
+<td>An admin user is required to send notification tests, or no notification with the given ID exists.</td>
+</tr>
+<tr>
+<td>500</td>
+<td>Internal Server Error</td>
+<td>The Apprise URL is not set, or the notification failed to send.</td>
 </tr>
 </tbody></table>
 <h1 id='filtering'>Filtering</h1>
@@ -18247,6 +18931,239 @@ Only non-null tags will be returned in requests.</p>
 <td><code>serverVersion</code></td>
 <td>String</td>
 <td>The version of the server when the backup was created.</td>
+</tr>
+</tbody></table>
+<h2 id='notification-settings'>Notification Settings</h2>
+<blockquote>
+<p>Notification Settings</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"notification-settings"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"appriseType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"api"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"appriseApiUrl"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://apprise.example.com/notify"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"notifications"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="err">...</span><span class="p">],</span><span class="w">
+  </span><span class="nl">"maxFailedAttempts"</span><span class="p">:</span><span class="w"> </span><span class="mi">5</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"maxNotificationQueue"</span><span class="p">:</span><span class="w"> </span><span class="mi">20</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"notificationDelay"</span><span class="p">:</span><span class="w"> </span><span class="mi">1000</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<table><thead>
+<tr>
+<th>Attribute</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>id</code></td>
+<td>String</td>
+<td>The ID of the notification settings.</td>
+</tr>
+<tr>
+<td><code>appriseType</code></td>
+<td>String</td>
+<td>The type of Apprise that will be used. At the moment, only <code>api</code> is available.</td>
+</tr>
+<tr>
+<td><code>appriseApiUrl</code></td>
+<td>String or null</td>
+<td>The full URL where the Apprise API to use is located.</td>
+</tr>
+<tr>
+<td><code>notifications</code></td>
+<td>Array of <a href="#notification">Notification</a></td>
+<td>The set notifications.</td>
+</tr>
+<tr>
+<td><code>maxFailedAttempts</code></td>
+<td>Integer</td>
+<td>The maximum number of times a notification fails before being disabled.</td>
+</tr>
+<tr>
+<td><code>maxNotificationQueue</code></td>
+<td>Integer</td>
+<td>The maximum number of notifications in the notification queue before events are ignored.</td>
+</tr>
+<tr>
+<td><code>notificationDelay</code></td>
+<td>Integer</td>
+<td>The time (in ms) between notification pushes.</td>
+</tr>
+</tbody></table>
+<h2 id='notification'>Notification</h2>
+<blockquote>
+<p>Notification</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"noti_nod281qwkj5ow7h7fi"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"libraryId"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"eventName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"onPodcastEpisodeDownloaded"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"urls"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="s2">"apprises://apprise.example.com/email"</span><span class="w">
+  </span><span class="p">],</span><span class="w">
+  </span><span class="nl">"titleTemplate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"New {{podcastTitle}} Episode!"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"bodyTemplate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"{{episodeTitle}} has been added to {{libraryName}} library."</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"enabled"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"info"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"lastFiredAt"</span><span class="p">:</span><span class="w"> </span><span class="mi">1668776410792</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"lastAttemptFailed"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"numConsecutiveFailedAttempts"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"numTimesFired"</span><span class="p">:</span><span class="w"> </span><span class="mi">5</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"createdAt"</span><span class="p">:</span><span class="w"> </span><span class="mi">1666545142424</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<table><thead>
+<tr>
+<th>Attribute</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>id</code></td>
+<td>String</td>
+<td>The ID of the notification.</td>
+</tr>
+<tr>
+<td><code>libraryId</code></td>
+<td>String or null</td>
+<td>The ID of the library the notification is associated with.</td>
+</tr>
+<tr>
+<td><code>eventName</code></td>
+<td>String</td>
+<td>The name of the event the notification will fire on.</td>
+</tr>
+<tr>
+<td><code>urls</code></td>
+<td>Array of String</td>
+<td>The Apprise URLs to use for the notification.</td>
+</tr>
+<tr>
+<td><code>titleTemplate</code></td>
+<td>String</td>
+<td>The template for the notification title.</td>
+</tr>
+<tr>
+<td><code>bodyTemplate</code></td>
+<td>String</td>
+<td>The template for the notification body.</td>
+</tr>
+<tr>
+<td><code>enabled</code></td>
+<td>Boolean</td>
+<td>Whether the notification is enabled.</td>
+</tr>
+<tr>
+<td><code>type</code></td>
+<td>String</td>
+<td>The notification&#39;s type.</td>
+</tr>
+<tr>
+<td><code>lastFiredAt</code></td>
+<td>String or null</td>
+<td>The time (in ms since POSIX epoch) when the notification was last fired. Will be <code>null</code> if the notification has not fired.</td>
+</tr>
+<tr>
+<td><code>lastAttemptFailed</code></td>
+<td>Boolean</td>
+<td>Whether the last notification attempt failed.</td>
+</tr>
+<tr>
+<td><code>numConsecutiveFailedAttempts</code></td>
+<td>Integer</td>
+<td>The number of consecutive times the notification has failed.</td>
+</tr>
+<tr>
+<td><code>numTimesFired</code></td>
+<td>Integer</td>
+<td>The number of times the notification has fired.</td>
+</tr>
+<tr>
+<td><code>createdAt</code></td>
+<td>Integer</td>
+<td>The time (in ms since POSIX epoch) when the notification was created.</td>
+</tr>
+</tbody></table>
+<h2 id='notification-event'>Notification Event</h2>
+<blockquote>
+<p>Notification Event</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"onPodcastEpisodeDownloaded"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"requiresLibrary"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"libraryMediaType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"podcast"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Triggered when a podcast episode is auto-downloaded"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"variables"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="s2">"libraryItemId"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"libraryId"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"podcastTitle"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"episodeTitle"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"libraryName"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"episodeId"</span><span class="w">
+  </span><span class="p">],</span><span class="w">
+  </span><span class="nl">"defaults"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"New {{podcastTitle}} Episode!"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"body"</span><span class="p">:</span><span class="w"> </span><span class="s2">"{{episodeTitle}} has been added to {{libraryName}} library."</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="nl">"testData"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"libraryItemId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"li_notification_test"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"libraryId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"lib_test"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"libraryName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Podcasts"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"podcastTitle"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Abs Test Podcast"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"episodeId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ep_notification_test"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"episodeTitle"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Successful Test"</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<p>The notification events that are available are <a href="https://github.com/advplyr/audiobookshelf/blob/master/server/utils/notifications.js">predefined here</a>.</p>
+
+<table><thead>
+<tr>
+<th>Attribute</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>name</code></td>
+<td>String</td>
+<td>The name of the notification event.</td>
+</tr>
+<tr>
+<td><code>requiresLibrary</code></td>
+<td>Boolean</td>
+<td>Whether the notification event depends on a library existing.</td>
+</tr>
+<tr>
+<td><code>libraryMediaType</code></td>
+<td>String</td>
+<td>The type of media of the library the notification depends on existing. Will not exist if <code>requiresLibrary</code> is <code>false</code>.</td>
+</tr>
+<tr>
+<td><code>description</code></td>
+<td>String</td>
+<td>The description of the notification event.</td>
+</tr>
+<tr>
+<td><code>variables</code></td>
+<td>Array of String</td>
+<td>The variables of the notification event that can be used in the notification templates.</td>
+</tr>
+<tr>
+<td><code>defaults.title</code></td>
+<td>String</td>
+<td>The default title template for notifications using the notification event.</td>
+</tr>
+<tr>
+<td><code>defaults.body</code></td>
+<td>String</td>
+<td>The default body template for notifications using the notification event.</td>
+</tr>
+<tr>
+<td><code>testData</code></td>
+<td>Object</td>
+<td>The keys of the <code>testData</code> object will match the list of <code>variables</code>. The values will be the data used when sending a test notification.</td>
 </tr>
 </tbody></table>
 
