@@ -1859,3 +1859,44 @@ Attribute | Type | Description
 `maxFailedAttempts` | Integer | The maximum number of times a notification fails before being disabled.
 `maxNotificationQueue` | Integer | The maximum number of notifications in the notification queue before events are ignored.
 `notificationDelay` | Integer | The time (in ms) between notification pushes.
+
+
+## Notification
+
+> Notification
+
+```json
+{
+  "id": "noti_nod281qwkj5ow7h7fi",
+  "libraryId": null,
+  "eventName": "onPodcastEpisodeDownloaded",
+  "urls": [
+    "apprises://apprise.example.com/email"
+  ],
+  "titleTemplate": "New {{podcastTitle}} Episode!",
+  "bodyTemplate": "{{episodeTitle}} has been added to {{libraryName}} library.",
+  "enabled": true,
+  "type": "info",
+  "lastFiredAt": 1668776410792,
+  "lastAttemptFailed": false,
+  "numConsecutiveFailedAttempts": 0,
+  "numTimesFired": 5,
+  "createdAt": 1666545142424
+}
+```
+
+Attribute | Type | Description
+--------- | ---- | -----------
+`id` | String | The ID of the notification.
+`libraryID` | String or null | The ID of the library the notification is associated with.
+`eventName` | String | The name of the event the notification will fire on.
+`urls` | Array of String | The Apprise URLs to use for the notification.
+`titleTemplate` | String | The template for the notification title.
+`bodyTemplate` | String | The template for the notification body.
+`enabled` | Boolean | Whether the notification is enabled.
+`type` | String | The notification's type.
+`lastFiredAt` | String | The time (in ms since POSIX epoch) when the notification was last fired.
+`lastAttemptFailed` | Boolean | Whether the last notification attempt failed.
+`numConsecutiveFailedAttempts` | Integer | The number of consecutive times the notification has failed.
+`numTimesFired` | Integer | The number of times the notification has fired.
+`createdAt` | Integer | The time (in ms since POSIX epoch) when the notification was created.
