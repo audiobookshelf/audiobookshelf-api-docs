@@ -1895,7 +1895,7 @@ Attribute | Type | Description
 `bodyTemplate` | String | The template for the notification body.
 `enabled` | Boolean | Whether the notification is enabled.
 `type` | String | The notification's type.
-`lastFiredAt` | String | The time (in ms since POSIX epoch) when the notification was last fired.
+`lastFiredAt` | String or null | The time (in ms since POSIX epoch) when the notification was last fired. Will be `null` if the notification has not fired.
 `lastAttemptFailed` | Boolean | Whether the last notification attempt failed.
 `numConsecutiveFailedAttempts` | Integer | The number of consecutive times the notification has failed.
 `numTimesFired` | Integer | The number of times the notification has fired.
