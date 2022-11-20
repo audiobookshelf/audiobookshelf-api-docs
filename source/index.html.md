@@ -21,6 +21,7 @@ includes:
   - sessions
   - podcasts
   - notifications
+  - search
   - filtering
   - schemas
 
