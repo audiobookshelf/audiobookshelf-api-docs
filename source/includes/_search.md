@@ -276,3 +276,74 @@ Attribute | Type | Description
 `duration` | Integer | The total duration (in minutes) of the book.
 `region` | String or null | The Audible region that was searched.
 `rating` | String or null | The book's Audible rating.
+
+
+## Search for Podcasts
+
+```shell
+curl "https://abs.example.com/api/search/podcast?term=Welcome%20To%20Night%20Vale" \
+  -H "Authorization: Bearer exJhbGciOiJI6IkpXVCJ9.eyJ1c2Vyi5NDEyODc4fQ.ZraBFohS4Tg39NszY"
+```
+
+> The above command returns JSON structured like this:
+
+```json
+[
+  {
+    "id": 536258179,
+    "artistId": 718704794,
+    "title": "Welcome to Night Vale",
+    "artistName": "Night Vale Presents",
+    "description": "",
+    "descriptionPlain": "",
+    "releaseDate": "2022-11-15T05:00:00Z",
+    "genres": [
+      "Science Fiction",
+      "Podcasts",
+      "Fiction"
+    ],
+    "cover": "https://is4-ssl.mzstatic.com/image/thumb/Podcasts125/v4/4a/31/35/4a3135d0-1fe7-a2d7-fb43-d182ec175402/mza_8232698753950666850.jpg/600x600bb.jpg",
+    "trackCount": 280,
+    "feedUrl": "http://feeds.nightvalepresents.com/welcometonightvalepodcast",
+    "pageUrl": "https://podcasts.apple.com/us/podcast/welcome-to-night-vale/id536258179?uo=4"
+  },
+  ...
+]
+```
+
+This endpoint searches iTunes for podcasts and returns an array of the results.
+
+### HTTP Request
+
+`GET http://abs.example.com/api/search/podcast`
+
+### Query Parameters
+
+Parameter | Type | Description
+--------- | ---- | -----------
+`term` | String | The search term to search for (i.e. the title of the podcast).
+
+### Response
+
+Status | Meaning | Description | Schema
+------ | ------- | ----------- | ------
+200 | OK | Success | See Below
+
+#### Response Schema
+
+The response will be an array of objects with the following attributes:
+
+Attribute | Type | Description
+--------- | ---- | -----------
+`id` | Integer | The iTunes ID of the podcast.
+`artistId` | Integer | The podcast's author's iTunes ID.
+`title` | String | The tile of the podcast.
+`artistName` | String | The podcast's author.
+`description` | String | An HTML encoded description of the podcast.
+`descriptionPlain` | String | A plain text description of the podcast.
+`releaseDate` | String | The podcast's release date.
+`genres` | Array of String | The podcast's genres.
+`cover` | String | The URL of the podcast's cover image.
+`trackCount` | Integer | The number of episodes the podcast has.
+`feedUrl` | String | The URL of the podcast's RSS feed.
+`pageUrl` | String | The URL of the podcast's iTunes page.
