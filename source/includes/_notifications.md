@@ -299,6 +299,10 @@ Parameter | Type | Default | Description
 `enabled` | Boolean | `false` | Whether the notification is enabled.
 `type` | String or null | `null` | The notification's type.
 
+<aside class="notice">
+The <code>urls</code> array parameter must have a non-zero length for the notification to be saved.
+</aside>
+
 ### Response
 
 Status | Meaning | Description | Schema
@@ -346,3 +350,81 @@ Status | Meaning | Description | Schema
 ------ | ------- | ----------- | ------
 200 | OK | Success | [Notification Settings](#notification-settings)
 404 | Not Found | An admin user is required delete notifications, or no notification with the given ID exists. |
+
+
+## Update a Notification
+
+```shell
+curl -X PATCH "https://abs.example.com/api/notifications/noti_nod281qwkj5ow7h7fi" \
+  -H "Authorization: Bearer exJhbGciOiJI6IkpXVCJ9.eyJ1c2Vyi5NDEyODc4fQ.ZraBFohS4Tg39NszY" \
+  -H "Content-Type: application/json" \
+  -d '{"id": "noti_nod281qwkj5ow7h7fi", "titleTemplate": "New {{podcastTitle}} Episode: {{episodeTitle}}"}'
+```
+
+> The above command returns JSON structured like this:
+
+```json
+{
+  "id": "notification-settings",
+  "appriseType": "api",
+  "appriseApiUrl": "https://apprise.example.com/notify",
+  "notifications": [
+    {
+      "id": "noti_nod281qwkj5ow7h7fi",
+      "libraryId": null,
+      "eventName": "onPodcastEpisodeDownloaded",
+      "urls": [
+        "apprises://apprise.example.com/email"
+      ],
+      "titleTemplate": "New {{podcastTitle}} Episode: {{episodeTitle}}",
+      "bodyTemplate": "{{episodeTitle}} has been added to {{libraryName}} library.",
+      "enabled": true,
+      "type": "info",
+      "lastFiredAt": 1668776410792,
+      "lastAttemptFailed": false,
+      "numConsecutiveFailedAttempts": 0,
+      "numTimesFired": 5,
+      "createdAt": 1666545142424
+    }
+  ],
+  "maxFailedAttempts": 5,
+  "maxNotificationQueue": 20,
+  "notificationDelay": 1000
+}
+```
+
+This endpoint updates a notification and returns the server's updated notification settings.
+
+### HTTP Request
+
+`PATCH http://abs.example.com/api/notifications/<ID>`
+
+### URL Parameters
+
+Parameter | Description
+--------- | -----------
+ID | The ID of the notification.
+
+### Parameters
+
+Parameter | Type | Description
+--------- | ---- | -----------
+`id` | String | **Required** The ID of the notification.
+`libraryID` | String or null | The ID of the library the notification is associated with.
+`eventName` | String | The name of the event the notification will fire on.
+`urls` | Array of String | The Apprise URLs to use for the notification.
+`titleTemplate` | String | The template for the notification title.
+`bodyTemplate` | String | The template for the notification body.
+`enabled` | Boolean | Whether the notification is enabled.
+`type` | String or null | The notification's type.
+
+<aside class="notice">
+The <code>id</code> parameter must be included for the notification to be saved.
+</aside>
+
+### Response
+
+Status | Meaning | Description | Schema
+------ | ------- | ----------- | ------
+200 | OK | Success | [Notification Settings](#notification-settings)
+404 | Not Found | An admin user is required update notifications, or no notification with the given ID exists. |
