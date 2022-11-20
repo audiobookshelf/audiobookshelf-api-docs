@@ -395,3 +395,272 @@ Attribute | Type | Description
 `description` | String | The author's description.
 `image` | String | The URL of the author's image.
 `name` | String | The author's name.
+
+
+## Search for a Book's Chapters
+
+```shell
+curl "https://abs.example.com/api/search/chapters?asin=B000APZOQA" \
+  -H "Authorization: Bearer exJhbGciOiJI6IkpXVCJ9.eyJ1c2Vyi5NDEyODc4fQ.ZraBFohS4Tg39NszY"
+```
+
+> The above command returns JSON structured like this:
+
+```json
+{
+  "asin": "B08G9PRS1K",
+  "brandIntroDurationMs": 2043,
+  "brandOutroDurationMs": 5061,
+  "chapters": [
+    {
+      "lengthMs": 13307,
+      "startOffsetMs": 0,
+      "startOffsetSec": 0,
+      "title": "Opening Credits"
+    },
+    {
+      "lengthMs": 5909,
+      "startOffsetMs": 13307,
+      "startOffsetSec": 13,
+      "title": "Dedication"
+    },
+    {
+      "lengthMs": 2203908,
+      "startOffsetMs": 19216,
+      "startOffsetSec": 19,
+      "title": "Chapter 1"
+    },
+    {
+      "lengthMs": 1721527,
+      "startOffsetMs": 2223124,
+      "startOffsetSec": 2223,
+      "title": "Chapter 2"
+    },
+    {
+      "lengthMs": 2241282,
+      "startOffsetMs": 3944651,
+      "startOffsetSec": 3945,
+      "title": "Chapter 3"
+    },
+    {
+      "lengthMs": 2460850,
+      "startOffsetMs": 6185933,
+      "startOffsetSec": 6186,
+      "title": "Chapter 4"
+    },
+    {
+      "lengthMs": 3189400,
+      "startOffsetMs": 8646783,
+      "startOffsetSec": 8647,
+      "title": "Chapter 5"
+    },
+    {
+      "lengthMs": 2650650,
+      "startOffsetMs": 11836183,
+      "startOffsetSec": 11836,
+      "title": "Chapter 6"
+    },
+    {
+      "lengthMs": 1806744,
+      "startOffsetMs": 14486833,
+      "startOffsetSec": 14487,
+      "title": "Chapter 7"
+    },
+    {
+      "lengthMs": 2189734,
+      "startOffsetMs": 16293577,
+      "startOffsetSec": 16294,
+      "title": "Chapter 8"
+    },
+    {
+      "lengthMs": 1759608,
+      "startOffsetMs": 18483311,
+      "startOffsetSec": 18483,
+      "title": "Chapter 9"
+    },
+    {
+      "lengthMs": 2120817,
+      "startOffsetMs": 20242919,
+      "startOffsetSec": 20243,
+      "title": "Chapter 10"
+    },
+    {
+      "lengthMs": 1566928,
+      "startOffsetMs": 22363736,
+      "startOffsetSec": 22364,
+      "title": "Chapter 11"
+    },
+    {
+      "lengthMs": 1744236,
+      "startOffsetMs": 23930664,
+      "startOffsetSec": 23931,
+      "title": "Chapter 12"
+    },
+    {
+      "lengthMs": 1954655,
+      "startOffsetMs": 25674900,
+      "startOffsetSec": 25675,
+      "title": "Chapter 13"
+    },
+    {
+      "lengthMs": 2405262,
+      "startOffsetMs": 27629555,
+      "startOffsetSec": 27630,
+      "title": "Chapter 14"
+    },
+    {
+      "lengthMs": 1429838,
+      "startOffsetMs": 30034817,
+      "startOffsetSec": 30035,
+      "title": "Chapter 15"
+    },
+    {
+      "lengthMs": 1950336,
+      "startOffsetMs": 31464655,
+      "startOffsetSec": 31465,
+      "title": "Chapter 16"
+    },
+    {
+      "lengthMs": 1928602,
+      "startOffsetMs": 33414991,
+      "startOffsetSec": 33415,
+      "title": "Chapter 17"
+    },
+    {
+      "lengthMs": 1863772,
+      "startOffsetMs": 35343593,
+      "startOffsetSec": 35344,
+      "title": "Chapter 18"
+    },
+    {
+      "lengthMs": 2176359,
+      "startOffsetMs": 37207365,
+      "startOffsetSec": 37207,
+      "title": "Chapter 19"
+    },
+    {
+      "lengthMs": 1984841,
+      "startOffsetMs": 39383724,
+      "startOffsetSec": 39384,
+      "title": "Chapter 20"
+    },
+    {
+      "lengthMs": 2536919,
+      "startOffsetMs": 41368565,
+      "startOffsetSec": 41369,
+      "title": "Chapter 21"
+    },
+    {
+      "lengthMs": 2396531,
+      "startOffsetMs": 43905484,
+      "startOffsetSec": 43905,
+      "title": "Chapter 22"
+    },
+    {
+      "lengthMs": 1726217,
+      "startOffsetMs": 46302015,
+      "startOffsetSec": 46302,
+      "title": "Chapter 23"
+    },
+    {
+      "lengthMs": 1672672,
+      "startOffsetMs": 48028232,
+      "startOffsetSec": 48028,
+      "title": "Chapter 24"
+    },
+    {
+      "lengthMs": 2376608,
+      "startOffsetMs": 49700904,
+      "startOffsetSec": 49701,
+      "title": "Chapter 25"
+    },
+    {
+      "lengthMs": 1290100,
+      "startOffsetMs": 52077512,
+      "startOffsetSec": 52078,
+      "title": "Chapter 26"
+    },
+    {
+      "lengthMs": 613331,
+      "startOffsetMs": 53367612,
+      "startOffsetSec": 53368,
+      "title": "Chapter 27"
+    },
+    {
+      "lengthMs": 1191369,
+      "startOffsetMs": 53980943,
+      "startOffsetSec": 53981,
+      "title": "Chapter 28"
+    },
+    {
+      "lengthMs": 2198976,
+      "startOffsetMs": 55172312,
+      "startOffsetSec": 55172,
+      "title": "Chapter 29"
+    },
+    {
+      "lengthMs": 838616,
+      "startOffsetMs": 57371288,
+      "startOffsetSec": 57371,
+      "title": "Chapter 30"
+    },
+    {
+      "lengthMs": 43091,
+      "startOffsetMs": 58209904,
+      "startOffsetSec": 58210,
+      "title": "End Credits"
+    }
+  ],
+  "isAccurate": true,
+  "runtimeLengthMs": 58252995,
+  "runtimeLengthSec": 58253
+}
+```
+
+This endpoint searches [Audnexus](https://github.com/laxamentumtech/audnexus) for a book's chapters.
+
+### HTTP Request
+
+`GET http://abs.example.com/api/search/chapters`
+
+### Query Parameters
+
+Parameter | Type | Default | Description
+--------- | ---- | ------- | -----------
+`asin` | String | **Required** | The book's ASIN.
+`region` | String | `us` | The book's region.
+
+### Response
+
+Status | Meaning | Description | Schema
+------ | ------- | ----------- | ------
+200 | OK | Success | See Below
+
+#### Response Schema
+
+Either the response will be an error: 
+
+Attribute | Type | Description
+--------- | ---- | -----------
+`error` | String | The error that occurred.
+
+Or a result:
+
+Attribute | Type | Description
+--------- | ---- | -----------
+`asin` | String | The book's ASIN.
+`brandIntroDurationMs` | Integer | The duration (in ms) of the audiobook brand's intro (i.e. the "This is Audible." at the beginning).
+`brandOutroDurationMs` | Integer | The duration (in ms) of the audiobook brand's outro (i.e. the "Audible hopes you have enjoyed this program." at the end).
+`chapters` | Array of [Search Result Chapter](#search-result-chapter) (See Below) | The book's chapters.
+`isAccurate` | Boolean | Whether Audnexus thinks the chapters are accurate.
+`runtimeLengthMs` | Integer | The total runtime length (in ms) of the book.
+`runtimeLengthSec` | Integer | The total runtime length (in seconds) of the book.
+
+#### Search Result Chapter
+
+Attribute | Type | Description
+--------- | ---- | -----------
+`lengthMs` | Integer | The length (in ms) of the chapter.
+`startOffsetMs` | Integer | The start offset (in ms) of the chapter.
+`startOffsetSec` | Integer | The start offset (in seconds) of the chapter.
+`title` | String | The chapter's title.
