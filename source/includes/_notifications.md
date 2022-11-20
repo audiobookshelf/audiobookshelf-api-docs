@@ -291,7 +291,7 @@ This endpoint creates a notification and returns the server's updated notificati
 
 Parameter | Type | Default | Description
 --------- | ---- | ------- | -----------
-`libraryID` | String or null | `null` | The ID of the library the notification is associated with.
+`libraryId` | String or null | `null` | The ID of the library the notification is associated with.
 `eventName` | String | **Required** | The name of the event the notification will fire on.
 `urls` | Array of String | **Required** | The Apprise URLs to use for the notification.
 `titleTemplate` | String | **Required** | The template for the notification title.
