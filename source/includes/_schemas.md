@@ -1947,3 +1947,186 @@ Attribute | Type | Description
 `defaults.title` | String | The default title template for notifications using the notification event.
 `defaults.body` | String | The default body template for notifications using the notification event.
 `testData` | Object | The keys of the `testData` object will match the list of `variables`. The values will be the data used when sending a test notification.
+
+
+## Server Settings
+
+> Server Settings
+
+```json
+{
+  "id": "server-settings",
+  "scannerFindCovers": false,
+  "scannerCoverProvider": "google",
+  "scannerParseSubtitle": false,
+  "scannerPreferAudioMetadata": false,
+  "scannerPreferOpfMetadata": false,
+  "scannerPreferMatchedMetadata": false,
+  "scannerDisableWatcher": true,
+  "scannerPreferOverdriveMediaMarker": false,
+  "scannerUseSingleThreadedProber": true,
+  "scannerMaxThreads": 0,
+  "scannerUseTone": false,
+  "storeCoverWithItem": false,
+  "storeMetadataWithItem": false,
+  "rateLimitLoginRequests": 10,
+  "rateLimitLoginWindow": 600000,
+  "backupSchedule": "30 1 * * *",
+  "backupsToKeep": 2,
+  "maxBackupSize": 1,
+  "backupMetadataCovers": true,
+  "loggerDailyLogsToKeep": 7,
+  "loggerScannerLogsToKeep": 2,
+  "homeBookshelfView": 1,
+  "bookshelfView": 1,
+  "sortingIgnorePrefix": false,
+  "sortingPrefixes": [
+    "the",
+    "a"
+  ],
+  "chromecastEnabled": false,
+  "enableEReader": false,
+  "dateFormat": "MM/dd/yyyy",
+  "language": "en-us",
+  "logLevel": 2,
+  "version": "2.2.5"
+}
+```
+
+Attribute | Type | Description
+--------- | ---- | -----------
+`id` | String | The ID of the server settings.
+`scannerFindCovers` | Boolean | Whether the scanner will attempt to find a cover if your audiobook does not have an embedded cover or a cover image inside the folder. Note: This will extend scan time.
+`scannerCoverProvider` | String | If `scannerFindCovers` is `true`, which metadata provider to use. See [Library Metadata Providers](#library-metadata-providers) for options.
+`scannerParseSubtitle` | Boolean | Whether to extract subtitles from audiobook folder names. Subtitles must be separated by ` - `, i.e. `/audiobooks/Book Title - A Subtitle Here/` has the subtitle `A Subtitle Here`.
+`scannerPreferAudioMetadata` | Boolean | Whether to use audio file ID3 meta tags instead of folder names for book details.
+`scannerPreferOpfMetadata` | Boolean | Whether to use OPF file metadata instead of folder names for book details.
+`scannerPreferMatchedMetadata` | Boolean | Whether matched data will override item details when using Quick Match. By default, Quick Match will only fill in missing details.
+`scannerDisableWatcher` | Boolean | Whether to disable the automatic adding/updating of items when file changes are detected. *Requires server restart* for changes to take effect.
+`scannerPreferOverdriveMediaMarker` | Boolean | Whether to use the custom metadata in MP3 files from Overdrive for chapter timings automatically.
+`storeCoverWithItem` | Boolean | Whether to store covers in the library item's folder. By default, covers are stored in `/metadata/items`. Only one file named `cover` will be kept.
+`storeMetadataWithItem` | Boolean | Whether to store metadata files in the library item's folder. By default, metadata files are stored in `/metadata/items`. Uses the `.abs` file extension.
+`rateLimitLoginRequests` | Integer | The maximum number of login requests per `rateLimitLoginWindow`.
+`rateLimitLoginWindow` | Integer | The length (in ms) of each login rate limit window.
+`backupSchedule` | String | The [cron expression](https://en.wikipedia.org/wiki/Cron#CRON_expression) for when to do automatic backups.
+`backupsToKeep` | Integer | The number of backups to keep.
+`maxBackupSize` | Integer | The maximum backup size (in GB) before they fail, a safeguard against misconfiguration.
+`backupMetadataCovers` | Boolean | Whether backups should include library item covers and author images located in metadata.
+`loggerDailyLogsToKeep` | Integer | The number of daily logs to keep.
+`loggerScannerLogsToKeep` | Integer | The number of scanner logs to keep.
+`homeBookshelfView` | Binary | Whether the home page should use a skeuomorphic design with wooden shelves.
+`bookshelfView` | Binary | Whether other bookshelf pages should use a skeuomorphic design with wooden shelves.
+`sortingIgnorePrefix` | Boolean | Whether to ignore prefixes when sorting. For example, for the prefix `the`, the book title `The Book Title` would sort as `Book Title, The`.
+`sortingPrefixes` | Array of String | If `sortingIgnorePrefix` is `true`, what prefixes to ignore.
+`chromecastEnabled` | Boolean | Whether to enable streaming to Chromecast devices.
+`enableEReader` | Boolean | Whether to enable experimental e-reader support.
+`dateFormat` | String | What date format to use. Options are `MM/dd/yyyy`, `dd/MM/yyyy`, or `yyyy-MM-dd`.
+`language` | String | The default server language.
+`logLevel` | Integer | What log level the server should use when logging. `1` for debug, `2` for info, or `3` for warnings.
+`version` | String | The server's version.
+
+
+## RSS Feed
+
+> RSS Feed
+
+```json
+{
+  "id": "li_bufnnmp4y5o2gbbxfm",
+  "slug": "li_bufnnmp4y5o2gbbxfm",
+  "userId": "root",
+  "entityType": "item",
+  "entityId": "li_bufnnmp4y5o2gbbxfm",
+  "coverPath": "/metadata/items/li_bufnnmp4y5o2gbbxfm/cover.jpg",
+  "serverAddress": "https://abs.example.com",
+  "feedUrl": "https://abs.example.com/feed/li_bufnnmp4y5o2gbbxfm",
+  "meta": {...},
+  "episodes": [...],
+  "createdAt": 1669031843179,
+  "updatedAt": 1669031843179
+}
+```
+
+Attribute | Type | Description
+--------- | ---- | -----------
+`id` | String | The ID of the RSS feed.
+`slug` | String | The slug (the last part of the URL) for the RSS feed.
+`userId` | String | The ID of the user that created the RSS feed.
+`entityType` | String | The type of entity the RSS feed is for.
+`entityId` | String | The ID of the entity the RSS feed is for.
+`coverPath` | String | The path of the cover to use for the RSS feed.
+`serverAddress` | String | The server's address.
+`feedUrl` | String | The full URL of the RSS feed.
+`meta` | [RSS Feed Metadata](#rss-feed-metadata) Object | The RSS feed's metadata.
+`episodes` | Array of [RSS Feed Episode](#rss-feed-episode) | The RSS feed's episodes.
+`createdAt` | Integer | The time (in ms since POSIX epoch) when the RSS feed was created.
+`updatedAt` | Integer | The time (in ms since POSIX epoch) when the RSS feed was last updated.
+
+
+## RSS Feed Metadata
+
+> Feed Metadata
+
+```json
+{
+  "title": "Welcome to Night Vale",
+  "description": "\n      Twice-monthly community updates for the small desert town of Night Vale, where every conspiracy theory is true. Turn on your radio and hide. Never listened before? It's an ongoing radio show. Start with the current episode, and you'll catch on in no time. Or, go right to Episode 1 if you wanna binge-listen.\n    ",
+  "author": "Night Vale Presents",
+  "imageUrl": "https://abs.example.com/feed/li_bufnnmp4y5o2gbbxfm/cover",
+  "feedUrl": "https://abs.example.com/feed/li_bufnnmp4y5o2gbbxfm",
+  "link": "https://abs.example.com/item/li_bufnnmp4y5o2gbbxfm",
+  "explicit": false
+}
+```
+
+Attribute | Type | Description
+--------- | ---- | -----------
+`title` | String | The title of the entity the RSS feed is for.
+`description` | String | The description of the entity the RSS feed is for.
+`author` | String | The author of the entity the RSS feed is for. 
+`imageUrl` | String | The URL of the RSS feed's image.
+`feedUrl` | String | The URL of the RSS feed.
+`link` | String | The URL of the entity the RSS feed is for.
+`explicit` | Boolean | Whether the RSS feed's contents are explicit.
+
+
+## RSS Feed Episode
+
+> Feed Episode
+
+```json
+{
+  "id": "ep_lh6ko39pumnrma3dhv",
+  "title": "1 - Pilot",
+  "description": "<div><br>Pilot Episode. A new dog park opens in Night Vale. Carlos, a scientist, visits and discovers some interesting things. Seismic things. Plus, a helpful guide to surveillance helicopter-spotting.<br><br></div><div><br>Weather: \"These and More Than These\" by Joseph Fink<br><br></div><div><br>Music: Disparition, disparition.info<br><br></div><div><br>Logo: Rob Wilson, silastom.com<br><br></div><div><br>Produced by Night Vale Presents. Written by Joseph Fink and Jeffrey Cranor. Narrated by Cecil Baldwin. More Info: welcometonightvale.com, and follow @NightValeRadio on Twitter or Facebook.<br><br></div>",
+  "enclosure": {
+    "url": "https://abs.example.com/feed/li_bufnnmp4y5o2gbbxfm/item/ep_lh6ko39pumnrma3dhv/1 - Pilot.mp3",
+    "type": "audio/mpeg",
+    "size": 23653735
+  },
+  "pubDate": "Fri, 15 Jun 2012 12:00:00 -0000",
+  "link": "https://abs.example.com/item/li_bufnnmp4y5o2gbbxfm",
+  "author": "Night Vale Presents",
+  "explicit": false,
+  "duration": 1454.18449,
+  "libraryItemId": "li_bufnnmp4y5o2gbbxfm",
+  "episodeId": "ep_lh6ko39pumnrma3dhv",
+  "trackIndex": 0,
+  "fullPath": "/podcasts/Welcome to Night Vale/1 - Pilot.mp3"
+}
+```
+
+Attribute | Type | Description
+--------- | ---- | -----------
+`id` | String | The ID of the RSS feed episode.
+`title` | String | The title of the RSS feed episode.
+`description` | String | An HTML encoded description of the RSS feed episode.
+`enclosure` | Similar to [Podcast Episode Enclosure](#podcast-episode-enclosure) | Download information for the RSS feed episode.
+`pubDate` | String | The RSS feed episode's publication date.
+`link` | String | A URL to display to the RSS feed user.
+`explicit` | Boolean | Whether the RSS feed episode is explicit.
+`duration` | Float | The duration (in seconds) of the RSS feed episode.
+`libraryItemId` | String | The ID of the library item the RSS feed is for.
+`episodeId` | String or null | The ID of the podcast episode the RSS feed episode is for. Will be `null` if the RSS feed is for a book.
+`trackIndex` | Integer | The RSS feed episode's track index.
+`fullPath` | String | The path on the server of the audio file the RSS feed episode is for.

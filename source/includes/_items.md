@@ -1871,41 +1871,6 @@ Attribute | Type | Description
 `AdditionalFields` | Array of String | Additional metadata fields. Those are currently ASIN and ISBN.
 
 
-## Update a Library Item's Audio File Metadata
-
-```shell
-curl "https://abs.example.com/api/items/li_bufnnmp4y5o2gbbxfm/audio-metadata?tone=1" \
-  -H "Authorization: Bearer exJhbGciOiJI6IkpXVCJ9.eyJ1c2Vyi5NDEyODc4fQ.ZraBFohS4Tg39NszY"
-```
-
-This endpoint updates a library item's audio file metadata.
-
-### HTTP Request
-
-`GET http://abs.example.com/api/items/<ID>/audio-metadata`
-
-### URL Parameters
-
-Parameter | Description
---------- | -----------
-ID | The ID of the library item.
-
-### Optional Query Parameters
-
-Parameter | Type | Description
---------- | ---- | -----------
-`tone` | Binary | Whether to use the library item's tone metadata to update it. Otherwise, ffmpeg will be used. `0` for false, `1` for true.
-`forceEmbedChapters` | Binary | Whether to forcefully embed a book's chapters into the audio file metadata. `0` for false, `1` for true.
-
-### Response
-
-Status | Meaning | Description
------- | ------- | -----------
-200 | OK | Success
-403 | Forbidden | An admin user is required to update a library item's audio file metadata.
-500 | Internal Server Error | The library item has missing parts, does not have audio files, or is not a book.
-
-
 ## Update a Library Item's Chapters
 
 ```shell

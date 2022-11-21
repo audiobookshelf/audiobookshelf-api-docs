@@ -22,6 +22,9 @@ includes:
   - podcasts
   - notifications
   - search
+  - cache
+  - tools
+  - misc
   - filtering
   - schemas
 
