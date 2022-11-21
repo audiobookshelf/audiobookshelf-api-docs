@@ -426,9 +426,6 @@
                     <a href="#get-a-library-item-39-s-tone-metadata-object" class="toc-h2 toc-link" data-title="Get a Library Item's Tone Metadata Object">Get a Library Item's Tone Metadata Object</a>
                   </li>
                   <li>
-                    <a href="#update-a-library-item-39-s-audio-file-metadata" class="toc-h2 toc-link" data-title="Update a Library Item's Audio File Metadata">Update a Library Item's Audio File Metadata</a>
-                  </li>
-                  <li>
                     <a href="#update-a-library-item-39-s-chapters" class="toc-h2 toc-link" data-title="Update a Library Item's Chapters">Update a Library Item's Chapters</a>
                   </li>
                   <li>
@@ -735,6 +732,51 @@
               </ul>
           </li>
           <li>
+            <a href="#cache" class="toc-h1 toc-link" data-title="Cache">Cache</a>
+              <ul class="toc-list-h2">
+                  <li>
+                    <a href="#purge-all-cache" class="toc-h2 toc-link" data-title="Purge All Cache">Purge All Cache</a>
+                  </li>
+                  <li>
+                    <a href="#purge-items-cache" class="toc-h2 toc-link" data-title="Purge Items Cache">Purge Items Cache</a>
+                  </li>
+              </ul>
+          </li>
+          <li>
+            <a href="#tools" class="toc-h1 toc-link" data-title="Tools">Tools</a>
+              <ul class="toc-list-h2">
+                  <li>
+                    <a href="#encode-a-book-as-m4b" class="toc-h2 toc-link" data-title="Encode a Book as M4B">Encode a Book as M4B</a>
+                  </li>
+                  <li>
+                    <a href="#cancel-an-m4b-encode-task" class="toc-h2 toc-link" data-title="Cancel an M4B Encode Task">Cancel an M4B Encode Task</a>
+                  </li>
+                  <li>
+                    <a href="#update-a-library-item-39-s-audio-files-39-embedded-metadata" class="toc-h2 toc-link" data-title="Update a Library Item's Audio Files' Embedded Metadata">Update a Library Item's Audio Files' Embedded Metadata</a>
+                  </li>
+              </ul>
+          </li>
+          <li>
+            <a href="#misc" class="toc-h1 toc-link" data-title="Misc">Misc</a>
+              <ul class="toc-list-h2">
+                  <li>
+                    <a href="#upload-files" class="toc-h2 toc-link" data-title="Upload Files">Upload Files</a>
+                  </li>
+                  <li>
+                    <a href="#update-server-settings" class="toc-h2 toc-link" data-title="Update Server Settings">Update Server Settings</a>
+                  </li>
+                  <li>
+                    <a href="#get-authorized-user-and-server-information" class="toc-h2 toc-link" data-title="Get Authorized User and Server Information">Get Authorized User and Server Information</a>
+                  </li>
+                  <li>
+                    <a href="#get-all-tags" class="toc-h2 toc-link" data-title="Get All Tags">Get All Tags</a>
+                  </li>
+                  <li>
+                    <a href="#validate-a-cron-expression" class="toc-h2 toc-link" data-title="Validate a Cron Expression">Validate a Cron Expression</a>
+                  </li>
+              </ul>
+          </li>
+          <li>
             <a href="#filtering" class="toc-h1 toc-link" data-title="Filtering">Filtering</a>
           </li>
           <li>
@@ -847,6 +889,18 @@
                   </li>
                   <li>
                     <a href="#notification-event" class="toc-h2 toc-link" data-title="Notification Event">Notification Event</a>
+                  </li>
+                  <li>
+                    <a href="#server-settings" class="toc-h2 toc-link" data-title="Server Settings">Server Settings</a>
+                  </li>
+                  <li>
+                    <a href="#rss-feed" class="toc-h2 toc-link" data-title="RSS Feed">RSS Feed</a>
+                  </li>
+                  <li>
+                    <a href="#rss-feed-metadata" class="toc-h2 toc-link" data-title="RSS Feed Metadata">RSS Feed Metadata</a>
+                  </li>
+                  <li>
+                    <a href="#rss-feed-episode" class="toc-h2 toc-link" data-title="RSS Feed Episode">RSS Feed Episode</a>
                   </li>
               </ul>
           </li>
@@ -6233,67 +6287,6 @@ Make sure to include all audio files of a library item in the array.
 <td>Additional metadata fields. Those are currently ASIN and ISBN.</td>
 </tr>
 </tbody></table>
-<h2 id='update-a-library-item-39-s-audio-file-metadata'>Update a Library Item&#39;s Audio File Metadata</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://abs.example.com/api/items/li_bufnnmp4y5o2gbbxfm/audio-metadata?tone=1"</span> <span class="se">\</span>
-  <span class="nt">-H</span> <span class="s2">"Authorization: Bearer exJhbGciOiJI6IkpXVCJ9.eyJ1c2Vyi5NDEyODc4fQ.ZraBFohS4Tg39NszY"</span>
-</code></pre></div>
-<p>This endpoint updates a library item&#39;s audio file metadata.</p>
-<h3 id='http-request-14'>HTTP Request</h3>
-<p><code>GET http://abs.example.com/api/items/&lt;ID&gt;/audio-metadata</code></p>
-<h3 id='url-parameters-13'>URL Parameters</h3>
-<table><thead>
-<tr>
-<th>Parameter</th>
-<th>Description</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>ID</td>
-<td>The ID of the library item.</td>
-</tr>
-</tbody></table>
-<h3 id='optional-query-parameters-3'>Optional Query Parameters</h3>
-<table><thead>
-<tr>
-<th>Parameter</th>
-<th>Type</th>
-<th>Description</th>
-</tr>
-</thead><tbody>
-<tr>
-<td><code>tone</code></td>
-<td>Binary</td>
-<td>Whether to use the library item&#39;s tone metadata to update it. Otherwise, ffmpeg will be used. <code>0</code> for false, <code>1</code> for true.</td>
-</tr>
-<tr>
-<td><code>forceEmbedChapters</code></td>
-<td>Binary</td>
-<td>Whether to forcefully embed a book&#39;s chapters into the audio file metadata. <code>0</code> for false, <code>1</code> for true.</td>
-</tr>
-</tbody></table>
-<h3 id='response-14'>Response</h3>
-<table><thead>
-<tr>
-<th>Status</th>
-<th>Meaning</th>
-<th>Description</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>200</td>
-<td>OK</td>
-<td>Success</td>
-</tr>
-<tr>
-<td>403</td>
-<td>Forbidden</td>
-<td>An admin user is required to update a library item&#39;s audio file metadata.</td>
-</tr>
-<tr>
-<td>500</td>
-<td>Internal Server Error</td>
-<td>The library item has missing parts, does not have audio files, or is not a book.</td>
-</tr>
-</tbody></table>
 <h2 id='update-a-library-item-39-s-chapters'>Update a Library Item&#39;s Chapters</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">-X</span> POST <span class="s2">"https://abs.example.com/api/items/li_bufnnmp4y5o2gbbxfm/chapters"</span> <span class="se">\</span>
   <span class="nt">-H</span> <span class="s2">"Authorization: Bearer exJhbGciOiJI6IkpXVCJ9.eyJ1c2Vyi5NDEyODc4fQ.ZraBFohS4Tg39NszY"</span> <span class="se">\</span>
   <span class="nt">-H</span> <span class="s2">"Content-Type: application/json"</span> <span class="se">\</span>
@@ -6308,9 +6301,9 @@ Make sure to include all audio files of a library item in the array.
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div>
 <p>This endpoint updates a library item&#39;s chapters. This only applies to books.</p>
-<h3 id='http-request-15'>HTTP Request</h3>
+<h3 id='http-request-14'>HTTP Request</h3>
 <p><code>POST http://abs.example.com/api/items/&lt;ID&gt;/chapters</code></p>
-<h3 id='url-parameters-14'>URL Parameters</h3>
+<h3 id='url-parameters-13'>URL Parameters</h3>
 <table><thead>
 <tr>
 <th>Parameter</th>
@@ -6336,7 +6329,7 @@ Make sure to include all audio files of a library item in the array.
 <td>The requested book chapters, in order.</td>
 </tr>
 </tbody></table>
-<h3 id='response-15'>Response</h3>
+<h3 id='response-14'>Response</h3>
 <table><thead>
 <tr>
 <th>Status</th>
@@ -6403,9 +6396,9 @@ Make sure to include all audio files of a library item in the array.
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div>
 <p>This endpoint opens an RSS feed for a library item.</p>
-<h3 id='http-request-16'>HTTP Request</h3>
+<h3 id='http-request-15'>HTTP Request</h3>
 <p><code>POST http://abs.example.com/api/items/&lt;ID&gt;/open-feed</code></p>
-<h3 id='url-parameters-15'>URL Parameters</h3>
+<h3 id='url-parameters-14'>URL Parameters</h3>
 <table><thead>
 <tr>
 <th>Parameter</th>
@@ -6436,7 +6429,7 @@ Make sure to include all audio files of a library item in the array.
 <td>The slug (the last part of the URL) to use for the RSS feed.</td>
 </tr>
 </tbody></table>
-<h3 id='response-16'>Response</h3>
+<h3 id='response-15'>Response</h3>
 <table><thead>
 <tr>
 <th>Status</th>
@@ -6486,9 +6479,9 @@ Make sure to include all audio files of a library item in the array.
   <span class="nt">-H</span> <span class="s2">"Authorization: Bearer exJhbGciOiJI6IkpXVCJ9.eyJ1c2Vyi5NDEyODc4fQ.ZraBFohS4Tg39NszY"</span>
 </code></pre></div>
 <p>This endpoint closes the RSS feed for a library item.</p>
-<h3 id='http-request-17'>HTTP Request</h3>
+<h3 id='http-request-16'>HTTP Request</h3>
 <p><code>POST http://abs.example.com/api/items/&lt;ID&gt;/close-feed</code></p>
-<h3 id='url-parameters-16'>URL Parameters</h3>
+<h3 id='url-parameters-15'>URL Parameters</h3>
 <table><thead>
 <tr>
 <th>Parameter</th>
@@ -6500,7 +6493,7 @@ Make sure to include all audio files of a library item in the array.
 <td>The ID of the library item.</td>
 </tr>
 </tbody></table>
-<h3 id='response-17'>Response</h3>
+<h3 id='response-16'>Response</h3>
 <table><thead>
 <tr>
 <th>Status</th>
@@ -6573,9 +6566,9 @@ Make sure to include all audio files of a library item in the array.
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div>
 <p>This endpoint uses <a href="https://github.com/sandreas/tone">tone</a> to scan a library item and returns the results.</p>
-<h3 id='http-request-18'>HTTP Request</h3>
+<h3 id='http-request-17'>HTTP Request</h3>
 <p><code>POST http://abs.example.com/api/items/&lt;ID&gt;/tone-scan/&lt;Index?&gt;</code></p>
-<h3 id='url-parameters-17'>URL Parameters</h3>
+<h3 id='url-parameters-16'>URL Parameters</h3>
 <table><thead>
 <tr>
 <th>Parameter</th>
@@ -6597,7 +6590,7 @@ Make sure to include all audio files of a library item in the array.
 <td>The index of the audio file to tone scan.</td>
 </tr>
 </tbody></table>
-<h3 id='response-18'>Response</h3>
+<h3 id='response-17'>Response</h3>
 <table><thead>
 <tr>
 <th>Status</th>
@@ -6716,7 +6709,7 @@ Make sure to include all audio files of a library item in the array.
   <span class="nt">-d</span> <span class="s1">'{"libraryItemIds: ["li_bufnnmp4y5o2gbbxfm"]}'</span>
 </code></pre></div>
 <p>This endpoint batch deletes library items from the database. No files are deleted.</p>
-<h3 id='http-request-19'>HTTP Request</h3>
+<h3 id='http-request-18'>HTTP Request</h3>
 <p><code>POST http://abs.example.com/api/items/batch/delete</code></p>
 <h3 id='parameters-8'>Parameters</h3>
 <table><thead>
@@ -6732,7 +6725,7 @@ Make sure to include all audio files of a library item in the array.
 <td>The IDs of library items to delete.</td>
 </tr>
 </tbody></table>
-<h3 id='response-19'>Response</h3>
+<h3 id='response-18'>Response</h3>
 <table><thead>
 <tr>
 <th>Status</th>
@@ -6775,7 +6768,7 @@ Make sure to include all audio files of a library item in the array.
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div>
 <p>This endpoint batch updates library items.</p>
-<h3 id='http-request-20'>HTTP Request</h3>
+<h3 id='http-request-19'>HTTP Request</h3>
 <p><code>POST http://abs.example.com/api/items/batch/update</code></p>
 <h3 id='parameters-9'>Parameters</h3>
 <p>Provide an array of objects with the following parameters:</p>
@@ -6798,7 +6791,7 @@ Make sure to include all audio files of a library item in the array.
 <td>See <a href="#update-a-library-item-39-s-media">Update a Library Item&#39;s Media</a> for details.</td>
 </tr>
 </tbody></table>
-<h3 id='response-20'>Response</h3>
+<h3 id='response-19'>Response</h3>
 <table><thead>
 <tr>
 <th>Status</th>
@@ -7116,7 +7109,7 @@ Make sure to include all audio files of a library item in the array.
 </span><span class="p">]</span><span class="w">
 </span></code></pre></div>
 <p>This endpoint batch gets library items.</p>
-<h3 id='http-request-21'>HTTP Request</h3>
+<h3 id='http-request-20'>HTTP Request</h3>
 <p><code>POST http://abs.example.com/api/items/batch/get</code></p>
 <h3 id='parameters-10'>Parameters</h3>
 <table><thead>
@@ -7132,7 +7125,7 @@ Make sure to include all audio files of a library item in the array.
 <td>The IDs of library items to get.</td>
 </tr>
 </tbody></table>
-<h3 id='response-21'>Response</h3>
+<h3 id='response-20'>Response</h3>
 <table><thead>
 <tr>
 <th>Status</th>
@@ -7160,7 +7153,7 @@ Make sure to include all audio files of a library item in the array.
   <span class="nt">-d</span> <span class="s1">'{"options": {"provider": "openlibrary"}, "libraryItemIds: ["li_8gch9ve09orgn4fdz8"]}'</span>
 </code></pre></div>
 <p>This endpoint batch matches library items using quick match. Quick match populates empty book details and the cover with the first book result. Does not overwrite existing details unless the &quot;Prefer matched metadata&quot; server setting is enabled or the <code>overrideDefaults</code> parameter is <code>true</code>.</p>
-<h3 id='http-request-22'>HTTP Request</h3>
+<h3 id='http-request-21'>HTTP Request</h3>
 <p><code>POST http://abs.example.com/api/items/batch/quickmatch</code></p>
 <h3 id='parameters-11'>Parameters</h3>
 <table><thead>
@@ -7203,7 +7196,7 @@ Make sure to include all audio files of a library item in the array.
 <td>Whether to override the existing book details and cover. This will be <code>true</code> if the &quot;Prefer matched metadata&quot; server setting is enabled.</td>
 </tr>
 </tbody></table>
-<h3 id='response-22'>Response</h3>
+<h3 id='response-21'>Response</h3>
 <table><thead>
 <tr>
 <th>Status</th>
@@ -13747,13 +13740,19 @@ When changing a user's username, their token will be regenerated.
 <tr>
 <td>400</td>
 <td>Bad Request</td>
-<td>The given library ID or folder ID does not exist, the podcast already exists, or the podcast&#39;s path is invalid.</td>
+<td>The podcast already exists, or the podcast&#39;s path is invalid.</td>
 <td></td>
 </tr>
 <tr>
-<td>500</td>
-<td>Internal Server Error</td>
+<td>403</td>
+<td>Forbidden</td>
 <td>An admin user is required to create podcasts.</td>
+<td></td>
+</tr>
+<tr>
+<td>404</td>
+<td>Not Found</td>
+<td>The given library ID or folder ID does not exist.</td>
 <td></td>
 </tr>
 </tbody></table>
@@ -16624,6 +16623,656 @@ The <code>id</code> parameter must be included for the notification to be saved.
 <td><code>title</code></td>
 <td>String</td>
 <td>The chapter&#39;s title.</td>
+</tr>
+</tbody></table>
+<h1 id='cache'>Cache</h1><h2 id='purge-all-cache'>Purge All Cache</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">-X</span> POST <span class="s2">"https://abs.example.com/api/cache/purge"</span> <span class="se">\</span>
+  <span class="nt">-H</span> <span class="s2">"Authorization: Bearer exJhbGciOiJI6IkpXVCJ9.eyJ1c2Vyi5NDEyODc4fQ.ZraBFohS4Tg39NszY"</span>
+</code></pre></div>
+<p>This endpoint purges all cache on the server, deleting the entire directory at <code>/metadata/cache</code>.</p>
+<h3 id='http-request'>HTTP Request</h3>
+<p><code>POST http://abs.example.com/api/cache/purge</code></p>
+<h3 id='response'>Response</h3>
+<table><thead>
+<tr>
+<th>Status</th>
+<th>Meaning</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>200</td>
+<td>OK</td>
+<td>Success</td>
+</tr>
+<tr>
+<td>403</td>
+<td>Forbidden</td>
+<td>An admin user is required to purge the cache.</td>
+</tr>
+</tbody></table>
+<h2 id='purge-items-cache'>Purge Items Cache</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">-X</span> POST <span class="s2">"https://abs.example.com/api/cache/items/purge"</span> <span class="se">\</span>
+  <span class="nt">-H</span> <span class="s2">"Authorization: Bearer exJhbGciOiJI6IkpXVCJ9.eyJ1c2Vyi5NDEyODc4fQ.ZraBFohS4Tg39NszY"</span>
+</code></pre></div>
+<p>This endpoint purges the items cache on the server, deleting the entire directory at <code>/metadata/cache/items</code>.</p>
+<h3 id='http-request-2'>HTTP Request</h3>
+<p><code>POST http://abs.example.com/api/cache/items/purge</code></p>
+<h3 id='response-2'>Response</h3>
+<table><thead>
+<tr>
+<th>Status</th>
+<th>Meaning</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>200</td>
+<td>OK</td>
+<td>Success</td>
+</tr>
+<tr>
+<td>403</td>
+<td>Forbidden</td>
+<td>An admin user is required to purge the items cache.</td>
+</tr>
+</tbody></table>
+<h1 id='tools'>Tools</h1><h2 id='encode-a-book-as-m4b'>Encode a Book as M4B</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">-X</span> POST <span class="s2">"https://abs.example.com/api/tools/item/li_8gch9ve09orgn4fdz8/encode-m4b"</span> <span class="se">\</span>
+  <span class="nt">-H</span> <span class="s2">"Authorization: Bearer exJhbGciOiJI6IkpXVCJ9.eyJ1c2Vyi5NDEyODc4fQ.ZraBFohS4Tg39NszY"</span>
+</code></pre></div>
+<p>This endpoint starts a task on the server to take the existing audio files of a book, and merge and encode them into an <code>.m4b</code> file.</p>
+<h3 id='http-request'>HTTP Request</h3>
+<p><code>POST http://abs.example.com/api/tools/item/&lt;ID&gt;/encode-m4b</code></p>
+<h3 id='url-parameters'>URL Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>ID</td>
+<td>The ID of the book library item.</td>
+</tr>
+</tbody></table>
+<h3 id='response'>Response</h3>
+<table><thead>
+<tr>
+<th>Status</th>
+<th>Meaning</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>200</td>
+<td>OK</td>
+<td>Success</td>
+</tr>
+<tr>
+<td>403</td>
+<td>Forbidden</td>
+<td>The user is not allowed to access the library item, or an admin user is required to make an <code>.m4b</code> file.</td>
+</tr>
+<tr>
+<td>404</td>
+<td>Not Found</td>
+<td>No library item with the given ID exists, or the library item has missing or invalid files.</td>
+</tr>
+<tr>
+<td>500</td>
+<td>Internal Server Error</td>
+<td>The library item is not a book, or does not have audio tracks.</td>
+</tr>
+</tbody></table>
+<h2 id='cancel-an-m4b-encode-task'>Cancel an M4B Encode Task</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">-X</span> DELETE <span class="s2">"https://abs.example.com/api/tools/item/li_8gch9ve09orgn4fdz8/encode-m4b"</span> <span class="se">\</span>
+  <span class="nt">-H</span> <span class="s2">"Authorization: Bearer exJhbGciOiJI6IkpXVCJ9.eyJ1c2Vyi5NDEyODc4fQ.ZraBFohS4Tg39NszY"</span>
+</code></pre></div>
+<p>This endpoint cancels an in-progress M4B encode task on the server.</p>
+<h3 id='http-request-2'>HTTP Request</h3>
+<p><code>DELETE http://abs.example.com/api/tools/item/&lt;ID&gt;/encode-m4b</code></p>
+<h3 id='url-parameters-2'>URL Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>ID</td>
+<td>The ID of the book library item.</td>
+</tr>
+</tbody></table>
+<h3 id='response-2'>Response</h3>
+<table><thead>
+<tr>
+<th>Status</th>
+<th>Meaning</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>200</td>
+<td>OK</td>
+<td>Success</td>
+</tr>
+<tr>
+<td>403</td>
+<td>Forbidden</td>
+<td>The user is not allowed to access the library item, or an admin user is required to cancel an M4B encode task.</td>
+</tr>
+<tr>
+<td>404</td>
+<td>Not Found</td>
+<td>No library item with the given ID exists, or no M4B encode task is in-progress for the library item.</td>
+</tr>
+</tbody></table>
+<h2 id='update-a-library-item-39-s-audio-files-39-embedded-metadata'>Update a Library Item&#39;s Audio Files&#39; Embedded Metadata</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">-X</span> POST <span class="s2">"https://abs.example.com/api/tools/item/li_bufnnmp4y5o2gbbxfm/embed-metadata?tone=1"</span> <span class="se">\</span>
+  <span class="nt">-H</span> <span class="s2">"Authorization: Bearer exJhbGciOiJI6IkpXVCJ9.eyJ1c2Vyi5NDEyODc4fQ.ZraBFohS4Tg39NszY"</span>
+</code></pre></div>
+<p>This endpoint updates a library item&#39;s audio files&#39; embedded metadata.</p>
+<h3 id='http-request-3'>HTTP Request</h3>
+<p><code>POST http://abs.example.com/api/tools/item/&lt;ID&gt;/embed-metadata</code></p>
+<h3 id='url-parameters-3'>URL Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>ID</td>
+<td>The ID of the library item.</td>
+</tr>
+</tbody></table>
+<h3 id='optional-query-parameters'>Optional Query Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>tone</code></td>
+<td>Binary</td>
+<td>Whether to use the library item&#39;s tone metadata to update it. Otherwise, ffmpeg will be used. <code>0</code> for false, <code>1</code> for true.</td>
+</tr>
+<tr>
+<td><code>forceEmbedChapters</code></td>
+<td>Binary</td>
+<td>Chapters are not embedded in multi-track audiobooks by default. Enable this setting to embed chapters in every audio file. <code>0</code> for false, <code>1</code> for true.</td>
+</tr>
+</tbody></table>
+<h3 id='response-3'>Response</h3>
+<table><thead>
+<tr>
+<th>Status</th>
+<th>Meaning</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>200</td>
+<td>OK</td>
+<td>Success</td>
+</tr>
+<tr>
+<td>403</td>
+<td>Forbidden</td>
+<td>The user is not allowed to access the library item, or an admin user is required to update a library item&#39;s audio files&#39; embedded metadata.</td>
+</tr>
+<tr>
+<td>404</td>
+<td>Not Found</td>
+<td>No library item with the given ID exists.</td>
+</tr>
+<tr>
+<td>500</td>
+<td>Internal Server Error</td>
+<td>The library item has missing parts, does not have audio files, or is not a book.</td>
+</tr>
+</tbody></table>
+<h1 id='misc'>Misc</h1><h2 id='upload-files'>Upload Files</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">-X</span> POST <span class="s2">"https://abs.example.com/api/upload"</span> <span class="se">\</span>
+  <span class="nt">-H</span> <span class="s2">"Authorization: Bearer exJhbGciOiJI6IkpXVCJ9.eyJ1c2Vyi5NDEyODc4fQ.ZraBFohS4Tg39NszY"</span> <span class="se">\</span>
+  <span class="nt">-F</span> <span class="nv">0</span><span class="o">=</span>@<span class="s2">"Terry Goodkind - SOT Bk01 - Wizards First Rule 01.mp3"</span> <span class="se">\</span>
+  <span class="nt">-F</span> <span class="nv">1</span><span class="o">=</span>@<span class="s2">"Terry Goodkind - SOT Bk01 - Wizards First Rule 02.mp3"</span> <span class="se">\</span>
+  <span class="nt">-F</span> <span class="nv">2</span><span class="o">=</span>@cover.jpg <span class="se">\</span>
+  <span class="nt">-d</span> <span class="s1">$'{"title": "Wizard</span><span class="se">\'</span><span class="s1">s First Rule", "author": "Terry Goodkind", "series": "Sword of Truth", "library": "lib_c1u6t4p45c35rf0nzd", "folder": "fol_bev1zuxhb0j0s1wehr"}'</span>
+</code></pre></div>
+<p>This endpoint uploads library item files to the server.</p>
+<h3 id='http-request'>HTTP Request</h3>
+<p><code>POST http://abs.example.com/api/upload</code></p>
+<h3 id='form-parameters'>Form Parameters</h3>
+<p>The form keys can be anything as they are ignored. Each value should be the file to upload.</p>
+
+<p>The following file types are supported:</p>
+
+<ul>
+<li><code>.png</code></li>
+<li><code>.jpg</code></li>
+<li><code>.jpeg</code></li>
+<li><code>.webp</code></li>
+<li><code>.m4b</code></li>
+<li><code>.mp3</code></li>
+<li><code>.m4a</code></li>
+<li><code>.flac</code></li>
+<li><code>.opus</code></li>
+<li><code>.ogg</code></li>
+<li><code>.oga</code></li>
+<li><code>.mp4</code></li>
+<li><code>.aac</code></li>
+<li><code>.wma</code></li>
+<li><code>.aiff</code></li>
+<li><code>.wav</code></li>
+<li><code>.webm</code></li>
+<li><code>.webma</code></li>
+<li><code>.epub</code></li>
+<li><code>.pdf</code></li>
+<li><code>.mobi</code></li>
+<li><code>.azw3</code></li>
+<li><code>.cbr</code></li>
+<li><code>.cbz</code></li>
+<li><code>.nfo</code></li>
+<li><code>.txt</code></li>
+<li><code>.opf</code></li>
+<li><code>.abs</code></li>
+</ul>
+<h3 id='json-parameters'>JSON Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>title</code></td>
+<td>String</td>
+<td>The library item&#39;s title.</td>
+</tr>
+<tr>
+<td><code>author</code></td>
+<td>String</td>
+<td>Optionally, the library item&#39;s author.</td>
+</tr>
+<tr>
+<td><code>series</code></td>
+<td>String</td>
+<td>Optionally, the library item&#39;s series.</td>
+</tr>
+<tr>
+<td><code>library</code></td>
+<td>String</td>
+<td>The ID of the library to put the item in.</td>
+</tr>
+<tr>
+<td><code>folder</code></td>
+<td>String</td>
+<td>The ID of the folder to put the item in.</td>
+</tr>
+</tbody></table>
+
+<p>The files will be put in a directory at <code>&lt;folderDir&gt;/&lt;author&gt;/&lt;series&gt;/&lt;title&gt;</code>.</p>
+<h3 id='response'>Response</h3>
+<table><thead>
+<tr>
+<th>Status</th>
+<th>Meaning</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>200</td>
+<td>OK</td>
+<td>Success</td>
+</tr>
+<tr>
+<td>403</td>
+<td>Forbidden</td>
+<td>A user with upload permissions is required.</td>
+</tr>
+<tr>
+<td>404</td>
+<td>Not Found</td>
+<td>No library with the given ID exists, or no folder with the given ID exists in the library.</td>
+</tr>
+<tr>
+<td>500</td>
+<td>Internal Server Error</td>
+<td>No files were provided, or the upload directory already exists.</td>
+</tr>
+</tbody></table>
+<h2 id='update-server-settings'>Update Server Settings</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">-X</span> PATCH <span class="s2">"https://abs.example.com/api/settings"</span> <span class="se">\</span>
+  <span class="nt">-H</span> <span class="s2">"Authorization: Bearer exJhbGciOiJI6IkpXVCJ9.eyJ1c2Vyi5NDEyODc4fQ.ZraBFohS4Tg39NszY"</span> <span class="se">\</span>
+  <span class="nt">-H</span> <span class="s2">"Content-Type: application/json"</span> <span class="se">\</span>
+  <span class="nt">-d</span> <span class="s1">'{"scannerFindCovers": false}'</span>
+</code></pre></div>
+<blockquote>
+<p>The above command returns JSON structured like this:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"success"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"serverSettings"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"server-settings"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"scannerFindCovers"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"scannerCoverProvider"</span><span class="p">:</span><span class="w"> </span><span class="s2">"google"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"scannerParseSubtitle"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"scannerPreferAudioMetadata"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"scannerPreferOpfMetadata"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"scannerPreferMatchedMetadata"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"scannerDisableWatcher"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"scannerPreferOverdriveMediaMarker"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"scannerUseSingleThreadedProber"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"scannerMaxThreads"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"scannerUseTone"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"storeCoverWithItem"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"storeMetadataWithItem"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"rateLimitLoginRequests"</span><span class="p">:</span><span class="w"> </span><span class="mi">10</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"rateLimitLoginWindow"</span><span class="p">:</span><span class="w"> </span><span class="mi">600000</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"backupSchedule"</span><span class="p">:</span><span class="w"> </span><span class="s2">"30 1 * * *"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"backupsToKeep"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"maxBackupSize"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"backupMetadataCovers"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"loggerDailyLogsToKeep"</span><span class="p">:</span><span class="w"> </span><span class="mi">7</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"loggerScannerLogsToKeep"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"homeBookshelfView"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"bookshelfView"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"sortingIgnorePrefix"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"sortingPrefixes"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+      </span><span class="s2">"the"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"a"</span><span class="w">
+    </span><span class="p">],</span><span class="w">
+    </span><span class="nl">"chromecastEnabled"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"enableEReader"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"dateFormat"</span><span class="p">:</span><span class="w"> </span><span class="s2">"MM/dd/yyyy"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"language"</span><span class="p">:</span><span class="w"> </span><span class="s2">"en-us"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"logLevel"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"version"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2.2.5"</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<p>This endpoint updates the server&#39;s settings.</p>
+<h3 id='http-request-2'>HTTP Request</h3>
+<p><code>PATCH http://abs.example.com/api/settings</code></p>
+<h3 id='parameters'>Parameters</h3>
+<p>Provide a <a href="#server-settings">Server Settings</a> object with the key-value pairs to update.</p>
+<h3 id='response-2'>Response</h3>
+<table><thead>
+<tr>
+<th>Status</th>
+<th>Meaning</th>
+<th>Description</th>
+<th>Schema</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>200</td>
+<td>OK</td>
+<td>Success</td>
+<td>See below.</td>
+</tr>
+<tr>
+<td>403</td>
+<td>Forbidden</td>
+<td>An admin user is required to update server settings.</td>
+<td></td>
+</tr>
+<tr>
+<td>500</td>
+<td>Internal Server Error</td>
+<td>Invalid server settings update object.</td>
+<td></td>
+</tr>
+</tbody></table>
+<h4 id='response-schema'>Response Schema</h4>
+<table><thead>
+<tr>
+<th>Attribute</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>success</code></td>
+<td>Boolean</td>
+<td>Whether the server settings were updated successfully.</td>
+</tr>
+<tr>
+<td><code>serverSettings</code></td>
+<td><a href="#server-settings">Server Settings</a> Object</td>
+<td>The updated server settings.</td>
+</tr>
+</tbody></table>
+<h2 id='get-authorized-user-and-server-information'>Get Authorized User and Server Information</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">-X</span> POST <span class="s2">"https://abs.example.com/api/authorize"</span> <span class="se">\</span>
+  <span class="nt">-H</span> <span class="s2">"Authorization: Bearer exJhbGciOiJI6IkpXVCJ9.eyJ1c2Vyi5NDEyODc4fQ.ZraBFohS4Tg39NszY"</span>
+</code></pre></div>
+<blockquote>
+<p>The above command returns JSON structured like this:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"user"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"root"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"username"</span><span class="p">:</span><span class="w"> </span><span class="s2">"root"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"root"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"token"</span><span class="p">:</span><span class="w"> </span><span class="s2">"exJhbGciOiJI6IkpXVCJ9.eyJ1c2Vyi5NDEyODc4fQ.ZraBFohS4Tg39NszY"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"mediaProgress"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+      </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"li_bufnnmp4y5o2gbbxfm-ep_lh6ko39pumnrma3dhv"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"libraryItemId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"li_bufnnmp4y5o2gbbxfm"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"episodeId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ep_lh6ko39pumnrma3dhv"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"duration"</span><span class="p">:</span><span class="w"> </span><span class="mf">1454.18449</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"progress"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.434998929881311</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"currentTime"</span><span class="p">:</span><span class="w"> </span><span class="mf">632.568697</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"isFinished"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"hideFromContinueListening"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"lastUpdate"</span><span class="p">:</span><span class="w"> </span><span class="mi">1668586015691</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"startedAt"</span><span class="p">:</span><span class="w"> </span><span class="mi">1668120083771</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"finishedAt"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+    </span><span class="p">],</span><span class="w">
+    </span><span class="nl">"seriesHideFromContinueListening"</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span><span class="w">
+    </span><span class="nl">"bookmarks"</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span><span class="w">
+    </span><span class="nl">"isActive"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"isLocked"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"lastSeen"</span><span class="p">:</span><span class="w"> </span><span class="mi">1669010786013</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"createdAt"</span><span class="p">:</span><span class="w"> </span><span class="mi">1666543632566</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"settings"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"mobileOrderBy"</span><span class="p">:</span><span class="w"> </span><span class="s2">"addedAt"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"mobileOrderDesc"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"mobileFilterBy"</span><span class="p">:</span><span class="w"> </span><span class="s2">"all"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"orderBy"</span><span class="p">:</span><span class="w"> </span><span class="s2">"media.metadata.title"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"orderDesc"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"filterBy"</span><span class="p">:</span><span class="w"> </span><span class="s2">"all"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"playbackRate"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"bookshelfCoverSize"</span><span class="p">:</span><span class="w"> </span><span class="mi">120</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"collapseSeries"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"useChapterTrack"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="nl">"permissions"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"download"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"update"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"delete"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"upload"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"accessAllLibraries"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"accessAllTags"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"accessExplicitContent"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="nl">"librariesAccessible"</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span><span class="w">
+    </span><span class="nl">"itemTagsAccessible"</span><span class="p">:</span><span class="w"> </span><span class="p">[]</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="nl">"userDefaultLibraryId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"lib_c1u6t4p45c35rf0nzd"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"serverSettings"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"server-settings"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"scannerFindCovers"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"scannerCoverProvider"</span><span class="p">:</span><span class="w"> </span><span class="s2">"audible"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"scannerParseSubtitle"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"scannerPreferAudioMetadata"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"scannerPreferOpfMetadata"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"scannerPreferMatchedMetadata"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"scannerDisableWatcher"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"scannerPreferOverdriveMediaMarker"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"scannerUseSingleThreadedProber"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"scannerMaxThreads"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"scannerUseTone"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"storeCoverWithItem"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"storeMetadataWithItem"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"rateLimitLoginRequests"</span><span class="p">:</span><span class="w"> </span><span class="mi">10</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"rateLimitLoginWindow"</span><span class="p">:</span><span class="w"> </span><span class="mi">600000</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"backupSchedule"</span><span class="p">:</span><span class="w"> </span><span class="s2">"30 1 * * *"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"backupsToKeep"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"maxBackupSize"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"backupMetadataCovers"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"loggerDailyLogsToKeep"</span><span class="p">:</span><span class="w"> </span><span class="mi">7</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"loggerScannerLogsToKeep"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"homeBookshelfView"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"bookshelfView"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"sortingIgnorePrefix"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"sortingPrefixes"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+      </span><span class="s2">"the"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"a"</span><span class="w">
+    </span><span class="p">],</span><span class="w">
+    </span><span class="nl">"chromecastEnabled"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"enableEReader"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"dateFormat"</span><span class="p">:</span><span class="w"> </span><span class="s2">"MM/dd/yyyy"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"language"</span><span class="p">:</span><span class="w"> </span><span class="s2">"en-us"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"logLevel"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"version"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2.2.5"</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="nl">"feeds"</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span><span class="w">
+  </span><span class="nl">"Source"</span><span class="p">:</span><span class="w"> </span><span class="s2">"docker"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<p>This endpoint retrieves information about the authorized user and the server. Used for logging into a client if an API token was persisted. Returns the same payload as <code>/login</code>.</p>
+<h3 id='http-request-3'>HTTP Request</h3>
+<p><code>POST http://abs.example.com/api/authorize</code></p>
+<h3 id='response-3'>Response</h3>
+<table><thead>
+<tr>
+<th>Status</th>
+<th>Meaning</th>
+<th>Description</th>
+<th>Schema</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>200</td>
+<td>OK</td>
+<td>Success</td>
+<td>See below.</td>
+</tr>
+<tr>
+<td>401</td>
+<td>Unauthorized</td>
+<td>No authorization was provided.</td>
+<td></td>
+</tr>
+</tbody></table>
+<h4 id='response-schema-2'>Response Schema</h4>
+<table><thead>
+<tr>
+<th>Attribute</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>user</code></td>
+<td><a href="#user">User</a> Object</td>
+<td>The authenticated user.</td>
+</tr>
+<tr>
+<td><code>userDefaultLibraryId</code></td>
+<td>String</td>
+<td>The ID of the first library in the list the user has access to.</td>
+</tr>
+<tr>
+<td><code>serverSettings</code></td>
+<td><a href="#server-settings">Server Settings</a> Object</td>
+<td>The server&#39;s settings.</td>
+</tr>
+<tr>
+<td><code>feeds</code></td>
+<td>Array of <a href="#rss-feed">RSS Feed</a></td>
+<td>The open RSS feeds.</td>
+</tr>
+<tr>
+<td><code>Source</code></td>
+<td>String</td>
+<td>The server&#39;s installation source.</td>
+</tr>
+</tbody></table>
+<h2 id='get-all-tags'>Get All Tags</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://abs.example.com/api/tags"</span> <span class="se">\</span>
+  <span class="nt">-H</span> <span class="s2">"Authorization: Bearer exJhbGciOiJI6IkpXVCJ9.eyJ1c2Vyi5NDEyODc4fQ.ZraBFohS4Tg39NszY"</span>
+</code></pre></div>
+<blockquote>
+<p>The above command returns JSON structured like this:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">[</span><span class="w">
+  </span><span class="s2">"Favorite"</span><span class="w">
+</span><span class="p">]</span><span class="w">
+</span></code></pre></div>
+<p>This endpoint retrieves all tags assigned to library items, returning them in an array.</p>
+<h3 id='http-request-4'>HTTP Request</h3>
+<p><code>GET http://abs.example.com/api/tags</code></p>
+<h3 id='response-4'>Response</h3>
+<table><thead>
+<tr>
+<th>Status</th>
+<th>Meaning</th>
+<th>Description</th>
+<th>Schema</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>200</td>
+<td>OK</td>
+<td>Success</td>
+<td>Array of String</td>
+</tr>
+<tr>
+<td>404</td>
+<td>Not Found</td>
+<td>An admin user is required to get all tags.</td>
+<td></td>
+</tr>
+</tbody></table>
+<h2 id='validate-a-cron-expression'>Validate a Cron Expression</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">-X</span> POST <span class="s2">"https://abs.example.com/api/validate-cron"</span> <span class="se">\</span>
+  <span class="nt">-H</span> <span class="s2">"Authorization: Bearer exJhbGciOiJI6IkpXVCJ9.eyJ1c2Vyi5NDEyODc4fQ.ZraBFohS4Tg39NszY"</span> <span class="se">\</span>
+  <span class="nt">-H</span> <span class="s2">"Content-Type: application/json"</span> <span class="se">\</span>
+  <span class="nt">-d</span> <span class="s1">'{"expression": "30 1 * * *"}'</span>
+</code></pre></div>
+<p>This endpoint validates a given <a href="https://en.wikipedia.org/wiki/Cron#CRON_expression">cron expression</a>.</p>
+<h3 id='http-request-5'>HTTP Request</h3>
+<p><code>POST http://abs.example.com/api/validate-cron</code></p>
+<h3 id='parameters-2'>Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>expression</code></td>
+<td>String</td>
+<td>The cron expression to validate.</td>
+</tr>
+</tbody></table>
+<h3 id='response-5'>Response</h3>
+<table><thead>
+<tr>
+<th>Status</th>
+<th>Meaning</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>200</td>
+<td>OK</td>
+<td>Success</td>
+</tr>
+<tr>
+<td>400</td>
+<td>Bad Request</td>
+<td>The <code>expression</code> parameter is required, or the <code>expression</code> is invalid.</td>
 </tr>
 </tbody></table>
 <h1 id='filtering'>Filtering</h1>
@@ -20271,6 +20920,437 @@ Only non-null tags will be returned in requests.</p>
 <td><code>testData</code></td>
 <td>Object</td>
 <td>The keys of the <code>testData</code> object will match the list of <code>variables</code>. The values will be the data used when sending a test notification.</td>
+</tr>
+</tbody></table>
+<h2 id='server-settings'>Server Settings</h2>
+<blockquote>
+<p>Server Settings</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"server-settings"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"scannerFindCovers"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"scannerCoverProvider"</span><span class="p">:</span><span class="w"> </span><span class="s2">"google"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"scannerParseSubtitle"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"scannerPreferAudioMetadata"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"scannerPreferOpfMetadata"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"scannerPreferMatchedMetadata"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"scannerDisableWatcher"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"scannerPreferOverdriveMediaMarker"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"scannerUseSingleThreadedProber"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"scannerMaxThreads"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"scannerUseTone"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"storeCoverWithItem"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"storeMetadataWithItem"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"rateLimitLoginRequests"</span><span class="p">:</span><span class="w"> </span><span class="mi">10</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"rateLimitLoginWindow"</span><span class="p">:</span><span class="w"> </span><span class="mi">600000</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"backupSchedule"</span><span class="p">:</span><span class="w"> </span><span class="s2">"30 1 * * *"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"backupsToKeep"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"maxBackupSize"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"backupMetadataCovers"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"loggerDailyLogsToKeep"</span><span class="p">:</span><span class="w"> </span><span class="mi">7</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"loggerScannerLogsToKeep"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"homeBookshelfView"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"bookshelfView"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"sortingIgnorePrefix"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"sortingPrefixes"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="s2">"the"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"a"</span><span class="w">
+  </span><span class="p">],</span><span class="w">
+  </span><span class="nl">"chromecastEnabled"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"enableEReader"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"dateFormat"</span><span class="p">:</span><span class="w"> </span><span class="s2">"MM/dd/yyyy"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"language"</span><span class="p">:</span><span class="w"> </span><span class="s2">"en-us"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"logLevel"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"version"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2.2.5"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<table><thead>
+<tr>
+<th>Attribute</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>id</code></td>
+<td>String</td>
+<td>The ID of the server settings.</td>
+</tr>
+<tr>
+<td><code>scannerFindCovers</code></td>
+<td>Boolean</td>
+<td>Whether the scanner will attempt to find a cover if your audiobook does not have an embedded cover or a cover image inside the folder. Note: This will extend scan time.</td>
+</tr>
+<tr>
+<td><code>scannerCoverProvider</code></td>
+<td>String</td>
+<td>If <code>scannerFindCovers</code> is <code>true</code>, which metadata provider to use. See <a href="#library-metadata-providers">Library Metadata Providers</a> for options.</td>
+</tr>
+<tr>
+<td><code>scannerParseSubtitle</code></td>
+<td>Boolean</td>
+<td>Whether to extract subtitles from audiobook folder names. Subtitles must be separated by <code>-</code>, i.e. <code>/audiobooks/Book Title - A Subtitle Here/</code> has the subtitle <code>A Subtitle Here</code>.</td>
+</tr>
+<tr>
+<td><code>scannerPreferAudioMetadata</code></td>
+<td>Boolean</td>
+<td>Whether to use audio file ID3 meta tags instead of folder names for book details.</td>
+</tr>
+<tr>
+<td><code>scannerPreferOpfMetadata</code></td>
+<td>Boolean</td>
+<td>Whether to use OPF file metadata instead of folder names for book details.</td>
+</tr>
+<tr>
+<td><code>scannerPreferMatchedMetadata</code></td>
+<td>Boolean</td>
+<td>Whether matched data will override item details when using Quick Match. By default, Quick Match will only fill in missing details.</td>
+</tr>
+<tr>
+<td><code>scannerDisableWatcher</code></td>
+<td>Boolean</td>
+<td>Whether to disable the automatic adding/updating of items when file changes are detected. <em>Requires server restart</em> for changes to take effect.</td>
+</tr>
+<tr>
+<td><code>scannerPreferOverdriveMediaMarker</code></td>
+<td>Boolean</td>
+<td>Whether to use the custom metadata in MP3 files from Overdrive for chapter timings automatically.</td>
+</tr>
+<tr>
+<td><code>storeCoverWithItem</code></td>
+<td>Boolean</td>
+<td>Whether to store covers in the library item&#39;s folder. By default, covers are stored in <code>/metadata/items</code>. Only one file named <code>cover</code> will be kept.</td>
+</tr>
+<tr>
+<td><code>storeMetadataWithItem</code></td>
+<td>Boolean</td>
+<td>Whether to store metadata files in the library item&#39;s folder. By default, metadata files are stored in <code>/metadata/items</code>. Uses the <code>.abs</code> file extension.</td>
+</tr>
+<tr>
+<td><code>rateLimitLoginRequests</code></td>
+<td>Integer</td>
+<td>The maximum number of login requests per <code>rateLimitLoginWindow</code>.</td>
+</tr>
+<tr>
+<td><code>rateLimitLoginWindow</code></td>
+<td>Integer</td>
+<td>The length (in ms) of each login rate limit window.</td>
+</tr>
+<tr>
+<td><code>backupSchedule</code></td>
+<td>String</td>
+<td>The <a href="https://en.wikipedia.org/wiki/Cron#CRON_expression">cron expression</a> for when to do automatic backups.</td>
+</tr>
+<tr>
+<td><code>backupsToKeep</code></td>
+<td>Integer</td>
+<td>The number of backups to keep.</td>
+</tr>
+<tr>
+<td><code>maxBackupSize</code></td>
+<td>Integer</td>
+<td>The maximum backup size (in GB) before they fail, a safeguard against misconfiguration.</td>
+</tr>
+<tr>
+<td><code>backupMetadataCovers</code></td>
+<td>Boolean</td>
+<td>Whether backups should include library item covers and author images located in metadata.</td>
+</tr>
+<tr>
+<td><code>loggerDailyLogsToKeep</code></td>
+<td>Integer</td>
+<td>The number of daily logs to keep.</td>
+</tr>
+<tr>
+<td><code>loggerScannerLogsToKeep</code></td>
+<td>Integer</td>
+<td>The number of scanner logs to keep.</td>
+</tr>
+<tr>
+<td><code>homeBookshelfView</code></td>
+<td>Binary</td>
+<td>Whether the home page should use a skeuomorphic design with wooden shelves.</td>
+</tr>
+<tr>
+<td><code>bookshelfView</code></td>
+<td>Binary</td>
+<td>Whether other bookshelf pages should use a skeuomorphic design with wooden shelves.</td>
+</tr>
+<tr>
+<td><code>sortingIgnorePrefix</code></td>
+<td>Boolean</td>
+<td>Whether to ignore prefixes when sorting. For example, for the prefix <code>the</code>, the book title <code>The Book Title</code> would sort as <code>Book Title, The</code>.</td>
+</tr>
+<tr>
+<td><code>sortingPrefixes</code></td>
+<td>Array of String</td>
+<td>If <code>sortingIgnorePrefix</code> is <code>true</code>, what prefixes to ignore.</td>
+</tr>
+<tr>
+<td><code>chromecastEnabled</code></td>
+<td>Boolean</td>
+<td>Whether to enable streaming to Chromecast devices.</td>
+</tr>
+<tr>
+<td><code>enableEReader</code></td>
+<td>Boolean</td>
+<td>Whether to enable experimental e-reader support.</td>
+</tr>
+<tr>
+<td><code>dateFormat</code></td>
+<td>String</td>
+<td>What date format to use. Options are <code>MM/dd/yyyy</code>, <code>dd/MM/yyyy</code>, or <code>yyyy-MM-dd</code>.</td>
+</tr>
+<tr>
+<td><code>language</code></td>
+<td>String</td>
+<td>The default server language.</td>
+</tr>
+<tr>
+<td><code>logLevel</code></td>
+<td>Integer</td>
+<td>What log level the server should use when logging. <code>1</code> for debug, <code>2</code> for info, or <code>3</code> for warnings.</td>
+</tr>
+<tr>
+<td><code>version</code></td>
+<td>String</td>
+<td>The server&#39;s version.</td>
+</tr>
+</tbody></table>
+<h2 id='rss-feed'>RSS Feed</h2>
+<blockquote>
+<p>RSS Feed</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"li_bufnnmp4y5o2gbbxfm"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"slug"</span><span class="p">:</span><span class="w"> </span><span class="s2">"li_bufnnmp4y5o2gbbxfm"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"userId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"root"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"entityType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"item"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"entityId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"li_bufnnmp4y5o2gbbxfm"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"coverPath"</span><span class="p">:</span><span class="w"> </span><span class="s2">"/metadata/items/li_bufnnmp4y5o2gbbxfm/cover.jpg"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"serverAddress"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://abs.example.com"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"feedUrl"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://abs.example.com/feed/li_bufnnmp4y5o2gbbxfm"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"meta"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="err">...</span><span class="p">},</span><span class="w">
+  </span><span class="nl">"episodes"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="err">...</span><span class="p">],</span><span class="w">
+  </span><span class="nl">"createdAt"</span><span class="p">:</span><span class="w"> </span><span class="mi">1669031843179</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"updatedAt"</span><span class="p">:</span><span class="w"> </span><span class="mi">1669031843179</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<table><thead>
+<tr>
+<th>Attribute</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>id</code></td>
+<td>String</td>
+<td>The ID of the RSS feed.</td>
+</tr>
+<tr>
+<td><code>slug</code></td>
+<td>String</td>
+<td>The slug (the last part of the URL) for the RSS feed.</td>
+</tr>
+<tr>
+<td><code>userId</code></td>
+<td>String</td>
+<td>The ID of the user that created the RSS feed.</td>
+</tr>
+<tr>
+<td><code>entityType</code></td>
+<td>String</td>
+<td>The type of entity the RSS feed is for.</td>
+</tr>
+<tr>
+<td><code>entityId</code></td>
+<td>String</td>
+<td>The ID of the entity the RSS feed is for.</td>
+</tr>
+<tr>
+<td><code>coverPath</code></td>
+<td>String</td>
+<td>The path of the cover to use for the RSS feed.</td>
+</tr>
+<tr>
+<td><code>serverAddress</code></td>
+<td>String</td>
+<td>The server&#39;s address.</td>
+</tr>
+<tr>
+<td><code>feedUrl</code></td>
+<td>String</td>
+<td>The full URL of the RSS feed.</td>
+</tr>
+<tr>
+<td><code>meta</code></td>
+<td><a href="#rss-feed-metadata">RSS Feed Metadata</a> Object</td>
+<td>The RSS feed&#39;s metadata.</td>
+</tr>
+<tr>
+<td><code>episodes</code></td>
+<td>Array of <a href="#rss-feed-episode">RSS Feed Episode</a></td>
+<td>The RSS feed&#39;s episodes.</td>
+</tr>
+<tr>
+<td><code>createdAt</code></td>
+<td>Integer</td>
+<td>The time (in ms since POSIX epoch) when the RSS feed was created.</td>
+</tr>
+<tr>
+<td><code>updatedAt</code></td>
+<td>Integer</td>
+<td>The time (in ms since POSIX epoch) when the RSS feed was last updated.</td>
+</tr>
+</tbody></table>
+<h2 id='rss-feed-metadata'>RSS Feed Metadata</h2>
+<blockquote>
+<p>Feed Metadata</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Welcome to Night Vale"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"</span><span class="se">\n</span><span class="s2">      Twice-monthly community updates for the small desert town of Night Vale, where every conspiracy theory is true. Turn on your radio and hide. Never listened before? It's an ongoing radio show. Start with the current episode, and you'll catch on in no time. Or, go right to Episode 1 if you wanna binge-listen.</span><span class="se">\n</span><span class="s2">    "</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"author"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Night Vale Presents"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"imageUrl"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://abs.example.com/feed/li_bufnnmp4y5o2gbbxfm/cover"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"feedUrl"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://abs.example.com/feed/li_bufnnmp4y5o2gbbxfm"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"link"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://abs.example.com/item/li_bufnnmp4y5o2gbbxfm"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"explicit"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<table><thead>
+<tr>
+<th>Attribute</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>title</code></td>
+<td>String</td>
+<td>The title of the entity the RSS feed is for.</td>
+</tr>
+<tr>
+<td><code>description</code></td>
+<td>String</td>
+<td>The description of the entity the RSS feed is for.</td>
+</tr>
+<tr>
+<td><code>author</code></td>
+<td>String</td>
+<td>The author of the entity the RSS feed is for.</td>
+</tr>
+<tr>
+<td><code>imageUrl</code></td>
+<td>String</td>
+<td>The URL of the RSS feed&#39;s image.</td>
+</tr>
+<tr>
+<td><code>feedUrl</code></td>
+<td>String</td>
+<td>The URL of the RSS feed.</td>
+</tr>
+<tr>
+<td><code>link</code></td>
+<td>String</td>
+<td>The URL of the entity the RSS feed is for.</td>
+</tr>
+<tr>
+<td><code>explicit</code></td>
+<td>Boolean</td>
+<td>Whether the RSS feed&#39;s contents are explicit.</td>
+</tr>
+</tbody></table>
+<h2 id='rss-feed-episode'>RSS Feed Episode</h2>
+<blockquote>
+<p>Feed Episode</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ep_lh6ko39pumnrma3dhv"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1 - Pilot"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"&lt;div&gt;&lt;br&gt;Pilot Episode. A new dog park opens in Night Vale. Carlos, a scientist, visits and discovers some interesting things. Seismic things. Plus, a helpful guide to surveillance helicopter-spotting.&lt;br&gt;&lt;br&gt;&lt;/div&gt;&lt;div&gt;&lt;br&gt;Weather: </span><span class="se">\"</span><span class="s2">These and More Than These</span><span class="se">\"</span><span class="s2"> by Joseph Fink&lt;br&gt;&lt;br&gt;&lt;/div&gt;&lt;div&gt;&lt;br&gt;Music: Disparition, disparition.info&lt;br&gt;&lt;br&gt;&lt;/div&gt;&lt;div&gt;&lt;br&gt;Logo: Rob Wilson, silastom.com&lt;br&gt;&lt;br&gt;&lt;/div&gt;&lt;div&gt;&lt;br&gt;Produced by Night Vale Presents. Written by Joseph Fink and Jeffrey Cranor. Narrated by Cecil Baldwin. More Info: welcometonightvale.com, and follow @NightValeRadio on Twitter or Facebook.&lt;br&gt;&lt;br&gt;&lt;/div&gt;"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"enclosure"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://abs.example.com/feed/li_bufnnmp4y5o2gbbxfm/item/ep_lh6ko39pumnrma3dhv/1 - Pilot.mp3"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"audio/mpeg"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"size"</span><span class="p">:</span><span class="w"> </span><span class="mi">23653735</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="nl">"pubDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Fri, 15 Jun 2012 12:00:00 -0000"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"link"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://abs.example.com/item/li_bufnnmp4y5o2gbbxfm"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"author"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Night Vale Presents"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"explicit"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"duration"</span><span class="p">:</span><span class="w"> </span><span class="mf">1454.18449</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"libraryItemId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"li_bufnnmp4y5o2gbbxfm"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"episodeId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ep_lh6ko39pumnrma3dhv"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"trackIndex"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"fullPath"</span><span class="p">:</span><span class="w"> </span><span class="s2">"/podcasts/Welcome to Night Vale/1 - Pilot.mp3"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<table><thead>
+<tr>
+<th>Attribute</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>id</code></td>
+<td>String</td>
+<td>The ID of the RSS feed episode.</td>
+</tr>
+<tr>
+<td><code>title</code></td>
+<td>String</td>
+<td>The title of the RSS feed episode.</td>
+</tr>
+<tr>
+<td><code>description</code></td>
+<td>String</td>
+<td>An HTML encoded description of the RSS feed episode.</td>
+</tr>
+<tr>
+<td><code>enclosure</code></td>
+<td>Similar to <a href="#podcast-episode-enclosure">Podcast Episode Enclosure</a></td>
+<td>Download information for the RSS feed episode.</td>
+</tr>
+<tr>
+<td><code>pubDate</code></td>
+<td>String</td>
+<td>The RSS feed episode&#39;s publication date.</td>
+</tr>
+<tr>
+<td><code>link</code></td>
+<td>String</td>
+<td>A URL to display to the RSS feed user.</td>
+</tr>
+<tr>
+<td><code>explicit</code></td>
+<td>Boolean</td>
+<td>Whether the RSS feed episode is explicit.</td>
+</tr>
+<tr>
+<td><code>duration</code></td>
+<td>Float</td>
+<td>The duration (in seconds) of the RSS feed episode.</td>
+</tr>
+<tr>
+<td><code>libraryItemId</code></td>
+<td>String</td>
+<td>The ID of the library item the RSS feed is for.</td>
+</tr>
+<tr>
+<td><code>episodeId</code></td>
+<td>String or null</td>
+<td>The ID of the podcast episode the RSS feed episode is for. Will be <code>null</code> if the RSS feed is for a book.</td>
+</tr>
+<tr>
+<td><code>trackIndex</code></td>
+<td>Integer</td>
+<td>The RSS feed episode&#39;s track index.</td>
+</tr>
+<tr>
+<td><code>fullPath</code></td>
+<td>String</td>
+<td>The path on the server of the audio file the RSS feed episode is for.</td>
 </tr>
 </tbody></table>
 
