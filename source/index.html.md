@@ -23,6 +23,7 @@ includes:
   - notifications
   - search
   - cache
+  - tools
   - filtering
   - schemas
 
