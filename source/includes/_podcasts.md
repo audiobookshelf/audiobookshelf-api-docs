@@ -144,8 +144,9 @@ Parameter | Type | Default | Description
 Status | Meaning | Description | Schema
 ------ | ------- | ----------- | ------
 200 | OK | Success | [Library Item Expanded](#library-item-expanded)
-400 | Bad Request | The given library ID or folder ID does not exist, the podcast already exists, or the podcast's path is invalid. |
-500 | Internal Server Error | An admin user is required to create podcasts. |
+400 | Bad Request | The podcast already exists, or the podcast's path is invalid. |
+403 | Forbidden | An admin user is required to create podcasts. |
+404 | Not Found | The given library ID or folder ID does not exist. |
 
 
 ## Get a Podcast's Feed
