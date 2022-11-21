@@ -72,3 +72,83 @@ Status | Meaning | Description
 403 | Forbidden | A user with upload permissions is required.
 404 | Not Found | No library with the given ID exists, or no folder with the given ID exists in the library.
 500 | Internal Server Error | No files were provided, or the upload directory already exists.
+
+
+## Update Server Settings
+
+```shell
+curl -X PATCH "https://abs.example.com/api/settings" \
+  -H "Authorization: Bearer exJhbGciOiJI6IkpXVCJ9.eyJ1c2Vyi5NDEyODc4fQ.ZraBFohS4Tg39NszY" \
+  -H "Content-Type: application/json" \
+  -d '{"scannerFindCovers": false}'
+```
+
+> The above command returns JSON structured like this:
+
+```json
+{
+  "success": true,
+  "serverSettings": {
+    "id": "server-settings",
+    "scannerFindCovers": false,
+    "scannerCoverProvider": "google",
+    "scannerParseSubtitle": false,
+    "scannerPreferAudioMetadata": false,
+    "scannerPreferOpfMetadata": false,
+    "scannerPreferMatchedMetadata": false,
+    "scannerDisableWatcher": true,
+    "scannerPreferOverdriveMediaMarker": false,
+    "scannerUseSingleThreadedProber": true,
+    "scannerMaxThreads": 0,
+    "scannerUseTone": false,
+    "storeCoverWithItem": false,
+    "storeMetadataWithItem": false,
+    "rateLimitLoginRequests": 10,
+    "rateLimitLoginWindow": 600000,
+    "backupSchedule": "30 1 * * *",
+    "backupsToKeep": 2,
+    "maxBackupSize": 1,
+    "backupMetadataCovers": true,
+    "loggerDailyLogsToKeep": 7,
+    "loggerScannerLogsToKeep": 2,
+    "homeBookshelfView": 1,
+    "bookshelfView": 1,
+    "sortingIgnorePrefix": false,
+    "sortingPrefixes": [
+      "the",
+      "a"
+    ],
+    "chromecastEnabled": false,
+    "enableEReader": false,
+    "dateFormat": "MM/dd/yyyy",
+    "language": "en-us",
+    "logLevel": 2,
+    "version": "2.2.5"
+  }
+}
+```
+
+This endpoint updates the server's settings.
+
+### HTTP Request
+
+`PATCH http://abs.example.com/api/settings`
+
+### Parameters
+
+Provide a [Server Settings](#server-settings) object with the key-value pairs to update.
+
+### Response
+
+Status | Meaning | Description | Schema
+------ | ------- | ----------- | ------
+200 | OK | Success | See below.
+403 | Forbidden | An admin user is required to update server settings. |
+500 | Internal Server Error | Invalid server settings update object. |
+
+#### Response Schema
+
+Attribute | Type | Description
+--------- | ---- | -----------
+`success` | Boolean | Whether the server settings were updated successfully.
+`serverSettings` | [Server Settings](#server-settings) Object | The updated server settings.
