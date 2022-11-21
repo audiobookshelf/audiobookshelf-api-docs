@@ -55,3 +55,39 @@ Status | Meaning | Description
 200 | OK | Success
 403 | Forbidden | The user is not allowed to access the library item, or an admin user is required to cancel an M4B encode task.
 404 | Not Found | No library item with the given ID exists, or no M4B encode task is in-progress for the library item.
+
+
+## Update a Library Item's Audio Files' Embedded Metadata
+
+```shell
+curl -X POST "https://abs.example.com/api/tools/item/li_bufnnmp4y5o2gbbxfm/embed-metadata?tone=1" \
+  -H "Authorization: Bearer exJhbGciOiJI6IkpXVCJ9.eyJ1c2Vyi5NDEyODc4fQ.ZraBFohS4Tg39NszY"
+```
+
+This endpoint updates a library item's audio files' embedded metadata.
+
+### HTTP Request
+
+`POST http://abs.example.com/api/tools/item/<ID>/embed-metadata`
+
+### URL Parameters
+
+Parameter | Description
+--------- | -----------
+ID | The ID of the library item.
+
+### Optional Query Parameters
+
+Parameter | Type | Description
+--------- | ---- | -----------
+`tone` | Binary | Whether to use the library item's tone metadata to update it. Otherwise, ffmpeg will be used. `0` for false, `1` for true.
+`forceEmbedChapters` | Binary | Whether to forcefully embed a book's chapters into the audio file metadata. `0` for false, `1` for true.
+
+### Response
+
+Status | Meaning | Description
+------ | ------- | -----------
+200 | OK | Success
+403 | Forbidden | The user is not allowed to access the library item, or an admin user is required to update a library item's audio files' embedded metadata.
+404 | Not Found | No library item with the given ID exists.
+500 | Internal Server Error | The library item has missing parts, does not have audio files, or is not a book.
