@@ -258,7 +258,7 @@ curl -X POST "https://abs.example.com/api/authorize" \
 }
 ```
 
-This endpoint retrieves information about the authorized user and the server.
+This endpoint retrieves information about the authorized user and the server. Used for logging into a client if an API token was persisted. Returns the same payload as `/login`.
 
 ### HTTP Request
 
