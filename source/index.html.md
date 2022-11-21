@@ -24,6 +24,7 @@ includes:
   - search
   - cache
   - tools
+  - misc
   - filtering
   - schemas
 
