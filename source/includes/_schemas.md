@@ -2004,9 +2004,6 @@ Attribute | Type | Description
 `scannerPreferMatchedMetadata` | Boolean | Whether matched data will override item details when using Quick Match. By default, Quick Match will only fill in missing details.
 `scannerDisableWatcher` | Boolean | Whether to disable the automatic adding/updating of items when file changes are detected. *Requires server restart* for changes to take effect.
 `scannerPreferOverdriveMediaMarker` | Boolean | Whether to use the custom metadata in MP3 files from Overdrive for chapter timings automatically.
-`scannerUseSingleThreadedProber` | Boolean | Whether the scanner should use a single thread.
-`scannerMaxThreads` | Integer | If `scannerUseSingleThreadedProber` is `false`, the maximum number of threads the scanner should use.
-`scannerUseTone` | Boolean | Whether to use the metadata from [tone](https://github.com/sandreas/tone) for book details.
 `storeCoverWithItem` | Boolean | Whether to store covers in the library item's folder. By default, covers are stored in `/metadata/items`. Only one file named `cover` will be kept.
 `storeMetadataWithItem` | Boolean | Whether to store metadata files in the library item's folder. By default, metadata files are stored in `/metadata/items`. Uses the `.abs` file extension.
 `rateLimitLoginRequests` | Integer | The maximum number of login requests per `rateLimitLoginWindow`.
