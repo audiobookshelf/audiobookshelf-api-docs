@@ -81,7 +81,7 @@ ID | The ID of the library item.
 Parameter | Type | Description
 --------- | ---- | -----------
 `tone` | Binary | Whether to use the library item's tone metadata to update it. Otherwise, ffmpeg will be used. `0` for false, `1` for true.
-`forceEmbedChapters` | Binary | Whether to forcefully embed a book's chapters into the audio file metadata. `0` for false, `1` for true.
+`forceEmbedChapters` | Binary | Chapters are not embedded in multi-track audiobooks by default. Enable this setting to embed chapters in every audio file. `0` for false, `1` for true.
 
 ### Response
 
