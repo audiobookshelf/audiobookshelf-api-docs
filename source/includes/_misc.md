@@ -308,3 +308,32 @@ Status | Meaning | Description | Schema
 ------ | ------- | ----------- | ------
 200 | OK | Success | Array of String
 404 | Not Found | An admin user is required to get all tags. |
+
+
+## Validate a Cron Expression
+
+```shell
+curl -X POST "https://abs.example.com/api/validate-cron" \
+  -H "Authorization: Bearer exJhbGciOiJI6IkpXVCJ9.eyJ1c2Vyi5NDEyODc4fQ.ZraBFohS4Tg39NszY" \
+  -H "Content-Type: application/json" \
+  -d '{"expression": "30 1 * * *"}'
+```
+
+This endpoint validates a given [cron expression](https://en.wikipedia.org/wiki/Cron#CRON_expression).
+
+### HTTP Request
+
+`POST http://abs.example.com/api/validate-cron`
+
+### Parameters
+
+Parameter | Type | Description
+--------- | ---- | -----------
+`expression` | String | The cron expression to validate.
+
+### Response
+
+Status | Meaning | Description
+------ | ------- | -----------
+200 | OK | Success
+400 | Bad Request | The `expression` parameter is required, or the `expression` is invalid.
