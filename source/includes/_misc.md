@@ -280,3 +280,31 @@ Attribute | Type | Description
 `serverSettings` | [Server Settings](#server-settings) Object | The server's settings.
 `feeds` | Array of [RSS Feed](#rss-feed) | The open RSS feeds.
 `Source` | String | The server's installation source.
+
+## Get All Tags
+
+```shell
+curl "https://abs.example.com/api/tags" \
+  -H "Authorization: Bearer exJhbGciOiJI6IkpXVCJ9.eyJ1c2Vyi5NDEyODc4fQ.ZraBFohS4Tg39NszY"
+```
+
+> The above command returns JSON structured like this:
+
+```json
+[
+  "Favorite"
+]
+```
+
+This endpoint retrieves all tags assigned to library items, returning them in an array.
+
+### HTTP Request
+
+`GET http://abs.example.com/api/tags`
+
+### Response
+
+Status | Meaning | Description | Schema
+------ | ------- | ----------- | ------
+200 | OK | Success | Array of String
+404 | Not Found | An admin user is required to get all tags. |
