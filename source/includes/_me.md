@@ -417,7 +417,7 @@ Parameter | Type | Default | Description
 Status | Meaning | Description
 ------ | ------- | -----------
 200 | OK | Success
-500 | Internal Server Error | The provided array must have a non-zero length.
+400 | Bad Request | The provided array must have a non-zero length.
 
 
 ## Create/Update Media Progress
