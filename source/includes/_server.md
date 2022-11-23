@@ -162,3 +162,38 @@ Parameter | Type | Description
 Status | Meaning | Description
 ------ | ------- | -----------
 200 | OK | Success
+
+
+## Initialize a Server
+
+```shell
+curl -X POST "https://abs.example.com/init" \
+  -H "Content-Type: application/json" \
+  -d '{"username": "root", "password": "*****"}'
+```
+
+This endpoint initializes a server for use with a root user.
+
+### HTTP Request
+
+`POST http://abs.example.com/init`
+
+### Parameters
+
+Parameter | Type | Description
+--------- | ---- | -----------
+`newRoot` | [New Root User](#new-root-user-parameters) Object (See Below) | The new root user.
+
+#### New Root User Parameters
+
+Parameter | Type | Description
+--------- | ---- | -----------
+`username` | String | The username of the new root user.
+`password` | String | The password of the new root user, may be empty.
+
+### Response
+
+Status | Meaning | Description
+------ | ------- | -----------
+200 | OK | Success
+500 | Internal Server Error | The server has already been initialized.
