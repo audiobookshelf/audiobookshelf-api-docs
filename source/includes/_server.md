@@ -145,7 +145,7 @@ curl -X POST "https://abs.example.com/logout" \
   -d '{"socketId": "AFcTcb7xBLsSPnIzAAAV"}'
 ```
 
-This endpoint logs out a client from the server. If the `socketId` parameter is provided, the server removes the socket from the client list.
+This endpoint logs out a client from the server. If the `socketId` parameter is provided, the server removes the socket from the client list. When using a socket connection this allows a client to change the user without needing to re-create the socket connection.
 
 ### HTTP Request
 
