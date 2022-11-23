@@ -164,7 +164,7 @@ Status | Meaning | Description
 200 | OK | Success
 
 
-## Initialize a Server
+## Initialize the Server
 
 ```shell
 curl -X POST "https://abs.example.com/init" \
@@ -197,3 +197,40 @@ Status | Meaning | Description
 ------ | ------- | -----------
 200 | OK | Success
 500 | Internal Server Error | The server has already been initialized.
+
+
+## Check the Server's Status
+
+```shell
+curl "https://abs.example.com/status"
+```
+
+> The above command returns JSON structured like this:
+
+```json
+{
+  "isInit": true,
+  "language": "en-us"
+}
+```
+
+This endpoint reports the server's initialization status.
+
+### HTTP Request
+
+`GET http://abs.example.com/init`
+
+### Response
+
+Status | Meaning | Description | Schema
+------ | ------- | ----------- | ------
+200 | OK | Success | See Below
+
+#### Response Schema
+
+Attribute | Type | Description
+--------- | ---- | -----------
+`isInit` | Boolean | Whether the server has been initialized.
+`language` | String | The server's default language.
+`ConfigPath` | String | The server's config path. Will only exist if `isInit` is `false`.
+`MetadataPath` | String | The server's metadata path. Will only exist if `isInit` is `false`.
