@@ -411,6 +411,8 @@ Parameter | Type | Default | Description
 `isFinished` | Boolean | `false` | Whether the media is finished.
 `hideFromContinueListening` | Boolean | `false` | Whether the media will be hidden from the "Continue Listening" shelf.
 `lastUpdate` | Integer | `Date.now()` | The time (in ms since POSIX epoch) when the media progress was last updated.
+`finishedAt` | Integer | `Date.now()` | The time (in ms since POSIX epoch) when the user finished the media.
+`startedAt` | Integer | `finishedAt` | The time (in ms since POSIX epoch) when the user started consuming the media.
 
 ### Response
 
@@ -453,6 +455,8 @@ Parameter | Type | Default | Description
 `isFinished` | Boolean | `false` | Whether the media is finished.
 `hideFromContinueListening` | Boolean | `false` | Whether the media will be hidden from the "Continue Listening" shelf.
 `lastUpdate` | Integer | `Date.now()` | The time (in ms since POSIX epoch) when the media progress was last updated.
+`finishedAt` | Integer | `Date.now()` | The time (in ms since POSIX epoch) when the user finished the media.
+`startedAt` | Integer | `finishedAt` | The time (in ms since POSIX epoch) when the user started consuming the media.
 
 ### Response
 
