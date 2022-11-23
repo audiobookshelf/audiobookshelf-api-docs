@@ -9,6 +9,7 @@ toc_footers:
   - <a href='https://github.com/slatedocs/slate'>Documentation Powered by Slate</a>
 
 includes:
+  - server
   - libraries
   - items
   - users
@@ -50,6 +51,8 @@ If you are a .NET developer we could use your help with a Windows installer for 
 Audiobookshelf uses a users API token as a Bearer token for requests. For GET requests the API token can optionally be passed in as a query string.
 
 You can find your API token by logging into the Audiobookshelf web app as an admin, go to the config → users page, and click on your account.
+
+You may also get the API token programmatically using the [Login](#login) endpoint. The API token will be in the response at `response.user.token`.
 
 API request header for authentication would look like this:
 
