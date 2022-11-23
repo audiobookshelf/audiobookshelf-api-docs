@@ -172,7 +172,7 @@ curl -X POST "https://abs.example.com/init" \
   -d '{"username": "root", "password": "*****"}'
 ```
 
-This endpoint initializes a server for use with a root user.
+This endpoint initializes a server for use with a root user. This is required for new servers without a root user yet.
 
 ### HTTP Request
 
