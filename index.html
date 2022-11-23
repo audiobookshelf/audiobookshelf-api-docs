@@ -319,6 +319,29 @@
             <a href="#authentication" class="toc-h1 toc-link" data-title="Authentication">Authentication</a>
           </li>
           <li>
+            <a href="#server" class="toc-h1 toc-link" data-title="Server">Server</a>
+              <ul class="toc-list-h2">
+                  <li>
+                    <a href="#login" class="toc-h2 toc-link" data-title="Login">Login</a>
+                  </li>
+                  <li>
+                    <a href="#logout" class="toc-h2 toc-link" data-title="Logout">Logout</a>
+                  </li>
+                  <li>
+                    <a href="#initialize-the-server" class="toc-h2 toc-link" data-title="Initialize the Server">Initialize the Server</a>
+                  </li>
+                  <li>
+                    <a href="#check-the-server-39-s-status" class="toc-h2 toc-link" data-title="Check the Server's Status">Check the Server's Status</a>
+                  </li>
+                  <li>
+                    <a href="#ping-the-server" class="toc-h2 toc-link" data-title="Ping the Server">Ping the Server</a>
+                  </li>
+                  <li>
+                    <a href="#healthcheck" class="toc-h2 toc-link" data-title="Healthcheck">Healthcheck</a>
+                  </li>
+              </ul>
+          </li>
+          <li>
             <a href="#libraries" class="toc-h1 toc-link" data-title="Libraries">Libraries</a>
               <ul class="toc-list-h2">
                   <li>
@@ -924,6 +947,8 @@
 
 <p>You can find your API token by logging into the Audiobookshelf web app as an admin, go to the config → users page, and click on your account.</p>
 
+<p>You may also get the API token programmatically using the <a href="#login">Login</a> endpoint. The API token will be in the response at <code>response.user.token</code>.</p>
+
 <p>API request header for authentication would look like this:</p>
 
 <p><code>Authorization: Bearer exJhbGciOiJI6IkpXVCJ9.eyJ1c2Vyi5NDEyODc4fQ.ZraBFohS4Tg39NszY</code></p>
@@ -935,6 +960,398 @@
 <aside class="notice">
 Your API token will be much longer then the one in the examples.
 </aside>
+<h1 id='server'>Server</h1><h2 id='login'>Login</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">-X</span> POST <span class="s2">"https://abs.example.com/login"</span> <span class="se">\</span>
+  <span class="nt">-H</span> <span class="s2">"Content-Type: application/json"</span> <span class="se">\</span>
+  <span class="nt">-d</span> <span class="s1">'{"username": "root", "password": "*****"}'</span>
+</code></pre></div>
+<blockquote>
+<p>The above command returns JSON structured like this:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"user"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"root"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"username"</span><span class="p">:</span><span class="w"> </span><span class="s2">"root"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"root"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"token"</span><span class="p">:</span><span class="w"> </span><span class="s2">"exJhbGciOiJI6IkpXVCJ9.eyJ1c2Vyi5NDEyODc4fQ.ZraBFohS4Tg39NszY"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"mediaProgress"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+      </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"li_bufnnmp4y5o2gbbxfm-ep_lh6ko39pumnrma3dhv"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"libraryItemId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"li_bufnnmp4y5o2gbbxfm"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"episodeId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ep_lh6ko39pumnrma3dhv"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"duration"</span><span class="p">:</span><span class="w"> </span><span class="mf">1454.18449</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"progress"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.434998929881311</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"currentTime"</span><span class="p">:</span><span class="w"> </span><span class="mf">632.568697</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"isFinished"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"hideFromContinueListening"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"lastUpdate"</span><span class="p">:</span><span class="w"> </span><span class="mi">1668586015691</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"startedAt"</span><span class="p">:</span><span class="w"> </span><span class="mi">1668120083771</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"finishedAt"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+    </span><span class="p">],</span><span class="w">
+    </span><span class="nl">"seriesHideFromContinueListening"</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span><span class="w">
+    </span><span class="nl">"bookmarks"</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span><span class="w">
+    </span><span class="nl">"isActive"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"isLocked"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"lastSeen"</span><span class="p">:</span><span class="w"> </span><span class="mi">1669010786013</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"createdAt"</span><span class="p">:</span><span class="w"> </span><span class="mi">1666543632566</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"settings"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"mobileOrderBy"</span><span class="p">:</span><span class="w"> </span><span class="s2">"addedAt"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"mobileOrderDesc"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"mobileFilterBy"</span><span class="p">:</span><span class="w"> </span><span class="s2">"all"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"orderBy"</span><span class="p">:</span><span class="w"> </span><span class="s2">"media.metadata.title"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"orderDesc"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"filterBy"</span><span class="p">:</span><span class="w"> </span><span class="s2">"all"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"playbackRate"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"bookshelfCoverSize"</span><span class="p">:</span><span class="w"> </span><span class="mi">120</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"collapseSeries"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"useChapterTrack"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="nl">"permissions"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"download"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"update"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"delete"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"upload"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"accessAllLibraries"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"accessAllTags"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"accessExplicitContent"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="nl">"librariesAccessible"</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span><span class="w">
+    </span><span class="nl">"itemTagsAccessible"</span><span class="p">:</span><span class="w"> </span><span class="p">[]</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="nl">"userDefaultLibraryId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"lib_c1u6t4p45c35rf0nzd"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"serverSettings"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"server-settings"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"scannerFindCovers"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"scannerCoverProvider"</span><span class="p">:</span><span class="w"> </span><span class="s2">"audible"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"scannerParseSubtitle"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"scannerPreferAudioMetadata"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"scannerPreferOpfMetadata"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"scannerPreferMatchedMetadata"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"scannerDisableWatcher"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"scannerPreferOverdriveMediaMarker"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"scannerUseSingleThreadedProber"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"scannerMaxThreads"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"scannerUseTone"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"storeCoverWithItem"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"storeMetadataWithItem"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"rateLimitLoginRequests"</span><span class="p">:</span><span class="w"> </span><span class="mi">10</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"rateLimitLoginWindow"</span><span class="p">:</span><span class="w"> </span><span class="mi">600000</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"backupSchedule"</span><span class="p">:</span><span class="w"> </span><span class="s2">"30 1 * * *"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"backupsToKeep"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"maxBackupSize"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"backupMetadataCovers"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"loggerDailyLogsToKeep"</span><span class="p">:</span><span class="w"> </span><span class="mi">7</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"loggerScannerLogsToKeep"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"homeBookshelfView"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"bookshelfView"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"sortingIgnorePrefix"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"sortingPrefixes"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+      </span><span class="s2">"the"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"a"</span><span class="w">
+    </span><span class="p">],</span><span class="w">
+    </span><span class="nl">"chromecastEnabled"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"enableEReader"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"dateFormat"</span><span class="p">:</span><span class="w"> </span><span class="s2">"MM/dd/yyyy"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"language"</span><span class="p">:</span><span class="w"> </span><span class="s2">"en-us"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"logLevel"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"version"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2.2.5"</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="nl">"feeds"</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span><span class="w">
+  </span><span class="nl">"Source"</span><span class="p">:</span><span class="w"> </span><span class="s2">"docker"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<p>This endpoint logs in a client to the server, returning information about the user and server. The <code>/api/authorize</code> (<a href="#get-authorized-user-and-server-information">Get Authorized User and Server Information</a>) endpoint is also available if an API token was persisted.</p>
+<h3 id='http-request'>HTTP Request</h3>
+<p><code>POST http://abs.example.com/login</code></p>
+<h3 id='parameters'>Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>username</code></td>
+<td>String</td>
+<td>The username to log in with.</td>
+</tr>
+<tr>
+<td><code>password</code></td>
+<td>String</td>
+<td>The password of the user.</td>
+</tr>
+</tbody></table>
+<h3 id='response'>Response</h3>
+<table><thead>
+<tr>
+<th>Status</th>
+<th>Meaning</th>
+<th>Description</th>
+<th>Schema</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>200</td>
+<td>OK</td>
+<td>Success</td>
+<td>See Below</td>
+</tr>
+<tr>
+<td>401</td>
+<td>Unauthorized</td>
+<td>Invalid username or password.</td>
+<td>Error Message</td>
+</tr>
+</tbody></table>
+<h4 id='response-schema'>Response Schema</h4>
+<table><thead>
+<tr>
+<th>Attribute</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>user</code></td>
+<td><a href="#user">User</a> Object</td>
+<td>The authenticated user.</td>
+</tr>
+<tr>
+<td><code>userDefaultLibraryId</code></td>
+<td>String</td>
+<td>The ID of the first library in the list the user has access to.</td>
+</tr>
+<tr>
+<td><code>serverSettings</code></td>
+<td><a href="#server-settings">Server Settings</a> Object</td>
+<td>The server&#39;s settings.</td>
+</tr>
+<tr>
+<td><code>feeds</code></td>
+<td>Array of <a href="#rss-feed">RSS Feed</a></td>
+<td>The open RSS feeds.</td>
+</tr>
+<tr>
+<td><code>Source</code></td>
+<td>String</td>
+<td>The server&#39;s installation source.</td>
+</tr>
+</tbody></table>
+<h2 id='logout'>Logout</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">-X</span> POST <span class="s2">"https://abs.example.com/logout"</span> <span class="se">\</span>
+  <span class="nt">-H</span> <span class="s2">"Authorization: Bearer exJhbGciOiJI6IkpXVCJ9.eyJ1c2Vyi5NDEyODc4fQ.ZraBFohS4Tg39NszY"</span> <span class="se">\</span>
+  <span class="nt">-H</span> <span class="s2">"Content-Type: application/json"</span> <span class="se">\</span>
+  <span class="nt">-d</span> <span class="s1">'{"socketId": "AFcTcb7xBLsSPnIzAAAV"}'</span>
+</code></pre></div>
+<p>This endpoint logs out a client from the server. If the <code>socketId</code> parameter is provided, the server removes the socket from the client list. When using a socket connection this allows a client to change the user without needing to re-create the socket connection.</p>
+<h3 id='http-request-2'>HTTP Request</h3>
+<p><code>POST http://abs.example.com/logout</code></p>
+<h3 id='optional-parameters'>Optional Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>socketId</code></td>
+<td>String</td>
+<td>The ID of the connected socket.</td>
+</tr>
+</tbody></table>
+<h3 id='response-2'>Response</h3>
+<table><thead>
+<tr>
+<th>Status</th>
+<th>Meaning</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>200</td>
+<td>OK</td>
+<td>Success</td>
+</tr>
+</tbody></table>
+<h2 id='initialize-the-server'>Initialize the Server</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">-X</span> POST <span class="s2">"https://abs.example.com/init"</span> <span class="se">\</span>
+  <span class="nt">-H</span> <span class="s2">"Content-Type: application/json"</span> <span class="se">\</span>
+  <span class="nt">-d</span> <span class="s1">'{"username": "root", "password": "*****"}'</span>
+</code></pre></div>
+<p>This endpoint initializes a server for use with a root user. This is required for new servers without a root user yet.</p>
+<h3 id='http-request-3'>HTTP Request</h3>
+<p><code>POST http://abs.example.com/init</code></p>
+<h3 id='parameters-2'>Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>newRoot</code></td>
+<td><a href="#new-root-user-parameters">New Root User</a> Object (See Below)</td>
+<td>The new root user.</td>
+</tr>
+</tbody></table>
+<h4 id='new-root-user-parameters'>New Root User Parameters</h4>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>username</code></td>
+<td>String</td>
+<td>The username of the new root user.</td>
+</tr>
+<tr>
+<td><code>password</code></td>
+<td>String</td>
+<td>The password of the new root user, may be empty.</td>
+</tr>
+</tbody></table>
+<h3 id='response-3'>Response</h3>
+<table><thead>
+<tr>
+<th>Status</th>
+<th>Meaning</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>200</td>
+<td>OK</td>
+<td>Success</td>
+</tr>
+<tr>
+<td>500</td>
+<td>Internal Server Error</td>
+<td>The server has already been initialized.</td>
+</tr>
+</tbody></table>
+<h2 id='check-the-server-39-s-status'>Check the Server&#39;s Status</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://abs.example.com/status"</span>
+</code></pre></div>
+<blockquote>
+<p>The above command returns JSON structured like this:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"isInit"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"language"</span><span class="p">:</span><span class="w"> </span><span class="s2">"en-us"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<p>This endpoint reports the server&#39;s initialization status.</p>
+<h3 id='http-request-4'>HTTP Request</h3>
+<p><code>GET http://abs.example.com/init</code></p>
+<h3 id='response-4'>Response</h3>
+<table><thead>
+<tr>
+<th>Status</th>
+<th>Meaning</th>
+<th>Description</th>
+<th>Schema</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>200</td>
+<td>OK</td>
+<td>Success</td>
+<td>See Below</td>
+</tr>
+</tbody></table>
+<h4 id='response-schema-2'>Response Schema</h4>
+<table><thead>
+<tr>
+<th>Attribute</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>isInit</code></td>
+<td>Boolean</td>
+<td>Whether the server has been initialized.</td>
+</tr>
+<tr>
+<td><code>language</code></td>
+<td>String</td>
+<td>The server&#39;s default language.</td>
+</tr>
+<tr>
+<td><code>ConfigPath</code></td>
+<td>String</td>
+<td>The server&#39;s config path. Will only exist if <code>isInit</code> is <code>false</code>.</td>
+</tr>
+<tr>
+<td><code>MetadataPath</code></td>
+<td>String</td>
+<td>The server&#39;s metadata path. Will only exist if <code>isInit</code> is <code>false</code>.</td>
+</tr>
+</tbody></table>
+<h2 id='ping-the-server'>Ping the Server</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://abs.example.com/ping"</span>
+</code></pre></div>
+<blockquote>
+<p>The above command returns JSON structured like this:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"success"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<p>This endpoint is a simple check to see if the server is operating and responding with JSON correctly.</p>
+<h3 id='http-request-5'>HTTP Request</h3>
+<p><code>GET http://abs.example.com/ping</code></p>
+<h3 id='response-5'>Response</h3>
+<table><thead>
+<tr>
+<th>Status</th>
+<th>Meaning</th>
+<th>Description</th>
+<th>Schema</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>200</td>
+<td>OK</td>
+<td>Success</td>
+<td>See Below</td>
+</tr>
+</tbody></table>
+<h4 id='response-schema-3'>Response Schema</h4>
+<table><thead>
+<tr>
+<th>Attribute</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>success</code></td>
+<td>Boolean</td>
+<td>Will always be <code>true</code>.</td>
+</tr>
+</tbody></table>
+<h2 id='healthcheck'>Healthcheck</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://abs.example.com/healthcheck"</span>
+</code></pre></div>
+<p>This endpoint is a simple check to see if the server is operating and can respond.</p>
+<h3 id='http-request-6'>HTTP Request</h3>
+<p><code>GET http://abs.example.com/healthcheck</code></p>
+<h3 id='response-6'>Response</h3>
+<table><thead>
+<tr>
+<th>Status</th>
+<th>Meaning</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>200</td>
+<td>OK</td>
+<td>Success</td>
+</tr>
+</tbody></table>
 <h1 id='libraries'>Libraries</h1><h2 id='create-a-library'>Create a Library</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">-X</span> POST <span class="s2">"https://abs.example.com/api/libraries"</span> <span class="se">\</span>
   <span class="nt">-H</span> <span class="s2">"Authorization: Bearer exJhbGciOiJI6IkpXVCJ9.eyJ1c2Vyi5NDEyODc4fQ.ZraBFohS4Tg39NszY"</span> <span class="se">\</span>
   <span class="nt">-H</span> <span class="s2">"Content-Type: application/json"</span> <span class="se">\</span>
@@ -17140,7 +17557,7 @@ The <code>id</code> parameter must be included for the notification to be saved.
   </span><span class="nl">"Source"</span><span class="p">:</span><span class="w"> </span><span class="s2">"docker"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div>
-<p>This endpoint retrieves information about the authorized user and the server. Used for logging into a client if an API token was persisted. Returns the same payload as <code>/login</code>.</p>
+<p>This endpoint retrieves information about the authorized user and the server. Used for logging into a client if an API token was persisted. Returns the same payload as <code>/login</code> (<a href="#login">Login</a>).</p>
 <h3 id='http-request-3'>HTTP Request</h3>
 <p><code>POST http://abs.example.com/api/authorize</code></p>
 <h3 id='response-3'>Response</h3>
@@ -19312,7 +19729,7 @@ Only non-null tags will be returned in requests.</p>
 <tr>
 <td><code>contentUrl</code></td>
 <td>String</td>
-<td>The URL on the serve of the audio file.</td>
+<td>The URL path of the audio file.</td>
 </tr>
 <tr>
 <td><code>mimeType</code></td>
