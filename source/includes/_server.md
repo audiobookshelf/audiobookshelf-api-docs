@@ -267,3 +267,22 @@ Status | Meaning | Description | Schema
 Attribute | Type | Description
 --------- | ---- | -----------
 `success` | Boolean | Will always be `true`.
+
+
+## Healthcheck
+
+```shell
+curl "https://abs.example.com/healthcheck"
+```
+
+This endpoint is a simple check to see if the server is operating and can respond.
+
+### HTTP Request
+
+`GET http://abs.example.com/healthcheck`
+
+### Response
+
+Status | Meaning | Description
+------ | ------- | -----------
+200 | OK | Success
