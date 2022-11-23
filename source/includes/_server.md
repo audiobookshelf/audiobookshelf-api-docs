@@ -134,3 +134,31 @@ Attribute | Type | Description
 `serverSettings` | [Server Settings](#server-settings) Object | The server's settings.
 `feeds` | Array of [RSS Feed](#rss-feed) | The open RSS feeds.
 `Source` | String | The server's installation source.
+
+
+## Logout
+
+```shell
+curl -X POST "https://abs.example.com/logout" \
+  -H "Authorization: Bearer exJhbGciOiJI6IkpXVCJ9.eyJ1c2Vyi5NDEyODc4fQ.ZraBFohS4Tg39NszY" \
+  -H "Content-Type: application/json" \
+  -d '{"socketId": "AFcTcb7xBLsSPnIzAAAV"}'
+```
+
+This endpoint logs out a client from the server. If the `socketId` parameter is provided, the server removes the socket from the client list.
+
+### HTTP Request
+
+`POST http://abs.example.com/logout`
+
+### Optional Parameters
+
+Parameter | Type | Description
+--------- | ---- | -----------
+`socketId` | String | The ID of the connected socket.
+
+### Response
+
+Status | Meaning | Description
+------ | ------- | -----------
+200 | OK | Success
