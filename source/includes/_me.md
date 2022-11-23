@@ -406,7 +406,7 @@ Parameter | Type | Default | Description
 `libraryItemId` | String | **Required** | The ID of the library item the media progress is for.
 `episodeId` | String or null | `null` | The ID of the podcast episode the media progress is for.
 `duration` | Float | `0` | The total duration (in seconds) of the media.
-`progress` | Float | `0` | The percentage completion progress of the media. Should be `1` if the media is finished.
+`progress` | Float | `0` or `1` | The percentage completion progress of the media. Will automatically be set to `1` if the media is finished.
 `currentTime` | Float | `0` | The current time (in seconds) of your progress.
 `isFinished` | Boolean | `false` | Whether the media is finished.
 `hideFromContinueListening` | Boolean | `false` | Whether the media will be hidden from the "Continue Listening" shelf.
@@ -448,7 +448,7 @@ EpisodeID | The ID of the podcast episode to create/update media progress for.
 Parameter | Type | Default | Description
 --------- | ---- | ------- | -----------
 `duration` | Float | `0` | The total duration (in seconds) of the media.
-`progress` | Float | `0` | The percentage completion progress of the media. Should be `1` if the media is finished.
+`progress` | Float | `0` or `1` | The percentage completion progress of the media. Will automatically be set to `1` if the media is finished.
 `currentTime` | Float | `0` | The current time (in seconds) of your progress.
 `isFinished` | Boolean | `false` | Whether the media is finished.
 `hideFromContinueListening` | Boolean | `false` | Whether the media will be hidden from the "Continue Listening" shelf.
