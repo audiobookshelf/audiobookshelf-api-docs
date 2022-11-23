@@ -234,3 +234,36 @@ Attribute | Type | Description
 `language` | String | The server's default language.
 `ConfigPath` | String | The server's config path. Will only exist if `isInit` is `false`.
 `MetadataPath` | String | The server's metadata path. Will only exist if `isInit` is `false`.
+
+
+## Ping the Server
+
+```shell
+curl "https://abs.example.com/ping"
+```
+
+> The above command returns JSON structured like this:
+
+```json
+{
+  "success": true
+}
+```
+
+This endpoint is a simple check to see if the server is operating and responding with JSON correctly.
+
+### HTTP Request
+
+`GET http://abs.example.com/ping`
+
+### Response
+
+Status | Meaning | Description | Schema
+------ | ------- | ----------- | ------
+200 | OK | Success | See Below
+
+#### Response Schema
+
+Attribute | Type | Description
+--------- | ---- | -----------
+`success` | Boolean | Will always be `true`.
