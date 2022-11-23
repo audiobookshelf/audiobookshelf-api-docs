@@ -1090,7 +1090,7 @@ Attribute | Type | Description
 `startOffset` | Float | When in the audio file (in seconds) the track starts.
 `duration` | Float | The length (in seconds) of the audio track.
 `title` | String | The filename of the audio file the audio track belongs to.
-`contentUrl` | String | The URL on the serve of the audio file.
+`contentUrl` | String | The URL path of the audio file.
 `mimeType` | String | The MIME type of the audio file.
 `metadata` | [File Metadata](#file-metadata) Object or null | The metadata of the audio file.
 
