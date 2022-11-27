@@ -595,6 +595,9 @@
                     <a href="#create-a-backup" class="toc-h2 toc-link" data-title="Create a Backup">Create a Backup</a>
                   </li>
                   <li>
+                    <a href="#get-all-backups" class="toc-h2 toc-link" data-title="Get all Backups">Get all Backups</a>
+                  </li>
+                  <li>
                     <a href="#delete-a-backup" class="toc-h2 toc-link" data-title="Delete a Backup">Delete a Backup</a>
                   </li>
                   <li>
@@ -11762,32 +11765,34 @@ When changing a user's username, their token will be regenerated.
 <blockquote>
 <p>The above command returns JSON structured like this:</p>
 </blockquote>
-<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">[</span><span class="w">
-  </span><span class="p">{</span><span class="w">
-    </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2022-11-14T0130"</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"backupMetadataCovers"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"backupDirPath"</span><span class="p">:</span><span class="w"> </span><span class="s2">"/metadata/backups"</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"datePretty"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Mon, Nov 14 2022 01:30"</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"fullPath"</span><span class="p">:</span><span class="w"> </span><span class="s2">"/metadata/backups/2022-11-14T0130.audiobookshelf"</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"path"</span><span class="p">:</span><span class="w"> </span><span class="s2">"backups/2022-11-14T0130.audiobookshelf"</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"filename"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2022-11-14T0130.audiobookshelf"</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"fileSize"</span><span class="p">:</span><span class="w"> </span><span class="mi">7776983</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"createdAt"</span><span class="p">:</span><span class="w"> </span><span class="mi">1668411000329</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"serverVersion"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2.2.4"</span><span class="w">
-  </span><span class="p">},</span><span class="w">
-  </span><span class="p">{</span><span class="w">
-    </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2022-11-15T0105"</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"backupMetadataCovers"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"backupDirPath"</span><span class="p">:</span><span class="w"> </span><span class="s2">"/metadata/backups"</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"datePretty"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Tue, Nov 15 2022 01:05"</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"fullPath"</span><span class="p">:</span><span class="w"> </span><span class="s2">"/metadata/backups/2022-11-15T0105.audiobookshelf"</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"path"</span><span class="p">:</span><span class="w"> </span><span class="s2">"backups/2022-11-15T0105.audiobookshelf"</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"filename"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2022-11-15T0105.audiobookshelf"</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"fileSize"</span><span class="p">:</span><span class="w"> </span><span class="mi">7777148</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"createdAt"</span><span class="p">:</span><span class="w"> </span><span class="mi">1668495954701</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"serverVersion"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2.2.4"</span><span class="w">
-  </span><span class="p">}</span><span class="w">
-</span><span class="p">]</span><span class="w">
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"backups"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2022-11-14T0130"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"backupMetadataCovers"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"backupDirPath"</span><span class="p">:</span><span class="w"> </span><span class="s2">"/metadata/backups"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"datePretty"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Mon, Nov 14 2022 01:30"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"fullPath"</span><span class="p">:</span><span class="w"> </span><span class="s2">"/metadata/backups/2022-11-14T0130.audiobookshelf"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"path"</span><span class="p">:</span><span class="w"> </span><span class="s2">"backups/2022-11-14T0130.audiobookshelf"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"filename"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2022-11-14T0130.audiobookshelf"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"fileSize"</span><span class="p">:</span><span class="w"> </span><span class="mi">7776983</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"createdAt"</span><span class="p">:</span><span class="w"> </span><span class="mi">1668411000329</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"serverVersion"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2.2.4"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2022-11-15T0105"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"backupMetadataCovers"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"backupDirPath"</span><span class="p">:</span><span class="w"> </span><span class="s2">"/metadata/backups"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"datePretty"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Tue, Nov 15 2022 01:05"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"fullPath"</span><span class="p">:</span><span class="w"> </span><span class="s2">"/metadata/backups/2022-11-15T0105.audiobookshelf"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"path"</span><span class="p">:</span><span class="w"> </span><span class="s2">"backups/2022-11-15T0105.audiobookshelf"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"filename"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2022-11-15T0105.audiobookshelf"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"fileSize"</span><span class="p">:</span><span class="w"> </span><span class="mi">7777148</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"createdAt"</span><span class="p">:</span><span class="w"> </span><span class="mi">1668495954701</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"serverVersion"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2.2.4"</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
 </span></code></pre></div>
 <p>This endpoint creates a backup. All existing backups will be returned.</p>
 <h3 id='http-request'>HTTP Request</h3>
@@ -11820,29 +11825,79 @@ When changing a user's username, their token will be regenerated.
 <td></td>
 </tr>
 </tbody></table>
+<h2 id='get-all-backups'>Get all Backups</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://abs.example.com/api/backups"</span> <span class="se">\</span>
+  <span class="nt">-H</span> <span class="s2">"Authorization: Bearer exJhbGciOiJI6IkpXVCJ9.eyJ1c2Vyi5NDEyODc4fQ.ZraBFohS4Tg39NszY"</span>
+</code></pre></div>
+<blockquote>
+<p>The above command returns JSON structured like this:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"backups"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2022-11-25T0100"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"backupMetadataCovers"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"backupDirPath"</span><span class="p">:</span><span class="w"> </span><span class="s2">"/metadata/backups"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"datePretty"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Fri, Nov 25 2022 01:00"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"fullPath"</span><span class="p">:</span><span class="w"> </span><span class="s2">"/metadata/backups/2022-11-25T0100.audiobookshelf"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"path"</span><span class="p">:</span><span class="w"> </span><span class="s2">"backups/2022-11-25T0100.audiobookshelf"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"filename"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2022-11-25T0100.audiobookshelf"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"fileSize"</span><span class="p">:</span><span class="w"> </span><span class="mi">39819077</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"createdAt"</span><span class="p">:</span><span class="w"> </span><span class="mi">1669366800272</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"serverVersion"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2.2.5"</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<p>This endpoint retrieves all backups.</p>
+<h3 id='http-request-2'>HTTP Request</h3>
+<p><code>GET http://abs.example.com/api/backups</code></p>
+<h3 id='response-2'>Response</h3>
+<table><thead>
+<tr>
+<th>Status</th>
+<th>Meaning</th>
+<th>Description</th>
+<th>Schema</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>200</td>
+<td>OK</td>
+<td>Success</td>
+<td>Array of <a href="#backup">Backup</a></td>
+</tr>
+<tr>
+<td>403</td>
+<td>Forbidden</td>
+<td>An admin user is required to get backups.</td>
+<td></td>
+</tr>
+</tbody></table>
 <h2 id='delete-a-backup'>Delete a Backup</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">-X</span> DELETE <span class="s2">"https://abs.example.com/api/backups/2022-11-14T0130"</span> <span class="se">\</span>
   <span class="nt">-H</span> <span class="s2">"Authorization: Bearer exJhbGciOiJI6IkpXVCJ9.eyJ1c2Vyi5NDEyODc4fQ.ZraBFohS4Tg39NszY"</span>
 </code></pre></div>
 <blockquote>
 <p>The above command returns JSON structured like this:</p>
 </blockquote>
-<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">[</span><span class="w">
-  </span><span class="p">{</span><span class="w">
-    </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2022-11-15T0105"</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"backupMetadataCovers"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"backupDirPath"</span><span class="p">:</span><span class="w"> </span><span class="s2">"/metadata/backups"</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"datePretty"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Tue, Nov 15 2022 01:05"</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"fullPath"</span><span class="p">:</span><span class="w"> </span><span class="s2">"/metadata/backups/2022-11-15T0105.audiobookshelf"</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"path"</span><span class="p">:</span><span class="w"> </span><span class="s2">"backups/2022-11-15T0105.audiobookshelf"</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"filename"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2022-11-15T0105.audiobookshelf"</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"fileSize"</span><span class="p">:</span><span class="w"> </span><span class="mi">7777148</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"createdAt"</span><span class="p">:</span><span class="w"> </span><span class="mi">1668495954701</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"serverVersion"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2.2.4"</span><span class="w">
-  </span><span class="p">}</span><span class="w">
-</span><span class="p">]</span><span class="w">
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"backups"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2022-11-15T0105"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"backupMetadataCovers"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"backupDirPath"</span><span class="p">:</span><span class="w"> </span><span class="s2">"/metadata/backups"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"datePretty"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Tue, Nov 15 2022 01:05"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"fullPath"</span><span class="p">:</span><span class="w"> </span><span class="s2">"/metadata/backups/2022-11-15T0105.audiobookshelf"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"path"</span><span class="p">:</span><span class="w"> </span><span class="s2">"backups/2022-11-15T0105.audiobookshelf"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"filename"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2022-11-15T0105.audiobookshelf"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"fileSize"</span><span class="p">:</span><span class="w"> </span><span class="mi">7777148</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"createdAt"</span><span class="p">:</span><span class="w"> </span><span class="mi">1668495954701</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"serverVersion"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2.2.4"</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
 </span></code></pre></div>
 <p>This endpoint deletes a backup. All existing backups will be returned.</p>
-<h3 id='http-request-2'>HTTP Request</h3>
+<h3 id='http-request-3'>HTTP Request</h3>
 <p><code>DELETE http://abs.example.com/api/backups/&lt;ID&gt;</code></p>
 <h3 id='url-parameters'>URL Parameters</h3>
 <table><thead>
@@ -11856,7 +11911,7 @@ When changing a user's username, their token will be regenerated.
 <td>The ID of the backup.</td>
 </tr>
 </tbody></table>
-<h3 id='response-2'>Response</h3>
+<h3 id='response-3'>Response</h3>
 <table><thead>
 <tr>
 <th>Status</th>
@@ -11888,7 +11943,7 @@ When changing a user's username, their token will be regenerated.
   <span class="nt">-H</span> <span class="s2">"Authorization: Bearer exJhbGciOiJI6IkpXVCJ9.eyJ1c2Vyi5NDEyODc4fQ.ZraBFohS4Tg39NszY"</span>
 </code></pre></div>
 <p>This endpoint applies a backup.</p>
-<h3 id='http-request-3'>HTTP Request</h3>
+<h3 id='http-request-4'>HTTP Request</h3>
 <p><code>GET http://abs.example.com/api/backups/&lt;ID&gt;/apply</code></p>
 <h3 id='url-parameters-2'>URL Parameters</h3>
 <table><thead>
@@ -11902,7 +11957,7 @@ When changing a user's username, their token will be regenerated.
 <td>The ID of the backup.</td>
 </tr>
 </tbody></table>
-<h3 id='response-3'>Response</h3>
+<h3 id='response-4'>Response</h3>
 <table><thead>
 <tr>
 <th>Status</th>
@@ -11933,35 +11988,37 @@ When changing a user's username, their token will be regenerated.
 <blockquote>
 <p>The above command returns JSON structured like this:</p>
 </blockquote>
-<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">[</span><span class="w">
-  </span><span class="p">{</span><span class="w">
-    </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2022-11-14T0130"</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"backupMetadataCovers"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"backupDirPath"</span><span class="p">:</span><span class="w"> </span><span class="s2">"/metadata/backups"</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"datePretty"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Mon, Nov 14 2022 01:30"</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"fullPath"</span><span class="p">:</span><span class="w"> </span><span class="s2">"/metadata/backups/2022-11-14T0130.audiobookshelf"</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"path"</span><span class="p">:</span><span class="w"> </span><span class="s2">"backups/2022-11-14T0130.audiobookshelf"</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"filename"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2022-11-14T0130.audiobookshelf"</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"fileSize"</span><span class="p">:</span><span class="w"> </span><span class="mi">7776983</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"createdAt"</span><span class="p">:</span><span class="w"> </span><span class="mi">1668411000329</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"serverVersion"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2.2.4"</span><span class="w">
-  </span><span class="p">},</span><span class="w">
-  </span><span class="p">{</span><span class="w">
-    </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2022-11-15T0105"</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"backupMetadataCovers"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"backupDirPath"</span><span class="p">:</span><span class="w"> </span><span class="s2">"/metadata/backups"</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"datePretty"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Tue, Nov 15 2022 01:05"</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"fullPath"</span><span class="p">:</span><span class="w"> </span><span class="s2">"/metadata/backups/2022-11-15T0105.audiobookshelf"</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"path"</span><span class="p">:</span><span class="w"> </span><span class="s2">"backups/2022-11-15T0105.audiobookshelf"</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"filename"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2022-11-15T0105.audiobookshelf"</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"fileSize"</span><span class="p">:</span><span class="w"> </span><span class="mi">7777148</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"createdAt"</span><span class="p">:</span><span class="w"> </span><span class="mi">1668495954701</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"serverVersion"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2.2.4"</span><span class="w">
-  </span><span class="p">}</span><span class="w">
-</span><span class="p">]</span><span class="w">
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"backups"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2022-11-14T0130"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"backupMetadataCovers"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"backupDirPath"</span><span class="p">:</span><span class="w"> </span><span class="s2">"/metadata/backups"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"datePretty"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Mon, Nov 14 2022 01:30"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"fullPath"</span><span class="p">:</span><span class="w"> </span><span class="s2">"/metadata/backups/2022-11-14T0130.audiobookshelf"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"path"</span><span class="p">:</span><span class="w"> </span><span class="s2">"backups/2022-11-14T0130.audiobookshelf"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"filename"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2022-11-14T0130.audiobookshelf"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"fileSize"</span><span class="p">:</span><span class="w"> </span><span class="mi">7776983</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"createdAt"</span><span class="p">:</span><span class="w"> </span><span class="mi">1668411000329</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"serverVersion"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2.2.4"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2022-11-15T0105"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"backupMetadataCovers"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"backupDirPath"</span><span class="p">:</span><span class="w"> </span><span class="s2">"/metadata/backups"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"datePretty"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Tue, Nov 15 2022 01:05"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"fullPath"</span><span class="p">:</span><span class="w"> </span><span class="s2">"/metadata/backups/2022-11-15T0105.audiobookshelf"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"path"</span><span class="p">:</span><span class="w"> </span><span class="s2">"backups/2022-11-15T0105.audiobookshelf"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"filename"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2022-11-15T0105.audiobookshelf"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"fileSize"</span><span class="p">:</span><span class="w"> </span><span class="mi">7777148</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"createdAt"</span><span class="p">:</span><span class="w"> </span><span class="mi">1668495954701</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"serverVersion"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2.2.4"</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
 </span></code></pre></div>
 <p>This endpoint uploads a backup to the server. All backups will be returned.</p>
-<h3 id='http-request-4'>HTTP Request</h3>
+<h3 id='http-request-5'>HTTP Request</h3>
 <p><code>POST http://abs.example.com/api/backups/upload</code></p>
 <h3 id='form-parameters'>Form Parameters</h3>
 <table><thead>
@@ -11977,7 +12034,7 @@ When changing a user's username, their token will be regenerated.
 <td>The backup to upload.</td>
 </tr>
 </tbody></table>
-<h3 id='response-4'>Response</h3>
+<h3 id='response-5'>Response</h3>
 <table><thead>
 <tr>
 <th>Status</th>
