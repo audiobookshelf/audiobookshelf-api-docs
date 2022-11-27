@@ -5,10 +5,14 @@
 ```shell
 curl -X POST "https://abs.example.com/api/upload" \
   -H "Authorization: Bearer exJhbGciOiJI6IkpXVCJ9.eyJ1c2Vyi5NDEyODc4fQ.ZraBFohS4Tg39NszY" \
+  -F title="Wizard's First Rule" \
+  -F author="Terry Goodkind" \
+  -F series="Sword of Truth" \
+  -F library="lib_c1u6t4p45c35rf0nzd" \
+  -F folder="fol_bev1zuxhb0j0s1wehr" \
   -F 0=@"Terry Goodkind - SOT Bk01 - Wizards First Rule 01.mp3" \
   -F 1=@"Terry Goodkind - SOT Bk01 - Wizards First Rule 02.mp3" \
-  -F 2=@cover.jpg \
-  -d $'{"title": "Wizard\'s First Rule", "author": "Terry Goodkind", "series": "Sword of Truth", "library": "lib_c1u6t4p45c35rf0nzd", "folder": "fol_bev1zuxhb0j0s1wehr"}'
+  -F 2=@cover.jpg
 ```
 
 This endpoint uploads library item files to the server.
@@ -19,7 +23,17 @@ This endpoint uploads library item files to the server.
 
 ### Form Parameters
 
-The form keys can be anything as they are ignored. Each value should be the file to upload.
+Parameter | Type | Description
+--------- | ---- | -----------
+`title` | String | The library item's title.
+`author` | String | Optionally, the library item's author.
+`series` | String | Optionally, the library item's series.
+`library` | String | The ID of the library to put the item in.
+`folder` | String | The ID of the folder to put the item in.
+
+The files will be put in a directory at `<folderDir>/<author>/<series>/<title>`.
+
+The form keys for the files can be anything as they are ignored.
 
 The following file types are supported:
 
@@ -51,18 +65,6 @@ The following file types are supported:
 * `.txt`
 * `.opf`
 * `.abs`
-
-### JSON Parameters
-
-Parameter | Type | Description
---------- | ---- | -----------
-`title` | String | The library item's title.
-`author` | String | Optionally, the library item's author.
-`series` | String | Optionally, the library item's series.
-`library` | String | The ID of the library to put the item in.
-`folder` | String | The ID of the folder to put the item in.
-
-The files will be put in a directory at `<folderDir>/<author>/<series>/<title>`.
 
 ### Response
 
