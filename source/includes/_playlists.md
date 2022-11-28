@@ -1646,7 +1646,7 @@ Status | Meaning | Description | Schema
 ## Batch Add Items to a Playlist
 
 ```shell
-curl -X POST "https://abs.example.com/api/playlists/pl_qbwet64998s5ra6dcu/item" \
+curl -X POST "https://abs.example.com/api/playlists/pl_qbwet64998s5ra6dcu/batch/add" \
   -H "Authorization: Bearer exJhbGciOiJI6IkpXVCJ9.eyJ1c2Vyi5NDEyODc4fQ.ZraBFohS4Tg39NszY" \
   -H "Content-Type: application/json" \
   -d '{"items": [{"libraryItemId": "li_8gch9ve09orgn4fdz8"}]}'
@@ -1936,7 +1936,7 @@ This endpoint batch adds items to a playlist and returns the updated playlist.
 
 ### HTTP Request
 
-`POST http://abs.example.com/api/playlists/<ID>/item`
+`POST http://abs.example.com/api/playlists/<ID>/batch/add`
 
 ### URL Parameters
 
@@ -1955,6 +1955,61 @@ Parameter | Type | Description
 Status | Meaning | Description | Schema
 ------ | ------- | ----------- | ------
 200 | OK | Success | [Playlist Expanded](#playlist-expanded)
-400 | Bad Request | No library item with one of the provided IDs exists. |
+400 | Bad Request | One or more of the provided items does not have a `libraryItemId`. |
 403 | Forbidden | The playlist does not belong to the authenticated user. |
 404 | Not Found | No playlist with the provided ID exists. |
+500 | Internal Server Error | The provided `items` array was empty or did not exist. |
+
+
+## Batch Remove Items from a Playlist
+
+```shell
+curl -X POST "https://abs.example.com/api/playlists/pl_qbwet64998s5ra6dcu/batch/remove" \
+  -H "Authorization: Bearer exJhbGciOiJI6IkpXVCJ9.eyJ1c2Vyi5NDEyODc4fQ.ZraBFohS4Tg39NszY" \
+  -H "Content-Type: application/json" \
+  -d '{"items": [{"libraryItemId": "li_8gch9ve09orgn4fdz8"}]}'
+```
+
+> The above command returns JSON structured like this:
+
+```json
+{
+  "id": "pl_qbwet64998s5ra6dcu",
+  "libraryId": "lib_c1u6t4p45c35rf0nzd",
+  "userId": "root",
+  "name": "The Best Books",
+  "description": null,
+  "coverPath": null,
+  "items": [],
+  "lastUpdate": 1669623431313,
+  "createdAt": 1669623431313
+}
+```
+
+This endpoint batch removes items from a playlist and returns the updated playlist. Then, if the playlist is empty, it will be deleted.
+
+### HTTP Request
+
+`POST http://abs.example.com/api/playlists/<ID>/batch/remove`
+
+### URL Parameters
+
+Parameter | Description
+--------- | -----------
+ID | The ID of the playlist.
+
+### Parameters
+
+Parameter | Type | Description
+--------- | ---- | -----------
+`items` | Array of [Playlist Item](#playlist-item) | The items to remove from the playlist.
+
+### Response
+
+Status | Meaning | Description | Schema
+------ | ------- | ----------- | ------
+200 | OK | Success | [Playlist Expanded](#playlist-expanded)
+400 | Bad Request | One or more of the provided items does not have a `libraryItemId`. |
+403 | Forbidden | The playlist does not belong to the authenticated user. |
+404 | Not Found | No playlist with the provided ID exists. |
+500 | Internal Server Error | The provided `items` array was empty or did not exist. |
