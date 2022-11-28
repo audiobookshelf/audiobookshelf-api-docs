@@ -1404,6 +1404,95 @@ Attribute | Type | Description
 * `books` is an Array of [Library Item Expanded](#library-item-expanded).
 
 
+## Playlist
+
+> Playlist
+
+```json
+{
+  "id": "pl_qbwet64998s5ra6dcu",
+  "libraryId": "lib_c1u6t4p45c35rf0nzd",
+  "userId": "root",
+  "name": "Favorites",
+  "description": null,
+  "coverPath": null,
+  "items": [...],
+  "lastUpdate": 1669623431313,
+  "createdAt": 1669623431313
+}
+```
+
+> Playlist Expanded
+
+```json
+{
+  "id": "pl_qbwet64998s5ra6dcu",
+  "libraryId": "lib_c1u6t4p45c35rf0nzd",
+  "userId": "root",
+  "name": "Favorites",
+  "description": null,
+  "coverPath": null,
+  "items": [...],
+  "lastUpdate": 1669623431313,
+  "createdAt": 1669623431313
+}
+```
+
+Attribute | Type | Description
+--------- | ---- | -----------
+`id` | String | The ID of the playlist.
+`libraryId` | String | The ID of the library the playlist belongs to.
+`userId` | String | The ID of the user the playlist belongs to.
+`name` | String | The playlist's name.
+`description` | String or null | The playlist's description.
+`coverPath` | String or null | The path of the playlist's cover.
+`items` | Array of [Playlist Item](#playlist-item) | The items in the playlist.
+`lastUpdate` | Integer | The time (in ms since POSIX epoch) when the playlist was last updated.
+`createdAt` | Integer | The time (in ms since POSIX epoch) when the playlist was created.
+
+### Playlist Expanded
+
+#### Modified Attributes
+
+* `items` is an Array of [Playlist Item Expanded](#playlist-item-expanded).
+
+
+## Playlist Item
+
+> Playlist Item
+
+```json
+{
+  "libraryItemId": "li_8gch9ve09orgn4fdz8",
+  "episodeId": null
+}
+```
+
+> Playlist Item Expanded
+
+```json
+{
+  "libraryItemId": "li_8gch9ve09orgn4fdz8",
+  "episodeId": null,
+  "libraryItem": {...}
+}
+```
+
+Attribute | Type | Description
+--------- | ---- | -----------
+`libraryItemId` | String | The ID of the library item the playlist item is for.
+`episodeId` | String or null | The ID of the podcast episode the playlist item is for.
+
+### Playlist Item Expanded
+
+#### Added Attributes
+
+Attribute | Type | Description
+--------- | ---- | -----------
+`episode` | [Podcast Episode Expanded](#podcast-episode-expanded) Object | The podcast episode the playlist item is for. Will only exist if `episodeId` is not `null`.
+`libraryItem` | [Library Item Expanded](#library-item-expanded) or [Library Item Minified](#library-item-minified) Object | The library item the playlist item is for. Will be [Library Item Minified](#library-item-minified) if `episodeId` is not `null`.
+
+
 ## Media Progress
 
 > Media Progress
