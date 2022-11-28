@@ -1248,3 +1248,31 @@ Status | Meaning | Description | Schema
 200 | OK | Success | [Playlist Expanded](#playlist-expanded)
 403 | Forbidden | The playlist does not belong to the authenticated user. |
 404 | Not Found | No playlist with the provided ID exists. |
+
+
+## Delete a Playlist
+
+```shell
+curl -X DELETE "https://abs.example.com/api/playlists/pl_qbwet64998s5ra6dcu" \
+  -H "Authorization: Bearer exJhbGciOiJI6IkpXVCJ9.eyJ1c2Vyi5NDEyODc4fQ.ZraBFohS4Tg39NszY"
+```
+
+This endpoint deletes a playlist.
+
+### HTTP Request
+
+`DELETE http://abs.example.com/api/playlists/<ID>`
+
+### URL Parameters
+
+Parameter | Description
+--------- | -----------
+ID | The ID of the playlist.
+
+### Response
+
+Status | Meaning | Description
+------ | ------- | -----------
+200 | OK | Success
+403 | Forbidden | The playlist does not belong to the authenticated user.
+404 | Not Found | No playlist with the provided ID exists.
