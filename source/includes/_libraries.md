@@ -233,7 +233,7 @@ Parameter | Type | Description
 Status | Meaning | Description | Schema
 ------ | ------- | ----------- | ------
 200 | OK | Success | [Library](#library) or, if `filterdata` was requested, see below.
-404 | Not Found | The ID does not match any library. |
+404 | Not Found | The user cannot access the library, or no library with the provided ID exists. |
 
 #### Response Schema
 
@@ -324,6 +324,7 @@ Parameter | Type | Description
 Status | Meaning | Description | Schema
 ------ | ------- | ----------- | ------
 200 | OK | Success | [Library](#library)
+404 | Not Found | The user cannot access the library, or no library with the provided ID exists. |
 
 
 ## Delete a Library
@@ -382,6 +383,7 @@ ID | The ID of the library to delete.
 Status | Meaning | Description | Schema
 ------ | ------- | ----------- | ------
 200 | OK | Success | [Library](#library)
+404 | Not Found | The user cannot access the library, or no library with the provided ID exists. |
 
 
 ## Get a Library's Items
@@ -494,6 +496,7 @@ collapseseries | Binary | Whether to collapse books in a series to a single entr
 Status | Meaning | Description | Schema
 ------ | ------- | ----------- | ------
 200 | OK | Success | See Below
+404 | Not Found | The user cannot access the library, or no library with the provided ID exists. |
 
 #### Response Schema
 
@@ -535,6 +538,7 @@ ID | The ID of the library.
 Status | Meaning | Description
 ------ | ------- | -----------
 200 | OK | Success
+404 | Not Found | The user cannot access the library, or no library with the provided ID exists.
 
 
 ## Get a Library's Series
@@ -652,6 +656,7 @@ minified | Binary | Whether to request minified objects. `0` for false, `1` for 
 Status | Meaning | Description | Schema
 ------ | ------- | ----------- | ------
 200 | OK | Success | See Below
+404 | Not Found | The user cannot access the library, or no library with the provided ID exists. |
 
 #### Response Schema
 
@@ -773,6 +778,7 @@ minified | Binary | Whether to request minified objects. `0` for false, `1` for 
 Status | Meaning | Description | Schema
 ------ | ------- | ----------- | ------
 200 | OK | Success | See Below
+404 | Not Found | The user cannot access the library, or no library with the provided ID exists. |
 
 #### Response Schema
 
@@ -1478,16 +1484,17 @@ limit | Integer | Limit the number of items in each 'shelf' of the response. Def
 
 Status | Meaning | Description | Schema
 ------ | ------- | ----------- | ------
-200 | OK | Success | Array of Shelf (See Below)
+200 | OK | Success | Array of [Shelf](#shelf) (See Below)
+404 | Not Found | The user cannot access the library, or no library with the provided ID exists. |
 
-#### Response Schema: Shelf
+#### Shelf
 
 Attribute | Type | Description
 --------- | ---- | -----------
 `id` | String | The ID of the shelf.
 `label` | String | The label of the shelf.
 `type` | String | The type of items the shelf represents. Can be `book`, `series`, `authors`, `episode`, or `podcast`.
-`entities` | Array | The entities to be displayed on the shelf. See below.
+`entities` | Array | The entities to be displayed on the shelf. [See below](#shelf-entities).
 `category` | String | The category of the shelf.
 
 #### Shelf Entities
@@ -1570,6 +1577,7 @@ ID | The ID of the library.
 Status | Meaning | Description | Schema
 ------ | ------- | ----------- | ------
 200 | OK | Success | [Library Filter Data](#library-filter-data)
+404 | Not Found | The user cannot access the library, or no library with the provided ID exists. |
 
 
 ## Search a Library
@@ -1891,6 +1899,7 @@ Status | Meaning | Description | Schema
 ------ | ------- | ----------- | ------
 200 | OK | Success | See Below
 400 | Bad Request | No query string. |
+404 | Not Found | The user cannot access the library, or no library with the provided ID exists. |
 
 #### Response Schema
 
@@ -1967,6 +1976,7 @@ ID | The ID of the library.
 Status | Meaning | Description | Schema
 ------ | ------- | ----------- | ------
 200 | OK | Success | See Below
+404 | Not Found | The user cannot access the library, or no library with the provided ID exists. |
 
 #### Response Schema
 
@@ -2048,6 +2058,7 @@ ID | The ID of the library.
 Status | Meaning | Description | Schema
 ------ | ------- | ----------- | ------
 200 | OK | Success | Array of [Author Expanded](#author-expanded)
+404 | Not Found | The user cannot access the library, or no library with the provided ID exists. |
 
 
 ## Match all of a Library's Items
@@ -2075,6 +2086,7 @@ Status | Meaning | Description
 ------ | ------- | -----------
 200 | OK | Success
 403 | Forbidden | An admin user is required to match library items.
+404 | Not Found | The user cannot access the library, or no library with the provided ID exists.
 
 
 ## Scan a Library's Folders
@@ -2108,6 +2120,7 @@ Status | Meaning | Description
 ------ | ------- | -----------
 200 | OK | Success
 403 | Forbidden | An admin user is required to start a scan.
+404 | Not Found | The user cannot access the library, or no library with the provided ID exists.
 
 
 ## Get a Library's Recent Episodes
@@ -2266,6 +2279,7 @@ page | Integer | The page number (0 indexed) to request. If there is no limit ap
 Status | Meaning | Description | Schema
 ------ | ------- | ----------- | ------
 200 | OK | Success | See Below
+404 | Not Found | The user cannot access the library, or no library with the provided ID exists. |
 
 #### Response Schema
 
