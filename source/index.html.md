@@ -14,6 +14,7 @@ includes:
   - items
   - users
   - collections
+  - playlists
   - me
   - backups
   - filesystem
