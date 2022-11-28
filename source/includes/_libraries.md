@@ -181,6 +181,7 @@ curl "https://abs.example.com/api/libraries/lib_c1u6t4p45c35rf0nzd?include=filte
     "languages": []
   },
   "issues": 0,
+  "numUserPlaylists": 0,
   "library": {
     "id": "lib_c1u6t4p45c35rf0nzd",
     "name": "Podcasts",
@@ -240,6 +241,7 @@ Attribute | Type | Description
 --------- | ---- | -----------
 `filterdata` | [Library Filter Data](#library-filter-data) Object | The library's filter data that can be used for displaying a filter list.
 `issues` | Integer | The number of library items in the library that have issues.
+`numUserPlaylists` | Integer | The number of playlists belonging to this library for the authenticated user.
 `library` | [Library](#library) Object | The requested library.
 
 
