@@ -1594,3 +1594,50 @@ Status | Meaning | Description | Schema
 400 | Bad Request | No library item with the provided ID exists, the library item is in a different library from the playlist, the library item is already in the playlist, the library item is not a podcast and an `episodeId` was provided, the library item is a podcast and an `episodeId` was not provided, or no podcast episode with the provided ID exists in the library item. |
 403 | Forbidden | The playlist does not belong to the authenticated user. |
 404 | Not Found | No playlist with the provided ID exists. |
+
+
+## Remove an Item from a Playlist
+
+```shell
+curl -X DELETE "https://abs.example.com/api/playlists/pl_qbwet64998s5ra6dcu/item/li_8gch9ve09orgn4fdz8" \
+  -H "Authorization: Bearer exJhbGciOiJI6IkpXVCJ9.eyJ1c2Vyi5NDEyODc4fQ.ZraBFohS4Tg39NszY"
+```
+
+> The above command returns JSON structured like this:
+
+```json
+{
+  "id": "pl_qbwet64998s5ra6dcu",
+  "libraryId": "lib_c1u6t4p45c35rf0nzd",
+  "userId": "root",
+  "name": "The Best Books",
+  "description": null,
+  "coverPath": null,
+  "items": [],
+  "lastUpdate": 1669623431313,
+  "createdAt": 1669623431313
+}
+```
+
+This endpoint removes an item from a playlist and returns the updated playlist. Then, if the playlist is empty, it will be deleted.
+
+### HTTP Request
+
+* `DELETE http://abs.example.com/api/playlists/<ID>/item/<LibraryItemID>`
+* `DELETE http://abs.example.com/api/playlists/<ID>/item/<LibraryItemID>/<EpisodeID>`
+
+### URL Parameters
+
+Parameter | Description
+--------- | -----------
+ID | The ID of the playlist.
+LibraryItemID | The ID of the library item the playlist item to remove is for.
+EpisodeID | The ID of the podcast episode the playlist item to remove is for.
+
+### Response
+
+Status | Meaning | Description | Schema
+------ | ------- | ----------- | ------
+200 | OK | Success | [Playlist Expanded](#playlist-expanded)
+403 | Forbidden | The playlist does not belong to the authenticated user. |
+404 | Not Found | No playlist with the provided ID exists, or the playlist does not contain the provided item. |
