@@ -1,5 +1,53 @@
 # Backups
 
+## Get all Backups
+
+```shell
+curl "https://abs.example.com/api/backups" \
+  -H "Authorization: Bearer exJhbGciOiJI6IkpXVCJ9.eyJ1c2Vyi5NDEyODc4fQ.ZraBFohS4Tg39NszY"
+```
+
+> The above command returns JSON structured like this:
+
+```json
+{
+  "backups": [
+    {
+      "id": "2022-11-25T0100",
+      "backupMetadataCovers": true,
+      "backupDirPath": "/metadata/backups",
+      "datePretty": "Fri, Nov 25 2022 01:00",
+      "fullPath": "/metadata/backups/2022-11-25T0100.audiobookshelf",
+      "path": "backups/2022-11-25T0100.audiobookshelf",
+      "filename": "2022-11-25T0100.audiobookshelf",
+      "fileSize": 39819077,
+      "createdAt": 1669366800272,
+      "serverVersion": "2.2.5"
+    }
+  ]
+}
+```
+
+This endpoint retrieves all backups.
+
+### HTTP Request
+
+`GET http://abs.example.com/api/backups`
+
+### Response
+
+Status | Meaning | Description | Schema
+------ | ------- | ----------- | ------
+200 | OK | Success | See Below
+403 | Forbidden | An admin user is required to get backups. |
+
+#### Response Schema
+
+Attribute | Type | Description
+--------- | ---- | -----------
+`backups` | Array of [Backup](#backup) | The backups on the server.
+
+
 ## Create a Backup
 
 ```shell
@@ -50,51 +98,15 @@ This endpoint creates a backup. All existing backups will be returned.
 
 Status | Meaning | Description | Schema
 ------ | ------- | ----------- | ------
-200 | OK | Success | Array of [Backup](#backup)
+200 | OK | Success | See Below
 403 | Forbidden | An admin user is required to create backups. |
 500 | Internal Server Error | The server failed to create a backup. |
 
+#### Response Schema
 
-## Get all Backups
-
-```shell
-curl "https://abs.example.com/api/backups" \
-  -H "Authorization: Bearer exJhbGciOiJI6IkpXVCJ9.eyJ1c2Vyi5NDEyODc4fQ.ZraBFohS4Tg39NszY"
-```
-
-> The above command returns JSON structured like this:
-
-```json
-{
-  "backups": [
-    {
-      "id": "2022-11-25T0100",
-      "backupMetadataCovers": true,
-      "backupDirPath": "/metadata/backups",
-      "datePretty": "Fri, Nov 25 2022 01:00",
-      "fullPath": "/metadata/backups/2022-11-25T0100.audiobookshelf",
-      "path": "backups/2022-11-25T0100.audiobookshelf",
-      "filename": "2022-11-25T0100.audiobookshelf",
-      "fileSize": 39819077,
-      "createdAt": 1669366800272,
-      "serverVersion": "2.2.5"
-    }
-  ]
-}
-```
-
-This endpoint retrieves all backups.
-
-### HTTP Request
-
-`GET http://abs.example.com/api/backups`
-
-### Response
-
-Status | Meaning | Description | Schema
------- | ------- | ----------- | ------
-200 | OK | Success | Array of [Backup](#backup)
-403 | Forbidden | An admin user is required to get backups.
+Attribute | Type | Description
+--------- | ---- | -----------
+`backups` | Array of [Backup](#backup) | The backups on the server.
 
 
 ## Delete a Backup
@@ -141,9 +153,15 @@ ID | The ID of the backup.
 
 Status | Meaning | Description | Schema
 ------ | ------- | ----------- | ------
-200 | OK | Success | Array of [Backup](#backup)
+200 | OK | Success | See Below
 403 | Forbidden | An admin user is required to delete backups. |
 404 | Not Found | No backup with the provided ID exists. |
+
+#### Response Schema
+
+Attribute | Type | Description
+--------- | ---- | -----------
+`backups` | Array of [Backup](#backup) | The backups on the server.
 
 
 ## Apply a Backup
@@ -234,3 +252,9 @@ Status | Meaning | Description | Schema
 200 | OK | Success | Array of [Backup](#backup)
 403 | Forbidden | An admin user is required to upload backups. |
 500 | Internal Server Error | The backup data is invalid, or the server failed to save it. |
+
+#### Response Schema
+
+Attribute | Type | Description
+--------- | ---- | -----------
+`backups` | Array of [Backup](#backup) | The backups on the server.

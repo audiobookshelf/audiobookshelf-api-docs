@@ -181,6 +181,7 @@ curl "https://abs.example.com/api/libraries/lib_c1u6t4p45c35rf0nzd?include=filte
     "languages": []
   },
   "issues": 0,
+  "numUserPlaylists": 0,
   "library": {
     "id": "lib_c1u6t4p45c35rf0nzd",
     "name": "Podcasts",
@@ -232,7 +233,7 @@ Parameter | Type | Description
 Status | Meaning | Description | Schema
 ------ | ------- | ----------- | ------
 200 | OK | Success | [Library](#library) or, if `filterdata` was requested, see below.
-404 | Not Found | The ID does not match any library. |
+404 | Not Found | The user cannot access the library, or no library with the provided ID exists. |
 
 #### Response Schema
 
@@ -240,6 +241,7 @@ Attribute | Type | Description
 --------- | ---- | -----------
 `filterdata` | [Library Filter Data](#library-filter-data) Object | The library's filter data that can be used for displaying a filter list.
 `issues` | Integer | The number of library items in the library that have issues.
+`numUserPlaylists` | Integer | The number of playlists belonging to this library for the authenticated user.
 `library` | [Library](#library) Object | The requested library.
 
 
@@ -322,6 +324,7 @@ Parameter | Type | Description
 Status | Meaning | Description | Schema
 ------ | ------- | ----------- | ------
 200 | OK | Success | [Library](#library)
+404 | Not Found | The user cannot access the library, or no library with the provided ID exists. |
 
 
 ## Delete a Library
@@ -380,6 +383,7 @@ ID | The ID of the library to delete.
 Status | Meaning | Description | Schema
 ------ | ------- | ----------- | ------
 200 | OK | Success | [Library](#library)
+404 | Not Found | The user cannot access the library, or no library with the provided ID exists. |
 
 
 ## Get a Library's Items
@@ -492,6 +496,7 @@ collapseseries | Binary | Whether to collapse books in a series to a single entr
 Status | Meaning | Description | Schema
 ------ | ------- | ----------- | ------
 200 | OK | Success | See Below
+404 | Not Found | The user cannot access the library, or no library with the provided ID exists. |
 
 #### Response Schema
 
@@ -533,6 +538,7 @@ ID | The ID of the library.
 Status | Meaning | Description
 ------ | ------- | -----------
 200 | OK | Success
+404 | Not Found | The user cannot access the library, or no library with the provided ID exists.
 
 
 ## Get a Library's Series
@@ -650,6 +656,7 @@ minified | Binary | Whether to request minified objects. `0` for false, `1` for 
 Status | Meaning | Description | Schema
 ------ | ------- | ----------- | ------
 200 | OK | Success | See Below
+404 | Not Found | The user cannot access the library, or no library with the provided ID exists. |
 
 #### Response Schema
 
@@ -676,67 +683,76 @@ curl "https://abs.example.com/api/libraries/lib_c1u6t4p45c35rf0nzd/collections?m
 
 ```json
 {
-  "id": "usr_fpfstanv6gd7tq2qz7",
-  "libraryId": "lib_c1u6t4p45c35rf0nzd",
-  "userId": "root",
-  "name": "Favorites",
-  "description": null,
-  "cover": null,
-  "coverFullPath": null,
-  "books": [
+  "results": [
     {
-      "id": "li_8gch9ve09orgn4fdz8",
-      "ino": "649641337522215266",
-      "libraryId": "main",
-      "folderId": "audiobooks",
-      "path": "/audiobooks/Terry Goodkind/Sword of Truth/Wizards First Rule",
-      "relPath": "Terry Goodkind/Sword of Truth/Wizards First Rule",
-      "isFile": false,
-      "mtimeMs": 1650621074299,
-      "ctimeMs": 1650621074299,
-      "birthtimeMs": 0,
-      "addedAt": 1650621073750,
-      "updatedAt": 1650621110769,
-      "isMissing": false,
-      "isInvalid": false,
-      "mediaType": "book",
-      "media": {
-        "metadata": {
-          "title": "Wizards First Rule",
-          "titleIgnorePrefix": "Wizards First Rule",
-          "subtitle": null,
-          "authorName": "Terry Goodkind",
-          "narratorName": "Sam Tsoutsouvas",
-          "seriesName": "Sword of Truth",
-          "genres": [
-            "Fantasy"
-          ],
-          "publishedYear": "2008",
-          "publishedDate": null,
-          "publisher": "Brilliance Audio",
-          "description": "The masterpiece that started Terry Goodkind's New York Times bestselling epic Sword of Truth In the aftermath of the brutal murder of his father, a mysterious woman, Kahlan Amnell, appears in Richard Cypher's forest sanctuary seeking help...and more. His world, his very beliefs, are shattered when ancient debts come due with thundering violence. In a dark age it takes courage to live, and more than mere courage to challenge those who hold dominion, Richard and Kahlan must take up that challenge or become the next victims. Beyond awaits a bewitching land where even the best of their hearts could betray them. Yet, Richard fears nothing so much as what secrets his sword might reveal about his own soul. Falling in love would destroy them - for reasons Richard can't imagine and Kahlan dare not say. In their darkest hour, hunted relentlessly, tormented by treachery and loss, Kahlan calls upon Richard to reach beyond his sword - to invoke within himself something more noble. Neither knows that the rules of battle have just changed...or that their time has run out. Wizard's First Rule is the beginning. One book. One Rule. Witness the birth of a legend.",
-          "isbn": null,
-          "asin": "B002V0QK4C",
-          "language": null,
-          "explicit": false
-        },
-        "coverPath": "/audiobooks/Terry Goodkind/Sword of Truth/Wizards First Rule/cover.jpg",
-        "tags": [],
-        "numTracks": 2,
-        "numAudioFiles": 2,
-        "numChapters": 2,
-        "numMissingParts": 0,
-        "numInvalidAudioFiles": 0,
-        "duration": 12000.946,
-        "size": 96010240,
-        "ebookFileFormat": null
-      },
-      "numFiles": 3,
-      "size": 96335771
+      "id": "col_fpfstanv6gd7tq2qz7",
+      "libraryId": "lib_c1u6t4p45c35rf0nzd",
+      "userId": "root",
+      "name": "Favorites",
+      "description": null,
+      "cover": null,
+      "coverFullPath": null,
+      "books": [
+        {
+          "id": "li_8gch9ve09orgn4fdz8",
+          "ino": "649641337522215266",
+          "libraryId": "main",
+          "folderId": "audiobooks",
+          "path": "/audiobooks/Terry Goodkind/Sword of Truth/Wizards First Rule",
+          "relPath": "Terry Goodkind/Sword of Truth/Wizards First Rule",
+          "isFile": false,
+          "mtimeMs": 1650621074299,
+          "ctimeMs": 1650621074299,
+          "birthtimeMs": 0,
+          "addedAt": 1650621073750,
+          "updatedAt": 1650621110769,
+          "isMissing": false,
+          "isInvalid": false,
+          "mediaType": "book",
+          "media": {
+            "metadata": {
+              "title": "Wizards First Rule",
+              "titleIgnorePrefix": "Wizards First Rule",
+              "subtitle": null,
+              "authorName": "Terry Goodkind",
+              "narratorName": "Sam Tsoutsouvas",
+              "seriesName": "Sword of Truth",
+              "genres": [
+                "Fantasy"
+              ],
+              "publishedYear": "2008",
+              "publishedDate": null,
+              "publisher": "Brilliance Audio",
+              "description": "The masterpiece that started Terry Goodkind's New York Times bestselling epic Sword of Truth In the aftermath of the brutal murder of his father, a mysterious woman, Kahlan Amnell, appears in Richard Cypher's forest sanctuary seeking help...and more. His world, his very beliefs, are shattered when ancient debts come due with thundering violence. In a dark age it takes courage to live, and more than mere courage to challenge those who hold dominion, Richard and Kahlan must take up that challenge or become the next victims. Beyond awaits a bewitching land where even the best of their hearts could betray them. Yet, Richard fears nothing so much as what secrets his sword might reveal about his own soul. Falling in love would destroy them - for reasons Richard can't imagine and Kahlan dare not say. In their darkest hour, hunted relentlessly, tormented by treachery and loss, Kahlan calls upon Richard to reach beyond his sword - to invoke within himself something more noble. Neither knows that the rules of battle have just changed...or that their time has run out. Wizard's First Rule is the beginning. One book. One Rule. Witness the birth of a legend.",
+              "isbn": null,
+              "asin": "B002V0QK4C",
+              "language": null,
+              "explicit": false
+            },
+            "coverPath": "/audiobooks/Terry Goodkind/Sword of Truth/Wizards First Rule/cover.jpg",
+            "tags": [],
+            "numTracks": 2,
+            "numAudioFiles": 2,
+            "numChapters": 2,
+            "numMissingParts": 0,
+            "numInvalidAudioFiles": 0,
+            "duration": 12000.946,
+            "size": 96010240,
+            "ebookFileFormat": null
+          },
+          "numFiles": 3,
+          "size": 96335771
+        }
+      ],
+      "lastUpdate": 1650621110769,
+      "createdAt": 1650621073750
     }
   ],
-  "lastUpdate": 1650621110769,
-  "createdAt": 1650621073750
+  "total": 1,
+  "limit": 0,
+  "page": 0,
+  "sortDesc": false,
+  "minified": true
 }
 ```
 
@@ -771,6 +787,7 @@ minified | Binary | Whether to request minified objects. `0` for false, `1` for 
 Status | Meaning | Description | Schema
 ------ | ------- | ----------- | ------
 200 | OK | Success | See Below
+404 | Not Found | The user cannot access the library, or no library with the provided ID exists. |
 
 #### Response Schema
 
@@ -784,6 +801,336 @@ Attribute | Type | Description
 `sortDesc` | Boolean | Whether to reverse the sort order.
 `filterBy` | String | The filter set in the request, URL decoded. Will not exist if no filter was set.
 `minified` | Boolean | Whether minified was set in the request.
+
+
+## Get a Library's User Playlists
+
+```shell
+curl "https://abs.example.com/api/libraries/lib_c1u6t4p45c35rf0nzd/playlists" \
+  -H "Authorization: Bearer exJhbGciOiJI6IkpXVCJ9.eyJ1c2Vyi5NDEyODc4fQ.ZraBFohS4Tg39NszY"
+```
+
+> The above command returns JSON structured like this:
+
+```json
+{
+  "results": [
+    {
+      "id": "pl_qbwet64998s5ra6dcu",
+      "libraryId": "lib_c1u6t4p45c35rf0nzd",
+      "userId": "root",
+      "name": "Favorites",
+      "description": null,
+      "coverPath": null,
+      "items": [
+        {
+          "libraryItemId": "li_8gch9ve09orgn4fdz8",
+          "episodeId": null,
+          "libraryItem": {
+            "id": "li_8gch9ve09orgn4fdz8",
+            "ino": "649641337522215266",
+            "libraryId": "lib_c1u6t4p45c35rf0nzd",
+            "folderId": "fol_bev1zuxhb0j0s1wehr",
+            "path": "/audiobooks/Terry Goodkind/Sword of Truth/Wizards First Rule",
+            "relPath": "Terry Goodkind/Sword of Truth/Wizards First Rule",
+            "isFile": false,
+            "mtimeMs": 1650621074299,
+            "ctimeMs": 1650621074299,
+            "birthtimeMs": 0,
+            "addedAt": 1650621073750,
+            "updatedAt": 1650621110769,
+            "lastScan": 1651830827825,
+            "scanVersion": "2.0.21",
+            "isMissing": false,
+            "isInvalid": false,
+            "mediaType": "book",
+            "media": {
+              "libraryItemId": "li_8gch9ve09orgn4fdz8",
+              "metadata": {
+                "title": "Wizards First Rule",
+                "titleIgnorePrefix": "Wizards First Rule",
+                "subtitle": null,
+                "authors": [
+                  {
+                    "id": "aut_z3leimgybl7uf3y4ab",
+                    "name": "Terry Goodkind"
+                  }
+                ],
+                "narrators": [
+                  "Sam Tsoutsouvas"
+                ],
+                "series": [
+                  {
+                    "id": "ser_cabkj4jeu8be3rap4g",
+                    "name": "Sword of Truth",
+                    "sequence": "1"
+                  }
+                ],
+                "genres": [
+                  "Fantasy"
+                ],
+                "publishedYear": "2008",
+                "publishedDate": null,
+                "publisher": "Brilliance Audio",
+                "description": "The masterpiece that started Terry Goodkind's New York Times bestselling epic Sword of Truth In the aftermath of the brutal murder of his father, a mysterious woman, Kahlan Amnell, appears in Richard Cypher's forest sanctuary seeking help...and more. His world, his very beliefs, are shattered when ancient debts come due with thundering violence. In a dark age it takes courage to live, and more than mere courage to challenge those who hold dominion, Richard and Kahlan must take up that challenge or become the next victims. Beyond awaits a bewitching land where even the best of their hearts could betray them. Yet, Richard fears nothing so much as what secrets his sword might reveal about his own soul. Falling in love would destroy them - for reasons Richard can't imagine and Kahlan dare not say. In their darkest hour, hunted relentlessly, tormented by treachery and loss, Kahlan calls upon Richard to reach beyond his sword - to invoke within himself something more noble. Neither knows that the rules of battle have just changed...or that their time has run out. Wizard's First Rule is the beginning. One book. One Rule. Witness the birth of a legend.",
+                "isbn": null,
+                "asin": "B002V0QK4C",
+                "language": null,
+                "explicit": false,
+                "authorName": "Terry Goodkind",
+                "authorNameLF": "Goodkind, Terry",
+                "narratorName": "Sam Tsoutsouvas",
+                "seriesName": "Sword of Truth"
+              },
+              "coverPath": "/audiobooks/Terry Goodkind/Sword of Truth/Wizards First Rule/cover.jpg",
+              "tags": [
+                "Favorite"
+              ],
+              "audioFiles": [
+                {
+                  "index": 1,
+                  "ino": "649644248522215260",
+                  "metadata": {
+                    "filename": "Terry Goodkind - SOT Bk01 - Wizards First Rule 01.mp3",
+                    "ext": ".mp3",
+                    "path": "/audiobooks/Terry Goodkind/Sword of Truth/Wizards First Rule/Terry Goodkind - SOT Bk01 - Wizards First Rule 01.mp3",
+                    "relPath": "Terry Goodkind - SOT Bk01 - Wizards First Rule 01.mp3",
+                    "size": 48037888,
+                    "mtimeMs": 1632223180278,
+                    "ctimeMs": 1645978261001,
+                    "birthtimeMs": 0
+                  },
+                  "addedAt": 1650621074131,
+                  "updatedAt": 1651830828023,
+                  "trackNumFromMeta": 1,
+                  "discNumFromMeta": null,
+                  "trackNumFromFilename": 1,
+                  "discNumFromFilename": null,
+                  "manuallyVerified": false,
+                  "invalid": false,
+                  "exclude": false,
+                  "error": null,
+                  "format": "MP2/3 (MPEG audio layer 2/3)",
+                  "duration": 6004.6675,
+                  "bitRate": 64000,
+                  "language": null,
+                  "codec": "mp3",
+                  "timeBase": "1/14112000",
+                  "channels": 2,
+                  "channelLayout": "stereo",
+                  "chapters": [],
+                  "embeddedCoverArt": null,
+                  "metaTags": {
+                    "tagAlbum": "SOT Bk01",
+                    "tagArtist": "Terry Goodkind",
+                    "tagGenre": "Audiobook Fantasy",
+                    "tagTitle": "Wizards First Rule 01",
+                    "tagTrack": "01/20",
+                    "tagAlbumArtist": "Terry Goodkind",
+                    "tagComposer": "Terry Goodkind"
+                  },
+                  "mimeType": "audio/mpeg"
+                },
+                {
+                  "index": 2,
+                  "ino": "649644248522215261",
+                  "metadata": {
+                    "filename": "Terry Goodkind - SOT Bk01 - Wizards First Rule 02.mp3",
+                    "ext": ".mp3",
+                    "path": "/audiobooks/Terry Goodkind/Sword of Truth/Wizards First Rule/Terry Goodkind - SOT Bk01 - Wizards First Rule 02.mp3",
+                    "relPath": "Terry Goodkind - SOT Bk01 - Wizards First Rule 02.mp3",
+                    "size": 47972352,
+                    "mtimeMs": 1632223180281,
+                    "ctimeMs": 1645978261001,
+                    "birthtimeMs": 0
+                  },
+                  "addedAt": 1650621074130,
+                  "updatedAt": 1651830828023,
+                  "trackNumFromMeta": 2,
+                  "discNumFromMeta": null,
+                  "trackNumFromFilename": 1,
+                  "discNumFromFilename": null,
+                  "manuallyVerified": false,
+                  "invalid": false,
+                  "exclude": false,
+                  "error": null,
+                  "format": "MP2/3 (MPEG audio layer 2/3)",
+                  "duration": 5996.2785,
+                  "bitRate": 64000,
+                  "language": null,
+                  "codec": "mp3",
+                  "timeBase": "1/14112000",
+                  "channels": 2,
+                  "channelLayout": "stereo",
+                  "chapters": [],
+                  "embeddedCoverArt": null,
+                  "metaTags": {
+                    "tagAlbum": "SOT Bk01",
+                    "tagArtist": "Terry Goodkind",
+                    "tagGenre": "Audiobook Fantasy",
+                    "tagTitle": "Wizards First Rule 02",
+                    "tagTrack": "02/20",
+                    "tagAlbumArtist": "Terry Goodkind",
+                    "tagComposer": "Terry Goodkind"
+                  },
+                  "mimeType": "audio/mpeg"
+                }
+              ],
+              "chapters": [
+                {
+                  "id": 0,
+                  "start": 0,
+                  "end": 6004.6675,
+                  "title": "Terry Goodkind - SOT Bk01 - Wizards First Rule 01"
+                },
+                {
+                  "id": 1,
+                  "start": 6004.6675,
+                  "end": 12000.946,
+                  "title": "Terry Goodkind - SOT Bk01 - Wizards First Rule 02"
+                }
+              ],
+              "duration": 33854.905,
+              "size": 268824228,
+              "tracks": [
+                {
+                  "index": 1,
+                  "startOffset": 0,
+                  "duration": 6004.6675,
+                  "title": "Terry Goodkind - SOT Bk01 - Wizards First Rule 01.mp3",
+                  "contentUrl": "/s/item/li_8gch9ve09orgn4fdz8/Terry Goodkind - SOT Bk01 - Wizards First Rule 01.mp3",
+                  "mimeType": "audio/mpeg",
+                  "metadata": {
+                    "filename": "Terry Goodkind - SOT Bk01 - Wizards First Rule 01.mp3",
+                    "ext": ".mp3",
+                    "path": "/audiobooks/Terry Goodkind/Sword of Truth/Wizards First Rule/Terry Goodkind - SOT Bk01 - Wizards First Rule 01.mp3",
+                    "relPath": "Terry Goodkind - SOT Bk01 - Wizards First Rule 01.mp3",
+                    "size": 48037888,
+                    "mtimeMs": 1632223180278,
+                    "ctimeMs": 1645978261001,
+                    "birthtimeMs": 0
+                  }
+                },
+                {
+                  "index": 2,
+                  "startOffset": 6004.6675,
+                  "duration": 5996.2785,
+                  "title": "Terry Goodkind - SOT Bk01 - Wizards First Rule 02.mp3",
+                  "contentUrl": "/s/item/li_8gch9ve09orgn4fdz8/Terry Goodkind - SOT Bk01 - Wizards First Rule 02.mp3",
+                  "mimeType": "audio/mpeg",
+                  "metadata": {
+                    "filename": "Terry Goodkind - SOT Bk01 - Wizards First Rule 02.mp3",
+                    "ext": ".mp3",
+                    "path": "/audiobooks/Terry Goodkind/Sword of Truth/Wizards First Rule/Terry Goodkind - SOT Bk01 - Wizards First Rule 02.mp3",
+                    "relPath": "Terry Goodkind - SOT Bk01 - Wizards First Rule 03.mp3",
+                    "size": 47972352,
+                    "mtimeMs": 1632223180281,
+                    "ctimeMs": 1645978261001,
+                    "birthtimeMs": 0
+                  }
+                }
+              ],
+              "missingParts": [],
+              "ebookFile": null
+            },
+            "libraryFiles": [
+              {
+                "ino": "649644248522215260",
+                "metadata": {
+                  "filename": "Terry Goodkind - SOT Bk01 - Wizards First Rule 01.mp3",
+                  "ext": ".mp3",
+                  "path": "/audiobooks/Terry Goodkind/Sword of Truth/Wizards First Rule/Terry Goodkind - SOT Bk01 - Wizards First Rule 01.mp3",
+                  "relPath": "Terry Goodkind - SOT Bk01 - Wizards First Rule 01.mp3",
+                  "size": 48037888,
+                  "mtimeMs": 1632223180278,
+                  "ctimeMs": 1645978261001,
+                  "birthtimeMs": 0
+                },
+                "addedAt": 1650621052494,
+                "updatedAt": 1650621052494,
+                "fileType": "audio"
+              },
+              {
+                "ino": "649644248522215261",
+                "metadata": {
+                  "filename": "Terry Goodkind - SOT Bk01 - Wizards First Rule 02.mp3",
+                  "ext": ".mp3",
+                  "path": "/audiobooks/Terry Goodkind/Sword of Truth/Wizards First Rule/Terry Goodkind - SOT Bk01 - Wizards First Rule 02.mp3",
+                  "relPath": "Terry Goodkind - SOT Bk01 - Wizards First Rule 02.mp3",
+                  "size": 47972352,
+                  "mtimeMs": 1632223180281,
+                  "ctimeMs": 1645978261001,
+                  "birthtimeMs": 0
+                },
+                "addedAt": 1650621052494,
+                "updatedAt": 1650621052494,
+                "fileType": "audio"
+              },
+              {
+                "ino": "649644248522215267",
+                "metadata": {
+                  "filename": "cover.jpg",
+                  "ext": ".jpg",
+                  "path": "/audiobooks/Terry Goodkind/Sword of Truth/Wizards First Rule/cover.jpg",
+                  "relPath": "cover.jpg",
+                  "size": 325531,
+                  "mtimeMs": 1638754803540,
+                  "ctimeMs": 1645978261003,
+                  "birthtimeMs": 0
+                },
+                "addedAt": 1650621052495,
+                "updatedAt": 1650621052495,
+                "fileType": "image"
+              }
+            ],
+            "size": 268990279
+          }
+        }
+      ],
+      "lastUpdate": 1669623431313,
+      "createdAt": 1669623431313
+    }
+  ],
+  "total": 1,
+  "limit": 0,
+  "page": 0
+}
+```
+
+This endpoint returns a library's playlists for the authenticated user.
+
+### HTTP Request
+
+`GET https://abs.example.com/api/libraries/<ID>/playlists`
+
+### URL Parameters
+
+Parameter | Description
+--------- | -----------
+ID | The ID of the library.
+
+### Query Parameters
+
+Parameter | Type | Default | Description
+--------- | ---- | ------- | -----------
+limit | Integer | `0` | Limit the number of returned results per page. If `0`, no limit will be applied.
+page | Integer | `0` | The page number (0 indexed) to request. If there is no limit applied, then page will have no effect and all results will be returned.
+
+### Response
+
+Status | Meaning | Description | Schema
+------ | ------- | ----------- | ------
+200 | OK | Success | See Below
+404 | Not Found | The user cannot access the library, or no library with the provided ID exists. |
+
+#### Response Schema
+
+Attribute | Type | Description
+--------- | ---- | -----------
+`results` | Array of [Playlist Expanded](#playlist-expanded) | The requested playlists.
+`total` | Integer | The total number of results.
+`limit` | Integer | The limit set in the request.
+`page` | Integer | The page set in request.
 
 
 ## Get a Library's Personalized View
@@ -1153,16 +1500,17 @@ limit | Integer | Limit the number of items in each 'shelf' of the response. Def
 
 Status | Meaning | Description | Schema
 ------ | ------- | ----------- | ------
-200 | OK | Success | Array of Shelf (See Below)
+200 | OK | Success | Array of [Shelf](#shelf) (See Below)
+404 | Not Found | The user cannot access the library, or no library with the provided ID exists. |
 
-#### Response Schema: Shelf
+#### Shelf
 
 Attribute | Type | Description
 --------- | ---- | -----------
 `id` | String | The ID of the shelf.
 `label` | String | The label of the shelf.
 `type` | String | The type of items the shelf represents. Can be `book`, `series`, `authors`, `episode`, or `podcast`.
-`entities` | Array | The entities to be displayed on the shelf. See below.
+`entities` | Array | The entities to be displayed on the shelf. [See below](#shelf-entities).
 `category` | String | The category of the shelf.
 
 #### Shelf Entities
@@ -1245,6 +1593,7 @@ ID | The ID of the library.
 Status | Meaning | Description | Schema
 ------ | ------- | ----------- | ------
 200 | OK | Success | [Library Filter Data](#library-filter-data)
+404 | Not Found | The user cannot access the library, or no library with the provided ID exists. |
 
 
 ## Search a Library
@@ -1566,6 +1915,7 @@ Status | Meaning | Description | Schema
 ------ | ------- | ----------- | ------
 200 | OK | Success | See Below
 400 | Bad Request | No query string. |
+404 | Not Found | The user cannot access the library, or no library with the provided ID exists. |
 
 #### Response Schema
 
@@ -1642,6 +1992,7 @@ ID | The ID of the library.
 Status | Meaning | Description | Schema
 ------ | ------- | ----------- | ------
 200 | OK | Success | See Below
+404 | Not Found | The user cannot access the library, or no library with the provided ID exists. |
 
 #### Response Schema
 
@@ -1723,6 +2074,7 @@ ID | The ID of the library.
 Status | Meaning | Description | Schema
 ------ | ------- | ----------- | ------
 200 | OK | Success | Array of [Author Expanded](#author-expanded)
+404 | Not Found | The user cannot access the library, or no library with the provided ID exists. |
 
 
 ## Match all of a Library's Items
@@ -1750,6 +2102,7 @@ Status | Meaning | Description
 ------ | ------- | -----------
 200 | OK | Success
 403 | Forbidden | An admin user is required to match library items.
+404 | Not Found | The user cannot access the library, or no library with the provided ID exists.
 
 
 ## Scan a Library's Folders
@@ -1783,6 +2136,7 @@ Status | Meaning | Description
 ------ | ------- | -----------
 200 | OK | Success
 403 | Forbidden | An admin user is required to start a scan.
+404 | Not Found | The user cannot access the library, or no library with the provided ID exists.
 
 
 ## Get a Library's Recent Episodes
@@ -1941,6 +2295,7 @@ page | Integer | The page number (0 indexed) to request. If there is no limit ap
 Status | Meaning | Description | Schema
 ------ | ------- | ----------- | ------
 200 | OK | Success | See Below
+404 | Not Found | The user cannot access the library, or no library with the provided ID exists. |
 
 #### Response Schema
 
