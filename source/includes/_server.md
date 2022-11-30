@@ -169,7 +169,7 @@ Status | Meaning | Description
 ```shell
 curl -X POST "https://abs.example.com/init" \
   -H "Content-Type: application/json" \
-  -d '{"username": "root", "password": "*****"}'
+  -d '{"newRoot": {"username": "root", "password": "*****"}}'
 ```
 
 This endpoint initializes a server for use with a root user. This is required for new servers without a root user yet.
