@@ -27,7 +27,7 @@ Attribute | Type | Description
 `displayOrder` | Integer | Display position of the library in the list of libraries. Must be `>= 1`.  
 `icon` | String | The selected icon for the library. See [Library Icons](#library-icons) for a list of possible icons.
 `mediaType` | String | The type of media that the library contains. Will be `book` or `podcast`. (Read Only)
-`provider` | String | Preferred metadata provider for the library. See [Library Metadata Providers](#library-metadata-providers) for a list of possible providers.
+`provider` | String | Preferred metadata provider for the library. See [Metadata Providers](#metadata-providers) for a list of possible providers.
 `settings` | [Library Settings](#library-settings) Object | The settings for the library.
 `createdAt` | Integer | The time (in ms since POSIX epoch) when the library was created. (Read Only)
 `lastUpdate` | Integer | The time (in ms since POSIX epoch) when the library was last updated. (Read Only)
@@ -2086,7 +2086,7 @@ Attribute | Type | Description
 --------- | ---- | -----------
 `id` | String | The ID of the server settings.
 `scannerFindCovers` | Boolean | Whether the scanner will attempt to find a cover if your audiobook does not have an embedded cover or a cover image inside the folder. Note: This will extend scan time.
-`scannerCoverProvider` | String | If `scannerFindCovers` is `true`, which metadata provider to use. See [Library Metadata Providers](#library-metadata-providers) for options.
+`scannerCoverProvider` | String | If `scannerFindCovers` is `true`, which metadata provider to use. See [Metadata Providers](#metadata-providers) for options.
 `scannerParseSubtitle` | Boolean | Whether to extract subtitles from audiobook folder names. Subtitles must be separated by ` - `, i.e. `/audiobooks/Book Title - A Subtitle Here/` has the subtitle `A Subtitle Here`.
 `scannerPreferAudioMetadata` | Boolean | Whether to use audio file ID3 meta tags instead of folder names for book details.
 `scannerPreferOpfMetadata` | Boolean | Whether to use OPF file metadata instead of folder names for book details.

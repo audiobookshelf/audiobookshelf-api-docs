@@ -43,7 +43,7 @@ Parameter | Type | Default | Description
 `podcast` | Binary | `0` | Whether to search for podcast covers. Only the `title` parameter is needed for podcasts. `0` for false, `1` for true.
 `title` | String | **Required** | The media title to search for.
 `author` | String or null | `null` | If searching for a book cover, the author to search for.
-`provider` | String | `google` | If searching for a book cover, the metadata provider to use. See [Library Metadata Providers](#library-metadata-providers) for options.
+`provider` | String | `google` | If searching for a book cover, the metadata provider to use. See [Metadata Providers](#metadata-providers) for options.
 
 ### Response
 
@@ -196,7 +196,7 @@ Parameter | Type | Default | Description
 --------- | ---- | ------- | -----------
 `title` | String | `''` | The book title to search for. If using Audible for `provider`, can also be the book's ASIN.
 `author` | String | `''` | The author to search for.
-`provider` | String | `google` | The metadata provider to use. See [Library Metadata Providers](#library-metadata-providers) for options.
+`provider` | String | `google` | The metadata provider to use. See [Metadata Providers](#metadata-providers) for options.
 
 ### Response
 

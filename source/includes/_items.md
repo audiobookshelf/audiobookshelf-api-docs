@@ -1180,7 +1180,7 @@ ID | The ID of the library item.
 
 Parameter | Type | Default | Description
 --------- | ---- | ------- | -----------
-`provider` | String | `google` | The metadata provider to search. See [Library Metadata Providers](#library-metadata-providers) for a list of options.
+`provider` | String | `google` | The metadata provider to search. See [Metadata Providers](#metadata-providers) for a list of options.
 `title` | String | The library item's title. | The title to search for.
 `author` | String | The library item's author. | The author to search for.
 `overrideDefaults` | Boolean | `false` | Whether to override the existing book details and cover. This will be `true` if the "Prefer matched metadata" server setting is enabled.
@@ -2507,7 +2507,7 @@ Parameter | Type | Description
 
 Parameter | Type | Default | Description
 --------- | ---- | ------- | -----------
-`provider` | String | `google` | The metadata provider to search. See [Library Metadata Providers](#library-metadata-providers) for a list of options.
+`provider` | String | `google` | The metadata provider to search. See [Metadata Providers](#metadata-providers) for a list of options.
 `overrideDefaults` | Boolean | `false` | Whether to override the existing book details and cover. This will be `true` if the "Prefer matched metadata" server setting is enabled.
 
 ### Response

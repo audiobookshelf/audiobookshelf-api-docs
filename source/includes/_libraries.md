@@ -51,7 +51,7 @@ Parameter | Type | Default | Description
 `folders` | Array of [Folder](#folder) | **Required** | The folders of the library. Only specify the `fullPath`.
 `icon` | String | `database` | The icon of the library. See [Library Icons](#library-icons) for a list of possible icons.
 `mediaType` | String | `book` | The type of media that the library contains. Must be `book` or `podcast`.
-`provider` | String | `google` | Preferred metadata provider for the library. See [Library Metadata Providers](#library-metadata-providers) for a list of possible providers.
+`provider` | String | `google` | Preferred metadata provider for the library. See [Metadata Providers](#metadata-providers) for a list of possible providers.
 `settings` | [Library Settings](#library-settings) Object | See Below | The settings for the library.
 
 #### Library Settings Parameters
@@ -304,7 +304,7 @@ Parameter | Type | Description
 `folders` | Array of [Folder](#folder) | See the notice below. Only specify the `fullPath` for new folders.
 `displayOrder` | Integer | Display position of the library in the list of libraries. Must be `>= 1`.
 `icon` | String | The icon of the library. See [Library Icons](#library-icons) for a list of possible icons.
-`provider` | String | Preferred metadata provider for the library. See [Library Metadata Providers](#library-metadata-providers) for a list of possible providers.
+`provider` | String | Preferred metadata provider for the library. See [Metadata Providers](#metadata-providers) for a list of possible providers.
 `settings` | [Library Settings](#library-settings) Object | The settings for the library.
 
 #### Library Settings Parameters
@@ -2418,25 +2418,3 @@ Available library icons are:
 * <span class="abs-icons icon-star"></span> `star`
 * <span class="abs-icons icon-heart"></span> `heart`
 
-
-## Library Metadata Providers
-
-For book libraries:
-
-* `google`
-* `openlibrary`
-* `itunes`
-* `audible`
-* `audible.ca`
-* `audible.uk`
-* `audible.au`
-* `audible.fr`
-* `audible.de`
-* `audible.jp`
-* `audible.it`
-* `audible.in`
-* `audible.es`
-
-For podcast libraries:
-
-* `itunes`
