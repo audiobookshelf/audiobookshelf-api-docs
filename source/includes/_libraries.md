@@ -648,7 +648,7 @@ limit | Integer | Limit the number of returned results per page. If `0`, no limi
 page | Integer | The page number (0 indexed) to request. If there is no limit applied, then page will have no effect and all results will be returned.
 sort | String | What to sort the results by. By default, the results will be sorted by series name. Other sort options are: numBooks, totalDuration, and addedAt.
 desc | Binary | Whether to reverse the sort order. `0` for false, `1` for true.
-filter | String | What to filter the results by. See [Filtering](#filtering). The issues and feed-open filters are not available for this endpoint.
+filter | String | What to filter the results by. See [Filtering](#filtering). The `issues` and `feed-open` filters are not available for this endpoint.
 minified | Binary | Whether to request minified objects. `0` for false, `1` for true.
 
 ### Response
