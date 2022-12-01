@@ -404,9 +404,6 @@
                   <li>
                     <a href="#library-icons" class="toc-h2 toc-link" data-title="Library Icons">Library Icons</a>
                   </li>
-                  <li>
-                    <a href="#library-metadata-providers" class="toc-h2 toc-link" data-title="Library Metadata Providers">Library Metadata Providers</a>
-                  </li>
               </ul>
           </li>
           <li>
@@ -834,6 +831,17 @@
                   </li>
                   <li>
                     <a href="#validate-a-cron-expression" class="toc-h2 toc-link" data-title="Validate a Cron Expression">Validate a Cron Expression</a>
+                  </li>
+              </ul>
+          </li>
+          <li>
+            <a href="#metadata-providers" class="toc-h1 toc-link" data-title="Metadata Providers">Metadata Providers</a>
+              <ul class="toc-list-h2">
+                  <li>
+                    <a href="#books" class="toc-h2 toc-link" data-title="Books">Books</a>
+                  </li>
+                  <li>
+                    <a href="#podcasts" class="toc-h2 toc-link" data-title="Podcasts">Podcasts</a>
                   </li>
               </ul>
           </li>
@@ -1470,7 +1478,7 @@ Your API token will be much longer then the one in the examples.
 <td><code>provider</code></td>
 <td>String</td>
 <td><code>google</code></td>
-<td>Preferred metadata provider for the library. See <a href="#library-metadata-providers">Library Metadata Providers</a> for a list of possible providers.</td>
+<td>Preferred metadata provider for the library. See <a href="#metadata-providers">Metadata Providers</a> for a list of possible providers.</td>
 </tr>
 <tr>
 <td><code>settings</code></td>
@@ -1830,7 +1838,7 @@ Your API token will be much longer then the one in the examples.
 <tr>
 <td><code>provider</code></td>
 <td>String</td>
-<td>Preferred metadata provider for the library. See <a href="#library-metadata-providers">Library Metadata Providers</a> for a list of possible providers.</td>
+<td>Preferred metadata provider for the library. See <a href="#metadata-providers">Metadata Providers</a> for a list of possible providers.</td>
 </tr>
 <tr>
 <td><code>settings</code></td>
@@ -4684,30 +4692,6 @@ Your API token will be much longer then the one in the examples.
 <li><span class="abs-icons icon-star"></span> <code>star</code></li>
 <li><span class="abs-icons icon-heart"></span> <code>heart</code></li>
 </ul>
-<h2 id='library-metadata-providers'>Library Metadata Providers</h2>
-<p>For book libraries:</p>
-
-<ul>
-<li><code>google</code></li>
-<li><code>openlibrary</code></li>
-<li><code>itunes</code></li>
-<li><code>audible</code></li>
-<li><code>audible.ca</code></li>
-<li><code>audible.uk</code></li>
-<li><code>audible.au</code></li>
-<li><code>audible.fr</code></li>
-<li><code>audible.de</code></li>
-<li><code>audible.jp</code></li>
-<li><code>audible.it</code></li>
-<li><code>audible.in</code></li>
-<li><code>audible.es</code></li>
-</ul>
-
-<p>For podcast libraries:</p>
-
-<ul>
-<li><code>itunes</code></li>
-</ul>
 <h1 id='library-items'>Library Items</h1><h2 id='delete-all-library-items'>Delete All Library Items</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">-X</span> DELETE <span class="s2">"https://abs.example.com/api/items/all"</span> <span class="se">\</span>
   <span class="nt">-H</span> <span class="s2">"Authorization: Bearer exJhbGciOiJI6IkpXVCJ9.eyJ1c2Vyi5NDEyODc4fQ.ZraBFohS4Tg39NszY"</span>
 </code></pre></div>
@@ -6271,7 +6255,7 @@ Use the <a href="#update-a-podcast-episode">Update a Podcast Episode</a> endpoin
 <td><code>provider</code></td>
 <td>String</td>
 <td><code>google</code></td>
-<td>The metadata provider to search. See <a href="#library-metadata-providers">Library Metadata Providers</a> for a list of options.</td>
+<td>The metadata provider to search. See <a href="#metadata-providers">Metadata Providers</a> for a list of options.</td>
 </tr>
 <tr>
 <td><code>title</code></td>
@@ -8121,7 +8105,7 @@ Make sure to include all audio files of a library item in the array.
 <td><code>provider</code></td>
 <td>String</td>
 <td><code>google</code></td>
-<td>The metadata provider to search. See <a href="#library-metadata-providers">Library Metadata Providers</a> for a list of options.</td>
+<td>The metadata provider to search. See <a href="#metadata-providers">Metadata Providers</a> for a list of options.</td>
 </tr>
 <tr>
 <td><code>overrideDefaults</code></td>
@@ -18925,7 +18909,7 @@ The <code>id</code> parameter must be included for the notification to be saved.
 <td><code>provider</code></td>
 <td>String</td>
 <td><code>google</code></td>
-<td>If searching for a book cover, the metadata provider to use. See <a href="#library-metadata-providers">Library Metadata Providers</a> for options.</td>
+<td>If searching for a book cover, the metadata provider to use. See <a href="#metadata-providers">Metadata Providers</a> for options.</td>
 </tr>
 </tbody></table>
 <h3 id='response'>Response</h3>
@@ -19095,7 +19079,7 @@ The <code>id</code> parameter must be included for the notification to be saved.
 <td><code>provider</code></td>
 <td>String</td>
 <td><code>google</code></td>
-<td>The metadata provider to use. See <a href="#library-metadata-providers">Library Metadata Providers</a> for options.</td>
+<td>The metadata provider to use. See <a href="#metadata-providers">Metadata Providers</a> for options.</td>
 </tr>
 </tbody></table>
 <h3 id='response-2'>Response</h3>
@@ -20607,6 +20591,78 @@ The <code>id</code> parameter must be included for the notification to be saved.
 <td>The <code>expression</code> parameter is required, or the <code>expression</code> is invalid.</td>
 </tr>
 </tbody></table>
+<h1 id='metadata-providers'>Metadata Providers</h1><h2 id='books'>Books</h2>
+<table><thead>
+<tr>
+<th>Value</th>
+<th>Display Name</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>google</code></td>
+<td>Google Books</td>
+</tr>
+<tr>
+<td><code>openlibrary</code></td>
+<td>Open Library</td>
+</tr>
+<tr>
+<td><code>itunes</code></td>
+<td>iTunes</td>
+</tr>
+<tr>
+<td><code>audible</code></td>
+<td>Audible.com</td>
+</tr>
+<tr>
+<td><code>audible.ca</code></td>
+<td>Audible.ca</td>
+</tr>
+<tr>
+<td><code>audible.uk</code></td>
+<td>Audible.co.uk</td>
+</tr>
+<tr>
+<td><code>audible.au</code></td>
+<td>Audible.com.au</td>
+</tr>
+<tr>
+<td><code>audible.fr</code></td>
+<td>Audible.fr</td>
+</tr>
+<tr>
+<td><code>audible.de</code></td>
+<td>Audible.de</td>
+</tr>
+<tr>
+<td><code>audible.jp</code></td>
+<td>Audible.co.jp</td>
+</tr>
+<tr>
+<td><code>audible.it</code></td>
+<td>Audible.it</td>
+</tr>
+<tr>
+<td><code>audible.in</code></td>
+<td>Audible.co.in</td>
+</tr>
+<tr>
+<td><code>audible.es</code></td>
+<td>Audible.es</td>
+</tr>
+</tbody></table>
+<h2 id='podcasts'>Podcasts</h2>
+<table><thead>
+<tr>
+<th>Value</th>
+<th>Display Name</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>itunes</code></td>
+<td>iTunes</td>
+</tr>
+</tbody></table>
 <h1 id='filtering'>Filtering</h1>
 <p>Most filters are composed of two parts, a group and a value, put together as <code>group.value</code>.</p>
 
@@ -20755,7 +20811,7 @@ The <code>id</code> parameter must be included for the notification to be saved.
 <tr>
 <td><code>provider</code></td>
 <td>String</td>
-<td>Preferred metadata provider for the library. See <a href="#library-metadata-providers">Library Metadata Providers</a> for a list of possible providers.</td>
+<td>Preferred metadata provider for the library. See <a href="#metadata-providers">Metadata Providers</a> for a list of possible providers.</td>
 </tr>
 <tr>
 <td><code>settings</code></td>
@@ -24483,7 +24539,7 @@ Only non-null tags will be returned in requests.</p>
 <tr>
 <td><code>scannerCoverProvider</code></td>
 <td>String</td>
-<td>If <code>scannerFindCovers</code> is <code>true</code>, which metadata provider to use. See <a href="#library-metadata-providers">Library Metadata Providers</a> for options.</td>
+<td>If <code>scannerFindCovers</code> is <code>true</code>, which metadata provider to use. See <a href="#metadata-providers">Metadata Providers</a> for options.</td>
 </tr>
 <tr>
 <td><code>scannerParseSubtitle</code></td>
