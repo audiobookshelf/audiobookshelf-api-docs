@@ -2348,7 +2348,7 @@ Your API token will be much longer then the one in the examples.
 <tr>
 <td>filter</td>
 <td>String</td>
-<td>What to filter the results by. See <a href="#filtering">Filtering</a>. The issues and feed-open filters are not available for this endpoint.</td>
+<td>What to filter the results by. See <a href="#filtering">Filtering</a>. The <code>issues</code> and <code>feed-open</code> filters are not available for this endpoint.</td>
 </tr>
 <tr>
 <td>minified</td>
@@ -20608,41 +20608,65 @@ The <code>id</code> parameter must be included for the notification to be saved.
 </tr>
 </tbody></table>
 <h1 id='filtering'>Filtering</h1>
-<p>Most filters are composed of two parts, a group and a value, put together as <code>group.value</code>. The groups are: genres, tags, series, authors, progress, narrators, missing, and languages.</p>
+<p>Most filters are composed of two parts, a group and a value, put together as <code>group.value</code>.</p>
+
+<p>The groups are:</p>
 
 <ul>
-<li>For the genres, tags, narrators, and languages groups, the value is what genre, tag, narrator, or language to filter by.</li>
-<li>For the series and authors groups, the value is the ID of the series or author.</li>
-<li>For the series group, the value can also be No Series.</li>
-<li>For the progress group, the value can be:
+<li><code>genres</code></li>
+<li><code>tags</code></li>
+<li><code>series</code></li>
+<li><code>authors</code></li>
+<li><code>progress</code></li>
+<li><code>narrators</code></li>
+<li><code>missing</code></li>
+<li><code>languages</code></li>
+<li><code>tracks</code></li>
+</ul>
+
+<p>The <code>series</code>, <code>authors</code>, <code>narrators</code>, <code>missing</code>, and <code>tracks</code> groups only apply to books.</p>
+
+<p>The available values depend on the group:</p>
 
 <ul>
-<li>Finished</li>
-<li>Not Started</li>
-<li>Not Finished</li>
-<li>In Progress</li>
+<li>For the <code>genres</code>, <code>tags</code>, <code>narrators</code>, and <code>languages</code> groups, the value is what genre, tag, narrator, or language to filter by.</li>
+<li>For the <code>series</code> and <code>authors</code> groups, the value is the ID of the series or author.</li>
+<li>For the <code>series</code> group, the value can also be <code>no-series</code>.</li>
+<li>For the <code>progress</code> group, the value can be:
+
+<ul>
+<li><code>finished</code></li>
+<li><code>not-started</code></li>
+<li><code>not-finished</code></li>
+<li><code>in-progress</code></li>
 </ul></li>
-<li>For the missing group, the value can be:
+<li>For the <code>missing</code> group, the value can be:
 
 <ul>
-<li>ASIN</li>
-<li>ISBN</li>
-<li>Subtitle</li>
-<li>Author</li>
-<li>Publisher Year</li>
-<li>Series</li>
-<li>Description</li>
-<li>Genres</li>
-<li>Tags</li>
-<li>Narrator</li>
-<li>Publisher</li>
-<li>Language</li>
+<li><code>asin</code></li>
+<li><code>isbn</code></li>
+<li><code>subtitle</code></li>
+<li><code>authors</code></li>
+<li><code>publishedYear</code></li>
+<li><code>series</code></li>
+<li><code>description</code></li>
+<li><code>genres</code></li>
+<li><code>tags</code></li>
+<li><code>narrators</code></li>
+<li><code>publisher</code></li>
+<li><code>language</code></li>
+</ul></li>
+<li>For the <code>tracks</code> group, the value can be:
+
+<ul>
+<li><code>single</code></li>
+<li><code>multi</code></li>
 </ul></li>
 </ul>
 
 <p>All values must be first Base64 encoded and then URL encoded.</p>
 
-<p>Other filters are issues and feed-open.</p>
+<p>Other filters are <code>issues</code> and <code>feed-open</code>.</p>
 
 <p>Examples:</p>
 
