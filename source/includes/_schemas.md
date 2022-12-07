@@ -1264,6 +1264,9 @@ Attribute | Type | Description
   "id": "ser_cabkj4jeu8be3rap4g",
   "name": "Sword of Truth",
   "nameIgnorePrefix": "Sword of Truth",
+  "libraryItemIds": [
+    "li_8gch9ve09orgn4fdz8"
+  ],
   "numBooks": 1
 }
 ```
@@ -1314,6 +1317,7 @@ Attribute | Type | Description
 Attribute | Type | Description
 --------- | ---- | -----------
 `nameIgnorePrefix` | String | The name of the series with any prefix moved to the end.
+`libraryItemIds` | Array of String | The IDs of the library items in the series.
 `numBooks` | Integer | The number of books in the series.
 
 ### Series Books
