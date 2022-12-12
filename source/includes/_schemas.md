@@ -1392,7 +1392,7 @@ Attribute | Type | Description
 --------- | ---- | -----------
 `id` | String | The ID of the collection.
 `libraryId` | String | The ID of the library the collection belongs to.
-`userId` | String | The ID of the user that the created the collection.
+`userId` | String | The ID of the user that created the collection.
 `name` | String | The name of the collection.
 `description` | String or null | The collection's description. Will be `null` if there is none.
 `cover` | String or null | The path to the collection's cover. Will be `null` if there is no cover.
@@ -2217,6 +2217,7 @@ Attribute | Type | Description
 `enclosure` | Similar to [Podcast Episode Enclosure](#podcast-episode-enclosure) | Download information for the RSS feed episode.
 `pubDate` | String | The RSS feed episode's publication date.
 `link` | String | A URL to display to the RSS feed user.
+`author` | String | The author of the RSS feed episode.
 `explicit` | Boolean | Whether the RSS feed episode is explicit.
 `duration` | Float | The duration (in seconds) of the RSS feed episode.
 `libraryItemId` | String | The ID of the library item the RSS feed is for.
