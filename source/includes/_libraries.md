@@ -41,6 +41,8 @@ curl -X POST "https://abs.example.com/api/libraries" \
 
 This endpoint creates a library with the specified options.
 
+### HTTP Request
+
 `POST https://abs.example.com/api/libraries`
 
 ### Parameters
