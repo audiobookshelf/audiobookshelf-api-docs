@@ -218,7 +218,7 @@ This endpoint reports the server's initialization status.
 
 ### HTTP Request
 
-`GET http://abs.example.com/init`
+`GET http://abs.example.com/status`
 
 ### Response
 
