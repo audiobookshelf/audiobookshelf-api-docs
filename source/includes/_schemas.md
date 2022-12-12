@@ -882,7 +882,7 @@ Attribute | Type | Description
 `metadata` | [Podcast Feed Metadata](#podcast-feed-metadata) Object | The podcast's metadata from the feed.
 `episodes` | Array of [Podcast Feed Episode](#podcast-feed-episode) | The podcast's episodes from the feed.
 
-### Podcast Feed Minimized
+### Podcast Feed Minified
 
 #### Removed Attributes
 
