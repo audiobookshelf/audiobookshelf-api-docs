@@ -232,7 +232,7 @@ Attribute | Type | Description
 `podcast` | [Podcast Feed](#podcast-feed) Object | The requested podcast feed data.
 
 
-## Get Podcast Feeds from OPML
+## Get Podcast Feeds From OPML
 
 ```shell
 curl -X POST "https://abs.example.com/api/podcasts/opml" \
@@ -291,7 +291,7 @@ Status | Meaning | Description | Schema
 
 Attribute | Type | Description
 --------- | ---- | -----------
-`feeds` | Array of [Podcast Feed Minimized](#podcast-feed-minimized) | The podcast feeds retrieved from the RSS feeds in the OPML text.
+`feeds` | Array of [Podcast Feed Minified](#podcast-feed-minified) | The podcast feeds retrieved from the RSS feeds in the OPML text.
 
 Or if there is an error (i.e. no RSS feeds were in the OPML text): 
 

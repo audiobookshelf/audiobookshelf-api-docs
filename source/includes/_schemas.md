@@ -882,7 +882,7 @@ Attribute | Type | Description
 `metadata` | [Podcast Feed Metadata](#podcast-feed-metadata) Object | The podcast's metadata from the feed.
 `episodes` | Array of [Podcast Feed Episode](#podcast-feed-episode) | The podcast's episodes from the feed.
 
-### Podcast Feed Minimized
+### Podcast Feed Minified
 
 #### Removed Attributes
 
@@ -1264,6 +1264,9 @@ Attribute | Type | Description
   "id": "ser_cabkj4jeu8be3rap4g",
   "name": "Sword of Truth",
   "nameIgnorePrefix": "Sword of Truth",
+  "libraryItemIds": [
+    "li_8gch9ve09orgn4fdz8"
+  ],
   "numBooks": 1
 }
 ```
@@ -1314,6 +1317,7 @@ Attribute | Type | Description
 Attribute | Type | Description
 --------- | ---- | -----------
 `nameIgnorePrefix` | String | The name of the series with any prefix moved to the end.
+`libraryItemIds` | Array of String | The IDs of the library items in the series.
 `numBooks` | Integer | The number of books in the series.
 
 ### Series Books
@@ -1388,7 +1392,7 @@ Attribute | Type | Description
 --------- | ---- | -----------
 `id` | String | The ID of the collection.
 `libraryId` | String | The ID of the library the collection belongs to.
-`userId` | String | The ID of the user that the created the collection.
+`userId` | String | The ID of the user that created the collection.
 `name` | String | The name of the collection.
 `description` | String or null | The collection's description. Will be `null` if there is none.
 `cover` | String or null | The path to the collection's cover. Will be `null` if there is no cover.
@@ -2213,6 +2217,7 @@ Attribute | Type | Description
 `enclosure` | Similar to [Podcast Episode Enclosure](#podcast-episode-enclosure) | Download information for the RSS feed episode.
 `pubDate` | String | The RSS feed episode's publication date.
 `link` | String | A URL to display to the RSS feed user.
+`author` | String | The author of the RSS feed episode.
 `explicit` | Boolean | Whether the RSS feed episode is explicit.
 `duration` | Float | The duration (in seconds) of the RSS feed episode.
 `libraryItemId` | String | The ID of the library item the RSS feed is for.

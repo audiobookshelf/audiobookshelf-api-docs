@@ -41,6 +41,8 @@ curl -X POST "https://abs.example.com/api/libraries" \
 
 This endpoint creates a library with the specified options.
 
+### HTTP Request
+
 `POST https://abs.example.com/api/libraries`
 
 ### Parameters
@@ -485,7 +487,7 @@ Parameter | Type | Description
 --------- | ---- | -----------
 limit | Integer | Limit the number of returned results per page. If `0`, no limit will be applied.
 page | Integer | The page number (0 indexed) to request. If there is no limit applied, then page will have no effect and all results will be returned.
-sort | String | What to sort the results by. Specify the attribute to sort by using JavaScript object notation. For example, to sort by title use `sort=media.metadata.title`.
+sort | String | What to sort the results by. Specify the attribute to sort by using JavaScript object notation. For example, to sort by title use `sort=media.metadata.title`. When filtering for a series, sort can also be `sequence`.
 desc | Binary | Whether to reverse the sort order. `0` for false, `1` for true.
 filter | String | What to filter the results by. See [Filtering](#filtering).
 minified | Binary | Whether to request minified objects. `0` for false, `1` for true.
@@ -502,7 +504,7 @@ Status | Meaning | Description | Schema
 
 Attribute | Type | Description
 --------- | ---- | -----------
-`results` | Array of [Library Item](#library-item) | The requested library items. If `minified` or `collapseseries` is `true`, it will be an array of [Library Item Minified](#library-item-minified). If `collapseseries` is `true`, then a [Series Num Books](#series-num-books) object will be added as `collapsedSeries` for titles that belong to a series. Otherwise, if filtering by series, `media.metadata.series` will be replaced by the matching [Series Sequence](#series-sequence) object.
+`results` | Array of [Library Item](#library-item) | The requested library items. If `minified` is `true`, it will be an array of [Library Item Minified](#library-item-minified). `collapseseries` will add a [Series Num Books](#series-num-books) as `collapsedSeries` to the library items, with only one library item per series. However, if there is only one series in the results, they will not be collapsed. When filtering by series, `media.metadata.series` will be replaced by the matching [Series Sequence](#series-sequence) object. If filtering by series, `collapseseries` is `true`, and there are multiple series, such as a subseries, a `seriesSequenceList` string attribute is added to `collapsedSeries` which represents the items in the subseries that are in the filtered series.
 `total` | Integer | The total number of results.
 `limit` | Integer | The limit set in the request.
 `page` | Integer | The page set in request.
@@ -2077,7 +2079,7 @@ Status | Meaning | Description | Schema
 404 | Not Found | The user cannot access the library, or no library with the provided ID exists. |
 
 
-## Match all of a Library's Items
+## Match All of a Library's Items
 
 ```shell
 curl "https://abs.example.com/api/libraries/lib_c1u6t4p45c35rf0nzd/matchall" \

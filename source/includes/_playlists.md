@@ -1596,7 +1596,7 @@ Status | Meaning | Description | Schema
 404 | Not Found | No playlist with the provided ID exists. |
 
 
-## Remove an Item from a Playlist
+## Remove an Item From a Playlist
 
 ```shell
 curl -X DELETE "https://abs.example.com/api/playlists/pl_qbwet64998s5ra6dcu/item/li_8gch9ve09orgn4fdz8" \
@@ -1961,7 +1961,7 @@ Status | Meaning | Description | Schema
 500 | Internal Server Error | The provided `items` array was empty or did not exist. |
 
 
-## Batch Remove Items from a Playlist
+## Batch Remove Items From a Playlist
 
 ```shell
 curl -X POST "https://abs.example.com/api/playlists/pl_qbwet64998s5ra6dcu/batch/remove" \
