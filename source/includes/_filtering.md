@@ -58,8 +58,8 @@ Examples:
   * `YXV0X3ozbGVpbWd5Ymw3dWYzeTRhYg==` is URL encoded as `YXV0X3ozbGVpbWd5Ymw3dWYzeTRhYg%3D%3D`.
   * Then use `filter=authors.YXV0X3ozbGVpbWd5Ymw3dWYzeTRhYg%3D%3D`.
 * To filter for in progress items:
-  * `In Progress` is Base64 encoded as `SW4gUHJvZ3Jlc3M=`.
-  * `SW4gUHJvZ3Jlc3M=` is URL encoded as `SW4gUHJvZ3Jlc3M%3D`.
-  * Then use `filter=progress.SW4gUHJvZ3Jlc3M%3D`.
+  * `in-progress` is Base64 encoded as `aW4tcHJvZ3Jlc3M=`.
+  * `aW4tcHJvZ3Jlc3M=` is URL encoded as `aW4tcHJvZ3Jlc3M%3D`.
+  * Then use `filter=progress.aW4tcHJvZ3Jlc3M%3D`.
 * To filter for items with their RSS feed open:
   * Use `filter=feed-open`.
