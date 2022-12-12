@@ -671,6 +671,7 @@ Parameter | Type | Description
 `tags` | Array of String | The podcast's tags.
 `autoDownloadEpisodes` | Boolean | Whether the server will automatically download podcast episodes according to the schedule.
 `autoDownloadSchedule` | String or null | The [cron expression](https://en.wikipedia.org/wiki/Cron#CRON_expression) for when to automatically download podcast episodes.
+`lastEpisodeCheck` | Integer | The time (in ms since POSIX epoch) when the podcast was checked for new episodes.
 `maxEpisodesToKeep` | Integer | The maximum number of podcast episodes to keep when automatically downloading new episodes. Episodes beyond this limit will be deleted. If `0`, all episodes will be kept.
 `maxNewEpisodesToDownload` | Integer | The maximum number of podcast episodes to download when automatically downloading new episodes. If `0`, all episodes will be downloaded.
 
@@ -851,7 +852,7 @@ Parameter | Type | Description
 Status | Meaning | Description | Schema
 ------ | ------- | ----------- | ------
 200 | OK | Success | See below.
-400 | Bad Request | The request did not contain a file or URL.
+400 | Bad Request | The `cover` parameter is required.
 500 | Internal Server Error | Either the submitted path is invalid, does not exist, is not an image, or the server failed to copy the image to the library item's directory.
 
 #### Response Schema
@@ -2101,7 +2102,7 @@ Attribute | Type | Description
 `file.size` | Integer | The size (in bytes) of the audio file.
 `file.created` | String | When the audio file was created.
 `file.modified` | String | When the audio file was last modified.
-`file.access` | String | When the audio file was last accessed.
+`file.accessed` | String | When the audio file was last accessed.
 `file.path` | String | The parent path of the audio file.
 `file.name` | String | The filename of the audio file.
 
