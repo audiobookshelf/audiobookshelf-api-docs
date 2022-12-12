@@ -1,6 +1,6 @@
 # Backups
 
-## Get all Backups
+## Get All Backups
 
 ```shell
 curl "https://abs.example.com/api/backups" \

@@ -1,6 +1,6 @@
 # Sessions
 
-## Get all Sessions
+## Get All Sessions
 
 ```shell
 curl "https://abs.example.com/api/sessions?user=root&itemsPerPage=1" \

@@ -52,7 +52,7 @@ Status | Meaning | Description | Schema
 500 | Internal Server Error | `libraryId` and `name` are required parameters. |
 
 
-## Get all Collections
+## Get All Collections
 
 ```shell
 curl "https://abs.example.com/api/collections" \

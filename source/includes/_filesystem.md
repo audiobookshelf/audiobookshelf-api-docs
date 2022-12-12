@@ -1,6 +1,6 @@
 # Filesystem
 
-## Get all Filesystem Paths
+## Get All Filesystem Paths
 
 ```shell
 curl "https://abs.example.com/api/filesystem" \

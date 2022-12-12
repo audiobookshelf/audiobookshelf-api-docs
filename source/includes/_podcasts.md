@@ -232,7 +232,7 @@ Attribute | Type | Description
 `podcast` | [Podcast Feed](#podcast-feed) Object | The requested podcast feed data.
 
 
-## Get Podcast Feeds from OPML
+## Get Podcast Feeds From OPML
 
 ```shell
 curl -X POST "https://abs.example.com/api/podcasts/opml" \

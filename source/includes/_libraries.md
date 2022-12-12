@@ -2079,7 +2079,7 @@ Status | Meaning | Description | Schema
 404 | Not Found | The user cannot access the library, or no library with the provided ID exists. |
 
 
-## Match all of a Library's Items
+## Match All of a Library's Items
 
 ```shell
 curl "https://abs.example.com/api/libraries/lib_c1u6t4p45c35rf0nzd/matchall" \
