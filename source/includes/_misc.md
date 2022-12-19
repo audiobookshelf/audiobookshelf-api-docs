@@ -355,6 +355,47 @@ Attribute | Type | Description
 `numItemsUpdated` | Integer | The number of library items that had their tags changed.
 
 
+## Delete a Tag
+
+```shell
+curl -X DELETE "https://abs.example.com/api/tags/VGhlIEJlc3QK" \
+  -H "Authorization: Bearer exJhbGciOiJI6IkpXVCJ9.eyJ1c2Vyi5NDEyODc4fQ.ZraBFohS4Tg39NszY"
+```
+
+> The above command returns JSON structured like this:
+
+```json
+{
+  "numItemsUpdated": 1
+}
+```
+
+This endpoint deletes a tag, removing it from all library items.
+
+### HTTP Request
+
+`DELETE http://abs.example.com/api/tags/<Tag>`
+
+### URL Parameters
+
+Parameter | Description
+--------- | -----------
+Tag | The name of the tag to delete, Base64 and URL encoded.
+
+### Response
+
+Status | Meaning | Description | Schema
+------ | ------- | ----------- | ------
+200 | OK | Success | See Below
+404 | Not Found | An admin user is required to delete tags. |
+
+#### Response Schema
+
+Attribute | Type | Description
+--------- | ---- | -----------
+`numItemsUpdated` | Integer | The number of library items that had their tags changed.
+
+
 ## Validate a Cron Expression
 
 ```shell
