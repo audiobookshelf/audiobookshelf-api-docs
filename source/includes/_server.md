@@ -38,18 +38,6 @@ curl -X POST "https://abs.example.com/login" \
     "isLocked": false,
     "lastSeen": 1669010786013,
     "createdAt": 1666543632566,
-    "settings": {
-      "mobileOrderBy": "addedAt",
-      "mobileOrderDesc": true,
-      "mobileFilterBy": "all",
-      "orderBy": "media.metadata.title",
-      "orderDesc": false,
-      "filterBy": "all",
-      "playbackRate": 1,
-      "bookshelfCoverSize": 120,
-      "collapseSeries": false,
-      "useChapterTrack": true
-    },
     "permissions": {
       "download": true,
       "update": true,

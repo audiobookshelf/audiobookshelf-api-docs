@@ -1723,7 +1723,6 @@ Attribute | Type | Description
   "isLocked": false,
   "lastSeen": 1668296147437,
   "createdAt": 1666543632566,
-  "settings": {...},
   "permissions": {...},
   "librariesAccessible": [...],
   "itemTagsAccessible": [...]
@@ -1746,7 +1745,6 @@ Attribute | Type | Description
   "isLocked": false,
   "lastSeen": 1668296147437,
   "createdAt": 1666543632566,
-  "settings": {...},
   "permissions": {...},
   "librariesAccessible": [...],
   "itemTagsAccessible": [...]
@@ -1781,7 +1779,6 @@ Attribute | Type | Description
 `isLocked` | Boolean | Whether the user is locked.
 `lastSeen` | Integer or null | The time (in ms since POSIX epoch) when the user was last seen by the server. Will be `null` if the user has never logged in.
 `createdAt` | Integer | The time (in ms since POSIX epoch) when the user was created.
-`settings` | [User Settings](#user-settings) Object | The user's settings.
 `permissions` | [User Permissions](#user-permissions) Object | The user's permissions.
 `librariesAccessible` | Array of String | The IDs of libraries accessible to the user. An empty array means all libraries are accessible.
 `itemTagsAccessible` | Array of String | The tags accessible to the user. An empty array means all tags are accessible.
@@ -1813,37 +1810,6 @@ Attribute | Type | Description
 --------- | ---- | -----------
 `session` | [Playback Session Expanded](#playback-session-expanded) Object or null | The user's currently playing session. Will be `null` if the user is not currently playing anything.
 `mostRecent` | [Media Progress with Media](#media-progress-with-media) Object or null | The user's most recent media progress. Will be `null` if the user has no media progress.
-
-
-## User Settings
-
-> User Settings
-
-```json
-{
-  "mobileOrderBy": "recent",
-  "mobileOrderDesc": true,
-  "mobileFilterBy": "all",
-  "orderBy": "media.metadata.title",
-  "orderDesc": false,
-  "filterBy": "all",
-  "playbackRate": 1,
-  "bookshelfCoverSize": 120,
-  "collapseSeries": false
-}
-```
-
-Attribute | Type | Description
---------- | ---- | -----------
-`mobileOrderBy` | String | What to order library items by on mobile.
-`mobileOrderDesc` | Boolean | Whether to reverse the sort order on mobile.
-`mobileFilterBy` | String | What to filter library items by on mobile.
-`orderBy` | String | What to order library items by.
-`orderDesc` | Boolean | Whether to reverse the sort order.
-`filterBy` | String | What to filter library items by.
-`playbackRate` | Float | What speed to play items.
-`bookshelfCoverSize` | Integer | What size to display covers at.
-`collapseSeries` | Boolean | Whether to collapse series when viewing library items.
 
 
 ## User Permissions
