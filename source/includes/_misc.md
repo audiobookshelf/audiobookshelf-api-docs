@@ -281,12 +281,14 @@ curl "https://abs.example.com/api/tags" \
 > The above command returns JSON structured like this:
 
 ```json
-[
-  "Favorite"
-]
+{
+  "tags": [
+    "Favorite"
+  ]
+}
 ```
 
-This endpoint retrieves all tags assigned to library items, returning them in an array.
+This endpoint retrieves all tags assigned to library items.
 
 ### HTTP Request
 
@@ -296,8 +298,14 @@ This endpoint retrieves all tags assigned to library items, returning them in an
 
 Status | Meaning | Description | Schema
 ------ | ------- | ----------- | ------
-200 | OK | Success | Array of String
+200 | OK | Success | See Below
 404 | Not Found | An admin user is required to get all tags. |
+
+#### Response Schema
+
+Attribute | Type | Description
+--------- | ---- | -----------
+`tags` | Array of String | The requested tags.
 
 
 ## Validate a Cron Expression
