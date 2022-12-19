@@ -732,6 +732,7 @@ Parameter | Type | Default | Description
 `width` | Integer | `400` | The requested width of the cover image.
 `height` | Integer or null | `null` | The requested height of the cover image. If `null` the image is scaled proportionately.
 `format` | String | `webp` or `jpeg` | The requested format of the cover image. The default value depends on the request headers.
+`raw` | Binary | `0` | Whether to get the raw cover image file instead of a scaled version. `0` for false, `1` for true.
 
 ### Response
 
