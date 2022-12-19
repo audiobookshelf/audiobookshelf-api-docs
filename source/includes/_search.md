@@ -10,27 +10,29 @@ curl "https://abs.example.com/api/search/covers?title=Wizards%20First%20Rule&aut
 > The above command returns JSON structured like this:
 
 ```json
-[
-  "https://covers.openlibrary.org/b/id/1005963-L.jpg",
-  "https://covers.openlibrary.org/b/id/791977-L.jpg",
-  "https://covers.openlibrary.org/b/id/766531-L.jpg",
-  "https://covers.openlibrary.org/b/id/910943-L.jpg",
-  "https://covers.openlibrary.org/b/id/8782857-L.jpg",
-  "https://covers.openlibrary.org/b/id/8788596-L.jpg",
-  "https://covers.openlibrary.org/b/id/8783892-L.jpg",
-  "https://covers.openlibrary.org/b/id/8993240-L.jpg",
-  "https://covers.openlibrary.org/b/id/10505009-L.jpg",
-  "https://covers.openlibrary.org/b/id/1005881-L.jpg",
-  "https://covers.openlibrary.org/b/id/8776837-L.jpg",
-  "https://covers.openlibrary.org/b/id/10778344-L.jpg",
-  "https://covers.openlibrary.org/b/id/11239659-L.jpg",
-  "https://covers.openlibrary.org/b/id/12224404-L.jpg",
-  "https://covers.openlibrary.org/b/OLID/OL9034948M-L.jpg",
-  "https://covers.openlibrary.org/b/id/8785389-L.jpg"
-]
+{
+  "results": [
+    "https://covers.openlibrary.org/b/id/1005963-L.jpg",
+    "https://covers.openlibrary.org/b/id/791977-L.jpg",
+    "https://covers.openlibrary.org/b/id/766531-L.jpg",
+    "https://covers.openlibrary.org/b/id/910943-L.jpg",
+    "https://covers.openlibrary.org/b/id/8782857-L.jpg",
+    "https://covers.openlibrary.org/b/id/8788596-L.jpg",
+    "https://covers.openlibrary.org/b/id/8783892-L.jpg",
+    "https://covers.openlibrary.org/b/id/8993240-L.jpg",
+    "https://covers.openlibrary.org/b/id/10505009-L.jpg",
+    "https://covers.openlibrary.org/b/id/1005881-L.jpg",
+    "https://covers.openlibrary.org/b/id/8776837-L.jpg",
+    "https://covers.openlibrary.org/b/id/10778344-L.jpg",
+    "https://covers.openlibrary.org/b/id/11239659-L.jpg",
+    "https://covers.openlibrary.org/b/id/12224404-L.jpg",
+    "https://covers.openlibrary.org/b/OLID/OL9034948M-L.jpg",
+    "https://covers.openlibrary.org/b/id/8785389-L.jpg"
+  ]
+}
 ```
 
-This endpoint searches a metadata provider for covers. An array of URLs for cover images is returned.
+This endpoint searches a metadata provider for covers.
 
 ### HTTP Request
 
@@ -49,7 +51,13 @@ Parameter | Type | Default | Description
 
 Status | Meaning | Description | Schema
 ------ | ------- | ----------- | ------
-200 | OK | Success | Array of String
+200 | OK | Success | See Below
+
+#### Response Schema
+
+Attribute | Type | Description
+--------- | ---- | -----------
+`results` | Array of String | URLs of cover image search results.
 
 
 ## Search for Books

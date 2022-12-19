@@ -10,15 +10,17 @@ curl "https://abs.example.com/api/series/search?q=Sword" \
 > The above command returns JSON structured like this:
 
 ```json
-[
-  {
-    "id": "ser_cabkj4jeu8be3rap4g",
-    "name": "Sword of Truth",
-    "description": null,
-    "addedAt": 1650621073750,
-    "updatedAt": 1650621073750
-  }
-]
+{
+  "results": [
+    {
+      "id": "ser_cabkj4jeu8be3rap4g",
+      "name": "Sword of Truth",
+      "description": null,
+      "addedAt": 1650621073750,
+      "updatedAt": 1650621073750
+    }
+  ]
+}
 ```
 
 This endpoint searches for series that match the query and returns the results.
@@ -38,7 +40,13 @@ limit | Integer | `25` | Limit the number of returned results.
 
 Status | Meaning | Description | Schema
 ------ | ------- | ----------- | ------
-200 | OK | Success | Array of [Series](#series)
+200 | OK | Success | See Below
+
+#### Response Schema
+
+Attribute | Type | Description
+--------- | ---- | -----------
+`results` | Array of [Series](#series) | The series search results.
 
 
 ## Get a Series

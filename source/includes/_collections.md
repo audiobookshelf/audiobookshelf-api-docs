@@ -62,20 +62,22 @@ curl "https://abs.example.com/api/collections" \
 > The above command returns JSON structured like this:
 
 ```json
-[
-  {
-    "id": "col_fpfstanv6gd7tq2qz7",
-    "libraryId": "lib_c1u6t4p45c35rf0nzd",
-    "userId": "root",
-    "name": "Favorites",
-    "description": null,
-    "cover": null,
-    "coverFullPath": null,
-    "books": [],
-    "lastUpdate": 1650621073750,
-    "createdAt": 1650621073750
-  }
-]
+{
+  "collections": [
+    {
+      "id": "col_fpfstanv6gd7tq2qz7",
+      "libraryId": "lib_c1u6t4p45c35rf0nzd",
+      "userId": "root",
+      "name": "Favorites",
+      "description": null,
+      "cover": null,
+      "coverFullPath": null,
+      "books": [],
+      "lastUpdate": 1650621073750,
+      "createdAt": 1650621073750
+    }
+  ]
+}
 ```
 
 This endpoint retrieves all collections.
@@ -88,7 +90,13 @@ This endpoint retrieves all collections.
 
 Status | Meaning | Description | Schema
 ------ | ------- | ----------- | ------
-200 | OK | Success | Array of [Collection Expanded](#collection-expanded)
+200 | OK | Success | See Below
+
+#### Response Schema
+
+Attribute | Type | Description
+--------- | ---- | -----------
+`collections` | Array of [Collection Expanded](#collection-expanded) | The requested collections.
 
 
 ## Get a Collection
