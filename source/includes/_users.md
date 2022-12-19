@@ -24,17 +24,6 @@ curl -X POST "https://abs.example.com/api/users" \
   "isLocked": false,
   "lastSeen": null,
   "createdAt": 1666569607117,
-  "settings": {
-    "mobileOrderBy": "recent",
-    "mobileOrderDesc": true,
-    "mobileFilterBy": "all",
-    "orderBy": "media.metadata.title",
-    "orderDesc": false,
-    "filterBy": "all",
-    "playbackRate": 1,
-    "bookshelfCoverSize": 120,
-    "collapseSeries": false
-  },
   "permissions": {
     "download": true,
     "update": true,
@@ -69,28 +58,13 @@ Parameter | Type | Default | Description
 `isLocked` | Boolean | `false` | Whether the new user is locked.
 `lastSeen` | Integer or null | `null` | The time (in ms since POSIX epoch) when the new user was last seen.
 `createdAt` | Integer | `Date.now()` | The time (in ms since POSIX epoch) when the new user was created.
-`settings` | [User Settings Parameters](#user-settings-parameters) Object | See Below | The new user's settings. 
 `permissions` | [User Permissions Parameters](#user-permissions-parameters) Object | See Below | The new user's permissions.
 `librariesAccessible` | Array of String | `[]` | The IDs of libraries that are accessible to the new user. An empty array means all libraries are accessible.
 `itemTagsAccessible` | Array of String | `[]` | The tags that are accessible to the new user. An empty array means all tags are accessible.
 
 <aside class="notice">
-For <code>settings</code> and <code>permissions</code>, all parameters must be present if including them in the request.
+For <code>permissions</code>, all parameters must be present if including them in the request.
 </aside>
-
-#### User Settings Parameters
-
-Parameter | Type | Default | Description
---------- | ---- | ------- | -----------
-`mobileOrderBy` | String | `recent` | What to order library items by on mobile.
-`mobileOrderDesc` | Boolean | `true` | Whether to reverse the sort order on mobile.
-`mobileFilterBy` | String | `all` | What to filter library items by on mobile.
-`orderBy` | String | `media.metadata.title` | What to order library items by.
-`orderDesc` | Boolean | `false` | Whether to reverse the sort order.
-`filterBy` | String | `all` | What to filter library items by.
-`playbackRate` | Float | `1` | What speed to play items.
-`bookshelfCoverSize` | Integer | `120` | What size to display covers at.
-`collapseSeries` | Boolean | `false` | Whether to collapse series when viewing library items.
 
 #### User Permissions Parameters
 
@@ -123,43 +97,34 @@ curl "https://abs.example.com/api/users" \
 > The above command returns JSON structured like this:
 
 ```json
-[
-  {
-    "id": "root",
-    "username": "root",
-    "type": "root",
-    "token": "exJhbGciOiJI6IkpXVCJ9.eyJ1c2Vyi5NDEyODc4fQ.ZraBFohS4Tg39NszY",
-    "mediaProgress": [],
-    "seriesHideFromContinueListening": [],
-    "bookmarks": [],
-    "isActive": true,
-    "isLocked": false,
-    "lastSeen": 1667687240810,
-    "createdAt": 1666569607117,
-    "settings": {
-      "mobileOrderBy": "recent",
-      "mobileOrderDesc": true,
-      "mobileFilterBy": "all",
-      "orderBy": "media.metadata.title",
-      "orderDesc": false,
-      "filterBy": "all",
-      "playbackRate": 1,
-      "bookshelfCoverSize": 120,
-      "collapseSeries": false
-    },
-    "permissions": {
-      "download": true,
-      "update": true,
-      "delete": true,
-      "upload": true,
-      "accessAllLibraries": true,
-      "accessAllTags": true,
-      "accessExplicitContent": true
-    },
-    "librariesAccessible": [],
-    "itemTagsAccessible": []
-  }
-]
+{
+  "users": [
+    {
+      "id": "root",
+      "username": "root",
+      "type": "root",
+      "token": "exJhbGciOiJI6IkpXVCJ9.eyJ1c2Vyi5NDEyODc4fQ.ZraBFohS4Tg39NszY",
+      "mediaProgress": [],
+      "seriesHideFromContinueListening": [],
+      "bookmarks": [],
+      "isActive": true,
+      "isLocked": false,
+      "lastSeen": 1667687240810,
+      "createdAt": 1666569607117,
+      "permissions": {
+        "download": true,
+        "update": true,
+        "delete": true,
+        "upload": true,
+        "accessAllLibraries": true,
+        "accessAllTags": true,
+        "accessExplicitContent": true
+      },
+      "librariesAccessible": [],
+      "itemTagsAccessible": []
+    }
+  ]
+}
 ```
 
 This endpoint retrieves all users.
@@ -172,8 +137,14 @@ This endpoint retrieves all users.
 
 Status | Meaning | Description | Schema
 ------ | ------- | ----------- | ------
-200 | OK | Success | Array of [User with Progress Details](#user-with-progress-details)
+200 | OK | Success | See Below
 403 | Forbidden | An admin user is required to get all users. |
+
+#### Response Schema
+
+Attribute | Type | Description
+--------- | ---- | -----------
+`users` | Array of [User with Progress Details](#user-with-progress-details) | The requested users.
 
 
 ## Get Online Users
@@ -484,17 +455,6 @@ curl "https://abs.example.com/api/users/root" \
   "isLocked": false,
   "lastSeen": 1667687240810,
   "createdAt": 1666569607117,
-  "settings": {
-    "mobileOrderBy": "recent",
-    "mobileOrderDesc": true,
-    "mobileFilterBy": "all",
-    "orderBy": "media.metadata.title",
-    "orderDesc": false,
-    "filterBy": "all",
-    "playbackRate": 1,
-    "bookshelfCoverSize": 120,
-    "collapseSeries": false
-  },
   "permissions": {
     "download": true,
     "update": true,
@@ -554,17 +514,6 @@ curl -X PATCH "https://abs.example.com/api/users/root" \
   "isLocked": false,
   "lastSeen": 1667687240810,
   "createdAt": 1666569607117,
-  "settings": {
-    "mobileOrderBy": "recent",
-    "mobileOrderDesc": true,
-    "mobileFilterBy": "all",
-    "orderBy": "media.metadata.title",
-    "orderDesc": false,
-    "filterBy": "all",
-    "playbackRate": 1,
-    "bookshelfCoverSize": 120,
-    "collapseSeries": false
-  },
   "permissions": {
     "download": true,
     "update": true,
@@ -970,17 +919,6 @@ curl -X POST "https://abs.example.com/api/users/root/purge-media-progress" \
   "isLocked": false,
   "lastSeen": 1667687240810,
   "createdAt": 1666569607117,
-  "settings": {
-    "mobileOrderBy": "recent",
-    "mobileOrderDesc": true,
-    "mobileFilterBy": "all",
-    "orderBy": "media.metadata.title",
-    "orderDesc": false,
-    "filterBy": "all",
-    "playbackRate": 1,
-    "bookshelfCoverSize": 120,
-    "collapseSeries": false
-  },
   "permissions": {
     "download": true,
     "update": true,

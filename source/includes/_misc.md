@@ -193,18 +193,6 @@ curl -X POST "https://abs.example.com/api/authorize" \
     "isLocked": false,
     "lastSeen": 1669010786013,
     "createdAt": 1666543632566,
-    "settings": {
-      "mobileOrderBy": "addedAt",
-      "mobileOrderDesc": true,
-      "mobileFilterBy": "all",
-      "orderBy": "media.metadata.title",
-      "orderDesc": false,
-      "filterBy": "all",
-      "playbackRate": 1,
-      "bookshelfCoverSize": 120,
-      "collapseSeries": false,
-      "useChapterTrack": true
-    },
     "permissions": {
       "download": true,
       "update": true,
@@ -293,12 +281,14 @@ curl "https://abs.example.com/api/tags" \
 > The above command returns JSON structured like this:
 
 ```json
-[
-  "Favorite"
-]
+{
+  "tags": [
+    "Favorite"
+  ]
+}
 ```
 
-This endpoint retrieves all tags assigned to library items, returning them in an array.
+This endpoint retrieves all tags assigned to library items.
 
 ### HTTP Request
 
@@ -308,8 +298,227 @@ This endpoint retrieves all tags assigned to library items, returning them in an
 
 Status | Meaning | Description | Schema
 ------ | ------- | ----------- | ------
-200 | OK | Success | Array of String
+200 | OK | Success | See Below
 404 | Not Found | An admin user is required to get all tags. |
+
+#### Response Schema
+
+Attribute | Type | Description
+--------- | ---- | -----------
+`tags` | Array of String | The requested tags.
+
+
+## Rename a Tag
+
+```shell
+curl -X POST "https://abs.example.com/api/tags/rename" \
+  -H "Authorization: Bearer exJhbGciOiJI6IkpXVCJ9.eyJ1c2Vyi5NDEyODc4fQ.ZraBFohS4Tg39NszY" \
+  -H "Content-Type: application/json" \
+  -d '{"tag": "Favorite", "newTag": "The Best"}'
+```
+
+> The above command returns JSON structured like this:
+
+```json
+{
+  "tagMerged": false,
+  "numItemsUpdated": 1
+}
+```
+
+This endpoint renames an existing tag.
+
+### HTTP Request
+
+`POST http://abs.example.com/api/tags/rename`
+
+### Parameters
+
+Parameter | Type | Description
+--------- | ---- | -----------
+`tag` | String | The current name of the tag.
+`newTag` | String | The new name for the tag.
+
+### Response
+
+Status | Meaning | Description | Schema
+------ | ------- | ----------- | ------
+200 | OK | Success | See Below
+400 | Bad Request | `tag` and `newTag` are required parameters. |
+404 | Not Found | An admin user is required to rename tags. |
+
+#### Response Schema
+
+Attribute | Type | Description
+--------- | ---- | -----------
+`tagMerged` | Boolean | Whether the renamed tag was merged into another tag.
+`numItemsUpdated` | Integer | The number of library items that had their tags changed.
+
+
+## Delete a Tag
+
+```shell
+curl -X DELETE "https://abs.example.com/api/tags/VGhlIEJlc3Q%3D" \
+  -H "Authorization: Bearer exJhbGciOiJI6IkpXVCJ9.eyJ1c2Vyi5NDEyODc4fQ.ZraBFohS4Tg39NszY"
+```
+
+> The above command returns JSON structured like this:
+
+```json
+{
+  "numItemsUpdated": 1
+}
+```
+
+This endpoint deletes a tag, removing it from all library items.
+
+### HTTP Request
+
+`DELETE http://abs.example.com/api/tags/<Tag>`
+
+### URL Parameters
+
+Parameter | Description
+--------- | -----------
+Tag | The name of the tag to delete, Base64 and URL encoded.
+
+### Response
+
+Status | Meaning | Description | Schema
+------ | ------- | ----------- | ------
+200 | OK | Success | See Below
+404 | Not Found | An admin user is required to delete tags. |
+
+#### Response Schema
+
+Attribute | Type | Description
+--------- | ---- | -----------
+`numItemsUpdated` | Integer | The number of library items that had their tags changed.
+
+
+## Get All Genres
+
+```shell
+curl "https://abs.example.com/api/genres" \
+  -H "Authorization: Bearer exJhbGciOiJI6IkpXVCJ9.eyJ1c2Vyi5NDEyODc4fQ.ZraBFohS4Tg39NszY"
+```
+
+> The above command returns JSON structured like this:
+
+```json
+{
+  "genres": [
+    "Fantasy"
+  ]
+}
+```
+
+This endpoint retrieves all genres assigned to library items.
+
+### HTTP Request
+
+`GET http://abs.example.com/api/genres`
+
+### Response
+
+Status | Meaning | Description | Schema
+------ | ------- | ----------- | ------
+200 | OK | Success | See Below
+404 | Not Found | An admin user is required to get all genres. |
+
+#### Response Schema
+
+Attribute | Type | Description
+--------- | ---- | -----------
+`genres` | Array of String | The requested genres.
+
+
+## Rename a Genre
+
+```shell
+curl -X POST "https://abs.example.com/api/genres/rename" \
+  -H "Authorization: Bearer exJhbGciOiJI6IkpXVCJ9.eyJ1c2Vyi5NDEyODc4fQ.ZraBFohS4Tg39NszY" \
+  -H "Content-Type: application/json" \
+  -d '{"genre": "Fantasy", "newGenre": "Magic"}'
+```
+
+> The above command returns JSON structured like this:
+
+```json
+{
+  "genreMerged": false,
+  "numItemsUpdated": 1
+}
+```
+
+This endpoint renames an existing genre.
+
+### HTTP Request
+
+`POST http://abs.example.com/api/genres/rename`
+
+### Parameters
+
+Parameter | Type | Description
+--------- | ---- | -----------
+`genre` | String | The current name of the genre.
+`newGenre` | String | The new name for the genre.
+
+### Response
+
+Status | Meaning | Description | Schema
+------ | ------- | ----------- | ------
+200 | OK | Success | See Below
+400 | Bad Request | `genre` and `newGenre` are required parameters. |
+404 | Not Found | An admin user is required to rename genres. |
+
+#### Response Schema
+
+Attribute | Type | Description
+--------- | ---- | -----------
+`genreMerged` | Boolean | Whether the renamed genre was merged into another genre.
+`numItemsUpdated` | Integer | The number of library items that had their genres changed.
+
+
+## Delete a Genre
+
+```shell
+curl -X DELETE "https://abs.example.com/api/genres/TWFnaWM%3D" \
+  -H "Authorization: Bearer exJhbGciOiJI6IkpXVCJ9.eyJ1c2Vyi5NDEyODc4fQ.ZraBFohS4Tg39NszY"
+```
+
+> The above command returns JSON structured like this:
+
+```json
+{
+  "numItemsUpdated": 1
+}
+```
+
+This endpoint deletes a genre, removing it from all library items.
+
+### HTTP Request
+
+`DELETE http://abs.example.com/api/genres/<Genre>`
+
+### URL Parameters
+
+Parameter | Description
+--------- | -----------
+Genre | The name of the genre to delete, Base64 and URL encoded.
+
+### Response
+
+Status | Meaning | Description | Schema
+------ | ------- | ----------- | ------
+200 | OK | Success | See Below
+404 | Not Found | An admin user is required to delete genres. |
+
+#### Response Schema
+
+Attribute | Type | Description
+--------- | ---- | -----------
+`numItemsUpdated` | Integer | The number of library items that had their genres changed.
 
 
 ## Validate a Cron Expression

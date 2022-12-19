@@ -83,57 +83,59 @@ curl "https://abs.example.com/api/libraries" \
 > The above command returns JSON structured like this:
 
 ```json
-[
-  {
-    "id": "lib_5yvub9dqvctlcrza6h",
-    "name": "Main",
-    "folders": [
-      {
-        "id": "audiobooks",
-        "fullPath": "/audiobooks",
-        "libraryId": "main"
-      }
-    ],
-    "displayOrder": 1,
-    "icon": "audiobookshelf",
-    "mediaType": "book",
-    "provider": "audible",
-    "settings": {
-      "coverAspectRatio": 1,
-      "disableWatcher": false,
-      "skipMatchingMediaWithAsin": false,
-      "skipMatchingMediaWithIsbn": false,
-      "autoScanCronExpression": null
+{
+  "libraries": [
+    {
+      "id": "lib_5yvub9dqvctlcrza6h",
+      "name": "Main",
+      "folders": [
+        {
+          "id": "audiobooks",
+          "fullPath": "/audiobooks",
+          "libraryId": "main"
+        }
+      ],
+      "displayOrder": 1,
+      "icon": "audiobookshelf",
+      "mediaType": "book",
+      "provider": "audible",
+      "settings": {
+        "coverAspectRatio": 1,
+        "disableWatcher": false,
+        "skipMatchingMediaWithAsin": false,
+        "skipMatchingMediaWithIsbn": false,
+        "autoScanCronExpression": null
+      },
+      "createdAt": 1633522963509,
+      "lastUpdate": 1646520916818
     },
-    "createdAt": 1633522963509,
-    "lastUpdate": 1646520916818
-  },
-  {
-    "id": "lib_c1u6t4p45c35rf0nzd",
-    "name": "Podcasts",
-    "folders": [
-      {
-        "id": "fol_bev1zuxhb0j0s1wehr",
-        "fullPath": "/podcasts",
-        "libraryId": "lib_c1u6t4p45c35rf0nzd",
-        "addedAt": 1650462940610
-      }
-    ],
-    "displayOrder": 4,
-    "icon": "database",
-    "mediaType": "podcast",
-    "provider": "itunes",
-    "settings": {
-      "coverAspectRatio": 1,
-      "disableWatcher": false,
-      "skipMatchingMediaWithAsin": false,
-      "skipMatchingMediaWithIsbn": false,
-      "autoScanCronExpression": null
-    },
-    "createdAt": 1650462940610,
-    "lastUpdate": 1650462940610
-  }
-]
+    {
+      "id": "lib_c1u6t4p45c35rf0nzd",
+      "name": "Podcasts",
+      "folders": [
+        {
+          "id": "fol_bev1zuxhb0j0s1wehr",
+          "fullPath": "/podcasts",
+          "libraryId": "lib_c1u6t4p45c35rf0nzd",
+          "addedAt": 1650462940610
+        }
+      ],
+      "displayOrder": 4,
+      "icon": "database",
+      "mediaType": "podcast",
+      "provider": "itunes",
+      "settings": {
+        "coverAspectRatio": 1,
+        "disableWatcher": false,
+        "skipMatchingMediaWithAsin": false,
+        "skipMatchingMediaWithIsbn": false,
+        "autoScanCronExpression": null
+      },
+      "createdAt": 1650462940610,
+      "lastUpdate": 1650462940610
+    }
+  ]
+}
 ```
 
 This endpoint retrieves all libraries accessible to the user.
@@ -146,7 +148,13 @@ This endpoint retrieves all libraries accessible to the user.
 
 Status | Meaning | Description | Schema
 ------ | ------- | ----------- | ------
-200 | OK | Success | Array of [Library](#library)
+200 | OK | Success | See Below
+
+#### Response Schema
+
+Attribute | Type | Description
+--------- | ---- | -----------
+`libraries` | Array of [Library](#library) | The requested libraries.
 
 
 ## Get a Library
@@ -2044,19 +2052,21 @@ curl "https://abs.example.com/api/libraries/lib_c1u6t4p45c35rf0nzd/authors" \
 > The above command returns JSON structured like this:
 
 ```json
-[
-  {
-    "id": "aut_z3leimgybl7uf3y4ab",
-    "asin": null,
-    "name": "Terry Goodkind",
-    "description": null,
-    "imagePath": null,
-    "relImagePath": null,
-    "addedAt": 1650621073750,
-    "updatedAt": 1650621073750,
-    "numBooks": 1
-  }
-]
+{
+  "authors": [
+    {
+      "id": "aut_z3leimgybl7uf3y4ab",
+      "asin": null,
+      "name": "Terry Goodkind",
+      "description": null,
+      "imagePath": null,
+      "relImagePath": null,
+      "addedAt": 1650621073750,
+      "updatedAt": 1650621073750,
+      "numBooks": 1
+    }
+  ]
+}
 ```
 
 This endpoint returns a library's authors.
@@ -2075,8 +2085,14 @@ ID | The ID of the library.
 
 Status | Meaning | Description | Schema
 ------ | ------- | ----------- | ------
-200 | OK | Success | Array of [Author Expanded](#author-expanded)
+200 | OK | Success | See Below
 404 | Not Found | The user cannot access the library, or no library with the provided ID exists. |
+
+#### Response Schema
+
+Attribute | Type | Description
+--------- | ---- | -----------
+`authors` | Array of [Author Expanded](#author-expanded) | The requested authors.
 
 
 ## Match All of a Library's Items
@@ -2321,57 +2337,59 @@ curl -X POST "https://abs.example.com/api/libraries/order" \
 > The above command returns JSON structured like this:
 
 ```json
-[
-  {
-    "id": "lib_5yvub9dqvctlcrza6h",
-    "name": "Main",
-    "folders": [
-      {
-        "id": "audiobooks",
-        "fullPath": "/audiobooks",
-        "libraryId": "main"
-      }
-    ],
-    "displayOrder": 1,
-    "icon": "audiobookshelf",
-    "mediaType": "book",
-    "provider": "audible",
-    "settings": {
-      "coverAspectRatio": 1,
-      "disableWatcher": false,
-      "skipMatchingMediaWithAsin": false,
-      "skipMatchingMediaWithIsbn": false,
-      "autoScanCronExpression": null
+{
+  "libraries": [
+    {
+      "id": "lib_5yvub9dqvctlcrza6h",
+      "name": "Main",
+      "folders": [
+        {
+          "id": "audiobooks",
+          "fullPath": "/audiobooks",
+          "libraryId": "main"
+        }
+      ],
+      "displayOrder": 1,
+      "icon": "audiobookshelf",
+      "mediaType": "book",
+      "provider": "audible",
+      "settings": {
+        "coverAspectRatio": 1,
+        "disableWatcher": false,
+        "skipMatchingMediaWithAsin": false,
+        "skipMatchingMediaWithIsbn": false,
+        "autoScanCronExpression": null
+      },
+      "createdAt": 1633522963509,
+      "lastUpdate": 1646520916818
     },
-    "createdAt": 1633522963509,
-    "lastUpdate": 1646520916818
-  },
-  {
-    "id": "lib_c1u6t4p45c35rf0nzd",
-    "name": "Podcasts",
-    "folders": [
-      {
-        "id": "fol_bev1zuxhb0j0s1wehr",
-        "fullPath": "/podcasts",
-        "libraryId": "lib_c1u6t4p45c35rf0nzd",
-        "addedAt": 1650462940610
-      }
-    ],
-    "displayOrder": 2,
-    "icon": "database",
-    "mediaType": "podcast",
-    "provider": "itunes",
-    "settings": {
-      "coverAspectRatio": 1,
-      "disableWatcher": false,
-      "skipMatchingMediaWithAsin": false,
-      "skipMatchingMediaWithIsbn": false,
-      "autoScanCronExpression": null
-    },
-    "createdAt": 1650462940610,
-    "lastUpdate": 1650462940610
-  }
-]
+    {
+      "id": "lib_c1u6t4p45c35rf0nzd",
+      "name": "Podcasts",
+      "folders": [
+        {
+          "id": "fol_bev1zuxhb0j0s1wehr",
+          "fullPath": "/podcasts",
+          "libraryId": "lib_c1u6t4p45c35rf0nzd",
+          "addedAt": 1650462940610
+        }
+      ],
+      "displayOrder": 2,
+      "icon": "database",
+      "mediaType": "podcast",
+      "provider": "itunes",
+      "settings": {
+        "coverAspectRatio": 1,
+        "disableWatcher": false,
+        "skipMatchingMediaWithAsin": false,
+        "skipMatchingMediaWithIsbn": false,
+        "autoScanCronExpression": null
+      },
+      "createdAt": 1650462940610,
+      "lastUpdate": 1650462940610
+    }
+  ]
+}
 ```
 
 This endpoint will change the `displayOrder` of the libraries specified. It will return an array of all libraries.
@@ -2393,10 +2411,15 @@ Parameter | Type | Description
 
 Status | Meaning | Description | Schema
 ------ | ------- | ----------- | ------
-200 | OK | Success | Array of [Library](#library)
+200 | OK | Success | See Below
 403 | Forbidden | An admin user is required to reorder libraries.
 500 | Internal Server Error | One or more of the IDs do not match any libraries.
 
+#### Response Schema
+
+Attribute | Type | Description
+--------- | ---- | -----------
+`libraries` | Array of [Library](#library) | All the libraries.
 
 ## Library Icons
 

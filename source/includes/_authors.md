@@ -10,18 +10,20 @@ curl "https://abs.example.com/api/authors/search?q=Terry%20Goodkind" \
 > The above command returns JSON structured like this:
 
 ```json
-[
-  {
-    "id": "aut_z3leimgybl7uf3y4ab",
-    "asin": null,
-    "name": "Terry Goodkind",
-    "description": null,
-    "imagePath": null,
-    "relImagePath": null,
-    "addedAt": 1650621073750,
-    "updatedAt": 1650621073750
-  }
-]
+{
+  "results": [
+    {
+      "id": "aut_z3leimgybl7uf3y4ab",
+      "asin": null,
+      "name": "Terry Goodkind",
+      "description": null,
+      "imagePath": null,
+      "relImagePath": null,
+      "addedAt": 1650621073750,
+      "updatedAt": 1650621073750
+    }
+  ]
+}
 ```
 
 This endpoint searches for authors that match the query and returns the results.
@@ -41,7 +43,13 @@ limit | Integer | `25` | Limit the number of returned results.
 
 Status | Meaning | Description | Schema
 ------ | ------- | ----------- | ------
-200 | OK | Success | Array of [Author](#author)
+200 | OK | Success | See Below
+
+#### Response Schema
+
+Attribute | Type | Description
+--------- | ---- | -----------
+`results` | Array of [Author](#author) | The author search results.
 
 
 ## Get an Author
