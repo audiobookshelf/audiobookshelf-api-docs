@@ -396,6 +396,43 @@ Attribute | Type | Description
 `numItemsUpdated` | Integer | The number of library items that had their tags changed.
 
 
+## Get All Genres
+
+```shell
+curl "https://abs.example.com/api/genres" \
+  -H "Authorization: Bearer exJhbGciOiJI6IkpXVCJ9.eyJ1c2Vyi5NDEyODc4fQ.ZraBFohS4Tg39NszY"
+```
+
+> The above command returns JSON structured like this:
+
+```json
+{
+  "genres": [
+    "Fantasy"
+  ]
+}
+```
+
+This endpoint retrieves all genres assigned to library items.
+
+### HTTP Request
+
+`GET http://abs.example.com/api/genres`
+
+### Response
+
+Status | Meaning | Description | Schema
+------ | ------- | ----------- | ------
+200 | OK | Success | See Below
+404 | Not Found | An admin user is required to get all genres. |
+
+#### Response Schema
+
+Attribute | Type | Description
+--------- | ---- | -----------
+`genres` | Array of String | The requested genres.
+
+
 ## Validate a Cron Expression
 
 ```shell
