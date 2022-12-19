@@ -308,6 +308,53 @@ Attribute | Type | Description
 `tags` | Array of String | The requested tags.
 
 
+## Rename a Tag
+
+```shell
+curl -X POST "https://abs.example.com/api/tags/rename" \
+  -H "Authorization: Bearer exJhbGciOiJI6IkpXVCJ9.eyJ1c2Vyi5NDEyODc4fQ.ZraBFohS4Tg39NszY" \
+  -H "Content-Type: application/json" \
+  -d '{"tag": "Favorite", "newTag": "The Best"}'
+```
+
+> The above command returns JSON structured like this:
+
+```json
+{
+  "tagMerged": false,
+  "numItemsUpdated": 1
+}
+```
+
+This endpoint renames an existing tag.
+
+### HTTP Request
+
+`POST http://abs.example.com/api/tags/rename`
+
+### Parameters
+
+Parameter | Type | Description
+--------- | ---- | -----------
+`tag` | String | The current name of the tag.
+`newTag` | String | The new name for the tag.
+
+### Response
+
+Status | Meaning | Description | Schema
+------ | ------- | ----------- | ------
+200 | OK | Success | See Below
+400 | Bad Request | `tag` and `newTag` are required parameters. |
+404 | Not Found | An admin user is required to rename tags. |
+
+#### Response Schema
+
+Attribute | Type | Description
+--------- | ---- | -----------
+`tagMerged` | Boolean | Whether the renamed tag was merged into another tag.
+`numItemsUpdated` | Integer | The number of library items that had their tags changed.
+
+
 ## Validate a Cron Expression
 
 ```shell
