@@ -358,7 +358,7 @@ Attribute | Type | Description
 ## Delete a Tag
 
 ```shell
-curl -X DELETE "https://abs.example.com/api/tags/VGhlIEJlc3QK" \
+curl -X DELETE "https://abs.example.com/api/tags/VGhlIEJlc3Q%3D" \
   -H "Authorization: Bearer exJhbGciOiJI6IkpXVCJ9.eyJ1c2Vyi5NDEyODc4fQ.ZraBFohS4Tg39NszY"
 ```
 
@@ -477,6 +477,47 @@ Status | Meaning | Description | Schema
 Attribute | Type | Description
 --------- | ---- | -----------
 `genreMerged` | Boolean | Whether the renamed genre was merged into another genre.
+`numItemsUpdated` | Integer | The number of library items that had their genres changed.
+
+
+## Delete a Genre
+
+```shell
+curl -X DELETE "https://abs.example.com/api/genres/TWFnaWM%3D" \
+  -H "Authorization: Bearer exJhbGciOiJI6IkpXVCJ9.eyJ1c2Vyi5NDEyODc4fQ.ZraBFohS4Tg39NszY"
+```
+
+> The above command returns JSON structured like this:
+
+```json
+{
+  "numItemsUpdated": 1
+}
+```
+
+This endpoint deletes a genre, removing it from all library items.
+
+### HTTP Request
+
+`DELETE http://abs.example.com/api/genres/<Genre>`
+
+### URL Parameters
+
+Parameter | Description
+--------- | -----------
+Genre | The name of the genre to delete, Base64 and URL encoded.
+
+### Response
+
+Status | Meaning | Description | Schema
+------ | ------- | ----------- | ------
+200 | OK | Success | See Below
+404 | Not Found | An admin user is required to delete genres. |
+
+#### Response Schema
+
+Attribute | Type | Description
+--------- | ---- | -----------
 `numItemsUpdated` | Integer | The number of library items that had their genres changed.
 
 
