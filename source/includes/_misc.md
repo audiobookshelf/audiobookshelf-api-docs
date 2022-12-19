@@ -433,6 +433,53 @@ Attribute | Type | Description
 `genres` | Array of String | The requested genres.
 
 
+## Rename a Genre
+
+```shell
+curl -X POST "https://abs.example.com/api/genres/rename" \
+  -H "Authorization: Bearer exJhbGciOiJI6IkpXVCJ9.eyJ1c2Vyi5NDEyODc4fQ.ZraBFohS4Tg39NszY" \
+  -H "Content-Type: application/json" \
+  -d '{"genre": "Fantasy", "newGenre": "Magic"}'
+```
+
+> The above command returns JSON structured like this:
+
+```json
+{
+  "genreMerged": false,
+  "numItemsUpdated": 1
+}
+```
+
+This endpoint renames an existing genre.
+
+### HTTP Request
+
+`POST http://abs.example.com/api/genres/rename`
+
+### Parameters
+
+Parameter | Type | Description
+--------- | ---- | -----------
+`genre` | String | The current name of the genre.
+`newGenre` | String | The new name for the genre.
+
+### Response
+
+Status | Meaning | Description | Schema
+------ | ------- | ----------- | ------
+200 | OK | Success | See Below
+400 | Bad Request | `genre` and `newGenre` are required parameters. |
+404 | Not Found | An admin user is required to rename genres. |
+
+#### Response Schema
+
+Attribute | Type | Description
+--------- | ---- | -----------
+`genreMerged` | Boolean | Whether the renamed genre was merged into another genre.
+`numItemsUpdated` | Integer | The number of library items that had their genres changed.
+
+
 ## Validate a Cron Expression
 
 ```shell
