@@ -19,6 +19,14 @@ Parameter | Description
 --------- | -----------
 ID | The ID of the book library item.
 
+### Query Parameters
+
+Parameter | Type | Default | Description
+--------- | ---- | ------- | -----------
+`bitrate` | String | `64k` | The bitrate to pass to ffmpeg.
+`codec` | String | `acc` | The audio codec to pass to ffmpeg.
+`channels` | Integer | `2` | The number of audio channels to pass to ffmpeg.
+
 ### Response
 
 Status | Meaning | Description
