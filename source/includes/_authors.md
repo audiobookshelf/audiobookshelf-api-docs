@@ -388,11 +388,12 @@ Parameter | Type | Default | Description
 `width` | Integer | `400` | The requested width of the image.
 `height` | Integer or null | `null` | The requested height of the image. If `null` the image is scaled proportionately.
 `format` | String | `webp` or `jpeg` | The requested format of the image. The default value depends on the request headers.
+`raw` | Binary | `0` | Whether to get the raw cover image file instead of a scaled version. `0` for false, `1` for true.
 
 ### Response
 
 Status | Meaning | Description
 ------ | ------- | -----------
 200 | OK | Success
-404 | Not Found | No author with provided ID exists. |
+404 | Not Found | No author with provided ID exists, or the author does not have an image.
 500 | Internal Server Error | There was an error when attempting to read the image file.
