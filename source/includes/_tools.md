@@ -24,7 +24,7 @@ ID | The ID of the book library item.
 Parameter | Type | Default | Description
 --------- | ---- | ------- | -----------
 `bitrate` | String | `64k` | The bitrate to pass to ffmpeg.
-`codec` | String | `acc` | The audio codec to pass to ffmpeg.
+`codec` | String | `aac` | The audio codec to pass to ffmpeg.
 `channels` | Integer | `2` | The number of audio channels to pass to ffmpeg.
 
 ### Response
