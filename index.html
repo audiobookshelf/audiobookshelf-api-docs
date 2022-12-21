@@ -15747,6 +15747,12 @@ When changing a user's username, their token will be regenerated.
 <td><code>webp</code> or <code>jpeg</code></td>
 <td>The requested format of the image. The default value depends on the request headers.</td>
 </tr>
+<tr>
+<td><code>raw</code></td>
+<td>Binary</td>
+<td><code>0</code></td>
+<td>Whether to get the raw cover image file instead of a scaled version. <code>0</code> for false, <code>1</code> for true.</td>
+</tr>
 </tbody></table>
 <h3 id='response-5'>Response</h3>
 <table><thead>
@@ -15764,7 +15770,7 @@ When changing a user's username, their token will be regenerated.
 <tr>
 <td>404</td>
 <td>Not Found</td>
-<td>No author with provided ID exists.</td>
+<td>No author with provided ID exists, or the author does not have an image.</td>
 </tr>
 <tr>
 <td>500</td>
@@ -20217,6 +20223,34 @@ The <code>id</code> parameter must be included for the notification to be saved.
 <tr>
 <td>ID</td>
 <td>The ID of the book library item.</td>
+</tr>
+</tbody></table>
+<h3 id='query-parameters'>Query Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>bitrate</code></td>
+<td>String</td>
+<td><code>64k</code></td>
+<td>The bitrate to pass to ffmpeg.</td>
+</tr>
+<tr>
+<td><code>codec</code></td>
+<td>String</td>
+<td><code>aac</code></td>
+<td>The audio codec to pass to ffmpeg.</td>
+</tr>
+<tr>
+<td><code>channels</code></td>
+<td>Integer</td>
+<td><code>2</code></td>
+<td>The number of audio channels to pass to ffmpeg.</td>
 </tr>
 </tbody></table>
 <h3 id='response'>Response</h3>
