@@ -390,6 +390,13 @@ Attribute | Type | Description
 `success` | Boolean | Whether the audio file's metadata was successfully updated.
 
 
+## Notification Events
+
+Name | Description | Schema
+---- | ----------- | ------
+`notifications_updated` | A notification was fired. | [Notification Settings](#notification-settings) Object
+
+
 ## Miscellaneous Events
 
 Name | Description | Schema
