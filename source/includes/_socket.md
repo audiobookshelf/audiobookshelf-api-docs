@@ -269,6 +269,15 @@ Name | Description | Schema
 `backup_applied` | A backup was applied to the server. |
 
 
+## Podcast Episode Download Events
+
+Name | Description | Schema
+---- | ----------- | ------
+`episode_download_queued` | A podcast episode has been queued for download. | [Podcast Episode Download](#podcast-episode-download) Object
+`episode_download_started` | A podcast episode has started downloading. | [Podcast Episode Download](#podcast-episode-download) Object
+`episode_download_finished` | A podcast episode has finished downloading. | [Podcast Episode Download](#podcast-episode-download) Object
+
+
 ## Miscellaneous Events
 
 Name | Description | Schema
