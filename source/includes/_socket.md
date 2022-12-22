@@ -262,6 +262,13 @@ Name | Description | Schema
 `rss_feed_closed` | An RSS feed was closed. | [RSS Feed Minified](#rss-feed-minified) Object
 
 
+## Backup Events
+
+Name | Description | Schema
+---- | ----------- | ------
+`backup_applied` | A backup was applied to the server. |
+
+
 ## Miscellaneous Events
 
 Name | Description | Schema
