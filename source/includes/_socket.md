@@ -278,6 +278,118 @@ Name | Description | Schema
 `episode_download_finished` | A podcast episode has finished downloading. | [Podcast Episode Download](#podcast-episode-download) Object
 
 
+## Audio Metadata Events
+
+Name | Description | Schema
+---- | ----------- | ------
+`audio_metadata_started` | A library item has started updating its audio files' metadata. | [Audio Metadata Started Event](#audio-metadata-started-event) Object
+`audio_metadata_finished` | A library item has finished updating its audio files' metadata. | [Audio Metadata Finished Event](#audio-metadata-finished-event) Object
+`audiofile_metadata_started` | An audio file has started updating its metadata. | [Audio File Metadata Started Event](#audio-file-metadata-started-event) Object
+`audiofile_metadata_finished` | An audio file has finished updating its metadata. | [Audio File Metadata Finished Event](#audio-file-metadata-finished-event) Object
+
+### Audio Metadata Started Event
+
+> Audio Metadata Started Event
+
+```json
+{
+  "userId": "root",
+  "libraryItemId": "li_8gch9ve09orgn4fdz8",
+  "startedAt": 1671741903065,
+  "audioFiles": [...]
+}
+```
+
+Attribute | Type | Description
+--------- | ---- | -----------
+`userId` | String | The ID of the user that requested the metadata update.
+`libraryItemId` | String | The ID of the library item whose audio files' metadata are being updated.
+`startedAt` | Integer | The time (in ms since POSIX epoch) when the metadata update request was sent.
+`audioFiles` | Array of [Event Audio File](#event-audio-file) | The audio files whose metadata is being updated.
+
+### Event Audio File
+
+> Event Audio File
+
+```json
+{
+  "index": 1,
+  "ino": "649644248522215260",
+  "filename": "Terry Goodkind - SOT Bk01 - Wizards First Rule 01.mp3"
+}
+```
+
+Attribute | Type | Description
+--------- | ---- | -----------
+`index` | Integer | The index of the audio file.
+`ino` | String | The inode of the audio file.
+`filename` | String | The filename of the audio file.
+
+### Audio Metadata Finished Event
+
+> Audio Metadata Finished Event
+
+```json
+{
+  "userId": "root",
+  "libraryItemId": "li_8gch9ve09orgn4fdz8",
+  "startedAt": 1671741903065,
+  "audioFiles": [...],
+  "results": [...],
+  "elapsed": 3065,
+  "finishedAt": 1671741906130
+}
+```
+
+The same as [Audio Metadata Started Event](#audio-metadata-started-event) with following added attributes:
+
+Attribute | Type | Description
+--------- | ---- | -----------
+`results` | Array of [Audio File Metadata Finished Event](#audio-file-metadata-finished-event) | The results of the audio file metadata updates.
+`elapsed` | Integer | The time (in ms) it took to complete the metadata updates (approx. `finishedAt` - `startedAt`)
+`finishedAt` | Integer | The time (in ms since POSIX epoch) when the metadata updates were finished.
+
+### Audio File Metadata Started Event
+
+> Audio File Metadata Started Event
+
+```json
+{
+  "libraryItemId": "li_8gch9ve09orgn4fdz8",
+  "index": 1,
+  "ino": "649644248522215260",
+  "filename": "Terry Goodkind - SOT Bk01 - Wizards First Rule 01.mp3"
+}
+```
+
+Attribute | Type | Description
+--------- | ---- | -----------
+`libraryItemId` | String | The ID of the library item which the audio file belongs to.
+`index` | Integer | The index of the audio file.
+`ino` | String | The inode of the audio file.
+`filename` | String | The filename of the audio file.
+
+### Audio File Metadata Finished Event
+
+> Audio File Metadata Finished Event
+
+```json
+{
+  "libraryItemId": "li_8gch9ve09orgn4fdz8",
+  "index": 1,
+  "ino": "649644248522215260",
+  "filename": "Terry Goodkind - SOT Bk01 - Wizards First Rule 01.mp3",
+  "success": true
+}
+```
+
+The same as [Audio File Metadata Started Event](#audio-file-metadata-started-event) with following added attributes:
+
+Attribute | Type | Description
+--------- | ---- | -----------
+`success` | Boolean | Whether the audio file's metadata was successfully updated.
+
+
 ## Miscellaneous Events
 
 Name | Description | Schema
