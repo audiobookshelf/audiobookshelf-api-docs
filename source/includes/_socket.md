@@ -227,6 +227,15 @@ Name | Description | Schema
 `authors_added` | Authors were created. | Array of [Author](#author)
 
 
+## Series Events
+
+Name | Description | Schema
+---- | ----------- | ------
+`series_added` | A series was created. | [Series](#series) Object
+`series_updated` | A series was updated. | [Series](#series) Object
+`multiple_series_added` | Multiple series were created. | Array of [Series](#series)
+
+
 ## Miscellaneous Events
 
 Name | Description | Schema
