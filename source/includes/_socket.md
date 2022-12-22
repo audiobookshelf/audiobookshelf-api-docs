@@ -254,6 +254,14 @@ Name | Description | Schema
 `playlist_removed` | A playlist was deleted. | [Playlist Expanded](#playlist-expanded) Object
 
 
+## RSS Feed Events
+
+Name | Description | Schema
+---- | ----------- | ------
+`rss_feed_open` | An RSS feed was opened. | [RSS Feed Minified](#rss-feed-minified) Object
+`rss_feed_closed` | An RSS feed was closed. | [RSS Feed Minified](#rss-feed-minified) Object
+
+
 ## Miscellaneous Events
 
 Name | Description | Schema
