@@ -88,6 +88,50 @@ Attribute | Type | Description
 `data` | [Media Progress](#media-progress) Object | The updated media progress.
 
 
+## Stream Events
+
+Name | Description | Schema
+---- | ----------- | ------
+`stream_open` | A stream has opened. | [Stream](#stream) Object
+`stream_closed` | A stream has closed. | Stream ID String
+`stream_progress` | A stream transcode progress update. | [Stream Progress](#stream-progress) Object
+`stream_ready` | A stream is ready, transcoding has already been completed on the requested stream. |
+`stream_reset` | A stream was reset. | [Stream Reset Event](#stream-reset-event) Object
+`stream_error` | A stream error occurred. Emitted when ffmpeg has an error while transcoding. | [Stream Error Event](#stream-error-event) Object
+
+### Stream Reset Event
+
+> Stream Reset Event
+
+```json
+{
+  "startTime": 0,
+  "streamId": "play_c786zm3qtjz6bd5q3n"
+}
+```
+
+Attribute | Type | Description
+--------- | ---- | -----------
+`startTime` | Float | The new start time (in seconds) of the stream.
+`streamId` | String | The ID of the stream being reset.
+
+### Stream Error Event
+
+> Stream Error Event
+
+```json
+{
+  "id": "play_c786zm3qtjz6bd5q3n",
+  "error": "ffmpeg exited with code 1"
+}
+```
+
+Attribute | Type | Description
+--------- | ---- | -----------
+`id` | String | The ID of the stream where the error occurred.
+`error` | String | The error's message.
+
+
 ## Miscellaneous Events
 
 Name | Description | Schema
