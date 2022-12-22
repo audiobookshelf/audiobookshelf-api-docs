@@ -2223,3 +2223,26 @@ Attribute | Type | Description
 `startTime` | Float | The time (in seconds) where the playback session started.
 `segmentStartNumber` | Integer | The segment where the transcoding began.
 `isTranscodeComplete` | Boolean | Whether transcoding is complete.
+
+
+## Stream Progress
+
+> Stream Progress
+
+```json
+{
+  "stream": "play_c786zm3qtjz6bd5q3n",
+  "percent": "8.66%",
+  "chunks": [
+    "0-536"
+  ],
+  "numSegments": 6200
+}
+```
+
+Attribute | Type | Description
+--------- | ---- | -----------
+`stream` | String | The ID of the stream the progress is for.
+`percent` | String | A human-readable percentage of transcode completion.
+`chunks` | Array of String | The segment ranges that have been transcoded.
+`numSegments` | Integer | The total number of segments of the stream.
