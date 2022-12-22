@@ -187,6 +187,36 @@ Attribute | Type | Description
 `missing` | Integer | The number of library items discovered to be missing during the scan.
 
 
+## Library Item Events
+
+Name | Description | Schema
+---- | ----------- | ------
+`item_added` | A library item was created. | [Library Item Expanded](#library-item-expanded) Object
+`item_updated` | A library item was updated. | [Library Item Expanded](#library-item-expanded) Object
+`item_removed` | A library item was deleted. | [Library Item Expanded](#library-item-expanded) Object
+`items_added` | Library items were created. | Array of [Library Item Expanded](#library-item-expanded)
+`items_updated` | Library items were updated. | Array of [Library Item Expanded](#library-item-expanded)
+`batch_quickmatch_complete` | Batch library item quick matching is complete. | [Batch Quick Match Result](#batch-quick-match-result) Object
+
+### Batch Quick Match Result
+
+> Batch Quick Match Result
+
+```json
+{
+  "success": true,
+  "updates": 3,
+  "unmatched": 0
+}
+```
+
+Attribute | Type | Description
+--------- | ---- | -----------
+`success` | Boolean | Whether library items were successfully updated.
+`updates` | Integer | The number of library items that were updated.
+`unmatched` | Integer | The number of library items that a match could not be found for.
+
+
 ## Miscellaneous Events
 
 Name | Description | Schema
