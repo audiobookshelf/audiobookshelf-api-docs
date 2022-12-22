@@ -38,7 +38,7 @@ These are events that clients can emit.
 
 Name | Description | Schema
 ---- | ----------- | ------
-`auth` | Authenticates the socket connection. Causes the server to emit the `init` event. | API Token String
+`auth` | Authenticates the socket connection. Causes the server to emit the `init` or `invalid_token` event. | API Token String
 `cancel_scan` | Cancels an in progress library scan. | Library ID String
 `set_log_listener` | Makes the server emit `log` events of the given level or below to the client. | Log Level Integer: `1` for debug, `2` for info, or `3` for warnings, `4` for errors.
 `remove_log_listener` | Removes the client as a log listener. |
@@ -92,7 +92,8 @@ Attribute | Type | Description
 
 Name | Description | Schema
 ---- | ----------- | ------
-`init` | Response to `auth` client event. | [Init Event](#init-event) Object
+`init` | Successfully authenticated the socket. Response to `auth` client event. | [Init Event](#init-event) Object
+`invalid_token` | An invalid token was given when authenticating. Response to `auth` client event. |
 `log` | A single log event. Emitted after `set_log_listener` client event is sent. Cancelable with `remove_log_listener` client event. | [Log Event](#log-event) Object
 `daily_logs` | The current day's log events. Response to `fetch_daily_logs` client event. | Array of [Log Event](#log-event)
 `admin_message` | A message sent by an admin user. | String
