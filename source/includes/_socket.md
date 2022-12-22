@@ -132,6 +132,15 @@ Attribute | Type | Description
 `error` | String | The error's message.
 
 
+## Library Events
+
+Name | Description | Schema
+---- | ----------- | ------
+`library_added` | A library was created. | [Library](#library) Object
+`library_updated` | A library was updated. | [Library](#library) Object
+`library_removed` | A library was deleted. | [Library](#library) Object
+
+
 ## Miscellaneous Events
 
 Name | Description | Schema
