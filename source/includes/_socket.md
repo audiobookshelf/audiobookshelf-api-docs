@@ -34,7 +34,7 @@ socket.emit('set_log_listener', 2)
 socket.emit('message_all_users', { message: 'Message from admin' })
 ```
 
-These are events that clients can emit.
+These are events that clients can emit. See [Miscellaneous Events](#miscellaneous-events) for events that the server responds to these events with.
 
 Name | Description | Schema
 ---- | ----------- | ------
