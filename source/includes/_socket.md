@@ -236,6 +236,15 @@ Name | Description | Schema
 `multiple_series_added` | Multiple series were created. | Array of [Series](#series)
 
 
+## Collection Events
+
+Name | Description | Schema
+---- | ----------- | ------
+`collection_added` | A collection was created. | [Collection Expanded](#collection-expanded) Object
+`collection_updated` | A collection was updated. | [Collection Expanded](#collection-expanded) Object
+`collection_removed` | A collection was deleted. | [Collection Expanded](#collection-expanded) Object
+
+
 ## Miscellaneous Events
 
 Name | Description | Schema
