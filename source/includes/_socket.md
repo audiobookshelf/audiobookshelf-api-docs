@@ -245,6 +245,15 @@ Name | Description | Schema
 `collection_removed` | A collection was deleted. | [Collection Expanded](#collection-expanded) Object
 
 
+## Playlist Events
+
+Name | Description | Schema
+---- | ----------- | ------
+`playlist_added` | A playlist was created. | [Playlist Expanded](#playlist-expanded) Object
+`playlist_updated` | A playlist was updated. | [Playlist Expanded](#playlist-expanded) Object
+`playlist_removed` | A playlist was deleted. | [Playlist Expanded](#playlist-expanded) Object
+
+
 ## Miscellaneous Events
 
 Name | Description | Schema
