@@ -1642,7 +1642,7 @@ Attribute | Type | Description
 `playMethod` | [Play Method](#play-method) Enumerated Integer | What play method the playback session is using. See below for values.
 `mediaPlayer` | String | The given media player when the playback session was requested.
 `deviceInfo` | [Device Info](#device-info) Object | The given device info when the playback session was requested.
-`day` | String | The day (in the format YYYY-MM-DD) the playback session was started.
+`date` | String | The day (in the format YYYY-MM-DD) the playback session was started.
 `dayOfWeek` | String | The day of the week the playback session was started.
 `timeListening` | Float | The amount of time (in seconds) the user has spent listening using this playback session.
 `startTime` | Float | The time (in seconds) where the playback session started.
@@ -2190,3 +2190,36 @@ Attribute | Type | Description
 `episodeId` | String or null | The ID of the podcast episode the RSS feed episode is for. Will be `null` if the RSS feed is for a book.
 `trackIndex` | Integer | The RSS feed episode's track index.
 `fullPath` | String | The path on the server of the audio file the RSS feed episode is for.
+
+
+## Stream
+
+> Stream
+
+```json
+{
+  "id": "play_c786zm3qtjz6bd5q3n",
+  "userId": "root",
+  "libraryItem": {...},
+  "episode": {...},
+  "segmentLength": 6,
+  "playlistPath": "/metadata/streams/play_c786zm3qtjz6bd5q3n/output.m3u8",
+  "clientPlaylistUri": "/hls/play_c786zm3qtjz6bd5q3n/output.m3u8",
+  "startTime": 0,
+  "segmentStartNumber": 0,
+  "isTranscodeComplete": false
+}
+```
+
+Attribute | Type | Description
+--------- | ---- | -----------
+`id` | String | The ID of the stream. It will be the same as the ID of the playback session that the stream is for.
+`userId` | String | The ID of the user that started the stream.
+`libraryItem` | [Library Item Expanded](#library-item-expanded) Object | The library item the stream is for.
+`episode` | [Podcast Episode Expanded](#podcast-episode-expanded) Object or null | The podcast episode the stream is for. Will be `null` if the stream is for a book.
+`segmentLength` | Integer | The length (in seconds) of each segment of the stream.
+`playlistPath` | String | The path on the server of the stream output.
+`clientPlaylistUri` | String | The URI path for the client to access the stream.
+`startTime` | Float | The time (in seconds) where the playback session started.
+`segmentStartNumber` | Integer | The segment where the transcoding began.
+`isTranscodeComplete` | Boolean | Whether transcoding is complete.
