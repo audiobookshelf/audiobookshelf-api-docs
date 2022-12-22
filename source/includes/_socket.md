@@ -141,6 +141,52 @@ Name | Description | Schema
 `library_removed` | A library was deleted. | [Library](#library) Object
 
 
+## Library Scan Events
+
+Name | Description | Schema
+---- | ----------- | ------
+`scan_start` | A library scan was started. | [Library Scan](#library-scan) Object
+`scan_complete` | A library scan was completed. | [Library Scan](#library-scan) Object
+
+### Library Scan
+
+> Library Scan
+
+```json
+{
+  "id": "lib_yq748byukae93rulli",
+  "type": "scan",
+  "name": "Audiobooks",
+  "results": {...}
+}
+```
+
+Attribute | Type | Description
+--------- | ---- | -----------
+`id` | String | The ID of the scanned library.
+`type` | String | The type of the library scan. Will be `scan` or `match`.
+`name` | String | The name of the scanned library.
+`results` | [Library Scan Results](#library-scan-results) Object or null | The results of the library scan. Will be `null` if the scan was canceled.
+
+### Library Scan Results
+
+> Library Scan Results
+
+```json
+{
+  "added": 0,
+  "updated": 0,
+  "missing": 0
+}
+```
+
+Attribute | Type | Description
+--------- | ---- | -----------
+`added` | Integer | The number of library items added during the scan.
+`updated` | Integer | The number of library items updated during the scan.
+`missing` | Integer | The number of library items discovered to be missing during the scan.
+
+
 ## Miscellaneous Events
 
 Name | Description | Schema
