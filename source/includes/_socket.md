@@ -217,6 +217,16 @@ Attribute | Type | Description
 `unmatched` | Integer | The number of library items that a match could not be found for.
 
 
+## Author Events
+
+Name | Description | Schema
+---- | ----------- | ------
+`author_added` | An author was created. | [Author](#author) Object
+`author_updated` | An author was updated. | [Author Expanded](#author-expanded) Object
+`author_removed` | An author was deleted. | [Author](#author) Object
+`authors_added` | Authors were created. | Array of [Author](#author)
+
+
 ## Miscellaneous Events
 
 Name | Description | Schema
