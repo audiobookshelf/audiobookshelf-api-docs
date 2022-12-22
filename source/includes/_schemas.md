@@ -2106,6 +2106,17 @@ Attribute | Type | Description
 }
 ```
 
+> RSS Feed Minified
+
+```json
+{
+  "id": "li_bufnnmp4y5o2gbbxfm",
+  "entityType": "item",
+  "entityId": "li_bufnnmp4y5o2gbbxfm",
+  "feedUrl": "https://abs.example.com/feed/li_bufnnmp4y5o2gbbxfm"
+}
+```
+
 Attribute | Type | Description
 --------- | ---- | -----------
 `id` | String | The ID of the RSS feed.
@@ -2120,6 +2131,19 @@ Attribute | Type | Description
 `episodes` | Array of [RSS Feed Episode](#rss-feed-episode) | The RSS feed's episodes.
 `createdAt` | Integer | The time (in ms since POSIX epoch) when the RSS feed was created.
 `updatedAt` | Integer | The time (in ms since POSIX epoch) when the RSS feed was last updated.
+
+### RSS Feed Minified
+
+#### Removed Attributes
+
+* `slug`
+* `userId`
+* `coverPath`
+* `serverAddress`
+* `meta`
+* `episodes`
+* `createdAt`
+* `updatedAt`
 
 
 ## RSS Feed Metadata
