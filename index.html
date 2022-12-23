@@ -850,6 +850,62 @@
               </ul>
           </li>
           <li>
+            <a href="#socket" class="toc-h1 toc-link" data-title="Socket">Socket</a>
+              <ul class="toc-list-h2">
+                  <li>
+                    <a href="#client-events" class="toc-h2 toc-link" data-title="Client Events">Client Events</a>
+                  </li>
+                  <li>
+                    <a href="#server-events" class="toc-h2 toc-link" data-title="Server Events">Server Events</a>
+                  </li>
+                  <li>
+                    <a href="#user-events" class="toc-h2 toc-link" data-title="User Events">User Events</a>
+                  </li>
+                  <li>
+                    <a href="#stream-events" class="toc-h2 toc-link" data-title="Stream Events">Stream Events</a>
+                  </li>
+                  <li>
+                    <a href="#library-events" class="toc-h2 toc-link" data-title="Library Events">Library Events</a>
+                  </li>
+                  <li>
+                    <a href="#library-scan-events" class="toc-h2 toc-link" data-title="Library Scan Events">Library Scan Events</a>
+                  </li>
+                  <li>
+                    <a href="#library-item-events" class="toc-h2 toc-link" data-title="Library Item Events">Library Item Events</a>
+                  </li>
+                  <li>
+                    <a href="#author-events" class="toc-h2 toc-link" data-title="Author Events">Author Events</a>
+                  </li>
+                  <li>
+                    <a href="#series-events" class="toc-h2 toc-link" data-title="Series Events">Series Events</a>
+                  </li>
+                  <li>
+                    <a href="#collection-events" class="toc-h2 toc-link" data-title="Collection Events">Collection Events</a>
+                  </li>
+                  <li>
+                    <a href="#playlist-events" class="toc-h2 toc-link" data-title="Playlist Events">Playlist Events</a>
+                  </li>
+                  <li>
+                    <a href="#rss-feed-events" class="toc-h2 toc-link" data-title="RSS Feed Events">RSS Feed Events</a>
+                  </li>
+                  <li>
+                    <a href="#backup-events" class="toc-h2 toc-link" data-title="Backup Events">Backup Events</a>
+                  </li>
+                  <li>
+                    <a href="#podcast-episode-download-events" class="toc-h2 toc-link" data-title="Podcast Episode Download Events">Podcast Episode Download Events</a>
+                  </li>
+                  <li>
+                    <a href="#audio-metadata-events" class="toc-h2 toc-link" data-title="Audio Metadata Events">Audio Metadata Events</a>
+                  </li>
+                  <li>
+                    <a href="#notification-events" class="toc-h2 toc-link" data-title="Notification Events">Notification Events</a>
+                  </li>
+                  <li>
+                    <a href="#miscellaneous-events" class="toc-h2 toc-link" data-title="Miscellaneous Events">Miscellaneous Events</a>
+                  </li>
+              </ul>
+          </li>
+          <li>
             <a href="#metadata-providers" class="toc-h1 toc-link" data-title="Metadata Providers">Metadata Providers</a>
               <ul class="toc-list-h2">
                   <li>
@@ -988,6 +1044,12 @@
                   </li>
                   <li>
                     <a href="#rss-feed-episode" class="toc-h2 toc-link" data-title="RSS Feed Episode">RSS Feed Episode</a>
+                  </li>
+                  <li>
+                    <a href="#stream" class="toc-h2 toc-link" data-title="Stream">Stream</a>
+                  </li>
+                  <li>
+                    <a href="#stream-progress" class="toc-h2 toc-link" data-title="Stream Progress">Stream Progress</a>
                   </li>
               </ul>
           </li>
@@ -21180,6 +21242,945 @@ The <code>id</code> parameter must be included for the notification to be saved.
 <td>The <code>expression</code> parameter is required, or the <code>expression</code> is invalid.</td>
 </tr>
 </tbody></table>
+<h1 id='socket'>Socket</h1>
+<p>Audiobookshelf uses <a href="https://socket.io/">Socket.io</a> for bidirectional communication between clients and the server.
+Each client must first authenticate itself using a user&#39;s API token in order to subscribe to events for that user.
+There is also <a href="https://github.com/advplyr/abs-socket-client-demo">an example</a> for how to use the socket.</p>
+
+<aside class="notice">
+If the socket gets disconnected and then re-connects, it will have a new socket ID and will need to authenticate again.
+</aside>
+<h2 id='client-events'>Client Events</h2>
+<blockquote>
+<p><code>auth</code></p>
+</blockquote>
+<div class="highlight"><pre class="highlight javascript"><code><span class="nx">socket</span><span class="p">.</span><span class="nx">emit</span><span class="p">(</span><span class="dl">'</span><span class="s1">auth</span><span class="dl">'</span><span class="p">,</span> <span class="dl">'</span><span class="s1">exJhbGciOiJI6IkpXVCJ9.eyJ1c2Vyi5NDEyODc4fQ.ZraBFohS4Tg39NszY</span><span class="dl">'</span><span class="p">)</span>
+</code></pre></div>
+<blockquote>
+<p><code>cancel_scan</code></p>
+</blockquote>
+<div class="highlight"><pre class="highlight javascript"><code><span class="nx">socket</span><span class="p">.</span><span class="nx">emit</span><span class="p">(</span><span class="dl">'</span><span class="s1">cancel_scan</span><span class="dl">'</span><span class="p">,</span> <span class="dl">'</span><span class="s1">lib_c1u6t4p45c35rf0nzd</span><span class="dl">'</span><span class="p">)</span>
+</code></pre></div>
+<blockquote>
+<p><code>set_log_listener</code></p>
+</blockquote>
+<div class="highlight"><pre class="highlight javascript"><code><span class="nx">socket</span><span class="p">.</span><span class="nx">emit</span><span class="p">(</span><span class="dl">'</span><span class="s1">set_log_listener</span><span class="dl">'</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
+</code></pre></div>
+<blockquote>
+<p><code>message_all_users</code></p>
+</blockquote>
+<div class="highlight"><pre class="highlight javascript"><code><span class="nx">socket</span><span class="p">.</span><span class="nx">emit</span><span class="p">(</span><span class="dl">'</span><span class="s1">message_all_users</span><span class="dl">'</span><span class="p">,</span> <span class="p">{</span> <span class="na">message</span><span class="p">:</span> <span class="dl">'</span><span class="s1">Message from admin</span><span class="dl">'</span> <span class="p">})</span>
+</code></pre></div>
+<p>These are events that clients can emit. See <a href="#miscellaneous-events">Miscellaneous Events</a> for events that the server responds to these events with.</p>
+
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Description</th>
+<th>Schema</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>auth</code></td>
+<td>Authenticates the socket connection. Causes the server to emit the <code>init</code> or <code>invalid_token</code> event.</td>
+<td>API Token String</td>
+</tr>
+<tr>
+<td><code>cancel_scan</code></td>
+<td>Cancels an in progress library scan.</td>
+<td>Library ID String</td>
+</tr>
+<tr>
+<td><code>set_log_listener</code></td>
+<td>Makes the server emit <code>log</code> events of the given level or below to the client.</td>
+<td>Log Level Integer: <code>1</code> for debug, <code>2</code> for info, or <code>3</code> for warnings, <code>4</code> for errors.</td>
+</tr>
+<tr>
+<td><code>remove_log_listener</code></td>
+<td>Removes the client as a log listener.</td>
+<td></td>
+</tr>
+<tr>
+<td><code>fetch_daily_logs</code></td>
+<td>Causes the server to emit the <code>daily_logs</code> event.</td>
+<td></td>
+</tr>
+<tr>
+<td><code>message_all_users</code></td>
+<td><strong>Admin Users Only</strong> Send a message to all users using the <code>admin_message</code> server event.</td>
+<td><a href="#message-all-users">Message All Users</a> Object</td>
+</tr>
+<tr>
+<td><code>ping</code></td>
+<td>Causes the server to emit the <code>pong</code> event.</td>
+<td></td>
+</tr>
+</tbody></table>
+<h3 id='message-all-users'>Message All Users</h3>
+<table><thead>
+<tr>
+<th>Attribute</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>message</code></td>
+<td>String</td>
+<td>The message to send to all users.</td>
+</tr>
+</tbody></table>
+<h2 id='server-events'>Server Events</h2>
+<p>The events that the server can emit are in the sections below.
+Events marked with &quot;<strong>Admin Only</strong>&quot; are only sent to sockets with an authenticated admin user.</p>
+<h2 id='user-events'>User Events</h2>
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Description</th>
+<th>Schema</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>user_online</code></td>
+<td><strong>Admin Only</strong> A user is online.</td>
+<td><a href="#user-with-session-and-most-recent-progress">User with Session and Most Recent Progress</a> Object</td>
+</tr>
+<tr>
+<td><code>user_offline</code></td>
+<td><strong>Admin Only</strong> A user is offline.</td>
+<td><a href="#user-with-session-and-most-recent-progress">User with Session and Most Recent Progress</a> Object</td>
+</tr>
+<tr>
+<td><code>user_added</code></td>
+<td><strong>Admin Only</strong> A user was created.</td>
+<td><a href="#user">User</a> Object</td>
+</tr>
+<tr>
+<td><code>user_updated</code></td>
+<td>The authenticated user has been updated.</td>
+<td><a href="#user">User</a> Object</td>
+</tr>
+<tr>
+<td><code>user_removed</code></td>
+<td><strong>Admin Only</strong> A user was deleted.</td>
+<td><a href="#user">User</a> Object</td>
+</tr>
+<tr>
+<td><code>user_item_progress_updated</code></td>
+<td>One of the authenticated user&#39;s media progress was created/updated.</td>
+<td><a href="#user-item-progress-updated-event">User Item Progress Updated Event</a></td>
+</tr>
+<tr>
+<td><code>user_stream_update</code></td>
+<td><strong>Admin Only</strong> A user started or stopped a playback session.</td>
+<td><a href="#user-with-session-and-most-recent-progress">User with Session and Most Recent Progress</a> Object</td>
+</tr>
+</tbody></table>
+<h3 id='user-item-progress-updated-event'>User Item Progress Updated Event</h3>
+<blockquote>
+<p>User Item Progress Updated Event</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"li_bufnnmp4y5o2gbbxfm-ep_lh6ko39pumnrma3dhv"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="err">...</span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<table><thead>
+<tr>
+<th>Attribute</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>id</code></td>
+<td>String</td>
+<td>The ID of the updated media progress.</td>
+</tr>
+<tr>
+<td><code>data</code></td>
+<td><a href="#media-progress">Media Progress</a> Object</td>
+<td>The updated media progress.</td>
+</tr>
+</tbody></table>
+<h2 id='stream-events'>Stream Events</h2>
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Description</th>
+<th>Schema</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>stream_open</code></td>
+<td>A stream has opened.</td>
+<td><a href="#stream">Stream</a> Object</td>
+</tr>
+<tr>
+<td><code>stream_closed</code></td>
+<td>A stream has closed.</td>
+<td>Stream ID String</td>
+</tr>
+<tr>
+<td><code>stream_progress</code></td>
+<td>A stream transcode progress update.</td>
+<td><a href="#stream-progress">Stream Progress</a> Object</td>
+</tr>
+<tr>
+<td><code>stream_ready</code></td>
+<td>A stream is ready, transcoding has already been completed on the requested stream.</td>
+<td></td>
+</tr>
+<tr>
+<td><code>stream_reset</code></td>
+<td>A stream was reset.</td>
+<td><a href="#stream-reset-event">Stream Reset Event</a> Object</td>
+</tr>
+<tr>
+<td><code>stream_error</code></td>
+<td>A stream error occurred. Emitted when ffmpeg has an error while transcoding.</td>
+<td><a href="#stream-error-event">Stream Error Event</a> Object</td>
+</tr>
+</tbody></table>
+<h3 id='stream-reset-event'>Stream Reset Event</h3>
+<blockquote>
+<p>Stream Reset Event</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"startTime"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"streamId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"play_c786zm3qtjz6bd5q3n"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<table><thead>
+<tr>
+<th>Attribute</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>startTime</code></td>
+<td>Float</td>
+<td>The new start time (in seconds) of the stream.</td>
+</tr>
+<tr>
+<td><code>streamId</code></td>
+<td>String</td>
+<td>The ID of the stream being reset.</td>
+</tr>
+</tbody></table>
+<h3 id='stream-error-event'>Stream Error Event</h3>
+<blockquote>
+<p>Stream Error Event</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"play_c786zm3qtjz6bd5q3n"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"error"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ffmpeg exited with code 1"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<table><thead>
+<tr>
+<th>Attribute</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>id</code></td>
+<td>String</td>
+<td>The ID of the stream where the error occurred.</td>
+</tr>
+<tr>
+<td><code>error</code></td>
+<td>String</td>
+<td>The error&#39;s message.</td>
+</tr>
+</tbody></table>
+<h2 id='library-events'>Library Events</h2>
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Description</th>
+<th>Schema</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>library_added</code></td>
+<td>A library was created.</td>
+<td><a href="#library">Library</a> Object</td>
+</tr>
+<tr>
+<td><code>library_updated</code></td>
+<td>A library was updated.</td>
+<td><a href="#library">Library</a> Object</td>
+</tr>
+<tr>
+<td><code>library_removed</code></td>
+<td>A library was deleted.</td>
+<td><a href="#library">Library</a> Object</td>
+</tr>
+</tbody></table>
+<h2 id='library-scan-events'>Library Scan Events</h2>
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Description</th>
+<th>Schema</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>scan_start</code></td>
+<td>A library scan was started.</td>
+<td><a href="#library-scan">Library Scan</a> Object</td>
+</tr>
+<tr>
+<td><code>scan_complete</code></td>
+<td>A library scan was completed.</td>
+<td><a href="#library-scan">Library Scan</a> Object</td>
+</tr>
+</tbody></table>
+<h3 id='library-scan'>Library Scan</h3>
+<blockquote>
+<p>Library Scan</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"lib_yq748byukae93rulli"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"scan"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Audiobooks"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"results"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="err">...</span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<table><thead>
+<tr>
+<th>Attribute</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>id</code></td>
+<td>String</td>
+<td>The ID of the scanned library.</td>
+</tr>
+<tr>
+<td><code>type</code></td>
+<td>String</td>
+<td>The type of the library scan. Will be <code>scan</code> or <code>match</code>.</td>
+</tr>
+<tr>
+<td><code>name</code></td>
+<td>String</td>
+<td>The name of the scanned library.</td>
+</tr>
+<tr>
+<td><code>results</code></td>
+<td><a href="#library-scan-results">Library Scan Results</a> Object or null</td>
+<td>The results of the library scan. Will be <code>null</code> if the scan was canceled.</td>
+</tr>
+</tbody></table>
+<h3 id='library-scan-results'>Library Scan Results</h3>
+<blockquote>
+<p>Library Scan Results</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"added"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"updated"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"missing"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<table><thead>
+<tr>
+<th>Attribute</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>added</code></td>
+<td>Integer</td>
+<td>The number of library items added during the scan.</td>
+</tr>
+<tr>
+<td><code>updated</code></td>
+<td>Integer</td>
+<td>The number of library items updated during the scan.</td>
+</tr>
+<tr>
+<td><code>missing</code></td>
+<td>Integer</td>
+<td>The number of library items discovered to be missing during the scan.</td>
+</tr>
+</tbody></table>
+<h2 id='library-item-events'>Library Item Events</h2>
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Description</th>
+<th>Schema</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>item_added</code></td>
+<td>A library item was created.</td>
+<td><a href="#library-item-expanded">Library Item Expanded</a> Object</td>
+</tr>
+<tr>
+<td><code>item_updated</code></td>
+<td>A library item was updated.</td>
+<td><a href="#library-item-expanded">Library Item Expanded</a> Object</td>
+</tr>
+<tr>
+<td><code>item_removed</code></td>
+<td>A library item was deleted.</td>
+<td><a href="#library-item-expanded">Library Item Expanded</a> Object</td>
+</tr>
+<tr>
+<td><code>items_added</code></td>
+<td>Library items were created.</td>
+<td>Array of <a href="#library-item-expanded">Library Item Expanded</a></td>
+</tr>
+<tr>
+<td><code>items_updated</code></td>
+<td>Library items were updated.</td>
+<td>Array of <a href="#library-item-expanded">Library Item Expanded</a></td>
+</tr>
+<tr>
+<td><code>batch_quickmatch_complete</code></td>
+<td>Batch library item quick matching is complete.</td>
+<td><a href="#batch-quick-match-result">Batch Quick Match Result</a> Object</td>
+</tr>
+</tbody></table>
+<h3 id='batch-quick-match-result'>Batch Quick Match Result</h3>
+<blockquote>
+<p>Batch Quick Match Result</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"success"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"updates"</span><span class="p">:</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"unmatched"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<table><thead>
+<tr>
+<th>Attribute</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>success</code></td>
+<td>Boolean</td>
+<td>Whether library items were successfully updated.</td>
+</tr>
+<tr>
+<td><code>updates</code></td>
+<td>Integer</td>
+<td>The number of library items that were updated.</td>
+</tr>
+<tr>
+<td><code>unmatched</code></td>
+<td>Integer</td>
+<td>The number of library items that a match could not be found for.</td>
+</tr>
+</tbody></table>
+<h2 id='author-events'>Author Events</h2>
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Description</th>
+<th>Schema</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>author_added</code></td>
+<td>An author was created.</td>
+<td><a href="#author">Author</a> Object</td>
+</tr>
+<tr>
+<td><code>author_updated</code></td>
+<td>An author was updated.</td>
+<td><a href="#author-expanded">Author Expanded</a> Object</td>
+</tr>
+<tr>
+<td><code>author_removed</code></td>
+<td>An author was deleted.</td>
+<td><a href="#author">Author</a> Object</td>
+</tr>
+<tr>
+<td><code>authors_added</code></td>
+<td>Authors were created.</td>
+<td>Array of <a href="#author">Author</a></td>
+</tr>
+</tbody></table>
+<h2 id='series-events'>Series Events</h2>
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Description</th>
+<th>Schema</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>series_added</code></td>
+<td>A series was created.</td>
+<td><a href="#series">Series</a> Object</td>
+</tr>
+<tr>
+<td><code>series_updated</code></td>
+<td>A series was updated.</td>
+<td><a href="#series">Series</a> Object</td>
+</tr>
+<tr>
+<td><code>multiple_series_added</code></td>
+<td>Multiple series were created.</td>
+<td>Array of <a href="#series">Series</a></td>
+</tr>
+</tbody></table>
+<h2 id='collection-events'>Collection Events</h2>
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Description</th>
+<th>Schema</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>collection_added</code></td>
+<td>A collection was created.</td>
+<td><a href="#collection-expanded">Collection Expanded</a> Object</td>
+</tr>
+<tr>
+<td><code>collection_updated</code></td>
+<td>A collection was updated.</td>
+<td><a href="#collection-expanded">Collection Expanded</a> Object</td>
+</tr>
+<tr>
+<td><code>collection_removed</code></td>
+<td>A collection was deleted.</td>
+<td><a href="#collection-expanded">Collection Expanded</a> Object</td>
+</tr>
+</tbody></table>
+<h2 id='playlist-events'>Playlist Events</h2>
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Description</th>
+<th>Schema</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>playlist_added</code></td>
+<td>A playlist was created.</td>
+<td><a href="#playlist-expanded">Playlist Expanded</a> Object</td>
+</tr>
+<tr>
+<td><code>playlist_updated</code></td>
+<td>A playlist was updated.</td>
+<td><a href="#playlist-expanded">Playlist Expanded</a> Object</td>
+</tr>
+<tr>
+<td><code>playlist_removed</code></td>
+<td>A playlist was deleted.</td>
+<td><a href="#playlist-expanded">Playlist Expanded</a> Object</td>
+</tr>
+</tbody></table>
+<h2 id='rss-feed-events'>RSS Feed Events</h2>
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Description</th>
+<th>Schema</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>rss_feed_open</code></td>
+<td>An RSS feed was opened.</td>
+<td><a href="#rss-feed-minified">RSS Feed Minified</a> Object</td>
+</tr>
+<tr>
+<td><code>rss_feed_closed</code></td>
+<td>An RSS feed was closed.</td>
+<td><a href="#rss-feed-minified">RSS Feed Minified</a> Object</td>
+</tr>
+</tbody></table>
+<h2 id='backup-events'>Backup Events</h2>
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Description</th>
+<th>Schema</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>backup_applied</code></td>
+<td>A backup was applied to the server.</td>
+<td></td>
+</tr>
+</tbody></table>
+<h2 id='podcast-episode-download-events'>Podcast Episode Download Events</h2>
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Description</th>
+<th>Schema</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>episode_download_queued</code></td>
+<td>A podcast episode has been queued for download.</td>
+<td><a href="#podcast-episode-download">Podcast Episode Download</a> Object</td>
+</tr>
+<tr>
+<td><code>episode_download_started</code></td>
+<td>A podcast episode has started downloading.</td>
+<td><a href="#podcast-episode-download">Podcast Episode Download</a> Object</td>
+</tr>
+<tr>
+<td><code>episode_download_finished</code></td>
+<td>A podcast episode has finished downloading.</td>
+<td><a href="#podcast-episode-download">Podcast Episode Download</a> Object</td>
+</tr>
+</tbody></table>
+<h2 id='audio-metadata-events'>Audio Metadata Events</h2>
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Description</th>
+<th>Schema</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>audio_metadata_started</code></td>
+<td>A library item has started updating its audio files&#39; metadata.</td>
+<td><a href="#audio-metadata-started-event">Audio Metadata Started Event</a> Object</td>
+</tr>
+<tr>
+<td><code>audio_metadata_finished</code></td>
+<td>A library item has finished updating its audio files&#39; metadata.</td>
+<td><a href="#audio-metadata-finished-event">Audio Metadata Finished Event</a> Object</td>
+</tr>
+<tr>
+<td><code>audiofile_metadata_started</code></td>
+<td>An audio file has started updating its metadata.</td>
+<td><a href="#audio-file-metadata-started-event">Audio File Metadata Started Event</a> Object</td>
+</tr>
+<tr>
+<td><code>audiofile_metadata_finished</code></td>
+<td>An audio file has finished updating its metadata.</td>
+<td><a href="#audio-file-metadata-finished-event">Audio File Metadata Finished Event</a> Object</td>
+</tr>
+</tbody></table>
+<h3 id='audio-metadata-started-event'>Audio Metadata Started Event</h3>
+<blockquote>
+<p>Audio Metadata Started Event</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"userId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"root"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"libraryItemId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"li_8gch9ve09orgn4fdz8"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"startedAt"</span><span class="p">:</span><span class="w"> </span><span class="mi">1671741903065</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"audioFiles"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="err">...</span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<table><thead>
+<tr>
+<th>Attribute</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>userId</code></td>
+<td>String</td>
+<td>The ID of the user that requested the metadata update.</td>
+</tr>
+<tr>
+<td><code>libraryItemId</code></td>
+<td>String</td>
+<td>The ID of the library item whose audio files&#39; metadata are being updated.</td>
+</tr>
+<tr>
+<td><code>startedAt</code></td>
+<td>Integer</td>
+<td>The time (in ms since POSIX epoch) when the metadata update request was sent.</td>
+</tr>
+<tr>
+<td><code>audioFiles</code></td>
+<td>Array of <a href="#event-audio-file">Event Audio File</a></td>
+<td>The audio files whose metadata is being updated.</td>
+</tr>
+</tbody></table>
+<h3 id='event-audio-file'>Event Audio File</h3>
+<blockquote>
+<p>Event Audio File</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"index"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"ino"</span><span class="p">:</span><span class="w"> </span><span class="s2">"649644248522215260"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"filename"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Terry Goodkind - SOT Bk01 - Wizards First Rule 01.mp3"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<table><thead>
+<tr>
+<th>Attribute</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>index</code></td>
+<td>Integer</td>
+<td>The index of the audio file.</td>
+</tr>
+<tr>
+<td><code>ino</code></td>
+<td>String</td>
+<td>The inode of the audio file.</td>
+</tr>
+<tr>
+<td><code>filename</code></td>
+<td>String</td>
+<td>The filename of the audio file.</td>
+</tr>
+</tbody></table>
+<h3 id='audio-metadata-finished-event'>Audio Metadata Finished Event</h3>
+<blockquote>
+<p>Audio Metadata Finished Event</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"userId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"root"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"libraryItemId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"li_8gch9ve09orgn4fdz8"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"startedAt"</span><span class="p">:</span><span class="w"> </span><span class="mi">1671741903065</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"audioFiles"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="err">...</span><span class="p">],</span><span class="w">
+  </span><span class="nl">"results"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="err">...</span><span class="p">],</span><span class="w">
+  </span><span class="nl">"elapsed"</span><span class="p">:</span><span class="w"> </span><span class="mi">3065</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"finishedAt"</span><span class="p">:</span><span class="w"> </span><span class="mi">1671741906130</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<p>The same as <a href="#audio-metadata-started-event">Audio Metadata Started Event</a> with following added attributes:</p>
+
+<table><thead>
+<tr>
+<th>Attribute</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>results</code></td>
+<td>Array of <a href="#audio-file-metadata-finished-event">Audio File Metadata Finished Event</a></td>
+<td>The results of the audio file metadata updates.</td>
+</tr>
+<tr>
+<td><code>elapsed</code></td>
+<td>Integer</td>
+<td>The time (in ms) it took to complete the metadata updates (approx. <code>finishedAt</code> - <code>startedAt</code>)</td>
+</tr>
+<tr>
+<td><code>finishedAt</code></td>
+<td>Integer</td>
+<td>The time (in ms since POSIX epoch) when the metadata updates were finished.</td>
+</tr>
+</tbody></table>
+<h3 id='audio-file-metadata-started-event'>Audio File Metadata Started Event</h3>
+<blockquote>
+<p>Audio File Metadata Started Event</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"libraryItemId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"li_8gch9ve09orgn4fdz8"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"index"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"ino"</span><span class="p">:</span><span class="w"> </span><span class="s2">"649644248522215260"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"filename"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Terry Goodkind - SOT Bk01 - Wizards First Rule 01.mp3"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<table><thead>
+<tr>
+<th>Attribute</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>libraryItemId</code></td>
+<td>String</td>
+<td>The ID of the library item which the audio file belongs to.</td>
+</tr>
+<tr>
+<td><code>index</code></td>
+<td>Integer</td>
+<td>The index of the audio file.</td>
+</tr>
+<tr>
+<td><code>ino</code></td>
+<td>String</td>
+<td>The inode of the audio file.</td>
+</tr>
+<tr>
+<td><code>filename</code></td>
+<td>String</td>
+<td>The filename of the audio file.</td>
+</tr>
+</tbody></table>
+<h3 id='audio-file-metadata-finished-event'>Audio File Metadata Finished Event</h3>
+<blockquote>
+<p>Audio File Metadata Finished Event</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"libraryItemId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"li_8gch9ve09orgn4fdz8"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"index"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"ino"</span><span class="p">:</span><span class="w"> </span><span class="s2">"649644248522215260"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"filename"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Terry Goodkind - SOT Bk01 - Wizards First Rule 01.mp3"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"success"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<p>The same as <a href="#audio-file-metadata-started-event">Audio File Metadata Started Event</a> with following added attributes:</p>
+
+<table><thead>
+<tr>
+<th>Attribute</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>success</code></td>
+<td>Boolean</td>
+<td>Whether the audio file&#39;s metadata was successfully updated.</td>
+</tr>
+</tbody></table>
+<h2 id='notification-events'>Notification Events</h2>
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Description</th>
+<th>Schema</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>notifications_updated</code></td>
+<td>A notification was fired.</td>
+<td><a href="#notification-settings">Notification Settings</a> Object</td>
+</tr>
+</tbody></table>
+<h2 id='miscellaneous-events'>Miscellaneous Events</h2>
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Description</th>
+<th>Schema</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>init</code></td>
+<td>Successfully authenticated the socket. Response to <code>auth</code> client event.</td>
+<td><a href="#init-event">Init Event</a> Object</td>
+</tr>
+<tr>
+<td><code>invalid_token</code></td>
+<td>An invalid token was given when authenticating. Response to <code>auth</code> client event.</td>
+<td></td>
+</tr>
+<tr>
+<td><code>log</code></td>
+<td>A single log event. Emitted after <code>set_log_listener</code> client event is sent. Cancelable with <code>remove_log_listener</code> client event.</td>
+<td><a href="#log-event">Log Event</a> Object</td>
+</tr>
+<tr>
+<td><code>daily_logs</code></td>
+<td>The current day&#39;s log events. Response to <code>fetch_daily_logs</code> client event.</td>
+<td>Array of <a href="#log-event">Log Event</a></td>
+</tr>
+<tr>
+<td><code>admin_message</code></td>
+<td>A message sent by an admin user.</td>
+<td>String</td>
+</tr>
+<tr>
+<td><code>pong</code></td>
+<td>Response to <code>ping</code> client event.</td>
+<td></td>
+</tr>
+</tbody></table>
+<h3 id='init-event'>Init Event</h3>
+<blockquote>
+<p>Init Event</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"userId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"root"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"username"</span><span class="p">:</span><span class="w"> </span><span class="s2">"root"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"librariesScanning"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="s2">"lib_c1u6t4p45c35rf0nzd"</span><span class="w">
+  </span><span class="p">],</span><span class="w">
+  </span><span class="nl">"usersOnline"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="err">...</span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<table><thead>
+<tr>
+<th>Attribute</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>userId</code></td>
+<td>String</td>
+<td>The ID of the authenticated user.</td>
+</tr>
+<tr>
+<td><code>username</code></td>
+<td>String</td>
+<td>The username of the authenticated user.</td>
+</tr>
+<tr>
+<td><code>librariesScanning</code></td>
+<td>Array of String</td>
+<td>The IDs of libraries currently being scanned.</td>
+</tr>
+<tr>
+<td><code>usersOnline</code></td>
+<td>Array of <a href="#user-with-session-and-most-recent-progress">User with Session and Most Recent Progress</a></td>
+<td>Users that are currently online. Will only exist when the authenticated user is an admin.</td>
+</tr>
+</tbody></table>
+<h3 id='log-event'>Log Event</h3>
+<blockquote>
+<p>Log Event</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"timestamp"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2022-12-21 15:08:47"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"[Server] Socket Connected dak2d0lroqBoL-MnAAAL"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"levelName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"INFO"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"level"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<table><thead>
+<tr>
+<th>Attribute</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>timestamp</code></td>
+<td>String</td>
+<td>The date and time of the log event.</td>
+</tr>
+<tr>
+<td><code>message</code></td>
+<td>String</td>
+<td>The log event&#39;s message.</td>
+</tr>
+<tr>
+<td><code>levelName</code></td>
+<td>String</td>
+<td>The name of the log level. Can be <code>DEBUG</code>, <code>INFO</code>, <code>WARN</code>, or <code>ERROR</code>.</td>
+</tr>
+<tr>
+<td><code>level</code></td>
+<td>Integer</td>
+<td>The log event&#39;s log level. Can be <code>1</code> (debug), <code>2</code> (info), <code>3</code> (warning), or <code>4</code> (error).</td>
+</tr>
+</tbody></table>
 <h1 id='metadata-providers'>Metadata Providers</h1><h2 id='books'>Books</h2>
 <table><thead>
 <tr>
@@ -24260,7 +25261,7 @@ Only non-null tags will be returned in requests.</p>
 <td>The given device info when the playback session was requested.</td>
 </tr>
 <tr>
-<td><code>day</code></td>
+<td><code>date</code></td>
 <td>String</td>
 <td>The day (in the format YYYY-MM-DD) the playback session was started.</td>
 </tr>
@@ -25212,6 +26213,16 @@ Only non-null tags will be returned in requests.</p>
   </span><span class="nl">"updatedAt"</span><span class="p">:</span><span class="w"> </span><span class="mi">1669031843179</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div>
+<blockquote>
+<p>RSS Feed Minified</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"li_bufnnmp4y5o2gbbxfm"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"entityType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"item"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"entityId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"li_bufnnmp4y5o2gbbxfm"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"feedUrl"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://abs.example.com/feed/li_bufnnmp4y5o2gbbxfm"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
 <table><thead>
 <tr>
 <th>Attribute</th>
@@ -25280,6 +26291,17 @@ Only non-null tags will be returned in requests.</p>
 <td>The time (in ms since POSIX epoch) when the RSS feed was last updated.</td>
 </tr>
 </tbody></table>
+<h3 id='rss-feed-minified'>RSS Feed Minified</h3><h4 id='removed-attributes-11'>Removed Attributes</h4>
+<ul>
+<li><code>slug</code></li>
+<li><code>userId</code></li>
+<li><code>coverPath</code></li>
+<li><code>serverAddress</code></li>
+<li><code>meta</code></li>
+<li><code>episodes</code></li>
+<li><code>createdAt</code></li>
+<li><code>updatedAt</code></li>
+</ul>
 <h2 id='rss-feed-metadata'>RSS Feed Metadata</h2>
 <blockquote>
 <p>Feed Metadata</p>
@@ -25432,6 +26454,122 @@ Only non-null tags will be returned in requests.</p>
 <td><code>fullPath</code></td>
 <td>String</td>
 <td>The path on the server of the audio file the RSS feed episode is for.</td>
+</tr>
+</tbody></table>
+<h2 id='stream'>Stream</h2>
+<blockquote>
+<p>Stream</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"play_c786zm3qtjz6bd5q3n"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"userId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"root"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"libraryItem"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="err">...</span><span class="p">},</span><span class="w">
+  </span><span class="nl">"episode"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="err">...</span><span class="p">},</span><span class="w">
+  </span><span class="nl">"segmentLength"</span><span class="p">:</span><span class="w"> </span><span class="mi">6</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"playlistPath"</span><span class="p">:</span><span class="w"> </span><span class="s2">"/metadata/streams/play_c786zm3qtjz6bd5q3n/output.m3u8"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"clientPlaylistUri"</span><span class="p">:</span><span class="w"> </span><span class="s2">"/hls/play_c786zm3qtjz6bd5q3n/output.m3u8"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"startTime"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"segmentStartNumber"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"isTranscodeComplete"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<table><thead>
+<tr>
+<th>Attribute</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>id</code></td>
+<td>String</td>
+<td>The ID of the stream. It will be the same as the ID of the playback session that the stream is for.</td>
+</tr>
+<tr>
+<td><code>userId</code></td>
+<td>String</td>
+<td>The ID of the user that started the stream.</td>
+</tr>
+<tr>
+<td><code>libraryItem</code></td>
+<td><a href="#library-item-expanded">Library Item Expanded</a> Object</td>
+<td>The library item the stream is for.</td>
+</tr>
+<tr>
+<td><code>episode</code></td>
+<td><a href="#podcast-episode-expanded">Podcast Episode Expanded</a> Object or null</td>
+<td>The podcast episode the stream is for. Will be <code>null</code> if the stream is for a book.</td>
+</tr>
+<tr>
+<td><code>segmentLength</code></td>
+<td>Integer</td>
+<td>The length (in seconds) of each segment of the stream.</td>
+</tr>
+<tr>
+<td><code>playlistPath</code></td>
+<td>String</td>
+<td>The path on the server of the stream output.</td>
+</tr>
+<tr>
+<td><code>clientPlaylistUri</code></td>
+<td>String</td>
+<td>The URI path for the client to access the stream.</td>
+</tr>
+<tr>
+<td><code>startTime</code></td>
+<td>Float</td>
+<td>The time (in seconds) where the playback session started.</td>
+</tr>
+<tr>
+<td><code>segmentStartNumber</code></td>
+<td>Integer</td>
+<td>The segment where the transcoding began.</td>
+</tr>
+<tr>
+<td><code>isTranscodeComplete</code></td>
+<td>Boolean</td>
+<td>Whether transcoding is complete.</td>
+</tr>
+</tbody></table>
+<h2 id='stream-progress'>Stream Progress</h2>
+<blockquote>
+<p>Stream Progress</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"stream"</span><span class="p">:</span><span class="w"> </span><span class="s2">"play_c786zm3qtjz6bd5q3n"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"percent"</span><span class="p">:</span><span class="w"> </span><span class="s2">"8.66%"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"chunks"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="s2">"0-536"</span><span class="w">
+  </span><span class="p">],</span><span class="w">
+  </span><span class="nl">"numSegments"</span><span class="p">:</span><span class="w"> </span><span class="mi">6200</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<table><thead>
+<tr>
+<th>Attribute</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>stream</code></td>
+<td>String</td>
+<td>The ID of the stream the progress is for.</td>
+</tr>
+<tr>
+<td><code>percent</code></td>
+<td>String</td>
+<td>A human-readable percentage of transcode completion.</td>
+</tr>
+<tr>
+<td><code>chunks</code></td>
+<td>Array of String</td>
+<td>The segment ranges that have been transcoded.</td>
+</tr>
+<tr>
+<td><code>numSegments</code></td>
+<td>Integer</td>
+<td>The total number of segments of the stream.</td>
 </tr>
 </tbody></table>
 
