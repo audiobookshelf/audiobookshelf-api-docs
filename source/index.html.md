@@ -27,6 +27,7 @@ includes:
   - cache
   - tools
   - misc
+  - socket
   - metadata_providers
   - filtering
   - schemas
