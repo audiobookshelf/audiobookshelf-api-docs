@@ -1181,7 +1181,6 @@ Attribute | Type | Description
   "name": "Terry Goodkind",
   "description": null,
   "imagePath": null,
-  "relImagePath": null,
   "addedAt": 1650621073750,
   "updatedAt": 1650621073750
 }
@@ -1205,7 +1204,6 @@ Attribute | Type | Description
   "name": "Terry Goodkind",
   "description": null,
   "imagePath": null,
-  "relImagePath": null,
   "addedAt": 1650621073750,
   "updatedAt": 1650621073750,
   "numBooks": 1
@@ -1219,7 +1217,6 @@ Attribute | Type | Description
 `name` | String | The name of the author.
 `description` | String or null | A description of the author. Will be `null` if there is none.
 `imagePath` | String or null | The absolute path for the author image. Will be `null` if there is no image.
-`relImagePath` | String or null | The path for the author image. Will be `null` if there is no image.
 `addedAt` | Integer | The time (in ms since POSIX epoch) when the author was added.
 `updatedAt` | Integer | The time (in ms since POSIX epoch) when the author was last updated.
 
@@ -1230,7 +1227,6 @@ Attribute | Type | Description
 * `asin`
 * `description`
 * `imagePath`
-* `relImagePath`
 * `addedAt`
 * `updatedAt`
 

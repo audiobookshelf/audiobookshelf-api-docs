@@ -1477,7 +1477,6 @@ curl "https://abs.example.com/api/libraries/lib_c1u6t4p45c35rf0nzd/personalized"
         "name": "Terry Goodkind",
         "description": null,
         "imagePath": null,
-        "relImagePath": null,
         "addedAt": 1650621073750,
         "updatedAt": 1650621073750,
         "numBooks": 1
@@ -1890,7 +1889,6 @@ curl "https://abs.example.com/api/libraries/lib_c1u6t4p45c35rf0nzd/search?q=Terr
       "name": "Terry Goodkind",
       "description": null,
       "imagePath": null,
-      "relImagePath": null,
       "addedAt": 1650621073750,
       "updatedAt": 1650621073750,
       "numBooks": 1
@@ -2060,7 +2058,6 @@ curl "https://abs.example.com/api/libraries/lib_c1u6t4p45c35rf0nzd/authors" \
       "name": "Terry Goodkind",
       "description": null,
       "imagePath": null,
-      "relImagePath": null,
       "addedAt": 1650621073750,
       "updatedAt": 1650621073750,
       "numBooks": 1

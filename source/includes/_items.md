@@ -63,7 +63,6 @@ curl "https://abs.example.com/api/items/li_8gch9ve09orgn4fdz8?expanded=1&include
           "name": "Terry Goodkind",
           "description": null,
           "imagePath": null,
-          "relImagePath": null,
           "addedAt": 1650621073750,
           "updatedAt": 1650621073750
         }
