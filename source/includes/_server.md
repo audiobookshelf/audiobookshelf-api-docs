@@ -88,7 +88,6 @@ curl -X POST "https://abs.example.com/login" \
     "logLevel": 2,
     "version": "2.2.5"
   },
-  "feeds": [],
   "Source": "docker"
 }
 ```
@@ -120,7 +119,6 @@ Attribute | Type | Description
 `user` | [User](#user) Object | The authenticated user.
 `userDefaultLibraryId` | String | The ID of the first library in the list the user has access to.
 `serverSettings` | [Server Settings](#server-settings) Object | The server's settings.
-`feeds` | Array of [RSS Feed](#rss-feed) | The open RSS feeds.
 `Source` | String | The server's installation source.
 
 
