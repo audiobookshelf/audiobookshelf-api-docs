@@ -68,7 +68,7 @@ Status | Meaning | Description
 ## Update a Library Item's Audio Files' Embedded Metadata
 
 ```shell
-curl -X POST "https://abs.example.com/api/tools/item/li_bufnnmp4y5o2gbbxfm/embed-metadata?tone=1" \
+curl -X POST "https://abs.example.com/api/tools/item/li_bufnnmp4y5o2gbbxfm/embed-metadata" \
   -H "Authorization: Bearer exJhbGciOiJI6IkpXVCJ9.eyJ1c2Vyi5NDEyODc4fQ.ZraBFohS4Tg39NszY"
 ```
 
@@ -88,7 +88,7 @@ ID | The ID of the library item.
 
 Parameter | Type | Description
 --------- | ---- | -----------
-`tone` | Binary | Whether to use the library item's tone metadata to update it. Otherwise, ffmpeg will be used. `0` for false, `1` for true.
+`backup` | Binary | Whether to backup original audio files in `/metadata/cache/items`. Default is true if not specified. `0` for false, `1` for true.
 `forceEmbedChapters` | Binary | Chapters are not embedded in multi-track audiobooks by default. Enable this setting to embed chapters in every audio file. `0` for false, `1` for true.
 
 ### Response
