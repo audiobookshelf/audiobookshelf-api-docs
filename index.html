@@ -20367,7 +20367,7 @@ The <code>id</code> parameter must be included for the notification to be saved.
 <td>No library item with the given ID exists, or no M4B encode task is in-progress for the library item.</td>
 </tr>
 </tbody></table>
-<h2 id='update-a-library-item-39-s-audio-files-39-embedded-metadata'>Update a Library Item&#39;s Audio Files&#39; Embedded Metadata</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">-X</span> POST <span class="s2">"https://abs.example.com/api/tools/item/li_bufnnmp4y5o2gbbxfm/embed-metadata?tone=1"</span> <span class="se">\</span>
+<h2 id='update-a-library-item-39-s-audio-files-39-embedded-metadata'>Update a Library Item&#39;s Audio Files&#39; Embedded Metadata</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">-X</span> POST <span class="s2">"https://abs.example.com/api/tools/item/li_bufnnmp4y5o2gbbxfm/embed-metadata"</span> <span class="se">\</span>
   <span class="nt">-H</span> <span class="s2">"Authorization: Bearer exJhbGciOiJI6IkpXVCJ9.eyJ1c2Vyi5NDEyODc4fQ.ZraBFohS4Tg39NszY"</span>
 </code></pre></div>
 <p>This endpoint updates a library item&#39;s audio files&#39; embedded metadata.</p>
@@ -20394,9 +20394,9 @@ The <code>id</code> parameter must be included for the notification to be saved.
 </tr>
 </thead><tbody>
 <tr>
-<td><code>tone</code></td>
+<td><code>backup</code></td>
 <td>Binary</td>
-<td>Whether to use the library item&#39;s tone metadata to update it. Otherwise, ffmpeg will be used. <code>0</code> for false, <code>1</code> for true.</td>
+<td>Whether to backup original audio files in <code>/metadata/cache/items</code>. Default is true if not specified. <code>0</code> for false, <code>1</code> for true.</td>
 </tr>
 <tr>
 <td><code>forceEmbedChapters</code></td>
