@@ -493,13 +493,14 @@ ID | The ID of the library.
 
 Parameter | Type | Description
 --------- | ---- | -----------
-limit | Integer | Limit the number of returned results per page. If `0`, no limit will be applied.
-page | Integer | The page number (0 indexed) to request. If there is no limit applied, then page will have no effect and all results will be returned.
-sort | String | What to sort the results by. Specify the attribute to sort by using JavaScript object notation. For example, to sort by title use `sort=media.metadata.title`. When filtering for a series, sort can also be `sequence`.
-desc | Binary | Whether to reverse the sort order. `0` for false, `1` for true.
-filter | String | What to filter the results by. See [Filtering](#filtering).
-minified | Binary | Whether to request minified objects. `0` for false, `1` for true.
-collapseseries | Binary | Whether to collapse books in a series to a single entry. `0` for false, `1` for true.
+`limit` | Integer | Limit the number of returned results per page. If `0`, no limit will be applied.
+`page` | Integer | The page number (0 indexed) to request. If there is no limit applied, then page will have no effect and all results will be returned.
+`sort` | String | What to sort the results by. Specify the attribute to sort by using JavaScript object notation. For example, to sort by title use `sort=media.metadata.title`. When filtering for a series, sort can also be `sequence`.
+`desc` | Binary | Whether to reverse the sort order. `0` for false, `1` for true.
+`filter` | String | What to filter the results by. See [Filtering](#filtering).
+`minified` | Binary | Whether to request minified objects. `0` for false, `1` for true.
+`collapseseries` | Binary | Whether to collapse books in a series to a single entry. `0` for false, `1` for true.
+`include` | String | A comma separated list of what to include with the library items. The only current option is `rssfeed`.
 
 ### Response
 
@@ -512,7 +513,7 @@ Status | Meaning | Description | Schema
 
 Attribute | Type | Description
 --------- | ---- | -----------
-`results` | Array of [Library Item](#library-item) | The requested library items. If `minified` is `true`, it will be an array of [Library Item Minified](#library-item-minified). `collapseseries` will add a [Series Num Books](#series-num-books) as `collapsedSeries` to the library items, with only one library item per series. However, if there is only one series in the results, they will not be collapsed. When filtering by series, `media.metadata.series` will be replaced by the matching [Series Sequence](#series-sequence) object. If filtering by series, `collapseseries` is `true`, and there are multiple series, such as a subseries, a `seriesSequenceList` string attribute is added to `collapsedSeries` which represents the items in the subseries that are in the filtered series.
+`results` | Array of [Library Item](#library-item) | The requested library items. If `minified` is `true`, it will be an array of [Library Item Minified](#library-item-minified). `collapseseries` will add a [Series Num Books](#series-num-books) as `collapsedSeries` to the library items, with only one library item per series. However, if there is only one series in the results, they will not be collapsed. When filtering by series, `media.metadata.series` will be replaced by the matching [Series Sequence](#series-sequence) object. If filtering by series, `collapseseries` is `true`, and there are multiple series, such as a subseries, a `seriesSequenceList` string attribute is added to `collapsedSeries` which represents the items in the subseries that are in the filtered series. `rssfeed` will add an [RSS Feed Minified](#rss-feed-minified) object or `null` as `rssFeed` to the library items, the item's RSS feed if it has one open.
 `total` | Integer | The total number of results.
 `limit` | Integer | The limit set in the request.
 `page` | Integer | The page set in request.
@@ -522,6 +523,7 @@ Attribute | Type | Description
 `mediaType` | String | The media type of the library. Will be `book` or `podcast`.
 `minified` | Boolean | Whether minified was set in the request.
 `collapseseries` | Boolean | Whether collapseseries was set in the request.
+`include` | String | The requested `include`.
 
 
 ## Remove a Library's Items With Issues
