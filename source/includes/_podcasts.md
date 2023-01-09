@@ -581,6 +581,55 @@ Status | Meaning | Description
 500 | Internal Server Error | The library item is not a podcast.
 
 
+## Match a Podcast's Episodes
+
+```shell
+curl -X POST "https://abs.example.com/api/podcasts/li_bufnnmp4y5o2gbbxfm/match-episodes" \
+  -H "Authorization: Bearer exJhbGciOiJI6IkpXVCJ9.eyJ1c2Vyi5NDEyODc4fQ.ZraBFohS4Tg39NszY" \
+  -H "Content-Type: application/json" \
+  -d '{"provider": "openlibrary"}'
+```
+
+> The above command returns JSON structured like this:
+
+```json
+{
+  "numEpisodesUpdated": 1
+}
+```
+
+This endpoint matches the podcast's episodes using quick match. Quick match populates empty details. Does not overwrite details unless the "Prefer matched metadata" server setting is enabled or the `override` query parameter is `1`.
+
+### HTTP Request
+
+`POST http://abs.example.com/api/podcasts/<ID>/match-episodes`
+
+### URL Parameters
+
+Parameter | Description
+--------- | -----------
+ID | The ID of the podcast library item.
+
+### Query Parameters
+
+Parameter | Type | Default | Description
+--------- | ---- | ------- | -----------
+`override` | Binary | `0` | Whether the podcast's episodes' details will be overridden. `0` for false, `1` for true.
+
+### Response
+
+Status | Meaning | Description | Schema
+------ | ------- | ----------- | ------
+200 | OK | Success | See Below
+403 | Forbidden | An admin user is required to match a podcast's episodes. |
+
+#### Response Schema
+
+Attribute | Type | Description
+--------- | ---- | -----------
+`numEpisodesUpdated` | Integer | The number of podcast episodes that were updated.
+
+
 ## Update a Podcast Episode
 
 ```shell
