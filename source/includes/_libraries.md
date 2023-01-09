@@ -1926,8 +1926,8 @@ ID | The ID of the library.
 
 Parameter | Type | Default | Description
 --------- | ---- | ------- | -----------
-q | String | **Required** | The URL encoded search query.
-limit | Integer | `12` | Limit the number of returned results.
+`q` | String | **Required** | The URL encoded search query.
+`limit` | Integer | `12` | Limit the number of returned results.
 
 ### Response
 
@@ -1951,8 +1951,8 @@ Attribute | Type | Description
 Attribute | Type | Description
 --------- | ---- | -----------
 `libraryItem` | [Library Item Expanded](#library-item-expanded) Object | The matched library item.
-`matchKey` | String | What the library item was matched on.
-`matchText` | String | The text in the library item that the query matched to.
+`matchKey` | String or null | What the library item was matched on.
+`matchText` | String or null | The text in the library item that the query matched to.
 
 
 ## Get a Library's Stats
