@@ -112,3 +112,60 @@ Status | Meaning | Description | Schema
 Attribute | Type | Description
 --------- | ---- | -----------
 `feed` | [RSS Feed Minified](#rss-feed-minified) Object | The RSS feed that was opened.
+
+
+## Open an RSS Feed for a Series
+
+```shell
+curl -X POST "https://abs.example.com/api/feeds/series/ser_cabkj4jeu8be3rap4g/open" \
+  -H "Authorization: Bearer exJhbGciOiJI6IkpXVCJ9.eyJ1c2Vyi5NDEyODc4fQ.ZraBFohS4Tg39NszY" \
+  -H "Content-Type: application/json" \
+  -d '{"serverAddress": "https://abs.example.com", "slug": "ser_cabkj4jeu8be3rap4g"}'
+```
+
+> The above command returns JSON structured like this:
+
+```json
+{
+  "feed": {
+    "id": "ser_cabkj4jeu8be3rap4g",
+    "entityType": "series",
+    "entityId": "ser_cabkj4jeu8be3rap4g",
+    "feedUrl": "https://abs.example.com/feed/ser_cabkj4jeu8be3rap4g"
+  }
+}
+```
+
+This endpoint opens an RSS feed for a series.
+
+### HTTP Request
+
+`POST http://abs.example.com/api/feeds/series/<SeriesID>/open`
+
+### URL Parameters
+
+Parameter | Description
+--------- | -----------
+SeriesID | The ID of the series.
+
+### Parameters
+
+Parameter | Type | Description
+--------- | ---- | -----------
+`serverAddress` | String | The URL address of the server.
+`slug` | String | The slug (the last part of the URL) to use for the RSS feed.
+
+### Response
+
+Status | Meaning | Description | Schema
+------ | ------- | ----------- | ------
+200 | OK | Success | See below.
+400 | Bad Request | The `serverAddress` and `slug` parameters are required, or the series does not have audio tracks, or the `slug` is already in use. |
+403 | Forbidden | An admin user is required to open an RSS feed. |
+404 | Not Found | No series with the given ID exists. |
+
+#### Response Schema
+
+Attribute | Type | Description
+--------- | ---- | -----------
+`feed` | [RSS Feed Minified](#rss-feed-minified) Object | The RSS feed that was opened.
