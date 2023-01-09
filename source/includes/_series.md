@@ -93,7 +93,7 @@ ID | The ID of the series.
 
 Parameter | Type | Description
 --------- | ---- | -----------
-`include` | String | A comma separated list of what to include with the series. Currently, the only option is `progress`.
+`include` | String | A comma separated list of what to include with the series. The options are `progress` and `rssfeed`.
 
 ### Response
 
@@ -107,6 +107,7 @@ Status | Meaning | Description | Schema
 Attribute | Type | Description
 --------- | ---- | -----------
 `progress` | [Series Progress](#series-progress) Object (See Below) | If `progress` was requested, the series' progress.
+`rssFeed` | [RSS Feed Minified](#rss-feed-minified) Object or null | If `rssfeed` was requested, the series' open RSS feed. Will be `null` if the series' RSS feed is closed.
 
 #### Series Progress
 
