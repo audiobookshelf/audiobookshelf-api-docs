@@ -1512,7 +1512,8 @@ ID | The ID of the library.
 
 Parameter | Type | Description
 --------- | ---- | -----------
-limit | Integer | Limit the number of items in each 'shelf' of the response. Default value is `10`.
+`limit` | Integer | Limit the number of items in each 'shelf' of the response. Default value is `10`.
+`include` | String | A comma separated list of what to include with the library items. The only current option is `rssfeed`.
 
 ### Response
 
@@ -1551,6 +1552,8 @@ Attribute | Type | Description
 
 * `type` is `author`:
     * `entities` will be an array of [Author Expanded](#author-expanded).
+* `type` is `book`, `podcast`, or `series`:
+    *  If `rssfeed` was requested, the library items or series in `entities` will have an [RSS Feed Minified](#rss-feed-minified) object or `null` as `rssFeed`, the item's/series' open RSS feed.
 * `id` is `listen-again`:
     * Library items will have a `finishedAt` attribute, an Integer, the time (in ms since POSIX epoch) when the book or episode was finished.
 * `id` is `continue-listening`:
