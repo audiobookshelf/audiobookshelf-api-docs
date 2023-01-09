@@ -1060,7 +1060,16 @@ Attribute | Type | Description
   "tagIsbn": null,
   "tagLanguage": null,
   "tagASIN": null,
-  "tagOverdriveMediaMarker": null
+  "tagOverdriveMediaMarker": null,
+  "tagOriginalYear": null,
+  "tagReleaseCountry": null,
+  "tagReleaseType": null,
+  "tagReleaseStatus": null,
+  "tagISRC": null,
+  "tagMusicBrainzTrackId": null,
+  "tagMusicBrainzAlbumId": null,
+  "tagMusicBrainzAlbumArtistId": null,
+  "tagMusicBrainzArtistId": null
 }
 ```
 
