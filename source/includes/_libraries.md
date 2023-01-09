@@ -768,7 +768,8 @@ curl "https://abs.example.com/api/libraries/lib_c1u6t4p45c35rf0nzd/collections?m
   "limit": 0,
   "page": 0,
   "sortDesc": false,
-  "minified": true
+  "minified": true,
+  "include": ""
 }
 ```
 
@@ -788,12 +789,13 @@ ID | The ID of the library.
 
 Parameter | Type | Description
 --------- | ---- | -----------
-limit | Integer | Limit the number of returned results per page. If `0`, no limit will be applied.
-page | Integer | The page number (0 indexed) to request. If there is no limit applied, then page will have no effect and all results will be returned.
-sort | String | What to sort the results by.
-desc | Binary | Whether to reverse the sort order. `0` for false, `1` for true.
-filter | String | What to filter the results by. See [Filtering](#filtering).
-minified | Binary | Whether to request minified objects. `0` for false, `1` for true.
+`limit` | Integer | Limit the number of returned results per page. If `0`, no limit will be applied.
+`page` | Integer | The page number (0 indexed) to request. If there is no limit applied, then page will have no effect and all results will be returned.
+`sort` | String | What to sort the results by.
+`desc` | Binary | Whether to reverse the sort order. `0` for false, `1` for true.
+`filter` | String | What to filter the results by. See [Filtering](#filtering).
+`minified` | Binary | Whether to request minified objects. `0` for false, `1` for true.
+`include` | String | A comma separated list of what to include with the library items. The only current option is `rssfeed`.
 
 <!-- TODO: remove warning once sorting and filtering are implemented in LibraryController.getCollectionsForLibrary -->
 <aside class="warning">Sorting and filtering are not yet implemented.</aside>
@@ -809,7 +811,7 @@ Status | Meaning | Description | Schema
 
 Attribute | Type | Description
 --------- | ---- | -----------
-`results` | Array of [Collection Expanded](#collection-expanded) | The requested collections. If `minified` is `true`, the library items contained in the collections will be [Library Item Minified](#library-item-minified).
+`results` | Array of [Collection Expanded](#collection-expanded) | The requested collections. If `minified` is `true`, the library items contained in the collections will be [Library Item Minified](#library-item-minified). If `rssfeed` was requested, an [RSS Feed Minified](#rss-feed-minified) object or `null` as `rssFeed`, the collection's RSS feed if it has one open, will be added to the collections.
 `total` | Integer | The total number of results.
 `limit` | Integer | The limit set in the request.
 `page` | Integer | The page set in request.
@@ -817,6 +819,7 @@ Attribute | Type | Description
 `sortDesc` | Boolean | Whether to reverse the sort order.
 `filterBy` | String | The filter set in the request, URL decoded. Will not exist if no filter was set.
 `minified` | Boolean | Whether minified was set in the request.
+`include` | String | The requested `include`.
 
 
 ## Get a Library's User Playlists
