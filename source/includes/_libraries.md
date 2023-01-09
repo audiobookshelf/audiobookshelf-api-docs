@@ -473,7 +473,8 @@ curl "https://abs.example.com/api/libraries/lib_c1u6t4p45c35rf0nzd/items?sort=me
   "filterBy": "authors.YXV0X3ozbGVpbWd5Ymw3dWYzeTRhYg==",
   "mediaType": "book",
   "minified": false,
-  "collapseseries": true
+  "collapseseries": true,
+  "include": ""
 }
 ```
 
@@ -636,7 +637,8 @@ curl "https://abs.example.com/api/libraries/lib_c1u6t4p45c35rf0nzd/series?minifi
   "filterBy": "authors.YXV0X3ozbGVpbWd5Ymw3dWYzeTRhYg==",
   "mediaType": "book",
   "minified": false,
-  "collapseseries": true
+  "collapseseries": true,
+  "include": ""
 }
 ```
 
@@ -656,12 +658,13 @@ ID | The ID of the library.
 
 Parameter | Type | Description
 --------- | ---- | -----------
-limit | Integer | Limit the number of returned results per page. If `0`, no limit will be applied.
-page | Integer | The page number (0 indexed) to request. If there is no limit applied, then page will have no effect and all results will be returned.
-sort | String | What to sort the results by. By default, the results will be sorted by series name. Other sort options are: numBooks, totalDuration, and addedAt.
-desc | Binary | Whether to reverse the sort order. `0` for false, `1` for true.
-filter | String | What to filter the results by. See [Filtering](#filtering). The `issues` and `feed-open` filters are not available for this endpoint.
-minified | Binary | Whether to request minified objects. `0` for false, `1` for true.
+`limit` | Integer | Limit the number of returned results per page. If `0`, no limit will be applied.
+`page` | Integer | The page number (0 indexed) to request. If there is no limit applied, then page will have no effect and all results will be returned.
+`sort` | String | What to sort the results by. By default, the results will be sorted by series name. Other sort options are: numBooks, totalDuration, and addedAt.
+`desc` | Binary | Whether to reverse the sort order. `0` for false, `1` for true.
+`filter` | String | What to filter the results by. See [Filtering](#filtering). The `issues` and `feed-open` filters are not available for this endpoint.
+`minified` | Binary | Whether to request minified objects. `0` for `false`, `1` for `true`.
+`include` | String | A comma separated list of what to include with the library items. The only current option is `rssfeed`.
 
 ### Response
 
@@ -674,7 +677,7 @@ Status | Meaning | Description | Schema
 
 Attribute | Type | Description
 --------- | ---- | -----------
-`results` | Array of [Series Books](#series-books) | The requested series. If `minified` is `true`, the library items contained in the series will be [Library Item Minified](#library-item-minified).
+`results` | Array of [Series Books](#series-books) | The requested series. If `minified` is `true`, the library items contained in the series will be [Library Item Minified](#library-item-minified). If `rssfeed` was requested, an [RSS Feed Minified](#rss-feed-minified) object or `null` as `rssFeed`, the series' RSS feed if it has one open, will be added to the series.
 `total` | Integer | The total number of results.
 `limit` | Integer | The limit set in the request.
 `page` | Integer | The page set in request.
@@ -682,6 +685,7 @@ Attribute | Type | Description
 `sortDesc` | Boolean | Whether to reverse the sort order.
 `filterBy` | String | The filter set in the request, URL decoded. Will not exist if no filter was set.
 `minified` | Boolean | Whether minified was set in the request.
+`include` | String | The requested `include`.
 
 
 ## Get a Library's Collections
