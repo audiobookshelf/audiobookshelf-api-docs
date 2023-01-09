@@ -1925,59 +1925,6 @@ Attribute | Type | Description
 `updated` | Boolean | Whether the book's chapters were actually changed.
 
 
-## Open an RSS Feed for a Library Item
-
-```shell
-curl -X POST "https://abs.example.com/api/items/li_bufnnmp4y5o2gbbxfm/open-feed" \
-  -H "Authorization: Bearer exJhbGciOiJI6IkpXVCJ9.eyJ1c2Vyi5NDEyODc4fQ.ZraBFohS4Tg39NszY" \
-  -H "Content-Type: application/json" \
-  -d '{"serverAddress": "https://abs.example.com", "slug": "li_bufnnmp4y5o2gbbxfm"}'
-```
-
-> The above command returns JSON structured like this:
-
-```json
-{
-  "success": true,
-  "feedUrl": "https://abs.example.com/feed/li_bufnnmp4y5o2gbbxfm"
-}
-```
-
-This endpoint opens an RSS feed for a library item.
-
-### HTTP Request
-
-`POST http://abs.example.com/api/items/<ID>/open-feed`
-
-### URL Parameters
-
-Parameter | Description
---------- | -----------
-ID | The ID of the library item.
-
-### Parameters
-
-Parameter | Type | Description
---------- | ---- | -----------
-`serverAddress` | String | The URL address of the server.
-`slug` | String | The slug (the last part of the URL) to use for the RSS feed.
-
-### Response
-
-Status | Meaning | Description | Schema
------- | ------- | ----------- | ------
-200 | OK | Success | See below.
-403 | Forbidden | An admin user is required to open an RSS feed. |
-
-#### Response Schema
-
-Attribute | Type | Description
---------- | ---- | -----------
-`success` | Boolean | Whether the RSS feed was successfully opened.
-`error` | String | The error that occurred. Will only exist if `success` is `false`.
-`feedUrl` | String | The URL where the feed was opened. Will only exist if `success` is `true`.
-
-
 ## Close an RSS Feed for a Library Item
 
 ```shell

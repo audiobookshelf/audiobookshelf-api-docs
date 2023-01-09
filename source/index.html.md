@@ -26,6 +26,7 @@ includes:
   - search
   - cache
   - tools
+  - rss_feeds
   - misc
   - socket
   - metadata_providers
