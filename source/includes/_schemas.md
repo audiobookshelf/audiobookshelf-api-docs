@@ -1950,7 +1950,7 @@ Attribute | Type | Description
 `bodyTemplate` | String | The template for the notification body.
 `enabled` | Boolean | Whether the notification is enabled.
 `type` | String | The notification's type.
-`lastFiredAt` | String or null | The time (in ms since POSIX epoch) when the notification was last fired. Will be `null` if the notification has not fired.
+`lastFiredAt` | Integer or null | The time (in ms since POSIX epoch) when the notification was last fired. Will be `null` if the notification has not fired.
 `lastAttemptFailed` | Boolean | Whether the last notification attempt failed.
 `numConsecutiveFailedAttempts` | Integer | The number of consecutive times the notification has failed.
 `numTimesFired` | Integer | The number of times the notification has fired.
@@ -2019,8 +2019,6 @@ Attribute | Type | Description
   "scannerPreferMatchedMetadata": false,
   "scannerDisableWatcher": true,
   "scannerPreferOverdriveMediaMarker": false,
-  "scannerUseSingleThreadedProber": true,
-  "scannerMaxThreads": 0,
   "scannerUseTone": false,
   "storeCoverWithItem": false,
   "storeMetadataWithItem": false,
@@ -2059,6 +2057,7 @@ Attribute | Type | Description
 `scannerPreferMatchedMetadata` | Boolean | Whether matched data will override item details when using Quick Match. By default, Quick Match will only fill in missing details.
 `scannerDisableWatcher` | Boolean | Whether to disable the automatic adding/updating of items when file changes are detected. *Requires server restart* for changes to take effect.
 `scannerPreferOverdriveMediaMarker` | Boolean | Whether to use the custom metadata in MP3 files from Overdrive for chapter timings automatically.
+`scannerUseTone` | Boolean | Whether to use the metadata from [tone](https://github.com/sandreas/tone) for book details.
 `storeCoverWithItem` | Boolean | Whether to store covers in the library item's folder. By default, covers are stored in `/metadata/items`. Only one file named `cover` will be kept.
 `storeMetadataWithItem` | Boolean | Whether to store metadata files in the library item's folder. By default, metadata files are stored in `/metadata/items`. Uses the `.abs` file extension.
 `rateLimitLoginRequests` | Integer | The maximum number of login requests per `rateLimitLoginWindow`.
