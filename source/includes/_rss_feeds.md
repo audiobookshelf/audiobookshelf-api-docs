@@ -169,3 +169,30 @@ Status | Meaning | Description | Schema
 Attribute | Type | Description
 --------- | ---- | -----------
 `feed` | [RSS Feed Minified](#rss-feed-minified) Object | The RSS feed that was opened.
+
+
+## Close an RSS Feed
+
+```shell
+curl -X POST "https://abs.example.com/api/feeds/li_bufnnmp4y5o2gbbxfm/close" \
+  -H "Authorization: Bearer exJhbGciOiJI6IkpXVCJ9.eyJ1c2Vyi5NDEyODc4fQ.ZraBFohS4Tg39NszY"
+```
+
+This endpoint closes an RSS feed.
+
+### HTTP Request
+
+`POST http://abs.example.com/api/feeds/<ID>/close`
+
+### URL Parameters
+
+Parameter | Description
+--------- | -----------
+ID | The ID of the RSS feed.
+
+### Response
+
+Status | Meaning | Description
+------ | ------- | -----------
+200 | OK | Success
+403 | Forbidden | An admin user is required to close an RSS feed.

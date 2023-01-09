@@ -1925,33 +1925,6 @@ Attribute | Type | Description
 `updated` | Boolean | Whether the book's chapters were actually changed.
 
 
-## Close an RSS Feed for a Library Item
-
-```shell
-curl -X POST "https://abs.example.com/api/items/li_bufnnmp4y5o2gbbxfm/close-feed" \
-  -H "Authorization: Bearer exJhbGciOiJI6IkpXVCJ9.eyJ1c2Vyi5NDEyODc4fQ.ZraBFohS4Tg39NszY"
-```
-
-This endpoint closes the RSS feed for a library item.
-
-### HTTP Request
-
-`POST http://abs.example.com/api/items/<ID>/close-feed`
-
-### URL Parameters
-
-Parameter | Description
---------- | -----------
-ID | The ID of the library item.
-
-### Response
-
-Status | Meaning | Description
------- | ------- | -----------
-200 | OK | Success
-500 | Internal Server Error | An admin user is required to close an RSS feed.
-
-
 ## Tone Scan a Library Item
 
 ```shell
