@@ -343,7 +343,7 @@ Status | Meaning | Description | Schema
 Attribute | Type | Description
 --------- | ---- | -----------
 `userMediaProgress` | [Media Progress](#media-progress) Object | If `progress` was requested, the user's progress for the book or podcast episode. If no progress exists, neither will this attribute.
-`rssFeedUrl` | String or null | If `rssfeed` was requested, the rebroadcasting RSS feed URL of the library item. Will be `null` if the RSS feed for this library item is disabled.
+`rssFeed` | [RSS Feed Minified](#rss-feed-minified) Object or null | If `rssfeed` was requested, the open RSS feed of the library item. Will be `null` if the RSS feed for this library item is closed.
 `media.metadata.authors` | Array of [Author](#author) | If `authors` was requested, replaces the normally minified authors in the metadata.
 `episodesDownloading` | Array of [Podcast Episode Download](#podcast-episode-download) | If `downloads` was requested, the podcast episodes currently in the download queue.
 
