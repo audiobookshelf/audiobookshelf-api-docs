@@ -1060,7 +1060,16 @@ Attribute | Type | Description
   "tagIsbn": null,
   "tagLanguage": null,
   "tagASIN": null,
-  "tagOverdriveMediaMarker": null
+  "tagOverdriveMediaMarker": null,
+  "tagOriginalYear": null,
+  "tagReleaseCountry": null,
+  "tagReleaseType": null,
+  "tagReleaseStatus": null,
+  "tagISRC": null,
+  "tagMusicBrainzTrackId": null,
+  "tagMusicBrainzAlbumId": null,
+  "tagMusicBrainzAlbumArtistId": null,
+  "tagMusicBrainzArtistId": null
 }
 ```
 
@@ -1950,7 +1959,7 @@ Attribute | Type | Description
 `bodyTemplate` | String | The template for the notification body.
 `enabled` | Boolean | Whether the notification is enabled.
 `type` | String | The notification's type.
-`lastFiredAt` | String or null | The time (in ms since POSIX epoch) when the notification was last fired. Will be `null` if the notification has not fired.
+`lastFiredAt` | Integer or null | The time (in ms since POSIX epoch) when the notification was last fired. Will be `null` if the notification has not fired.
 `lastAttemptFailed` | Boolean | Whether the last notification attempt failed.
 `numConsecutiveFailedAttempts` | Integer | The number of consecutive times the notification has failed.
 `numTimesFired` | Integer | The number of times the notification has fired.
@@ -2019,8 +2028,6 @@ Attribute | Type | Description
   "scannerPreferMatchedMetadata": false,
   "scannerDisableWatcher": true,
   "scannerPreferOverdriveMediaMarker": false,
-  "scannerUseSingleThreadedProber": true,
-  "scannerMaxThreads": 0,
   "scannerUseTone": false,
   "storeCoverWithItem": false,
   "storeMetadataWithItem": false,

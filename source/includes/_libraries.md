@@ -473,7 +473,8 @@ curl "https://abs.example.com/api/libraries/lib_c1u6t4p45c35rf0nzd/items?sort=me
   "filterBy": "authors.YXV0X3ozbGVpbWd5Ymw3dWYzeTRhYg==",
   "mediaType": "book",
   "minified": false,
-  "collapseseries": true
+  "collapseseries": true,
+  "include": ""
 }
 ```
 
@@ -493,13 +494,14 @@ ID | The ID of the library.
 
 Parameter | Type | Description
 --------- | ---- | -----------
-limit | Integer | Limit the number of returned results per page. If `0`, no limit will be applied.
-page | Integer | The page number (0 indexed) to request. If there is no limit applied, then page will have no effect and all results will be returned.
-sort | String | What to sort the results by. Specify the attribute to sort by using JavaScript object notation. For example, to sort by title use `sort=media.metadata.title`. When filtering for a series, sort can also be `sequence`.
-desc | Binary | Whether to reverse the sort order. `0` for false, `1` for true.
-filter | String | What to filter the results by. See [Filtering](#filtering).
-minified | Binary | Whether to request minified objects. `0` for false, `1` for true.
-collapseseries | Binary | Whether to collapse books in a series to a single entry. `0` for false, `1` for true.
+`limit` | Integer | Limit the number of returned results per page. If `0`, no limit will be applied.
+`page` | Integer | The page number (0 indexed) to request. If there is no limit applied, then page will have no effect and all results will be returned.
+`sort` | String | What to sort the results by. Specify the attribute to sort by using JavaScript object notation. For example, to sort by title use `sort=media.metadata.title`. When filtering for a series, sort can also be `sequence`.
+`desc` | Binary | Whether to reverse the sort order. `0` for false, `1` for true.
+`filter` | String | What to filter the results by. See [Filtering](#filtering).
+`minified` | Binary | Whether to request minified objects. `0` for false, `1` for true.
+`collapseseries` | Binary | Whether to collapse books in a series to a single entry. `0` for false, `1` for true.
+`include` | String | A comma separated list of what to include with the library items. The only current option is `rssfeed`.
 
 ### Response
 
@@ -512,7 +514,7 @@ Status | Meaning | Description | Schema
 
 Attribute | Type | Description
 --------- | ---- | -----------
-`results` | Array of [Library Item](#library-item) | The requested library items. If `minified` is `true`, it will be an array of [Library Item Minified](#library-item-minified). `collapseseries` will add a [Series Num Books](#series-num-books) as `collapsedSeries` to the library items, with only one library item per series. However, if there is only one series in the results, they will not be collapsed. When filtering by series, `media.metadata.series` will be replaced by the matching [Series Sequence](#series-sequence) object. If filtering by series, `collapseseries` is `true`, and there are multiple series, such as a subseries, a `seriesSequenceList` string attribute is added to `collapsedSeries` which represents the items in the subseries that are in the filtered series.
+`results` | Array of [Library Item](#library-item) | The requested library items. If `minified` is `true`, it will be an array of [Library Item Minified](#library-item-minified). `collapseseries` will add a [Series Num Books](#series-num-books) as `collapsedSeries` to the library items, with only one library item per series. However, if there is only one series in the results, they will not be collapsed. When filtering by series, `media.metadata.series` will be replaced by the matching [Series Sequence](#series-sequence) object. If filtering by series, `collapseseries` is `true`, and there are multiple series, such as a subseries, a `seriesSequenceList` string attribute is added to `collapsedSeries` which represents the items in the subseries that are in the filtered series. `rssfeed` will add an [RSS Feed Minified](#rss-feed-minified) object or `null` as `rssFeed` to the library items, the item's RSS feed if it has one open.
 `total` | Integer | The total number of results.
 `limit` | Integer | The limit set in the request.
 `page` | Integer | The page set in request.
@@ -522,6 +524,7 @@ Attribute | Type | Description
 `mediaType` | String | The media type of the library. Will be `book` or `podcast`.
 `minified` | Boolean | Whether minified was set in the request.
 `collapseseries` | Boolean | Whether collapseseries was set in the request.
+`include` | String | The requested `include`.
 
 
 ## Remove a Library's Items With Issues
@@ -634,7 +637,8 @@ curl "https://abs.example.com/api/libraries/lib_c1u6t4p45c35rf0nzd/series?minifi
   "filterBy": "authors.YXV0X3ozbGVpbWd5Ymw3dWYzeTRhYg==",
   "mediaType": "book",
   "minified": false,
-  "collapseseries": true
+  "collapseseries": true,
+  "include": ""
 }
 ```
 
@@ -654,12 +658,13 @@ ID | The ID of the library.
 
 Parameter | Type | Description
 --------- | ---- | -----------
-limit | Integer | Limit the number of returned results per page. If `0`, no limit will be applied.
-page | Integer | The page number (0 indexed) to request. If there is no limit applied, then page will have no effect and all results will be returned.
-sort | String | What to sort the results by. By default, the results will be sorted by series name. Other sort options are: numBooks, totalDuration, and addedAt.
-desc | Binary | Whether to reverse the sort order. `0` for false, `1` for true.
-filter | String | What to filter the results by. See [Filtering](#filtering). The `issues` and `feed-open` filters are not available for this endpoint.
-minified | Binary | Whether to request minified objects. `0` for false, `1` for true.
+`limit` | Integer | Limit the number of returned results per page. If `0`, no limit will be applied.
+`page` | Integer | The page number (0 indexed) to request. If there is no limit applied, then page will have no effect and all results will be returned.
+`sort` | String | What to sort the results by. By default, the results will be sorted by series name. Other sort options are: numBooks, totalDuration, and addedAt.
+`desc` | Binary | Whether to reverse the sort order. `0` for false, `1` for true.
+`filter` | String | What to filter the results by. See [Filtering](#filtering). The `issues` and `feed-open` filters are not available for this endpoint.
+`minified` | Binary | Whether to request minified objects. `0` for `false`, `1` for `true`.
+`include` | String | A comma separated list of what to include with the library items. The only current option is `rssfeed`.
 
 ### Response
 
@@ -672,7 +677,7 @@ Status | Meaning | Description | Schema
 
 Attribute | Type | Description
 --------- | ---- | -----------
-`results` | Array of [Series Books](#series-books) | The requested series. If `minified` is `true`, the library items contained in the series will be [Library Item Minified](#library-item-minified).
+`results` | Array of [Series Books](#series-books) | The requested series. If `minified` is `true`, the library items contained in the series will be [Library Item Minified](#library-item-minified). If `rssfeed` was requested, an [RSS Feed Minified](#rss-feed-minified) object or `null` as `rssFeed`, the series' RSS feed if it has one open, will be added to the series.
 `total` | Integer | The total number of results.
 `limit` | Integer | The limit set in the request.
 `page` | Integer | The page set in request.
@@ -680,6 +685,7 @@ Attribute | Type | Description
 `sortDesc` | Boolean | Whether to reverse the sort order.
 `filterBy` | String | The filter set in the request, URL decoded. Will not exist if no filter was set.
 `minified` | Boolean | Whether minified was set in the request.
+`include` | String | The requested `include`.
 
 
 ## Get a Library's Collections
@@ -762,7 +768,8 @@ curl "https://abs.example.com/api/libraries/lib_c1u6t4p45c35rf0nzd/collections?m
   "limit": 0,
   "page": 0,
   "sortDesc": false,
-  "minified": true
+  "minified": true,
+  "include": ""
 }
 ```
 
@@ -782,12 +789,13 @@ ID | The ID of the library.
 
 Parameter | Type | Description
 --------- | ---- | -----------
-limit | Integer | Limit the number of returned results per page. If `0`, no limit will be applied.
-page | Integer | The page number (0 indexed) to request. If there is no limit applied, then page will have no effect and all results will be returned.
-sort | String | What to sort the results by.
-desc | Binary | Whether to reverse the sort order. `0` for false, `1` for true.
-filter | String | What to filter the results by. See [Filtering](#filtering).
-minified | Binary | Whether to request minified objects. `0` for false, `1` for true.
+`limit` | Integer | Limit the number of returned results per page. If `0`, no limit will be applied.
+`page` | Integer | The page number (0 indexed) to request. If there is no limit applied, then page will have no effect and all results will be returned.
+`sort` | String | What to sort the results by.
+`desc` | Binary | Whether to reverse the sort order. `0` for false, `1` for true.
+`filter` | String | What to filter the results by. See [Filtering](#filtering).
+`minified` | Binary | Whether to request minified objects. `0` for false, `1` for true.
+`include` | String | A comma separated list of what to include with the library items. The only current option is `rssfeed`.
 
 <!-- TODO: remove warning once sorting and filtering are implemented in LibraryController.getCollectionsForLibrary -->
 <aside class="warning">Sorting and filtering are not yet implemented.</aside>
@@ -803,7 +811,7 @@ Status | Meaning | Description | Schema
 
 Attribute | Type | Description
 --------- | ---- | -----------
-`results` | Array of [Collection Expanded](#collection-expanded) | The requested collections. If `minified` is `true`, the library items contained in the collections will be [Library Item Minified](#library-item-minified).
+`results` | Array of [Collection Expanded](#collection-expanded) | The requested collections. If `minified` is `true`, the library items contained in the collections will be [Library Item Minified](#library-item-minified). If `rssfeed` was requested, an [RSS Feed Minified](#rss-feed-minified) object or `null` as `rssFeed`, the collection's RSS feed if it has one open, will be added to the collections.
 `total` | Integer | The total number of results.
 `limit` | Integer | The limit set in the request.
 `page` | Integer | The page set in request.
@@ -811,6 +819,7 @@ Attribute | Type | Description
 `sortDesc` | Boolean | Whether to reverse the sort order.
 `filterBy` | String | The filter set in the request, URL decoded. Will not exist if no filter was set.
 `minified` | Boolean | Whether minified was set in the request.
+`include` | String | The requested `include`.
 
 
 ## Get a Library's User Playlists
@@ -1503,7 +1512,8 @@ ID | The ID of the library.
 
 Parameter | Type | Description
 --------- | ---- | -----------
-limit | Integer | Limit the number of items in each 'shelf' of the response. Default value is `10`.
+`limit` | Integer | Limit the number of items in each 'shelf' of the response. Default value is `10`.
+`include` | String | A comma separated list of what to include with the library items. The only current option is `rssfeed`.
 
 ### Response
 
@@ -1542,6 +1552,8 @@ Attribute | Type | Description
 
 * `type` is `author`:
     * `entities` will be an array of [Author Expanded](#author-expanded).
+* `type` is `book`, `podcast`, or `series`:
+    *  If `rssfeed` was requested, the library items or series in `entities` will have an [RSS Feed Minified](#rss-feed-minified) object or `null` as `rssFeed`, the item's/series' open RSS feed.
 * `id` is `listen-again`:
     * Library items will have a `finishedAt` attribute, an Integer, the time (in ms since POSIX epoch) when the book or episode was finished.
 * `id` is `continue-listening`:
@@ -1914,8 +1926,8 @@ ID | The ID of the library.
 
 Parameter | Type | Default | Description
 --------- | ---- | ------- | -----------
-q | String | **Required** | The URL encoded search query.
-limit | Integer | `12` | Limit the number of returned results.
+`q` | String | **Required** | The URL encoded search query.
+`limit` | Integer | `12` | Limit the number of returned results.
 
 ### Response
 
@@ -1939,8 +1951,8 @@ Attribute | Type | Description
 Attribute | Type | Description
 --------- | ---- | -----------
 `libraryItem` | [Library Item Expanded](#library-item-expanded) Object | The matched library item.
-`matchKey` | String | What the library item was matched on.
-`matchText` | String | The text in the library item that the query matched to.
+`matchKey` | String or null | What the library item was matched on.
+`matchText` | String or null | The text in the library item that the query matched to.
 
 
 ## Get a Library's Stats
