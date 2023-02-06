@@ -1166,6 +1166,7 @@ curl "https://abs.example.com/api/libraries/lib_c1u6t4p45c35rf0nzd/personalized"
   {
     "id": "continue-listening",
     "label": "Continue Listening",
+    "labelStringKey": "LabelContinueListening",
     "type": "book",
     "entities": [
       {
@@ -1225,6 +1226,7 @@ curl "https://abs.example.com/api/libraries/lib_c1u6t4p45c35rf0nzd/personalized"
   {
     "id": "continue-series",
     "label": "Continue Series",
+    "labelStringKey": "LabelContinueSeries",
     "type": "book",
     "entities": [
       {
@@ -1289,6 +1291,7 @@ curl "https://abs.example.com/api/libraries/lib_c1u6t4p45c35rf0nzd/personalized"
   {
     "id": "recently-added",
     "label": "Recently Added",
+    "labelStringKey": "LabelRecentlyAdded",
     "type": "book",
     "entities": [
       {
@@ -1347,6 +1350,7 @@ curl "https://abs.example.com/api/libraries/lib_c1u6t4p45c35rf0nzd/personalized"
   {
     "id": "recent-series",
     "label": "Recent Series",
+    "labelStringKey": "LabelRecentSeries",
     "type": "series",
     "entities": [
       {
@@ -1409,6 +1413,7 @@ curl "https://abs.example.com/api/libraries/lib_c1u6t4p45c35rf0nzd/personalized"
           }
         ],
         "inProgress": true,
+        "hasActiveBook": true,
         "hideFromContinueListening": false,
         "bookInProgressLastUpdate": 1650621110769,
         "firstBookUnread": null
@@ -1417,8 +1422,69 @@ curl "https://abs.example.com/api/libraries/lib_c1u6t4p45c35rf0nzd/personalized"
     "category": "newestSeries"
   },
   {
+    "id": "recommended",
+    "label": "Recommended",
+    "labelStringKey": "LabelRecommended",
+    "type": "book",
+    "entities": [
+      {
+        "id": "li_8gch9ve09orgn4fdz8",
+        "ino": "649641337522215266",
+        "libraryId": "main",
+        "folderId": "audiobooks",
+        "path": "/audiobooks/Terry Goodkind/Sword of Truth/Wizards First Rule",
+        "relPath": "Terry Goodkind/Sword of Truth/Wizards First Rule",
+        "isFile": false,
+        "mtimeMs": 1650621074299,
+        "ctimeMs": 1650621074299,
+        "birthtimeMs": 0,
+        "addedAt": 1650621073750,
+        "updatedAt": 1650621110769,
+        "isMissing": false,
+        "isInvalid": false,
+        "mediaType": "book",
+        "media": {
+          "metadata": {
+            "title": "Wizards First Rule",
+            "titleIgnorePrefix": "Wizards First Rule",
+            "subtitle": null,
+            "authorName": "Terry Goodkind",
+            "narratorName": "Sam Tsoutsouvas",
+            "seriesName": "Sword of Truth",
+            "genres": [
+              "Fantasy"
+            ],
+            "publishedYear": "2008",
+            "publishedDate": null,
+            "publisher": "Brilliance Audio",
+            "description": "The masterpiece that started Terry Goodkind's New York Times bestselling epic Sword of Truth In the aftermath of the brutal murder of his father, a mysterious woman, Kahlan Amnell, appears in Richard Cypher's forest sanctuary seeking help...and more. His world, his very beliefs, are shattered when ancient debts come due with thundering violence. In a dark age it takes courage to live, and more than mere courage to challenge those who hold dominion, Richard and Kahlan must take up that challenge or become the next victims. Beyond awaits a bewitching land where even the best of their hearts could betray them. Yet, Richard fears nothing so much as what secrets his sword might reveal about his own soul. Falling in love would destroy them - for reasons Richard can't imagine and Kahlan dare not say. In their darkest hour, hunted relentlessly, tormented by treachery and loss, Kahlan calls upon Richard to reach beyond his sword - to invoke within himself something more noble. Neither knows that the rules of battle have just changed...or that their time has run out. Wizard's First Rule is the beginning. One book. One Rule. Witness the birth of a legend.",
+            "isbn": null,
+            "asin": "B002V0QK4C",
+            "language": null,
+            "explicit": false
+          },
+          "coverPath": "/audiobooks/Terry Goodkind/Sword of Truth/Wizards First Rule/cover.jpg",
+          "tags": [],
+          "numTracks": 2,
+          "numAudioFiles": 2,
+          "numChapters": 2,
+          "numMissingParts": 0,
+          "numInvalidAudioFiles": 0,
+          "duration": 12000.946,
+          "size": 96010240,
+          "ebookFileFormat": null
+        },
+        "numFiles": 3,
+        "size": 96335771,
+        "weight": 0.9215686274509803
+      }
+    ],
+    "category": "recommended"
+  },
+  {
     "id": "listen-again",
     "label": "Listen Again",
+    "labelStringKey": "LabelListenAgain",
     "type": "book",
     "entities": [
       {
@@ -1478,6 +1544,7 @@ curl "https://abs.example.com/api/libraries/lib_c1u6t4p45c35rf0nzd/personalized"
   {
     "id": "newest-authors",
     "label": "Newest Authors",
+    "labelStringKey": "LabelNewestAuthors",
     "type": "authors",
     "entities": [
       {
@@ -1528,6 +1595,7 @@ Attribute | Type | Description
 --------- | ---- | -----------
 `id` | String | The ID of the shelf.
 `label` | String | The label of the shelf.
+`labelStringKey` | String | The label string key of the shelf, for internationalization purposes.
 `type` | String | The type of items the shelf represents. Can be `book`, `series`, `authors`, `episode`, or `podcast`.
 `entities` | Array | The entities to be displayed on the shelf. [See below](#shelf-entities).
 `category` | String | The category of the shelf.
@@ -1546,6 +1614,7 @@ Attribute | Type | Description
 --------- | ---- | -----------
 `books` | Array of [Library Item Minified](#library-item-minified) | The books in the series. Each library item in `books` will have a `seriesSequence` attribute, a String or null, the position of the book in the series.
 `inProgress` | Boolean | Whether the user has started listening to the series.
+`hasActiveBook` | Boolean | Whether the user has started listening to the series, but has not finished it.
 `hideFromContinueListening` | Boolean | Whether the series has been marked to hide it from the "Continue Series" shelf.
 `bookInProgressLastUpdate` | Integer | The latest time (in ms since POSIX epoch) when the progress of a book in the series was updated.
 `firstBookUnread` | [Library Item Minified](#library-item-minified) or null | The first book in the series (by sequence) to have not been started or finished. Will be `null` if the user has started or finished all books in the series. This library item will also have a `seriesSequence` attribute.
@@ -1554,13 +1623,15 @@ Attribute | Type | Description
     * `entities` will be an array of [Author Expanded](#author-expanded).
 * `type` is `book`, `podcast`, or `series`:
     *  If `rssfeed` was requested, the library items or series in `entities` will have an [RSS Feed Minified](#rss-feed-minified) object or `null` as `rssFeed`, the item's/series' open RSS feed.
-* `id` is `listen-again`:
-    * Library items will have a `finishedAt` attribute, an Integer, the time (in ms since POSIX epoch) when the book or episode was finished.
 * `id` is `continue-listening`:
     * Library items will have a `progressLastUpdate` attribute, an Integer, the time (in ms since POSIX epoch) when the book's or episode's progress was last updated.
 * `id` is `continue-series`:
     * Library items will have a `prevBookInProgressLastUpdate` attribute, an Integer, the time (in ms since POSIX epoch) of the most recent progress update of any book in the series.
     * The [Book Metadata Minified](#book-metadata-minified) in each library item will have a `series` attribute, a [Series Sequence](#series-sequence).
+* `id` is `recommended`:
+    * Library items will have a `weight` attribute, a Float, the recommendation weight of the library item.
+* `id` is `listen-again`:
+    * Library items will have a `finishedAt` attribute, an Integer, the time (in ms since POSIX epoch) when the book or episode was finished.
 
 
 ## Get a Library's Filter Data
