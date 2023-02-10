@@ -3149,6 +3149,7 @@ Your API token will be much longer then the one in the examples.
   </span><span class="p">{</span><span class="w">
     </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"continue-listening"</span><span class="p">,</span><span class="w">
     </span><span class="nl">"label"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Continue Listening"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"labelStringKey"</span><span class="p">:</span><span class="w"> </span><span class="s2">"LabelContinueListening"</span><span class="p">,</span><span class="w">
     </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"book"</span><span class="p">,</span><span class="w">
     </span><span class="nl">"entities"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
       </span><span class="p">{</span><span class="w">
@@ -3208,6 +3209,7 @@ Your API token will be much longer then the one in the examples.
   </span><span class="p">{</span><span class="w">
     </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"continue-series"</span><span class="p">,</span><span class="w">
     </span><span class="nl">"label"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Continue Series"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"labelStringKey"</span><span class="p">:</span><span class="w"> </span><span class="s2">"LabelContinueSeries"</span><span class="p">,</span><span class="w">
     </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"book"</span><span class="p">,</span><span class="w">
     </span><span class="nl">"entities"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
       </span><span class="p">{</span><span class="w">
@@ -3272,6 +3274,7 @@ Your API token will be much longer then the one in the examples.
   </span><span class="p">{</span><span class="w">
     </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"recently-added"</span><span class="p">,</span><span class="w">
     </span><span class="nl">"label"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Recently Added"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"labelStringKey"</span><span class="p">:</span><span class="w"> </span><span class="s2">"LabelRecentlyAdded"</span><span class="p">,</span><span class="w">
     </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"book"</span><span class="p">,</span><span class="w">
     </span><span class="nl">"entities"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
       </span><span class="p">{</span><span class="w">
@@ -3330,6 +3333,7 @@ Your API token will be much longer then the one in the examples.
   </span><span class="p">{</span><span class="w">
     </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"recent-series"</span><span class="p">,</span><span class="w">
     </span><span class="nl">"label"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Recent Series"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"labelStringKey"</span><span class="p">:</span><span class="w"> </span><span class="s2">"LabelRecentSeries"</span><span class="p">,</span><span class="w">
     </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"series"</span><span class="p">,</span><span class="w">
     </span><span class="nl">"entities"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
       </span><span class="p">{</span><span class="w">
@@ -3392,6 +3396,7 @@ Your API token will be much longer then the one in the examples.
           </span><span class="p">}</span><span class="w">
         </span><span class="p">],</span><span class="w">
         </span><span class="nl">"inProgress"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"hasActiveBook"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
         </span><span class="nl">"hideFromContinueListening"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
         </span><span class="nl">"bookInProgressLastUpdate"</span><span class="p">:</span><span class="w"> </span><span class="mi">1650621110769</span><span class="p">,</span><span class="w">
         </span><span class="nl">"firstBookUnread"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="w">
@@ -3400,8 +3405,69 @@ Your API token will be much longer then the one in the examples.
     </span><span class="nl">"category"</span><span class="p">:</span><span class="w"> </span><span class="s2">"newestSeries"</span><span class="w">
   </span><span class="p">},</span><span class="w">
   </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"recommended"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"label"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Recommended"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"labelStringKey"</span><span class="p">:</span><span class="w"> </span><span class="s2">"LabelRecommended"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"book"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"entities"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+      </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"li_8gch9ve09orgn4fdz8"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"ino"</span><span class="p">:</span><span class="w"> </span><span class="s2">"649641337522215266"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"libraryId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"main"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"folderId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"audiobooks"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"path"</span><span class="p">:</span><span class="w"> </span><span class="s2">"/audiobooks/Terry Goodkind/Sword of Truth/Wizards First Rule"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"relPath"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Terry Goodkind/Sword of Truth/Wizards First Rule"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"isFile"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"mtimeMs"</span><span class="p">:</span><span class="w"> </span><span class="mi">1650621074299</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"ctimeMs"</span><span class="p">:</span><span class="w"> </span><span class="mi">1650621074299</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"birthtimeMs"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"addedAt"</span><span class="p">:</span><span class="w"> </span><span class="mi">1650621073750</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"updatedAt"</span><span class="p">:</span><span class="w"> </span><span class="mi">1650621110769</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"isMissing"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"isInvalid"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"mediaType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"book"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"media"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+          </span><span class="nl">"metadata"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+            </span><span class="nl">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Wizards First Rule"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"titleIgnorePrefix"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Wizards First Rule"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"subtitle"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"authorName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Terry Goodkind"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"narratorName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Sam Tsoutsouvas"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"seriesName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Sword of Truth"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"genres"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+              </span><span class="s2">"Fantasy"</span><span class="w">
+            </span><span class="p">],</span><span class="w">
+            </span><span class="nl">"publishedYear"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2008"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"publishedDate"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"publisher"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Brilliance Audio"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"The masterpiece that started Terry Goodkind's New York Times bestselling epic Sword of Truth In the aftermath of the brutal murder of his father, a mysterious woman, Kahlan Amnell, appears in Richard Cypher's forest sanctuary seeking help...and more. His world, his very beliefs, are shattered when ancient debts come due with thundering violence. In a dark age it takes courage to live, and more than mere courage to challenge those who hold dominion, Richard and Kahlan must take up that challenge or become the next victims. Beyond awaits a bewitching land where even the best of their hearts could betray them. Yet, Richard fears nothing so much as what secrets his sword might reveal about his own soul. Falling in love would destroy them - for reasons Richard can't imagine and Kahlan dare not say. In their darkest hour, hunted relentlessly, tormented by treachery and loss, Kahlan calls upon Richard to reach beyond his sword - to invoke within himself something more noble. Neither knows that the rules of battle have just changed...or that their time has run out. Wizard's First Rule is the beginning. One book. One Rule. Witness the birth of a legend."</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"isbn"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"asin"</span><span class="p">:</span><span class="w"> </span><span class="s2">"B002V0QK4C"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"language"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"explicit"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="w">
+          </span><span class="p">},</span><span class="w">
+          </span><span class="nl">"coverPath"</span><span class="p">:</span><span class="w"> </span><span class="s2">"/audiobooks/Terry Goodkind/Sword of Truth/Wizards First Rule/cover.jpg"</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"tags"</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span><span class="w">
+          </span><span class="nl">"numTracks"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"numAudioFiles"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"numChapters"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"numMissingParts"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"numInvalidAudioFiles"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"duration"</span><span class="p">:</span><span class="w"> </span><span class="mf">12000.946</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"size"</span><span class="p">:</span><span class="w"> </span><span class="mi">96010240</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"ebookFileFormat"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="nl">"numFiles"</span><span class="p">:</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"size"</span><span class="p">:</span><span class="w"> </span><span class="mi">96335771</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"weight"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.9215686274509803</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+    </span><span class="p">],</span><span class="w">
+    </span><span class="nl">"category"</span><span class="p">:</span><span class="w"> </span><span class="s2">"recommended"</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="p">{</span><span class="w">
     </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"listen-again"</span><span class="p">,</span><span class="w">
     </span><span class="nl">"label"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Listen Again"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"labelStringKey"</span><span class="p">:</span><span class="w"> </span><span class="s2">"LabelListenAgain"</span><span class="p">,</span><span class="w">
     </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"book"</span><span class="p">,</span><span class="w">
     </span><span class="nl">"entities"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
       </span><span class="p">{</span><span class="w">
@@ -3461,6 +3527,7 @@ Your API token will be much longer then the one in the examples.
   </span><span class="p">{</span><span class="w">
     </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"newest-authors"</span><span class="p">,</span><span class="w">
     </span><span class="nl">"label"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Newest Authors"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"labelStringKey"</span><span class="p">:</span><span class="w"> </span><span class="s2">"LabelNewestAuthors"</span><span class="p">,</span><span class="w">
     </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"authors"</span><span class="p">,</span><span class="w">
     </span><span class="nl">"entities"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
       </span><span class="p">{</span><span class="w">
@@ -3553,6 +3620,11 @@ Your API token will be much longer then the one in the examples.
 <td>The label of the shelf.</td>
 </tr>
 <tr>
+<td><code>labelStringKey</code></td>
+<td>String</td>
+<td>The label string key of the shelf, for internationalization purposes.</td>
+</tr>
+<tr>
 <td><code>type</code></td>
 <td>String</td>
 <td>The type of items the shelf represents. Can be <code>book</code>, <code>series</code>, <code>authors</code>, <code>episode</code>, or <code>podcast</code>.</td>
@@ -3609,6 +3681,11 @@ Your API token will be much longer then the one in the examples.
 <td>Whether the user has started listening to the series.</td>
 </tr>
 <tr>
+<td><code>hasActiveBook</code></td>
+<td>Boolean</td>
+<td>Whether the user has started listening to the series, but has not finished it.</td>
+</tr>
+<tr>
 <td><code>hideFromContinueListening</code></td>
 <td>Boolean</td>
 <td>Whether the series has been marked to hide it from the &quot;Continue Series&quot; shelf.</td>
@@ -3636,11 +3713,6 @@ Your API token will be much longer then the one in the examples.
 <ul>
 <li> If <code>rssfeed</code> was requested, the library items or series in <code>entities</code> will have an <a href="#rss-feed-minified">RSS Feed Minified</a> object or <code>null</code> as <code>rssFeed</code>, the item&#39;s/series&#39; open RSS feed.</li>
 </ul></li>
-<li><code>id</code> is <code>listen-again</code>:
-
-<ul>
-<li>Library items will have a <code>finishedAt</code> attribute, an Integer, the time (in ms since POSIX epoch) when the book or episode was finished.</li>
-</ul></li>
 <li><code>id</code> is <code>continue-listening</code>:
 
 <ul>
@@ -3651,6 +3723,16 @@ Your API token will be much longer then the one in the examples.
 <ul>
 <li>Library items will have a <code>prevBookInProgressLastUpdate</code> attribute, an Integer, the time (in ms since POSIX epoch) of the most recent progress update of any book in the series.</li>
 <li>The <a href="#book-metadata-minified">Book Metadata Minified</a> in each library item will have a <code>series</code> attribute, a <a href="#series-sequence">Series Sequence</a>.</li>
+</ul></li>
+<li><code>id</code> is <code>recommended</code>:
+
+<ul>
+<li>Library items will have a <code>weight</code> attribute, a Float, the recommendation weight of the library item.</li>
+</ul></li>
+<li><code>id</code> is <code>listen-again</code>:
+
+<ul>
+<li>Library items will have a <code>finishedAt</code> attribute, an Integer, the time (in ms since POSIX epoch) when the book or episode was finished.</li>
 </ul></li>
 </ul>
 <h2 id='get-a-library-39-s-filter-data'>Get a Library&#39;s Filter Data</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://abs.example.com/api/libraries/lib_c1u6t4p45c35rf0nzd/filterdata"</span> <span class="se">\</span>
@@ -14339,9 +14421,26 @@ When changing a user's username, their token will be regenerated.
 </blockquote>
 <div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="nl">"numServerProgressUpdates"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"localProgressUpdates"</span><span class="p">:</span><span class="w"> </span><span class="p">[]</span><span class="w">
+  </span><span class="nl">"localProgressUpdates"</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span><span class="w">
+  </span><span class="nl">"serverProgressUpdates"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"li_bufnnmp4y5o2gbbxfm-ep_lh6ko39pumnrma3dhv"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"libraryItemId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"li_bufnnmp4y5o2gbbxfm"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"episodeId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ep_lh6ko39pumnrma3dhv"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"duration"</span><span class="p">:</span><span class="w"> </span><span class="mf">1454.18449</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"progress"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.011193983371394644</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"currentTime"</span><span class="p">:</span><span class="w"> </span><span class="mf">16.278117</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"isFinished"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"hideFromContinueListening"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"lastUpdate"</span><span class="p">:</span><span class="w"> </span><span class="mi">1668120246620</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"startedAt"</span><span class="p">:</span><span class="w"> </span><span class="mi">1668120083771</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"finishedAt"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="w">
+  </span><span class="p">},</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div>
+<aside class="warning">
+This endpoint will soon be <strong>deprecated</strong>.
+</aside>
+
 <p>This endpoint syncs a mobile client&#39;s local media progress with the server. For any local media progress with a greater <code>lastUpdate</code> time than the <code>lastUpdate</code> time of the matching media progress on the server, the server&#39;s media progress is updated. If the server&#39;s <code>lastUpdate</code> time is greater, than the local media progress will be returned with the updated information.</p>
 <h3 id='http-request-12'>HTTP Request</h3>
 <p><code>POST http://abs.example.com/api/me/sync-local-progress</code></p>
@@ -14397,7 +14496,12 @@ When changing a user's username, their token will be regenerated.
 <tr>
 <td><code>localProgressUpdates</code></td>
 <td>Array of <a href="#media-progress">Media Progress</a></td>
-<td>Local media progress items with updated information from the server.</td>
+<td>Local media progress items with updated information from the server (server more recent).</td>
+</tr>
+<tr>
+<td><code>serverProgressUpdates</code></td>
+<td>Array of <a href="#media-progress">Media Progress</a></td>
+<td>Media progress items that were updated on the server (local more recent).</td>
 </tr>
 </tbody></table>
 <h2 id='get-library-items-in-progress'>Get Library Items In Progress</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://abs.example.com/api/me/items-in-progress?limit=1"</span> <span class="se">\</span>
