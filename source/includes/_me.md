@@ -662,9 +662,26 @@ curl -X POST "https://abs.example.com/api/me/sync-local-progress" \
 ```json
 {
   "numServerProgressUpdates": 1,
-  "localProgressUpdates": []
+  "localProgressUpdates": [],
+  "serverProgressUpdates": {
+    "id": "li_bufnnmp4y5o2gbbxfm-ep_lh6ko39pumnrma3dhv",
+    "libraryItemId": "li_bufnnmp4y5o2gbbxfm",
+    "episodeId": "ep_lh6ko39pumnrma3dhv",
+    "duration": 1454.18449,
+    "progress": 0.011193983371394644,
+    "currentTime": 16.278117,
+    "isFinished": false,
+    "hideFromContinueListening": false,
+    "lastUpdate": 1668120246620,
+    "startedAt": 1668120083771,
+    "finishedAt": null
+  },
 }
 ```
+
+<aside class="warning">
+This endpoint will soon be <strong>deprecated</strong>.
+</aside>
 
 This endpoint syncs a mobile client's local media progress with the server. For any local media progress with a greater `lastUpdate` time than the `lastUpdate` time of the matching media progress on the server, the server's media progress is updated. If the server's `lastUpdate` time is greater, than the local media progress will be returned with the updated information.
 
@@ -690,7 +707,8 @@ Status | Meaning | Description | Schema
 Attribute | Type | Description
 --------- | ---- | -----------
 `numServerProgressUpdates` | Integer | The number of media progress items that were updated on the server.
-`localProgressUpdates` | Array of [Media Progress](#media-progress) | Local media progress items with updated information from the server.
+`localProgressUpdates` | Array of [Media Progress](#media-progress) | Local media progress items with updated information from the server (server more recent).
+`serverProgressUpdates` | Array of [Media Progress](#media-progress) | Media progress items that were updated on the server (local more recent).
 
 
 ## Get Library Items In Progress
