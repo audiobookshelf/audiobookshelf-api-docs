@@ -4514,12 +4514,12 @@ Your API token will be much longer then the one in the examples.
 <td>The user cannot access the library, or no library with the provided ID exists.</td>
 </tr>
 </tbody></table>
-<h2 id='scan-a-library-39-s-folders'>Scan a Library&#39;s Folders</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://abs.example.com/api/libraries/lib_c1u6t4p45c35rf0nzd/scan"</span> <span class="se">\</span>
+<h2 id='scan-a-library-39-s-folders'>Scan a Library&#39;s Folders</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">-X</span> POST <span class="s2">"https://abs.example.com/api/libraries/lib_c1u6t4p45c35rf0nzd/scan"</span> <span class="se">\</span>
   <span class="nt">-H</span> <span class="s2">"Authorization: Bearer exJhbGciOiJI6IkpXVCJ9.eyJ1c2Vyi5NDEyODc4fQ.ZraBFohS4Tg39NszY"</span>
 </code></pre></div>
 <p>This endpoint starts a scan of a library&#39;s folders for new library items and changes to existing library items.</p>
 <h3 id='http-request-17'>HTTP Request</h3>
-<p><code>GET https://abs.example.com/api/libraries/&lt;ID&gt;/scan</code></p>
+<p><code>POST https://abs.example.com/api/libraries/&lt;ID&gt;/scan</code></p>
 <h3 id='url-parameters-15'>URL Parameters</h3>
 <table><thead>
 <tr>
@@ -7227,7 +7227,7 @@ Make sure to include all audio files of a library item in the array.
 <td></td>
 </tr>
 </tbody></table>
-<h2 id='scan-a-library-item'>Scan a Library Item</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://abs.example.com/api/items/li_bufnnmp4y5o2gbbxfm/scan"</span> <span class="se">\</span>
+<h2 id='scan-a-library-item'>Scan a Library Item</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">-X</span> POST <span class="s2">"https://abs.example.com/api/items/li_bufnnmp4y5o2gbbxfm/scan"</span> <span class="se">\</span>
   <span class="nt">-H</span> <span class="s2">"Authorization: Bearer exJhbGciOiJI6IkpXVCJ9.eyJ1c2Vyi5NDEyODc4fQ.ZraBFohS4Tg39NszY"</span>
 </code></pre></div>
 <blockquote>
@@ -7239,7 +7239,7 @@ Make sure to include all audio files of a library item in the array.
 </span></code></pre></div>
 <p>This endpoint scans a library item&#39;s files for changes.</p>
 <h3 id='http-request-12'>HTTP Request</h3>
-<p><code>GET http://abs.example.com/api/items/&lt;ID&gt;/scan</code></p>
+<p><code>POST http://abs.example.com/api/items/&lt;ID&gt;/scan</code></p>
 <h3 id='url-parameters-11'>URL Parameters</h3>
 <table><thead>
 <tr>
