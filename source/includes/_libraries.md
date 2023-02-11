@@ -2123,7 +2123,7 @@ Status | Meaning | Description
 ## Scan a Library's Folders
 
 ```shell
-curl "https://abs.example.com/api/libraries/lib_c1u6t4p45c35rf0nzd/scan" \
+curl -X POST "https://abs.example.com/api/libraries/lib_c1u6t4p45c35rf0nzd/scan" \
   -H "Authorization: Bearer exJhbGciOiJI6IkpXVCJ9.eyJ1c2Vyi5NDEyODc4fQ.ZraBFohS4Tg39NszY"
 ```
 
@@ -2131,7 +2131,7 @@ This endpoint starts a scan of a library's folders for new library items and cha
 
 ### HTTP Request
 
-`GET https://abs.example.com/api/libraries/<ID>/scan`
+`POST https://abs.example.com/api/libraries/<ID>/scan`
 
 ### URL Parameters
 

@@ -1757,7 +1757,7 @@ Status | Meaning | Description | Schema
 ## Scan a Library Item
 
 ```shell
-curl "https://abs.example.com/api/items/li_bufnnmp4y5o2gbbxfm/scan" \
+curl -X POST "https://abs.example.com/api/items/li_bufnnmp4y5o2gbbxfm/scan" \
   -H "Authorization: Bearer exJhbGciOiJI6IkpXVCJ9.eyJ1c2Vyi5NDEyODc4fQ.ZraBFohS4Tg39NszY"
 ```
 
@@ -1773,7 +1773,7 @@ This endpoint scans a library item's files for changes.
 
 ### HTTP Request
 
-`GET http://abs.example.com/api/items/<ID>/scan`
+`POST http://abs.example.com/api/items/<ID>/scan`
 
 ### URL Parameters
 
