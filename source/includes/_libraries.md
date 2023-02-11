@@ -473,7 +473,8 @@ curl "https://abs.example.com/api/libraries/lib_c1u6t4p45c35rf0nzd/items?sort=me
   "filterBy": "authors.YXV0X3ozbGVpbWd5Ymw3dWYzeTRhYg==",
   "mediaType": "book",
   "minified": false,
-  "collapseseries": true
+  "collapseseries": true,
+  "include": ""
 }
 ```
 
@@ -493,13 +494,14 @@ ID | The ID of the library.
 
 Parameter | Type | Description
 --------- | ---- | -----------
-limit | Integer | Limit the number of returned results per page. If `0`, no limit will be applied.
-page | Integer | The page number (0 indexed) to request. If there is no limit applied, then page will have no effect and all results will be returned.
-sort | String | What to sort the results by. Specify the attribute to sort by using JavaScript object notation. For example, to sort by title use `sort=media.metadata.title`. When filtering for a series, sort can also be `sequence`.
-desc | Binary | Whether to reverse the sort order. `0` for false, `1` for true.
-filter | String | What to filter the results by. See [Filtering](#filtering).
-minified | Binary | Whether to request minified objects. `0` for false, `1` for true.
-collapseseries | Binary | Whether to collapse books in a series to a single entry. `0` for false, `1` for true.
+`limit` | Integer | Limit the number of returned results per page. If `0`, no limit will be applied.
+`page` | Integer | The page number (0 indexed) to request. If there is no limit applied, then page will have no effect and all results will be returned.
+`sort` | String | What to sort the results by. Specify the attribute to sort by using JavaScript object notation. For example, to sort by title use `sort=media.metadata.title`. When filtering for a series, sort can also be `sequence`.
+`desc` | Binary | Whether to reverse the sort order. `0` for false, `1` for true.
+`filter` | String | What to filter the results by. See [Filtering](#filtering).
+`minified` | Binary | Whether to request minified objects. `0` for false, `1` for true.
+`collapseseries` | Binary | Whether to collapse books in a series to a single entry. `0` for false, `1` for true.
+`include` | String | A comma separated list of what to include with the library items. The only current option is `rssfeed`.
 
 ### Response
 
@@ -512,7 +514,7 @@ Status | Meaning | Description | Schema
 
 Attribute | Type | Description
 --------- | ---- | -----------
-`results` | Array of [Library Item](#library-item) | The requested library items. If `minified` is `true`, it will be an array of [Library Item Minified](#library-item-minified). `collapseseries` will add a [Series Num Books](#series-num-books) as `collapsedSeries` to the library items, with only one library item per series. However, if there is only one series in the results, they will not be collapsed. When filtering by series, `media.metadata.series` will be replaced by the matching [Series Sequence](#series-sequence) object. If filtering by series, `collapseseries` is `true`, and there are multiple series, such as a subseries, a `seriesSequenceList` string attribute is added to `collapsedSeries` which represents the items in the subseries that are in the filtered series.
+`results` | Array of [Library Item](#library-item) | The requested library items. If `minified` is `true`, it will be an array of [Library Item Minified](#library-item-minified). `collapseseries` will add a [Series Num Books](#series-num-books) as `collapsedSeries` to the library items, with only one library item per series. However, if there is only one series in the results, they will not be collapsed. When filtering by series, `media.metadata.series` will be replaced by the matching [Series Sequence](#series-sequence) object. If filtering by series, `collapseseries` is `true`, and there are multiple series, such as a subseries, a `seriesSequenceList` string attribute is added to `collapsedSeries` which represents the items in the subseries that are in the filtered series. `rssfeed` will add an [RSS Feed Minified](#rss-feed-minified) object or `null` as `rssFeed` to the library items, the item's RSS feed if it has one open.
 `total` | Integer | The total number of results.
 `limit` | Integer | The limit set in the request.
 `page` | Integer | The page set in request.
@@ -522,6 +524,7 @@ Attribute | Type | Description
 `mediaType` | String | The media type of the library. Will be `book` or `podcast`.
 `minified` | Boolean | Whether minified was set in the request.
 `collapseseries` | Boolean | Whether collapseseries was set in the request.
+`include` | String | The requested `include`.
 
 
 ## Remove a Library's Items With Issues
@@ -634,7 +637,8 @@ curl "https://abs.example.com/api/libraries/lib_c1u6t4p45c35rf0nzd/series?minifi
   "filterBy": "authors.YXV0X3ozbGVpbWd5Ymw3dWYzeTRhYg==",
   "mediaType": "book",
   "minified": false,
-  "collapseseries": true
+  "collapseseries": true,
+  "include": ""
 }
 ```
 
@@ -654,12 +658,13 @@ ID | The ID of the library.
 
 Parameter | Type | Description
 --------- | ---- | -----------
-limit | Integer | Limit the number of returned results per page. If `0`, no limit will be applied.
-page | Integer | The page number (0 indexed) to request. If there is no limit applied, then page will have no effect and all results will be returned.
-sort | String | What to sort the results by. By default, the results will be sorted by series name. Other sort options are: numBooks, totalDuration, and addedAt.
-desc | Binary | Whether to reverse the sort order. `0` for false, `1` for true.
-filter | String | What to filter the results by. See [Filtering](#filtering). The `issues` and `feed-open` filters are not available for this endpoint.
-minified | Binary | Whether to request minified objects. `0` for false, `1` for true.
+`limit` | Integer | Limit the number of returned results per page. If `0`, no limit will be applied.
+`page` | Integer | The page number (0 indexed) to request. If there is no limit applied, then page will have no effect and all results will be returned.
+`sort` | String | What to sort the results by. By default, the results will be sorted by series name. Other sort options are: numBooks, totalDuration, and addedAt.
+`desc` | Binary | Whether to reverse the sort order. `0` for false, `1` for true.
+`filter` | String | What to filter the results by. See [Filtering](#filtering). The `issues` and `feed-open` filters are not available for this endpoint.
+`minified` | Binary | Whether to request minified objects. `0` for `false`, `1` for `true`.
+`include` | String | A comma separated list of what to include with the library items. The only current option is `rssfeed`.
 
 ### Response
 
@@ -672,7 +677,7 @@ Status | Meaning | Description | Schema
 
 Attribute | Type | Description
 --------- | ---- | -----------
-`results` | Array of [Series Books](#series-books) | The requested series. If `minified` is `true`, the library items contained in the series will be [Library Item Minified](#library-item-minified).
+`results` | Array of [Series Books](#series-books) | The requested series. If `minified` is `true`, the library items contained in the series will be [Library Item Minified](#library-item-minified). If `rssfeed` was requested, an [RSS Feed Minified](#rss-feed-minified) object or `null` as `rssFeed`, the series' RSS feed if it has one open, will be added to the series.
 `total` | Integer | The total number of results.
 `limit` | Integer | The limit set in the request.
 `page` | Integer | The page set in request.
@@ -680,6 +685,7 @@ Attribute | Type | Description
 `sortDesc` | Boolean | Whether to reverse the sort order.
 `filterBy` | String | The filter set in the request, URL decoded. Will not exist if no filter was set.
 `minified` | Boolean | Whether minified was set in the request.
+`include` | String | The requested `include`.
 
 
 ## Get a Library's Collections
@@ -762,7 +768,8 @@ curl "https://abs.example.com/api/libraries/lib_c1u6t4p45c35rf0nzd/collections?m
   "limit": 0,
   "page": 0,
   "sortDesc": false,
-  "minified": true
+  "minified": true,
+  "include": ""
 }
 ```
 
@@ -782,12 +789,13 @@ ID | The ID of the library.
 
 Parameter | Type | Description
 --------- | ---- | -----------
-limit | Integer | Limit the number of returned results per page. If `0`, no limit will be applied.
-page | Integer | The page number (0 indexed) to request. If there is no limit applied, then page will have no effect and all results will be returned.
-sort | String | What to sort the results by.
-desc | Binary | Whether to reverse the sort order. `0` for false, `1` for true.
-filter | String | What to filter the results by. See [Filtering](#filtering).
-minified | Binary | Whether to request minified objects. `0` for false, `1` for true.
+`limit` | Integer | Limit the number of returned results per page. If `0`, no limit will be applied.
+`page` | Integer | The page number (0 indexed) to request. If there is no limit applied, then page will have no effect and all results will be returned.
+`sort` | String | What to sort the results by.
+`desc` | Binary | Whether to reverse the sort order. `0` for false, `1` for true.
+`filter` | String | What to filter the results by. See [Filtering](#filtering).
+`minified` | Binary | Whether to request minified objects. `0` for false, `1` for true.
+`include` | String | A comma separated list of what to include with the library items. The only current option is `rssfeed`.
 
 <!-- TODO: remove warning once sorting and filtering are implemented in LibraryController.getCollectionsForLibrary -->
 <aside class="warning">Sorting and filtering are not yet implemented.</aside>
@@ -803,7 +811,7 @@ Status | Meaning | Description | Schema
 
 Attribute | Type | Description
 --------- | ---- | -----------
-`results` | Array of [Collection Expanded](#collection-expanded) | The requested collections. If `minified` is `true`, the library items contained in the collections will be [Library Item Minified](#library-item-minified).
+`results` | Array of [Collection Expanded](#collection-expanded) | The requested collections. If `minified` is `true`, the library items contained in the collections will be [Library Item Minified](#library-item-minified). If `rssfeed` was requested, an [RSS Feed Minified](#rss-feed-minified) object or `null` as `rssFeed`, the collection's RSS feed if it has one open, will be added to the collections.
 `total` | Integer | The total number of results.
 `limit` | Integer | The limit set in the request.
 `page` | Integer | The page set in request.
@@ -811,6 +819,7 @@ Attribute | Type | Description
 `sortDesc` | Boolean | Whether to reverse the sort order.
 `filterBy` | String | The filter set in the request, URL decoded. Will not exist if no filter was set.
 `minified` | Boolean | Whether minified was set in the request.
+`include` | String | The requested `include`.
 
 
 ## Get a Library's User Playlists
@@ -1157,6 +1166,7 @@ curl "https://abs.example.com/api/libraries/lib_c1u6t4p45c35rf0nzd/personalized"
   {
     "id": "continue-listening",
     "label": "Continue Listening",
+    "labelStringKey": "LabelContinueListening",
     "type": "book",
     "entities": [
       {
@@ -1216,6 +1226,7 @@ curl "https://abs.example.com/api/libraries/lib_c1u6t4p45c35rf0nzd/personalized"
   {
     "id": "continue-series",
     "label": "Continue Series",
+    "labelStringKey": "LabelContinueSeries",
     "type": "book",
     "entities": [
       {
@@ -1280,6 +1291,7 @@ curl "https://abs.example.com/api/libraries/lib_c1u6t4p45c35rf0nzd/personalized"
   {
     "id": "recently-added",
     "label": "Recently Added",
+    "labelStringKey": "LabelRecentlyAdded",
     "type": "book",
     "entities": [
       {
@@ -1338,6 +1350,7 @@ curl "https://abs.example.com/api/libraries/lib_c1u6t4p45c35rf0nzd/personalized"
   {
     "id": "recent-series",
     "label": "Recent Series",
+    "labelStringKey": "LabelRecentSeries",
     "type": "series",
     "entities": [
       {
@@ -1400,6 +1413,7 @@ curl "https://abs.example.com/api/libraries/lib_c1u6t4p45c35rf0nzd/personalized"
           }
         ],
         "inProgress": true,
+        "hasActiveBook": true,
         "hideFromContinueListening": false,
         "bookInProgressLastUpdate": 1650621110769,
         "firstBookUnread": null
@@ -1408,8 +1422,69 @@ curl "https://abs.example.com/api/libraries/lib_c1u6t4p45c35rf0nzd/personalized"
     "category": "newestSeries"
   },
   {
+    "id": "recommended",
+    "label": "Recommended",
+    "labelStringKey": "LabelRecommended",
+    "type": "book",
+    "entities": [
+      {
+        "id": "li_8gch9ve09orgn4fdz8",
+        "ino": "649641337522215266",
+        "libraryId": "main",
+        "folderId": "audiobooks",
+        "path": "/audiobooks/Terry Goodkind/Sword of Truth/Wizards First Rule",
+        "relPath": "Terry Goodkind/Sword of Truth/Wizards First Rule",
+        "isFile": false,
+        "mtimeMs": 1650621074299,
+        "ctimeMs": 1650621074299,
+        "birthtimeMs": 0,
+        "addedAt": 1650621073750,
+        "updatedAt": 1650621110769,
+        "isMissing": false,
+        "isInvalid": false,
+        "mediaType": "book",
+        "media": {
+          "metadata": {
+            "title": "Wizards First Rule",
+            "titleIgnorePrefix": "Wizards First Rule",
+            "subtitle": null,
+            "authorName": "Terry Goodkind",
+            "narratorName": "Sam Tsoutsouvas",
+            "seriesName": "Sword of Truth",
+            "genres": [
+              "Fantasy"
+            ],
+            "publishedYear": "2008",
+            "publishedDate": null,
+            "publisher": "Brilliance Audio",
+            "description": "The masterpiece that started Terry Goodkind's New York Times bestselling epic Sword of Truth In the aftermath of the brutal murder of his father, a mysterious woman, Kahlan Amnell, appears in Richard Cypher's forest sanctuary seeking help...and more. His world, his very beliefs, are shattered when ancient debts come due with thundering violence. In a dark age it takes courage to live, and more than mere courage to challenge those who hold dominion, Richard and Kahlan must take up that challenge or become the next victims. Beyond awaits a bewitching land where even the best of their hearts could betray them. Yet, Richard fears nothing so much as what secrets his sword might reveal about his own soul. Falling in love would destroy them - for reasons Richard can't imagine and Kahlan dare not say. In their darkest hour, hunted relentlessly, tormented by treachery and loss, Kahlan calls upon Richard to reach beyond his sword - to invoke within himself something more noble. Neither knows that the rules of battle have just changed...or that their time has run out. Wizard's First Rule is the beginning. One book. One Rule. Witness the birth of a legend.",
+            "isbn": null,
+            "asin": "B002V0QK4C",
+            "language": null,
+            "explicit": false
+          },
+          "coverPath": "/audiobooks/Terry Goodkind/Sword of Truth/Wizards First Rule/cover.jpg",
+          "tags": [],
+          "numTracks": 2,
+          "numAudioFiles": 2,
+          "numChapters": 2,
+          "numMissingParts": 0,
+          "numInvalidAudioFiles": 0,
+          "duration": 12000.946,
+          "size": 96010240,
+          "ebookFileFormat": null
+        },
+        "numFiles": 3,
+        "size": 96335771,
+        "weight": 0.9215686274509803
+      }
+    ],
+    "category": "recommended"
+  },
+  {
     "id": "listen-again",
     "label": "Listen Again",
+    "labelStringKey": "LabelListenAgain",
     "type": "book",
     "entities": [
       {
@@ -1469,6 +1544,7 @@ curl "https://abs.example.com/api/libraries/lib_c1u6t4p45c35rf0nzd/personalized"
   {
     "id": "newest-authors",
     "label": "Newest Authors",
+    "labelStringKey": "LabelNewestAuthors",
     "type": "authors",
     "entities": [
       {
@@ -1503,7 +1579,8 @@ ID | The ID of the library.
 
 Parameter | Type | Description
 --------- | ---- | -----------
-limit | Integer | Limit the number of items in each 'shelf' of the response. Default value is `10`.
+`limit` | Integer | Limit the number of items in each 'shelf' of the response. Default value is `10`.
+`include` | String | A comma separated list of what to include with the library items. The only current option is `rssfeed`.
 
 ### Response
 
@@ -1518,6 +1595,7 @@ Attribute | Type | Description
 --------- | ---- | -----------
 `id` | String | The ID of the shelf.
 `label` | String | The label of the shelf.
+`labelStringKey` | String | The label string key of the shelf, for internationalization purposes.
 `type` | String | The type of items the shelf represents. Can be `book`, `series`, `authors`, `episode`, or `podcast`.
 `entities` | Array | The entities to be displayed on the shelf. [See below](#shelf-entities).
 `category` | String | The category of the shelf.
@@ -1536,19 +1614,24 @@ Attribute | Type | Description
 --------- | ---- | -----------
 `books` | Array of [Library Item Minified](#library-item-minified) | The books in the series. Each library item in `books` will have a `seriesSequence` attribute, a String or null, the position of the book in the series.
 `inProgress` | Boolean | Whether the user has started listening to the series.
+`hasActiveBook` | Boolean | Whether the user has started listening to the series, but has not finished it.
 `hideFromContinueListening` | Boolean | Whether the series has been marked to hide it from the "Continue Series" shelf.
 `bookInProgressLastUpdate` | Integer | The latest time (in ms since POSIX epoch) when the progress of a book in the series was updated.
 `firstBookUnread` | [Library Item Minified](#library-item-minified) or null | The first book in the series (by sequence) to have not been started or finished. Will be `null` if the user has started or finished all books in the series. This library item will also have a `seriesSequence` attribute.
 
 * `type` is `author`:
     * `entities` will be an array of [Author Expanded](#author-expanded).
-* `id` is `listen-again`:
-    * Library items will have a `finishedAt` attribute, an Integer, the time (in ms since POSIX epoch) when the book or episode was finished.
+* `type` is `book`, `podcast`, or `series`:
+    *  If `rssfeed` was requested, the library items or series in `entities` will have an [RSS Feed Minified](#rss-feed-minified) object or `null` as `rssFeed`, the item's/series' open RSS feed.
 * `id` is `continue-listening`:
     * Library items will have a `progressLastUpdate` attribute, an Integer, the time (in ms since POSIX epoch) when the book's or episode's progress was last updated.
 * `id` is `continue-series`:
     * Library items will have a `prevBookInProgressLastUpdate` attribute, an Integer, the time (in ms since POSIX epoch) of the most recent progress update of any book in the series.
     * The [Book Metadata Minified](#book-metadata-minified) in each library item will have a `series` attribute, a [Series Sequence](#series-sequence).
+* `id` is `recommended`:
+    * Library items will have a `weight` attribute, a Float, the recommendation weight of the library item.
+* `id` is `listen-again`:
+    * Library items will have a `finishedAt` attribute, an Integer, the time (in ms since POSIX epoch) when the book or episode was finished.
 
 
 ## Get a Library's Filter Data
@@ -1914,8 +1997,8 @@ ID | The ID of the library.
 
 Parameter | Type | Default | Description
 --------- | ---- | ------- | -----------
-q | String | **Required** | The URL encoded search query.
-limit | Integer | `12` | Limit the number of returned results.
+`q` | String | **Required** | The URL encoded search query.
+`limit` | Integer | `12` | Limit the number of returned results.
 
 ### Response
 
@@ -1939,8 +2022,8 @@ Attribute | Type | Description
 Attribute | Type | Description
 --------- | ---- | -----------
 `libraryItem` | [Library Item Expanded](#library-item-expanded) Object | The matched library item.
-`matchKey` | String | What the library item was matched on.
-`matchText` | String | The text in the library item that the query matched to.
+`matchKey` | String or null | What the library item was matched on.
+`matchText` | String or null | The text in the library item that the query matched to.
 
 
 ## Get a Library's Stats

@@ -343,7 +343,7 @@ Status | Meaning | Description | Schema
 Attribute | Type | Description
 --------- | ---- | -----------
 `userMediaProgress` | [Media Progress](#media-progress) Object | If `progress` was requested, the user's progress for the book or podcast episode. If no progress exists, neither will this attribute.
-`rssFeedUrl` | String or null | If `rssfeed` was requested, the rebroadcasting RSS feed URL of the library item. Will be `null` if the RSS feed for this library item is disabled.
+`rssFeed` | [RSS Feed Minified](#rss-feed-minified) Object or null | If `rssfeed` was requested, the open RSS feed of the library item. Will be `null` if the RSS feed for this library item is closed.
 `media.metadata.authors` | Array of [Author](#author) | If `authors` was requested, replaces the normally minified authors in the metadata.
 `episodesDownloading` | Array of [Podcast Episode Download](#podcast-episode-download) | If `downloads` was requested, the podcast episodes currently in the download queue.
 
@@ -1923,86 +1923,6 @@ Attribute | Type | Description
 --------- | ---- | -----------
 `success` | Boolean | Whether the update succeeded.
 `updated` | Boolean | Whether the book's chapters were actually changed.
-
-
-## Open an RSS Feed for a Library Item
-
-```shell
-curl -X POST "https://abs.example.com/api/items/li_bufnnmp4y5o2gbbxfm/open-feed" \
-  -H "Authorization: Bearer exJhbGciOiJI6IkpXVCJ9.eyJ1c2Vyi5NDEyODc4fQ.ZraBFohS4Tg39NszY" \
-  -H "Content-Type: application/json" \
-  -d '{"serverAddress": "https://abs.example.com", "slug": "li_bufnnmp4y5o2gbbxfm"}'
-```
-
-> The above command returns JSON structured like this:
-
-```json
-{
-  "success": true,
-  "feedUrl": "https://abs.example.com/feed/li_bufnnmp4y5o2gbbxfm"
-}
-```
-
-This endpoint opens an RSS feed for a library item.
-
-### HTTP Request
-
-`POST http://abs.example.com/api/items/<ID>/open-feed`
-
-### URL Parameters
-
-Parameter | Description
---------- | -----------
-ID | The ID of the library item.
-
-### Parameters
-
-Parameter | Type | Description
---------- | ---- | -----------
-`serverAddress` | String | The URL address of the server.
-`slug` | String | The slug (the last part of the URL) to use for the RSS feed.
-
-### Response
-
-Status | Meaning | Description | Schema
------- | ------- | ----------- | ------
-200 | OK | Success | See below.
-403 | Forbidden | An admin user is required to open an RSS feed. |
-
-#### Response Schema
-
-Attribute | Type | Description
---------- | ---- | -----------
-`success` | Boolean | Whether the RSS feed was successfully opened.
-`error` | String | The error that occurred. Will only exist if `success` is `false`.
-`feedUrl` | String | The URL where the feed was opened. Will only exist if `success` is `true`.
-
-
-## Close an RSS Feed for a Library Item
-
-```shell
-curl -X POST "https://abs.example.com/api/items/li_bufnnmp4y5o2gbbxfm/close-feed" \
-  -H "Authorization: Bearer exJhbGciOiJI6IkpXVCJ9.eyJ1c2Vyi5NDEyODc4fQ.ZraBFohS4Tg39NszY"
-```
-
-This endpoint closes the RSS feed for a library item.
-
-### HTTP Request
-
-`POST http://abs.example.com/api/items/<ID>/close-feed`
-
-### URL Parameters
-
-Parameter | Description
---------- | -----------
-ID | The ID of the library item.
-
-### Response
-
-Status | Meaning | Description
------- | ------- | -----------
-200 | OK | Success
-500 | Internal Server Error | An admin user is required to close an RSS feed.
 
 
 ## Tone Scan a Library Item
