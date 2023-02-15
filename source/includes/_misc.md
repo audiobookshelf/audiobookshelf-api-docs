@@ -71,6 +71,7 @@ The following file types are supported:
 Status | Meaning | Description
 ------ | ------- | -----------
 200 | OK | Success
+400 | Bad Request | No files were provided.
 403 | Forbidden | A user with upload permissions is required.
 404 | Not Found | No library with the given ID exists, or no folder with the given ID exists in the library.
 500 | Internal Server Error | No files were provided, or the upload directory already exists.
