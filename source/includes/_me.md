@@ -2,6 +2,55 @@
 
 All the "Me" endpoints are based off of the authenticated user. In these docs, "you" will refer to the authenticated user.
 
+## Get Your User
+
+```shell
+curl "https://abs.example.com/api/me" \
+  -H "Authorization: Bearer exJhbGciOiJI6IkpXVCJ9.eyJ1c2Vyi5NDEyODc4fQ.ZraBFohS4Tg39NszY"
+```
+
+> The above command returns JSON structured like this:
+
+```json
+{
+  "id": "root",
+  "username": "root",
+  "type": "root",
+  "token": "exJhbGciOiJI6IkpXVCJ9.eyJ1c2Vyi5NDEyODc4fQ.ZraBFohS4Tg39NszY",
+  "mediaProgress": [],
+  "seriesHideFromContinueListening": [],
+  "bookmarks": [],
+  "isActive": true,
+  "isLocked": false,
+  "lastSeen": 1667687240810,
+  "createdAt": 1666569607117,
+  "permissions": {
+    "download": true,
+    "update": true,
+    "delete": true,
+    "upload": true,
+    "accessAllLibraries": true,
+    "accessAllTags": true,
+    "accessExplicitContent": true
+  },
+  "librariesAccessible": [],
+  "itemTagsAccessible": []
+}
+```
+
+This endpoint retrieves your user.
+
+### HTTP Request
+
+`GET http://abs.example.com/api/me`
+
+### Response
+
+Status | Meaning | Description | Schema
+------ | ------- | ----------- | ------
+200 | OK | Success | [User](#user)
+
+
 ## Get Your Listening Sessions
 
 ```shell
