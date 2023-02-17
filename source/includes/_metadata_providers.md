@@ -17,6 +17,7 @@ Value | Display Name
 `audible.it` | Audible.it
 `audible.in` | Audible.co.in
 `audible.es` | Audible.es
+`fantlab` | FantLab.ru
 
 ## Podcasts
 
