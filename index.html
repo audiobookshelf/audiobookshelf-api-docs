@@ -571,6 +571,9 @@
             <a href="#me" class="toc-h1 toc-link" data-title="Me">Me</a>
               <ul class="toc-list-h2">
                   <li>
+                    <a href="#get-your-user" class="toc-h2 toc-link" data-title="Get Your User">Get Your User</a>
+                  </li>
+                  <li>
                     <a href="#get-your-listening-sessions" class="toc-h2 toc-link" data-title="Get Your Listening Sessions">Get Your Listening Sessions</a>
                   </li>
                   <li>
@@ -686,6 +689,12 @@
                     <a href="#delete-a-session" class="toc-h2 toc-link" data-title="Delete a Session">Delete a Session</a>
                   </li>
                   <li>
+                    <a href="#sync-a-local-session" class="toc-h2 toc-link" data-title="Sync a Local Session">Sync a Local Session</a>
+                  </li>
+                  <li>
+                    <a href="#sync-local-sessions" class="toc-h2 toc-link" data-title="Sync Local Sessions">Sync Local Sessions</a>
+                  </li>
+                  <li>
                     <a href="#get-an-open-session" class="toc-h2 toc-link" data-title="Get an Open Session">Get an Open Session</a>
                   </li>
                   <li>
@@ -693,9 +702,6 @@
                   </li>
                   <li>
                     <a href="#close-an-open-session" class="toc-h2 toc-link" data-title="Close an Open Session">Close an Open Session</a>
-                  </li>
-                  <li>
-                    <a href="#sync-a-local-session" class="toc-h2 toc-link" data-title="Sync a Local Session">Sync a Local Session</a>
                   </li>
               </ul>
           </li>
@@ -13449,6 +13455,56 @@ When changing a user's username, their token will be regenerated.
 </tbody></table>
 <h1 id='me'>Me</h1>
 <p>All the &quot;Me&quot; endpoints are based off of the authenticated user. In these docs, &quot;you&quot; will refer to the authenticated user.</p>
+<h2 id='get-your-user'>Get Your User</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://abs.example.com/api/me"</span> <span class="se">\</span>
+  <span class="nt">-H</span> <span class="s2">"Authorization: Bearer exJhbGciOiJI6IkpXVCJ9.eyJ1c2Vyi5NDEyODc4fQ.ZraBFohS4Tg39NszY"</span>
+</code></pre></div>
+<blockquote>
+<p>The above command returns JSON structured like this:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"root"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"username"</span><span class="p">:</span><span class="w"> </span><span class="s2">"root"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"root"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"token"</span><span class="p">:</span><span class="w"> </span><span class="s2">"exJhbGciOiJI6IkpXVCJ9.eyJ1c2Vyi5NDEyODc4fQ.ZraBFohS4Tg39NszY"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"mediaProgress"</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span><span class="w">
+  </span><span class="nl">"seriesHideFromContinueListening"</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span><span class="w">
+  </span><span class="nl">"bookmarks"</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span><span class="w">
+  </span><span class="nl">"isActive"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"isLocked"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"lastSeen"</span><span class="p">:</span><span class="w"> </span><span class="mi">1667687240810</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"createdAt"</span><span class="p">:</span><span class="w"> </span><span class="mi">1666569607117</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"permissions"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"download"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"update"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"delete"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"upload"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"accessAllLibraries"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"accessAllTags"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"accessExplicitContent"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="nl">"librariesAccessible"</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span><span class="w">
+  </span><span class="nl">"itemTagsAccessible"</span><span class="p">:</span><span class="w"> </span><span class="p">[]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<p>This endpoint retrieves your user.</p>
+<h3 id='http-request'>HTTP Request</h3>
+<p><code>GET http://abs.example.com/api/me</code></p>
+<h3 id='response'>Response</h3>
+<table><thead>
+<tr>
+<th>Status</th>
+<th>Meaning</th>
+<th>Description</th>
+<th>Schema</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>200</td>
+<td>OK</td>
+<td>Success</td>
+<td><a href="#user">User</a></td>
+</tr>
+</tbody></table>
 <h2 id='get-your-listening-sessions'>Get Your Listening Sessions</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://abs.example.com/api/me/listening-sessions?itemsPerPage=1"</span> <span class="se">\</span>
   <span class="nt">-H</span> <span class="s2">"Authorization: Bearer exJhbGciOiJI6IkpXVCJ9.eyJ1c2Vyi5NDEyODc4fQ.ZraBFohS4Tg39NszY"</span>
 </code></pre></div>
@@ -13513,7 +13569,7 @@ When changing a user's username, their token will be regenerated.
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div>
 <p>This endpoint retrieves your listening sessions.</p>
-<h3 id='http-request'>HTTP Request</h3>
+<h3 id='http-request-2'>HTTP Request</h3>
 <p><code>GET http://abs.example.com/api/me/listening-sessions</code></p>
 <h3 id='query-parameters'>Query Parameters</h3>
 <table><thead>
@@ -13537,7 +13593,7 @@ When changing a user's username, their token will be regenerated.
 <td>The page (0 indexed) to retrieve.</td>
 </tr>
 </tbody></table>
-<h3 id='response'>Response</h3>
+<h3 id='response-2'>Response</h3>
 <table><thead>
 <tr>
 <th>Status</th>
@@ -13692,9 +13748,9 @@ When changing a user's username, their token will be regenerated.
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div>
 <p>This endpoint retrieves your listening statistics.</p>
-<h3 id='http-request-2'>HTTP Request</h3>
+<h3 id='http-request-3'>HTTP Request</h3>
 <p><code>GET http://abs.example.com/api/me/listening-stats</code></p>
-<h3 id='response-2'>Response</h3>
+<h3 id='response-3'>Response</h3>
 <table><thead>
 <tr>
 <th>Status</th>
@@ -13825,7 +13881,7 @@ When changing a user's username, their token will be regenerated.
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div>
 <p>This endpoint removes a library item, that has media progress associated with your user, from your &quot;Continue Listening&quot; shelf. Your user is returned.</p>
-<h3 id='http-request-3'>HTTP Request</h3>
+<h3 id='http-request-4'>HTTP Request</h3>
 <p><code>GET http://abs.example.com/api/me/progress/&lt;ID&gt;/remove-from-continue-listening</code></p>
 <h3 id='url-parameters'>URL Parameters</h3>
 <table><thead>
@@ -13839,7 +13895,7 @@ When changing a user's username, their token will be regenerated.
 <td>The ID of the <strong>media progress</strong> that refers to the library item to remove.</td>
 </tr>
 </tbody></table>
-<h3 id='response-3'>Response</h3>
+<h3 id='response-4'>Response</h3>
 <table><thead>
 <tr>
 <th>Status</th>
@@ -13876,7 +13932,7 @@ When changing a user's username, their token will be regenerated.
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div>
 <p>This endpoint retrieves your media progress that is associated with the given library item ID or podcast episode ID.</p>
-<h3 id='http-request-4'>HTTP Request</h3>
+<h3 id='http-request-5'>HTTP Request</h3>
 <ul>
 <li><code>GET http://abs.example.com/api/me/progress/&lt;LibraryItemID&gt;</code></li>
 <li><code>GET http://abs.example.com/api/me/progress/&lt;LibraryItemID&gt;/&lt;EpisodeID&gt;</code></li>
@@ -13897,7 +13953,7 @@ When changing a user's username, their token will be regenerated.
 <td>The ID of the podcast episode to retrieve the media progress for.</td>
 </tr>
 </tbody></table>
-<h3 id='response-4'>Response</h3>
+<h3 id='response-5'>Response</h3>
 <table><thead>
 <tr>
 <th>Status</th>
@@ -13925,7 +13981,7 @@ When changing a user's username, their token will be regenerated.
   <span class="nt">-d</span> <span class="s1">'[{"libraryItemId": "li_bufnnmp4y5o2gbbxfm", "episodeId": "ep_lh6ko39pumnrma3dhv", "isFinished": true}]'</span>
 </code></pre></div>
 <p>This endpoint batch creates/updates your media progress.</p>
-<h3 id='http-request-5'>HTTP Request</h3>
+<h3 id='http-request-6'>HTTP Request</h3>
 <p><code>PATCH http://abs.example.com/api/me/progress/batch/update</code></p>
 <h3 id='parameters'>Parameters</h3>
 <p>Provide an array of objects with the following parameters:</p>
@@ -13993,7 +14049,7 @@ When changing a user's username, their token will be regenerated.
 <td>The time (in ms since POSIX epoch) when the user started consuming the media. The default will be the value of <code>finishedAt</code> if <code>isFinished</code> is <code>true</code>.</td>
 </tr>
 </tbody></table>
-<h3 id='response-5'>Response</h3>
+<h3 id='response-6'>Response</h3>
 <table><thead>
 <tr>
 <th>Status</th>
@@ -14018,7 +14074,7 @@ When changing a user's username, their token will be regenerated.
   <span class="nt">-d</span> <span class="s1">'{"isFinished": true}'</span>
 </code></pre></div>
 <p>This endpoint creates/updates your media progress for a library item or podcast episode.</p>
-<h3 id='http-request-6'>HTTP Request</h3>
+<h3 id='http-request-7'>HTTP Request</h3>
 <ul>
 <li><code>PATCH http://abs.example.com/api/me/progress/&lt;LibraryItemID&gt;</code></li>
 <li><code>PATCH http://abs.example.com/api/me/progress/&lt;LibraryItemID&gt;/&lt;EpisodeID&gt;</code></li>
@@ -14091,7 +14147,7 @@ When changing a user's username, their token will be regenerated.
 <td>The time (in ms since POSIX epoch) when the user started consuming the media. The default will be the value of <code>finishedAt</code> if <code>isFinished</code> is <code>true</code>.</td>
 </tr>
 </tbody></table>
-<h3 id='response-6'>Response</h3>
+<h3 id='response-7'>Response</h3>
 <table><thead>
 <tr>
 <th>Status</th>
@@ -14114,7 +14170,7 @@ When changing a user's username, their token will be regenerated.
   <span class="nt">-H</span> <span class="s2">"Authorization: Bearer exJhbGciOiJI6IkpXVCJ9.eyJ1c2Vyi5NDEyODc4fQ.ZraBFohS4Tg39NszY"</span>
 </code></pre></div>
 <p>This endpoint removes a media progress entry from your user.</p>
-<h3 id='http-request-7'>HTTP Request</h3>
+<h3 id='http-request-8'>HTTP Request</h3>
 <p><code>DELETE http://abs.example.com/api/me/progress/&lt;ID&gt;</code></p>
 <h3 id='url-parameters-4'>URL Parameters</h3>
 <table><thead>
@@ -14128,7 +14184,7 @@ When changing a user's username, their token will be regenerated.
 <td>The ID of the media progress to remove.</td>
 </tr>
 </tbody></table>
-<h3 id='response-7'>Response</h3>
+<h3 id='response-8'>Response</h3>
 <table><thead>
 <tr>
 <th>Status</th>
@@ -14158,7 +14214,7 @@ When changing a user's username, their token will be regenerated.
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div>
 <p>This endpoint creates a bookmark for a book library item and returns the created bookmark.</p>
-<h3 id='http-request-8'>HTTP Request</h3>
+<h3 id='http-request-9'>HTTP Request</h3>
 <p><code>POST http://abs.example.com/api/me/item/&lt;ID&gt;/bookmark</code></p>
 <h3 id='url-parameters-5'>URL Parameters</h3>
 <table><thead>
@@ -14191,7 +14247,7 @@ When changing a user's username, their token will be regenerated.
 <td>The title of the bookmark.</td>
 </tr>
 </tbody></table>
-<h3 id='response-8'>Response</h3>
+<h3 id='response-9'>Response</h3>
 <table><thead>
 <tr>
 <th>Status</th>
@@ -14229,7 +14285,7 @@ When changing a user's username, their token will be regenerated.
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div>
 <p>This endpoint updates a bookmark and returns it.</p>
-<h3 id='http-request-9'>HTTP Request</h3>
+<h3 id='http-request-10'>HTTP Request</h3>
 <p><code>PATCH http://abs.example.com/api/me/item/&lt;ID&gt;/bookmark</code></p>
 <h3 id='url-parameters-6'>URL Parameters</h3>
 <table><thead>
@@ -14262,7 +14318,7 @@ When changing a user's username, their token will be regenerated.
 <td>The title of the bookmark.</td>
 </tr>
 </tbody></table>
-<h3 id='response-9'>Response</h3>
+<h3 id='response-10'>Response</h3>
 <table><thead>
 <tr>
 <th>Status</th>
@@ -14294,7 +14350,7 @@ When changing a user's username, their token will be regenerated.
   <span class="nt">-H</span> <span class="s2">"Authorization: Bearer exJhbGciOiJI6IkpXVCJ9.eyJ1c2Vyi5NDEyODc4fQ.ZraBFohS4Tg39NszY"</span>
 </code></pre></div>
 <p>This endpoint removes a bookmark.</p>
-<h3 id='http-request-10'>HTTP Request</h3>
+<h3 id='http-request-11'>HTTP Request</h3>
 <p><code>DELETE http://abs.example.com/api/me/item/&lt;ID&gt;/bookmark/&lt;Time&gt;</code></p>
 <h3 id='url-parameters-7'>URL Parameters</h3>
 <table><thead>
@@ -14312,7 +14368,7 @@ When changing a user's username, their token will be regenerated.
 <td>The time (in seconds) the bookmark is at.</td>
 </tr>
 </tbody></table>
-<h3 id='response-10'>Response</h3>
+<h3 id='response-11'>Response</h3>
 <table><thead>
 <tr>
 <th>Status</th>
@@ -14349,7 +14405,7 @@ When changing a user's username, their token will be regenerated.
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div>
 <p>This endpoint changes your password.</p>
-<h3 id='http-request-11'>HTTP Request</h3>
+<h3 id='http-request-12'>HTTP Request</h3>
 <p><code>PATCH http://abs.example.com/api/me/password</code></p>
 <h3 id='parameters-5'>Parameters</h3>
 <table><thead>
@@ -14370,7 +14426,7 @@ When changing a user's username, their token will be regenerated.
 <td>Your new password.</td>
 </tr>
 </tbody></table>
-<h3 id='response-11'>Response</h3>
+<h3 id='response-12'>Response</h3>
 <table><thead>
 <tr>
 <th>Status</th>
@@ -14442,7 +14498,7 @@ This endpoint will soon be <strong>deprecated</strong>.
 </aside>
 
 <p>This endpoint syncs a mobile client&#39;s local media progress with the server. For any local media progress with a greater <code>lastUpdate</code> time than the <code>lastUpdate</code> time of the matching media progress on the server, the server&#39;s media progress is updated. If the server&#39;s <code>lastUpdate</code> time is greater, than the local media progress will be returned with the updated information.</p>
-<h3 id='http-request-12'>HTTP Request</h3>
+<h3 id='http-request-13'>HTTP Request</h3>
 <p><code>POST http://abs.example.com/api/me/sync-local-progress</code></p>
 <h3 id='parameters-6'>Parameters</h3>
 <table><thead>
@@ -14458,7 +14514,7 @@ This endpoint will soon be <strong>deprecated</strong>.
 <td>The client&#39;s local media progress.</td>
 </tr>
 </tbody></table>
-<h3 id='response-12'>Response</h3>
+<h3 id='response-13'>Response</h3>
 <table><thead>
 <tr>
 <th>Status</th>
@@ -14629,7 +14685,7 @@ This endpoint will soon be <strong>deprecated</strong>.
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div>
 <p>This endpoint retrieves library items that are in progress (started, not finished).</p>
-<h3 id='http-request-13'>HTTP Request</h3>
+<h3 id='http-request-14'>HTTP Request</h3>
 <p><code>GET http://abs.example.com/api/me/items-in-progress</code></p>
 <h3 id='optional-query-parameters'>Optional Query Parameters</h3>
 <table><thead>
@@ -14647,7 +14703,7 @@ This endpoint will soon be <strong>deprecated</strong>.
 <td>A limit for how many library items to return.</td>
 </tr>
 </tbody></table>
-<h3 id='response-13'>Response</h3>
+<h3 id='response-14'>Response</h3>
 <table><thead>
 <tr>
 <th>Status</th>
@@ -14744,7 +14800,7 @@ This endpoint will soon be <strong>deprecated</strong>.
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div>
 <p>This endpoint removes a series from your &quot;Continue Series&quot; shelf. Your user is returned.</p>
-<h3 id='http-request-14'>HTTP Request</h3>
+<h3 id='http-request-15'>HTTP Request</h3>
 <p><code>GET http://abs.example.com/api/me/series/&lt;ID&gt;/remove-from-continue-listening</code></p>
 <h3 id='url-parameters-8'>URL Parameters</h3>
 <table><thead>
@@ -14758,7 +14814,7 @@ This endpoint will soon be <strong>deprecated</strong>.
 <td>The ID of the series to remove from continue listening.</td>
 </tr>
 </tbody></table>
-<h3 id='response-14'>Response</h3>
+<h3 id='response-15'>Response</h3>
 <table><thead>
 <tr>
 <th>Status</th>
@@ -16368,6 +16424,129 @@ This endpoint will soon be <strong>deprecated</strong>.
 <td>No session with provided ID exists.</td>
 </tr>
 </tbody></table>
+<h2 id='sync-a-local-session'>Sync a Local Session</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">-X</span> POST <span class="s2">"https://abs.example.com/api/session/local"</span> <span class="se">\</span>
+  <span class="nt">-H</span> <span class="s2">"Authorization: Bearer exJhbGciOiJI6IkpXVCJ9.eyJ1c2Vyi5NDEyODc4fQ.ZraBFohS4Tg39NszY"</span> <span class="se">\</span>
+  <span class="nt">-H</span> <span class="s2">"Content-Type: application/json"</span> <span class="se">\</span>
+  <span class="nt">-d</span> <span class="s1">$'{"id": "play_local_i00492kps6ow4axlvq", "userId": "root", "libraryId": "lib_p9wkw2i85qy9oltijt", "libraryItemId": "li_bufnnmp4y5o2gbbxfm", "episodeId": "ep_lh6ko39pumnrma3dhv", "mediaType": "podcast", "mediaMetadata": {"title": "Welcome to Night Vale", "author": "Night Vale Presents", "description": "</span><span class="se">\\</span><span class="s1">n      Twice-monthly community updates for the small desert town of Night Vale, where every conspiracy theory is true. Turn on your radio and hide. Never listened before? It</span><span class="se">\'</span><span class="s1">s an ongoing radio show. Start with the current episode, and you</span><span class="se">\'</span><span class="s1">ll catch on in no time. Or, go right to Episode 1 if you wanna binge-listen.</span><span class="se">\\</span><span class="s1">n    ", "releaseDate": "2022-10-20T19:00:00Z", "genres": ["Science Fiction", "Podcasts", "Fiction"], "feedUrl": "http://feeds.nightvalepresents.com/welcometonightvalepodcast", "imageUrl": "https://is4-ssl.mzstatic.com/image/thumb/Podcasts125/v4/4a/31/35/4a3135d0-1fe7-a2d7-fb43-d182ec175402/mza_8232698753950666850.jpg/600x600bb.jpg", "itunesPageUrl": "https://podcasts.apple.com/us/podcast/welcome-to-night-vale/id536258179?uo=4", "itunesId": 536258179, "itunesArtistId": 718704794, "explicit": false, "language": null}, "chapters": [], "displayTitle": "1 - Pilot", "displayAuthor": "Night Vale Presents", "coverPath": "/metadata/items/li_bufnnmp4y5o2gbbxfm/cover.jpg", "duration": 1454.18449, "playMethod": 0, "mediaPlayer": "html5", "deviceInfo": {"ipAddress": "192.168.1.118", "browserName": "Firefox", "browserVersion": "106.0", "osName": "Linux", "osVersion": "x86_64", "serverVersion": "2.2.4"}, "date": "2022-11-16", "dayOfWeek": "Wednesday", "timeListening": 20, "startTime": 616.291374, "currentTime": 636.09262, "startedAt": 1668580247687, "updatedAt": 1668580396623}'</span>
+</code></pre></div>
+<p>This endpoint updates a local listening session on the server.</p>
+<h3 id='http-request-3'>HTTP Request</h3>
+<p><code>POST http://abs.example.com/api/session/local</code></p>
+<h3 id='parameters'>Parameters</h3>
+<p>Provide the local <a href="#playback-session">Playback Session</a> as the body.</p>
+<h3 id='response-3'>Response</h3>
+<table><thead>
+<tr>
+<th>Status</th>
+<th>Meaning</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>200</td>
+<td>OK</td>
+<td>Success</td>
+</tr>
+<tr>
+<td>500</td>
+<td>Internal Server Error</td>
+<td>Either the local session is already syncing, or the library item was not found.</td>
+</tr>
+</tbody></table>
+<h2 id='sync-local-sessions'>Sync Local Sessions</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">-X</span> POST <span class="s2">"https://abs.example.com/api/session/local-all"</span> <span class="se">\</span>
+  <span class="nt">-H</span> <span class="s2">"Authorization: Bearer exJhbGciOiJI6IkpXVCJ9.eyJ1c2Vyi5NDEyODc4fQ.ZraBFohS4Tg39NszY"</span> <span class="se">\</span>
+  <span class="nt">-H</span> <span class="s2">"Content-Type: application/json"</span> <span class="se">\</span>
+  <span class="nt">-d</span> <span class="s1">$'{"sessions": [{"id": "play_local_i00492kps6ow4axlvq", "userId": "root", "libraryId": "lib_p9wkw2i85qy9oltijt", "libraryItemId": "li_bufnnmp4y5o2gbbxfm", "episodeId": "ep_lh6ko39pumnrma3dhv", "mediaType": "podcast", "mediaMetadata": {"title": "Welcome to Night Vale", "author": "Night Vale Presents", "description": "</span><span class="se">\\</span><span class="s1">n      Twice-monthly community updates for the small desert town of Night Vale, where every conspiracy theory is true. Turn on your radio and hide. Never listened before? It</span><span class="se">\'</span><span class="s1">s an ongoing radio show. Start with the current episode, and you</span><span class="se">\'</span><span class="s1">ll catch on in no time. Or, go right to Episode 1 if you wanna binge-listen.</span><span class="se">\\</span><span class="s1">n    ", "releaseDate": "2022-10-20T19:00:00Z", "genres": ["Science Fiction", "Podcasts", "Fiction"], "feedUrl": "http://feeds.nightvalepresents.com/welcometonightvalepodcast", "imageUrl": "https://is4-ssl.mzstatic.com/image/thumb/Podcasts125/v4/4a/31/35/4a3135d0-1fe7-a2d7-fb43-d182ec175402/mza_8232698753950666850.jpg/600x600bb.jpg", "itunesPageUrl": "https://podcasts.apple.com/us/podcast/welcome-to-night-vale/id536258179?uo=4", "itunesId": 536258179, "itunesArtistId": 718704794, "explicit": false, "language": null}, "chapters": [], "displayTitle": "1 - Pilot", "displayAuthor": "Night Vale Presents", "coverPath": "/metadata/items/li_bufnnmp4y5o2gbbxfm/cover.jpg", "duration": 1454.18449, "playMethod": 0, "mediaPlayer": "html5", "deviceInfo": {"ipAddress": "192.168.1.118", "browserName": "Firefox", "browserVersion": "106.0", "osName": "Linux", "osVersion": "x86_64", "serverVersion": "2.2.4"}, "date": "2022-11-16", "dayOfWeek": "Wednesday", "timeListening": 20, "startTime": 616.291374, "currentTime": 636.09262, "startedAt": 1668580247687, "updatedAt": 1668580396623}]}'</span>
+</code></pre></div>
+<blockquote>
+<p>The above command returns JSON structured like this:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"results"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"play_local_i00492kps6ow4axlvq"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"success"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"progressSynced"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<p>This endpoint updates local listening sessions on the server.</p>
+<h3 id='http-request-4'>HTTP Request</h3>
+<p><code>POST http://abs.example.com/api/session/local-all</code></p>
+<h3 id='parameters-2'>Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>sessions</code></td>
+<td>Array of <a href="#playback-session">Playback Session</a></td>
+<td>The local playback sessions to sync.</td>
+</tr>
+</tbody></table>
+<h3 id='response-4'>Response</h3>
+<table><thead>
+<tr>
+<th>Status</th>
+<th>Meaning</th>
+<th>Description</th>
+<th>Schema</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>200</td>
+<td>OK</td>
+<td>Success</td>
+<td>See Below</td>
+</tr>
+</tbody></table>
+<h4 id='response-schema-2'>Response Schema</h4>
+<table><thead>
+<tr>
+<th>Attribute</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>results</code></td>
+<td>Array of <a href="#sync-local-session-result">Sync Local Session Result</a></td>
+<td>The results from the session syncs.</td>
+</tr>
+</tbody></table>
+<h4 id='sync-local-session-result'>Sync Local Session Result</h4>
+<table><thead>
+<tr>
+<th>Attribute</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>id</code></td>
+<td>String</td>
+<td>The ID of the playback session.</td>
+</tr>
+<tr>
+<td><code>success</code></td>
+<td>Boolean</td>
+<td>Whether the session was successfully synced.</td>
+</tr>
+<tr>
+<td><code>error</code></td>
+<td>String</td>
+<td>Will only exist if <code>success</code> is <code>false</code>. The error that occurred when syncing.</td>
+</tr>
+<tr>
+<td><code>progressSynced</code></td>
+<td>Boolean</td>
+<td>Will only exist if <code>success</code> is <code>true</code>. Whether the progress for the session&#39;s library item was updated.</td>
+</tr>
+</tbody></table>
 <h2 id='get-an-open-session'>Get an Open Session</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://abs.example.com/api/session/play_i00492kps6ow4axlvq"</span> <span class="se">\</span>
   <span class="nt">-H</span> <span class="s2">"Authorization: Bearer exJhbGciOiJI6IkpXVCJ9.eyJ1c2Vyi5NDEyODc4fQ.ZraBFohS4Tg39NszY"</span>
 </code></pre></div>
@@ -16614,7 +16793,7 @@ This endpoint will soon be <strong>deprecated</strong>.
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div>
 <p>This endpoint retrieves an open listening session.</p>
-<h3 id='http-request-3'>HTTP Request</h3>
+<h3 id='http-request-5'>HTTP Request</h3>
 <p><code>GET http://abs.example.com/api/session/&lt;ID&gt;</code></p>
 <h3 id='url-parameters-2'>URL Parameters</h3>
 <table><thead>
@@ -16628,7 +16807,7 @@ This endpoint will soon be <strong>deprecated</strong>.
 <td>The ID of the listening session.</td>
 </tr>
 </tbody></table>
-<h3 id='response-3'>Response</h3>
+<h3 id='response-5'>Response</h3>
 <table><thead>
 <tr>
 <th>Status</th>
@@ -16656,7 +16835,7 @@ This endpoint will soon be <strong>deprecated</strong>.
   <span class="nt">-d</span> <span class="s1">'{"currentTime": 636.09262, "timeListened": 5, "duration": 1454.18449}'</span>
 </code></pre></div>
 <p>This endpoint syncs the position of an open listening session from the client to the server and returns the session.</p>
-<h3 id='http-request-4'>HTTP Request</h3>
+<h3 id='http-request-6'>HTTP Request</h3>
 <p><code>POST http://abs.example.com/api/session/&lt;ID&gt;/sync</code></p>
 <h3 id='url-parameters-3'>URL Parameters</h3>
 <table><thead>
@@ -16670,7 +16849,7 @@ This endpoint will soon be <strong>deprecated</strong>.
 <td>The ID of the listening session.</td>
 </tr>
 </tbody></table>
-<h3 id='parameters'>Parameters</h3>
+<h3 id='parameters-3'>Parameters</h3>
 <table><thead>
 <tr>
 <th>Parameter</th>
@@ -16694,7 +16873,7 @@ This endpoint will soon be <strong>deprecated</strong>.
 <td>The total duration (in seconds) of the playing item.</td>
 </tr>
 </tbody></table>
-<h3 id='response-4'>Response</h3>
+<h3 id='response-6'>Response</h3>
 <table><thead>
 <tr>
 <th>Status</th>
@@ -16724,7 +16903,7 @@ This endpoint will soon be <strong>deprecated</strong>.
   <span class="nt">-d</span> <span class="s1">'{"currentTime": 636.09262, "timeListened": 5, "duration": 1454.18449}'</span>
 </code></pre></div>
 <p>This endpoint closes an open listening session. Optionally provide sync data to update the session before closing it.</p>
-<h3 id='http-request-5'>HTTP Request</h3>
+<h3 id='http-request-7'>HTTP Request</h3>
 <p><code>POST http://abs.example.com/api/session/&lt;ID&gt;/close</code></p>
 <h3 id='url-parameters-4'>URL Parameters</h3>
 <table><thead>
@@ -16762,7 +16941,7 @@ This endpoint will soon be <strong>deprecated</strong>.
 <td>The total duration (in seconds) of the playing item.</td>
 </tr>
 </tbody></table>
-<h3 id='response-5'>Response</h3>
+<h3 id='response-7'>Response</h3>
 <table><thead>
 <tr>
 <th>Status</th>
@@ -16779,35 +16958,6 @@ This endpoint will soon be <strong>deprecated</strong>.
 <td>404</td>
 <td>Not Found</td>
 <td>No listening session with the provided ID is open, or the session belongs to another user.</td>
-</tr>
-</tbody></table>
-<h2 id='sync-a-local-session'>Sync a Local Session</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">-X</span> POST <span class="s2">"https://abs.example.com/api/session/local"</span> <span class="se">\</span>
-  <span class="nt">-H</span> <span class="s2">"Authorization: Bearer exJhbGciOiJI6IkpXVCJ9.eyJ1c2Vyi5NDEyODc4fQ.ZraBFohS4Tg39NszY"</span> <span class="se">\</span>
-  <span class="nt">-H</span> <span class="s2">"Content-Type: application/json"</span> <span class="se">\</span>
-  <span class="nt">-d</span> <span class="s1">$'{"id": "play_local_i00492kps6ow4axlvq", "userId": "root", "libraryId": "lib_p9wkw2i85qy9oltijt", "libraryItemId": "li_bufnnmp4y5o2gbbxfm", "episodeId": "ep_lh6ko39pumnrma3dhv", "mediaType": "podcast", "mediaMetadata": {"title": "Welcome to Night Vale", "author": "Night Vale Presents", "description": "</span><span class="se">\\</span><span class="s1">n      Twice-monthly community updates for the small desert town of Night Vale, where every conspiracy theory is true. Turn on your radio and hide. Never listened before? It</span><span class="se">\'</span><span class="s1">s an ongoing radio show. Start with the current episode, and you</span><span class="se">\'</span><span class="s1">ll catch on in no time. Or, go right to Episode 1 if you wanna binge-listen.</span><span class="se">\\</span><span class="s1">n    ", "releaseDate": "2022-10-20T19:00:00Z", "genres": ["Science Fiction", "Podcasts", "Fiction"], "feedUrl": "http://feeds.nightvalepresents.com/welcometonightvalepodcast", "imageUrl": "https://is4-ssl.mzstatic.com/image/thumb/Podcasts125/v4/4a/31/35/4a3135d0-1fe7-a2d7-fb43-d182ec175402/mza_8232698753950666850.jpg/600x600bb.jpg", "itunesPageUrl": "https://podcasts.apple.com/us/podcast/welcome-to-night-vale/id536258179?uo=4", "itunesId": 536258179, "itunesArtistId": 718704794, "explicit": false, "language": null}, "chapters": [], "displayTitle": "1 - Pilot", "displayAuthor": "Night Vale Presents", "coverPath": "/metadata/items/li_bufnnmp4y5o2gbbxfm/cover.jpg", "duration": 1454.18449, "playMethod": 0, "mediaPlayer": "html5", "deviceInfo": {"ipAddress": "192.168.1.118", "browserName": "Firefox", "browserVersion": "106.0", "osName": "Linux", "osVersion": "x86_64", "serverVersion": "2.2.4"}, "date": "2022-11-16", "dayOfWeek": "Wednesday", "timeListening": 20, "startTime": 616.291374, "currentTime": 636.09262, "startedAt": 1668580247687, "updatedAt": 1668580396623}'</span>
-</code></pre></div>
-<p>This endpoint updates a local listening session on the server.</p>
-<h3 id='http-request-6'>HTTP Request</h3>
-<p><code>POST http://abs.example.com/api/session/local</code></p>
-<h3 id='parameters-2'>Parameters</h3>
-<p>Provide the local <a href="#playback-session">Playback Session</a> as the body.</p>
-<h3 id='response-6'>Response</h3>
-<table><thead>
-<tr>
-<th>Status</th>
-<th>Meaning</th>
-<th>Description</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>200</td>
-<td>OK</td>
-<td>Success</td>
-</tr>
-<tr>
-<td>500</td>
-<td>Internal Server Error</td>
-<td>Either the local session is already syncing, or the library item was not found.</td>
 </tr>
 </tbody></table>
 <h1 id='podcasts'>Podcasts</h1><h2 id='create-a-podcast'>Create a Podcast</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">-X</span> POST <span class="s2">"https://abs.example.com/api/podcasts"</span> <span class="se">\</span>
@@ -19217,6 +19367,34 @@ The <code>id</code> parameter must be included for the notification to be saved.
   </span><span class="p">}</span><span class="w">
 </span><span class="p">]</span><span class="w">
 </span></code></pre></div>
+<blockquote>
+<p>Metadata Provider: FantLab</p>
+</blockquote>
+<div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://abs.example.com/api/search/books?title=Wizard's%20First%20Rule&amp;author=Terry%20Goodkind&amp;provider=fantlab"</span> <span class="se">\</span>
+  <span class="nt">-H</span> <span class="s2">"Authorization: Bearer exJhbGciOiJI6IkpXVCJ9.eyJ1c2Vyi5NDEyODc4fQ.ZraBFohS4Tg39NszY"</span>
+</code></pre></div>
+<blockquote>
+<p>The above command returns JSON structured like this:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">[</span><span class="w">
+  </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">3617</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Первое правило волшебника"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"subtitle"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"author"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Терри Гудкайнд"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"publisher"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"publishedYear"</span><span class="p">:</span><span class="w"> </span><span class="mi">1994</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Еще вчера молодой Ричард был всего лишь лесным проводником, а нынче ему выпал на долю тяжкий жребий Искателя Истины. Тяжкий, ибо магия не приносит радости, а за истину, как и за могущество, расплачиваются дорогой ценой. Тяжкий - ибо Искателю Истины надлежит вступить с величайшим из черных магов трех королевств, безжалостным Даркеном Ралом, повелителем Д'Хары, в смертельную схватку за обладание тремя волшебными шкатулками Одена, одна из которых дарует бессмертие, вторая - смерть, а третья - несет гибель всему живому..."</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"cover"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://fantlab.ru/images/editions/big/11286?r=1492542872"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"genres"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+      </span><span class="s2">"Фэнтези"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"Героическое фэнтези"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"Эпическое фэнтези"</span><span class="w">
+    </span><span class="p">],</span><span class="w">
+    </span><span class="nl">"isbn"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">]</span><span class="w">
+</span></code></pre></div>
 <p>This endpoint searches a metadata provider for a book. An array of book search results is returned.</p>
 <h3 id='http-request-2'>HTTP Request</h3>
 <p><code>GET http://abs.example.com/api/search/books</code></p>
@@ -19545,6 +19723,65 @@ The <code>id</code> parameter must be included for the notification to be saved.
 <td><code>rating</code></td>
 <td>String or null</td>
 <td>The book&#39;s Audible rating.</td>
+</tr>
+</tbody></table>
+<h4 id='metadata-provider-fantlab'>Metadata Provider: FantLab</h4>
+<table><thead>
+<tr>
+<th>Attribute</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>id</code></td>
+<td>Integer</td>
+<td>The book&#39;s FantLab ID.</td>
+</tr>
+<tr>
+<td><code>title</code></td>
+<td>String</td>
+<td>The book&#39;s title.</td>
+</tr>
+<tr>
+<td><code>subtitle</code></td>
+<td>String or null</td>
+<td>The book&#39;s subtitle.</td>
+</tr>
+<tr>
+<td><code>author</code></td>
+<td>String or null</td>
+<td>The book&#39;s author.</td>
+</tr>
+<tr>
+<td><code>publisher</code></td>
+<td>String or null</td>
+<td>The book&#39;s publisher.</td>
+</tr>
+<tr>
+<td><code>publishedYear</code></td>
+<td>Integer or null</td>
+<td>The book&#39;s published year.</td>
+</tr>
+<tr>
+<td><code>description</code></td>
+<td>String or null</td>
+<td>The book&#39;s description.</td>
+</tr>
+<tr>
+<td><code>cover</code></td>
+<td>String or null</td>
+<td>The URL of the book&#39;s cover image.</td>
+</tr>
+<tr>
+<td><code>genres</code></td>
+<td>Array of String</td>
+<td>The book&#39;s genres.</td>
+</tr>
+<tr>
+<td><code>isbn</code></td>
+<td>String or null</td>
+<td>The book&#39;s ISBN.</td>
 </tr>
 </tbody></table>
 <h2 id='search-for-podcasts'>Search for Podcasts</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://abs.example.com/api/search/podcast?term=Welcome%20To%20Night%20Vale"</span> <span class="se">\</span>
@@ -20767,6 +21004,11 @@ The <code>id</code> parameter must be included for the notification to be saved.
 <td>200</td>
 <td>OK</td>
 <td>Success</td>
+</tr>
+<tr>
+<td>400</td>
+<td>Bad Request</td>
+<td>No files were provided.</td>
 </tr>
 <tr>
 <td>403</td>
@@ -22451,6 +22693,10 @@ Events marked with &quot;<strong>Admin Only</strong>&quot; are only sent to sock
 <tr>
 <td><code>audible.es</code></td>
 <td>Audible.es</td>
+</tr>
+<tr>
+<td><code>fantlab</code></td>
+<td>FantLab.ru</td>
 </tr>
 </tbody></table>
 <h2 id='podcasts'>Podcasts</h2>
