@@ -192,6 +192,37 @@ curl "https://abs.example.com/api/search/books?title=Wizard's%20First%20Rule&aut
 ]
 ```
 
+
+> Metadata Provider: FantLab
+
+```shell
+curl "https://abs.example.com/api/search/books?title=Wizard's%20First%20Rule&author=Terry%20Goodkind&provider=fantlab" \
+  -H "Authorization: Bearer exJhbGciOiJI6IkpXVCJ9.eyJ1c2Vyi5NDEyODc4fQ.ZraBFohS4Tg39NszY"
+```
+
+> The above command returns JSON structured like this:
+
+```json
+[
+  {
+    "id": 3617,
+    "title": "Первое правило волшебника",
+    "subtitle": null,
+    "author": "Терри Гудкайнд",
+    "publisher": null,
+    "publishedYear": 1994,
+    "description": "Еще вчера молодой Ричард был всего лишь лесным проводником, а нынче ему выпал на долю тяжкий жребий Искателя Истины. Тяжкий, ибо магия не приносит радости, а за истину, как и за могущество, расплачиваются дорогой ценой. Тяжкий - ибо Искателю Истины надлежит вступить с величайшим из черных магов трех королевств, безжалостным Даркеном Ралом, повелителем Д'Хары, в смертельную схватку за обладание тремя волшебными шкатулками Одена, одна из которых дарует бессмертие, вторая - смерть, а третья - несет гибель всему живому...",
+    "cover": "https://fantlab.ru/images/editions/big/11286?r=1492542872",
+    "genres": [
+      "Фэнтези",
+      "Героическое фэнтези",
+      "Эпическое фэнтези"
+    ],
+    "isbn": null
+  }
+]
+```
+
 This endpoint searches a metadata provider for a book. An array of book search results is returned.
 
 ### HTTP Request
@@ -284,6 +315,21 @@ Attribute | Type | Description
 `duration` | Integer | The total duration (in minutes) of the book.
 `region` | String or null | The Audible region that was searched.
 `rating` | String or null | The book's Audible rating.
+
+#### Metadata Provider: FantLab
+
+Attribute | Type | Description
+--------- | ---- | -----------
+`id` | Integer | The book's FantLab ID.
+`title` | String | The book's title.
+`subtitle` | String or null | The book's subtitle.
+`author` | String or null | The book's author.
+`publisher` | String or null | The book's publisher.
+`publishedYear` | Integer or null | The book's published year.
+`description` | String or null | The book's description.
+`cover` | String or null | The URL of the book's cover image.
+`genres` | Array of String | The book's genres.
+`isbn` | String or null | The book's ISBN.
 
 
 ## Search for Podcasts
