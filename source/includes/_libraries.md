@@ -554,6 +554,66 @@ Status | Meaning | Description
 404 | Not Found | The user cannot access the library, or no library with the provided ID exists.
 
 
+## Get a Library's Podcast Episode Downloads
+
+```shell
+curl "https://abs.example.com/api/libraries/lib_p9wkw2i85qy9oltijt/episode-downloads" \
+  -H "Authorization: Bearer exJhbGciOiJI6IkpXVCJ9.eyJ1c2Vyi5NDEyODc4fQ.ZraBFohS4Tg39NszY"
+```
+
+> The above command returns JSON structured like this:
+
+```json
+{
+  "currentDownload": {
+    "id": "epdl_pgv4d47j6dtqpk4r0v",
+    "episodeDisplayTitle": "2 - Glow Cloud",
+    "url": "https://www.podtrac.com/pts/redirect.mp3/dovetail.prxu.org/_/126/cb1dd91f-5d8d-42e9-ba22-14ff335d2cbb/2_Glow_Cloud.mp3",
+    "libraryItemId": "li_bufnnmp4y5o2gbbxfm",
+    "libraryId": "lib_p9wkw2i85qy9oltijt",
+    "isFinished": false,
+    "failed": false,
+    "startedAt": null,
+    "createdAt": 1668122813409,
+    "finishedAt": null,
+    "podcastTitle": "Welcome to Night Vale",
+    "podcastExplicit": false,
+    "season": "",
+    "episode": "",
+    "episodeType": "full",
+    "publishedAt": 1341144000000
+  },
+  "queue": []
+}
+```
+
+This endpoint retrieves the podcast episodes downloads of the library.
+
+### HTTP Request
+
+`GET http://abs.example.com/api/libraries/<ID>/episode-downloads`
+
+### URL Parameters
+
+Parameter | Description
+--------- | -----------
+ID | The ID of the library.
+
+### Response
+
+Status | Meaning | Description | Schema
+------ | ------- | ----------- | ------
+200 | OK | Success | See below.
+404 | Not Found | No library with the given ID exists, or the user cannot access it. |
+
+#### Response Schema
+
+Attribute | Type | Description
+--------- | ---- | -----------
+`currentDownload` | [Podcast Episode Download](#podcast-episode-download) Object | The podcast episode currently being downloaded. Will only exist if an episode download is in progress.
+`queue` | Array of [Podcast Episode Download](#podcast-episode-download) | The podcast episodes in the queue to be downloaded.
+
+
 ## Get a Library's Series
 
 ```shell
