@@ -366,6 +366,9 @@
                     <a href="#remove-a-library-39-s-items-with-issues" class="toc-h2 toc-link" data-title="Remove a Library's Items With Issues">Remove a Library's Items With Issues</a>
                   </li>
                   <li>
+                    <a href="#get-a-library-39-s-podcast-episode-downloads" class="toc-h2 toc-link" data-title="Get a Library's Podcast Episode Downloads">Get a Library's Podcast Episode Downloads</a>
+                  </li>
+                  <li>
                     <a href="#get-a-library-39-s-series" class="toc-h2 toc-link" data-title="Get a Library's Series">Get a Library's Series</a>
                   </li>
                   <li>
@@ -734,6 +737,9 @@
                   </li>
                   <li>
                     <a href="#match-a-podcast-39-s-episodes" class="toc-h2 toc-link" data-title="Match a Podcast's Episodes">Match a Podcast's Episodes</a>
+                  </li>
+                  <li>
+                    <a href="#get-a-podcast-episode" class="toc-h2 toc-link" data-title="Get a Podcast Episode">Get a Podcast Episode</a>
                   </li>
                   <li>
                     <a href="#update-a-podcast-episode" class="toc-h2 toc-link" data-title="Update a Podcast Episode">Update a Podcast Episode</a>
@@ -2331,6 +2337,90 @@ Your API token will be much longer then the one in the examples.
 <td>The user cannot access the library, or no library with the provided ID exists.</td>
 </tr>
 </tbody></table>
+<h2 id='get-a-library-39-s-podcast-episode-downloads'>Get a Library&#39;s Podcast Episode Downloads</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://abs.example.com/api/libraries/lib_p9wkw2i85qy9oltijt/episode-downloads"</span> <span class="se">\</span>
+  <span class="nt">-H</span> <span class="s2">"Authorization: Bearer exJhbGciOiJI6IkpXVCJ9.eyJ1c2Vyi5NDEyODc4fQ.ZraBFohS4Tg39NszY"</span>
+</code></pre></div>
+<blockquote>
+<p>The above command returns JSON structured like this:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"currentDownload"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"epdl_pgv4d47j6dtqpk4r0v"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"episodeDisplayTitle"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2 - Glow Cloud"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://www.podtrac.com/pts/redirect.mp3/dovetail.prxu.org/_/126/cb1dd91f-5d8d-42e9-ba22-14ff335d2cbb/2_Glow_Cloud.mp3"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"libraryItemId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"li_bufnnmp4y5o2gbbxfm"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"libraryId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"lib_p9wkw2i85qy9oltijt"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"isFinished"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"failed"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"startedAt"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"createdAt"</span><span class="p">:</span><span class="w"> </span><span class="mi">1668122813409</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"finishedAt"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"podcastTitle"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Welcome to Night Vale"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"podcastExplicit"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"season"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"episode"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"episodeType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"full"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"publishedAt"</span><span class="p">:</span><span class="w"> </span><span class="mi">1341144000000</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="nl">"queue"</span><span class="p">:</span><span class="w"> </span><span class="p">[]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<p>This endpoint retrieves the podcast episodes downloads of the library.</p>
+<h3 id='http-request-8'>HTTP Request</h3>
+<p><code>GET http://abs.example.com/api/libraries/&lt;ID&gt;/episode-downloads</code></p>
+<h3 id='url-parameters-6'>URL Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>ID</td>
+<td>The ID of the library.</td>
+</tr>
+</tbody></table>
+<h3 id='response-8'>Response</h3>
+<table><thead>
+<tr>
+<th>Status</th>
+<th>Meaning</th>
+<th>Description</th>
+<th>Schema</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>200</td>
+<td>OK</td>
+<td>Success</td>
+<td>See below.</td>
+</tr>
+<tr>
+<td>404</td>
+<td>Not Found</td>
+<td>No library with the given ID exists, or the user cannot access it.</td>
+<td></td>
+</tr>
+</tbody></table>
+<h4 id='response-schema-4'>Response Schema</h4>
+<table><thead>
+<tr>
+<th>Attribute</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>currentDownload</code></td>
+<td><a href="#podcast-episode-download">Podcast Episode Download</a> Object</td>
+<td>The podcast episode currently being downloaded. Will only exist if an episode download is in progress.</td>
+</tr>
+<tr>
+<td><code>queue</code></td>
+<td>Array of <a href="#podcast-episode-download">Podcast Episode Download</a></td>
+<td>The podcast episodes in the queue to be downloaded.</td>
+</tr>
+</tbody></table>
 <h2 id='get-a-library-39-s-series'>Get a Library&#39;s Series</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://abs.example.com/api/libraries/lib_c1u6t4p45c35rf0nzd/series?minified=1"</span> <span class="se">\</span>
   <span class="nt">-H</span> <span class="s2">"Authorization: Bearer exJhbGciOiJI6IkpXVCJ9.eyJ1c2Vyi5NDEyODc4fQ.ZraBFohS4Tg39NszY"</span>
 </code></pre></div>
@@ -2415,9 +2505,9 @@ Your API token will be much longer then the one in the examples.
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div>
 <p>This endpoint returns a library&#39;s series.</p>
-<h3 id='http-request-8'>HTTP Request</h3>
+<h3 id='http-request-9'>HTTP Request</h3>
 <p><code>GET https://abs.example.com/api/libraries/&lt;ID&gt;/series</code></p>
-<h3 id='url-parameters-6'>URL Parameters</h3>
+<h3 id='url-parameters-7'>URL Parameters</h3>
 <table><thead>
 <tr>
 <th>Parameter</th>
@@ -2473,7 +2563,7 @@ Your API token will be much longer then the one in the examples.
 <td>A comma separated list of what to include with the library items. The only current option is <code>rssfeed</code>.</td>
 </tr>
 </tbody></table>
-<h3 id='response-8'>Response</h3>
+<h3 id='response-9'>Response</h3>
 <table><thead>
 <tr>
 <th>Status</th>
@@ -2495,7 +2585,7 @@ Your API token will be much longer then the one in the examples.
 <td></td>
 </tr>
 </tbody></table>
-<h4 id='response-schema-4'>Response Schema</h4>
+<h4 id='response-schema-5'>Response Schema</h4>
 <table><thead>
 <tr>
 <th>Attribute</th>
@@ -2630,9 +2720,9 @@ Your API token will be much longer then the one in the examples.
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div>
 <p>This endpoint returns a library&#39;s collections.</p>
-<h3 id='http-request-9'>HTTP Request</h3>
+<h3 id='http-request-10'>HTTP Request</h3>
 <p><code>GET https://abs.example.com/api/libraries/&lt;ID&gt;/collections</code></p>
-<h3 id='url-parameters-7'>URL Parameters</h3>
+<h3 id='url-parameters-8'>URL Parameters</h3>
 <table><thead>
 <tr>
 <th>Parameter</th>
@@ -2692,7 +2782,7 @@ Your API token will be much longer then the one in the examples.
 <!-- TODO: remove warning once sorting and filtering are implemented in LibraryController.getCollectionsForLibrary -->
 
 <aside class="warning">Sorting and filtering are not yet implemented.</aside>
-<h3 id='response-9'>Response</h3>
+<h3 id='response-10'>Response</h3>
 <table><thead>
 <tr>
 <th>Status</th>
@@ -2714,7 +2804,7 @@ Your API token will be much longer then the one in the examples.
 <td></td>
 </tr>
 </tbody></table>
-<h4 id='response-schema-5'>Response Schema</h4>
+<h4 id='response-schema-6'>Response Schema</h4>
 <table><thead>
 <tr>
 <th>Attribute</th>
@@ -3058,9 +3148,9 @@ Your API token will be much longer then the one in the examples.
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div>
 <p>This endpoint returns a library&#39;s playlists for the authenticated user.</p>
-<h3 id='http-request-10'>HTTP Request</h3>
+<h3 id='http-request-11'>HTTP Request</h3>
 <p><code>GET https://abs.example.com/api/libraries/&lt;ID&gt;/playlists</code></p>
-<h3 id='url-parameters-8'>URL Parameters</h3>
+<h3 id='url-parameters-9'>URL Parameters</h3>
 <table><thead>
 <tr>
 <th>Parameter</th>
@@ -3094,7 +3184,7 @@ Your API token will be much longer then the one in the examples.
 <td>The page number (0 indexed) to request. If there is no limit applied, then page will have no effect and all results will be returned.</td>
 </tr>
 </tbody></table>
-<h3 id='response-10'>Response</h3>
+<h3 id='response-11'>Response</h3>
 <table><thead>
 <tr>
 <th>Status</th>
@@ -3116,7 +3206,7 @@ Your API token will be much longer then the one in the examples.
 <td></td>
 </tr>
 </tbody></table>
-<h4 id='response-schema-6'>Response Schema</h4>
+<h4 id='response-schema-7'>Response Schema</h4>
 <table><thead>
 <tr>
 <th>Attribute</th>
@@ -3552,9 +3642,9 @@ Your API token will be much longer then the one in the examples.
 </span><span class="p">]</span><span class="w">
 </span></code></pre></div>
 <p>This endpoint returns a library&#39;s personalized view for home page display.</p>
-<h3 id='http-request-11'>HTTP Request</h3>
+<h3 id='http-request-12'>HTTP Request</h3>
 <p><code>GET https://abs.example.com/api/libraries/&lt;ID&gt;/personalized</code></p>
-<h3 id='url-parameters-9'>URL Parameters</h3>
+<h3 id='url-parameters-10'>URL Parameters</h3>
 <table><thead>
 <tr>
 <th>Parameter</th>
@@ -3585,7 +3675,7 @@ Your API token will be much longer then the one in the examples.
 <td>A comma separated list of what to include with the library items. The only current option is <code>rssfeed</code>.</td>
 </tr>
 </tbody></table>
-<h3 id='response-11'>Response</h3>
+<h3 id='response-12'>Response</h3>
 <table><thead>
 <tr>
 <th>Status</th>
@@ -3771,9 +3861,9 @@ Your API token will be much longer then the one in the examples.
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div>
 <p>This endpoint returns a library&#39;s filter data that can be used for displaying a filter list.</p>
-<h3 id='http-request-12'>HTTP Request</h3>
+<h3 id='http-request-13'>HTTP Request</h3>
 <p><code>GET https://abs.example.com/api/libraries/&lt;ID&gt;/filterdata</code></p>
-<h3 id='url-parameters-10'>URL Parameters</h3>
+<h3 id='url-parameters-11'>URL Parameters</h3>
 <table><thead>
 <tr>
 <th>Parameter</th>
@@ -3785,7 +3875,7 @@ Your API token will be much longer then the one in the examples.
 <td>The ID of the library.</td>
 </tr>
 </tbody></table>
-<h3 id='response-12'>Response</h3>
+<h3 id='response-13'>Response</h3>
 <table><thead>
 <tr>
 <th>Status</th>
@@ -4096,9 +4186,9 @@ Your API token will be much longer then the one in the examples.
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div>
 <p>This endpoint searches a library for the query and returns the results.</p>
-<h3 id='http-request-13'>HTTP Request</h3>
+<h3 id='http-request-14'>HTTP Request</h3>
 <p><code>GET https://abs.example.com/api/libraries/&lt;ID&gt;/search?&lt;q&gt;</code></p>
-<h3 id='url-parameters-11'>URL Parameters</h3>
+<h3 id='url-parameters-12'>URL Parameters</h3>
 <table><thead>
 <tr>
 <th>Parameter</th>
@@ -4132,7 +4222,7 @@ Your API token will be much longer then the one in the examples.
 <td>Limit the number of returned results.</td>
 </tr>
 </tbody></table>
-<h3 id='response-13'>Response</h3>
+<h3 id='response-14'>Response</h3>
 <table><thead>
 <tr>
 <th>Status</th>
@@ -4160,7 +4250,7 @@ Your API token will be much longer then the one in the examples.
 <td></td>
 </tr>
 </tbody></table>
-<h4 id='response-schema-7'>Response Schema</h4>
+<h4 id='response-schema-8'>Response Schema</h4>
 <table><thead>
 <tr>
 <th>Attribute</th>
@@ -4233,6 +4323,13 @@ Your API token will be much longer then the one in the examples.
   </span><span class="p">],</span><span class="w">
   </span><span class="nl">"numAudioTrack"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
   </span><span class="nl">"totalSize"</span><span class="p">:</span><span class="w"> </span><span class="mi">268990279</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"largestItems"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"li_8gch9ve09orgn4fdz8"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Wizards First Rule"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"size"</span><span class="p">:</span><span class="w"> </span><span class="mi">268990279</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">],</span><span class="w">
   </span><span class="nl">"authorsWithCount"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
     </span><span class="p">{</span><span class="w">
       </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"aut_z3leimgybl7uf3y4ab"</span><span class="p">,</span><span class="w">
@@ -4249,9 +4346,9 @@ Your API token will be much longer then the one in the examples.
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div>
 <p>This endpoint returns a library&#39;s stats.</p>
-<h3 id='http-request-14'>HTTP Request</h3>
+<h3 id='http-request-15'>HTTP Request</h3>
 <p><code>GET https://abs.example.com/api/libraries/&lt;ID&gt;/stats</code></p>
-<h3 id='url-parameters-12'>URL Parameters</h3>
+<h3 id='url-parameters-13'>URL Parameters</h3>
 <table><thead>
 <tr>
 <th>Parameter</th>
@@ -4263,7 +4360,7 @@ Your API token will be much longer then the one in the examples.
 <td>The ID of the library.</td>
 </tr>
 </tbody></table>
-<h3 id='response-14'>Response</h3>
+<h3 id='response-15'>Response</h3>
 <table><thead>
 <tr>
 <th>Status</th>
@@ -4285,7 +4382,7 @@ Your API token will be much longer then the one in the examples.
 <td></td>
 </tr>
 </tbody></table>
-<h4 id='response-schema-8'>Response Schema</h4>
+<h4 id='response-schema-9'>Response Schema</h4>
 <table><thead>
 <tr>
 <th>Attribute</th>
@@ -4315,7 +4412,7 @@ Your API token will be much longer then the one in the examples.
 </tr>
 <tr>
 <td><code>longestItems</code></td>
-<td>Array of Library Item Stats (See Below)</td>
+<td>Array of <a href="#library-item-duration-stats">Library Item Duration Stats</a></td>
 <td>The items with the longest durations in the library.</td>
 </tr>
 <tr>
@@ -4329,17 +4426,22 @@ Your API token will be much longer then the one in the examples.
 <td>The total size (in bytes) of all items in the library.</td>
 </tr>
 <tr>
+<td><code>largestItems</code></td>
+<td>Array of <a href="#library-item-size-stats">Library Item Size Stats</a></td>
+<td>The items with the largest size in the library.</td>
+</tr>
+<tr>
 <td><code>authorsWithCount</code></td>
-<td>Array of Author Stats (See Below)</td>
+<td>Array of <a href="#author-stats">Author Stats</a></td>
 <td>The authors in the library.</td>
 </tr>
 <tr>
 <td><code>genresWithCount</code></td>
-<td>Array of Genre Stats (See Below)</td>
+<td>Array of <a href="#genre-stats">Genre Stats</a></td>
 <td>The genres in the library.</td>
 </tr>
 </tbody></table>
-<h4 id='library-item-stats'>Library Item Stats</h4>
+<h4 id='library-item-duration-stats'>Library Item Duration Stats</h4>
 <table><thead>
 <tr>
 <th>Attribute</th>
@@ -4361,6 +4463,30 @@ Your API token will be much longer then the one in the examples.
 <td><code>duration</code></td>
 <td>Float</td>
 <td>The duration (in seconds) of the library item.</td>
+</tr>
+</tbody></table>
+<h4 id='library-item-size-stats'>Library Item Size Stats</h4>
+<table><thead>
+<tr>
+<th>Attribute</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>id</code></td>
+<td>String</td>
+<td>The ID of the library item.</td>
+</tr>
+<tr>
+<td><code>title</code></td>
+<td>String</td>
+<td>The title of the library item.</td>
+</tr>
+<tr>
+<td><code>size</code></td>
+<td>Integer</td>
+<td>The size (in bytes) of the library item.</td>
 </tr>
 </tbody></table>
 <h4 id='author-stats'>Author Stats</h4>
@@ -4428,9 +4554,9 @@ Your API token will be much longer then the one in the examples.
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div>
 <p>This endpoint returns a library&#39;s authors.</p>
-<h3 id='http-request-15'>HTTP Request</h3>
+<h3 id='http-request-16'>HTTP Request</h3>
 <p><code>GET https://abs.example.com/api/libraries/&lt;ID&gt;/authors</code></p>
-<h3 id='url-parameters-13'>URL Parameters</h3>
+<h3 id='url-parameters-14'>URL Parameters</h3>
 <table><thead>
 <tr>
 <th>Parameter</th>
@@ -4442,7 +4568,7 @@ Your API token will be much longer then the one in the examples.
 <td>The ID of the library.</td>
 </tr>
 </tbody></table>
-<h3 id='response-15'>Response</h3>
+<h3 id='response-16'>Response</h3>
 <table><thead>
 <tr>
 <th>Status</th>
@@ -4464,7 +4590,7 @@ Your API token will be much longer then the one in the examples.
 <td></td>
 </tr>
 </tbody></table>
-<h4 id='response-schema-9'>Response Schema</h4>
+<h4 id='response-schema-10'>Response Schema</h4>
 <table><thead>
 <tr>
 <th>Attribute</th>
@@ -4482,9 +4608,9 @@ Your API token will be much longer then the one in the examples.
   <span class="nt">-H</span> <span class="s2">"Authorization: Bearer exJhbGciOiJI6IkpXVCJ9.eyJ1c2Vyi5NDEyODc4fQ.ZraBFohS4Tg39NszY"</span>
 </code></pre></div>
 <p>This endpoint matches all items in a library using quick match. Quick match populates empty book details and the cover with the first book result from the library&#39;s default metadata provider. Does not overwrite details unless the &quot;Prefer matched metadata&quot; server setting is enabled.</p>
-<h3 id='http-request-16'>HTTP Request</h3>
+<h3 id='http-request-17'>HTTP Request</h3>
 <p><code>GET https://abs.example.com/api/libraries/&lt;ID&gt;/matchall</code></p>
-<h3 id='url-parameters-14'>URL Parameters</h3>
+<h3 id='url-parameters-15'>URL Parameters</h3>
 <table><thead>
 <tr>
 <th>Parameter</th>
@@ -4496,7 +4622,7 @@ Your API token will be much longer then the one in the examples.
 <td>The ID of the library.</td>
 </tr>
 </tbody></table>
-<h3 id='response-16'>Response</h3>
+<h3 id='response-17'>Response</h3>
 <table><thead>
 <tr>
 <th>Status</th>
@@ -4524,9 +4650,9 @@ Your API token will be much longer then the one in the examples.
   <span class="nt">-H</span> <span class="s2">"Authorization: Bearer exJhbGciOiJI6IkpXVCJ9.eyJ1c2Vyi5NDEyODc4fQ.ZraBFohS4Tg39NszY"</span>
 </code></pre></div>
 <p>This endpoint starts a scan of a library&#39;s folders for new library items and changes to existing library items.</p>
-<h3 id='http-request-17'>HTTP Request</h3>
+<h3 id='http-request-18'>HTTP Request</h3>
 <p><code>POST https://abs.example.com/api/libraries/&lt;ID&gt;/scan</code></p>
-<h3 id='url-parameters-15'>URL Parameters</h3>
+<h3 id='url-parameters-16'>URL Parameters</h3>
 <table><thead>
 <tr>
 <th>Parameter</th>
@@ -4552,7 +4678,7 @@ Your API token will be much longer then the one in the examples.
 <td>Whether to force a rescan for all of a library&#39;s items. <code>0</code> for false, <code>1</code> for true.</td>
 </tr>
 </tbody></table>
-<h3 id='response-17'>Response</h3>
+<h3 id='response-18'>Response</h3>
 <table><thead>
 <tr>
 <th>Status</th>
@@ -4704,9 +4830,9 @@ Your API token will be much longer then the one in the examples.
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div>
 <p>This endpoint returns a library&#39;s newest unfinished podcast episodes, sorted by episode publish time.</p>
-<h3 id='http-request-18'>HTTP Request</h3>
+<h3 id='http-request-19'>HTTP Request</h3>
 <p><code>GET https://abs.example.com/api/libraries/&lt;ID&gt;/recent-episodes</code></p>
-<h3 id='url-parameters-16'>URL Parameters</h3>
+<h3 id='url-parameters-17'>URL Parameters</h3>
 <table><thead>
 <tr>
 <th>Parameter</th>
@@ -4737,7 +4863,7 @@ Your API token will be much longer then the one in the examples.
 <td>The page number (0 indexed) to request. If there is no limit applied, then page will have no effect and all results will be returned.</td>
 </tr>
 </tbody></table>
-<h3 id='response-18'>Response</h3>
+<h3 id='response-19'>Response</h3>
 <table><thead>
 <tr>
 <th>Status</th>
@@ -4759,7 +4885,7 @@ Your API token will be much longer then the one in the examples.
 <td></td>
 </tr>
 </tbody></table>
-<h4 id='response-schema-10'>Response Schema</h4>
+<h4 id='response-schema-11'>Response Schema</h4>
 <table><thead>
 <tr>
 <th>Attribute</th>
@@ -4851,7 +4977,7 @@ Your API token will be much longer then the one in the examples.
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div>
 <p>This endpoint will change the <code>displayOrder</code> of the libraries specified. It will return an array of all libraries.</p>
-<h3 id='http-request-19'>HTTP Request</h3>
+<h3 id='http-request-20'>HTTP Request</h3>
 <p><code>POST https://abs.example.com/api/libraries/order</code></p>
 <h3 id='required-parameters'>Required Parameters</h3>
 <p>The POST body should be an array of objects like so:</p>
@@ -4874,7 +5000,7 @@ Your API token will be much longer then the one in the examples.
 <td>The new <code>displayOrder</code> for the library.</td>
 </tr>
 </tbody></table>
-<h3 id='response-19'>Response</h3>
+<h3 id='response-20'>Response</h3>
 <table><thead>
 <tr>
 <th>Status</th>
@@ -4902,7 +5028,7 @@ Your API token will be much longer then the one in the examples.
 <td></td>
 </tr>
 </tbody></table>
-<h4 id='response-schema-11'>Response Schema</h4>
+<h4 id='response-schema-12'>Response Schema</h4>
 <table><thead>
 <tr>
 <th>Attribute</th>
@@ -5872,6 +5998,11 @@ Use the <a href="#update-a-podcast-episode">Update a Podcast Episode</a> endpoin
 <td><code>language</code></td>
 <td>String or null</td>
 <td>The language of the podcast.</td>
+</tr>
+<tr>
+<td><code>type</code></td>
+<td>String</td>
+<td>The type of the podcast. Should be <code>episodic</code> or <code>serial</code>.</td>
 </tr>
 </tbody></table>
 <h3 id='response-4'>Response</h3>
@@ -9386,7 +9517,8 @@ When changing a user's username, their token will be regenerated.
         </span><span class="nl">"itunesId"</span><span class="p">:</span><span class="w"> </span><span class="mi">536258179</span><span class="p">,</span><span class="w">
         </span><span class="nl">"itunesArtistId"</span><span class="p">:</span><span class="w"> </span><span class="mi">718704794</span><span class="p">,</span><span class="w">
         </span><span class="nl">"explicit"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"language"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="w">
+        </span><span class="nl">"language"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"episodic"</span><span class="w">
       </span><span class="p">}</span><span class="w">
     </span><span class="p">},</span><span class="w">
     </span><span class="err">...</span><span class="w">
@@ -9438,7 +9570,8 @@ When changing a user's username, their token will be regenerated.
         </span><span class="nl">"itunesId"</span><span class="p">:</span><span class="w"> </span><span class="mi">536258179</span><span class="p">,</span><span class="w">
         </span><span class="nl">"itunesArtistId"</span><span class="p">:</span><span class="w"> </span><span class="mi">718704794</span><span class="p">,</span><span class="w">
         </span><span class="nl">"explicit"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"language"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="w">
+        </span><span class="nl">"language"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"episodic"</span><span class="w">
       </span><span class="p">},</span><span class="w">
       </span><span class="nl">"chapters"</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span><span class="w">
       </span><span class="nl">"displayTitle"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1 - Pilot"</span><span class="p">,</span><span class="w">
@@ -13666,7 +13799,8 @@ When changing a user's username, their token will be regenerated.
         </span><span class="nl">"itunesId"</span><span class="p">:</span><span class="w"> </span><span class="mi">536258179</span><span class="p">,</span><span class="w">
         </span><span class="nl">"itunesArtistId"</span><span class="p">:</span><span class="w"> </span><span class="mi">718704794</span><span class="p">,</span><span class="w">
         </span><span class="nl">"explicit"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"language"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="w">
+        </span><span class="nl">"language"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"episodic"</span><span class="w">
       </span><span class="p">}</span><span class="w">
     </span><span class="p">},</span><span class="w">
     </span><span class="err">...</span><span class="w">
@@ -17005,7 +17139,8 @@ This endpoint will soon be <strong>deprecated</strong>.
       </span><span class="nl">"itunesId"</span><span class="p">:</span><span class="w"> </span><span class="mi">536258179</span><span class="p">,</span><span class="w">
       </span><span class="nl">"itunesArtistId"</span><span class="p">:</span><span class="w"> </span><span class="mi">718704794</span><span class="p">,</span><span class="w">
       </span><span class="nl">"explicit"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"language"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="w">
+      </span><span class="nl">"language"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"episodic"</span><span class="w">
     </span><span class="p">},</span><span class="w">
     </span><span class="nl">"coverPath"</span><span class="p">:</span><span class="w"> </span><span class="s2">"/metadata/items/li_bufnnmp4y5o2gbbxfm/cover.jpg"</span><span class="p">,</span><span class="w">
     </span><span class="nl">"tags"</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span><span class="w">
@@ -17621,12 +17756,18 @@ This endpoint will soon be <strong>deprecated</strong>.
       </span><span class="nl">"episodeDisplayTitle"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2 - Glow Cloud"</span><span class="p">,</span><span class="w">
       </span><span class="nl">"url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://www.podtrac.com/pts/redirect.mp3/dovetail.prxu.org/_/126/cb1dd91f-5d8d-42e9-ba22-14ff335d2cbb/2_Glow_Cloud.mp3"</span><span class="p">,</span><span class="w">
       </span><span class="nl">"libraryItemId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"li_bufnnmp4y5o2gbbxfm"</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"isDownloading"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"libraryId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"lib_p9wkw2i85qy9oltijt"</span><span class="p">,</span><span class="w">
       </span><span class="nl">"isFinished"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
       </span><span class="nl">"failed"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
       </span><span class="nl">"startedAt"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
       </span><span class="nl">"createdAt"</span><span class="p">:</span><span class="w"> </span><span class="mi">1668122813409</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"finishedAt"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="w">
+      </span><span class="nl">"finishedAt"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"podcastTitle"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Welcome to Night Vale"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"podcastExplicit"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"season"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"episode"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"episodeType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"full"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"publishedAt"</span><span class="p">:</span><span class="w"> </span><span class="mi">1341144000000</span><span class="w">
     </span><span class="p">}</span><span class="w">
   </span><span class="p">]</span><span class="w">
 </span><span class="p">}</span><span class="w">
@@ -18069,6 +18210,129 @@ This endpoint will soon be <strong>deprecated</strong>.
 <td>The number of podcast episodes that were updated.</td>
 </tr>
 </tbody></table>
+<h2 id='get-a-podcast-episode'>Get a Podcast Episode</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://abs.example.com/api/podcasts/li_bufnnmp4y5o2gbbxfm/episode/ep_lh6ko39pumnrma3dhv"</span> <span class="se">\</span>
+  <span class="nt">-H</span> <span class="s2">"Authorization: Bearer exJhbGciOiJI6IkpXVCJ9.eyJ1c2Vyi5NDEyODc4fQ.ZraBFohS4Tg39NszY"</span>
+</code></pre></div>
+<blockquote>
+<p>The above command returns JSON structured like this:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"libraryItemId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"li_bufnnmp4y5o2gbbxfm"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ep_lh6ko39pumnrma3dhv"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"index"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"season"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"episode"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"episodeType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"full"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1 - Pilot"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"subtitle"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Pilot Episode. A new dog park opens in Night Vale. Carlos, a scientist, visits and discovers some interesting things. Seismic things. Plus, a helpful guide to surveillance helicopter-spotting. Weather: </span><span class="se">\"</span><span class="s2">These and More Than These</span><span class="se">\"</span><span class="s2"> by Joseph Fink Music:..."</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"&lt;div&gt;&lt;br&gt;Pilot Episode. A new dog park opens in Night Vale. Carlos, a scientist, visits and discovers some interesting things. Seismic things. Plus, a helpful guide to surveillance helicopter-spotting.&lt;br&gt;&lt;br&gt;&lt;/div&gt;&lt;div&gt;&lt;br&gt;Weather: </span><span class="se">\"</span><span class="s2">These and More Than These</span><span class="se">\"</span><span class="s2"> by Joseph Fink&lt;br&gt;&lt;br&gt;&lt;/div&gt;&lt;div&gt;&lt;br&gt;Music: Disparition, disparition.info&lt;br&gt;&lt;br&gt;&lt;/div&gt;&lt;div&gt;&lt;br&gt;Logo: Rob Wilson, silastom.com&lt;br&gt;&lt;br&gt;&lt;/div&gt;&lt;div&gt;&lt;br&gt;Produced by Night Vale Presents. Written by Joseph Fink and Jeffrey Cranor. Narrated by Cecil Baldwin. More Info: welcometonightvale.com, and follow @NightValeRadio on Twitter or Facebook.&lt;br&gt;&lt;br&gt;&lt;/div&gt;"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"enclosure"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://www.podtrac.com/pts/redirect.mp3/dovetail.prxu.org/_/126/1fadf1ad-aad8-449f-843b-6e8bb6949622/1_Pilot.mp3"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"audio/mpeg"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"length"</span><span class="p">:</span><span class="w"> </span><span class="s2">"20588611"</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="nl">"pubDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Fri, 15 Jun 2012 12:00:00 -0000"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"audioFile"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"index"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"ino"</span><span class="p">:</span><span class="w"> </span><span class="s2">"22587"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"metadata"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"filename"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1 - Pilot.mp3"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"ext"</span><span class="p">:</span><span class="w"> </span><span class="s2">".mp3"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"path"</span><span class="p">:</span><span class="w"> </span><span class="s2">"/podcasts/Welcome to Night Vale/1 - Pilot.mp3"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"relPath"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1 - Pilot.mp3"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"size"</span><span class="p">:</span><span class="w"> </span><span class="mi">23653735</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"mtimeMs"</span><span class="p">:</span><span class="w"> </span><span class="mi">1667326682557</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"ctimeMs"</span><span class="p">:</span><span class="w"> </span><span class="mi">1667326682557</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"birthtimeMs"</span><span class="p">:</span><span class="w"> </span><span class="mi">1667326679508</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="nl">"addedAt"</span><span class="p">:</span><span class="w"> </span><span class="mi">1667326682605</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"updatedAt"</span><span class="p">:</span><span class="w"> </span><span class="mi">1668234380150</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"trackNumFromMeta"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"discNumFromMeta"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"trackNumFromFilename"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"discNumFromFilename"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"manuallyVerified"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"invalid"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"exclude"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"error"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"format"</span><span class="p">:</span><span class="w"> </span><span class="s2">"MP2/3 (MPEG audio layer 2/3)"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"duration"</span><span class="p">:</span><span class="w"> </span><span class="mf">1454.18449</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"bitRate"</span><span class="p">:</span><span class="w"> </span><span class="mi">128000</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"language"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"codec"</span><span class="p">:</span><span class="w"> </span><span class="s2">"mp3"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"timeBase"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1/14112000"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"channels"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"channelLayout"</span><span class="p">:</span><span class="w"> </span><span class="s2">"stereo"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"chapters"</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span><span class="w">
+    </span><span class="nl">"embeddedCoverArt"</span><span class="p">:</span><span class="w"> </span><span class="s2">"mjpeg"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"metaTags"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"tagAlbum"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Welcome to Night Vale"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"tagArtist"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Night Vale Presents"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"tagGenre"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Podcast"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"tagTitle"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1 - Pilot"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"tagDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2012"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"tagEncoder"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Lavf58.45.100"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="nl">"mimeType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"audio/mpeg"</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="nl">"publishedAt"</span><span class="p">:</span><span class="w"> </span><span class="mi">1339761600000</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"addedAt"</span><span class="p">:</span><span class="w"> </span><span class="mi">1667326679503</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"updatedAt"</span><span class="p">:</span><span class="w"> </span><span class="mi">1667428186431</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<p>This endpoint retrieves a podcast episode.</p>
+<h3 id='http-request-10'>HTTP Request</h3>
+<p><code>GET http://abs.example.com/api/podcasts/&lt;ID&gt;/episode/&lt;EpisodeID&gt;</code></p>
+<h3 id='url-parameters-7'>URL Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>ID</td>
+<td>The ID of the podcast library item.</td>
+</tr>
+<tr>
+<td>EpisodeID</td>
+<td>The ID of the podcast episode.</td>
+</tr>
+</tbody></table>
+<h3 id='response-10'>Response</h3>
+<table><thead>
+<tr>
+<th>Status</th>
+<th>Meaning</th>
+<th>Description</th>
+<th>Schema</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>200</td>
+<td>OK</td>
+<td>Success</td>
+<td><a href="#podcast-episode">Podcast Episode</a></td>
+</tr>
+<tr>
+<td>403</td>
+<td>Forbidden</td>
+<td>The user is not allowed to access the library item.</td>
+<td></td>
+</tr>
+<tr>
+<td>404</td>
+<td>Not Found</td>
+<td>No podcast episode with the given ID exists.</td>
+<td></td>
+</tr>
+<tr>
+<td>500</td>
+<td>Internal Server Error</td>
+<td>The library item is not a podcast.</td>
+<td></td>
+</tr>
+</tbody></table>
 <h2 id='update-a-podcast-episode'>Update a Podcast Episode</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">-X</span> PATCH <span class="s2">"https://abs.example.com/api/podcasts/li_bufnnmp4y5o2gbbxfm/episode/ep_lh6ko39pumnrma3dhv"</span> <span class="se">\</span>
   <span class="nt">-H</span> <span class="s2">"Authorization: Bearer exJhbGciOiJI6IkpXVCJ9.eyJ1c2Vyi5NDEyODc4fQ.ZraBFohS4Tg39NszY"</span> <span class="se">\</span>
   <span class="nt">-H</span> <span class="s2">"Content-Type: application/json"</span> <span class="se">\</span>
@@ -18114,7 +18378,8 @@ This endpoint will soon be <strong>deprecated</strong>.
       </span><span class="nl">"itunesId"</span><span class="p">:</span><span class="w"> </span><span class="mi">536258179</span><span class="p">,</span><span class="w">
       </span><span class="nl">"itunesArtistId"</span><span class="p">:</span><span class="w"> </span><span class="mi">718704794</span><span class="p">,</span><span class="w">
       </span><span class="nl">"explicit"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"language"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="w">
+      </span><span class="nl">"language"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"episodic"</span><span class="w">
     </span><span class="p">},</span><span class="w">
     </span><span class="nl">"coverPath"</span><span class="p">:</span><span class="w"> </span><span class="s2">"/metadata/items/li_bufnnmp4y5o2gbbxfm/cover.jpg"</span><span class="p">,</span><span class="w">
     </span><span class="nl">"tags"</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span><span class="w">
@@ -18248,9 +18513,9 @@ This endpoint will soon be <strong>deprecated</strong>.
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div>
 <p>This endpoint updates a podcast episode and returns the library item.</p>
-<h3 id='http-request-10'>HTTP Request</h3>
+<h3 id='http-request-11'>HTTP Request</h3>
 <p><code>PATCH http://abs.example.com/api/podcasts/&lt;ID&gt;/episode/&lt;EpisodeID&gt;</code></p>
-<h3 id='url-parameters-7'>URL Parameters</h3>
+<h3 id='url-parameters-8'>URL Parameters</h3>
 <table><thead>
 <tr>
 <th>Parameter</th>
@@ -18330,7 +18595,7 @@ This endpoint will soon be <strong>deprecated</strong>.
 <td>The time (in ms since POSIX epoch) when the podcast episode was published.</td>
 </tr>
 </tbody></table>
-<h3 id='response-10'>Response</h3>
+<h3 id='response-11'>Response</h3>
 <table><thead>
 <tr>
 <th>Status</th>
@@ -18406,7 +18671,8 @@ This endpoint will soon be <strong>deprecated</strong>.
       </span><span class="nl">"itunesId"</span><span class="p">:</span><span class="w"> </span><span class="mi">536258179</span><span class="p">,</span><span class="w">
       </span><span class="nl">"itunesArtistId"</span><span class="p">:</span><span class="w"> </span><span class="mi">718704794</span><span class="p">,</span><span class="w">
       </span><span class="nl">"explicit"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"language"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="w">
+      </span><span class="nl">"language"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"episodic"</span><span class="w">
     </span><span class="p">},</span><span class="w">
     </span><span class="nl">"coverPath"</span><span class="p">:</span><span class="w"> </span><span class="s2">"/metadata/items/li_bufnnmp4y5o2gbbxfm/cover.jpg"</span><span class="p">,</span><span class="w">
     </span><span class="nl">"tags"</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span><span class="w">
@@ -18438,9 +18704,9 @@ This endpoint will soon be <strong>deprecated</strong>.
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div>
 <p>This endpoint deletes a podcast episode from the database. If providing the <code>hard</code> parameter, the file will be deleted as well.</p>
-<h3 id='http-request-11'>HTTP Request</h3>
+<h3 id='http-request-12'>HTTP Request</h3>
 <p><code>DELETE http://abs.example.com/api/podcasts/&lt;ID&gt;/episode/&lt;EpisodeID&gt;</code></p>
-<h3 id='url-parameters-8'>URL Parameters</h3>
+<h3 id='url-parameters-9'>URL Parameters</h3>
 <table><thead>
 <tr>
 <th>Parameter</th>
@@ -18470,7 +18736,7 @@ This endpoint will soon be <strong>deprecated</strong>.
 <td>Whether to delete the podcast episode files from the server. <code>0</code> for false, <code>1</code> for true.</td>
 </tr>
 </tbody></table>
-<h3 id='response-11'>Response</h3>
+<h3 id='response-12'>Response</h3>
 <table><thead>
 <tr>
 <th>Status</th>
@@ -18521,10 +18787,16 @@ This endpoint will soon be <strong>deprecated</strong>.
         </span><span class="nl">"variables"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
           </span><span class="s2">"libraryItemId"</span><span class="p">,</span><span class="w">
           </span><span class="s2">"libraryId"</span><span class="p">,</span><span class="w">
-          </span><span class="s2">"podcastTitle"</span><span class="p">,</span><span class="w">
-          </span><span class="s2">"episodeTitle"</span><span class="p">,</span><span class="w">
           </span><span class="s2">"libraryName"</span><span class="p">,</span><span class="w">
-          </span><span class="s2">"episodeId"</span><span class="w">
+          </span><span class="s2">"mediaTags"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"podcastTitle"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"podcastAuthor"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"podcastDescription"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"podcastGenres"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"episodeId"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"episodeTitle"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"episodeSubtitle"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"episodeDescription"</span><span class="w">
         </span><span class="p">],</span><span class="w">
         </span><span class="nl">"defaults"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
           </span><span class="nl">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"New {{podcastTitle}} Episode!"</span><span class="p">,</span><span class="w">
@@ -18698,10 +18970,16 @@ This endpoint will soon be <strong>deprecated</strong>.
       </span><span class="nl">"variables"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
         </span><span class="s2">"libraryItemId"</span><span class="p">,</span><span class="w">
         </span><span class="s2">"libraryId"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"podcastTitle"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"episodeTitle"</span><span class="p">,</span><span class="w">
         </span><span class="s2">"libraryName"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"episodeId"</span><span class="w">
+        </span><span class="s2">"mediaTags"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"podcastTitle"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"podcastAuthor"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"podcastDescription"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"podcastGenres"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"episodeId"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"episodeTitle"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"episodeSubtitle"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"episodeDescription"</span><span class="w">
       </span><span class="p">],</span><span class="w">
       </span><span class="nl">"defaults"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
         </span><span class="nl">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"New {{podcastTitle}} Episode!"</span><span class="p">,</span><span class="w">
@@ -19807,7 +20085,8 @@ The <code>id</code> parameter must be included for the notification to be saved.
     </span><span class="nl">"cover"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://is4-ssl.mzstatic.com/image/thumb/Podcasts125/v4/4a/31/35/4a3135d0-1fe7-a2d7-fb43-d182ec175402/mza_8232698753950666850.jpg/600x600bb.jpg"</span><span class="p">,</span><span class="w">
     </span><span class="nl">"trackCount"</span><span class="p">:</span><span class="w"> </span><span class="mi">280</span><span class="p">,</span><span class="w">
     </span><span class="nl">"feedUrl"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://feeds.nightvalepresents.com/welcometonightvalepodcast"</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"pageUrl"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://podcasts.apple.com/us/podcast/welcome-to-night-vale/id536258179?uo=4"</span><span class="w">
+    </span><span class="nl">"pageUrl"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://podcasts.apple.com/us/podcast/welcome-to-night-vale/id536258179?uo=4"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"explicit"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="w">
   </span><span class="p">},</span><span class="w">
   </span><span class="err">...</span><span class="w">
 </span><span class="p">]</span><span class="w">
@@ -19914,6 +20193,11 @@ The <code>id</code> parameter must be included for the notification to be saved.
 <td><code>pageUrl</code></td>
 <td>String</td>
 <td>The URL of the podcast&#39;s iTunes page.</td>
+</tr>
+<tr>
+<td><code>explicit</code></td>
+<td>Boolean</td>
+<td>Whether the podcast is marked as explicit.</td>
 </tr>
 </tbody></table>
 <h2 id='search-for-an-author'>Search for an Author</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://abs.example.com/api/search/authors?q=Terry%20Goodkind"</span> <span class="se">\</span>
@@ -20586,7 +20870,14 @@ The <code>id</code> parameter must be included for the notification to be saved.
     </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"li_bufnnmp4y5o2gbbxfm"</span><span class="p">,</span><span class="w">
     </span><span class="nl">"entityType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"item"</span><span class="p">,</span><span class="w">
     </span><span class="nl">"entityId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"li_bufnnmp4y5o2gbbxfm"</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"feedUrl"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://abs.example.com/feed/li_bufnnmp4y5o2gbbxfm"</span><span class="w">
+    </span><span class="nl">"feedUrl"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://abs.example.com/feed/li_bufnnmp4y5o2gbbxfm"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"meta"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Welcome to Night Vale"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"</span><span class="se">\n</span><span class="s2">      Twice-monthly community updates for the small desert town of Night Vale, where every conspiracy theory is true. Turn on your radio and hide. Never listened before? It's an ongoing radio show. Start with the current episode, and you'll catch on in no time. Or, go right to Episode 1 if you wanna binge-listen.</span><span class="se">\n</span><span class="s2">    "</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"preventIndexing"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"ownerName"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"ownerEmail"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="w">
+    </span><span class="p">}</span><span class="w">
   </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div>
@@ -20685,7 +20976,14 @@ The <code>id</code> parameter must be included for the notification to be saved.
     </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"col_fpfstanv6gd7tq2qz7"</span><span class="p">,</span><span class="w">
     </span><span class="nl">"entityType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"collection"</span><span class="p">,</span><span class="w">
     </span><span class="nl">"entityId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"col_fpfstanv6gd7tq2qz7"</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"feedUrl"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://abs.example.com/feed/col_fpfstanv6gd7tq2qz7"</span><span class="w">
+    </span><span class="nl">"feedUrl"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://abs.example.com/feed/col_fpfstanv6gd7tq2qz7"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"meta"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Favorites"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"description"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"preventIndexing"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"ownerName"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"ownerEmail"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="w">
+    </span><span class="p">}</span><span class="w">
   </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div>
@@ -20784,7 +21082,14 @@ The <code>id</code> parameter must be included for the notification to be saved.
     </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ser_cabkj4jeu8be3rap4g"</span><span class="p">,</span><span class="w">
     </span><span class="nl">"entityType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"series"</span><span class="p">,</span><span class="w">
     </span><span class="nl">"entityId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ser_cabkj4jeu8be3rap4g"</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"feedUrl"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://abs.example.com/feed/ser_cabkj4jeu8be3rap4g"</span><span class="w">
+    </span><span class="nl">"feedUrl"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://abs.example.com/feed/ser_cabkj4jeu8be3rap4g"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"meta"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Sword of Truth"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"description"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"preventIndexing"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"ownerName"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"ownerEmail"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="w">
+    </span><span class="p">}</span><span class="w">
   </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div>
@@ -21069,6 +21374,7 @@ The <code>id</code> parameter must be included for the notification to be saved.
     </span><span class="nl">"chromecastEnabled"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
     </span><span class="nl">"enableEReader"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
     </span><span class="nl">"dateFormat"</span><span class="p">:</span><span class="w"> </span><span class="s2">"MM/dd/yyyy"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"timeFormat"</span><span class="p">:</span><span class="w"> </span><span class="s2">"HH:mm"</span><span class="p">,</span><span class="w">
     </span><span class="nl">"language"</span><span class="p">:</span><span class="w"> </span><span class="s2">"en-us"</span><span class="p">,</span><span class="w">
     </span><span class="nl">"logLevel"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
     </span><span class="nl">"version"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2.2.5"</span><span class="w">
@@ -21206,6 +21512,7 @@ The <code>id</code> parameter must be included for the notification to be saved.
     </span><span class="nl">"chromecastEnabled"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
     </span><span class="nl">"enableEReader"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
     </span><span class="nl">"dateFormat"</span><span class="p">:</span><span class="w"> </span><span class="s2">"MM/dd/yyyy"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"timeFormat"</span><span class="p">:</span><span class="w"> </span><span class="s2">"HH:mm"</span><span class="p">,</span><span class="w">
     </span><span class="nl">"language"</span><span class="p">:</span><span class="w"> </span><span class="s2">"en-us"</span><span class="p">,</span><span class="w">
     </span><span class="nl">"logLevel"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
     </span><span class="nl">"version"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2.2.5"</span><span class="w">
@@ -22284,6 +22591,11 @@ Events marked with &quot;<strong>Admin Only</strong>&quot; are only sent to sock
 <td><code>episode_download_queued</code></td>
 <td>A podcast episode has been queued for download.</td>
 <td><a href="#podcast-episode-download">Podcast Episode Download</a> Object</td>
+</tr>
+<tr>
+<td><code>episode_download_queue_updated</code></td>
+<td>The podcast episode download queue has updated.</td>
+<td>Same as <a href="#get-a-library-39-s-podcast-episode-downloads">Get a Library&#39;s Podcast Episode Downloads</a> Response</td>
 </tr>
 <tr>
 <td><code>episode_download_started</code></td>
@@ -23898,7 +24210,8 @@ Events marked with &quot;<strong>Admin Only</strong>&quot; are only sent to sock
   </span><span class="nl">"itunesId"</span><span class="p">:</span><span class="w"> </span><span class="mi">536258179</span><span class="p">,</span><span class="w">
   </span><span class="nl">"itunesArtistId"</span><span class="p">:</span><span class="w"> </span><span class="mi">718704794</span><span class="p">,</span><span class="w">
   </span><span class="nl">"explicit"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"language"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="w">
+  </span><span class="nl">"language"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"episodic"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div>
 <blockquote>
@@ -23921,7 +24234,8 @@ Events marked with &quot;<strong>Admin Only</strong>&quot; are only sent to sock
   </span><span class="nl">"itunesId"</span><span class="p">:</span><span class="w"> </span><span class="mi">536258179</span><span class="p">,</span><span class="w">
   </span><span class="nl">"itunesArtistId"</span><span class="p">:</span><span class="w"> </span><span class="mi">718704794</span><span class="p">,</span><span class="w">
   </span><span class="nl">"explicit"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"language"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="w">
+  </span><span class="nl">"language"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"episodic"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div>
 <blockquote>
@@ -23944,7 +24258,8 @@ Events marked with &quot;<strong>Admin Only</strong>&quot; are only sent to sock
   </span><span class="nl">"itunesId"</span><span class="p">:</span><span class="w"> </span><span class="mi">536258179</span><span class="p">,</span><span class="w">
   </span><span class="nl">"itunesArtistId"</span><span class="p">:</span><span class="w"> </span><span class="mi">718704794</span><span class="p">,</span><span class="w">
   </span><span class="nl">"explicit"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"language"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="w">
+  </span><span class="nl">"language"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"episodic"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div>
 <table><thead>
@@ -24013,6 +24328,11 @@ Events marked with &quot;<strong>Admin Only</strong>&quot; are only sent to sock
 <td><code>language</code></td>
 <td>String or null</td>
 <td>The language of the podcast. Will be <code>null</code> if unknown.</td>
+</tr>
+<tr>
+<td><code>type</code></td>
+<td>String or null</td>
+<td>The type of the podcast.</td>
 </tr>
 </tbody></table>
 <h3 id='podcast-metadata-minified'>Podcast Metadata Minified</h3><h4 id='added-attributes-9'>Added Attributes</h4>
@@ -24238,12 +24558,18 @@ Events marked with &quot;<strong>Admin Only</strong>&quot; are only sent to sock
   </span><span class="nl">"episodeDisplayTitle"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2 - Glow Cloud"</span><span class="p">,</span><span class="w">
   </span><span class="nl">"url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://www.podtrac.com/pts/redirect.mp3/dovetail.prxu.org/_/126/cb1dd91f-5d8d-42e9-ba22-14ff335d2cbb/2_Glow_Cloud.mp3"</span><span class="p">,</span><span class="w">
   </span><span class="nl">"libraryItemId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"li_bufnnmp4y5o2gbbxfm"</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"isDownloading"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"libraryId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"lib_p9wkw2i85qy9oltijt"</span><span class="p">,</span><span class="w">
   </span><span class="nl">"isFinished"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
   </span><span class="nl">"failed"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
   </span><span class="nl">"startedAt"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
   </span><span class="nl">"createdAt"</span><span class="p">:</span><span class="w"> </span><span class="mi">1668122813409</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"finishedAt"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="w">
+  </span><span class="nl">"finishedAt"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"podcastTitle"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Welcome to Night Vale"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"podcastExplicit"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"season"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"episode"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"episodeType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"full"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"publishedAt"</span><span class="p">:</span><span class="w"> </span><span class="mi">1341144000000</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div>
 <table><thead>
@@ -24274,9 +24600,9 @@ Events marked with &quot;<strong>Admin Only</strong>&quot; are only sent to sock
 <td>The ID of the library item the episode belongs to.</td>
 </tr>
 <tr>
-<td><code>isDownloading</code></td>
-<td>Boolean</td>
-<td>Whether the episode is actively being downloaded.</td>
+<td><code>libraryId</code></td>
+<td>String</td>
+<td>The ID of the library the episode&#39;s podcast belongs to.</td>
 </tr>
 <tr>
 <td><code>isFinished</code></td>
@@ -24302,6 +24628,36 @@ Events marked with &quot;<strong>Admin Only</strong>&quot; are only sent to sock
 <td><code>finishedAt</code></td>
 <td>Integer or null</td>
 <td>The time (in ms since POSIX epoch) when the episode finished downloading. Will be <code>null</code> if it has not finished.</td>
+</tr>
+<tr>
+<td><code>podcastTitle</code></td>
+<td>String or null</td>
+<td>The title of the episode&#39;s podcast.</td>
+</tr>
+<tr>
+<td><code>podcastExplicit</code></td>
+<td>Boolean</td>
+<td>Whether the episode&#39;s podcast is explicit.</td>
+</tr>
+<tr>
+<td><code>season</code></td>
+<td>String or null</td>
+<td>The season of the podcast episode.</td>
+</tr>
+<tr>
+<td><code>episode</code></td>
+<td>String or null</td>
+<td>The episode number of the podcast episode.</td>
+</tr>
+<tr>
+<td><code>episodeType</code></td>
+<td>String</td>
+<td>The type of the podcast episode.</td>
+</tr>
+<tr>
+<td><code>publishedAt</code></td>
+<td>Integer or null</td>
+<td>The time (in ms since POSIX epoch) when the episode was published.</td>
 </tr>
 </tbody></table>
 <h2 id='podcast-feed'>Podcast Feed</h2>
@@ -26389,10 +26745,16 @@ Only non-null tags will be returned in requests.</p>
   </span><span class="nl">"variables"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
     </span><span class="s2">"libraryItemId"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"libraryId"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"podcastTitle"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"episodeTitle"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"libraryName"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"episodeId"</span><span class="w">
+    </span><span class="s2">"mediaTags"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"podcastTitle"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"podcastAuthor"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"podcastDescription"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"podcastGenres"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"episodeId"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"episodeTitle"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"episodeSubtitle"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"episodeDescription"</span><span class="w">
   </span><span class="p">],</span><span class="w">
   </span><span class="nl">"defaults"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
     </span><span class="nl">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"New {{podcastTitle}} Episode!"</span><span class="p">,</span><span class="w">
@@ -26493,6 +26855,7 @@ Only non-null tags will be returned in requests.</p>
   </span><span class="nl">"chromecastEnabled"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
   </span><span class="nl">"enableEReader"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
   </span><span class="nl">"dateFormat"</span><span class="p">:</span><span class="w"> </span><span class="s2">"MM/dd/yyyy"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"timeFormat"</span><span class="p">:</span><span class="w"> </span><span class="s2">"HH:mm"</span><span class="p">,</span><span class="w">
   </span><span class="nl">"language"</span><span class="p">:</span><span class="w"> </span><span class="s2">"en-us"</span><span class="p">,</span><span class="w">
   </span><span class="nl">"logLevel"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
   </span><span class="nl">"version"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2.2.5"</span><span class="w">
@@ -26633,7 +26996,12 @@ Only non-null tags will be returned in requests.</p>
 <tr>
 <td><code>dateFormat</code></td>
 <td>String</td>
-<td>What date format to use. Options are <code>MM/dd/yyyy</code>, <code>dd/MM/yyyy</code>, or <code>yyyy-MM-dd</code>.</td>
+<td>What date format to use. Options are <code>MM/dd/yyyy</code>, <code>dd/MM/yyyy</code>, <code>dd.MM.yyyy</code>, <code>yyyy-MM-dd</code>, <code>MMM do, yyyy</code>, <code>MMMM do, yyyy</code>, <code>dd MMM yyyy</code>, or <code>dd MMMM yyyy</code>.</td>
+</tr>
+<tr>
+<td><code>timeFormat</code></td>
+<td>String</td>
+<td>What time format to use. Options are <code>HH:mm</code> (24-hour) and <code>h:mma</code> (am/pm).</td>
 </tr>
 <tr>
 <td><code>language</code></td>
@@ -26677,7 +27045,14 @@ Only non-null tags will be returned in requests.</p>
   </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"li_bufnnmp4y5o2gbbxfm"</span><span class="p">,</span><span class="w">
   </span><span class="nl">"entityType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"item"</span><span class="p">,</span><span class="w">
   </span><span class="nl">"entityId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"li_bufnnmp4y5o2gbbxfm"</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"feedUrl"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://abs.example.com/feed/li_bufnnmp4y5o2gbbxfm"</span><span class="w">
+  </span><span class="nl">"feedUrl"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://abs.example.com/feed/li_bufnnmp4y5o2gbbxfm"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"meta"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Welcome to Night Vale"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"</span><span class="se">\n</span><span class="s2">      Twice-monthly community updates for the small desert town of Night Vale, where every conspiracy theory is true. Turn on your radio and hide. Never listened before? It's an ongoing radio show. Start with the current episode, and you'll catch on in no time. Or, go right to Episode 1 if you wanna binge-listen.</span><span class="se">\n</span><span class="s2">    "</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"preventIndexing"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"ownerName"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"ownerEmail"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="w">
+  </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div>
 <table><thead>
@@ -26754,14 +27129,17 @@ Only non-null tags will be returned in requests.</p>
 <li><code>userId</code></li>
 <li><code>coverPath</code></li>
 <li><code>serverAddress</code></li>
-<li><code>meta</code></li>
 <li><code>episodes</code></li>
 <li><code>createdAt</code></li>
 <li><code>updatedAt</code></li>
 </ul>
+<h4 id='modified-attributes-10'>Modified Attributes</h4>
+<ul>
+<li><code>meta</code> is an <a href="#rss-feed-metadata-minified">RSS Feed Metadata Minified</a></li>
+</ul>
 <h2 id='rss-feed-metadata'>RSS Feed Metadata</h2>
 <blockquote>
-<p>Feed Metadata</p>
+<p>RSS Feed Metadata</p>
 </blockquote>
 <div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="nl">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Welcome to Night Vale"</span><span class="p">,</span><span class="w">
@@ -26770,7 +27148,23 @@ Only non-null tags will be returned in requests.</p>
   </span><span class="nl">"imageUrl"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://abs.example.com/feed/li_bufnnmp4y5o2gbbxfm/cover"</span><span class="p">,</span><span class="w">
   </span><span class="nl">"feedUrl"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://abs.example.com/feed/li_bufnnmp4y5o2gbbxfm"</span><span class="p">,</span><span class="w">
   </span><span class="nl">"link"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://abs.example.com/item/li_bufnnmp4y5o2gbbxfm"</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"explicit"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="w">
+  </span><span class="nl">"explicit"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"episodic"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"language"</span><span class="p">:</span><span class="w"> </span><span class="s2">"en"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"preventIndexing"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"ownerName"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"ownerEmail"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<blockquote>
+<p>RSS Feed Metadata Minified</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Welcome to Night Vale"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"</span><span class="se">\n</span><span class="s2">      Twice-monthly community updates for the small desert town of Night Vale, where every conspiracy theory is true. Turn on your radio and hide. Never listened before? It's an ongoing radio show. Start with the current episode, and you'll catch on in no time. Or, go right to Episode 1 if you wanna binge-listen.</span><span class="se">\n</span><span class="s2">    "</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"preventIndexing"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"ownerName"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"ownerEmail"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div>
 <table><thead>
@@ -26787,12 +27181,12 @@ Only non-null tags will be returned in requests.</p>
 </tr>
 <tr>
 <td><code>description</code></td>
-<td>String</td>
+<td>String or null</td>
 <td>The description of the entity the RSS feed is for.</td>
 </tr>
 <tr>
 <td><code>author</code></td>
-<td>String</td>
+<td>String or null</td>
 <td>The author of the entity the RSS feed is for.</td>
 </tr>
 <tr>
@@ -26815,10 +27209,45 @@ Only non-null tags will be returned in requests.</p>
 <td>Boolean</td>
 <td>Whether the RSS feed&#39;s contents are explicit.</td>
 </tr>
+<tr>
+<td><code>type</code></td>
+<td>String or null</td>
+<td>The type of the RSS feed.</td>
+</tr>
+<tr>
+<td><code>language</code></td>
+<td>String or null</td>
+<td>The language of the RSS feed.</td>
+</tr>
+<tr>
+<td><code>preventIndexing</code></td>
+<td>Boolean</td>
+<td>Whether the RSS feed is marked to prevent indexing of the feed.</td>
+</tr>
+<tr>
+<td><code>ownerName</code></td>
+<td>String or null</td>
+<td>The owner name of the RSS feed.</td>
+</tr>
+<tr>
+<td><code>ownerEmail</code></td>
+<td>String or null</td>
+<td>The owner email of the RSS feed.</td>
+</tr>
 </tbody></table>
+<h3 id='rss-feed-metadata-minified'>RSS Feed Metadata Minified</h3><h4 id='removed-attributes-12'>Removed Attributes</h4>
+<ul>
+<li><code>author</code></li>
+<li><code>imageUrl</code></li>
+<li><code>feedUrl</code></li>
+<li><code>link</code></li>
+<li><code>explicit</code></li>
+<li><code>type</code></li>
+<li><code>language</code></li>
+</ul>
 <h2 id='rss-feed-episode'>RSS Feed Episode</h2>
 <blockquote>
-<p>Feed Episode</p>
+<p>RSS Feed Episode</p>
 </blockquote>
 <div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ep_lh6ko39pumnrma3dhv"</span><span class="p">,</span><span class="w">
@@ -26834,6 +27263,9 @@ Only non-null tags will be returned in requests.</p>
   </span><span class="nl">"author"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Night Vale Presents"</span><span class="p">,</span><span class="w">
   </span><span class="nl">"explicit"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
   </span><span class="nl">"duration"</span><span class="p">:</span><span class="w"> </span><span class="mf">1454.18449</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"season"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"episode"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"episodeType"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
   </span><span class="nl">"libraryItemId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"li_bufnnmp4y5o2gbbxfm"</span><span class="p">,</span><span class="w">
   </span><span class="nl">"episodeId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ep_lh6ko39pumnrma3dhv"</span><span class="p">,</span><span class="w">
   </span><span class="nl">"trackIndex"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
@@ -26891,6 +27323,21 @@ Only non-null tags will be returned in requests.</p>
 <td><code>duration</code></td>
 <td>Float</td>
 <td>The duration (in seconds) of the RSS feed episode.</td>
+</tr>
+<tr>
+<td><code>season</code></td>
+<td>String or null</td>
+<td>The season of the RSS feed episode.</td>
+</tr>
+<tr>
+<td><code>episode</code></td>
+<td>String or null</td>
+<td>The episode number of the RSS feed episode.</td>
+</tr>
+<tr>
+<td><code>episodeType</code></td>
+<td>String or null</td>
+<td>The type of the RSS feed episode.</td>
 </tr>
 <tr>
 <td><code>libraryItemId</code></td>
