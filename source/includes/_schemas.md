@@ -1991,10 +1991,16 @@ Attribute | Type | Description
   "variables": [
     "libraryItemId",
     "libraryId",
-    "podcastTitle",
-    "episodeTitle",
     "libraryName",
-    "episodeId"
+    "mediaTags",
+    "podcastTitle",
+    "podcastAuthor",
+    "podcastDescription",
+    "podcastGenres",
+    "episodeId",
+    "episodeTitle",
+    "episodeSubtitle",
+    "episodeDescription"
   ],
   "defaults": {
     "title": "New {{podcastTitle}} Episode!",
