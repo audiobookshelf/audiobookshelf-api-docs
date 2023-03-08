@@ -2240,7 +2240,7 @@ Attribute | Type | Description
 
 ## RSS Feed Episode
 
-> Feed Episode
+> RSS Feed Episode
 
 ```json
 {
@@ -2257,6 +2257,9 @@ Attribute | Type | Description
   "author": "Night Vale Presents",
   "explicit": false,
   "duration": 1454.18449,
+  "season": null,
+  "episode": null,
+  "episodeType": null,
   "libraryItemId": "li_bufnnmp4y5o2gbbxfm",
   "episodeId": "ep_lh6ko39pumnrma3dhv",
   "trackIndex": 0,
@@ -2275,6 +2278,9 @@ Attribute | Type | Description
 `author` | String | The author of the RSS feed episode.
 `explicit` | Boolean | Whether the RSS feed episode is explicit.
 `duration` | Float | The duration (in seconds) of the RSS feed episode.
+`season` | String or null | The season of the RSS feed episode.
+`episode` | String or null | The episode number of the RSS feed episode.
+`episodeType` | String or null | The type of the RSS feed episode.
 `libraryItemId` | String | The ID of the library item the RSS feed is for.
 `episodeId` | String or null | The ID of the podcast episode the RSS feed episode is for. Will be `null` if the RSS feed is for a book.
 `trackIndex` | Integer | The RSS feed episode's track index.
