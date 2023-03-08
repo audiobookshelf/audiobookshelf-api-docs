@@ -274,6 +274,7 @@ Name | Description | Schema
 Name | Description | Schema
 ---- | ----------- | ------
 `episode_download_queued` | A podcast episode has been queued for download. | [Podcast Episode Download](#podcast-episode-download) Object
+`episode_download_queue_updated` | The podcast episode download queue has updated. | Same as [Get a Library's Podcast Episode Downloads](#get-a-library-39-s-podcast-episode-downloads) Response
 `episode_download_started` | A podcast episode has started downloading. | [Podcast Episode Download](#podcast-episode-download) Object
 `episode_download_finished` | A podcast episode has finished downloading. | [Podcast Episode Download](#podcast-episode-download) Object
 
