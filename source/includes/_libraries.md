@@ -554,6 +554,66 @@ Status | Meaning | Description
 404 | Not Found | The user cannot access the library, or no library with the provided ID exists.
 
 
+## Get a Library's Podcast Episode Downloads
+
+```shell
+curl "https://abs.example.com/api/libraries/lib_p9wkw2i85qy9oltijt/episode-downloads" \
+  -H "Authorization: Bearer exJhbGciOiJI6IkpXVCJ9.eyJ1c2Vyi5NDEyODc4fQ.ZraBFohS4Tg39NszY"
+```
+
+> The above command returns JSON structured like this:
+
+```json
+{
+  "currentDownload": {
+    "id": "epdl_pgv4d47j6dtqpk4r0v",
+    "episodeDisplayTitle": "2 - Glow Cloud",
+    "url": "https://www.podtrac.com/pts/redirect.mp3/dovetail.prxu.org/_/126/cb1dd91f-5d8d-42e9-ba22-14ff335d2cbb/2_Glow_Cloud.mp3",
+    "libraryItemId": "li_bufnnmp4y5o2gbbxfm",
+    "libraryId": "lib_p9wkw2i85qy9oltijt",
+    "isFinished": false,
+    "failed": false,
+    "startedAt": null,
+    "createdAt": 1668122813409,
+    "finishedAt": null,
+    "podcastTitle": "Welcome to Night Vale",
+    "podcastExplicit": false,
+    "season": "",
+    "episode": "",
+    "episodeType": "full",
+    "publishedAt": 1341144000000
+  },
+  "queue": []
+}
+```
+
+This endpoint retrieves the podcast episodes downloads of the library.
+
+### HTTP Request
+
+`GET http://abs.example.com/api/libraries/<ID>/episode-downloads`
+
+### URL Parameters
+
+Parameter | Description
+--------- | -----------
+ID | The ID of the library.
+
+### Response
+
+Status | Meaning | Description | Schema
+------ | ------- | ----------- | ------
+200 | OK | Success | See below.
+404 | Not Found | No library with the given ID exists, or the user cannot access it. |
+
+#### Response Schema
+
+Attribute | Type | Description
+--------- | ---- | -----------
+`currentDownload` | [Podcast Episode Download](#podcast-episode-download) Object | The podcast episode currently being downloaded. Will only exist if an episode download is in progress.
+`queue` | Array of [Podcast Episode Download](#podcast-episode-download) | The podcast episodes in the queue to be downloaded.
+
+
 ## Get a Library's Series
 
 ```shell
@@ -2050,6 +2110,13 @@ curl "https://abs.example.com/api/libraries/lib_c1u6t4p45c35rf0nzd/stats" \
   ],
   "numAudioTrack": 2,
   "totalSize": 268990279,
+  "largestItems": [
+    {
+      "id": "li_8gch9ve09orgn4fdz8",
+      "title": "Wizards First Rule",
+      "size": 268990279
+    }
+  ],
   "authorsWithCount": [
     {
       "id": "aut_z3leimgybl7uf3y4ab",
@@ -2093,19 +2160,28 @@ Attribute | Type | Description
 `totalAuthors` | Integer | The total amount of authors in the library.
 `totalGenres` | Integer | The total amount of genres in the library.
 `totalDuration` | Float | The total duration (in seconds) of all items in the library.
-`longestItems` | Array of Library Item Stats (See Below) | The items with the longest durations in the library.
+`longestItems` | Array of [Library Item Duration Stats](#library-item-duration-stats) | The items with the longest durations in the library.
 `numAudioTrack` | Integer | The total number of audio tracks in the library.
 `totalSize` | Integer | The total size (in bytes) of all items in the library.
-`authorsWithCount` | Array of Author Stats (See Below) | The authors in the library.
-`genresWithCount` | Array of Genre Stats (See Below) | The genres in the library.
+`largestItems` | Array of [Library Item Size Stats](#library-item-size-stats) | The items with the largest size in the library.
+`authorsWithCount` | Array of [Author Stats](#author-stats) | The authors in the library.
+`genresWithCount` | Array of [Genre Stats](#genre-stats) | The genres in the library.
 
-#### Library Item Stats
+#### Library Item Duration Stats
 
 Attribute | Type | Description
 --------- | ---- | -----------
 `id` | String | The ID of the library item.
 `title` | String | The title of the library item.
 `duration` | Float | The duration (in seconds) of the library item.
+
+#### Library Item Size Stats
+
+Attribute | Type | Description
+--------- | ---- | -----------
+`id` | String | The ID of the library item.
+`title` | String | The title of the library item.
+`size` | Integer | The size (in bytes) of the library item.
 
 #### Author Stats
 

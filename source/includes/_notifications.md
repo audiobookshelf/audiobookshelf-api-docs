@@ -21,10 +21,16 @@ curl "https://abs.example.com/api/notifications" \
         "variables": [
           "libraryItemId",
           "libraryId",
-          "podcastTitle",
-          "episodeTitle",
           "libraryName",
-          "episodeId"
+          "mediaTags",
+          "podcastTitle",
+          "podcastAuthor",
+          "podcastDescription",
+          "podcastGenres",
+          "episodeId",
+          "episodeTitle",
+          "episodeSubtitle",
+          "episodeDescription"
         ],
         "defaults": {
           "title": "New {{podcastTitle}} Episode!",
@@ -156,10 +162,16 @@ curl "https://abs.example.com/api/notificationdata" \
       "variables": [
         "libraryItemId",
         "libraryId",
-        "podcastTitle",
-        "episodeTitle",
         "libraryName",
-        "episodeId"
+        "mediaTags",
+        "podcastTitle",
+        "podcastAuthor",
+        "podcastDescription",
+        "podcastGenres",
+        "episodeId",
+        "episodeTitle",
+        "episodeSubtitle",
+        "episodeDescription"
       ],
       "defaults": {
         "title": "New {{podcastTitle}} Episode!",

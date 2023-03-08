@@ -643,7 +643,8 @@ Attribute | Type | Description
   "itunesId": 536258179,
   "itunesArtistId": 718704794,
   "explicit": false,
-  "language": null
+  "language": null,
+  "type": "episodic"
 }
 ```
 
@@ -667,7 +668,8 @@ Attribute | Type | Description
   "itunesId": 536258179,
   "itunesArtistId": 718704794,
   "explicit": false,
-  "language": null
+  "language": null,
+  "type": "episodic"
 }
 ```
 
@@ -691,7 +693,8 @@ Attribute | Type | Description
   "itunesId": 536258179,
   "itunesArtistId": 718704794,
   "explicit": false,
-  "language": null
+  "language": null,
+  "type": "episodic"
 }
 ```
 
@@ -709,6 +712,7 @@ Attribute | Type | Description
 `itunesArtistId` | Integer or null | The iTunes Artist ID for the author of the podcast. Will be `null` if unknown.
 `explicit` | Boolean | Whether the podcast has been marked as explicit.
 `language` | String or null | The language of the podcast. Will be `null` if unknown.
+`type` | String or null | The type of the podcast.
 
 ### Podcast Metadata Minified
 
@@ -834,12 +838,18 @@ Attribute | Type | Description
   "episodeDisplayTitle": "2 - Glow Cloud",
   "url": "https://www.podtrac.com/pts/redirect.mp3/dovetail.prxu.org/_/126/cb1dd91f-5d8d-42e9-ba22-14ff335d2cbb/2_Glow_Cloud.mp3",
   "libraryItemId": "li_bufnnmp4y5o2gbbxfm",
-  "isDownloading": false,
+  "libraryId": "lib_p9wkw2i85qy9oltijt",
   "isFinished": false,
   "failed": false,
   "startedAt": null,
   "createdAt": 1668122813409,
-  "finishedAt": null
+  "finishedAt": null,
+  "podcastTitle": "Welcome to Night Vale",
+  "podcastExplicit": false,
+  "season": "",
+  "episode": "",
+  "episodeType": "full",
+  "publishedAt": 1341144000000
 }
 ```
 
@@ -849,12 +859,18 @@ Attribute | Type | Description
 `episodeDisplayTitle` | String | The display title of the episode to be downloaded.
 `url` | String | The URL from which to download the episode.
 `libraryItemId` | String | The ID of the library item the episode belongs to.
-`isDownloading` | Boolean | Whether the episode is actively being downloaded.
+`libraryId` | String | The ID of the library the episode's podcast belongs to.
 `isFinished` | Boolean | Whether the episode has finished downloading.
 `failed` | Boolean | Whether the episode failed to download.
 `startedAt` | Integer or null | The time (in ms since POSIX epoch) when the episode started downloading. Will be `null` if it has not started downloading yet.
 `createdAt` | Integer | The time (in ms since POSIX epoch) when the podcast episode download request was created.
 `finishedAt` | Integer or null | The time (in ms since POSIX epoch) when the episode finished downloading. Will be `null` if it has not finished.
+`podcastTitle` | String or null | The title of the episode's podcast.
+`podcastExplicit` | Boolean | Whether the episode's podcast is explicit.
+`season` | String or null | The season of the podcast episode.
+`episode` | String or null | The episode number of the podcast episode.
+`episodeType` | String | The type of the podcast episode.
+`publishedAt` | Integer or null | The time (in ms since POSIX epoch) when the episode was published.
 
 
 ## Podcast Feed
@@ -1979,10 +1995,16 @@ Attribute | Type | Description
   "variables": [
     "libraryItemId",
     "libraryId",
-    "podcastTitle",
-    "episodeTitle",
     "libraryName",
-    "episodeId"
+    "mediaTags",
+    "podcastTitle",
+    "podcastAuthor",
+    "podcastDescription",
+    "podcastGenres",
+    "episodeId",
+    "episodeTitle",
+    "episodeSubtitle",
+    "episodeDescription"
   ],
   "defaults": {
     "title": "New {{podcastTitle}} Episode!",
@@ -2049,6 +2071,7 @@ Attribute | Type | Description
   "chromecastEnabled": false,
   "enableEReader": false,
   "dateFormat": "MM/dd/yyyy",
+  "timeFormat": "HH:mm",
   "language": "en-us",
   "logLevel": 2,
   "version": "2.2.5"
@@ -2082,7 +2105,8 @@ Attribute | Type | Description
 `sortingPrefixes` | Array of String | If `sortingIgnorePrefix` is `true`, what prefixes to ignore.
 `chromecastEnabled` | Boolean | Whether to enable streaming to Chromecast devices.
 `enableEReader` | Boolean | Whether to enable experimental e-reader support.
-`dateFormat` | String | What date format to use. Options are `MM/dd/yyyy`, `dd/MM/yyyy`, or `yyyy-MM-dd`.
+`dateFormat` | String | What date format to use. Options are `MM/dd/yyyy`, `dd/MM/yyyy`, `dd.MM.yyyy`, `yyyy-MM-dd`, `MMM do, yyyy`, `MMMM do, yyyy`, `dd MMM yyyy`, or `dd MMMM yyyy`.
+`timeFormat` | String | What time format to use. Options are `HH:mm` (24-hour) and `h:mma` (am/pm).
 `language` | String | The default server language.
 `logLevel` | Integer | What log level the server should use when logging. `1` for debug, `2` for info, or `3` for warnings.
 `version` | String | The server's version.
@@ -2116,7 +2140,14 @@ Attribute | Type | Description
   "id": "li_bufnnmp4y5o2gbbxfm",
   "entityType": "item",
   "entityId": "li_bufnnmp4y5o2gbbxfm",
-  "feedUrl": "https://abs.example.com/feed/li_bufnnmp4y5o2gbbxfm"
+  "feedUrl": "https://abs.example.com/feed/li_bufnnmp4y5o2gbbxfm",
+  "meta": {
+    "title": "Welcome to Night Vale",
+    "description": "\n      Twice-monthly community updates for the small desert town of Night Vale, where every conspiracy theory is true. Turn on your radio and hide. Never listened before? It's an ongoing radio show. Start with the current episode, and you'll catch on in no time. Or, go right to Episode 1 if you wanna binge-listen.\n    ",
+    "preventIndexing": true,
+    "ownerName": null,
+    "ownerEmail": null
+  }
 }
 ```
 
@@ -2143,15 +2174,18 @@ Attribute | Type | Description
 * `userId`
 * `coverPath`
 * `serverAddress`
-* `meta`
 * `episodes`
 * `createdAt`
 * `updatedAt`
 
+#### Modified Attributes
+
+* `meta` is an [RSS Feed Metadata Minified](#rss-feed-metadata-minified)
+
 
 ## RSS Feed Metadata
 
-> Feed Metadata
+> RSS Feed Metadata
 
 ```json
 {
@@ -2161,24 +2195,58 @@ Attribute | Type | Description
   "imageUrl": "https://abs.example.com/feed/li_bufnnmp4y5o2gbbxfm/cover",
   "feedUrl": "https://abs.example.com/feed/li_bufnnmp4y5o2gbbxfm",
   "link": "https://abs.example.com/item/li_bufnnmp4y5o2gbbxfm",
-  "explicit": false
+  "explicit": false,
+  "type": "episodic",
+  "language": "en",
+  "preventIndexing": true,
+  "ownerName": null,
+  "ownerEmail": null
+}
+```
+
+> RSS Feed Metadata Minified
+
+```json
+{
+  "title": "Welcome to Night Vale",
+  "description": "\n      Twice-monthly community updates for the small desert town of Night Vale, where every conspiracy theory is true. Turn on your radio and hide. Never listened before? It's an ongoing radio show. Start with the current episode, and you'll catch on in no time. Or, go right to Episode 1 if you wanna binge-listen.\n    ",
+  "preventIndexing": true,
+  "ownerName": null,
+  "ownerEmail": null
 }
 ```
 
 Attribute | Type | Description
 --------- | ---- | -----------
 `title` | String | The title of the entity the RSS feed is for.
-`description` | String | The description of the entity the RSS feed is for.
-`author` | String | The author of the entity the RSS feed is for. 
+`description` | String or null | The description of the entity the RSS feed is for.
+`author` | String or null | The author of the entity the RSS feed is for. 
 `imageUrl` | String | The URL of the RSS feed's image.
 `feedUrl` | String | The URL of the RSS feed.
 `link` | String | The URL of the entity the RSS feed is for.
 `explicit` | Boolean | Whether the RSS feed's contents are explicit.
+`type` | String or null | The type of the RSS feed.
+`language` | String or null | The language of the RSS feed.
+`preventIndexing` | Boolean | Whether the RSS feed is marked to prevent indexing of the feed.
+`ownerName` | String or null | The owner name of the RSS feed.
+`ownerEmail` | String or null | The owner email of the RSS feed.
+
+### RSS Feed Metadata Minified
+
+#### Removed Attributes
+
+* `author`
+* `imageUrl`
+* `feedUrl`
+* `link`
+* `explicit`
+* `type`
+* `language`
 
 
 ## RSS Feed Episode
 
-> Feed Episode
+> RSS Feed Episode
 
 ```json
 {
@@ -2195,6 +2263,9 @@ Attribute | Type | Description
   "author": "Night Vale Presents",
   "explicit": false,
   "duration": 1454.18449,
+  "season": null,
+  "episode": null,
+  "episodeType": null,
   "libraryItemId": "li_bufnnmp4y5o2gbbxfm",
   "episodeId": "ep_lh6ko39pumnrma3dhv",
   "trackIndex": 0,
@@ -2213,6 +2284,9 @@ Attribute | Type | Description
 `author` | String | The author of the RSS feed episode.
 `explicit` | Boolean | Whether the RSS feed episode is explicit.
 `duration` | Float | The duration (in seconds) of the RSS feed episode.
+`season` | String or null | The season of the RSS feed episode.
+`episode` | String or null | The episode number of the RSS feed episode.
+`episodeType` | String or null | The type of the RSS feed episode.
 `libraryItemId` | String | The ID of the library item the RSS feed is for.
 `episodeId` | String or null | The ID of the podcast episode the RSS feed episode is for. Will be `null` if the RSS feed is for a book.
 `trackIndex` | Integer | The RSS feed episode's track index.

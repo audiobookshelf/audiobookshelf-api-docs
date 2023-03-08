@@ -359,7 +359,8 @@ curl "https://abs.example.com/api/search/podcast?term=Welcome%20To%20Night%20Val
     "cover": "https://is4-ssl.mzstatic.com/image/thumb/Podcasts125/v4/4a/31/35/4a3135d0-1fe7-a2d7-fb43-d182ec175402/mza_8232698753950666850.jpg/600x600bb.jpg",
     "trackCount": 280,
     "feedUrl": "http://feeds.nightvalepresents.com/welcometonightvalepodcast",
-    "pageUrl": "https://podcasts.apple.com/us/podcast/welcome-to-night-vale/id536258179?uo=4"
+    "pageUrl": "https://podcasts.apple.com/us/podcast/welcome-to-night-vale/id536258179?uo=4",
+    "explicit": false
   },
   ...
 ]
@@ -401,6 +402,7 @@ Attribute | Type | Description
 `trackCount` | Integer | The number of episodes the podcast has.
 `feedUrl` | String | The URL of the podcast's RSS feed.
 `pageUrl` | String | The URL of the podcast's iTunes page.
+`explicit` | Boolean | Whether the podcast is marked as explicit.
 
 
 ## Search for an Author
