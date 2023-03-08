@@ -2071,6 +2071,7 @@ Attribute | Type | Description
   "chromecastEnabled": false,
   "enableEReader": false,
   "dateFormat": "MM/dd/yyyy",
+  "timeFormat": "HH:mm",
   "language": "en-us",
   "logLevel": 2,
   "version": "2.2.5"
@@ -2104,7 +2105,8 @@ Attribute | Type | Description
 `sortingPrefixes` | Array of String | If `sortingIgnorePrefix` is `true`, what prefixes to ignore.
 `chromecastEnabled` | Boolean | Whether to enable streaming to Chromecast devices.
 `enableEReader` | Boolean | Whether to enable experimental e-reader support.
-`dateFormat` | String | What date format to use. Options are `MM/dd/yyyy`, `dd/MM/yyyy`, or `yyyy-MM-dd`.
+`dateFormat` | String | What date format to use. Options are `MM/dd/yyyy`, `dd/MM/yyyy`, `dd.MM.yyyy`, `yyyy-MM-dd`, `MMM do, yyyy`, `MMMM do, yyyy`, `dd MMM yyyy`, or `dd MMMM yyyy`.
+`timeFormat` | String | What time format to use. Options are `HH:mm` (24-hour) and `h:mma` (am/pm).
 `language` | String | The default server language.
 `logLevel` | Integer | What log level the server should use when logging. `1` for debug, `2` for info, or `3` for warnings.
 `version` | String | The server's version.

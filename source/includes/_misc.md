@@ -124,6 +124,7 @@ curl -X PATCH "https://abs.example.com/api/settings" \
     "chromecastEnabled": false,
     "enableEReader": false,
     "dateFormat": "MM/dd/yyyy",
+    "timeFormat": "HH:mm",
     "language": "en-us",
     "logLevel": 2,
     "version": "2.2.5"
@@ -240,6 +241,7 @@ curl -X POST "https://abs.example.com/api/authorize" \
     "chromecastEnabled": false,
     "enableEReader": false,
     "dateFormat": "MM/dd/yyyy",
+    "timeFormat": "HH:mm",
     "language": "en-us",
     "logLevel": 2,
     "version": "2.2.5"
