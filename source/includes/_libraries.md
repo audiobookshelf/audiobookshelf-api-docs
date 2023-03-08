@@ -2110,6 +2110,13 @@ curl "https://abs.example.com/api/libraries/lib_c1u6t4p45c35rf0nzd/stats" \
   ],
   "numAudioTrack": 2,
   "totalSize": 268990279,
+  "largestItems": [
+    {
+      "id": "li_8gch9ve09orgn4fdz8",
+      "title": "Wizards First Rule",
+      "size": 268990279
+    }
+  ],
   "authorsWithCount": [
     {
       "id": "aut_z3leimgybl7uf3y4ab",
@@ -2153,19 +2160,28 @@ Attribute | Type | Description
 `totalAuthors` | Integer | The total amount of authors in the library.
 `totalGenres` | Integer | The total amount of genres in the library.
 `totalDuration` | Float | The total duration (in seconds) of all items in the library.
-`longestItems` | Array of Library Item Stats (See Below) | The items with the longest durations in the library.
+`longestItems` | Array of [Library Item Duration Stats](#library-item-duration-stats) | The items with the longest durations in the library.
 `numAudioTrack` | Integer | The total number of audio tracks in the library.
 `totalSize` | Integer | The total size (in bytes) of all items in the library.
-`authorsWithCount` | Array of Author Stats (See Below) | The authors in the library.
-`genresWithCount` | Array of Genre Stats (See Below) | The genres in the library.
+`largestItems` | Array of [Library Item Size Stats](#library-item-size-stats) | The items with the largest size in the library.
+`authorsWithCount` | Array of [Author Stats](#author-stats) | The authors in the library.
+`genresWithCount` | Array of [Genre Stats](#genre-stats) | The genres in the library.
 
-#### Library Item Stats
+#### Library Item Duration Stats
 
 Attribute | Type | Description
 --------- | ---- | -----------
 `id` | String | The ID of the library item.
 `title` | String | The title of the library item.
 `duration` | Float | The duration (in seconds) of the library item.
+
+#### Library Item Size Stats
+
+Attribute | Type | Description
+--------- | ---- | -----------
+`id` | String | The ID of the library item.
+`title` | String | The title of the library item.
+`size` | Integer | The size (in bytes) of the library item.
 
 #### Author Stats
 
