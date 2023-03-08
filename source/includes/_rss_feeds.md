@@ -17,7 +17,14 @@ curl -X POST "https://abs.example.com/api/feeds/item/li_bufnnmp4y5o2gbbxfm/open"
     "id": "li_bufnnmp4y5o2gbbxfm",
     "entityType": "item",
     "entityId": "li_bufnnmp4y5o2gbbxfm",
-    "feedUrl": "https://abs.example.com/feed/li_bufnnmp4y5o2gbbxfm"
+    "feedUrl": "https://abs.example.com/feed/li_bufnnmp4y5o2gbbxfm",
+    "meta": {
+      "title": "Welcome to Night Vale",
+      "description": "\n      Twice-monthly community updates for the small desert town of Night Vale, where every conspiracy theory is true. Turn on your radio and hide. Never listened before? It's an ongoing radio show. Start with the current episode, and you'll catch on in no time. Or, go right to Episode 1 if you wanna binge-listen.\n    ",
+      "preventIndexing": true,
+      "ownerName": null,
+      "ownerEmail": null
+    }
   }
 }
 ```
@@ -74,7 +81,14 @@ curl -X POST "https://abs.example.com/api/feeds/collection/col_fpfstanv6gd7tq2qz
     "id": "col_fpfstanv6gd7tq2qz7",
     "entityType": "collection",
     "entityId": "col_fpfstanv6gd7tq2qz7",
-    "feedUrl": "https://abs.example.com/feed/col_fpfstanv6gd7tq2qz7"
+    "feedUrl": "https://abs.example.com/feed/col_fpfstanv6gd7tq2qz7",
+    "meta": {
+      "title": "Favorites",
+      "description": null,
+      "preventIndexing": true,
+      "ownerName": null,
+      "ownerEmail": null
+    }
   }
 }
 ```
@@ -131,7 +145,14 @@ curl -X POST "https://abs.example.com/api/feeds/series/ser_cabkj4jeu8be3rap4g/op
     "id": "ser_cabkj4jeu8be3rap4g",
     "entityType": "series",
     "entityId": "ser_cabkj4jeu8be3rap4g",
-    "feedUrl": "https://abs.example.com/feed/ser_cabkj4jeu8be3rap4g"
+    "feedUrl": "https://abs.example.com/feed/ser_cabkj4jeu8be3rap4g",
+    "meta": {
+      "title": "Sword of Truth",
+      "description": null,
+      "preventIndexing": true,
+      "ownerName": null,
+      "ownerEmail": null
+    }
   }
 }
 ```
