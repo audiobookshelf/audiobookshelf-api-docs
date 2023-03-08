@@ -636,6 +636,104 @@ Attribute | Type | Description
 `numEpisodesUpdated` | Integer | The number of podcast episodes that were updated.
 
 
+## Get a Podcast Episode
+
+```shell
+curl "https://abs.example.com/api/podcasts/li_bufnnmp4y5o2gbbxfm/episode/ep_lh6ko39pumnrma3dhv" \
+  -H "Authorization: Bearer exJhbGciOiJI6IkpXVCJ9.eyJ1c2Vyi5NDEyODc4fQ.ZraBFohS4Tg39NszY"
+```
+
+> The above command returns JSON structured like this:
+
+```json
+{
+  "libraryItemId": "li_bufnnmp4y5o2gbbxfm",
+  "id": "ep_lh6ko39pumnrma3dhv",
+  "index": 1,
+  "season": "",
+  "episode": "",
+  "episodeType": "full",
+  "title": "1 - Pilot",
+  "subtitle": "Pilot Episode. A new dog park opens in Night Vale. Carlos, a scientist, visits and discovers some interesting things. Seismic things. Plus, a helpful guide to surveillance helicopter-spotting. Weather: \"These and More Than These\" by Joseph Fink Music:...",
+  "description": "<div><br>Pilot Episode. A new dog park opens in Night Vale. Carlos, a scientist, visits and discovers some interesting things. Seismic things. Plus, a helpful guide to surveillance helicopter-spotting.<br><br></div><div><br>Weather: \"These and More Than These\" by Joseph Fink<br><br></div><div><br>Music: Disparition, disparition.info<br><br></div><div><br>Logo: Rob Wilson, silastom.com<br><br></div><div><br>Produced by Night Vale Presents. Written by Joseph Fink and Jeffrey Cranor. Narrated by Cecil Baldwin. More Info: welcometonightvale.com, and follow @NightValeRadio on Twitter or Facebook.<br><br></div>",
+  "enclosure": {
+    "url": "https://www.podtrac.com/pts/redirect.mp3/dovetail.prxu.org/_/126/1fadf1ad-aad8-449f-843b-6e8bb6949622/1_Pilot.mp3",
+    "type": "audio/mpeg",
+    "length": "20588611"
+  },
+  "pubDate": "Fri, 15 Jun 2012 12:00:00 -0000",
+  "audioFile": {
+    "index": 1,
+    "ino": "22587",
+    "metadata": {
+      "filename": "1 - Pilot.mp3",
+      "ext": ".mp3",
+      "path": "/podcasts/Welcome to Night Vale/1 - Pilot.mp3",
+      "relPath": "1 - Pilot.mp3",
+      "size": 23653735,
+      "mtimeMs": 1667326682557,
+      "ctimeMs": 1667326682557,
+      "birthtimeMs": 1667326679508
+    },
+    "addedAt": 1667326682605,
+    "updatedAt": 1668234380150,
+    "trackNumFromMeta": null,
+    "discNumFromMeta": null,
+    "trackNumFromFilename": null,
+    "discNumFromFilename": null,
+    "manuallyVerified": false,
+    "invalid": false,
+    "exclude": false,
+    "error": null,
+    "format": "MP2/3 (MPEG audio layer 2/3)",
+    "duration": 1454.18449,
+    "bitRate": 128000,
+    "language": null,
+    "codec": "mp3",
+    "timeBase": "1/14112000",
+    "channels": 2,
+    "channelLayout": "stereo",
+    "chapters": [],
+    "embeddedCoverArt": "mjpeg",
+    "metaTags": {
+      "tagAlbum": "Welcome to Night Vale",
+      "tagArtist": "Night Vale Presents",
+      "tagGenre": "Podcast",
+      "tagTitle": "1 - Pilot",
+      "tagDate": "2012",
+      "tagEncoder": "Lavf58.45.100"
+    },
+    "mimeType": "audio/mpeg"
+  },
+  "publishedAt": 1339761600000,
+  "addedAt": 1667326679503,
+  "updatedAt": 1667428186431
+}
+```
+
+This endpoint retrieves a podcast episode.
+
+### HTTP Request
+
+`GET http://abs.example.com/api/podcasts/<ID>/episode/<EpisodeID>`
+
+### URL Parameters
+
+Parameter | Description
+--------- | -----------
+ID | The ID of the podcast library item.
+EpisodeID | The ID of the podcast episode.
+
+### Response
+
+Status | Meaning | Description | Schema
+------ | ------- | ----------- | ------
+200 | OK | Success | [Podcast Episode](#podcast-episode)
+403 | Forbidden | The user is not allowed to access the library item. |
+404 | Not Found | No podcast episode with the given ID exists. |
+500 | Internal Server Error | The library item is not a podcast. |
+
+
 ## Update a Podcast Episode
 
 ```shell
