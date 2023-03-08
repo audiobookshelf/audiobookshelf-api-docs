@@ -834,12 +834,18 @@ Attribute | Type | Description
   "episodeDisplayTitle": "2 - Glow Cloud",
   "url": "https://www.podtrac.com/pts/redirect.mp3/dovetail.prxu.org/_/126/cb1dd91f-5d8d-42e9-ba22-14ff335d2cbb/2_Glow_Cloud.mp3",
   "libraryItemId": "li_bufnnmp4y5o2gbbxfm",
-  "isDownloading": false,
+  "libraryId": "lib_p9wkw2i85qy9oltijt",
   "isFinished": false,
   "failed": false,
   "startedAt": null,
   "createdAt": 1668122813409,
-  "finishedAt": null
+  "finishedAt": null,
+  "podcastTitle": "Welcome to Night Vale",
+  "podcastExplicit": false,
+  "season": "",
+  "episode": "",
+  "episodeType": "full",
+  "publishedAt": 1341144000000
 }
 ```
 
@@ -849,12 +855,18 @@ Attribute | Type | Description
 `episodeDisplayTitle` | String | The display title of the episode to be downloaded.
 `url` | String | The URL from which to download the episode.
 `libraryItemId` | String | The ID of the library item the episode belongs to.
-`isDownloading` | Boolean | Whether the episode is actively being downloaded.
+`libraryId` | String | The ID of the library the episode's podcast belongs to.
 `isFinished` | Boolean | Whether the episode has finished downloading.
 `failed` | Boolean | Whether the episode failed to download.
 `startedAt` | Integer or null | The time (in ms since POSIX epoch) when the episode started downloading. Will be `null` if it has not started downloading yet.
 `createdAt` | Integer | The time (in ms since POSIX epoch) when the podcast episode download request was created.
 `finishedAt` | Integer or null | The time (in ms since POSIX epoch) when the episode finished downloading. Will be `null` if it has not finished.
+`podcastTitle` | String or null | The title of the episode's podcast.
+`podcastExplicit` | Boolean | Whether the episode's podcast is explicit.
+`season` | String or null | The season of the podcast episode.
+`episode` | String or null | The episode number of the podcast episode.
+`episodeType` | String | The type of the podcast episode.
+`publishedAt` | Integer or null | The time (in ms since POSIX epoch) when the episode was published.
 
 
 ## Podcast Feed

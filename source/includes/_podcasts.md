@@ -386,12 +386,18 @@ curl "https://abs.example.com/api/podcasts/li_bufnnmp4y5o2gbbxfm/downloads" \
       "episodeDisplayTitle": "2 - Glow Cloud",
       "url": "https://www.podtrac.com/pts/redirect.mp3/dovetail.prxu.org/_/126/cb1dd91f-5d8d-42e9-ba22-14ff335d2cbb/2_Glow_Cloud.mp3",
       "libraryItemId": "li_bufnnmp4y5o2gbbxfm",
-      "isDownloading": false,
+      "libraryId": "lib_p9wkw2i85qy9oltijt",
       "isFinished": false,
       "failed": false,
       "startedAt": null,
       "createdAt": 1668122813409,
-      "finishedAt": null
+      "finishedAt": null,
+      "podcastTitle": "Welcome to Night Vale",
+      "podcastExplicit": false,
+      "season": "",
+      "episode": "",
+      "episodeType": "full",
+      "publishedAt": 1341144000000
     }
   ]
 }
