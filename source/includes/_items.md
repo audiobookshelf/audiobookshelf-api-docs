@@ -694,6 +694,7 @@ Parameter | Type | Description
 `itunesArtistId` | Integer or null | The iTunes Artist ID for the author of the podcast.
 `explicit` | Boolean | Whether to mark the podcast as explicit.
 `language` | String or null | The language of the podcast.
+`type` | String | The type of the podcast. Should be `episodic` or `serial`.
 
 ### Response
 

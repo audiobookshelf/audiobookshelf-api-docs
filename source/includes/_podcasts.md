@@ -49,7 +49,8 @@ curl -X POST "https://abs.example.com/api/podcasts" \
       "itunesId": 536258179,
       "itunesArtistId": 718704794,
       "explicit": false,
-      "language": null
+      "language": null,
+      "type": "episodic"
     },
     "coverPath": "/metadata/items/li_bufnnmp4y5o2gbbxfm/cover.jpg",
     "tags": [],
@@ -783,7 +784,8 @@ curl -X PATCH "https://abs.example.com/api/podcasts/li_bufnnmp4y5o2gbbxfm/episod
       "itunesId": 536258179,
       "itunesArtistId": 718704794,
       "explicit": false,
-      "language": null
+      "language": null,
+      "type": "episodic"
     },
     "coverPath": "/metadata/items/li_bufnnmp4y5o2gbbxfm/cover.jpg",
     "tags": [],
@@ -1002,7 +1004,8 @@ curl -X DELETE "https://abs.example.com/api/podcasts/li_bufnnmp4y5o2gbbxfm/episo
       "itunesId": 536258179,
       "itunesArtistId": 718704794,
       "explicit": false,
-      "language": null
+      "language": null,
+      "type": "episodic"
     },
     "coverPath": "/metadata/items/li_bufnnmp4y5o2gbbxfm/cover.jpg",
     "tags": [],

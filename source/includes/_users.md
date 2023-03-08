@@ -766,7 +766,8 @@ curl "https://abs.example.com/api/users/root/listening-stats" \
         "itunesId": 536258179,
         "itunesArtistId": 718704794,
         "explicit": false,
-        "language": null
+        "language": null,
+        "type": "episodic"
       }
     },
     ...
@@ -818,7 +819,8 @@ curl "https://abs.example.com/api/users/root/listening-stats" \
         "itunesId": 536258179,
         "itunesArtistId": 718704794,
         "explicit": false,
-        "language": null
+        "language": null,
+        "type": "episodic"
       },
       "chapters": [],
       "displayTitle": "1 - Pilot",

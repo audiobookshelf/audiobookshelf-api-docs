@@ -643,7 +643,8 @@ Attribute | Type | Description
   "itunesId": 536258179,
   "itunesArtistId": 718704794,
   "explicit": false,
-  "language": null
+  "language": null,
+  "type": "episodic"
 }
 ```
 
@@ -667,7 +668,8 @@ Attribute | Type | Description
   "itunesId": 536258179,
   "itunesArtistId": 718704794,
   "explicit": false,
-  "language": null
+  "language": null,
+  "type": "episodic"
 }
 ```
 
@@ -691,7 +693,8 @@ Attribute | Type | Description
   "itunesId": 536258179,
   "itunesArtistId": 718704794,
   "explicit": false,
-  "language": null
+  "language": null,
+  "type": "episodic"
 }
 ```
 
@@ -709,6 +712,7 @@ Attribute | Type | Description
 `itunesArtistId` | Integer or null | The iTunes Artist ID for the author of the podcast. Will be `null` if unknown.
 `explicit` | Boolean | Whether the podcast has been marked as explicit.
 `language` | String or null | The language of the podcast. Will be `null` if unknown.
+`type` | String or null | The type of the podcast.
 
 ### Podcast Metadata Minified
 
