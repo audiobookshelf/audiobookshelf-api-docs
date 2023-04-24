@@ -1,51 +1,31 @@
 # Backups
 
-## Get All Backups
+## Apply a Backup
 
 ```shell
-curl "https://abs.example.com/api/backups" \
+curl "https://abs.example.com/api/backups/2022-11-15T0105/apply" \
   -H "Authorization: Bearer exJhbGciOiJI6IkpXVCJ9.eyJ1c2Vyi5NDEyODc4fQ.ZraBFohS4Tg39NszY"
 ```
 
-> The above command returns JSON structured like this:
-
-```json
-{
-  "backups": [
-    {
-      "id": "2022-11-25T0100",
-      "backupMetadataCovers": true,
-      "backupDirPath": "/metadata/backups",
-      "datePretty": "Fri, Nov 25 2022 01:00",
-      "fullPath": "/metadata/backups/2022-11-25T0100.audiobookshelf",
-      "path": "backups/2022-11-25T0100.audiobookshelf",
-      "filename": "2022-11-25T0100.audiobookshelf",
-      "fileSize": 39819077,
-      "createdAt": 1669366800272,
-      "serverVersion": "2.2.5"
-    }
-  ]
-}
-```
-
-This endpoint retrieves all backups.
+This endpoint applies a backup.
 
 ### HTTP Request
 
-`GET http://abs.example.com/api/backups`
+`GET http://abs.example.com/api/backups/<ID>/apply`
+
+### URL Parameters
+
+Parameter | Description
+--------- | -----------
+ID | The ID of the backup.
 
 ### Response
 
-Status | Meaning | Description | Schema
------- | ------- | ----------- | ------
-200 | OK | Success | See Below
-403 | Forbidden | An admin user is required to get backups. |
-
-#### Response Schema
-
-Attribute | Type | Description
---------- | ---- | -----------
-`backups` | Array of [Backup](#backup) | The backups on the server.
+Status | Meaning | Description
+------ | ------- | -----------
+200 | OK | Success
+403 | Forbidden | An admin user is required to apply backups.
+404 | Not Found | No backup with the provided ID exists.
 
 
 ## Create a Backup
@@ -163,33 +143,52 @@ Attribute | Type | Description
 --------- | ---- | -----------
 `backups` | Array of [Backup](#backup) | The backups on the server.
 
-
-## Apply a Backup
+## Get All Backups
 
 ```shell
-curl "https://abs.example.com/api/backups/2022-11-15T0105/apply" \
+curl "https://abs.example.com/api/backups" \
   -H "Authorization: Bearer exJhbGciOiJI6IkpXVCJ9.eyJ1c2Vyi5NDEyODc4fQ.ZraBFohS4Tg39NszY"
 ```
 
-This endpoint applies a backup.
+> The above command returns JSON structured like this:
+
+```json
+{
+  "backups": [
+    {
+      "id": "2022-11-25T0100",
+      "backupMetadataCovers": true,
+      "backupDirPath": "/metadata/backups",
+      "datePretty": "Fri, Nov 25 2022 01:00",
+      "fullPath": "/metadata/backups/2022-11-25T0100.audiobookshelf",
+      "path": "backups/2022-11-25T0100.audiobookshelf",
+      "filename": "2022-11-25T0100.audiobookshelf",
+      "fileSize": 39819077,
+      "createdAt": 1669366800272,
+      "serverVersion": "2.2.5"
+    }
+  ]
+}
+```
+
+This endpoint retrieves all backups.
 
 ### HTTP Request
 
-`GET http://abs.example.com/api/backups/<ID>/apply`
-
-### URL Parameters
-
-Parameter | Description
---------- | -----------
-ID | The ID of the backup.
+`GET http://abs.example.com/api/backups`
 
 ### Response
 
-Status | Meaning | Description
------- | ------- | -----------
-200 | OK | Success
-403 | Forbidden | An admin user is required to apply backups.
-404 | Not Found | No backup with the provided ID exists.
+Status | Meaning | Description | Schema
+------ | ------- | ----------- | ------
+200 | OK | Success | See Below
+403 | Forbidden | An admin user is required to get backups. |
+
+#### Response Schema
+
+Attribute | Type | Description
+--------- | ---- | -----------
+`backups` | Array of [Backup](#backup) | The backups on the server.
 
 
 ## Upload a Backup

@@ -1,161 +1,159 @@
 # Misc
 
-## Upload Files
+## Delete a Genre
 
 ```shell
-curl -X POST "https://abs.example.com/api/upload" \
-  -H "Authorization: Bearer exJhbGciOiJI6IkpXVCJ9.eyJ1c2Vyi5NDEyODc4fQ.ZraBFohS4Tg39NszY" \
-  -F title="Wizard's First Rule" \
-  -F author="Terry Goodkind" \
-  -F series="Sword of Truth" \
-  -F library="lib_c1u6t4p45c35rf0nzd" \
-  -F folder="fol_bev1zuxhb0j0s1wehr" \
-  -F 0=@"Terry Goodkind - SOT Bk01 - Wizards First Rule 01.mp3" \
-  -F 1=@"Terry Goodkind - SOT Bk01 - Wizards First Rule 02.mp3" \
-  -F 2=@cover.jpg
-```
-
-This endpoint uploads library item files to the server.
-
-### HTTP Request
-
-`POST http://abs.example.com/api/upload`
-
-### Form Parameters
-
-Parameter | Type | Description
---------- | ---- | -----------
-`title` | String | The library item's title.
-`author` | String | Optionally, the library item's author.
-`series` | String | Optionally, the library item's series.
-`library` | String | The ID of the library to put the item in.
-`folder` | String | The ID of the folder to put the item in.
-
-The files will be put in a directory at `<folderDir>/<author>/<series>/<title>`.
-
-The form keys for the files can be anything as they are ignored.
-
-The following file types are supported:
-
-* `.png`
-* `.jpg`
-* `.jpeg`
-* `.webp`
-* `.m4b`
-* `.mp3`
-* `.m4a`
-* `.flac`
-* `.opus`
-* `.ogg`
-* `.oga`
-* `.mp4`
-* `.aac`
-* `.wma`
-* `.aiff`
-* `.wav`
-* `.webm`
-* `.webma`
-* `.epub`
-* `.pdf`
-* `.mobi`
-* `.azw3`
-* `.cbr`
-* `.cbz`
-* `.nfo`
-* `.txt`
-* `.opf`
-* `.abs`
-
-### Response
-
-Status | Meaning | Description
------- | ------- | -----------
-200 | OK | Success
-400 | Bad Request | No files were provided.
-403 | Forbidden | A user with upload permissions is required.
-404 | Not Found | No library with the given ID exists, or no folder with the given ID exists in the library.
-500 | Internal Server Error | No files were provided, or the upload directory already exists.
-
-
-## Update Server Settings
-
-```shell
-curl -X PATCH "https://abs.example.com/api/settings" \
-  -H "Authorization: Bearer exJhbGciOiJI6IkpXVCJ9.eyJ1c2Vyi5NDEyODc4fQ.ZraBFohS4Tg39NszY" \
-  -H "Content-Type: application/json" \
-  -d '{"scannerFindCovers": false}'
+curl -X DELETE "https://abs.example.com/api/genres/TWFnaWM%3D" \
+  -H "Authorization: Bearer exJhbGciOiJI6IkpXVCJ9.eyJ1c2Vyi5NDEyODc4fQ.ZraBFohS4Tg39NszY"
 ```
 
 > The above command returns JSON structured like this:
 
 ```json
 {
-  "success": true,
-  "serverSettings": {
-    "id": "server-settings",
-    "scannerFindCovers": false,
-    "scannerCoverProvider": "google",
-    "scannerParseSubtitle": false,
-    "scannerPreferAudioMetadata": false,
-    "scannerPreferOpfMetadata": false,
-    "scannerPreferMatchedMetadata": false,
-    "scannerDisableWatcher": true,
-    "scannerPreferOverdriveMediaMarker": false,
-    "scannerUseSingleThreadedProber": true,
-    "scannerMaxThreads": 0,
-    "scannerUseTone": false,
-    "storeCoverWithItem": false,
-    "storeMetadataWithItem": false,
-    "rateLimitLoginRequests": 10,
-    "rateLimitLoginWindow": 600000,
-    "backupSchedule": "30 1 * * *",
-    "backupsToKeep": 2,
-    "maxBackupSize": 1,
-    "backupMetadataCovers": true,
-    "loggerDailyLogsToKeep": 7,
-    "loggerScannerLogsToKeep": 2,
-    "homeBookshelfView": 1,
-    "bookshelfView": 1,
-    "sortingIgnorePrefix": false,
-    "sortingPrefixes": [
-      "the",
-      "a"
-    ],
-    "chromecastEnabled": false,
-    "enableEReader": false,
-    "dateFormat": "MM/dd/yyyy",
-    "timeFormat": "HH:mm",
-    "language": "en-us",
-    "logLevel": 2,
-    "version": "2.2.5"
-  }
+  "numItemsUpdated": 1
 }
 ```
 
-This endpoint updates the server's settings.
+This endpoint deletes a genre, removing it from all library items.
 
 ### HTTP Request
 
-`PATCH http://abs.example.com/api/settings`
+`DELETE http://abs.example.com/api/genres/<Genre>`
 
-### Parameters
+### URL Parameters
 
-Provide a [Server Settings](#server-settings) object with the key-value pairs to update.
+Parameter | Description
+--------- | -----------
+Genre | The name of the genre to delete, Base64 and URL encoded.
 
 ### Response
 
 Status | Meaning | Description | Schema
 ------ | ------- | ----------- | ------
-200 | OK | Success | See below.
-403 | Forbidden | An admin user is required to update server settings. |
-500 | Internal Server Error | Invalid server settings update object. |
+200 | OK | Success | See Below
+404 | Not Found | An admin user is required to delete genres. |
 
 #### Response Schema
 
 Attribute | Type | Description
 --------- | ---- | -----------
-`success` | Boolean | Whether the server settings were updated successfully.
-`serverSettings` | [Server Settings](#server-settings) Object | The updated server settings.
+`numItemsUpdated` | Integer | The number of library items that had their genres changed.
+
+
+## Delete a Tag
+
+```shell
+curl -X DELETE "https://abs.example.com/api/tags/VGhlIEJlc3Q%3D" \
+  -H "Authorization: Bearer exJhbGciOiJI6IkpXVCJ9.eyJ1c2Vyi5NDEyODc4fQ.ZraBFohS4Tg39NszY"
+```
+
+> The above command returns JSON structured like this:
+
+```json
+{
+  "numItemsUpdated": 1
+}
+```
+
+This endpoint deletes a tag, removing it from all library items.
+
+### HTTP Request
+
+`DELETE http://abs.example.com/api/tags/<Tag>`
+
+### URL Parameters
+
+Parameter | Description
+--------- | -----------
+Tag | The name of the tag to delete, Base64 and URL encoded.
+
+### Response
+
+Status | Meaning | Description | Schema
+------ | ------- | ----------- | ------
+200 | OK | Success | See Below
+404 | Not Found | An admin user is required to delete tags. |
+
+#### Response Schema
+
+Attribute | Type | Description
+--------- | ---- | -----------
+`numItemsUpdated` | Integer | The number of library items that had their tags changed.
+
+
+## Get All Genres
+
+```shell
+curl "https://abs.example.com/api/genres" \
+  -H "Authorization: Bearer exJhbGciOiJI6IkpXVCJ9.eyJ1c2Vyi5NDEyODc4fQ.ZraBFohS4Tg39NszY"
+```
+
+> The above command returns JSON structured like this:
+
+```json
+{
+  "genres": [
+    "Fantasy"
+  ]
+}
+```
+
+This endpoint retrieves all genres assigned to library items.
+
+### HTTP Request
+
+`GET http://abs.example.com/api/genres`
+
+### Response
+
+Status | Meaning | Description | Schema
+------ | ------- | ----------- | ------
+200 | OK | Success | See Below
+404 | Not Found | An admin user is required to get all genres. |
+
+#### Response Schema
+
+Attribute | Type | Description
+--------- | ---- | -----------
+`genres` | Array of String | The requested genres.
+
+
+## Get All Tags
+
+```shell
+curl "https://abs.example.com/api/tags" \
+  -H "Authorization: Bearer exJhbGciOiJI6IkpXVCJ9.eyJ1c2Vyi5NDEyODc4fQ.ZraBFohS4Tg39NszY"
+```
+
+> The above command returns JSON structured like this:
+
+```json
+{
+  "tags": [
+    "Favorite"
+  ]
+}
+```
+
+This endpoint retrieves all tags assigned to library items.
+
+### HTTP Request
+
+`GET http://abs.example.com/api/tags`
+
+### Response
+
+Status | Meaning | Description | Schema
+------ | ------- | ----------- | ------
+200 | OK | Success | See Below
+404 | Not Found | An admin user is required to get all tags. |
+
+#### Response Schema
+
+Attribute | Type | Description
+--------- | ---- | -----------
+`tags` | Array of String | The requested tags.
 
 
 ## Get Authorized User and Server Information
@@ -272,41 +270,51 @@ Attribute | Type | Description
 `serverSettings` | [Server Settings](#server-settings) Object | The server's settings.
 `Source` | String | The server's installation source.
 
-## Get All Tags
+## Rename a Genre
 
 ```shell
-curl "https://abs.example.com/api/tags" \
-  -H "Authorization: Bearer exJhbGciOiJI6IkpXVCJ9.eyJ1c2Vyi5NDEyODc4fQ.ZraBFohS4Tg39NszY"
+curl -X POST "https://abs.example.com/api/genres/rename" \
+  -H "Authorization: Bearer exJhbGciOiJI6IkpXVCJ9.eyJ1c2Vyi5NDEyODc4fQ.ZraBFohS4Tg39NszY" \
+  -H "Content-Type: application/json" \
+  -d '{"genre": "Fantasy", "newGenre": "Magic"}'
 ```
 
 > The above command returns JSON structured like this:
 
 ```json
 {
-  "tags": [
-    "Favorite"
-  ]
+  "genreMerged": false,
+  "numItemsUpdated": 1
 }
 ```
 
-This endpoint retrieves all tags assigned to library items.
+This endpoint renames an existing genre.
 
 ### HTTP Request
 
-`GET http://abs.example.com/api/tags`
+`POST http://abs.example.com/api/genres/rename`
+
+### Parameters
+
+Parameter | Type | Description
+--------- | ---- | -----------
+`genre` | String | The current name of the genre.
+`newGenre` | String | The new name for the genre.
 
 ### Response
 
 Status | Meaning | Description | Schema
 ------ | ------- | ----------- | ------
 200 | OK | Success | See Below
-404 | Not Found | An admin user is required to get all tags. |
+400 | Bad Request | `genre` and `newGenre` are required parameters. |
+404 | Not Found | An admin user is required to rename genres. |
 
 #### Response Schema
 
 Attribute | Type | Description
 --------- | ---- | -----------
-`tags` | Array of String | The requested tags.
+`genreMerged` | Boolean | Whether the renamed genre was merged into another genre.
+`numItemsUpdated` | Integer | The number of library items that had their genres changed.
 
 
 ## Rename a Tag
@@ -356,170 +364,162 @@ Attribute | Type | Description
 `numItemsUpdated` | Integer | The number of library items that had their tags changed.
 
 
-## Delete a Tag
+## Update Server Settings
 
 ```shell
-curl -X DELETE "https://abs.example.com/api/tags/VGhlIEJlc3Q%3D" \
-  -H "Authorization: Bearer exJhbGciOiJI6IkpXVCJ9.eyJ1c2Vyi5NDEyODc4fQ.ZraBFohS4Tg39NszY"
-```
-
-> The above command returns JSON structured like this:
-
-```json
-{
-  "numItemsUpdated": 1
-}
-```
-
-This endpoint deletes a tag, removing it from all library items.
-
-### HTTP Request
-
-`DELETE http://abs.example.com/api/tags/<Tag>`
-
-### URL Parameters
-
-Parameter | Description
---------- | -----------
-Tag | The name of the tag to delete, Base64 and URL encoded.
-
-### Response
-
-Status | Meaning | Description | Schema
------- | ------- | ----------- | ------
-200 | OK | Success | See Below
-404 | Not Found | An admin user is required to delete tags. |
-
-#### Response Schema
-
-Attribute | Type | Description
---------- | ---- | -----------
-`numItemsUpdated` | Integer | The number of library items that had their tags changed.
-
-
-## Get All Genres
-
-```shell
-curl "https://abs.example.com/api/genres" \
-  -H "Authorization: Bearer exJhbGciOiJI6IkpXVCJ9.eyJ1c2Vyi5NDEyODc4fQ.ZraBFohS4Tg39NszY"
-```
-
-> The above command returns JSON structured like this:
-
-```json
-{
-  "genres": [
-    "Fantasy"
-  ]
-}
-```
-
-This endpoint retrieves all genres assigned to library items.
-
-### HTTP Request
-
-`GET http://abs.example.com/api/genres`
-
-### Response
-
-Status | Meaning | Description | Schema
------- | ------- | ----------- | ------
-200 | OK | Success | See Below
-404 | Not Found | An admin user is required to get all genres. |
-
-#### Response Schema
-
-Attribute | Type | Description
---------- | ---- | -----------
-`genres` | Array of String | The requested genres.
-
-
-## Rename a Genre
-
-```shell
-curl -X POST "https://abs.example.com/api/genres/rename" \
+curl -X PATCH "https://abs.example.com/api/settings" \
   -H "Authorization: Bearer exJhbGciOiJI6IkpXVCJ9.eyJ1c2Vyi5NDEyODc4fQ.ZraBFohS4Tg39NszY" \
   -H "Content-Type: application/json" \
-  -d '{"genre": "Fantasy", "newGenre": "Magic"}'
+  -d '{"scannerFindCovers": false}'
 ```
 
 > The above command returns JSON structured like this:
 
 ```json
 {
-  "genreMerged": false,
-  "numItemsUpdated": 1
+  "success": true,
+  "serverSettings": {
+    "id": "server-settings",
+    "scannerFindCovers": false,
+    "scannerCoverProvider": "google",
+    "scannerParseSubtitle": false,
+    "scannerPreferAudioMetadata": false,
+    "scannerPreferOpfMetadata": false,
+    "scannerPreferMatchedMetadata": false,
+    "scannerDisableWatcher": true,
+    "scannerPreferOverdriveMediaMarker": false,
+    "scannerUseSingleThreadedProber": true,
+    "scannerMaxThreads": 0,
+    "scannerUseTone": false,
+    "storeCoverWithItem": false,
+    "storeMetadataWithItem": false,
+    "rateLimitLoginRequests": 10,
+    "rateLimitLoginWindow": 600000,
+    "backupSchedule": "30 1 * * *",
+    "backupsToKeep": 2,
+    "maxBackupSize": 1,
+    "backupMetadataCovers": true,
+    "loggerDailyLogsToKeep": 7,
+    "loggerScannerLogsToKeep": 2,
+    "homeBookshelfView": 1,
+    "bookshelfView": 1,
+    "sortingIgnorePrefix": false,
+    "sortingPrefixes": [
+      "the",
+      "a"
+    ],
+    "chromecastEnabled": false,
+    "enableEReader": false,
+    "dateFormat": "MM/dd/yyyy",
+    "timeFormat": "HH:mm",
+    "language": "en-us",
+    "logLevel": 2,
+    "version": "2.2.5"
+  }
 }
 ```
 
-This endpoint renames an existing genre.
+This endpoint updates the server's settings.
 
 ### HTTP Request
 
-`POST http://abs.example.com/api/genres/rename`
+`PATCH http://abs.example.com/api/settings`
 
 ### Parameters
 
-Parameter | Type | Description
---------- | ---- | -----------
-`genre` | String | The current name of the genre.
-`newGenre` | String | The new name for the genre.
+Provide a [Server Settings](#server-settings) object with the key-value pairs to update.
 
 ### Response
 
 Status | Meaning | Description | Schema
 ------ | ------- | ----------- | ------
-200 | OK | Success | See Below
-400 | Bad Request | `genre` and `newGenre` are required parameters. |
-404 | Not Found | An admin user is required to rename genres. |
+200 | OK | Success | See below.
+403 | Forbidden | An admin user is required to update server settings. |
+500 | Internal Server Error | Invalid server settings update object. |
 
 #### Response Schema
 
 Attribute | Type | Description
 --------- | ---- | -----------
-`genreMerged` | Boolean | Whether the renamed genre was merged into another genre.
-`numItemsUpdated` | Integer | The number of library items that had their genres changed.
+`success` | Boolean | Whether the server settings were updated successfully.
+`serverSettings` | [Server Settings](#server-settings) Object | The updated server settings.
 
 
-## Delete a Genre
+## Upload Files
 
 ```shell
-curl -X DELETE "https://abs.example.com/api/genres/TWFnaWM%3D" \
-  -H "Authorization: Bearer exJhbGciOiJI6IkpXVCJ9.eyJ1c2Vyi5NDEyODc4fQ.ZraBFohS4Tg39NszY"
+curl -X POST "https://abs.example.com/api/upload" \
+  -H "Authorization: Bearer exJhbGciOiJI6IkpXVCJ9.eyJ1c2Vyi5NDEyODc4fQ.ZraBFohS4Tg39NszY" \
+  -F title="Wizard's First Rule" \
+  -F author="Terry Goodkind" \
+  -F series="Sword of Truth" \
+  -F library="lib_c1u6t4p45c35rf0nzd" \
+  -F folder="fol_bev1zuxhb0j0s1wehr" \
+  -F 0=@"Terry Goodkind - SOT Bk01 - Wizards First Rule 01.mp3" \
+  -F 1=@"Terry Goodkind - SOT Bk01 - Wizards First Rule 02.mp3" \
+  -F 2=@cover.jpg
 ```
 
-> The above command returns JSON structured like this:
-
-```json
-{
-  "numItemsUpdated": 1
-}
-```
-
-This endpoint deletes a genre, removing it from all library items.
+This endpoint uploads library item files to the server.
 
 ### HTTP Request
 
-`DELETE http://abs.example.com/api/genres/<Genre>`
+`POST http://abs.example.com/api/upload`
 
-### URL Parameters
+### Form Parameters
 
-Parameter | Description
---------- | -----------
-Genre | The name of the genre to delete, Base64 and URL encoded.
+Parameter | Type | Description
+--------- | ---- | -----------
+`title` | String | The library item's title.
+`author` | String | Optionally, the library item's author.
+`series` | String | Optionally, the library item's series.
+`library` | String | The ID of the library to put the item in.
+`folder` | String | The ID of the folder to put the item in.
+
+The files will be put in a directory at `<folderDir>/<author>/<series>/<title>`.
+
+The form keys for the files can be anything as they are ignored.
+
+The following file types are supported:
+
+* `.png`
+* `.jpg`
+* `.jpeg`
+* `.webp`
+* `.m4b`
+* `.mp3`
+* `.m4a`
+* `.flac`
+* `.opus`
+* `.ogg`
+* `.oga`
+* `.mp4`
+* `.aac`
+* `.wma`
+* `.aiff`
+* `.wav`
+* `.webm`
+* `.webma`
+* `.epub`
+* `.pdf`
+* `.mobi`
+* `.azw3`
+* `.cbr`
+* `.cbz`
+* `.nfo`
+* `.txt`
+* `.opf`
+* `.abs`
 
 ### Response
 
-Status | Meaning | Description | Schema
------- | ------- | ----------- | ------
-200 | OK | Success | See Below
-404 | Not Found | An admin user is required to delete genres. |
-
-#### Response Schema
-
-Attribute | Type | Description
---------- | ---- | -----------
-`numItemsUpdated` | Integer | The number of library items that had their genres changed.
+Status | Meaning | Description
+------ | ------- | -----------
+200 | OK | Success
+400 | Bad Request | No files were provided.
+403 | Forbidden | A user with upload permissions is required.
+404 | Not Found | No library with the given ID exists, or no folder with the given ID exists in the library.
+500 | Internal Server Error | No files were provided, or the upload directory already exists.
 
 
 ## Validate a Cron Expression

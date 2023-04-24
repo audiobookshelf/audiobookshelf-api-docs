@@ -1,56 +1,5 @@
 # Authors
 
-## Search for Authors
-
-```shell
-curl "https://abs.example.com/api/authors/search?q=Terry%20Goodkind" \
-  -H "Authorization: Bearer exJhbGciOiJI6IkpXVCJ9.eyJ1c2Vyi5NDEyODc4fQ.ZraBFohS4Tg39NszY"
-```
-
-> The above command returns JSON structured like this:
-
-```json
-{
-  "results": [
-    {
-      "id": "aut_z3leimgybl7uf3y4ab",
-      "asin": null,
-      "name": "Terry Goodkind",
-      "description": null,
-      "imagePath": null,
-      "addedAt": 1650621073750,
-      "updatedAt": 1650621073750
-    }
-  ]
-}
-```
-
-This endpoint searches for authors that match the query and returns the results.
-
-### HTTP Request
-
-`GET https://abs.example.com/api/authors/search?<q>`
-
-### Query Parameters
-
-Parameter | Type | Default | Description
---------- | ---- | ------- | -----------
-q | String | **Required** | The URL encoded search query.
-limit | Integer | `25` | Limit the number of returned results.
-
-### Response
-
-Status | Meaning | Description | Schema
------- | ------- | ----------- | ------
-200 | OK | Success | See Below
-
-#### Response Schema
-
-Attribute | Type | Description
---------- | ---- | -----------
-`results` | Array of [Author](#author) | The author search results.
-
-
 ## Get an Author
 
 ```shell
@@ -229,37 +178,21 @@ Attribute | Type | Description
 `items` | Array of [Library Item Minified](#library-item-minified) | The items in the series. Each library item's media's metadata will have a `series` attribute, a [Series Sequence](#series-sequence), which is the matching series.
 
 
-## Update an Author
+## Get an Author's Image
 
 ```shell
-curl -X PATCH "https://abs.example.com/api/authors/aut_z3leimgybl7uf3y4ab" \
+curl "https://abs.example.com/api/authors/aut_z3leimgybl7uf3y4ab/image" \
   -H "Authorization: Bearer exJhbGciOiJI6IkpXVCJ9.eyJ1c2Vyi5NDEyODc4fQ.ZraBFohS4Tg39NszY" \
-  -H "Content-Type: application/json" \
-  -d '{"asin": "B000APZOQA"}'
+  --output author.webp
 ```
 
-> The above command returns JSON structured like this:
+> The above command writes an image file.
 
-```json
-{
-  "author": {
-    "id": "aut_z3leimgybl7uf3y4ab",
-    "asin": "B000APZOQA",
-    "name": "Terry Goodkind",
-    "description": null,
-    "imagePath": null,
-    "addedAt": 1650621073750,
-    "updatedAt": 1668506755298
-  },
-  "success": true
-}
-```
-
-This endpoint updates an author. It also allows for merging of two authors if the name of this author is set to the name of another author.
+This endpoint retrieves an author's image.
 
 ### HTTP Request
 
-`PATCH http://abs.example.com/api/authors/<ID>`
+`GET http://abs.example.com/api/authors/<ID>/image`
 
 ### URL Parameters
 
@@ -267,30 +200,22 @@ Parameter | Description
 --------- | -----------
 ID | The ID of the author.
 
-### Parameters
+### Optional Query Parameters
 
-Parameter | Type | Description
---------- | ---- | -----------
-`asin` | String or null | The ASIN of the author.
-`name` | String | The name of the author.
-`description` | String or null | A description of the author.
-`imagePath` | String or null | The absolute path for the author image.
+Parameter | Type | Default | Description
+--------- | ---- | ------- | -----------
+`width` | Integer | `400` | The requested width of the image.
+`height` | Integer or null | `null` | The requested height of the image. If `null` the image is scaled proportionately.
+`format` | String | `webp` or `jpeg` | The requested format of the image. The default value depends on the request headers.
+`raw` | Binary | `0` | Whether to get the raw cover image file instead of a scaled version. `0` for false, `1` for true.
 
 ### Response
 
-Status | Meaning | Description | Schema
------- | ------- | ----------- | ------
-200 | OK | Success | See below.
-404 | Not Found | No author with provided ID exists. |
-
-#### Response Schema
-
-Attribute | Type | Description
---------- | ---- | -----------
-`author` | [Author](#author) Object | The updated author.
-`merged` | Boolean | Will only exist and be `true` if the author was merged with another author.
-`updated` | Boolean | Whether the author was updated normally. Will only exist if the author was not merged.
-
+Status | Meaning | Description
+------ | ------- | -----------
+200 | OK | Success
+404 | Not Found | No author with provided ID exists, or the author does not have an image.
+500 | Internal Server Error | There was an error when attempting to read the image file.
 
 ## Match an Author
 
@@ -354,21 +279,88 @@ Attribute | Type | Description
 `author` | [Author](#author) Object | The updated author.
 
 
-## Get an Author's Image
+## Search for Authors
 
 ```shell
-curl "https://abs.example.com/api/authors/aut_z3leimgybl7uf3y4ab/image" \
-  -H "Authorization: Bearer exJhbGciOiJI6IkpXVCJ9.eyJ1c2Vyi5NDEyODc4fQ.ZraBFohS4Tg39NszY" \
-  --output author.webp
+curl "https://abs.example.com/api/authors/search?q=Terry%20Goodkind" \
+  -H "Authorization: Bearer exJhbGciOiJI6IkpXVCJ9.eyJ1c2Vyi5NDEyODc4fQ.ZraBFohS4Tg39NszY"
 ```
 
-> The above command writes an image file.
+> The above command returns JSON structured like this:
 
-This endpoint retrieves an author's image.
+```json
+{
+  "results": [
+    {
+      "id": "aut_z3leimgybl7uf3y4ab",
+      "asin": null,
+      "name": "Terry Goodkind",
+      "description": null,
+      "imagePath": null,
+      "addedAt": 1650621073750,
+      "updatedAt": 1650621073750
+    }
+  ]
+}
+```
+
+This endpoint searches for authors that match the query and returns the results.
 
 ### HTTP Request
 
-`GET http://abs.example.com/api/authors/<ID>/image`
+`GET https://abs.example.com/api/authors/search?<q>`
+
+### Query Parameters
+
+Parameter | Type | Default | Description
+--------- | ---- | ------- | -----------
+q | String | **Required** | The URL encoded search query.
+limit | Integer | `25` | Limit the number of returned results.
+
+### Response
+
+Status | Meaning | Description | Schema
+------ | ------- | ----------- | ------
+200 | OK | Success | See Below
+
+#### Response Schema
+
+Attribute | Type | Description
+--------- | ---- | -----------
+`results` | Array of [Author](#author) | The author search results.
+
+
+## Update an Author
+
+```shell
+curl -X PATCH "https://abs.example.com/api/authors/aut_z3leimgybl7uf3y4ab" \
+  -H "Authorization: Bearer exJhbGciOiJI6IkpXVCJ9.eyJ1c2Vyi5NDEyODc4fQ.ZraBFohS4Tg39NszY" \
+  -H "Content-Type: application/json" \
+  -d '{"asin": "B000APZOQA"}'
+```
+
+> The above command returns JSON structured like this:
+
+```json
+{
+  "author": {
+    "id": "aut_z3leimgybl7uf3y4ab",
+    "asin": "B000APZOQA",
+    "name": "Terry Goodkind",
+    "description": null,
+    "imagePath": null,
+    "addedAt": 1650621073750,
+    "updatedAt": 1668506755298
+  },
+  "success": true
+}
+```
+
+This endpoint updates an author. It also allows for merging of two authors if the name of this author is set to the name of another author.
+
+### HTTP Request
+
+`PATCH http://abs.example.com/api/authors/<ID>`
 
 ### URL Parameters
 
@@ -376,19 +368,26 @@ Parameter | Description
 --------- | -----------
 ID | The ID of the author.
 
-### Optional Query Parameters
+### Parameters
 
-Parameter | Type | Default | Description
---------- | ---- | ------- | -----------
-`width` | Integer | `400` | The requested width of the image.
-`height` | Integer or null | `null` | The requested height of the image. If `null` the image is scaled proportionately.
-`format` | String | `webp` or `jpeg` | The requested format of the image. The default value depends on the request headers.
-`raw` | Binary | `0` | Whether to get the raw cover image file instead of a scaled version. `0` for false, `1` for true.
+Parameter | Type | Description
+--------- | ---- | -----------
+`asin` | String or null | The ASIN of the author.
+`name` | String | The name of the author.
+`description` | String or null | A description of the author.
+`imagePath` | String or null | The absolute path for the author image.
 
 ### Response
 
-Status | Meaning | Description
------- | ------- | -----------
-200 | OK | Success
-404 | Not Found | No author with provided ID exists, or the author does not have an image.
-500 | Internal Server Error | There was an error when attempting to read the image file.
+Status | Meaning | Description | Schema
+------ | ------- | ----------- | ------
+200 | OK | Success | See below.
+404 | Not Found | No author with provided ID exists. |
+
+#### Response Schema
+
+Attribute | Type | Description
+--------- | ---- | -----------
+`author` | [Author](#author) Object | The updated author.
+`merged` | Boolean | Will only exist and be `true` if the author was merged with another author.
+`updated` | Boolean | Whether the author was updated normally. Will only exist if the author was not merged.

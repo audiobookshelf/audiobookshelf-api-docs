@@ -1,65 +1,5 @@
 # Search
 
-## Search for Covers
-
-```shell
-curl "https://abs.example.com/api/search/covers?title=Wizards%20First%20Rule&author=Terry%20Goodkind&provider=openlibrary" \
-  -H "Authorization: Bearer exJhbGciOiJI6IkpXVCJ9.eyJ1c2Vyi5NDEyODc4fQ.ZraBFohS4Tg39NszY"
-```
-
-> The above command returns JSON structured like this:
-
-```json
-{
-  "results": [
-    "https://covers.openlibrary.org/b/id/1005963-L.jpg",
-    "https://covers.openlibrary.org/b/id/791977-L.jpg",
-    "https://covers.openlibrary.org/b/id/766531-L.jpg",
-    "https://covers.openlibrary.org/b/id/910943-L.jpg",
-    "https://covers.openlibrary.org/b/id/8782857-L.jpg",
-    "https://covers.openlibrary.org/b/id/8788596-L.jpg",
-    "https://covers.openlibrary.org/b/id/8783892-L.jpg",
-    "https://covers.openlibrary.org/b/id/8993240-L.jpg",
-    "https://covers.openlibrary.org/b/id/10505009-L.jpg",
-    "https://covers.openlibrary.org/b/id/1005881-L.jpg",
-    "https://covers.openlibrary.org/b/id/8776837-L.jpg",
-    "https://covers.openlibrary.org/b/id/10778344-L.jpg",
-    "https://covers.openlibrary.org/b/id/11239659-L.jpg",
-    "https://covers.openlibrary.org/b/id/12224404-L.jpg",
-    "https://covers.openlibrary.org/b/OLID/OL9034948M-L.jpg",
-    "https://covers.openlibrary.org/b/id/8785389-L.jpg"
-  ]
-}
-```
-
-This endpoint searches a metadata provider for covers.
-
-### HTTP Request
-
-`GET http://abs.example.com/api/search/covers`
-
-### Query Parameters
-
-Parameter | Type | Default | Description
---------- | ---- | ------- | -----------
-`podcast` | Binary | `0` | Whether to search for podcast covers. Only the `title` parameter is needed for podcasts. `0` for false, `1` for true.
-`title` | String | **Required** | The media title to search for.
-`author` | String or null | `null` | If searching for a book cover, the author to search for.
-`provider` | String | `google` | If searching for a book cover, the metadata provider to use. See [Metadata Providers](#metadata-providers) for options.
-
-### Response
-
-Status | Meaning | Description | Schema
------- | ------- | ----------- | ------
-200 | OK | Success | See Below
-
-#### Response Schema
-
-Attribute | Type | Description
---------- | ---- | -----------
-`results` | Array of String | URLs of cover image search results.
-
-
 ## Search for Books
 
 > Metadata Provider: Google
@@ -332,6 +272,66 @@ Attribute | Type | Description
 `isbn` | String or null | The book's ISBN.
 
 
+## Search for Covers
+
+```shell
+curl "https://abs.example.com/api/search/covers?title=Wizards%20First%20Rule&author=Terry%20Goodkind&provider=openlibrary" \
+  -H "Authorization: Bearer exJhbGciOiJI6IkpXVCJ9.eyJ1c2Vyi5NDEyODc4fQ.ZraBFohS4Tg39NszY"
+```
+
+> The above command returns JSON structured like this:
+
+```json
+{
+  "results": [
+    "https://covers.openlibrary.org/b/id/1005963-L.jpg",
+    "https://covers.openlibrary.org/b/id/791977-L.jpg",
+    "https://covers.openlibrary.org/b/id/766531-L.jpg",
+    "https://covers.openlibrary.org/b/id/910943-L.jpg",
+    "https://covers.openlibrary.org/b/id/8782857-L.jpg",
+    "https://covers.openlibrary.org/b/id/8788596-L.jpg",
+    "https://covers.openlibrary.org/b/id/8783892-L.jpg",
+    "https://covers.openlibrary.org/b/id/8993240-L.jpg",
+    "https://covers.openlibrary.org/b/id/10505009-L.jpg",
+    "https://covers.openlibrary.org/b/id/1005881-L.jpg",
+    "https://covers.openlibrary.org/b/id/8776837-L.jpg",
+    "https://covers.openlibrary.org/b/id/10778344-L.jpg",
+    "https://covers.openlibrary.org/b/id/11239659-L.jpg",
+    "https://covers.openlibrary.org/b/id/12224404-L.jpg",
+    "https://covers.openlibrary.org/b/OLID/OL9034948M-L.jpg",
+    "https://covers.openlibrary.org/b/id/8785389-L.jpg"
+  ]
+}
+```
+
+This endpoint searches a metadata provider for covers.
+
+### HTTP Request
+
+`GET http://abs.example.com/api/search/covers`
+
+### Query Parameters
+
+Parameter | Type | Default | Description
+--------- | ---- | ------- | -----------
+`podcast` | Binary | `0` | Whether to search for podcast covers. Only the `title` parameter is needed for podcasts. `0` for false, `1` for true.
+`title` | String | **Required** | The media title to search for.
+`author` | String or null | `null` | If searching for a book cover, the author to search for.
+`provider` | String | `google` | If searching for a book cover, the metadata provider to use. See [Metadata Providers](#metadata-providers) for options.
+
+### Response
+
+Status | Meaning | Description | Schema
+------ | ------- | ----------- | ------
+200 | OK | Success | See Below
+
+#### Response Schema
+
+Attribute | Type | Description
+--------- | ---- | -----------
+`results` | Array of String | URLs of cover image search results.
+
+
 ## Search for Podcasts
 
 ```shell
@@ -403,54 +403,6 @@ Attribute | Type | Description
 `feedUrl` | String | The URL of the podcast's RSS feed.
 `pageUrl` | String | The URL of the podcast's iTunes page.
 `explicit` | Boolean | Whether the podcast is marked as explicit.
-
-
-## Search for an Author
-
-```shell
-curl "https://abs.example.com/api/search/authors?q=Terry%20Goodkind" \
-  -H "Authorization: Bearer exJhbGciOiJI6IkpXVCJ9.eyJ1c2Vyi5NDEyODc4fQ.ZraBFohS4Tg39NszY"
-```
-
-> The above command returns JSON structured like this:
-
-```json
-{
-  "asin": "B000APZOQA",
-  "description": "Terry Goodkind is a #1 New York Times Bestselling Author and creator of the critically acclaimed masterwork, ‘The Sword of Truth’. He has written 30+ major, bestselling novels, has been published in more than 20 languages world-wide, and has sold more than 26 Million books. ‘The Sword of Truth’ is a revered literary tour de force, comprised of 17 volumes, borne from over 25 years of dedicated writing. Terry Goodkind's brilliant books are character-driven stories, with a focus on the complexity of the human psyche. Goodkind has an uncanny grasp for crafting compelling stories about people like you and me, trapped in terrifying situations. With masterful storytelling, Goodkind brings us into the lives of his characters; characters that must rise to face not only challenges, but their deepest fears. For that reason, Goodkind’s characters speak to the best and worst in all of us. While ‘The Sword of Truth’ series is confirmation enough of Goodkind’s incredible storytelling abilities, his broad talents are also clearly evident in his contemporary novels, set within our own world. His post-‘Sword of Truth’ books are a thrilling, dizzying, mix of modern narrative, with every bit of Goodkind’s masterful voice intact. The bond built between the reader and one of the world’s great authors, rises above worlds and settings, mere backdrops for Goodkind’s uniquely intricate stories of life, love, challenge, and triumph. \"My privilege in life is the joy of writing books and telling stories about people who fascinate me, the good and the bad. I am grateful to all of my readers for the critical role they play in making these books possible. Your passion is my passion, and I thank you.\" - Terry Goodkind For more, please visit: http://terrygoodkind.com",
-  "image": "https://images-na.ssl-images-amazon.com/images/I/51NoQTm33OL.jpg",
-  "name": "Terry Goodkind"
-}
-```
-
-This endpoint searches [Audnexus](https://github.com/laxamentumtech/audnexus) (which mostly uses Audible for its data) for authors.
-
-### HTTP Request
-
-`GET http://abs.example.com/api/search/authors`
-
-### Query Parameters
-
-Parameter | Type | Description
---------- | ---- | -----------
-`q` | String | The search query. The provided name must match the author's name on Audnexus exactly to get a result.
-
-### Response
-
-Status | Meaning | Description | Schema
------- | ------- | ----------- | ------
-200 | OK | Success | See Below
-
-#### Response Schema
-
-Either `null` or an object with the following attributes will be returned.
-
-Attribute | Type | Description
---------- | ---- | -----------
-`asin` | String | The author's ASIN.
-`description` | String | The author's description.
-`image` | String | The URL of the author's image.
-`name` | String | The author's name.
 
 
 ## Search for a Book's Chapters
@@ -720,3 +672,50 @@ Attribute | Type | Description
 `startOffsetMs` | Integer | The start offset (in ms) of the chapter.
 `startOffsetSec` | Integer | The start offset (in seconds) of the chapter.
 `title` | String | The chapter's title.
+
+## Search for an Author
+
+```shell
+curl "https://abs.example.com/api/search/authors?q=Terry%20Goodkind" \
+  -H "Authorization: Bearer exJhbGciOiJI6IkpXVCJ9.eyJ1c2Vyi5NDEyODc4fQ.ZraBFohS4Tg39NszY"
+```
+
+> The above command returns JSON structured like this:
+
+```json
+{
+  "asin": "B000APZOQA",
+  "description": "Terry Goodkind is a #1 New York Times Bestselling Author and creator of the critically acclaimed masterwork, ‘The Sword of Truth’. He has written 30+ major, bestselling novels, has been published in more than 20 languages world-wide, and has sold more than 26 Million books. ‘The Sword of Truth’ is a revered literary tour de force, comprised of 17 volumes, borne from over 25 years of dedicated writing. Terry Goodkind's brilliant books are character-driven stories, with a focus on the complexity of the human psyche. Goodkind has an uncanny grasp for crafting compelling stories about people like you and me, trapped in terrifying situations. With masterful storytelling, Goodkind brings us into the lives of his characters; characters that must rise to face not only challenges, but their deepest fears. For that reason, Goodkind’s characters speak to the best and worst in all of us. While ‘The Sword of Truth’ series is confirmation enough of Goodkind’s incredible storytelling abilities, his broad talents are also clearly evident in his contemporary novels, set within our own world. His post-‘Sword of Truth’ books are a thrilling, dizzying, mix of modern narrative, with every bit of Goodkind’s masterful voice intact. The bond built between the reader and one of the world’s great authors, rises above worlds and settings, mere backdrops for Goodkind’s uniquely intricate stories of life, love, challenge, and triumph. \"My privilege in life is the joy of writing books and telling stories about people who fascinate me, the good and the bad. I am grateful to all of my readers for the critical role they play in making these books possible. Your passion is my passion, and I thank you.\" - Terry Goodkind For more, please visit: http://terrygoodkind.com",
+  "image": "https://images-na.ssl-images-amazon.com/images/I/51NoQTm33OL.jpg",
+  "name": "Terry Goodkind"
+}
+```
+
+This endpoint searches [Audnexus](https://github.com/laxamentumtech/audnexus) (which mostly uses Audible for its data) for authors.
+
+### HTTP Request
+
+`GET http://abs.example.com/api/search/authors`
+
+### Query Parameters
+
+Parameter | Type | Description
+--------- | ---- | -----------
+`q` | String | The search query. The provided name must match the author's name on Audnexus exactly to get a result.
+
+### Response
+
+Status | Meaning | Description | Schema
+------ | ------- | ----------- | ------
+200 | OK | Success | See Below
+
+#### Response Schema
+
+Either `null` or an object with the following attributes will be returned.
+
+Attribute | Type | Description
+--------- | ---- | -----------
+`asin` | String | The author's ASIN.
+`description` | String | The author's description.
+`image` | String | The URL of the author's image.
+`name` | String | The author's name.

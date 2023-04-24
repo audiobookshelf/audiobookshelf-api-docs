@@ -1,5 +1,95 @@
 # Server
 
+## Check the Server's Status
+
+```shell
+curl "https://abs.example.com/status"
+```
+
+> The above command returns JSON structured like this:
+
+```json
+{
+  "isInit": true,
+  "language": "en-us"
+}
+```
+
+This endpoint reports the server's initialization status.
+
+### HTTP Request
+
+`GET http://abs.example.com/status`
+
+### Response
+
+Status | Meaning | Description | Schema
+------ | ------- | ----------- | ------
+200 | OK | Success | See Below
+
+#### Response Schema
+
+Attribute | Type | Description
+--------- | ---- | -----------
+`isInit` | Boolean | Whether the server has been initialized.
+`language` | String | The server's default language.
+`ConfigPath` | String | The server's config path. Will only exist if `isInit` is `false`.
+`MetadataPath` | String | The server's metadata path. Will only exist if `isInit` is `false`.
+
+
+## Healthcheck
+
+```shell
+curl "https://abs.example.com/healthcheck"
+```
+
+This endpoint is a simple check to see if the server is operating and can respond.
+
+### HTTP Request
+
+`GET http://abs.example.com/healthcheck`
+
+### Response
+
+Status | Meaning | Description
+------ | ------- | -----------
+200 | OK | Success
+
+## Initialize the Server
+
+```shell
+curl -X POST "https://abs.example.com/init" \
+  -H "Content-Type: application/json" \
+  -d '{"newRoot": {"username": "root", "password": "*****"}}'
+```
+
+This endpoint initializes a server for use with a root user. This is required for new servers without a root user yet.
+
+### HTTP Request
+
+`POST http://abs.example.com/init`
+
+### Parameters
+
+Parameter | Type | Description
+--------- | ---- | -----------
+`newRoot` | [New Root User](#new-root-user-parameters) Object (See Below) | The new root user.
+
+#### New Root User Parameters
+
+Parameter | Type | Description
+--------- | ---- | -----------
+`username` | String | The username of the new root user.
+`password` | String | The password of the new root user, may be empty.
+
+### Response
+
+Status | Meaning | Description
+------ | ------- | -----------
+200 | OK | Success
+500 | Internal Server Error | The server has already been initialized.
+
+
 ## Login
 
 ```shell
@@ -150,78 +240,6 @@ Status | Meaning | Description
 200 | OK | Success
 
 
-## Initialize the Server
-
-```shell
-curl -X POST "https://abs.example.com/init" \
-  -H "Content-Type: application/json" \
-  -d '{"newRoot": {"username": "root", "password": "*****"}}'
-```
-
-This endpoint initializes a server for use with a root user. This is required for new servers without a root user yet.
-
-### HTTP Request
-
-`POST http://abs.example.com/init`
-
-### Parameters
-
-Parameter | Type | Description
---------- | ---- | -----------
-`newRoot` | [New Root User](#new-root-user-parameters) Object (See Below) | The new root user.
-
-#### New Root User Parameters
-
-Parameter | Type | Description
---------- | ---- | -----------
-`username` | String | The username of the new root user.
-`password` | String | The password of the new root user, may be empty.
-
-### Response
-
-Status | Meaning | Description
------- | ------- | -----------
-200 | OK | Success
-500 | Internal Server Error | The server has already been initialized.
-
-
-## Check the Server's Status
-
-```shell
-curl "https://abs.example.com/status"
-```
-
-> The above command returns JSON structured like this:
-
-```json
-{
-  "isInit": true,
-  "language": "en-us"
-}
-```
-
-This endpoint reports the server's initialization status.
-
-### HTTP Request
-
-`GET http://abs.example.com/status`
-
-### Response
-
-Status | Meaning | Description | Schema
------- | ------- | ----------- | ------
-200 | OK | Success | See Below
-
-#### Response Schema
-
-Attribute | Type | Description
---------- | ---- | -----------
-`isInit` | Boolean | Whether the server has been initialized.
-`language` | String | The server's default language.
-`ConfigPath` | String | The server's config path. Will only exist if `isInit` is `false`.
-`MetadataPath` | String | The server's metadata path. Will only exist if `isInit` is `false`.
-
-
 ## Ping the Server
 
 ```shell
@@ -253,22 +271,3 @@ Status | Meaning | Description | Schema
 Attribute | Type | Description
 --------- | ---- | -----------
 `success` | Boolean | Will always be `true`.
-
-
-## Healthcheck
-
-```shell
-curl "https://abs.example.com/healthcheck"
-```
-
-This endpoint is a simple check to see if the server is operating and can respond.
-
-### HTTP Request
-
-`GET http://abs.example.com/healthcheck`
-
-### Response
-
-Status | Meaning | Description
------- | ------- | -----------
-200 | OK | Success

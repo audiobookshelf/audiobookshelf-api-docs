@@ -9,29 +9,29 @@ toc_footers:
   - <a href='https://github.com/slatedocs/slate'>Documentation Powered by Slate</a>
 
 includes:
-  - server
-  - libraries
-  - items
-  - users
-  - collections
-  - playlists
-  - me
-  - backups
-  - filesystem
   - authors
-  - series
-  - sessions
-  - podcasts
-  - notifications
-  - search
+  - backups
   - cache
-  - tools
-  - rss_feeds
-  - misc
-  - socket
-  - metadata_providers
+  - collections
+  - filesystem
   - filtering
+  - items
+  - libraries
+  - me
+  - metadata_providers
+  - misc
+  - notifications
+  - playlists
+  - podcasts
+  - rss_feeds
   - schemas
+  - search
+  - series
+  - server
+  - sessions
+  - socket
+  - tools
+  - users
 
 search: true
 
