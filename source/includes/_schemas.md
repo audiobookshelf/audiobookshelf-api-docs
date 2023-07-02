@@ -1384,8 +1384,6 @@ Attribute | Type | Description
   "userId": "root",
   "name": "Favorites",
   "description": null,
-  "cover": null,
-  "coverFullPath": null,
   "books": [...],
   "lastUpdate": 1650621110769,
   "createdAt": 1650621073750
@@ -1401,8 +1399,6 @@ Attribute | Type | Description
   "userId": "root",
   "name": "Favorites",
   "description": null,
-  "cover": null,
-  "coverFullPath": null,
   "books": [...],
   "lastUpdate": 1650621110769,
   "createdAt": 1650621073750
@@ -1416,8 +1412,6 @@ Attribute | Type | Description
 `userId` | String | The ID of the user that created the collection.
 `name` | String | The name of the collection.
 `description` | String or null | The collection's description. Will be `null` if there is none.
-`cover` | String or null | The path to the collection's cover. Will be `null` if there is no cover.
-`coverFullPath` | String or null | The full path to collection's cover. Will be `null` if there is no cover.
 `books` | Array of [Library Item](#library-item) | The books that belong to the collection.
 `lastUpdate` | Integer | The time (in ms since POSIX epoch) when the collection was last updated.
 `createdAt` | Integer | The time (in ms since POSIX epoch) when the collection was created.

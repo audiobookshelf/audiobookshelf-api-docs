@@ -766,8 +766,6 @@ curl "https://abs.example.com/api/libraries/lib_c1u6t4p45c35rf0nzd/collections?m
       "userId": "root",
       "name": "Favorites",
       "description": null,
-      "cover": null,
-      "coverFullPath": null,
       "books": [
         {
           "id": "li_8gch9ve09orgn4fdz8",

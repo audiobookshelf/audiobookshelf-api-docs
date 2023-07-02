@@ -18,8 +18,6 @@ curl -X POST "https://abs.example.com/api/collections" \
   "userId": "root",
   "name": "Favorites",
   "description": null,
-  "cover": null,
-  "coverFullPath": null,
   "books": [],
   "lastUpdate": 1650621073750,
   "createdAt": 1650621073750
@@ -39,8 +37,6 @@ Parameter | Type | Default | Description
 `libraryId` | String | **Required** | The ID of the library the collection belongs to.
 `name` | String | **Required** | The name of the collection.
 `description` | String or null | `null` | The collection's description.
-`cover` | String or null | `null` | The path to the collection's cover.
-`coverFullPath` | String or null | `null` | The full path to the collection's cover.
 `books` | Array of String | `[]` | The IDs of book library items that are in the collection.
 
 ### Response
@@ -70,8 +66,6 @@ curl "https://abs.example.com/api/collections" \
       "userId": "root",
       "name": "Favorites",
       "description": null,
-      "cover": null,
-      "coverFullPath": null,
       "books": [],
       "lastUpdate": 1650621073750,
       "createdAt": 1650621073750
@@ -115,8 +109,6 @@ curl "https://abs.example.com/api/collections/col_fpfstanv6gd7tq2qz7" \
   "userId": "root",
   "name": "Favorites",
   "description": null,
-  "cover": null,
-  "coverFullPath": null,
   "books": [],
   "lastUpdate": 1650621073750,
   "createdAt": 1650621073750
@@ -173,8 +165,6 @@ curl -X PATCH "https://abs.example.com/api/collections/col_fpfstanv6gd7tq2qz7" \
   "userId": "root",
   "name": "The Best Books",
   "description": null,
-  "cover": null,
-  "coverFullPath": null,
   "books": [],
   "lastUpdate": 1650621110769,
   "createdAt": 1650621073750
@@ -200,8 +190,6 @@ Parameter | Type | Description
 `libraryId` | String | The ID of the library the collection belongs to.
 `name` | String | The name of the collection.
 `description` | String or null | The collection's description.
-`cover` | String or null | The path to the collection's cover.
-`coverFullPath` | String or null | The full path to the collection's cover.
 `books` | Array of String | The IDs of book library items that are in the collection.
 
 ### Response
@@ -259,8 +247,6 @@ curl -X POST "https://abs.example.com/api/collections/col_fpfstanv6gd7tq2qz7/boo
   "userId": "root",
   "name": "The Best Books",
   "description": null,
-  "cover": null,
-  "coverFullPath": null,
   "books": [
     {
       "id": "li_8gch9ve09orgn4fdz8",
@@ -571,8 +557,6 @@ curl -X DELETE "https://abs.example.com/api/collections/col_fpfstanv6gd7tq2qz7/b
   "userId": "root",
   "name": "Favorites",
   "description": null,
-  "cover": null,
-  "coverFullPath": null,
   "books": [],
   "lastUpdate": 1650621073750,
   "createdAt": 1650621073750
@@ -619,8 +603,6 @@ curl -X POST "https://abs.example.com/api/collections/col_fpfstanv6gd7tq2qz7/bat
   "userId": "root",
   "name": "The Best Books",
   "description": null,
-  "cover": null,
-  "coverFullPath": null,
   "books": [
     {
       "id": "li_8gch9ve09orgn4fdz8",
@@ -933,8 +915,6 @@ curl -X POST "https://abs.example.com/api/collections/col_fpfstanv6gd7tq2qz7/bat
   "userId": "root",
   "name": "The Best Books",
   "description": null,
-  "cover": null,
-  "coverFullPath": null,
   "books": [],
   "lastUpdate": 1650621110769,
   "createdAt": 1650621073750
