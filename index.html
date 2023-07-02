@@ -1174,6 +1174,7 @@ Your API token will be much longer then the one in the examples.
     </span><span class="nl">"scannerUseTone"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
     </span><span class="nl">"storeCoverWithItem"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
     </span><span class="nl">"storeMetadataWithItem"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"metadataFileFormat"</span><span class="p">:</span><span class="w"> </span><span class="s2">"json"</span><span class="p">,</span><span class="w">
     </span><span class="nl">"rateLimitLoginRequests"</span><span class="p">:</span><span class="w"> </span><span class="mi">10</span><span class="p">,</span><span class="w">
     </span><span class="nl">"rateLimitLoginWindow"</span><span class="p">:</span><span class="w"> </span><span class="mi">600000</span><span class="p">,</span><span class="w">
     </span><span class="nl">"backupSchedule"</span><span class="p">:</span><span class="w"> </span><span class="s2">"30 1 * * *"</span><span class="p">,</span><span class="w">
@@ -1190,7 +1191,6 @@ Your API token will be much longer then the one in the examples.
       </span><span class="s2">"a"</span><span class="w">
     </span><span class="p">],</span><span class="w">
     </span><span class="nl">"chromecastEnabled"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"enableEReader"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
     </span><span class="nl">"dateFormat"</span><span class="p">:</span><span class="w"> </span><span class="s2">"MM/dd/yyyy"</span><span class="p">,</span><span class="w">
     </span><span class="nl">"language"</span><span class="p">:</span><span class="w"> </span><span class="s2">"en-us"</span><span class="p">,</span><span class="w">
     </span><span class="nl">"logLevel"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
@@ -2653,8 +2653,6 @@ Your API token will be much longer then the one in the examples.
       </span><span class="nl">"userId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"root"</span><span class="p">,</span><span class="w">
       </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Favorites"</span><span class="p">,</span><span class="w">
       </span><span class="nl">"description"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"cover"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"coverFullPath"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
       </span><span class="nl">"books"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
         </span><span class="p">{</span><span class="w">
           </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"li_8gch9ve09orgn4fdz8"</span><span class="p">,</span><span class="w">
@@ -9794,8 +9792,6 @@ When changing a user's username, their token will be regenerated.
   </span><span class="nl">"userId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"root"</span><span class="p">,</span><span class="w">
   </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Favorites"</span><span class="p">,</span><span class="w">
   </span><span class="nl">"description"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"cover"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"coverFullPath"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
   </span><span class="nl">"books"</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span><span class="w">
   </span><span class="nl">"lastUpdate"</span><span class="p">:</span><span class="w"> </span><span class="mi">1650621073750</span><span class="p">,</span><span class="w">
   </span><span class="nl">"createdAt"</span><span class="p">:</span><span class="w"> </span><span class="mi">1650621073750</span><span class="w">
@@ -9830,18 +9826,6 @@ When changing a user's username, their token will be regenerated.
 <td>String or null</td>
 <td><code>null</code></td>
 <td>The collection&#39;s description.</td>
-</tr>
-<tr>
-<td><code>cover</code></td>
-<td>String or null</td>
-<td><code>null</code></td>
-<td>The path to the collection&#39;s cover.</td>
-</tr>
-<tr>
-<td><code>coverFullPath</code></td>
-<td>String or null</td>
-<td><code>null</code></td>
-<td>The full path to the collection&#39;s cover.</td>
 </tr>
 <tr>
 <td><code>books</code></td>
@@ -9892,8 +9876,6 @@ When changing a user's username, their token will be regenerated.
       </span><span class="nl">"userId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"root"</span><span class="p">,</span><span class="w">
       </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Favorites"</span><span class="p">,</span><span class="w">
       </span><span class="nl">"description"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"cover"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"coverFullPath"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
       </span><span class="nl">"books"</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span><span class="w">
       </span><span class="nl">"lastUpdate"</span><span class="p">:</span><span class="w"> </span><span class="mi">1650621073750</span><span class="p">,</span><span class="w">
       </span><span class="nl">"createdAt"</span><span class="p">:</span><span class="w"> </span><span class="mi">1650621073750</span><span class="w">
@@ -9946,8 +9928,6 @@ When changing a user's username, their token will be regenerated.
   </span><span class="nl">"userId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"root"</span><span class="p">,</span><span class="w">
   </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Favorites"</span><span class="p">,</span><span class="w">
   </span><span class="nl">"description"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"cover"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"coverFullPath"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
   </span><span class="nl">"books"</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span><span class="w">
   </span><span class="nl">"lastUpdate"</span><span class="p">:</span><span class="w"> </span><span class="mi">1650621073750</span><span class="p">,</span><span class="w">
   </span><span class="nl">"createdAt"</span><span class="p">:</span><span class="w"> </span><span class="mi">1650621073750</span><span class="w">
@@ -10032,8 +10012,6 @@ When changing a user's username, their token will be regenerated.
   </span><span class="nl">"userId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"root"</span><span class="p">,</span><span class="w">
   </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"The Best Books"</span><span class="p">,</span><span class="w">
   </span><span class="nl">"description"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"cover"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"coverFullPath"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
   </span><span class="nl">"books"</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span><span class="w">
   </span><span class="nl">"lastUpdate"</span><span class="p">:</span><span class="w"> </span><span class="mi">1650621110769</span><span class="p">,</span><span class="w">
   </span><span class="nl">"createdAt"</span><span class="p">:</span><span class="w"> </span><span class="mi">1650621073750</span><span class="w">
@@ -10076,16 +10054,6 @@ When changing a user's username, their token will be regenerated.
 <td><code>description</code></td>
 <td>String or null</td>
 <td>The collection&#39;s description.</td>
-</tr>
-<tr>
-<td><code>cover</code></td>
-<td>String or null</td>
-<td>The path to the collection&#39;s cover.</td>
-</tr>
-<tr>
-<td><code>coverFullPath</code></td>
-<td>String or null</td>
-<td>The full path to the collection&#39;s cover.</td>
 </tr>
 <tr>
 <td><code>books</code></td>
@@ -10177,8 +10145,6 @@ When changing a user's username, their token will be regenerated.
   </span><span class="nl">"userId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"root"</span><span class="p">,</span><span class="w">
   </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"The Best Books"</span><span class="p">,</span><span class="w">
   </span><span class="nl">"description"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"cover"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"coverFullPath"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
   </span><span class="nl">"books"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
     </span><span class="p">{</span><span class="w">
       </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"li_8gch9ve09orgn4fdz8"</span><span class="p">,</span><span class="w">
@@ -10519,8 +10485,6 @@ When changing a user's username, their token will be regenerated.
   </span><span class="nl">"userId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"root"</span><span class="p">,</span><span class="w">
   </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Favorites"</span><span class="p">,</span><span class="w">
   </span><span class="nl">"description"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"cover"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"coverFullPath"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
   </span><span class="nl">"books"</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span><span class="w">
   </span><span class="nl">"lastUpdate"</span><span class="p">:</span><span class="w"> </span><span class="mi">1650621073750</span><span class="p">,</span><span class="w">
   </span><span class="nl">"createdAt"</span><span class="p">:</span><span class="w"> </span><span class="mi">1650621073750</span><span class="w">
@@ -10587,8 +10551,6 @@ When changing a user's username, their token will be regenerated.
   </span><span class="nl">"userId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"root"</span><span class="p">,</span><span class="w">
   </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"The Best Books"</span><span class="p">,</span><span class="w">
   </span><span class="nl">"description"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"cover"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"coverFullPath"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
   </span><span class="nl">"books"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
     </span><span class="p">{</span><span class="w">
       </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"li_8gch9ve09orgn4fdz8"</span><span class="p">,</span><span class="w">
@@ -10931,8 +10893,6 @@ When changing a user's username, their token will be regenerated.
   </span><span class="nl">"userId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"root"</span><span class="p">,</span><span class="w">
   </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"The Best Books"</span><span class="p">,</span><span class="w">
   </span><span class="nl">"description"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"cover"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"coverFullPath"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
   </span><span class="nl">"books"</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span><span class="w">
   </span><span class="nl">"lastUpdate"</span><span class="p">:</span><span class="w"> </span><span class="mi">1650621110769</span><span class="p">,</span><span class="w">
   </span><span class="nl">"createdAt"</span><span class="p">:</span><span class="w"> </span><span class="mi">1650621073750</span><span class="w">
@@ -21356,6 +21316,7 @@ The <code>id</code> parameter must be included for the notification to be saved.
     </span><span class="nl">"scannerUseTone"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
     </span><span class="nl">"storeCoverWithItem"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
     </span><span class="nl">"storeMetadataWithItem"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"metadataFileFormat"</span><span class="p">:</span><span class="w"> </span><span class="s2">"json"</span><span class="p">,</span><span class="w">
     </span><span class="nl">"rateLimitLoginRequests"</span><span class="p">:</span><span class="w"> </span><span class="mi">10</span><span class="p">,</span><span class="w">
     </span><span class="nl">"rateLimitLoginWindow"</span><span class="p">:</span><span class="w"> </span><span class="mi">600000</span><span class="p">,</span><span class="w">
     </span><span class="nl">"backupSchedule"</span><span class="p">:</span><span class="w"> </span><span class="s2">"30 1 * * *"</span><span class="p">,</span><span class="w">
@@ -21372,7 +21333,6 @@ The <code>id</code> parameter must be included for the notification to be saved.
       </span><span class="s2">"a"</span><span class="w">
     </span><span class="p">],</span><span class="w">
     </span><span class="nl">"chromecastEnabled"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"enableEReader"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
     </span><span class="nl">"dateFormat"</span><span class="p">:</span><span class="w"> </span><span class="s2">"MM/dd/yyyy"</span><span class="p">,</span><span class="w">
     </span><span class="nl">"timeFormat"</span><span class="p">:</span><span class="w"> </span><span class="s2">"HH:mm"</span><span class="p">,</span><span class="w">
     </span><span class="nl">"language"</span><span class="p">:</span><span class="w"> </span><span class="s2">"en-us"</span><span class="p">,</span><span class="w">
@@ -21494,6 +21454,7 @@ The <code>id</code> parameter must be included for the notification to be saved.
     </span><span class="nl">"scannerUseTone"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
     </span><span class="nl">"storeCoverWithItem"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
     </span><span class="nl">"storeMetadataWithItem"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"metadataFileFormat"</span><span class="p">:</span><span class="w"> </span><span class="s2">"json"</span><span class="p">,</span><span class="w">
     </span><span class="nl">"rateLimitLoginRequests"</span><span class="p">:</span><span class="w"> </span><span class="mi">10</span><span class="p">,</span><span class="w">
     </span><span class="nl">"rateLimitLoginWindow"</span><span class="p">:</span><span class="w"> </span><span class="mi">600000</span><span class="p">,</span><span class="w">
     </span><span class="nl">"backupSchedule"</span><span class="p">:</span><span class="w"> </span><span class="s2">"30 1 * * *"</span><span class="p">,</span><span class="w">
@@ -21510,7 +21471,6 @@ The <code>id</code> parameter must be included for the notification to be saved.
       </span><span class="s2">"a"</span><span class="w">
     </span><span class="p">],</span><span class="w">
     </span><span class="nl">"chromecastEnabled"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"enableEReader"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
     </span><span class="nl">"dateFormat"</span><span class="p">:</span><span class="w"> </span><span class="s2">"MM/dd/yyyy"</span><span class="p">,</span><span class="w">
     </span><span class="nl">"timeFormat"</span><span class="p">:</span><span class="w"> </span><span class="s2">"HH:mm"</span><span class="p">,</span><span class="w">
     </span><span class="nl">"language"</span><span class="p">:</span><span class="w"> </span><span class="s2">"en-us"</span><span class="p">,</span><span class="w">
@@ -25584,8 +25544,6 @@ Only non-null tags will be returned in requests.</p>
   </span><span class="nl">"userId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"root"</span><span class="p">,</span><span class="w">
   </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Favorites"</span><span class="p">,</span><span class="w">
   </span><span class="nl">"description"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"cover"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"coverFullPath"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
   </span><span class="nl">"books"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="err">...</span><span class="p">],</span><span class="w">
   </span><span class="nl">"lastUpdate"</span><span class="p">:</span><span class="w"> </span><span class="mi">1650621110769</span><span class="p">,</span><span class="w">
   </span><span class="nl">"createdAt"</span><span class="p">:</span><span class="w"> </span><span class="mi">1650621073750</span><span class="w">
@@ -25600,8 +25558,6 @@ Only non-null tags will be returned in requests.</p>
   </span><span class="nl">"userId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"root"</span><span class="p">,</span><span class="w">
   </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Favorites"</span><span class="p">,</span><span class="w">
   </span><span class="nl">"description"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"cover"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"coverFullPath"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
   </span><span class="nl">"books"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="err">...</span><span class="p">],</span><span class="w">
   </span><span class="nl">"lastUpdate"</span><span class="p">:</span><span class="w"> </span><span class="mi">1650621110769</span><span class="p">,</span><span class="w">
   </span><span class="nl">"createdAt"</span><span class="p">:</span><span class="w"> </span><span class="mi">1650621073750</span><span class="w">
@@ -25638,16 +25594,6 @@ Only non-null tags will be returned in requests.</p>
 <td><code>description</code></td>
 <td>String or null</td>
 <td>The collection&#39;s description. Will be <code>null</code> if there is none.</td>
-</tr>
-<tr>
-<td><code>cover</code></td>
-<td>String or null</td>
-<td>The path to the collection&#39;s cover. Will be <code>null</code> if there is no cover.</td>
-</tr>
-<tr>
-<td><code>coverFullPath</code></td>
-<td>String or null</td>
-<td>The full path to collection&#39;s cover. Will be <code>null</code> if there is no cover.</td>
 </tr>
 <tr>
 <td><code>books</code></td>
@@ -26837,6 +26783,7 @@ Only non-null tags will be returned in requests.</p>
   </span><span class="nl">"scannerUseTone"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
   </span><span class="nl">"storeCoverWithItem"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
   </span><span class="nl">"storeMetadataWithItem"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"metadataFileFormat"</span><span class="p">:</span><span class="w"> </span><span class="s2">"json"</span><span class="p">,</span><span class="w">
   </span><span class="nl">"rateLimitLoginRequests"</span><span class="p">:</span><span class="w"> </span><span class="mi">10</span><span class="p">,</span><span class="w">
   </span><span class="nl">"rateLimitLoginWindow"</span><span class="p">:</span><span class="w"> </span><span class="mi">600000</span><span class="p">,</span><span class="w">
   </span><span class="nl">"backupSchedule"</span><span class="p">:</span><span class="w"> </span><span class="s2">"30 1 * * *"</span><span class="p">,</span><span class="w">
@@ -26853,7 +26800,6 @@ Only non-null tags will be returned in requests.</p>
     </span><span class="s2">"a"</span><span class="w">
   </span><span class="p">],</span><span class="w">
   </span><span class="nl">"chromecastEnabled"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"enableEReader"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
   </span><span class="nl">"dateFormat"</span><span class="p">:</span><span class="w"> </span><span class="s2">"MM/dd/yyyy"</span><span class="p">,</span><span class="w">
   </span><span class="nl">"timeFormat"</span><span class="p">:</span><span class="w"> </span><span class="s2">"HH:mm"</span><span class="p">,</span><span class="w">
   </span><span class="nl">"language"</span><span class="p">:</span><span class="w"> </span><span class="s2">"en-us"</span><span class="p">,</span><span class="w">
@@ -26924,6 +26870,11 @@ Only non-null tags will be returned in requests.</p>
 <td>Whether to store metadata files in the library item&#39;s folder. By default, metadata files are stored in <code>/metadata/items</code>. Uses the <code>.abs</code> file extension.</td>
 </tr>
 <tr>
+<td><code>metadataFileFormat</code></td>
+<td>String</td>
+<td>Must be either <code>json</code> or <code>abs</code></td>
+</tr>
+<tr>
 <td><code>rateLimitLoginRequests</code></td>
 <td>Integer</td>
 <td>The maximum number of login requests per <code>rateLimitLoginWindow</code>.</td>
@@ -26987,11 +26938,6 @@ Only non-null tags will be returned in requests.</p>
 <td><code>chromecastEnabled</code></td>
 <td>Boolean</td>
 <td>Whether to enable streaming to Chromecast devices.</td>
-</tr>
-<tr>
-<td><code>enableEReader</code></td>
-<td>Boolean</td>
-<td>Whether to enable experimental e-reader support.</td>
 </tr>
 <tr>
 <td><code>dateFormat</code></td>
