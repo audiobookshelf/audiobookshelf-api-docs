@@ -2053,6 +2053,7 @@ Attribute | Type | Description
   "scannerUseTone": false,
   "storeCoverWithItem": false,
   "storeMetadataWithItem": false,
+  "metadataFileFormat": "json",
   "rateLimitLoginRequests": 10,
   "rateLimitLoginWindow": 600000,
   "backupSchedule": "30 1 * * *",
@@ -2069,7 +2070,6 @@ Attribute | Type | Description
     "a"
   ],
   "chromecastEnabled": false,
-  "enableEReader": false,
   "dateFormat": "MM/dd/yyyy",
   "timeFormat": "HH:mm",
   "language": "en-us",
@@ -2091,6 +2091,7 @@ Attribute | Type | Description
 `scannerPreferOverdriveMediaMarker` | Boolean | Whether to use the custom metadata in MP3 files from Overdrive for chapter timings automatically.
 `storeCoverWithItem` | Boolean | Whether to store covers in the library item's folder. By default, covers are stored in `/metadata/items`. Only one file named `cover` will be kept.
 `storeMetadataWithItem` | Boolean | Whether to store metadata files in the library item's folder. By default, metadata files are stored in `/metadata/items`. Uses the `.abs` file extension.
+`metadataFileFormat` | String | Must be either `json` or `abs`
 `rateLimitLoginRequests` | Integer | The maximum number of login requests per `rateLimitLoginWindow`.
 `rateLimitLoginWindow` | Integer | The length (in ms) of each login rate limit window.
 `backupSchedule` | String | The [cron expression](https://en.wikipedia.org/wiki/Cron#CRON_expression) for when to do automatic backups.
@@ -2104,7 +2105,6 @@ Attribute | Type | Description
 `sortingIgnorePrefix` | Boolean | Whether to ignore prefixes when sorting. For example, for the prefix `the`, the book title `The Book Title` would sort as `Book Title, The`.
 `sortingPrefixes` | Array of String | If `sortingIgnorePrefix` is `true`, what prefixes to ignore.
 `chromecastEnabled` | Boolean | Whether to enable streaming to Chromecast devices.
-`enableEReader` | Boolean | Whether to enable experimental e-reader support.
 `dateFormat` | String | What date format to use. Options are `MM/dd/yyyy`, `dd/MM/yyyy`, `dd.MM.yyyy`, `yyyy-MM-dd`, `MMM do, yyyy`, `MMMM do, yyyy`, `dd MMM yyyy`, or `dd MMMM yyyy`.
 `timeFormat` | String | What time format to use. Options are `HH:mm` (24-hour) and `h:mma` (am/pm).
 `language` | String | The default server language.

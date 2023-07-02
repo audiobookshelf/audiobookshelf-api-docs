@@ -106,6 +106,7 @@ curl -X PATCH "https://abs.example.com/api/settings" \
     "scannerUseTone": false,
     "storeCoverWithItem": false,
     "storeMetadataWithItem": false,
+    "metadataFileFormat": "json",
     "rateLimitLoginRequests": 10,
     "rateLimitLoginWindow": 600000,
     "backupSchedule": "30 1 * * *",
@@ -122,7 +123,6 @@ curl -X PATCH "https://abs.example.com/api/settings" \
       "a"
     ],
     "chromecastEnabled": false,
-    "enableEReader": false,
     "dateFormat": "MM/dd/yyyy",
     "timeFormat": "HH:mm",
     "language": "en-us",
@@ -223,6 +223,7 @@ curl -X POST "https://abs.example.com/api/authorize" \
     "scannerUseTone": false,
     "storeCoverWithItem": false,
     "storeMetadataWithItem": false,
+    "metadataFileFormat": "json",
     "rateLimitLoginRequests": 10,
     "rateLimitLoginWindow": 600000,
     "backupSchedule": "30 1 * * *",
@@ -239,7 +240,6 @@ curl -X POST "https://abs.example.com/api/authorize" \
       "a"
     ],
     "chromecastEnabled": false,
-    "enableEReader": false,
     "dateFormat": "MM/dd/yyyy",
     "timeFormat": "HH:mm",
     "language": "en-us",
