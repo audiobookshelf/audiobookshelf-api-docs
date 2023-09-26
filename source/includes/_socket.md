@@ -63,13 +63,13 @@ Events marked with "**Admin Only**" are only sent to sockets with an authenticat
 
 Name | Description | Schema
 ---- | ----------- | ------
-`user_online` | **Admin Only** A user is online. | [User with Session and Most Recent Progress](#user-with-session-and-most-recent-progress) Object
-`user_offline` | **Admin Only** A user is offline. | [User with Session and Most Recent Progress](#user-with-session-and-most-recent-progress) Object
+`user_online` | **Admin Only** A user is online. | [User with Session](#user-with-session) Object
+`user_offline` | **Admin Only** A user is offline. | [User with Session](#user-with-session) Object
 `user_added` | **Admin Only** A user was created. | [User](#user) Object
 `user_updated` | The authenticated user has been updated. | [User](#user) Object
 `user_removed` | **Admin Only** A user was deleted. | [User](#user) Object
 `user_item_progress_updated` | One of the authenticated user's media progress was created/updated. | [User Item Progress Updated Event](#user-item-progress-updated-event)
-`user_stream_update` | **Admin Only** A user started or stopped a playback session. | [User with Session and Most Recent Progress](#user-with-session-and-most-recent-progress) Object
+`user_stream_update` | **Admin Only** A user started or stopped a playback session. | [User with Session](#user-with-session) Object
 
 ### User Item Progress Updated Event
 
@@ -429,7 +429,7 @@ Attribute | Type | Description
 `userId` | String | The ID of the authenticated user.
 `username` | String | The username of the authenticated user.
 `librariesScanning` | Array of String | The IDs of libraries currently being scanned.
-`usersOnline` | Array of [User with Session and Most Recent Progress](#user-with-session-and-most-recent-progress) | Users that are currently online. Will only exist when the authenticated user is an admin.
+`usersOnline` | Array of [User with Session](#user-with-session) | Users that are currently online. Will only exist when the authenticated user is an admin.
 
 ### Log Event
 

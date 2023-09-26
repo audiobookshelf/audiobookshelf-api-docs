@@ -1767,7 +1767,7 @@ Attribute | Type | Description
 ```
 
 <!-- User.toJSONForPublic() -->
-> User with Session and Most Recent Progress
+> User with Session
 
 ```json
 {
@@ -1775,7 +1775,6 @@ Attribute | Type | Description
   "username": "root",
   "type": "root",
   "session": null,
-  "mostRecent": {...},
   "lastSeen": 1668296147437,
   "createdAt": 1666543632566
 }
@@ -1804,7 +1803,7 @@ Attribute | Type | Description
 
 * `mediaProgress` is an Array of [Media Progress with Media](#media-progress-with-media)
 
-### User with Session and Most Recent Progress
+### User with Session
 
 #### Removed Attributes
 
@@ -1824,7 +1823,6 @@ Attribute | Type | Description
 Attribute | Type | Description
 --------- | ---- | -----------
 `session` | [Playback Session Expanded](#playback-session-expanded) Object or null | The user's currently playing session. Will be `null` if the user is not currently playing anything.
-`mostRecent` | [Media Progress with Media](#media-progress-with-media) Object or null | The user's most recent media progress. Will be `null` if the user has no media progress.
 
 
 ## User Permissions
