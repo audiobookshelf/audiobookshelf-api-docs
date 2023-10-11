@@ -1480,6 +1480,8 @@ Parameter | Type | Default | Description
 
 Parameter | Type | Description
 --------- | ---- | -----------
+`deviceId` | String | The client device identifier.
+`clientName` | String | The name of the client.
 `clientVersion` | String | The version of the client.
 `manufacturer` | String | The manufacturer of the client device.
 `model` | String | The model of the client device.

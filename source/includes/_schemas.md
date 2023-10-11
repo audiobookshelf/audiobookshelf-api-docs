@@ -1597,6 +1597,7 @@ Attribute | Type | Description
   "playMethod": 0,
   "mediaPlayer": "unknown",
   "deviceInfo": {...},
+  "serverVersion": "2.4.4",
   "date": "2022-11-11",
   "dayOfWeek": "Friday",
   "timeListening": 0,
@@ -1627,6 +1628,7 @@ Attribute | Type | Description
   "playMethod": 0,
   "mediaPlayer": "unknown",
   "deviceInfo": {...},
+  "serverVersion": "2.4.4",
   "date": "2022-11-11",
   "dayOfWeek": "Friday",
   "timeListening": 0,
@@ -1657,6 +1659,7 @@ Attribute | Type | Description
 `playMethod` | [Play Method](#play-method) Enumerated Integer | What play method the playback session is using. See below for values.
 `mediaPlayer` | String | The given media player when the playback session was requested.
 `deviceInfo` | [Device Info](#device-info) Object | The given device info when the playback session was requested.
+`serverVersion` | String | The server version the playback session was started with.
 `date` | String | The day (in the format YYYY-MM-DD) the playback session was started.
 `dayOfWeek` | String | The day of the week the playback session was started.
 `timeListening` | Float | The amount of time (in seconds) the user has spent listening using this playback session.
@@ -1691,6 +1694,9 @@ Attribute | Type | Description
 
 ```json
 {
+  "id": "69b7e852-23a6-4587-bed3-6a5966062e38",
+  "userId": "3c479fe6-6bf8-44e4-a4a6-680c768b501c",
+  "deviceId": "4dd05e7fadca538b",
   "ipAddress": "192.168.1.118",
   "browserName": "Firefox",
   "browserVersion": "106.0",
@@ -1700,7 +1706,8 @@ Attribute | Type | Description
   "manufacturer": null,
   "model": null,
   "sdkVersion": null,
-  "serverVersion": "2.2.2"
+  "clientName": "Abs Web",
+  "clientVersion": "2.3.3"
 }
 ```
 
@@ -1708,16 +1715,22 @@ Any attributes with a `null` value will be filtered out in responses.
 
 Attribute | Type | Description
 --------- | ---- | -----------
+`id` | UUIDv4 | Unique identifier.
+`userId` | UUIDv4 | User identifier.
+`deviceId` | String | Device identifier, as provided in the request.
 `ipAddress` | String or null | The IP address that the request came from.
 `browserName` | String or null | The browser name, taken from the user agent.
 `browserVersion` | String or null | The browser version, taken from the user agent.
 `osName` | String or null | The name of OS, taken from the user agent.
 `osVersion` | String or null | The version of the OS, taken from the user agent.
+`deviceName` | String or null | The device name, constructed automatically from other attributes.
 `deviceType` | String or null | The device type, taken from the user agent.
 `manufacturer` | String or null | The client device's manufacturer, as provided in the request.
 `model` | String or null | The client device's model, as provided in the request.
 `sdkVersion` | Integer or null | For an Android device, the Android SDK version of the client, as provided in the request.
-`serverVersion` | String or null | The version of the server at the time of the request.
+`clientName` | String | Name of the client, as provided in the request.
+`clientVersion` | String | Version of the client, as provided in the request.
+
 
 
 ## User
