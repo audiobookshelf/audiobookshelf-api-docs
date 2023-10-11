@@ -7017,6 +7017,16 @@ Use the <a href="#update-a-podcast-episode">Update a Podcast Episode</a> endpoin
 </tr>
 </thead><tbody>
 <tr>
+<td><code>deviceId</code></td>
+<td>String</td>
+<td>The client device identifier.</td>
+</tr>
+<tr>
+<td><code>clientName</code></td>
+<td>String</td>
+<td>The name of the client.</td>
+</tr>
+<tr>
 <td><code>clientVersion</code></td>
 <td>String</td>
 <td>The version of the client.</td>
@@ -25552,6 +25562,7 @@ Only non-null tags will be returned in requests.</p>
   </span><span class="nl">"playMethod"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
   </span><span class="nl">"mediaPlayer"</span><span class="p">:</span><span class="w"> </span><span class="s2">"unknown"</span><span class="p">,</span><span class="w">
   </span><span class="nl">"deviceInfo"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="err">...</span><span class="p">},</span><span class="w">
+  </span><span class="nl">"serverVersion"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2.4.4"</span><span class="p">,</span><span class="w">
   </span><span class="nl">"date"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2022-11-11"</span><span class="p">,</span><span class="w">
   </span><span class="nl">"dayOfWeek"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Friday"</span><span class="p">,</span><span class="w">
   </span><span class="nl">"timeListening"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
@@ -25582,6 +25593,7 @@ Only non-null tags will be returned in requests.</p>
   </span><span class="nl">"playMethod"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
   </span><span class="nl">"mediaPlayer"</span><span class="p">:</span><span class="w"> </span><span class="s2">"unknown"</span><span class="p">,</span><span class="w">
   </span><span class="nl">"deviceInfo"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="err">...</span><span class="p">},</span><span class="w">
+  </span><span class="nl">"serverVersion"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2.4.4"</span><span class="p">,</span><span class="w">
   </span><span class="nl">"date"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2022-11-11"</span><span class="p">,</span><span class="w">
   </span><span class="nl">"dayOfWeek"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Friday"</span><span class="p">,</span><span class="w">
   </span><span class="nl">"timeListening"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
@@ -25677,6 +25689,11 @@ Only non-null tags will be returned in requests.</p>
 <td>The given device info when the playback session was requested.</td>
 </tr>
 <tr>
+<td><code>serverVersion</code></td>
+<td>String</td>
+<td>The server version the playback session was started with.</td>
+</tr>
+<tr>
 <td><code>date</code></td>
 <td>String</td>
 <td>The day (in the format YYYY-MM-DD) the playback session was started.</td>
@@ -25765,6 +25782,9 @@ Only non-null tags will be returned in requests.</p>
 <p>Device Info</p>
 </blockquote>
 <div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"69b7e852-23a6-4587-bed3-6a5966062e38"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"userId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"3c479fe6-6bf8-44e4-a4a6-680c768b501c"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"deviceId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"4dd05e7fadca538b"</span><span class="p">,</span><span class="w">
   </span><span class="nl">"ipAddress"</span><span class="p">:</span><span class="w"> </span><span class="s2">"192.168.1.118"</span><span class="p">,</span><span class="w">
   </span><span class="nl">"browserName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Firefox"</span><span class="p">,</span><span class="w">
   </span><span class="nl">"browserVersion"</span><span class="p">:</span><span class="w"> </span><span class="s2">"106.0"</span><span class="p">,</span><span class="w">
@@ -25774,7 +25794,8 @@ Only non-null tags will be returned in requests.</p>
   </span><span class="nl">"manufacturer"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
   </span><span class="nl">"model"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
   </span><span class="nl">"sdkVersion"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"serverVersion"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2.2.2"</span><span class="w">
+  </span><span class="nl">"clientName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Abs Web"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"clientVersion"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2.3.3"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div>
 <p>Any attributes with a <code>null</code> value will be filtered out in responses.</p>
@@ -25786,6 +25807,21 @@ Only non-null tags will be returned in requests.</p>
 <th>Description</th>
 </tr>
 </thead><tbody>
+<tr>
+<td><code>id</code></td>
+<td>UUIDv4</td>
+<td>Unique identifier.</td>
+</tr>
+<tr>
+<td><code>userId</code></td>
+<td>UUIDv4</td>
+<td>User identifier.</td>
+</tr>
+<tr>
+<td><code>deviceId</code></td>
+<td>String</td>
+<td>Device identifier, as provided in the request.</td>
+</tr>
 <tr>
 <td><code>ipAddress</code></td>
 <td>String or null</td>
@@ -25812,6 +25848,11 @@ Only non-null tags will be returned in requests.</p>
 <td>The version of the OS, taken from the user agent.</td>
 </tr>
 <tr>
+<td><code>deviceName</code></td>
+<td>String or null</td>
+<td>The device name, constructed automatically from other attributes.</td>
+</tr>
+<tr>
 <td><code>deviceType</code></td>
 <td>String or null</td>
 <td>The device type, taken from the user agent.</td>
@@ -25832,9 +25873,14 @@ Only non-null tags will be returned in requests.</p>
 <td>For an Android device, the Android SDK version of the client, as provided in the request.</td>
 </tr>
 <tr>
-<td><code>serverVersion</code></td>
-<td>String or null</td>
-<td>The version of the server at the time of the request.</td>
+<td><code>clientName</code></td>
+<td>String</td>
+<td>Name of the client, as provided in the request.</td>
+</tr>
+<tr>
+<td><code>clientVersion</code></td>
+<td>String</td>
+<td>Version of the client, as provided in the request.</td>
 </tr>
 </tbody></table>
 <h2 id='user'>User</h2>
