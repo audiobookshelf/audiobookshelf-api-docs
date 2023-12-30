@@ -149,6 +149,200 @@ Status | Meaning | Description
 ------ | ------- | -----------
 200 | OK | Success
 
+## OAuth2 Authorization Request
+
+```shell
+curl "https://abs.example.com/auth/openid?code_challenge=1234&code_challenge_method=S256&redirect_uri=audiobookshelf%3A%2F%2Foauth&client_id=Audiobookshelf-App&response_type=code"
+```
+
+> Response header (depending on SSO provider)
+
+```
+Location: https://auth.example.com/application/o/authorize/?client_id=G9DbJqJ&scope=openid%20profile%20email&response_type=code&redirect_uri=https%3A%2F%2Fabs.example.com%2Fauth%2Fopenid%2Fmobile-redirect&state=2000&code_challenge=C424242&code_challenge_method=S256
+```
+
+This endpoint starts a standard OAuth2 flow with PKCE (required - S256; see [RFC7636](https://datatracker.ietf.org/doc/html/rfc7636#section-4.1)), to log the user in using SSO.
+
+For the `code_challenge`, you must randomly generate a minimum 32-byte string called verifier (PKCE challenge).
+With the verifier, you can then generate the challenge. See the examples on the right side.
+
+
+> Code Challenge Pseudo-Code
+
+```
+code_challenge = BASE64URL-ENCODE(SHA256(ASCII(code_verifier)))
+```
+
+> Code Challenge plain Javascript Code (all used functions are available in NodeJS and Browsers)
+
+```js
+function base64URLEncode(arrayBuffer) {
+  let base64String = btoa(String.fromCharCode.apply(null, new Uint8Array(arrayBuffer)))
+  return base64String.replace(/\+/g, '-').replace(/\//g, '_').replace(/=+$/g, '')
+}
+
+async function sha256(plain) {
+  const encoder = new TextEncoder()
+  const data = encoder.encode(plain)
+  return await window.crypto.subtle.digest('SHA-256', data)
+}
+
+function generateRandomString() {
+  var array = new Uint32Array(42)
+  window.crypto.getRandomValues(array)
+  return Array.from(array, (dec) => ('0' + dec.toString(16)).slice(-2)).join('') // return as hex
+}
+
+const verifier = generateRandomString()
+const challenge = base64URLEncode(await sha256(verifier))
+```
+
+On a valid request, it will return a 302-redirect (usually with a `Location:` header), which will point to the ABS-configured OAuth2 Provider.
+You would usually have to open this redirect-URL in a Browser to present to the user.
+Note that inside the redirect URL, among other parameters, there is a `state` parameter; save it for below.
+
+Note that you will have to preserve the cookies you receive in this call for using it in `/auth/openid/callback` (check if you need to set a parameter for the HTTP library you are using for that).
+
+When the user has logged in (successfully) inside the Browser, the Browser will redirect to the URL `redirect_uri` which should be a URL your website or app can open (like a universal app link). The call to the `redirect_uri` will include state and code GET parameters. Check if the state parameter is the same as above and use the `code` for the call to `/auth/openid/callback`.
+
+> Redirect URL which is opened in the user's browser by the SSO Provider
+
+```txt
+redirect_uri?code=42&state=2000
+```
+
+
+### HTTP Request
+
+`GET http://abs.example.com/auth/openid`
+
+### Query Parameters
+
+Parameter | Type | Default | Description
+--------- | ---- | ------- | -----------
+`code_challenge` | String | **Required** | PKCE code_challenge you generated from `verifier`
+`code_challenge_method` | String | S256 | Must be `S256`
+`response_type` | String | code | Only `code` is supported
+`redirect_uri` | String | **Required** | URL where to redirect after a successful login. Must be whitelisted in ABS
+`client_id` | String | **Required** | The name of your app (currently not used, but might be required at some point)
+
+Other parameters are ignored.
+
+### Response
+
+Status | Meaning | Description
+------ | ------- | -----------
+302 | REDIRECT | Success, save the state-parameter and follow the redirect
+400 | Bad Request | You submitted an invalid parameter
+500 | Internal Server Error | Error in the flow
+
+## OAuth2 Callback
+
+```shell
+curl "https://abs.example.com/auth/openid/callback?state=2000&code=42&code_verifier=1234"
+```
+
+> The above command returns a JSON structured like this:
+
+```json
+{
+   "userDefaultLibraryId":"b2bab335-d9aa-4141-8394-fd98767504d7",
+   "serverSettings":{
+      "scannerFindCovers":false,
+      "metadataFileFormat":"json",
+      "backupSchedule":false,
+      "authOpenIDJwksURL":"https://auth.example.com/application/o/audiobookshelf/jwks/",
+      "authOpenIDAutoLaunch":true,
+      "…"
+   },
+   "Source":"docker",
+   "user":{
+      "oldUserId":"usr_1234lasdnlk",
+      "itemTagsSelected":[],
+      "createdAt":1672769098296,
+      "librariesAccessible":[  ],
+      "mediaProgress":[],
+      "oldUserId":"usr_1234lasdnlk",
+      "permissions":{
+         "accessExplicitContent":true,
+         "delete":true,
+         "download":true,
+         "upload":true,
+         "accessAllLibraries":true,
+         "…"
+      },
+      "seriesHideFromContinueListening":[],
+      "token":"eyJhbGciOiJIUzI1NiIsInASDLKAMSDklmad.ASLDKlkma.PNKNASDPNdnknsdfoP",
+      "type":"admin",
+      "username":"example"
+   },
+   "ereaderDevices":[]
+}
+```
+This API call finalizes the OAuth2 flow. The behavior of this call depends on whether a `redirect_uri` was provided in the `/auth/openid` request:
+
+- If a `redirect_uri` was provided, this call returns user JSON data.
+- If a `redirect_uri` was not provided, it will redirect to `/login` (used internally by ABS-web).
+
+It's important to note that the call to `/auth/openid/callback` is stateful. This means that the cookies set during the `/auth/openid` call must be sent along with this request.
+
+### Query Parameters
+
+Parameter | Type | Default | Description
+--------- | ---- | ------- | -----------
+`state` | String | **Required** | The state string you received when `redirect_uri` was called
+`code` | String | **Required** | The code you received when `redirect_uri` was called
+`code_verifier` | String | **Required** | This is the verifier you generated when providing the `code_challenge` in the first request
+
+Other parameters are ignored.
+
+### Response
+
+Status | Meaning | Description
+------ | ------- | -----------
+200 | OK | Success, user data in payload
+302 | FOUND | Success, redirect to /login (internal use)
+400 | Bad Request | You have no session
+401 | Unauthorized | Error from the SSO provider
+500 | Internal Server Error | Error in the flow
+
+Error details are provided in the response body and in ABS logs.
+
+
+## OAuth2 Mobile Redirect
+
+```shell
+curl "https://abs.example.com/auth/openid/mobile-redirect"
+```
+
+This is an internal endpoint, which should **not** be called directly by an application. It is intended purely for the redirection of SSO providers.
+
+When you provide a `redirect_uri` in `/auth/openid`, ABS performs an important operation: it saves your `redirect_uri` and instructs the SSO provider to use `/auth/openid/mobile-redirect` instead. This endpoint, in turn, redirects to your original `redirect_uri`.
+
+This mechanism allows ABS to provide a `https` callback URL, which is particularly useful for mobile apps.
+
+This call does not require a cookie or session. It matches the `redirect_uri` using the `state` parameter.
+
+### HTTP Request
+
+`GET http://abs.example.com/auth/openid/mobile-redirect`
+
+### Query Parameters
+
+Parameter | Type | Default | Description
+--------- | ---- | ------- | -----------
+`code` | String | **Required** | OAuth2 state
+`state` | String | **Required** | OAuth2 code
+
+Other parameters are ignored.
+
+### Response
+
+Status | Meaning | Description
+------ | ------- | -----------
+302 | REDIRECT | Success
+400 | Bad Request | No state or no redirect_uri associated to state
+500 | Internal Server Error | Error in the flow
 
 ## Initialize the Server
 
