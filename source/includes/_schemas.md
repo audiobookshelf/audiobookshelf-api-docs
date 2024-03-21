@@ -268,7 +268,6 @@ Attribute | Type | Description
   ],
   "audioFiles": [...],
   "chapters": [...],
-  "missingParts": [...],
   "ebookFile": null
 }
 ```
@@ -285,8 +284,6 @@ Attribute | Type | Description
   "numTracks": 1,
   "numAudioFiles": 1,
   "numChapters": 1,
-  "numMissingParts": 0,
-  "numInvalidAudioFiles": 0,
   "duration": 33854.905,
   "size": 268824228,
   "ebookFormat": null
@@ -308,7 +305,6 @@ Attribute | Type | Description
   "duration": 33854.905,
   "size": 268824228,
   "tracks": [...],
-  "missingParts": [...],
   "ebookFile": null
 }
 ```
@@ -321,7 +317,6 @@ Attribute | Type | Description
 `tags` | Array of String | The book's tags.
 `audioFiles` | Array of [Audio File](#audio-file) | The book's audio files.
 `chapters` | Array of [Book Chapter](#book-chapter) | The book's chapters.
-`missingParts` | Array of Integer | Any parts missing from the book by track index.
 `ebookFile` | [EBook File](#ebook-file) Object or null | The book's ebook file. Will be `null` if this is an audiobook.
 
 ### Book Minified
@@ -331,7 +326,6 @@ Attribute | Type | Description
 * `libraryItemId`
 * `audioFiles`
 * `chapters`
-* `missingParts`
 * `ebookFile`
 
 #### Modified Attributes
@@ -345,8 +339,6 @@ Attribute | Type | Description
 `numTracks` | Integer | The number of tracks the book's audio files have.
 `numAudioFiles` | Integer | The number of audio files the book has.
 `numChapters` | Integer | The number of chapters the book has.
-`numMissingParts` | Integer | The total number of missing parts the book has.
-`numInvalidAudioFiles` | Integer | The number of invalid audio files the book has.
 `duration` | Float | The total length (in seconds) of the book.
 `size` | Integer | The total size (in bytes) of the book.
 `ebookFormat` | String or null | The format of ebook of the book. Will be `null` if the book is an audiobook.
@@ -1003,7 +995,6 @@ Attribute | Type | Description
   "trackNumFromFilename": 1,
   "discNumFromFilename": null,
   "manuallyVerified": false,
-  "invalid": false,
   "exclude": false,
   "error": null,
   "format": "MP2/3 (MPEG audio layer 2/3)",
@@ -1033,7 +1024,6 @@ Attribute | Type | Description
 `trackNumFromFilename` | Integer or null | The track number of the audio file as determined from the file's name. Will be `null` if unknown.
 `discNumFromFilename` | Integer or null | The track number of the audio file as determined from the file's name. Will be `null` if unknown.
 `manuallyVerified` | Boolean | Whether the audio file has been manually verified by a user.
-`invalid` | Boolean | Whether the audio file is missing from the server.
 `exclude` | Boolean | Whether the audio file has been marked for exclusion.
 `error` | String or null | Any error with the audio file. Will be `null` if there is none.
 `format` | String | The format of the audio file.

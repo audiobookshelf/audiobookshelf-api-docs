@@ -60,8 +60,6 @@ curl "https://abs.example.com/api/authors/aut_z3leimgybl7uf3y4ab?include=items,s
         "numTracks": 2,
         "numAudioFiles": 2,
         "numChapters": 2,
-        "numMissingParts": 0,
-        "numInvalidAudioFiles": 0,
         "duration": 12000.946,
         "size": 96010240,
         "ebookFileFormat": null
@@ -121,8 +119,6 @@ curl "https://abs.example.com/api/authors/aut_z3leimgybl7uf3y4ab?include=items,s
             "numTracks": 2,
             "numAudioFiles": 2,
             "numChapters": 2,
-            "numMissingParts": 0,
-            "numInvalidAudioFiles": 0,
             "duration": 12000.946,
             "size": 96010240,
             "ebookFileFormat": null

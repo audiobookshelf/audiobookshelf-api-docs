@@ -104,7 +104,6 @@ curl -X POST "https://abs.example.com/api/playlists" \
               "trackNumFromFilename": 1,
               "discNumFromFilename": null,
               "manuallyVerified": false,
-              "invalid": false,
               "exclude": false,
               "error": null,
               "format": "MP2/3 (MPEG audio layer 2/3)",
@@ -148,7 +147,6 @@ curl -X POST "https://abs.example.com/api/playlists" \
               "trackNumFromFilename": 1,
               "discNumFromFilename": null,
               "manuallyVerified": false,
-              "invalid": false,
               "exclude": false,
               "error": null,
               "format": "MP2/3 (MPEG audio layer 2/3)",
@@ -227,7 +225,6 @@ curl -X POST "https://abs.example.com/api/playlists" \
               }
             }
           ],
-          "missingParts": [],
           "ebookFile": null
         },
         "libraryFiles": [
@@ -417,7 +414,6 @@ curl "https://abs.example.com/api/playlists" \
                   "trackNumFromFilename": 1,
                   "discNumFromFilename": null,
                   "manuallyVerified": false,
-                  "invalid": false,
                   "exclude": false,
                   "error": null,
                   "format": "MP2/3 (MPEG audio layer 2/3)",
@@ -461,7 +457,6 @@ curl "https://abs.example.com/api/playlists" \
                   "trackNumFromFilename": 1,
                   "discNumFromFilename": null,
                   "manuallyVerified": false,
-                  "invalid": false,
                   "exclude": false,
                   "error": null,
                   "format": "MP2/3 (MPEG audio layer 2/3)",
@@ -540,7 +535,6 @@ curl "https://abs.example.com/api/playlists" \
                   }
                 }
               ],
-              "missingParts": [],
               "ebookFile": null
             },
             "libraryFiles": [
@@ -725,7 +719,6 @@ curl "https://abs.example.com/api/playlists/pl_qbwet64998s5ra6dcu" \
               "trackNumFromFilename": 1,
               "discNumFromFilename": null,
               "manuallyVerified": false,
-              "invalid": false,
               "exclude": false,
               "error": null,
               "format": "MP2/3 (MPEG audio layer 2/3)",
@@ -769,7 +762,6 @@ curl "https://abs.example.com/api/playlists/pl_qbwet64998s5ra6dcu" \
               "trackNumFromFilename": 1,
               "discNumFromFilename": null,
               "manuallyVerified": false,
-              "invalid": false,
               "exclude": false,
               "error": null,
               "format": "MP2/3 (MPEG audio layer 2/3)",
@@ -848,7 +840,6 @@ curl "https://abs.example.com/api/playlists/pl_qbwet64998s5ra6dcu" \
               }
             }
           ],
-          "missingParts": [],
           "ebookFile": null
         },
         "libraryFiles": [
@@ -1035,7 +1026,6 @@ curl -X PATCH "https://abs.example.com/api/playlists/pl_qbwet64998s5ra6dcu" \
               "trackNumFromFilename": 1,
               "discNumFromFilename": null,
               "manuallyVerified": false,
-              "invalid": false,
               "exclude": false,
               "error": null,
               "format": "MP2/3 (MPEG audio layer 2/3)",
@@ -1079,7 +1069,6 @@ curl -X PATCH "https://abs.example.com/api/playlists/pl_qbwet64998s5ra6dcu" \
               "trackNumFromFilename": 1,
               "discNumFromFilename": null,
               "manuallyVerified": false,
-              "invalid": false,
               "exclude": false,
               "error": null,
               "format": "MP2/3 (MPEG audio layer 2/3)",
@@ -1158,7 +1147,6 @@ curl -X PATCH "https://abs.example.com/api/playlists/pl_qbwet64998s5ra6dcu" \
               }
             }
           ],
-          "missingParts": [],
           "ebookFile": null
         },
         "libraryFiles": [
@@ -1382,7 +1370,6 @@ curl -X POST "https://abs.example.com/api/playlists/pl_qbwet64998s5ra6dcu/item" 
               "trackNumFromFilename": 1,
               "discNumFromFilename": null,
               "manuallyVerified": false,
-              "invalid": false,
               "exclude": false,
               "error": null,
               "format": "MP2/3 (MPEG audio layer 2/3)",
@@ -1426,7 +1413,6 @@ curl -X POST "https://abs.example.com/api/playlists/pl_qbwet64998s5ra6dcu/item" 
               "trackNumFromFilename": 1,
               "discNumFromFilename": null,
               "manuallyVerified": false,
-              "invalid": false,
               "exclude": false,
               "error": null,
               "format": "MP2/3 (MPEG audio layer 2/3)",
@@ -1505,7 +1491,6 @@ curl -X POST "https://abs.example.com/api/playlists/pl_qbwet64998s5ra6dcu/item" 
               }
             }
           ],
-          "missingParts": [],
           "ebookFile": null
         },
         "libraryFiles": [
@@ -1747,7 +1732,6 @@ curl -X POST "https://abs.example.com/api/playlists/pl_qbwet64998s5ra6dcu/batch/
               "trackNumFromFilename": 1,
               "discNumFromFilename": null,
               "manuallyVerified": false,
-              "invalid": false,
               "exclude": false,
               "error": null,
               "format": "MP2/3 (MPEG audio layer 2/3)",
@@ -1791,7 +1775,6 @@ curl -X POST "https://abs.example.com/api/playlists/pl_qbwet64998s5ra6dcu/batch/
               "trackNumFromFilename": 1,
               "discNumFromFilename": null,
               "manuallyVerified": false,
-              "invalid": false,
               "exclude": false,
               "error": null,
               "format": "MP2/3 (MPEG audio layer 2/3)",
@@ -1870,7 +1853,6 @@ curl -X POST "https://abs.example.com/api/playlists/pl_qbwet64998s5ra6dcu/batch/
               }
             }
           ],
-          "missingParts": [],
           "ebookFile": null
         },
         "libraryFiles": [
@@ -2117,7 +2099,6 @@ curl -X POST "https://abs.example.com/api/playlists/collection/col_fpfstanv6gd7t
               "trackNumFromFilename": 1,
               "discNumFromFilename": null,
               "manuallyVerified": false,
-              "invalid": false,
               "exclude": false,
               "error": null,
               "format": "MP2/3 (MPEG audio layer 2/3)",
@@ -2161,7 +2142,6 @@ curl -X POST "https://abs.example.com/api/playlists/collection/col_fpfstanv6gd7t
               "trackNumFromFilename": 1,
               "discNumFromFilename": null,
               "manuallyVerified": false,
-              "invalid": false,
               "exclude": false,
               "error": null,
               "format": "MP2/3 (MPEG audio layer 2/3)",
@@ -2240,7 +2220,6 @@ curl -X POST "https://abs.example.com/api/playlists/collection/col_fpfstanv6gd7t
               }
             }
           ],
-          "missingParts": [],
           "ebookFile": null
         },
         "libraryFiles": [

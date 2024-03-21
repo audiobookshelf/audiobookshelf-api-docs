@@ -857,7 +857,6 @@ curl "https://abs.example.com/api/me/items-in-progress?limit=1" \
           "trackNumFromFilename": null,
           "discNumFromFilename": null,
           "manuallyVerified": false,
-          "invalid": false,
           "exclude": false,
           "error": null,
           "format": "MP2/3 (MPEG audio layer 2/3)",

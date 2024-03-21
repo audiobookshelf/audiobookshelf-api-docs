@@ -118,7 +118,6 @@ curl "https://abs.example.com/api/items/li_8gch9ve09orgn4fdz8?expanded=1&include
         "trackNumFromFilename": 1,
         "discNumFromFilename": null,
         "manuallyVerified": false,
-        "invalid": false,
         "exclude": false,
         "error": null,
         "format": "MP2/3 (MPEG audio layer 2/3)",
@@ -162,7 +161,6 @@ curl "https://abs.example.com/api/items/li_8gch9ve09orgn4fdz8?expanded=1&include
         "trackNumFromFilename": 1,
         "discNumFromFilename": null,
         "manuallyVerified": false,
-        "invalid": false,
         "exclude": false,
         "error": null,
         "format": "MP2/3 (MPEG audio layer 2/3)",
@@ -241,7 +239,6 @@ curl "https://abs.example.com/api/items/li_8gch9ve09orgn4fdz8?expanded=1&include
         }
       }
     ],
-    "missingParts": [],
     "ebookFile": null
   },
   "libraryFiles": [
@@ -461,7 +458,6 @@ curl -X PATCH "https://abs.example.com/api/items/li_8gch9ve09orgn4fdz8/media" \
         "trackNumFromFilename": 1,
         "discNumFromFilename": null,
         "manuallyVerified": false,
-        "invalid": false,
         "exclude": false,
         "error": null,
         "format": "MP2/3 (MPEG audio layer 2/3)",
@@ -505,7 +501,6 @@ curl -X PATCH "https://abs.example.com/api/items/li_8gch9ve09orgn4fdz8/media" \
         "trackNumFromFilename": 1,
         "discNumFromFilename": null,
         "manuallyVerified": false,
-        "invalid": false,
         "exclude": false,
         "error": null,
         "format": "MP2/3 (MPEG audio layer 2/3)",
@@ -544,7 +539,6 @@ curl -X PATCH "https://abs.example.com/api/items/li_8gch9ve09orgn4fdz8/media" \
         "title": "Terry Goodkind - SOT Bk01 - Wizards First Rule 02"
       }
     ],
-    "missingParts": [],
     "ebookFile": null
   },
   "libraryFiles": [
@@ -985,7 +979,6 @@ curl -X POST "https://abs.example.com/api/items/li_8gch9ve09orgn4fdz8/match" \
           "trackNumFromFilename": 1,
           "discNumFromFilename": null,
           "manuallyVerified": false,
-          "invalid": false,
           "exclude": false,
           "error": null,
           "format": "MP2/3 (MPEG audio layer 2/3)",
@@ -1029,7 +1022,6 @@ curl -X POST "https://abs.example.com/api/items/li_8gch9ve09orgn4fdz8/match" \
           "trackNumFromFilename": 1,
           "discNumFromFilename": null,
           "manuallyVerified": false,
-          "invalid": false,
           "exclude": false,
           "error": null,
           "format": "MP2/3 (MPEG audio layer 2/3)",
@@ -1108,7 +1100,6 @@ curl -X POST "https://abs.example.com/api/items/li_8gch9ve09orgn4fdz8/match" \
           }
         }
       ],
-      "missingParts": [],
       "ebookFile": null
     },
     "libraryFiles": [
@@ -1358,7 +1349,6 @@ curl -X POST "https://abs.example.com/api/items/li_bufnnmp4y5o2gbbxfm/play/ep_lh
             "trackNumFromFilename": null,
             "discNumFromFilename": null,
             "manuallyVerified": false,
-            "invalid": false,
             "exclude": false,
             "error": null,
             "format": "MP2/3 (MPEG audio layer 2/3)",
@@ -1581,7 +1571,6 @@ curl -X PATCH "https://abs.example.com/api/items/li_bufnnmp4y5o2gbbxfm/tracks" \
         "trackNumFromFilename": 1,
         "discNumFromFilename": null,
         "manuallyVerified": false,
-        "invalid": false,
         "exclude": false,
         "error": null,
         "format": "MP2/3 (MPEG audio layer 2/3)",
@@ -1625,7 +1614,6 @@ curl -X PATCH "https://abs.example.com/api/items/li_bufnnmp4y5o2gbbxfm/tracks" \
         "trackNumFromFilename": 1,
         "discNumFromFilename": null,
         "manuallyVerified": false,
-        "invalid": false,
         "exclude": false,
         "error": null,
         "format": "MP2/3 (MPEG audio layer 2/3)",
@@ -1664,7 +1652,6 @@ curl -X PATCH "https://abs.example.com/api/items/li_bufnnmp4y5o2gbbxfm/tracks" \
         "title": "Terry Goodkind - SOT Bk01 - Wizards First Rule 02"
       }
     ],
-    "missingParts": [],
     "ebookFile": null
   },
   "libraryFiles": [
@@ -2205,7 +2192,6 @@ curl -X POST "https://abs.example.com/api/items/batch/get" \
             "trackNumFromFilename": 1,
             "discNumFromFilename": null,
             "manuallyVerified": false,
-            "invalid": false,
             "exclude": false,
             "error": null,
             "format": "MP2/3 (MPEG audio layer 2/3)",
@@ -2249,7 +2235,6 @@ curl -X POST "https://abs.example.com/api/items/batch/get" \
             "trackNumFromFilename": 1,
             "discNumFromFilename": null,
             "manuallyVerified": false,
-            "invalid": false,
             "exclude": false,
             "error": null,
             "format": "MP2/3 (MPEG audio layer 2/3)",
@@ -2328,7 +2313,6 @@ curl -X POST "https://abs.example.com/api/items/batch/get" \
             }
           }
         ],
-        "missingParts": [],
         "ebookFile": null
       },
       "libraryFiles": [

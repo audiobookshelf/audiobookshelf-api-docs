@@ -382,7 +382,6 @@ curl "https://abs.example.com/api/session/play_i00492kps6ow4axlvq" \
             "trackNumFromFilename": null,
             "discNumFromFilename": null,
             "manuallyVerified": false,
-            "invalid": false,
             "exclude": false,
             "error": null,
             "format": "MP2/3 (MPEG audio layer 2/3)",

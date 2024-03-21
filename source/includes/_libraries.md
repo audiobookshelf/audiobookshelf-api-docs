@@ -449,8 +449,6 @@ curl "https://abs.example.com/api/libraries/lib_c1u6t4p45c35rf0nzd/items?sort=me
         "numTracks": 2,
         "numAudioFiles": 2,
         "numChapters": 2,
-        "numMissingParts": 0,
-        "numInvalidAudioFiles": 0,
         "duration": 12000.946,
         "size": 96010240,
         "ebookFileFormat": null
@@ -674,8 +672,6 @@ curl "https://abs.example.com/api/libraries/lib_c1u6t4p45c35rf0nzd/series?minifi
             "numTracks": 2,
             "numAudioFiles": 2,
             "numChapters": 2,
-            "numMissingParts": 0,
-            "numInvalidAudioFiles": 0,
             "duration": 12000.946,
             "size": 96010240,
             "ebookFileFormat": null
@@ -808,8 +804,6 @@ curl "https://abs.example.com/api/libraries/lib_c1u6t4p45c35rf0nzd/collections?m
             "numTracks": 2,
             "numAudioFiles": 2,
             "numChapters": 2,
-            "numMissingParts": 0,
-            "numInvalidAudioFiles": 0,
             "duration": 12000.946,
             "size": 96010240,
             "ebookFileFormat": null
@@ -984,7 +978,6 @@ curl "https://abs.example.com/api/libraries/lib_c1u6t4p45c35rf0nzd/playlists" \
                   "trackNumFromFilename": 1,
                   "discNumFromFilename": null,
                   "manuallyVerified": false,
-                  "invalid": false,
                   "exclude": false,
                   "error": null,
                   "format": "MP2/3 (MPEG audio layer 2/3)",
@@ -1028,7 +1021,6 @@ curl "https://abs.example.com/api/libraries/lib_c1u6t4p45c35rf0nzd/playlists" \
                   "trackNumFromFilename": 1,
                   "discNumFromFilename": null,
                   "manuallyVerified": false,
-                  "invalid": false,
                   "exclude": false,
                   "error": null,
                   "format": "MP2/3 (MPEG audio layer 2/3)",
@@ -1107,7 +1099,6 @@ curl "https://abs.example.com/api/libraries/lib_c1u6t4p45c35rf0nzd/playlists" \
                   }
                 }
               ],
-              "missingParts": [],
               "ebookFile": null
             },
             "libraryFiles": [
@@ -1268,8 +1259,6 @@ curl "https://abs.example.com/api/libraries/lib_c1u6t4p45c35rf0nzd/personalized"
           "numTracks": 2,
           "numAudioFiles": 2,
           "numChapters": 2,
-          "numMissingParts": 0,
-          "numInvalidAudioFiles": 0,
           "duration": 12000.946,
           "size": 96010240,
           "ebookFileFormat": null
@@ -1333,8 +1322,6 @@ curl "https://abs.example.com/api/libraries/lib_c1u6t4p45c35rf0nzd/personalized"
           "numTracks": 2,
           "numAudioFiles": 2,
           "numChapters": 2,
-          "numMissingParts": 0,
-          "numInvalidAudioFiles": 0,
           "duration": 12000.946,
           "size": 96010240,
           "ebookFileFormat": null
@@ -1393,8 +1380,6 @@ curl "https://abs.example.com/api/libraries/lib_c1u6t4p45c35rf0nzd/personalized"
           "numTracks": 2,
           "numAudioFiles": 2,
           "numChapters": 2,
-          "numMissingParts": 0,
-          "numInvalidAudioFiles": 0,
           "duration": 12000.946,
           "size": 96010240,
           "ebookFileFormat": null
@@ -1459,8 +1444,6 @@ curl "https://abs.example.com/api/libraries/lib_c1u6t4p45c35rf0nzd/personalized"
               "numTracks": 2,
               "numAudioFiles": 2,
               "numChapters": 2,
-              "numMissingParts": 0,
-              "numInvalidAudioFiles": 0,
               "duration": 12000.946,
               "size": 96010240,
               "ebookFileFormat": null
@@ -1526,8 +1509,6 @@ curl "https://abs.example.com/api/libraries/lib_c1u6t4p45c35rf0nzd/personalized"
           "numTracks": 2,
           "numAudioFiles": 2,
           "numChapters": 2,
-          "numMissingParts": 0,
-          "numInvalidAudioFiles": 0,
           "duration": 12000.946,
           "size": 96010240,
           "ebookFileFormat": null
@@ -1586,8 +1567,6 @@ curl "https://abs.example.com/api/libraries/lib_c1u6t4p45c35rf0nzd/personalized"
           "numTracks": 2,
           "numAudioFiles": 2,
           "numChapters": 2,
-          "numMissingParts": 0,
-          "numInvalidAudioFiles": 0,
           "duration": 12000.946,
           "size": 96010240,
           "ebookFileFormat": null
@@ -1840,7 +1819,6 @@ curl "https://abs.example.com/api/libraries/lib_c1u6t4p45c35rf0nzd/search?q=Terr
               "trackNumFromFilename": 1,
               "discNumFromFilename": null,
               "manuallyVerified": false,
-              "invalid": false,
               "exclude": false,
               "error": null,
               "format": "MP2/3 (MPEG audio layer 2/3)",
@@ -1884,7 +1862,6 @@ curl "https://abs.example.com/api/libraries/lib_c1u6t4p45c35rf0nzd/search?q=Terr
               "trackNumFromFilename": 1,
               "discNumFromFilename": null,
               "manuallyVerified": false,
-              "invalid": false,
               "exclude": false,
               "error": null,
               "format": "MP2/3 (MPEG audio layer 2/3)",
@@ -1963,7 +1940,6 @@ curl "https://abs.example.com/api/libraries/lib_c1u6t4p45c35rf0nzd/search?q=Terr
               }
             }
           ],
-          "missingParts": [],
           "ebookFile": null
         },
         "libraryFiles": [
@@ -2359,7 +2335,6 @@ curl "https://abs.example.com/api/libraries/lib_p9wkw2i85qy9oltijt/recent-episod
         "trackNumFromFilename": null,
         "discNumFromFilename": null,
         "manuallyVerified": false,
-        "invalid": false,
         "exclude": false,
         "error": null,
         "format": "MP2/3 (MPEG audio layer 2/3)",
