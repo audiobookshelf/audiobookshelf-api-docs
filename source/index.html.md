@@ -48,8 +48,6 @@ Audiobookshelf API and this documentation is a work in progress.
 
 Contributions to this documentation are welcome! [View API docs GitHub repo](https://github.com/advplyr/audiobookshelf-slate)
 
-If you are a .NET developer we could use your help with a Windows installer for audiobookshelf server.
-
 # Authentication
 
 Audiobookshelf uses a users API token as a Bearer token for requests. For GET requests the API token can optionally be passed in as a query string.
