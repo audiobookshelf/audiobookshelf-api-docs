@@ -16358,7 +16358,7 @@ This endpoint will soon be <strong>deprecated</strong>.
 </thead><tbody>
 <tr>
 <td><code>id</code></td>
-<td>String</td>
+<td>UUIDv4</td>
 <td>The ID of the user.</td>
 </tr>
 <tr>
@@ -16412,9 +16412,9 @@ This endpoint will soon be <strong>deprecated</strong>.
 <h2 id='sync-a-local-session'>Sync a Local Session</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">-X</span> POST <span class="s2">"https://abs.example.com/api/session/local"</span> <span class="se">\</span>
   <span class="nt">-H</span> <span class="s2">"Authorization: Bearer exJhbGciOiJI6IkpXVCJ9.eyJ1c2Vyi5NDEyODc4fQ.ZraBFohS4Tg39NszY"</span> <span class="se">\</span>
   <span class="nt">-H</span> <span class="s2">"Content-Type: application/json"</span> <span class="se">\</span>
-  <span class="nt">-d</span> <span class="s1">$'{"id": "play_local_i00492kps6ow4axlvq", "userId": "root", "libraryId": "lib_p9wkw2i85qy9oltijt", "libraryItemId": "li_bufnnmp4y5o2gbbxfm", "episodeId": "ep_lh6ko39pumnrma3dhv", "mediaType": "podcast", "mediaMetadata": {"title": "Welcome to Night Vale", "author": "Night Vale Presents", "description": "</span><span class="se">\\</span><span class="s1">n      Twice-monthly community updates for the small desert town of Night Vale, where every conspiracy theory is true. Turn on your radio and hide. Never listened before? It</span><span class="se">\'</span><span class="s1">s an ongoing radio show. Start with the current episode, and you</span><span class="se">\'</span><span class="s1">ll catch on in no time. Or, go right to Episode 1 if you wanna binge-listen.</span><span class="se">\\</span><span class="s1">n    ", "releaseDate": "2022-10-20T19:00:00Z", "genres": ["Science Fiction", "Podcasts", "Fiction"], "feedUrl": "http://feeds.nightvalepresents.com/welcometonightvalepodcast", "imageUrl": "https://is4-ssl.mzstatic.com/image/thumb/Podcasts125/v4/4a/31/35/4a3135d0-1fe7-a2d7-fb43-d182ec175402/mza_8232698753950666850.jpg/600x600bb.jpg", "itunesPageUrl": "https://podcasts.apple.com/us/podcast/welcome-to-night-vale/id536258179?uo=4", "itunesId": 536258179, "itunesArtistId": 718704794, "explicit": false, "language": null}, "chapters": [], "displayTitle": "1 - Pilot", "displayAuthor": "Night Vale Presents", "coverPath": "/metadata/items/li_bufnnmp4y5o2gbbxfm/cover.jpg", "duration": 1454.18449, "playMethod": 0, "mediaPlayer": "html5", "deviceInfo": {"ipAddress": "192.168.1.118", "browserName": "Firefox", "browserVersion": "106.0", "osName": "Linux", "osVersion": "x86_64", "serverVersion": "2.2.4"}, "date": "2022-11-16", "dayOfWeek": "Wednesday", "timeListening": 20, "startTime": 616.291374, "currentTime": 636.09262, "startedAt": 1668580247687, "updatedAt": 1668580396623}'</span>
+  <span class="nt">-d</span> <span class="s1">$'{"id": "97751c1c-bc78-46c5-85c3-62367972de87", "userId": "855cc493-507a-4626-b664-36b7f259e102", "libraryId": "f08dce63-e5c8-4a6d-87c7-0cca53d47f0a", "libraryItemId": "54973194-1cff-4ae9-b2b6-957ae9ca2e61", "episodeId": "4e145fa0-c185-4ad2-b85c-50c956e4d242", "mediaType": "podcast", "mediaMetadata": {"title": "Welcome to Night Vale", "author": "Night Vale Presents", "description": "</span><span class="se">\\</span><span class="s1">n      Twice-monthly community updates for the small desert town of Night Vale, where every conspiracy theory is true. Turn on your radio and hide. Never listened before? It</span><span class="se">\'</span><span class="s1">s an ongoing radio show. Start with the current episode, and you</span><span class="se">\'</span><span class="s1">ll catch on in no time. Or, go right to Episode 1 if you wanna binge-listen.</span><span class="se">\\</span><span class="s1">n    ", "releaseDate": "2022-10-20T19:00:00Z", "genres": ["Science Fiction", "Podcasts", "Fiction"], "feedUrl": "http://feeds.nightvalepresents.com/welcometonightvalepodcast", "imageUrl": "https://is4-ssl.mzstatic.com/image/thumb/Podcasts125/v4/4a/31/35/4a3135d0-1fe7-a2d7-fb43-d182ec175402/mza_8232698753950666850.jpg/600x600bb.jpg", "itunesPageUrl": "https://podcasts.apple.com/us/podcast/welcome-to-night-vale/id536258179?uo=4", "itunesId": 536258179, "itunesArtistId": 718704794, "explicit": false, "language": null}, "chapters": [], "displayTitle": "1 - Pilot", "displayAuthor": "Night Vale Presents", "coverPath": "/metadata/items/li_bufnnmp4y5o2gbbxfm/cover.jpg", "duration": 1454.18449, "playMethod": 0, "mediaPlayer": "html5", "deviceInfo": {"ipAddress": "192.168.1.118", "browserName": "Firefox", "browserVersion": "106.0", "osName": "Linux", "osVersion": "x86_64", "serverVersion": "2.2.4"}, "date": "2022-11-16", "dayOfWeek": "Wednesday", "timeListening": 20, "startTime": 616.291374, "currentTime": 636.09262, "startedAt": 1668580247687, "updatedAt": 1668580396623}'</span>
 </code></pre></div>
-<p>This endpoint updates a local listening session on the server.</p>
+<p>This endpoint creates/updates a local listening session on the server. Local listening sessions are used for syncing offline sessions. The client must use UUIDv4 as the <code>id</code> for the local listening session because this will be used as the identifier on the server as well.</p>
 <h3 id='http-request-3'>HTTP Request</h3>
 <p><code>POST http://abs.example.com/api/session/local</code></p>
 <h3 id='parameters'>Parameters</h3>
@@ -16441,7 +16441,7 @@ This endpoint will soon be <strong>deprecated</strong>.
 <h2 id='sync-local-sessions'>Sync Local Sessions</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">-X</span> POST <span class="s2">"https://abs.example.com/api/session/local-all"</span> <span class="se">\</span>
   <span class="nt">-H</span> <span class="s2">"Authorization: Bearer exJhbGciOiJI6IkpXVCJ9.eyJ1c2Vyi5NDEyODc4fQ.ZraBFohS4Tg39NszY"</span> <span class="se">\</span>
   <span class="nt">-H</span> <span class="s2">"Content-Type: application/json"</span> <span class="se">\</span>
-  <span class="nt">-d</span> <span class="s1">$'{"sessions": [{"id": "play_local_i00492kps6ow4axlvq", "userId": "root", "libraryId": "lib_p9wkw2i85qy9oltijt", "libraryItemId": "li_bufnnmp4y5o2gbbxfm", "episodeId": "ep_lh6ko39pumnrma3dhv", "mediaType": "podcast", "mediaMetadata": {"title": "Welcome to Night Vale", "author": "Night Vale Presents", "description": "</span><span class="se">\\</span><span class="s1">n      Twice-monthly community updates for the small desert town of Night Vale, where every conspiracy theory is true. Turn on your radio and hide. Never listened before? It</span><span class="se">\'</span><span class="s1">s an ongoing radio show. Start with the current episode, and you</span><span class="se">\'</span><span class="s1">ll catch on in no time. Or, go right to Episode 1 if you wanna binge-listen.</span><span class="se">\\</span><span class="s1">n    ", "releaseDate": "2022-10-20T19:00:00Z", "genres": ["Science Fiction", "Podcasts", "Fiction"], "feedUrl": "http://feeds.nightvalepresents.com/welcometonightvalepodcast", "imageUrl": "https://is4-ssl.mzstatic.com/image/thumb/Podcasts125/v4/4a/31/35/4a3135d0-1fe7-a2d7-fb43-d182ec175402/mza_8232698753950666850.jpg/600x600bb.jpg", "itunesPageUrl": "https://podcasts.apple.com/us/podcast/welcome-to-night-vale/id536258179?uo=4", "itunesId": 536258179, "itunesArtistId": 718704794, "explicit": false, "language": null}, "chapters": [], "displayTitle": "1 - Pilot", "displayAuthor": "Night Vale Presents", "coverPath": "/metadata/items/li_bufnnmp4y5o2gbbxfm/cover.jpg", "duration": 1454.18449, "playMethod": 0, "mediaPlayer": "html5", "deviceInfo": {"ipAddress": "192.168.1.118", "browserName": "Firefox", "browserVersion": "106.0", "osName": "Linux", "osVersion": "x86_64", "serverVersion": "2.2.4"}, "date": "2022-11-16", "dayOfWeek": "Wednesday", "timeListening": 20, "startTime": 616.291374, "currentTime": 636.09262, "startedAt": 1668580247687, "updatedAt": 1668580396623}]}'</span>
+  <span class="nt">-d</span> <span class="s1">$'{"sessions": [{"id": "97751c1c-bc78-46c5-85c3-62367972de87", "userId": "855cc493-507a-4626-b664-36b7f259e102", "libraryId": "f08dce63-e5c8-4a6d-87c7-0cca53d47f0a", "libraryItemId": "54973194-1cff-4ae9-b2b6-957ae9ca2e61", "episodeId": "4e145fa0-c185-4ad2-b85c-50c956e4d242", "mediaType": "podcast", "mediaMetadata": {"title": "Welcome to Night Vale", "author": "Night Vale Presents", "description": "</span><span class="se">\\</span><span class="s1">n      Twice-monthly community updates for the small desert town of Night Vale, where every conspiracy theory is true. Turn on your radio and hide. Never listened before? It</span><span class="se">\'</span><span class="s1">s an ongoing radio show. Start with the current episode, and you</span><span class="se">\'</span><span class="s1">ll catch on in no time. Or, go right to Episode 1 if you wanna binge-listen.</span><span class="se">\\</span><span class="s1">n    ", "releaseDate": "2022-10-20T19:00:00Z", "genres": ["Science Fiction", "Podcasts", "Fiction"], "feedUrl": "http://feeds.nightvalepresents.com/welcometonightvalepodcast", "imageUrl": "https://is4-ssl.mzstatic.com/image/thumb/Podcasts125/v4/4a/31/35/4a3135d0-1fe7-a2d7-fb43-d182ec175402/mza_8232698753950666850.jpg/600x600bb.jpg", "itunesPageUrl": "https://podcasts.apple.com/us/podcast/welcome-to-night-vale/id536258179?uo=4", "itunesId": 536258179, "itunesArtistId": 718704794, "explicit": false, "language": null}, "chapters": [], "displayTitle": "1 - Pilot", "displayAuthor": "Night Vale Presents", "coverPath": "/metadata/items/li_bufnnmp4y5o2gbbxfm/cover.jpg", "duration": 1454.18449, "playMethod": 0, "mediaPlayer": "html5", "deviceInfo": {"ipAddress": "192.168.1.118", "browserName": "Firefox", "browserVersion": "106.0", "osName": "Linux", "osVersion": "x86_64", "serverVersion": "2.2.4"}, "date": "2022-11-16", "dayOfWeek": "Wednesday", "timeListening": 20, "startTime": 616.291374, "currentTime": 636.09262, "startedAt": 1668580247687, "updatedAt": 1668580396623}]}'</span>
 </code></pre></div>
 <blockquote>
 <p>The above command returns JSON structured like this:</p>
@@ -16449,14 +16449,14 @@ This endpoint will soon be <strong>deprecated</strong>.
 <div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="nl">"results"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
     </span><span class="p">{</span><span class="w">
-      </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"play_local_i00492kps6ow4axlvq"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"97751c1c-bc78-46c5-85c3-62367972de87"</span><span class="p">,</span><span class="w">
       </span><span class="nl">"success"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
       </span><span class="nl">"progressSynced"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
     </span><span class="p">}</span><span class="w">
   </span><span class="p">]</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div>
-<p>This endpoint updates local listening sessions on the server.</p>
+<p>This endpoint creates/updates multiple local listening sessions on the server. Used for syncing offline listening sessions. The client must use UUIDv4 as the <code>id</code> for the local listening sessions because this will be used as the identifier on the server as well.</p>
 <h3 id='http-request-4'>HTTP Request</h3>
 <p><code>POST http://abs.example.com/api/session/local-all</code></p>
 <h3 id='parameters-2'>Parameters</h3>
@@ -16513,7 +16513,7 @@ This endpoint will soon be <strong>deprecated</strong>.
 </thead><tbody>
 <tr>
 <td><code>id</code></td>
-<td>String</td>
+<td>UUIDv4</td>
 <td>The ID of the playback session.</td>
 </tr>
 <tr>
@@ -16532,18 +16532,18 @@ This endpoint will soon be <strong>deprecated</strong>.
 <td>Will only exist if <code>success</code> is <code>true</code>. Whether the progress for the session&#39;s library item was updated.</td>
 </tr>
 </tbody></table>
-<h2 id='get-an-open-session'>Get an Open Session</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://abs.example.com/api/session/play_i00492kps6ow4axlvq"</span> <span class="se">\</span>
+<h2 id='get-an-open-session'>Get an Open Session</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://abs.example.com/api/session/39045d34-7758-492d-aa5e-9bd872e884f5"</span> <span class="se">\</span>
   <span class="nt">-H</span> <span class="s2">"Authorization: Bearer exJhbGciOiJI6IkpXVCJ9.eyJ1c2Vyi5NDEyODc4fQ.ZraBFohS4Tg39NszY"</span>
 </code></pre></div>
 <blockquote>
 <p>The above command returns JSON structured like this:</p>
 </blockquote>
 <div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-  </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"play_i00492kps6ow4axlvq"</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"userId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"root"</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"libraryId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"lib_p9wkw2i85qy9oltijt"</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"libraryItemId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"li_bufnnmp4y5o2gbbxfm"</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"episodeId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ep_lh6ko39pumnrma3dhv"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"39045d34-7758-492d-aa5e-9bd872e884f5"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"userId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"855cc493-507a-4626-b664-36b7f259e102"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"libraryId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"f08dce63-e5c8-4a6d-87c7-0cca53d47f0a"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"libraryItemId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"54973194-1cff-4ae9-b2b6-957ae9ca2e61"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"episodeId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"4e145fa0-c185-4ad2-b85c-50c956e4d242"</span><span class="p">,</span><span class="w">
   </span><span class="nl">"mediaType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"podcast"</span><span class="p">,</span><span class="w">
   </span><span class="nl">"mediaMetadata"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
     </span><span class="nl">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Welcome to Night Vale"</span><span class="p">,</span><span class="w">
@@ -16607,10 +16607,10 @@ This endpoint will soon be <strong>deprecated</strong>.
   </span><span class="p">],</span><span class="w">
   </span><span class="nl">"videoTrack"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
   </span><span class="nl">"libraryItem"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-    </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"li_bufnnmp4y5o2gbbxfm"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"54973194-1cff-4ae9-b2b6-957ae9ca2e61"</span><span class="p">,</span><span class="w">
     </span><span class="nl">"ino"</span><span class="p">:</span><span class="w"> </span><span class="s2">"652"</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"libraryId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"lib_p9wkw2i85qy9oltijt"</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"folderId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"fol_crxarzs17jtw5k7ie9"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"libraryId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"f08dce63-e5c8-4a6d-87c7-0cca53d47f0a"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"folderId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"348b6bdc-eb29-4ac3-b30e-df471f29cb31"</span><span class="p">,</span><span class="w">
     </span><span class="nl">"path"</span><span class="p">:</span><span class="w"> </span><span class="s2">"/podcasts/Welcome to Night Vale"</span><span class="p">,</span><span class="w">
     </span><span class="nl">"relPath"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Welcome to Night Vale"</span><span class="p">,</span><span class="w">
     </span><span class="nl">"isFile"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
@@ -16625,7 +16625,7 @@ This endpoint will soon be <strong>deprecated</strong>.
     </span><span class="nl">"isInvalid"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
     </span><span class="nl">"mediaType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"podcast"</span><span class="p">,</span><span class="w">
     </span><span class="nl">"media"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-      </span><span class="nl">"libraryItemId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"li_bufnnmp4y5o2gbbxfm"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"libraryItemId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"54973194-1cff-4ae9-b2b6-957ae9ca2e61"</span><span class="p">,</span><span class="w">
       </span><span class="nl">"metadata"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
         </span><span class="nl">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Welcome to Night Vale"</span><span class="p">,</span><span class="w">
         </span><span class="nl">"titleIgnorePrefix"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Welcome to Night Vale"</span><span class="p">,</span><span class="w">
@@ -16645,12 +16645,12 @@ This endpoint will soon be <strong>deprecated</strong>.
         </span><span class="nl">"explicit"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
         </span><span class="nl">"language"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="w">
       </span><span class="p">},</span><span class="w">
-      </span><span class="nl">"coverPath"</span><span class="p">:</span><span class="w"> </span><span class="s2">"/metadata/items/li_bufnnmp4y5o2gbbxfm/cover.jpg"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"coverPath"</span><span class="p">:</span><span class="w"> </span><span class="s2">"/metadata/items/54973194-1cff-4ae9-b2b6-957ae9ca2e61/cover.jpg"</span><span class="p">,</span><span class="w">
       </span><span class="nl">"tags"</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span><span class="w">
       </span><span class="nl">"episodes"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
         </span><span class="p">{</span><span class="w">
-          </span><span class="nl">"libraryItemId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"li_bufnnmp4y5o2gbbxfm"</span><span class="p">,</span><span class="w">
-          </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ep_lh6ko39pumnrma3dhv"</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"libraryItemId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"54973194-1cff-4ae9-b2b6-957ae9ca2e61"</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"4e145fa0-c185-4ad2-b85c-50c956e4d242"</span><span class="p">,</span><span class="w">
           </span><span class="nl">"index"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
           </span><span class="nl">"season"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
           </span><span class="nl">"episode"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
@@ -25812,27 +25812,27 @@ Only non-null tags will be returned in requests.</p>
 </thead><tbody>
 <tr>
 <td><code>id</code></td>
-<td>String</td>
+<td>UUIDv4</td>
 <td>The ID of the playback session.</td>
 </tr>
 <tr>
 <td><code>userId</code></td>
-<td>String</td>
+<td>UUIDv4</td>
 <td>The ID of the user the playback session is for.</td>
 </tr>
 <tr>
 <td><code>libraryId</code></td>
-<td>String</td>
+<td>UUIDv4</td>
 <td>The ID of the library that contains the library item.</td>
 </tr>
 <tr>
 <td><code>libraryItemId</code></td>
-<td>String</td>
+<td>UUIDv4</td>
 <td>The ID of the library item.</td>
 </tr>
 <tr>
 <td><code>episodeId</code></td>
-<td>String or null</td>
+<td>UUIDv4 or null</td>
 <td>The ID of the podcast episode. Will be <code>null</code> if this playback session was started without an episode ID.</td>
 </tr>
 <tr>
@@ -26862,14 +26862,14 @@ Only non-null tags will be returned in requests.</p>
 <p>RSS Feed</p>
 </blockquote>
 <div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-  </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"li_bufnnmp4y5o2gbbxfm"</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"slug"</span><span class="p">:</span><span class="w"> </span><span class="s2">"li_bufnnmp4y5o2gbbxfm"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"169cf198-8645-4d73-8948-4e60fb329c5a"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"slug"</span><span class="p">:</span><span class="w"> </span><span class="s2">"169cf198-8645-4d73-8948-4e60fb329c5a"</span><span class="p">,</span><span class="w">
   </span><span class="nl">"userId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"root"</span><span class="p">,</span><span class="w">
   </span><span class="nl">"entityType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"item"</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"entityId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"li_bufnnmp4y5o2gbbxfm"</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"coverPath"</span><span class="p">:</span><span class="w"> </span><span class="s2">"/metadata/items/li_bufnnmp4y5o2gbbxfm/cover.jpg"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"entityId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"169cf198-8645-4d73-8948-4e60fb329c5a"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"coverPath"</span><span class="p">:</span><span class="w"> </span><span class="s2">"/metadata/items/169cf198-8645-4d73-8948-4e60fb329c5a/cover.jpg"</span><span class="p">,</span><span class="w">
   </span><span class="nl">"serverAddress"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://abs.example.com"</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"feedUrl"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://abs.example.com/feed/li_bufnnmp4y5o2gbbxfm"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"feedUrl"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://abs.example.com/feed/169cf198-8645-4d73-8948-4e60fb329c5a"</span><span class="p">,</span><span class="w">
   </span><span class="nl">"meta"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="err">...</span><span class="p">},</span><span class="w">
   </span><span class="nl">"episodes"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="err">...</span><span class="p">],</span><span class="w">
   </span><span class="nl">"createdAt"</span><span class="p">:</span><span class="w"> </span><span class="mi">1669031843179</span><span class="p">,</span><span class="w">
@@ -26880,10 +26880,10 @@ Only non-null tags will be returned in requests.</p>
 <p>RSS Feed Minified</p>
 </blockquote>
 <div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-  </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"li_bufnnmp4y5o2gbbxfm"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2294c42b-a964-48fe-a544-982fab209a5f"</span><span class="p">,</span><span class="w">
   </span><span class="nl">"entityType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"item"</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"entityId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"li_bufnnmp4y5o2gbbxfm"</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"feedUrl"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://abs.example.com/feed/li_bufnnmp4y5o2gbbxfm"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"entityId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"169cf198-8645-4d73-8948-4e60fb329c5a"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"feedUrl"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://abs.example.com/feed/169cf198-8645-4d73-8948-4e60fb329c5a"</span><span class="p">,</span><span class="w">
   </span><span class="nl">"meta"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
     </span><span class="nl">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Welcome to Night Vale"</span><span class="p">,</span><span class="w">
     </span><span class="nl">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"</span><span class="se">\n</span><span class="s2">      Twice-monthly community updates for the small desert town of Night Vale, where every conspiracy theory is true. Turn on your radio and hide. Never listened before? It's an ongoing radio show. Start with the current episode, and you'll catch on in no time. Or, go right to Episode 1 if you wanna binge-listen.</span><span class="se">\n</span><span class="s2">    "</span><span class="p">,</span><span class="w">
@@ -26902,7 +26902,7 @@ Only non-null tags will be returned in requests.</p>
 </thead><tbody>
 <tr>
 <td><code>id</code></td>
-<td>String</td>
+<td>UUIDv4</td>
 <td>The ID of the RSS feed.</td>
 </tr>
 <tr>
@@ -26912,7 +26912,7 @@ Only non-null tags will be returned in requests.</p>
 </tr>
 <tr>
 <td><code>userId</code></td>
-<td>String</td>
+<td>UUIDv4</td>
 <td>The ID of the user that created the RSS feed.</td>
 </tr>
 <tr>
@@ -26922,7 +26922,7 @@ Only non-null tags will be returned in requests.</p>
 </tr>
 <tr>
 <td><code>entityId</code></td>
-<td>String</td>
+<td>UUIDv4</td>
 <td>The ID of the entity the RSS feed is for.</td>
 </tr>
 <tr>
@@ -27203,13 +27203,13 @@ Only non-null tags will be returned in requests.</p>
 <p>Stream</p>
 </blockquote>
 <div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-  </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"play_c786zm3qtjz6bd5q3n"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5a3046cd-11ff-43c9-a495-c2fbdca93e9d"</span><span class="p">,</span><span class="w">
   </span><span class="nl">"userId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"root"</span><span class="p">,</span><span class="w">
   </span><span class="nl">"libraryItem"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="err">...</span><span class="p">},</span><span class="w">
   </span><span class="nl">"episode"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="err">...</span><span class="p">},</span><span class="w">
   </span><span class="nl">"segmentLength"</span><span class="p">:</span><span class="w"> </span><span class="mi">6</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"playlistPath"</span><span class="p">:</span><span class="w"> </span><span class="s2">"/metadata/streams/play_c786zm3qtjz6bd5q3n/output.m3u8"</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"clientPlaylistUri"</span><span class="p">:</span><span class="w"> </span><span class="s2">"/hls/play_c786zm3qtjz6bd5q3n/output.m3u8"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"playlistPath"</span><span class="p">:</span><span class="w"> </span><span class="s2">"/metadata/streams/5a3046cd-11ff-43c9-a495-c2fbdca93e9d/output.m3u8"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"clientPlaylistUri"</span><span class="p">:</span><span class="w"> </span><span class="s2">"/hls/5a3046cd-11ff-43c9-a495-c2fbdca93e9d/output.m3u8"</span><span class="p">,</span><span class="w">
   </span><span class="nl">"startTime"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
   </span><span class="nl">"segmentStartNumber"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
   </span><span class="nl">"isTranscodeComplete"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="w">
@@ -27224,12 +27224,12 @@ Only non-null tags will be returned in requests.</p>
 </thead><tbody>
 <tr>
 <td><code>id</code></td>
-<td>String</td>
+<td>UUIDv4</td>
 <td>The ID of the stream. It will be the same as the ID of the playback session that the stream is for.</td>
 </tr>
 <tr>
 <td><code>userId</code></td>
-<td>String</td>
+<td>UUIDv4</td>
 <td>The ID of the user that started the stream.</td>
 </tr>
 <tr>
