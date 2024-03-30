@@ -110,7 +110,7 @@ Attribute | Type | Description
 
 Attribute | Type | Description
 --------- | ---- | -----------
-`id` | String | The ID of the user.
+`id` | UUIDv4 | The ID of the user.
 `username` | String | The username of the user.
 
 
@@ -148,10 +148,10 @@ Status | Meaning | Description
 curl -X POST "https://abs.example.com/api/session/local" \
   -H "Authorization: Bearer exJhbGciOiJI6IkpXVCJ9.eyJ1c2Vyi5NDEyODc4fQ.ZraBFohS4Tg39NszY" \
   -H "Content-Type: application/json" \
-  -d $'{"id": "play_local_i00492kps6ow4axlvq", "userId": "root", "libraryId": "lib_p9wkw2i85qy9oltijt", "libraryItemId": "li_bufnnmp4y5o2gbbxfm", "episodeId": "ep_lh6ko39pumnrma3dhv", "mediaType": "podcast", "mediaMetadata": {"title": "Welcome to Night Vale", "author": "Night Vale Presents", "description": "\\n      Twice-monthly community updates for the small desert town of Night Vale, where every conspiracy theory is true. Turn on your radio and hide. Never listened before? It\'s an ongoing radio show. Start with the current episode, and you\'ll catch on in no time. Or, go right to Episode 1 if you wanna binge-listen.\\n    ", "releaseDate": "2022-10-20T19:00:00Z", "genres": ["Science Fiction", "Podcasts", "Fiction"], "feedUrl": "http://feeds.nightvalepresents.com/welcometonightvalepodcast", "imageUrl": "https://is4-ssl.mzstatic.com/image/thumb/Podcasts125/v4/4a/31/35/4a3135d0-1fe7-a2d7-fb43-d182ec175402/mza_8232698753950666850.jpg/600x600bb.jpg", "itunesPageUrl": "https://podcasts.apple.com/us/podcast/welcome-to-night-vale/id536258179?uo=4", "itunesId": 536258179, "itunesArtistId": 718704794, "explicit": false, "language": null}, "chapters": [], "displayTitle": "1 - Pilot", "displayAuthor": "Night Vale Presents", "coverPath": "/metadata/items/li_bufnnmp4y5o2gbbxfm/cover.jpg", "duration": 1454.18449, "playMethod": 0, "mediaPlayer": "html5", "deviceInfo": {"ipAddress": "192.168.1.118", "browserName": "Firefox", "browserVersion": "106.0", "osName": "Linux", "osVersion": "x86_64", "serverVersion": "2.2.4"}, "date": "2022-11-16", "dayOfWeek": "Wednesday", "timeListening": 20, "startTime": 616.291374, "currentTime": 636.09262, "startedAt": 1668580247687, "updatedAt": 1668580396623}'
+  -d $'{"id": "97751c1c-bc78-46c5-85c3-62367972de87", "userId": "855cc493-507a-4626-b664-36b7f259e102", "libraryId": "f08dce63-e5c8-4a6d-87c7-0cca53d47f0a", "libraryItemId": "54973194-1cff-4ae9-b2b6-957ae9ca2e61", "episodeId": "4e145fa0-c185-4ad2-b85c-50c956e4d242", "mediaType": "podcast", "mediaMetadata": {"title": "Welcome to Night Vale", "author": "Night Vale Presents", "description": "\\n      Twice-monthly community updates for the small desert town of Night Vale, where every conspiracy theory is true. Turn on your radio and hide. Never listened before? It\'s an ongoing radio show. Start with the current episode, and you\'ll catch on in no time. Or, go right to Episode 1 if you wanna binge-listen.\\n    ", "releaseDate": "2022-10-20T19:00:00Z", "genres": ["Science Fiction", "Podcasts", "Fiction"], "feedUrl": "http://feeds.nightvalepresents.com/welcometonightvalepodcast", "imageUrl": "https://is4-ssl.mzstatic.com/image/thumb/Podcasts125/v4/4a/31/35/4a3135d0-1fe7-a2d7-fb43-d182ec175402/mza_8232698753950666850.jpg/600x600bb.jpg", "itunesPageUrl": "https://podcasts.apple.com/us/podcast/welcome-to-night-vale/id536258179?uo=4", "itunesId": 536258179, "itunesArtistId": 718704794, "explicit": false, "language": null}, "chapters": [], "displayTitle": "1 - Pilot", "displayAuthor": "Night Vale Presents", "coverPath": "/metadata/items/li_bufnnmp4y5o2gbbxfm/cover.jpg", "duration": 1454.18449, "playMethod": 0, "mediaPlayer": "html5", "deviceInfo": {"ipAddress": "192.168.1.118", "browserName": "Firefox", "browserVersion": "106.0", "osName": "Linux", "osVersion": "x86_64", "serverVersion": "2.2.4"}, "date": "2022-11-16", "dayOfWeek": "Wednesday", "timeListening": 20, "startTime": 616.291374, "currentTime": 636.09262, "startedAt": 1668580247687, "updatedAt": 1668580396623}'
 ```
 
-This endpoint updates a local listening session on the server.
+This endpoint creates/updates a local listening session on the server. Local listening sessions are used for syncing offline sessions. The client must use UUIDv4 as the `id` for the local listening session because this will be used as the identifier on the server as well.
 
 ### HTTP Request
 
@@ -175,7 +175,7 @@ Status | Meaning | Description
 curl -X POST "https://abs.example.com/api/session/local-all" \
   -H "Authorization: Bearer exJhbGciOiJI6IkpXVCJ9.eyJ1c2Vyi5NDEyODc4fQ.ZraBFohS4Tg39NszY" \
   -H "Content-Type: application/json" \
-  -d $'{"sessions": [{"id": "play_local_i00492kps6ow4axlvq", "userId": "root", "libraryId": "lib_p9wkw2i85qy9oltijt", "libraryItemId": "li_bufnnmp4y5o2gbbxfm", "episodeId": "ep_lh6ko39pumnrma3dhv", "mediaType": "podcast", "mediaMetadata": {"title": "Welcome to Night Vale", "author": "Night Vale Presents", "description": "\\n      Twice-monthly community updates for the small desert town of Night Vale, where every conspiracy theory is true. Turn on your radio and hide. Never listened before? It\'s an ongoing radio show. Start with the current episode, and you\'ll catch on in no time. Or, go right to Episode 1 if you wanna binge-listen.\\n    ", "releaseDate": "2022-10-20T19:00:00Z", "genres": ["Science Fiction", "Podcasts", "Fiction"], "feedUrl": "http://feeds.nightvalepresents.com/welcometonightvalepodcast", "imageUrl": "https://is4-ssl.mzstatic.com/image/thumb/Podcasts125/v4/4a/31/35/4a3135d0-1fe7-a2d7-fb43-d182ec175402/mza_8232698753950666850.jpg/600x600bb.jpg", "itunesPageUrl": "https://podcasts.apple.com/us/podcast/welcome-to-night-vale/id536258179?uo=4", "itunesId": 536258179, "itunesArtistId": 718704794, "explicit": false, "language": null}, "chapters": [], "displayTitle": "1 - Pilot", "displayAuthor": "Night Vale Presents", "coverPath": "/metadata/items/li_bufnnmp4y5o2gbbxfm/cover.jpg", "duration": 1454.18449, "playMethod": 0, "mediaPlayer": "html5", "deviceInfo": {"ipAddress": "192.168.1.118", "browserName": "Firefox", "browserVersion": "106.0", "osName": "Linux", "osVersion": "x86_64", "serverVersion": "2.2.4"}, "date": "2022-11-16", "dayOfWeek": "Wednesday", "timeListening": 20, "startTime": 616.291374, "currentTime": 636.09262, "startedAt": 1668580247687, "updatedAt": 1668580396623}]}'
+  -d $'{"sessions": [{"id": "97751c1c-bc78-46c5-85c3-62367972de87", "userId": "855cc493-507a-4626-b664-36b7f259e102", "libraryId": "f08dce63-e5c8-4a6d-87c7-0cca53d47f0a", "libraryItemId": "54973194-1cff-4ae9-b2b6-957ae9ca2e61", "episodeId": "4e145fa0-c185-4ad2-b85c-50c956e4d242", "mediaType": "podcast", "mediaMetadata": {"title": "Welcome to Night Vale", "author": "Night Vale Presents", "description": "\\n      Twice-monthly community updates for the small desert town of Night Vale, where every conspiracy theory is true. Turn on your radio and hide. Never listened before? It\'s an ongoing radio show. Start with the current episode, and you\'ll catch on in no time. Or, go right to Episode 1 if you wanna binge-listen.\\n    ", "releaseDate": "2022-10-20T19:00:00Z", "genres": ["Science Fiction", "Podcasts", "Fiction"], "feedUrl": "http://feeds.nightvalepresents.com/welcometonightvalepodcast", "imageUrl": "https://is4-ssl.mzstatic.com/image/thumb/Podcasts125/v4/4a/31/35/4a3135d0-1fe7-a2d7-fb43-d182ec175402/mza_8232698753950666850.jpg/600x600bb.jpg", "itunesPageUrl": "https://podcasts.apple.com/us/podcast/welcome-to-night-vale/id536258179?uo=4", "itunesId": 536258179, "itunesArtistId": 718704794, "explicit": false, "language": null}, "chapters": [], "displayTitle": "1 - Pilot", "displayAuthor": "Night Vale Presents", "coverPath": "/metadata/items/li_bufnnmp4y5o2gbbxfm/cover.jpg", "duration": 1454.18449, "playMethod": 0, "mediaPlayer": "html5", "deviceInfo": {"ipAddress": "192.168.1.118", "browserName": "Firefox", "browserVersion": "106.0", "osName": "Linux", "osVersion": "x86_64", "serverVersion": "2.2.4"}, "date": "2022-11-16", "dayOfWeek": "Wednesday", "timeListening": 20, "startTime": 616.291374, "currentTime": 636.09262, "startedAt": 1668580247687, "updatedAt": 1668580396623}]}'
 ```
 
 > The above command returns JSON structured like this:
@@ -184,7 +184,7 @@ curl -X POST "https://abs.example.com/api/session/local-all" \
 {
   "results": [
     {
-      "id": "play_local_i00492kps6ow4axlvq",
+      "id": "97751c1c-bc78-46c5-85c3-62367972de87",
       "success": true,
       "progressSynced": true
     }
@@ -192,7 +192,7 @@ curl -X POST "https://abs.example.com/api/session/local-all" \
 }
 ```
 
-This endpoint updates local listening sessions on the server.
+This endpoint creates/updates multiple local listening sessions on the server. Used for syncing offline listening sessions. The client must use UUIDv4 as the `id` for the local listening sessions because this will be used as the identifier on the server as well.
 
 ### HTTP Request
 
@@ -220,7 +220,7 @@ Attribute | Type | Description
 
 Attribute | Type | Description
 --------- | ---- | -----------
-`id` | String | The ID of the playback session.
+`id` | UUIDv4 | The ID of the playback session.
 `success` | Boolean | Whether the session was successfully synced.
 `error` | String | Will only exist if `success` is `false`. The error that occurred when syncing.
 `progressSynced` | Boolean | Will only exist if `success` is `true`. Whether the progress for the session's library item was updated.
@@ -229,7 +229,7 @@ Attribute | Type | Description
 ## Get an Open Session
 
 ```shell
-curl "https://abs.example.com/api/session/play_i00492kps6ow4axlvq" \
+curl "https://abs.example.com/api/session/39045d34-7758-492d-aa5e-9bd872e884f5" \
   -H "Authorization: Bearer exJhbGciOiJI6IkpXVCJ9.eyJ1c2Vyi5NDEyODc4fQ.ZraBFohS4Tg39NszY"
 ```
 
@@ -237,11 +237,11 @@ curl "https://abs.example.com/api/session/play_i00492kps6ow4axlvq" \
 
 ```json
 {
-  "id": "play_i00492kps6ow4axlvq",
-  "userId": "root",
-  "libraryId": "lib_p9wkw2i85qy9oltijt",
-  "libraryItemId": "li_bufnnmp4y5o2gbbxfm",
-  "episodeId": "ep_lh6ko39pumnrma3dhv",
+  "id": "39045d34-7758-492d-aa5e-9bd872e884f5",
+  "userId": "855cc493-507a-4626-b664-36b7f259e102",
+  "libraryId": "f08dce63-e5c8-4a6d-87c7-0cca53d47f0a",
+  "libraryItemId": "54973194-1cff-4ae9-b2b6-957ae9ca2e61",
+  "episodeId": "4e145fa0-c185-4ad2-b85c-50c956e4d242",
   "mediaType": "podcast",
   "mediaMetadata": {
     "title": "Welcome to Night Vale",
@@ -305,10 +305,10 @@ curl "https://abs.example.com/api/session/play_i00492kps6ow4axlvq" \
   ],
   "videoTrack": null,
   "libraryItem": {
-    "id": "li_bufnnmp4y5o2gbbxfm",
+    "id": "54973194-1cff-4ae9-b2b6-957ae9ca2e61",
     "ino": "652",
-    "libraryId": "lib_p9wkw2i85qy9oltijt",
-    "folderId": "fol_crxarzs17jtw5k7ie9",
+    "libraryId": "f08dce63-e5c8-4a6d-87c7-0cca53d47f0a",
+    "folderId": "348b6bdc-eb29-4ac3-b30e-df471f29cb31",
     "path": "/podcasts/Welcome to Night Vale",
     "relPath": "Welcome to Night Vale",
     "isFile": false,
@@ -323,7 +323,7 @@ curl "https://abs.example.com/api/session/play_i00492kps6ow4axlvq" \
     "isInvalid": false,
     "mediaType": "podcast",
     "media": {
-      "libraryItemId": "li_bufnnmp4y5o2gbbxfm",
+      "libraryItemId": "54973194-1cff-4ae9-b2b6-957ae9ca2e61",
       "metadata": {
         "title": "Welcome to Night Vale",
         "titleIgnorePrefix": "Welcome to Night Vale",
@@ -343,12 +343,12 @@ curl "https://abs.example.com/api/session/play_i00492kps6ow4axlvq" \
         "explicit": false,
         "language": null
       },
-      "coverPath": "/metadata/items/li_bufnnmp4y5o2gbbxfm/cover.jpg",
+      "coverPath": "/metadata/items/54973194-1cff-4ae9-b2b6-957ae9ca2e61/cover.jpg",
       "tags": [],
       "episodes": [
         {
-          "libraryItemId": "li_bufnnmp4y5o2gbbxfm",
-          "id": "ep_lh6ko39pumnrma3dhv",
+          "libraryItemId": "54973194-1cff-4ae9-b2b6-957ae9ca2e61",
+          "id": "4e145fa0-c185-4ad2-b85c-50c956e4d242",
           "index": 1,
           "season": "",
           "episode": "",

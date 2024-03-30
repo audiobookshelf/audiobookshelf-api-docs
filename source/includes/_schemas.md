@@ -1634,11 +1634,11 @@ Attribute | Type | Description
 
 Attribute | Type | Description
 --------- | ---- | -----------
-`id` | String | The ID of the playback session.
-`userId` | String | The ID of the user the playback session is for.
-`libraryId` | String | The ID of the library that contains the library item.
-`libraryItemId` | String | The ID of the library item.
-`episodeId` | String or null | The ID of the podcast episode. Will be `null` if this playback session was started without an episode ID.
+`id` | UUIDv4 | The ID of the playback session.
+`userId` | UUIDv4 | The ID of the user the playback session is for.
+`libraryId` | UUIDv4 | The ID of the library that contains the library item.
+`libraryItemId` | UUIDv4 | The ID of the library item.
+`episodeId` | UUIDv4 or null | The ID of the podcast episode. Will be `null` if this playback session was started without an episode ID.
 `mediaType` | String | The media type of the library item. Will be `book` or `podcast`.
 `mediaMetadata` | [Book Metadata](#book-metadata) or [Podcast Metadata](#podcast-metadata) Object | The metadata of the library item's media.
 `chapters` | Array of [Book Chapter](#book-chapter) | If the library item is a book, the chapters it contains.
@@ -2113,14 +2113,14 @@ Attribute | Type | Description
 
 ```json
 {
-  "id": "li_bufnnmp4y5o2gbbxfm",
-  "slug": "li_bufnnmp4y5o2gbbxfm",
+  "id": "169cf198-8645-4d73-8948-4e60fb329c5a",
+  "slug": "169cf198-8645-4d73-8948-4e60fb329c5a",
   "userId": "root",
   "entityType": "item",
-  "entityId": "li_bufnnmp4y5o2gbbxfm",
-  "coverPath": "/metadata/items/li_bufnnmp4y5o2gbbxfm/cover.jpg",
+  "entityId": "169cf198-8645-4d73-8948-4e60fb329c5a",
+  "coverPath": "/metadata/items/169cf198-8645-4d73-8948-4e60fb329c5a/cover.jpg",
   "serverAddress": "https://abs.example.com",
-  "feedUrl": "https://abs.example.com/feed/li_bufnnmp4y5o2gbbxfm",
+  "feedUrl": "https://abs.example.com/feed/169cf198-8645-4d73-8948-4e60fb329c5a",
   "meta": {...},
   "episodes": [...],
   "createdAt": 1669031843179,
@@ -2132,10 +2132,10 @@ Attribute | Type | Description
 
 ```json
 {
-  "id": "li_bufnnmp4y5o2gbbxfm",
+  "id": "2294c42b-a964-48fe-a544-982fab209a5f",
   "entityType": "item",
-  "entityId": "li_bufnnmp4y5o2gbbxfm",
-  "feedUrl": "https://abs.example.com/feed/li_bufnnmp4y5o2gbbxfm",
+  "entityId": "169cf198-8645-4d73-8948-4e60fb329c5a",
+  "feedUrl": "https://abs.example.com/feed/169cf198-8645-4d73-8948-4e60fb329c5a",
   "meta": {
     "title": "Welcome to Night Vale",
     "description": "\n      Twice-monthly community updates for the small desert town of Night Vale, where every conspiracy theory is true. Turn on your radio and hide. Never listened before? It's an ongoing radio show. Start with the current episode, and you'll catch on in no time. Or, go right to Episode 1 if you wanna binge-listen.\n    ",
@@ -2148,11 +2148,11 @@ Attribute | Type | Description
 
 Attribute | Type | Description
 --------- | ---- | -----------
-`id` | String | The ID of the RSS feed.
+`id` | UUIDv4 | The ID of the RSS feed.
 `slug` | String | The slug (the last part of the URL) for the RSS feed.
-`userId` | String | The ID of the user that created the RSS feed.
+`userId` | UUIDv4 | The ID of the user that created the RSS feed.
 `entityType` | String | The type of entity the RSS feed is for.
-`entityId` | String | The ID of the entity the RSS feed is for.
+`entityId` | UUIDv4 | The ID of the entity the RSS feed is for.
 `coverPath` | String | The path of the cover to use for the RSS feed.
 `serverAddress` | String | The server's address.
 `feedUrl` | String | The full URL of the RSS feed.
@@ -2294,13 +2294,13 @@ Attribute | Type | Description
 
 ```json
 {
-  "id": "play_c786zm3qtjz6bd5q3n",
+  "id": "5a3046cd-11ff-43c9-a495-c2fbdca93e9d",
   "userId": "root",
   "libraryItem": {...},
   "episode": {...},
   "segmentLength": 6,
-  "playlistPath": "/metadata/streams/play_c786zm3qtjz6bd5q3n/output.m3u8",
-  "clientPlaylistUri": "/hls/play_c786zm3qtjz6bd5q3n/output.m3u8",
+  "playlistPath": "/metadata/streams/5a3046cd-11ff-43c9-a495-c2fbdca93e9d/output.m3u8",
+  "clientPlaylistUri": "/hls/5a3046cd-11ff-43c9-a495-c2fbdca93e9d/output.m3u8",
   "startTime": 0,
   "segmentStartNumber": 0,
   "isTranscodeComplete": false
@@ -2309,8 +2309,8 @@ Attribute | Type | Description
 
 Attribute | Type | Description
 --------- | ---- | -----------
-`id` | String | The ID of the stream. It will be the same as the ID of the playback session that the stream is for.
-`userId` | String | The ID of the user that started the stream.
+`id` | UUIDv4 | The ID of the stream. It will be the same as the ID of the playback session that the stream is for.
+`userId` | UUIDv4 | The ID of the user that started the stream.
 `libraryItem` | [Library Item Expanded](#library-item-expanded) Object | The library item the stream is for.
 `episode` | [Podcast Episode Expanded](#podcast-episode-expanded) Object or null | The podcast episode the stream is for. Will be `null` if the stream is for a book.
 `segmentLength` | Integer | The length (in seconds) of each segment of the stream.
