@@ -2040,12 +2040,8 @@ Attribute | Type | Description
   "scannerFindCovers": false,
   "scannerCoverProvider": "google",
   "scannerParseSubtitle": false,
-  "scannerPreferAudioMetadata": false,
-  "scannerPreferOpfMetadata": false,
   "scannerPreferMatchedMetadata": false,
   "scannerDisableWatcher": true,
-  "scannerPreferOverdriveMediaMarker": false,
-  "scannerUseTone": false,
   "storeCoverWithItem": false,
   "storeMetadataWithItem": false,
   "metadataFileFormat": "json",
@@ -2054,7 +2050,6 @@ Attribute | Type | Description
   "backupSchedule": "30 1 * * *",
   "backupsToKeep": 2,
   "maxBackupSize": 1,
-  "backupMetadataCovers": true,
   "loggerDailyLogsToKeep": 7,
   "loggerScannerLogsToKeep": 2,
   "homeBookshelfView": 1,
@@ -2079,11 +2074,8 @@ Attribute | Type | Description
 `scannerFindCovers` | Boolean | Whether the scanner will attempt to find a cover if your audiobook does not have an embedded cover or a cover image inside the folder. Note: This will extend scan time.
 `scannerCoverProvider` | String | If `scannerFindCovers` is `true`, which metadata provider to use. See [Metadata Providers](#metadata-providers) for options.
 `scannerParseSubtitle` | Boolean | Whether to extract subtitles from audiobook folder names. Subtitles must be separated by ` - `, i.e. `/audiobooks/Book Title - A Subtitle Here/` has the subtitle `A Subtitle Here`.
-`scannerPreferAudioMetadata` | Boolean | Whether to use audio file ID3 meta tags instead of folder names for book details.
-`scannerPreferOpfMetadata` | Boolean | Whether to use OPF file metadata instead of folder names for book details.
 `scannerPreferMatchedMetadata` | Boolean | Whether matched data will override item details when using Quick Match. By default, Quick Match will only fill in missing details.
 `scannerDisableWatcher` | Boolean | Whether to disable the automatic adding/updating of items when file changes are detected. *Requires server restart* for changes to take effect.
-`scannerPreferOverdriveMediaMarker` | Boolean | Whether to use the custom metadata in MP3 files from Overdrive for chapter timings automatically.
 `storeCoverWithItem` | Boolean | Whether to store covers in the library item's folder. By default, covers are stored in `/metadata/items`. Only one file named `cover` will be kept.
 `storeMetadataWithItem` | Boolean | Whether to store metadata files in the library item's folder. By default, metadata files are stored in `/metadata/items`. Uses the `.abs` file extension.
 `metadataFileFormat` | String | Must be either `json` or `abs`
@@ -2092,7 +2084,6 @@ Attribute | Type | Description
 `backupSchedule` | String | The [cron expression](https://en.wikipedia.org/wiki/Cron#CRON_expression) for when to do automatic backups.
 `backupsToKeep` | Integer | The number of backups to keep.
 `maxBackupSize` | Integer | The maximum backup size (in GB) before they fail, a safeguard against misconfiguration.
-`backupMetadataCovers` | Boolean | Whether backups should include library item covers and author images located in metadata.
 `loggerDailyLogsToKeep` | Integer | The number of daily logs to keep.
 `loggerScannerLogsToKeep` | Integer | The number of scanner logs to keep.
 `homeBookshelfView` | Binary | Whether the home page should use a skeuomorphic design with wooden shelves.
