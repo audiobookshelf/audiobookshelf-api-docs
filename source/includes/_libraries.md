@@ -1268,7 +1268,7 @@ curl "https://abs.example.com/api/libraries/lib_c1u6t4p45c35rf0nzd/personalized"
         "progressLastUpdate": 1650621110769
       }
     ],
-    "category": "recentlyListened"
+    "total": 1
   },
   {
     "id": "continue-series",
@@ -1331,7 +1331,7 @@ curl "https://abs.example.com/api/libraries/lib_c1u6t4p45c35rf0nzd/personalized"
         "prevBookInProgressLastUpdate": 1650621110769
       }
     ],
-    "category": "continueSeries"
+    "total": 1
   },
   {
     "id": "recently-added",
@@ -1388,7 +1388,7 @@ curl "https://abs.example.com/api/libraries/lib_c1u6t4p45c35rf0nzd/personalized"
         "size": 96335771
       }
     ],
-    "category": "newestItems"
+    "total": 1
   },
   {
     "id": "recent-series",
@@ -1460,7 +1460,7 @@ curl "https://abs.example.com/api/libraries/lib_c1u6t4p45c35rf0nzd/personalized"
         "firstBookUnread": null
       }
     ],
-    "category": "newestSeries"
+    "total": 1
   },
   {
     "id": "recommended",
@@ -1518,7 +1518,7 @@ curl "https://abs.example.com/api/libraries/lib_c1u6t4p45c35rf0nzd/personalized"
         "weight": 0.9215686274509803
       }
     ],
-    "category": "recommended"
+    "total": 1
   },
   {
     "id": "listen-again",
@@ -1576,7 +1576,7 @@ curl "https://abs.example.com/api/libraries/lib_c1u6t4p45c35rf0nzd/personalized"
         "finishedAt": 1650621110769
       }
     ],
-    "category": "recentlyFinished"
+    "total": 1
   },
   {
     "id": "newest-authors",
@@ -1595,7 +1595,7 @@ curl "https://abs.example.com/api/libraries/lib_c1u6t4p45c35rf0nzd/personalized"
         "numBooks": 1
       }
     ],
-    "category": "newestAuthors"
+    "total": 1
   }
 ]
 ```
@@ -1635,7 +1635,7 @@ Attribute | Type | Description
 `labelStringKey` | String | The label string key of the shelf, for internationalization purposes.
 `type` | String | The type of items the shelf represents. Can be `book`, `series`, `authors`, `episode`, or `podcast`.
 `entities` | Array | The entities to be displayed on the shelf. [See below](#shelf-entities).
-`category` | String | The category of the shelf.
+`total` | Integer | The total number of items in the shelf.
 
 #### Shelf Entities
 
