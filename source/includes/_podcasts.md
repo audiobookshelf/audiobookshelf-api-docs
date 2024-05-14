@@ -292,7 +292,7 @@ Status | Meaning | Description | Schema
 
 Attribute | Type | Description
 --------- | ---- | -----------
-`feeds` | Array of [Podcast Feed Minified](#podcast-feed-minified) | The podcast feeds retrieved from the RSS feeds in the OPML text.
+`feeds` | Array of [Podcast Feed Minified](#podcast-feed-minified) | The podcast feeds are retrieved from the RSS feeds in the OPML text.
 
 Or if there is an error (i.e. no RSS feeds were in the OPML text): 
 
@@ -605,7 +605,7 @@ curl -X POST "https://abs.example.com/api/podcasts/li_bufnnmp4y5o2gbbxfm/match-e
 }
 ```
 
-This endpoint matches the podcast's episodes using quick match. Quick match populates empty details. Does not overwrite details unless the "Prefer matched metadata" server setting is enabled or the `override` query parameter is `1`.
+This endpoint matches the podcast's episodes using quick match. Quick match populates empty details. It does not overwrite details unless the "Prefer matched metadata" server setting is enabled or the `override` query parameter is `1`.
 
 ### HTTP Request
 
