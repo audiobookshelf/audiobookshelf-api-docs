@@ -1,6 +1,6 @@
 # Me
 
-All the "Me" endpoints are based off of the authenticated user. In these docs, "you" will refer to the authenticated user.
+All the "Me" endpoints are based on the authenticated user. In these docs, "you" will refer to the authenticated user.
 
 ## Get Your User
 
@@ -488,7 +488,7 @@ EpisodeID | The ID of the podcast episode to create/update media progress for.
 Parameter | Type | Default | Description
 --------- | ---- | ------- | -----------
 `duration` | Float | `0` | The total duration (in seconds) of the media.
-`progress` | Float | `0` or `1` | The percentage completion progress of the media. Will automatically be set to `1` if the media is finished.
+`progress` | Float | `0` or `1` | The percentage completion progress of the media. it will automatically be set to `1` if the media is finished.
 `currentTime` | Float | `0` | The current time (in seconds) of your progress.
 `isFinished` | Boolean | `false` | Whether the media is finished.
 `hideFromContinueListening` | Boolean | `false` | Whether the media will be hidden from the "Continue Listening" shelf.
@@ -917,7 +917,7 @@ Attribute | Type | Description
 
 Attribute | Type | Description
 --------- | ---- | -----------
-`recentEpisode` | [Podcast Episode](#podcast-episode) Object | If the library item is for a podcast, the media progress's corresponding podcast episode. Will not exist for book library items.
+`recentEpisode` | [Podcast Episode](#podcast-episode) Object | If the library item is for a podcast, the media progresses's corresponding podcast episode. Will not exist for book library items.
 `progressLastUpdate` | Integer | The time (in ms since POSIX epoch) when the corresponding media progress was last updated.
 
 
