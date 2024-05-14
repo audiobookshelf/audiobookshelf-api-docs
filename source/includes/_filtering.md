@@ -49,15 +49,15 @@ Other filters are `issues` and `feed-open`.
 
 Examples:
 
-* To filter for the Sci Fi genre:
-  * `Sci Fi` is Base64 encoded as `U2NpIEZp` 
+* To filter for the Sci-Fi genre:
+  * `Sci-Fi` is Base64 encoded as `U2NpIEZp` 
   * Already URL encoded.
   * Then use `filter=genres.U2NpIEZp`.
 * To filter for the author Terry Goodkind who has the ID of aut_z3leimgybl7uf3y4ab:
   * `aut_z3leimgybl7uf3y4ab` is Base64 encoded as `YXV0X3ozbGVpbWd5Ymw3dWYzeTRhYg==`.
   * `YXV0X3ozbGVpbWd5Ymw3dWYzeTRhYg==` is URL encoded as `YXV0X3ozbGVpbWd5Ymw3dWYzeTRhYg%3D%3D`.
   * Then use `filter=authors.YXV0X3ozbGVpbWd5Ymw3dWYzeTRhYg%3D%3D`.
-* To filter for in progress items:
+* To filter for in-progress items:
   * `in-progress` is Base64 encoded as `aW4tcHJvZ3Jlc3M=`.
   * `aW4tcHJvZ3Jlc3M=` is URL encoded as `aW4tcHJvZ3Jlc3M%3D`.
   * Then use `filter=progress.aW4tcHJvZ3Jlc3M%3D`.
