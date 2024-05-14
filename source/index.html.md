@@ -65,6 +65,6 @@ Optionally GET requests can use the API token like this:
 `https://abs.example.com/api/items/li_asdfalwkerioa?token=exJhbGciOiJI6IkpXVCJ9.eyJ1c2Vyi5NDEyODc4fQ.ZraBFohS4Tg39NszY`
 
 <aside class="notice">
-Your API token will be much longer then the one in the examples.
+Your API token will be much longer than the one in the examples.
 </aside>
 
