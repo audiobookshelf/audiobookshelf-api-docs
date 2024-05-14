@@ -24,9 +24,9 @@ Attribute | Type | Description
 `id` | String | The ID of the library. (Read Only)
 `name` | String | The name of the library.
 `folders` | Array of [Folder](#folder) | The folders that the library is composed of on the server.
-`displayOrder` | Integer | Display position of the library in the list of libraries. Must be `>= 1`.  
+`displayOrder` | Integer | Display the position of the library in the list of libraries. Must be `>= 1`.  
 `icon` | String | The selected icon for the library. See [Library Icons](#library-icons) for a list of possible icons.
-`mediaType` | String | The type of media that the library contains. Will be `book` or `podcast`. (Read Only)
+`mediaType` | String | The type of media that the library contains. It will be `book` or `podcast`. (Read Only)
 `provider` | String | Preferred metadata provider for the library. See [Metadata Providers](#metadata-providers) for a list of possible providers.
 `settings` | [Library Settings](#library-settings) Object | The settings for the library.
 `createdAt` | Integer | The time (in ms since POSIX epoch) when the library was created. (Read Only)
@@ -211,14 +211,14 @@ Attribute | Type | Description
 `isFile` | Boolean | Whether the library item is a single file in the root of the library folder.
 `mtimeMs` | Integer | The time (in ms since POSIX epoch) when the library item was last modified on disk.
 `ctimeMs` | Integer | The time (in ms since POSIX epoch) when the library item status was changed on disk.
-`birthtimeMs` | Integer | The time (in ms since POSIX epoch) when the library item was created on disk. Will be `0` if unknown.
+`birthtimeMs` | Integer | The time (in ms since POSIX epoch) when the library item was created on disk. It will be `0` if unknown.
 `addedAt` | Integer | The time (in ms since POSIX epoch) when the library item was added to the library.
 `updatedAt` | Integer | The time (in ms since POSIX epoch) when the library item was last updated. (Read Only)
-`lastScan` | Integer or null | The time (in ms since POSIX epoch) when the library item was last scanned. Will be `null` if the server has not yet scanned the library item.
-`scanVersion` | String or null | The version of the scanner when last scanned. Will be `null` if it has not been scanned.
+`lastScan` | Integer or null | The time (in ms since POSIX epoch) when the library item was last scanned. It will be `null` if the server has not yet scanned the library item.
+`scanVersion` | String or null | The version of the scanner when last scanned. It will be `null` if it has not been scanned.
 `isMissing` | Boolean | Whether the library item was scanned and no longer exists.
 `isInvalid` | Boolean | Whether the library item was scanned and no longer has media files.
-`mediaType` | String | What kind of media the library item contains. Will be `book` or `podcast`.
+`mediaType` | String | The kind of media item the library contains. It will be `book` or `podcast`.
 `media` | [Book](#book) or [Podcast](#podcast) Object | The media of the library item.
 `libraryFiles` | Array of [Library File](#library-file) | The files of the library item.
 
@@ -313,11 +313,11 @@ Attribute | Type | Description
 --------- | ---- | -----------
 `libraryItemId` | String | The ID of the library item that contains the book.
 `metadata` | [Book Metadata](#book-metadata) Object | The book's metadata.
-`coverPath` | String or null | The absolute path on the server of the cover file. Will be `null` if there is no cover.
+`coverPath` | String or null | The absolute path on the server of the cover file. It will be `null` if there is no cover.
 `tags` | Array of String | The book's tags.
 `audioFiles` | Array of [Audio File](#audio-file) | The book's audio files.
 `chapters` | Array of [Book Chapter](#book-chapter) | The book's chapters.
-`ebookFile` | [EBook File](#ebook-file) Object or null | The book's ebook file. Will be `null` if this is an audiobook.
+`ebookFile` | [EBook File](#ebook-file) Object or null | The book's ebook file. It will be `null` if this is an audiobook.
 
 ### Book Minified
 
@@ -341,7 +341,7 @@ Attribute | Type | Description
 `numChapters` | Integer | The number of chapters the book has.
 `duration` | Float | The total length (in seconds) of the book.
 `size` | Integer | The total size (in bytes) of the book.
-`ebookFormat` | String or null | The format of ebook of the book. Will be `null` if the book is an audiobook.
+`ebookFormat` | String or null | The format of the ebook of the book. It will be `null` if the book is an audiobook.
 
 ### Book Expanded
 
@@ -442,19 +442,19 @@ Attribute | Type | Description
 
 Attribute | Type | Description
 --------- | ---- | -----------
-`title` | String or null | The title of the book. Will be `null` if unknown.
-`subtitle` | String or null | The subtitle of the book. Will be `null` if there is no subtitle.
+`title` | String or null | The title of the book. It will be `null` if unknown.
+`subtitle` | String or null | The subtitle of the book. It will be `null` if there is no subtitle.
 `authors` | Array of [Author Minified](#author-minified) | The authors of the book.
 `narrators` | Array of String | The narrators of the audiobook.
 `series` | Array of [Series Sequence](#series-sequence) | The series the book belongs to.
 `genres` | Array of String | The genres of the book.
-`publishedYear` | String or null | The year the book was published. Will be `null` if unknown.
-`publishedDate` | String or null | The date the book was published. Will be `null` if unknown.
-`publisher` | String or null | The publisher of the book. Will be `null` if unknown.
-`description` | String or null | A description for the book. Will be `null` if empty.
-`isbn` | String or null | The ISBN of the book. Will be `null` if unknown.
-`asin` | String or null | The ASIN of the book. Will be `null` if unknown.
-`language` | String or null | The language of the book. Will be `null` if unknown.
+`publishedYear` | String or null | The year the book was published. It will be `null` if unknown.
+`publishedDate` | String or null | The date the book was published. It will be `null` if unknown.
+`publisher` | String or null | The publisher of the book. It will be `null` if unknown.
+`description` | String or null | A description for the book. It will be `null` if empty.
+`isbn` | String or null | The ISBN of the book. It will be `null` if unknown.
+`asin` | String or null | The ASIN of the book. It will be `null` if unknown.
+`language` | String or null | The language of the book. It will be `null` if unknown.
 `explicit` | Boolean | Whether the book has been marked as explicit.
 
 ### Book Metadata Minified
@@ -573,7 +573,7 @@ Attribute | Type | Description
 --------- | ---- | -----------
 `libraryItemId` | String | The ID of the library item that contains the podcast.
 `metadata` | [Podcast Metadata](#podcast-metadata) Object | The metadata for the podcast.
-`coverPath` | String or null | The absolute path on the server of the cover file. Will be `null` if there is no cover.
+`coverPath` | String or null | The absolute path on the server of the cover file. It will be `null` if there is no cover.
 `tags` | Array of String | The podcast's tags.
 `episodes` | Array of [Podcast Episode](#podcast-episode) | The downloaded episodes of the podcast.
 `autoDownloadEpisodes` | Boolean | Whether the server will automatically download podcast episodes according to the schedule.
@@ -692,18 +692,18 @@ Attribute | Type | Description
 
 Attribute | Type | Description
 --------- | ---- | -----------
-`title` | String or null | The title of the podcast. Will be `null` if unknown.
+`title` | String or null | The title of the podcast. It will be `null` if unknown.
 `author` | String or null | The author of the podcast. Will be `null` if unknown.
-`description` | String or null | The description for the podcast. Will be `null` if unknown.
-`releaseDate` | String or null | The release date of the podcast. Will be `null` if unknown.
+`description` | String or null | The description for the podcast. It will be `null` if unknown.
+`releaseDate` | String or null | The release date of the podcast. It will be `null` if unknown.
 `genres` | Array of String | The podcast's genres.
-`feedUrl` | String or null | A URL of an RSS feed for the podcast. Will be `null` if unknown.
-`imageUrl` | String or null | A URL of a cover image for the podcast. Will be `null` if unknown.
-`itunesPageUrl` | String or null | A URL of an iTunes page for the podcast. Will be `null` if unknown.
-`itunesId` | Integer or null | The iTunes ID for the podcast. Will be `null` if unknown.
-`itunesArtistId` | Integer or null | The iTunes Artist ID for the author of the podcast. Will be `null` if unknown.
+`feedUrl` | String or null | A URL of an RSS feed for the podcast. It will be `null` if unknown.
+`imageUrl` | String or null | A URL of a cover image for the podcast. It will be `null` if unknown.
+`itunesPageUrl` | String or null | A URL of an iTunes page for the podcast. It will be `null` if unknown.
+`itunesId` | Integer or null | The iTunes ID for the podcast. It will be `null` if unknown.
+`itunesArtistId` | Integer or null | The iTunes Artist ID for the author of the podcast. It will be `null` if unknown.
 `explicit` | Boolean | Whether the podcast has been marked as explicit.
-`language` | String or null | The language of the podcast. Will be `null` if unknown.
+`language` | String or null | The language of the podcast. It will be `null` if unknown.
 `type` | String or null | The type of the podcast.
 
 ### Podcast Metadata Minified
@@ -854,9 +854,9 @@ Attribute | Type | Description
 `libraryId` | String | The ID of the library the episode's podcast belongs to.
 `isFinished` | Boolean | Whether the episode has finished downloading.
 `failed` | Boolean | Whether the episode failed to download.
-`startedAt` | Integer or null | The time (in ms since POSIX epoch) when the episode started downloading. Will be `null` if it has not started downloading yet.
+`startedAt` | Integer or null | The time (in ms since POSIX epoch) when the episode started downloading. It will be `null` if it has not started downloading yet.
 `createdAt` | Integer | The time (in ms since POSIX epoch) when the podcast episode download request was created.
-`finishedAt` | Integer or null | The time (in ms since POSIX epoch) when the episode finished downloading. Will be `null` if it has not finished.
+`finishedAt` | Integer or null | The time (in ms since POSIX epoch) when the episode finished downloading. It will be `null` if it has not finished.
 `podcastTitle` | String or null | The title of the episode's podcast.
 `podcastExplicit` | Boolean | Whether the episode's podcast is explicit.
 `season` | String or null | The season of the podcast episode.
@@ -1019,13 +1019,13 @@ Attribute | Type | Description
 `metadata` | [File Metadata](#file-metadata) Object | The audio file's metadata.
 `addedAt` | Integer | The time (in ms since POSIX epoch) when the audio file was added to the library.
 `updatedAt` | Integer | The time (in ms since POSIX epoch) when the audio file last updated. (Read Only)
-`trackNumFromMeta` | Integer or null | The track number of the audio file as pulled from the file's metadata. Will be `null` if unknown.
-`discNumFromMeta` | Integer or null | The disc number of the audio file as pulled from the file's metadata. Will be `null` if unknown.
-`trackNumFromFilename` | Integer or null | The track number of the audio file as determined from the file's name. Will be `null` if unknown.
-`discNumFromFilename` | Integer or null | The track number of the audio file as determined from the file's name. Will be `null` if unknown.
+`trackNumFromMeta` | Integer or null | The track number of the audio file as pulled from the file's metadata. It will be `null` if unknown.
+`discNumFromMeta` | Integer or null | The disc number of the audio file as pulled from the file's metadata. It will be `null` if unknown.
+`trackNumFromFilename` | Integer or null | The track number of the audio file as determined from the file's name. It will be `null` if unknown.
+`discNumFromFilename` | Integer or null | The track number of the audio file as determined from the file's name. It will be `null` if unknown.
 `manuallyVerified` | Boolean | Whether the audio file has been manually verified by a user.
 `exclude` | Boolean | Whether the audio file has been marked for exclusion.
-`error` | String or null | Any error with the audio file. Will be `null` if there is none.
+`error` | String or null | Any error with the audio file. It will be `null` if there is none.
 `format` | String | The format of the audio file.
 `duration` | Float | The total length (in seconds) of the audio file.
 `bitRate` | Integer | The bit rate (in bit/s) of the audio file.
@@ -1035,7 +1035,7 @@ Attribute | Type | Description
 `channels` | Integer | The number of channels the audio file has.
 `channelLayout` | String | The layout of the audio file's channels.
 `chapters` | Array of [Book Chapter](#book-chapter) | If the audio file is part of an audiobook, the chapters the file contains.
-`embeddedCoverArt` | String or null | The type of embedded cover art in the audio file. Will be `null` if none exists.
+`embeddedCoverArt` | String or null | The type of embedded cover art in the audio file. It will be `null` if none exists.
 `metaTags` | [Audio Meta Tags](#audio-meta-tags) Object | The audio metadata tags from the audio file.
 `mimeType` | String | The MIME type of the audio file.
 
@@ -1311,7 +1311,7 @@ Attribute | Type | Description
 --------- | ---- | -----------
 `id` | String | The ID of the series.
 `name` | String | The name of the series.
-`description` | String or null | A description for the series. Will be `null` if there is none.
+`description` | String or null | A description for the series. It will be `null` if there is none.
 `addedAt` | Integer | The time (in ms since POSIX epoch) when the series was added.
 `updatedAt` | Integer | The time (in ms since POSIX epoch) when the series was last updated.
 
@@ -1401,7 +1401,7 @@ Attribute | Type | Description
 `libraryId` | String | The ID of the library the collection belongs to.
 `userId` | String | The ID of the user that created the collection.
 `name` | String | The name of the collection.
-`description` | String or null | The collection's description. Will be `null` if there is none.
+`description` | String or null | The collection's description. It will be `null` if there is none.
 `books` | Array of [Library Item](#library-item) | The books that belong to the collection.
 `lastUpdate` | Integer | The time (in ms since POSIX epoch) when the collection was last updated.
 `createdAt` | Integer | The time (in ms since POSIX epoch) when the collection was created.
@@ -1498,8 +1498,8 @@ Attribute | Type | Description
 
 Attribute | Type | Description
 --------- | ---- | -----------
-`episode` | [Podcast Episode Expanded](#podcast-episode-expanded) Object | The podcast episode the playlist item is for. Will only exist if `episodeId` is not `null`.
-`libraryItem` | [Library Item Expanded](#library-item-expanded) or [Library Item Minified](#library-item-minified) Object | The library item the playlist item is for. Will be [Library Item Minified](#library-item-minified) if `episodeId` is not `null`.
+`episode` | [Podcast Episode Expanded](#podcast-episode-expanded) Object | The podcast episode the playlist item is for. It will only exist if `episodeId` is not `null`.
+`libraryItem` | [Library Item Expanded](#library-item-expanded) or [Library Item Minified](#library-item-minified) Object | The library item the playlist item is for. It will be [Library Item Minified](#library-item-minified) if `episodeId` is not `null`.
 
 
 ## Media Progress
@@ -1546,15 +1546,15 @@ Attribute | Type | Description
 --------- | ---- | -----------
 `id` | String | The ID of the media progress. If the media progress is for a book, this will just be the `libraryItemId`. If for a podcast episode, it will be a hyphenated combination of the `libraryItemId` and `episodeId`.
 `libraryItemId` | String | The ID of the library item the media progress is of.
-`episodeId` | String or null | The ID of the podcast episode the media progress is of. Will be `null` if the progress is for a book.
-`duration` | Float | The total duration (in seconds) of the media. Will be `0` if the media was marked as finished without the user listening to it.
-`progress` | Float | The percentage completion progress of the media. Will be `1` if the media is finished.
+`episodeId` | String or null | The ID of the podcast episode the media progress is of. It will be `null` if the progress is for a book.
+`duration` | Float | The total duration (in seconds) of the media. It will be `0` if the media is marked as finished without the user listening to it.
+`progress` | Float | The percentage completion progress of the media. It will be `1` if the media is finished.
 `currentTime` | Float | The current time (in seconds) of the user's progress. If the media has been marked as finished, this will be the time the user was at beforehand.
 `isFinished` | Boolean | Whether the media is finished.
 `hideFromContinueListening` | Boolean | Whether the media will be hidden from the "Continue Listening" shelf.
 `lastUpdate` | Integer | The time (in ms since POSIX epoch) when the media progress was last updated.
 `startedAt` | Integer | The time (in ms since POSIX epoch) when the media progress was created.
-`finishedAt` | Integer or null | The time (in ms since POSIX epoch) when the media was finished. Will be `null` if the media has is not finished.
+`finishedAt` | Integer or null | The time (in ms since POSIX epoch) when the media was finished. It will be `null` if the media is not finished.
 
 ### Media Progress with Media
 
@@ -1563,7 +1563,7 @@ Attribute | Type | Description
 Attribute | Type | Description
 --------- | ---- | -----------
 `media` | [Book Expanded](#book-expanded) or [Podcast Expanded](#podcast-expanded) Object | The media of the library item the media progress is for.
-`episode` | [Podcast Episode](#podcast-episode) | The podcast episode the media progress is for. Will only exist if the media progress is for a podcast episode.
+`episode` | [Podcast Episode](#podcast-episode) | The podcast episode the media progress is for. It will only exist if the media progress is for a podcast episode.
 
 
 ## Playback Session
@@ -1638,8 +1638,8 @@ Attribute | Type | Description
 `userId` | UUIDv4 | The ID of the user the playback session is for.
 `libraryId` | UUIDv4 | The ID of the library that contains the library item.
 `libraryItemId` | UUIDv4 | The ID of the library item.
-`episodeId` | UUIDv4 or null | The ID of the podcast episode. Will be `null` if this playback session was started without an episode ID.
-`mediaType` | String | The media type of the library item. Will be `book` or `podcast`.
+`episodeId` | UUIDv4 or null | The ID of the podcast episode. It will be `null` if this playback session was started without an episode ID.
+`mediaType` | String | The media type of the library item. It will be `book` or `podcast`.
 `mediaMetadata` | [Book Metadata](#book-metadata) or [Podcast Metadata](#podcast-metadata) Object | The metadata of the library item's media.
 `chapters` | Array of [Book Chapter](#book-chapter) | If the library item is a book, the chapters it contains.
 `displayTitle` | String | The title of the playing item to show to the user.
@@ -1674,7 +1674,7 @@ Value | Meaning
 Attribute | Type | Description
 --------- | ---- | -----------
 `audioTracks` | Array of [Audio Tracks](#audio-track) | The audio tracks that are being played with the playback session.
-`videoTrack` | Video Track Object or null | The video track that is being played with the playback session. Will be `null` if the playback session is for a book or podcast.
+`videoTrack` | Video Track Object or null | The video track that is being played with the playback session. It will be `null` if the playback session is for a book or podcast.
 `libraryItem` | [Library Item Expanded](#library-item-expanded) Object | The library item of the playback session.
 
 
@@ -1713,7 +1713,7 @@ Attribute | Type | Description
 `browserVersion` | String or null | The browser version, taken from the user agent.
 `osName` | String or null | The name of OS, taken from the user agent.
 `osVersion` | String or null | The version of the OS, taken from the user agent.
-`deviceName` | String or null | The device name, constructed automatically from other attributes.
+`deviceName` | String or null | The device name, is constructed automatically from other attributes.
 `deviceType` | String or null | The device type, taken from the user agent.
 `manufacturer` | String or null | The client device's manufacturer, as provided in the request.
 `model` | String or null | The client device's model, as provided in the request.
@@ -1787,14 +1787,14 @@ Attribute | Type | Description
 --------- | ---- | -----------
 `id` | String | The ID of the user. Only the root user has the `root` ID.
 `username` | String | The username of the user.
-`type` | String | The type of the user. Will be `root`, `guest`, `user`, or `admin`. There will be only one root user which is created when the server first starts.
+`type` | String | The type of the user. It will be `root`, `guest`, `user`, or `admin`. There will be only one root user which is created when the server first starts.
 `token` | String | The authentication token of the user.
 `mediaProgress` | Array of [Media Progress](#media-progress) | The user's media progress.
 `seriesHideFromContinueListening` | Array of String | The IDs of series to hide from the user's "Continue Series" shelf.
 `bookmarks` | Array of [Audio Bookmark](#audio-bookmark) | The user's bookmarks.
 `isActive` | Boolean | Whether the user's account is active.
 `isLocked` | Boolean | Whether the user is locked.
-`lastSeen` | Integer or null | The time (in ms since POSIX epoch) when the user was last seen by the server. Will be `null` if the user has never logged in.
+`lastSeen` | Integer or null | The time (in ms since POSIX epoch) when the user was last seen by the server. It will be `null` if the user has never logged in.
 `createdAt` | Integer | The time (in ms since POSIX epoch) when the user was created.
 `permissions` | [User Permissions](#user-permissions) Object | The user's permissions.
 `librariesAccessible` | Array of String | The IDs of libraries accessible to the user. An empty array means all libraries are accessible.
@@ -1825,7 +1825,7 @@ Attribute | Type | Description
 
 Attribute | Type | Description
 --------- | ---- | -----------
-`session` | [Playback Session Expanded](#playback-session-expanded) Object or null | The user's currently playing session. Will be `null` if the user is not currently playing anything.
+`session` | [Playback Session Expanded](#playback-session-expanded) Object or null | The user's currently playing session. It will be `null` if the user is not currently playing anything.
 
 
 ## User Permissions
@@ -1970,7 +1970,7 @@ Attribute | Type | Description
 `bodyTemplate` | String | The template for the notification body.
 `enabled` | Boolean | Whether the notification is enabled.
 `type` | String | The notification's type.
-`lastFiredAt` | Integer or null | The time (in ms since POSIX epoch) when the notification was last fired. Will be `null` if the notification has not fired.
+`lastFiredAt` | Integer or null | The time (in ms since POSIX epoch) when the notification was last fired. It will be `null` if the notification has not been fired.
 `lastAttemptFailed` | Boolean | Whether the last notification attempt failed.
 `numConsecutiveFailedAttempts` | Integer | The number of consecutive times the notification has failed.
 `numTimesFired` | Integer | The number of times the notification has fired.
@@ -2071,7 +2071,7 @@ Attribute | Type | Description
 Attribute | Type | Description
 --------- | ---- | -----------
 `id` | String | The ID of the server settings.
-`scannerFindCovers` | Boolean | Whether the scanner will attempt to find a cover if your audiobook does not have an embedded cover or a cover image inside the folder. Note: This will extend scan time.
+`scannerFindCovers` | Boolean | Whether the scanner will attempt to find a cover if your audiobook does not have an embedded cover or a cover image inside the folder. Note: This will extend the scan time.
 `scannerCoverProvider` | String | If `scannerFindCovers` is `true`, which metadata provider to use. See [Metadata Providers](#metadata-providers) for options.
 `scannerParseSubtitle` | Boolean | Whether to extract subtitles from audiobook folder names. Subtitles must be separated by ` - `, i.e. `/audiobooks/Book Title - A Subtitle Here/` has the subtitle `A Subtitle Here`.
 `scannerPreferMatchedMetadata` | Boolean | Whether matched data will override item details when using Quick Match. By default, Quick Match will only fill in missing details.
@@ -2303,7 +2303,7 @@ Attribute | Type | Description
 `id` | UUIDv4 | The ID of the stream. It will be the same as the ID of the playback session that the stream is for.
 `userId` | UUIDv4 | The ID of the user that started the stream.
 `libraryItem` | [Library Item Expanded](#library-item-expanded) Object | The library item the stream is for.
-`episode` | [Podcast Episode Expanded](#podcast-episode-expanded) Object or null | The podcast episode the stream is for. Will be `null` if the stream is for a book.
+`episode` | [Podcast Episode Expanded](#podcast-episode-expanded) Object or null | The podcast episode the stream is for. It will be `null` if the stream is for a book.
 `segmentLength` | Integer | The length (in seconds) of each segment of the stream.
 `playlistPath` | String | The path on the server of the stream output.
 `clientPlaylistUri` | String | The URI path for the client to access the stream.
