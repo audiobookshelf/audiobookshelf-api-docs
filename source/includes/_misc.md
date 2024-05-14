@@ -492,7 +492,7 @@ This endpoint deletes a genre, removing it from all library items.
 
 Parameter | Description
 --------- | -----------
-Genre | The name of the genre to delete, Base64 and URL encoded.
+Genre | The name of the genre to delete, Base64, and URL encoded.
 
 ### Response
 
