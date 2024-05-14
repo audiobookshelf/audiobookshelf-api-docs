@@ -44,21 +44,21 @@ ID | The ID of the series.
 
 Parameter | Type | Description
 --------- | ---- | -----------
-`include` | String | A comma separated list of what to include with the series. The options are `progress` and `rssfeed`.
+`include` | String | A comma-separated list of what to include with the series. The options are `progress` and `rssfeed`.
 
 ### Response
 
 Status | Meaning | Description | Schema
 ------ | ------- | ----------- | ------
 200 | OK | Success | [Series](#series) with optional extra attributes from `include` (see below).
-404 | Not Found | No series with provided ID exists. |
+404 | Not Found | No series with the provided ID exists. |
 
 #### Extra Attributes
 
 Attribute | Type | Description
 --------- | ---- | -----------
 `progress` | [Series Progress](#series-progress) Object (See Below) | If `progress` was requested, the series' progress.
-`rssFeed` | [RSS Feed Minified](#rss-feed-minified) Object or null | If `rssfeed` was requested, the series' open RSS feed. Will be `null` if the series' RSS feed is closed.
+`rssFeed` | [RSS Feed Minified](#rss-feed-minified) Object or null | If `rssfeed` was requested, the series' open RSS feed. It will be `null` if the series' RSS feed is closed.
 
 #### Series Progress
 
