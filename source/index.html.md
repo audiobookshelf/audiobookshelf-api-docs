@@ -50,7 +50,7 @@ Contributions to this documentation are welcome! [View API docs GitHub repo](htt
 
 # Authentication
 
-Audiobookshelf uses a users API token as a Bearer token for requests. For GET requests the API token can optionally be passed in as a query string.
+Audiobookshelf uses a user's API token as a Bearer token for requests. For GET requests the API token can optionally be passed in as a query string.
 
 You can find your API token by logging into the Audiobookshelf web app as an admin, go to the config → users page, and click on your account.
 
