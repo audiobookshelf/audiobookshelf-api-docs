@@ -236,7 +236,7 @@ ID | The ID of the library to retrieve.
 
 Parameter | Type | Description
 --------- | ---- | -----------
-`include` | String | A comma separated list of what to include with the library item. The only current option is `filterdata`.
+`include` | String | A comma-separated list of what to include with the library item. The only current option is `filterdata`.
 
 ### Response
 
@@ -249,7 +249,7 @@ Status | Meaning | Description | Schema
 
 Attribute | Type | Description
 --------- | ---- | -----------
-`filterdata` | [Library Filter Data](#library-filter-data) Object | The library's filter data that can be used for displaying a filter list.
+`filterdata` | [Library Filter Data](#library-filter-data) Object | The library's filter data can be used for displaying a filter list.
 `issues` | Integer | The number of library items in the library that have issues.
 `numUserPlaylists` | Integer | The number of playlists belonging to this library for the authenticated user.
 `library` | [Library](#library) Object | The requested library.
@@ -312,7 +312,7 @@ Parameter | Type | Description
 --------- | ---- | -----------
 `name` | String | The name of the library.
 `folders` | Array of [Folder](#folder) | See the notice below. Only specify the `fullPath` for new folders.
-`displayOrder` | Integer | Display position of the library in the list of libraries. Must be `>= 1`.
+`displayOrder` | Integer | Display the position of the library in the list of libraries. Must be `>= 1`.
 `icon` | String | The icon of the library. See [Library Icons](#library-icons) for a list of possible icons.
 `provider` | String | Preferred metadata provider for the library. See [Metadata Providers](#metadata-providers) for a list of possible providers.
 `settings` | [Library Settings](#library-settings) Object | The settings for the library.
@@ -715,12 +715,12 @@ ID | The ID of the library.
 Parameter | Type | Description
 --------- | ---- | -----------
 `limit` | Integer | Limit the number of returned results per page. If `0`, no limit will be applied.
-`page` | Integer | The page number (0 indexed) to request. If there is no limit applied, then page will have no effect and all results will be returned.
+`page` | Integer | The page number (0 indexed) to request. If there is no limit applied, then the page will have no effect and all results will be returned.
 `sort` | String | What to sort the results by. By default, the results will be sorted by series name. Other sort options are: numBooks, totalDuration, and addedAt.
 `desc` | Binary | Whether to reverse the sort order. `0` for false, `1` for true.
 `filter` | String | What to filter the results by. See [Filtering](#filtering). The `issues` and `feed-open` filters are not available for this endpoint.
 `minified` | Binary | Whether to request minified objects. `0` for `false`, `1` for `true`.
-`include` | String | A comma separated list of what to include with the library items. The only current option is `rssfeed`.
+`include` | String | A comma-separated list of what to include with the library items. The only current option is `rssfeed`.
 
 ### Response
 
@@ -736,10 +736,10 @@ Attribute | Type | Description
 `results` | Array of [Series Books](#series-books) | The requested series. If `minified` is `true`, the library items contained in the series will be [Library Item Minified](#library-item-minified). If `rssfeed` was requested, an [RSS Feed Minified](#rss-feed-minified) object or `null` as `rssFeed`, the series' RSS feed if it has one open, will be added to the series.
 `total` | Integer | The total number of results.
 `limit` | Integer | The limit set in the request.
-`page` | Integer | The page set in request.
+`page` | Integer | The page set in the request.
 `sortBy` | String | The sort set in the request. Will not exist if no sort was set.
 `sortDesc` | Boolean | Whether to reverse the sort order.
-`filterBy` | String | The filter set in the request, URL decoded. Will not exist if no filter was set.
+`filterBy` | String | The filter set in the request, URL decoded. It will not exist if no filter is set.
 `minified` | Boolean | Whether minified was set in the request.
 `include` | String | The requested `include`.
 
@@ -847,7 +847,7 @@ Parameter | Type | Description
 `desc` | Binary | Whether to reverse the sort order. `0` for false, `1` for true.
 `filter` | String | What to filter the results by. See [Filtering](#filtering).
 `minified` | Binary | Whether to request minified objects. `0` for false, `1` for true.
-`include` | String | A comma separated list of what to include with the library items. The only current option is `rssfeed`.
+`include` | String | A comma-separated list of what to include with the library items. The only current option is `rssfeed`.
 
 <!-- TODO: remove warning once sorting and filtering are implemented in LibraryController.getCollectionsForLibrary -->
 <aside class="warning">Sorting and filtering are not yet implemented.</aside>
@@ -866,10 +866,10 @@ Attribute | Type | Description
 `results` | Array of [Collection Expanded](#collection-expanded) | The requested collections. If `minified` is `true`, the library items contained in the collections will be [Library Item Minified](#library-item-minified). If `rssfeed` was requested, an [RSS Feed Minified](#rss-feed-minified) object or `null` as `rssFeed`, the collection's RSS feed if it has one open, will be added to the collections.
 `total` | Integer | The total number of results.
 `limit` | Integer | The limit set in the request.
-`page` | Integer | The page set in request.
-`sortBy` | String | The sort set in the request. Will not exist if no sort was set.
+`page` | Integer | The page set in the request.
+`sortBy` | String | The sort set in the request. It will not exist if no sort was set.
 `sortDesc` | Boolean | Whether to reverse the sort order.
-`filterBy` | String | The filter set in the request, URL decoded. Will not exist if no filter was set.
+`filterBy` | String | The filter set in the request, URL decoded. it will not exist if no filter is set.
 `minified` | Boolean | Whether minified was set in the request.
 `include` | String | The requested `include`.
 
@@ -1182,7 +1182,7 @@ ID | The ID of the library.
 Parameter | Type | Default | Description
 --------- | ---- | ------- | -----------
 limit | Integer | `0` | Limit the number of returned results per page. If `0`, no limit will be applied.
-page | Integer | `0` | The page number (0 indexed) to request. If there is no limit applied, then page will have no effect and all results will be returned.
+page | Integer | `0` | The page number (0 indexed) to request. If there is no limit applied, then the page will have no effect and all results will be returned.
 
 ### Response
 
@@ -1198,7 +1198,7 @@ Attribute | Type | Description
 `results` | Array of [Playlist Expanded](#playlist-expanded) | The requested playlists.
 `total` | Integer | The total number of results.
 `limit` | Integer | The limit set in the request.
-`page` | Integer | The page set in request.
+`page` | Integer | The page set in the request.
 
 
 ## Get a Library's Personalized View
@@ -1616,8 +1616,8 @@ ID | The ID of the library.
 
 Parameter | Type | Description
 --------- | ---- | -----------
-`limit` | Integer | Limit the number of items in each 'shelf' of the response. Default value is `10`.
-`include` | String | A comma separated list of what to include with the library items. The only current option is `rssfeed`.
+`limit` | Integer | Limit the number of items in each 'shelf' of the response. The default value is `10`.
+`include` | String | A comma-separated list of what to include with the library items. The only current option is `rssfeed`.
 
 ### Response
 
@@ -1633,7 +1633,7 @@ Attribute | Type | Description
 `id` | String | The ID of the shelf.
 `label` | String | The label of the shelf.
 `labelStringKey` | String | The label string key of the shelf, for internationalization purposes.
-`type` | String | The type of items the shelf represents. Can be `book`, `series`, `authors`, `episode`, or `podcast`.
+`type` | String | The type of items the shelf represents. It can be `book`, `series`, `authors`, `episode`, or `podcast`.
 `entities` | Array | The entities to be displayed on the shelf. [See below](#shelf-entities).
 `category` | String | The category of the shelf.
 
@@ -1643,7 +1643,7 @@ Attribute | Type | Description
     * `entities` will be an array of [Library Item Minified](#library-item-minified).
 * `type` is `episode`:
     * `id` is `continue-listening`, `listen-again`, or `episodes-recently-added`:
-        * Library items will have a `recentEpisode` attribute, a [Podcast Episode](#podcast-episode), the episode to display.
+        * Library items will have a `recentEpisode` attribute, a [Podcast Episode](#podcast-episode), and the episode to display.
 * `type` is `series`:
     * `entities` will be an array of [Series](#series), with the following added attributes:
 
@@ -1654,7 +1654,7 @@ Attribute | Type | Description
 `hasActiveBook` | Boolean | Whether the user has started listening to the series, but has not finished it.
 `hideFromContinueListening` | Boolean | Whether the series has been marked to hide it from the "Continue Series" shelf.
 `bookInProgressLastUpdate` | Integer | The latest time (in ms since POSIX epoch) when the progress of a book in the series was updated.
-`firstBookUnread` | [Library Item Minified](#library-item-minified) or null | The first book in the series (by sequence) to have not been started or finished. Will be `null` if the user has started or finished all books in the series. This library item will also have a `seriesSequence` attribute.
+`firstBookUnread` | [Library Item Minified](#library-item-minified) or null | The first book in the series (by sequence) to have not been started or finished. It will be `null` if the user has started or finished all books in the series. This library item will also have a `seriesSequence` attribute.
 
 * `type` is `author`:
     * `entities` will be an array of [Author Expanded](#author-expanded).
@@ -1663,12 +1663,12 @@ Attribute | Type | Description
 * `id` is `continue-listening`:
     * Library items will have a `progressLastUpdate` attribute, an Integer, the time (in ms since POSIX epoch) when the book's or episode's progress was last updated.
 * `id` is `continue-series`:
-    * Library items will have a `prevBookInProgressLastUpdate` attribute, an Integer, the time (in ms since POSIX epoch) of the most recent progress update of any book in the series.
+    * Library items will have a `prevBookInProgressLastUpdate` attribute, an Integer, and the time (in ms since POSIX epoch) of the most recent progress update of any book in the series.
     * The [Book Metadata Minified](#book-metadata-minified) in each library item will have a `series` attribute, a [Series Sequence](#series-sequence).
 * `id` is `recommended`:
     * Library items will have a `weight` attribute, a Float, the recommendation weight of the library item.
 * `id` is `listen-again`:
-    * Library items will have a `finishedAt` attribute, an Integer, the time (in ms since POSIX epoch) when the book or episode was finished.
+    * Library items will have a `finishedAt` attribute, an Integer, and the time (in ms since POSIX epoch) when the book or episode was finished.
 
 
 ## Get a Library's Filter Data
@@ -2435,7 +2435,7 @@ ID | The ID of the library.
 Parameter | Type | Description
 --------- | ---- | -----------
 limit | Integer | Limit the number of returned results per page. If `0`, no limit will be applied.
-page | Integer | The page number (0 indexed) to request. If there is no limit applied, then page will have no effect and all results will be returned.
+page | Integer | The page number (0 indexed) to request. If there is no limit applied, then the page will have no effect and all results will be returned.
 
 ### Response
 
@@ -2451,7 +2451,7 @@ Attribute | Type | Description
 `episodes` | Array of [Podcast Episode Expanded](#podcast-episode-expanded) | The library's newest unfinished podcast episodes, sorted by episode publish time. The episodes have an additional `podcast` attribute, a [Podcast Minified](#podcast-minified), the podcast the episode belongs to.
 `total` | Integer | The total number of podcast episodes in the library.
 `limit` | Integer | The limit set in the request.
-`page` | Integer | The page set in request.
+`page` | Integer | The page set in the request.
 
 
 ## Reorder Library List
