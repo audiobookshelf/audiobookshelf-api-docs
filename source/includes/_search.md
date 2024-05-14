@@ -309,7 +309,7 @@ Attribute | Type | Description
 `cover` | String or null | The URL of the book's cover image.
 `asin` | String | The book's ASIN.
 `genres` | Array of String | The book's genres.
-`tags` | String | A comma and space separated list of the book's tags.
+`tags` | String | A comma and space-separated list of the book's tags.
 `series` | Array of [Series Sequence](#series-sequence) | The book's series.
 `language` | String | The book's language.
 `duration` | Integer | The total duration (in minutes) of the book.
