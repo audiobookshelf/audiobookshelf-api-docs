@@ -737,6 +737,38 @@ Status | Meaning | Description
 500 | Internal Server Error | There was an error when attempting to read the cover file.
 
 
+## Get a Library Item's Media File
+
+```shell
+curl "https://abs.example.com/api/items/li_8gch9ve09orgn4fdz8/file/649644248522215261/download" \
+  -H "Authorization: Bearer exJhbGciOiJI6IkpXVCJ9.eyJ1c2Vyi5NDEyODc4fQ.ZraBFohS4Tg39NszY" \
+  --output media_file.m4b
+```
+
+> The above command writes an audio file.
+
+This endpoint retrieves a library item's specific file.
+
+### HTTP Request
+
+`GET http://abs.example.com/api/items/<ID>/file/<ino>/download`
+
+### URL Parameters
+
+Parameter | Description
+--------- | -----------
+ID | The ID of the library item.
+ino | The ino number of the library item's file (as per [Get a Library Item](#get-a-library-item) output).
+
+### Response
+
+Status | Meaning | Description
+------ | ------- | -----------
+200 | OK | Success
+404 | Not Found | Either no library item exists with the given ID, or the item does file with the given `ino`.
+500 | Internal Server Error | There was an error when attempting to read the cover file.
+
+
 ## Upload a Library Item Cover
 
 > Upload a cover image:
