@@ -145,7 +145,7 @@ Status | Meaning | Description
 ## OAuth2 Authorization Request
 
 ```shell
-curl "https://abs.example.com/auth/openid?code_challenge=1234&code_challenge_method=S256&redirect_uri=audiobookshelf%3A%2F%2Foauth&client_id=Audiobookshelf-App&response_type=code"
+curl "https://abs.example.com/auth/openid?code_challenge=1234&code_challenge_method=S256&redirect_uri=audiobookshelf%3A%2F%2Foauth&client_id=Audiobookshelf-App&response_type=code&state=42"
 ```
 
 > Response header (depending on SSO provider)
@@ -158,6 +158,8 @@ This endpoint starts a standard OAuth2 flow with PKCE (required - S256; see [RFC
 
 For the `code_challenge`, you must randomly generate a minimum 32-byte string called verifier (PKCE challenge).
 With the verifier, you can then generate the challenge. See the examples on the right side.
+
+Also you must generate a random string and send it in the `state` parameter.
 
 
 > Code Challenge Pseudo-Code
@@ -188,11 +190,13 @@ function generateRandomString() {
 
 const verifier = generateRandomString()
 const challenge = base64URLEncode(await sha256(verifier))
+
+const state = generateRandomString()
 ```
 
 On a valid request, it will return a 302-redirect (usually with a `Location:` header), which will point to the ABS-configured OAuth2 Provider.
-You would usually have to open this redirect-URL in a Browser to present to the user.
-Note that inside the redirect URL, among other parameters, there is a `state` parameter; save it for below.
+It will include your generated `state`-parameter, check if it matches.
+You would usually then have to open this redirect-URL in a Browser to present to the user.
 
 Note that you will have to preserve the cookies you receive in this call for using it in `/auth/openid/callback` (check if you need to set a parameter for the HTTP library you are using for that).
 
@@ -218,6 +222,7 @@ Parameter | Type | Default | Description
 `response_type` | String | code | Only `code` is supported
 `redirect_uri` | String | **Required** | URL where to redirect after a successful login. Must be whitelisted in ABS
 `client_id` | String | **Required** | The name of your app (currently not used, but might be required at some point)
+`state` | String | **Required** | A randomly generated string, which must match in subsequent requests
 
 Other parameters are ignored.
 
@@ -283,7 +288,7 @@ It's important to note that the call to `/auth/openid/callback` is stateful. Thi
 
 Parameter | Type | Default | Description
 --------- | ---- | ------- | -----------
-`state` | String | **Required** | The state string you received when `redirect_uri` was called
+`state` | String | **Required** | The state string you generated in the first request
 `code` | String | **Required** | The code you received when `redirect_uri` was called
 `code_verifier` | String | **Required** | This is the verifier you generated when providing the `code_challenge` in the first request
 
