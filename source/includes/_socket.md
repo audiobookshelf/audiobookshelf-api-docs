@@ -164,9 +164,9 @@ Name | Description | Schema
 Attribute | Type | Description
 --------- | ---- | -----------
 `id` | String | The ID of the scanned library.
-`type` | String | The type of the library scan. Will be `scan` or `match`.
+`type` | String | The type of the library scan. It will be `scan` or `match`.
 `name` | String | The name of the scanned library.
-`results` | [Library Scan Results](#library-scan-results) Object or null | The results of the library scan. Will be `null` if the scan was canceled.
+`results` | [Library Scan Results](#library-scan-results) Object or null | The results of the library scan. It will be `null` if the scan was canceled.
 
 ### Library Scan Results
 
@@ -365,7 +365,7 @@ Attribute | Type | Description
 
 Attribute | Type | Description
 --------- | ---- | -----------
-`libraryItemId` | String | The ID of the library item which the audio file belongs to.
+`libraryItemId` | String | The ID of the library item to which the audio file belongs.
 `index` | Integer | The index of the audio file.
 `ino` | String | The inode of the audio file.
 `filename` | String | The filename of the audio file.
@@ -429,7 +429,7 @@ Attribute | Type | Description
 `userId` | String | The ID of the authenticated user.
 `username` | String | The username of the authenticated user.
 `librariesScanning` | Array of String | The IDs of libraries currently being scanned.
-`usersOnline` | Array of [User with Session](#user-with-session) | Users that are currently online. Will only exist when the authenticated user is an admin.
+`usersOnline` | Array of [User with Session](#user-with-session) | Users that are currently online. It will only exist when the authenticated user is an admin.
 
 ### Log Event
 

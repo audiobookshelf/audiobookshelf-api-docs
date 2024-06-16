@@ -109,5 +109,5 @@ Attribute | Type | Description
 `path` | String | The path of the directory.
 `dirname` | String | The name of the directory.
 `fullPath` | String | The full path of the directory.
-`level` | Integer | The depth of the directory. `0` means a root level directory.
+`level` | Integer | The depth of the directory. `0` means a root-level directory.
 `dirs` | Array of [Directory](#directory) | The directories contained in this directory.

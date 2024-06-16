@@ -228,9 +228,9 @@ This endpoint retrieves a library.
 
 ### Optional Query Parameters
 
-| Parameter | Type   | Description                                                                                               |
-| --------- | ------ | --------------------------------------------------------------------------------------------------------- |
-| `include` | String | A comma separated list of what to include with the library item. The only current option is `filterdata`. |
+Parameter | Type | Description
+--------- | ---- | -----------
+ `include` | String | A comma-separated list of what to include with the library item. The only current option is `filterdata`.
 
 ### Response
 
@@ -305,7 +305,7 @@ This endpoint updates a library.
 | -------------- | -------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------- |
 | `name`         | String                                       | The name of the library.                                                                                                     |
 | `folders`      | Array of [Folder](#folder)                   | See the notice below. Only specify the `fullPath` for new folders.                                                           |
-| `displayOrder` | Integer                                      | Display position of the library in the list of libraries. Must be `>= 1`.                                                    |
+| `displayOrder` | Integer                                      | Display the position of the library in the list of libraries. Must be `>= 1`.                                                    |
 | `icon`         | String                                       | The icon of the library. See [Library Icons](#library-icons) for a list of possible icons.                                   |
 | `provider`     | String                                       | Preferred metadata provider for the library. See [Metadata Providers](#metadata-providers) for a list of possible providers. |
 | `settings`     | [Library Settings](#library-settings) Object | The settings for the library.                                                                                                |
@@ -719,10 +719,10 @@ This endpoint returns a library's series.
 | `results`  | Array of [Series Books](#series-books) | The requested series. If `minified` is `true`, the library items contained in the series will be [Library Item Minified](#library-item-minified). If `rssfeed` was requested, an [RSS Feed Minified](#rss-feed-minified) object or `null` as `rssFeed`, the series' RSS feed if it has one open, will be added to the series. |
 | `total`    | Integer                                | The total number of results.                                                                                                                                                                                                                                                                                                  |
 | `limit`    | Integer                                | The limit set in the request.                                                                                                                                                                                                                                                                                                 |
-| `page`     | Integer                                | The page set in request.                                                                                                                                                                                                                                                                                                      |
+| `page`     | Integer                                | The page set in the request.                                                                                                                                                                                                                                                                                                      |
 | `sortBy`   | String                                 | The sort set in the request. Will not exist if no sort was set.                                                                                                                                                                                                                                                               |
 | `sortDesc` | Boolean                                | Whether to reverse the sort order.                                                                                                                                                                                                                                                                                            |
-| `filterBy` | String                                 | The filter set in the request, URL decoded. Will not exist if no filter was set.                                                                                                                                                                                                                                              |
+| `filterBy` | String                                 | The filter set in the request, URL decoded. it will not exist if no filter is set.                                                                                                                                                                                                                                              |
 | `minified` | Boolean                                | Whether minified was set in the request.                                                                                                                                                                                                                                                                                      |
 | `include`  | String                                 | The requested `include`.                                                                                                                                                                                                                                                                                                      |
 
@@ -846,10 +846,10 @@ This endpoint returns a library's collections.
 | `results`  | Array of [Collection Expanded](#collection-expanded) | The requested collections. If `minified` is `true`, the library items contained in the collections will be [Library Item Minified](#library-item-minified). If `rssfeed` was requested, an [RSS Feed Minified](#rss-feed-minified) object or `null` as `rssFeed`, the collection's RSS feed if it has one open, will be added to the collections. |
 | `total`    | Integer                                              | The total number of results.                                                                                                                                                                                                                                                                                                                      |
 | `limit`    | Integer                                              | The limit set in the request.                                                                                                                                                                                                                                                                                                                     |
-| `page`     | Integer                                              | The page set in request.                                                                                                                                                                                                                                                                                                                          |
+| `page`     | Integer                                              | The page set in the request.                                                                                                                                                                                                                                                                                                                          |
 | `sortBy`   | String                                               | The sort set in the request. Will not exist if no sort was set.                                                                                                                                                                                                                                                                                   |
 | `sortDesc` | Boolean                                              | Whether to reverse the sort order.                                                                                                                                                                                                                                                                                                                |
-| `filterBy` | String                                               | The filter set in the request, URL decoded. Will not exist if no filter was set.                                                                                                                                                                                                                                                                  |
+| `filterBy` | String                                               | The filter set in the request, URL decoded. It will not exist if no filter is set.                                                                                                                                                                                                                                                                  |
 | `minified` | Boolean                                              | Whether minified was set in the request.                                                                                                                                                                                                                                                                                                          |
 | `include`  | String                                               | The requested `include`.                                                                                                                                                                                                                                                                                                                          |
 
@@ -1155,7 +1155,7 @@ This endpoint returns a library's playlists for the authenticated user.
 | Parameter | Type    | Default | Description                                                                                                                           |
 | --------- | ------- | ------- | ------------------------------------------------------------------------------------------------------------------------------------- |
 | limit     | Integer | `0`     | Limit the number of returned results per page. If `0`, no limit will be applied.                                                      |
-| page      | Integer | `0`     | The page number (0 indexed) to request. If there is no limit applied, then page will have no effect and all results will be returned. |
+| page      | Integer | `0`     | The page number (0 indexed) to request. If there is no limit applied, then the page will have no effect and all results will be returned. |
 
 ### Response
 
@@ -1171,7 +1171,7 @@ This endpoint returns a library's playlists for the authenticated user.
 | `results` | Array of [Playlist Expanded](#playlist-expanded) | The requested playlists.      |
 | `total`   | Integer                                          | The total number of results.  |
 | `limit`   | Integer                                          | The limit set in the request. |
-| `page`    | Integer                                          | The page set in request.      |
+| `page`    | Integer                                          | The page set in the request.      |
 
 ## Get a Library's Personalized View
 
@@ -1576,8 +1576,8 @@ This endpoint returns a library's personalized view for home page display.
 
 | Parameter | Type    | Description                                                                                             |
 | --------- | ------- | ------------------------------------------------------------------------------------------------------- |
-| `limit`   | Integer | Limit the number of items in each 'shelf' of the response. Default value is `10`.                       |
-| `include` | String  | A comma separated list of what to include with the library items. The only current option is `rssfeed`. |
+| `limit`   | Integer | Limit the number of items in each 'shelf' of the response. The default value is `10`.                       |
+| `include` | String  | A comma-separated list of what to include with the library items. The only current option is `rssfeed`. |
 
 ### Response
 
@@ -1593,7 +1593,7 @@ This endpoint returns a library's personalized view for home page display.
 | `id`             | String | The ID of the shelf.                                                                                 |
 | `label`          | String | The label of the shelf.                                                                              |
 | `labelStringKey` | String | The label string key of the shelf, for internationalization purposes.                                |
-| `type`           | String | The type of items the shelf represents. Can be `book`, `series`, `authors`, `episode`, or `podcast`. |
+| `type`           | String | The type of items the shelf represents. It can be `book`, `series`, `authors`, `episode`, or `podcast`. |
 | `entities`       | Array  | The entities to be displayed on the shelf. [See below](#shelf-entities).                             |
 | `category`       | String | The category of the shelf.                                                                           |
 
@@ -1603,7 +1603,7 @@ This endpoint returns a library's personalized view for home page display.
   - `entities` will be an array of [Library Item Minified](#library-item-minified).
 - `type` is `episode`:
   - `id` is `continue-listening`, `listen-again`, or `episodes-recently-added`:
-    - Library items will have a `recentEpisode` attribute, a [Podcast Episode](#podcast-episode), the episode to display.
+    - Library items will have a `recentEpisode` attribute, a [Podcast Episode](#podcast-episode), and the episode to display.
 - `type` is `series`:
   - `entities` will be an array of [Series](#series), with the following added attributes:
 
@@ -1623,12 +1623,12 @@ This endpoint returns a library's personalized view for home page display.
 - `id` is `continue-listening`:
   - Library items will have a `progressLastUpdate` attribute, an Integer, the time (in ms since POSIX epoch) when the book's or episode's progress was last updated.
 - `id` is `continue-series`:
-  - Library items will have a `prevBookInProgressLastUpdate` attribute, an Integer, the time (in ms since POSIX epoch) of the most recent progress update of any book in the series.
+  - Library items will have a `prevBookInProgressLastUpdate` attribute, an Integer, and the time (in ms since POSIX epoch) of the most recent progress update of any book in the series.
   - The [Book Metadata Minified](#book-metadata-minified) in each library item will have a `series` attribute, a [Series Sequence](#series-sequence).
 - `id` is `recommended`:
   - Library items will have a `weight` attribute, a Float, the recommendation weight of the library item.
 - `id` is `listen-again`:
-  - Library items will have a `finishedAt` attribute, an Integer, the time (in ms since POSIX epoch) when the book or episode was finished.
+  - Library items will have a `finishedAt` attribute, an Integer, and the time (in ms since POSIX epoch) when the book or episode was finished.
 
 ## Get a Library's Filter Data
 
@@ -2374,7 +2374,7 @@ This endpoint returns a library's newest unfinished podcast episodes, sorted by 
 | Parameter | Type    | Description                                                                                                                           |
 | --------- | ------- | ------------------------------------------------------------------------------------------------------------------------------------- |
 | limit     | Integer | Limit the number of returned results per page. If `0`, no limit will be applied.                                                      |
-| page      | Integer | The page number (0 indexed) to request. If there is no limit applied, then page will have no effect and all results will be returned. |
+| page      | Integer | The page number (0 indexed) to request. If there is no limit applied, then the page will have no effect and all results will be returned. |
 
 ### Response
 
@@ -2390,7 +2390,7 @@ This endpoint returns a library's newest unfinished podcast episodes, sorted by 
 | `episodes` | Array of [Podcast Episode Expanded](#podcast-episode-expanded) | The library's newest unfinished podcast episodes, sorted by episode publish time. The episodes have an additional `podcast` attribute, a [Podcast Minified](#podcast-minified), the podcast the episode belongs to. |
 | `total`    | Integer                                                        | The total number of podcast episodes in the library.                                                                                                                                                                |
 | `limit`    | Integer                                                        | The limit set in the request.                                                                                                                                                                                       |
-| `page`     | Integer                                                        | The page set in request.                                                                                                                                                                                            |
+| `page`     | Integer                                                        | The page set in the request.                                                                                                                                                                                            |
 
 ## Reorder Library List
 

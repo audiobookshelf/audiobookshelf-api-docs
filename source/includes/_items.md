@@ -664,7 +664,7 @@ Parameter | Type | Description
 `tags` | Array of String | The podcast's tags.
 `autoDownloadEpisodes` | Boolean | Whether the server will automatically download podcast episodes according to the schedule.
 `autoDownloadSchedule` | String or null | The [cron expression](https://en.wikipedia.org/wiki/Cron#CRON_expression) for when to automatically download podcast episodes.
-`lastEpisodeCheck` | Integer | The time (in ms since POSIX epoch) when the podcast was checked for new episodes.
+`lastEpisodeCheck` | Integer | The time (in ms since the POSIX epoch) when the podcast was checked for new episodes.
 `maxEpisodesToKeep` | Integer | The maximum number of podcast episodes to keep when automatically downloading new episodes. Episodes beyond this limit will be deleted. If `0`, all episodes will be kept.
 `maxNewEpisodesToDownload` | Integer | The maximum number of podcast episodes to download when automatically downloading new episodes. If `0`, all episodes will be downloaded.
 
@@ -2417,7 +2417,7 @@ This endpoint batch matches library items using quick match. Quick match populat
 Parameter | Type | Description
 --------- | ---- | -----------
 `options` | [Options Parameters](#options-parameters) Object (See Below) | The options to use when quick matching.
-`libraryItemIds` | Array of String | The IDs of library items to quick match.
+`libraryItemIds` | Array of String | The IDs of library items to quickly match.
 
 #### Options Parameters
 
@@ -2431,5 +2431,5 @@ Parameter | Type | Default | Description
 Status | Meaning | Description
 ------ | ------- | -----------
 200 | OK | Success
-403 | Forbidden | An admin user is required to quick match library items.
+403 | Forbidden | An admin user is required to quickly match library items.
 500 | Internal Server Error | The `libraryItemIds` array must have a non-zero length.

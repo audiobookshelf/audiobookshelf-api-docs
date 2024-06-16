@@ -148,7 +148,7 @@ ID | The ID of the author.
 
 Parameter | Type | Description
 --------- | ---- | -----------
-`include` | String | A comma separated list of what to include with the author. The options are `items` and `series`. `series` will only have an effect if `items` are included.
+`include` | String | A comma-separated list of what to include with the author. The options are `items` and `series`. `series` will only have an effect if `items` are included.
 `library` | String | The ID of the library to filter included items from.
 
 ### Response
@@ -156,7 +156,7 @@ Parameter | Type | Description
 Status | Meaning | Description | Schema
 ------ | ------- | ----------- | ------
 200 | OK | Success | [Author](#author) with optional extra attributes from `include` (see below).
-404 | Not Found | No author with provided ID exists. |
+404 | Not Found | No author with the provided ID exists. |
 
 #### Extra Attributes
 
@@ -226,7 +226,7 @@ Parameter | Type | Description
 Status | Meaning | Description | Schema
 ------ | ------- | ----------- | ------
 200 | OK | Success | See below.
-404 | Not Found | No author with provided ID exists. |
+404 | Not Found | No author with the provided ID exists. |
 
 #### Response Schema
 
@@ -234,7 +234,7 @@ Attribute | Type | Description
 --------- | ---- | -----------
 `author` | [Author](#author) Object | The updated author.
 `merged` | Boolean | Will only exist and be `true` if the author was merged with another author.
-`updated` | Boolean | Whether the author was updated normally. Will only exist if the author was not merged.
+`updated` | Boolean | Whether the author was updated normally. This will only exist if the author is not merged.
 
 
 ## Match an Author
@@ -263,7 +263,7 @@ curl -X POST "https://abs.example.com/api/authors/aut_z3leimgybl7uf3y4ab/match" 
 }
 ```
 
-This endpoint matches the author using quick match. Quick match updates the author's description and image (if no image already existed) with information from audible.
+This endpoint matches the author using a quick match. Quick match updates the author's description and image (if no image already existed) with information from audible.
 
 ### HTTP Request
 
@@ -289,7 +289,7 @@ Parameter | Type | Description
 Status | Meaning | Description | Schema
 ------ | ------- | ----------- | ------
 200 | OK | Success | See below.
-404 | Not Found | No author with provided ID exists. |
+404 | Not Found | No author with the provided ID exists. |
 
 #### Response Schema
 
@@ -335,5 +335,5 @@ Parameter | Type | Default | Description
 Status | Meaning | Description
 ------ | ------- | -----------
 200 | OK | Success
-404 | Not Found | No author with provided ID exists, or the author does not have an image.
+404 | Not Found | No author with the provided ID exists, or the author does not have an image.
 500 | Internal Server Error | There was an error when attempting to read the image file.
