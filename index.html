@@ -1302,7 +1302,7 @@ Your API token will be much longer then the one in the examples.
 <td>Success</td>
 </tr>
 </tbody></table>
-<h2 id='oauth2-authorization-request'>OAuth2 Authorization Request</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://abs.example.com/auth/openid?code_challenge=1234&amp;code_challenge_method=S256&amp;redirect_uri=audiobookshelf%3A%2F%2Foauth&amp;client_id=Audiobookshelf-App&amp;response_type=code"</span>
+<h2 id='oauth2-authorization-request'>OAuth2 Authorization Request</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://abs.example.com/auth/openid?code_challenge=1234&amp;code_challenge_method=S256&amp;redirect_uri=audiobookshelf%3A%2F%2Foauth&amp;client_id=Audiobookshelf-App&amp;response_type=code&amp;state=42"</span>
 </code></pre></div>
 <blockquote>
 <p>Response header (depending on SSO provider)</p>
@@ -1313,6 +1313,8 @@ Your API token will be much longer then the one in the examples.
 
 <p>For the <code>code_challenge</code>, you must randomly generate a minimum 32-byte string called verifier (PKCE challenge).
 With the verifier, you can then generate the challenge. See the examples on the right side.</p>
+
+<p>Also you must generate a random string and send it in the <code>state</code> parameter.</p>
 
 <blockquote>
 <p>Code Challenge Pseudo-Code</p>
@@ -1341,10 +1343,12 @@ With the verifier, you can then generate the challenge. See the examples on the 
 
 <span class="kd">const</span> <span class="nx">verifier</span> <span class="o">=</span> <span class="nx">generateRandomString</span><span class="p">()</span>
 <span class="kd">const</span> <span class="nx">challenge</span> <span class="o">=</span> <span class="nx">base64URLEncode</span><span class="p">(</span><span class="k">await</span> <span class="nx">sha256</span><span class="p">(</span><span class="nx">verifier</span><span class="p">))</span>
+
+<span class="kd">const</span> <span class="nx">state</span> <span class="o">=</span> <span class="nx">generateRandomString</span><span class="p">()</span>
 </code></pre></div>
 <p>On a valid request, it will return a 302-redirect (usually with a <code>Location:</code> header), which will point to the ABS-configured OAuth2 Provider.
-You would usually have to open this redirect-URL in a Browser to present to the user.
-Note that inside the redirect URL, among other parameters, there is a <code>state</code> parameter; save it for below.</p>
+It will include your generated <code>state</code>-parameter, check if it matches.
+You would usually then have to open this redirect-URL in a Browser to present to the user.</p>
 
 <p>Note that you will have to preserve the cookies you receive in this call for using it in <code>/auth/openid/callback</code> (check if you need to set a parameter for the HTTP library you are using for that).</p>
 
@@ -1394,6 +1398,12 @@ Note that inside the redirect URL, among other parameters, there is a <code>stat
 <td>String</td>
 <td><strong>Required</strong></td>
 <td>The name of your app (currently not used, but might be required at some point)</td>
+</tr>
+<tr>
+<td><code>state</code></td>
+<td>String</td>
+<td><strong>Required</strong></td>
+<td>A randomly generated string, which must match in subsequent requests</td>
 </tr>
 </tbody></table>
 
@@ -1482,7 +1492,7 @@ Note that inside the redirect URL, among other parameters, there is a <code>stat
 <td><code>state</code></td>
 <td>String</td>
 <td><strong>Required</strong></td>
-<td>The state string you received when <code>redirect_uri</code> was called</td>
+<td>The state string you generated in the first request</td>
 </tr>
 <tr>
 <td><code>code</code></td>
