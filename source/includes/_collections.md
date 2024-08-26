@@ -131,20 +131,20 @@ ID | The ID of the collection.
 
 Parameter | Type | Description
 --------- | ---- | -----------
-`include` | String | A comma separated list of what to include with the library item. The only current option is `rssfeed`.
+`include` | String | A comma-separated list of what to include with the library item. The only current option is `rssfeed`.
 
 ### Response
 
 Status | Meaning | Description | Schema
 ------ | ------- | ----------- | ------
-200 | OK | Success | [Collection Expanded](#collection-expanded), with extra `rssFeed` attribute (see below) if requested.
+200 | OK | Success | [Collection Expanded](#collection-expanded), with an extra `rssFeed` attribute (see below) if requested.
 404 | Not Found | No collection with the specified ID exists. |
 
 #### Extra Attributes
 
 Attribute | Type | Description
 --------- | ---- | -----------
-`rssFeed` | [RSS Feed Minified](#rss-feed-minified) Object or null | If `rssfeed` was requested, the collection's currently open RSS feed. Will be `null` if the collection does not have an open RSS feed.
+`rssFeed` | [RSS Feed Minified](#rss-feed-minified) Object or null | If `rssfeed` was requested, the collection's currently open RSS feed. It will be `null` if the collection does not have an open RSS feed.
 
 
 ## Update a Collection

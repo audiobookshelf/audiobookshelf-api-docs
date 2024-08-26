@@ -216,7 +216,7 @@ This endpoint retrieves the server's notification event data.
 Status | Meaning | Description | Schema
 ------ | ------- | ----------- | ------
 200 | OK | Success | See below.
-404 | Not Found | An admin user is required get notification event data. |
+404 | Not Found | An admin user is required to get notification event data. |
 
 #### Response Schema
 
@@ -320,7 +320,7 @@ The <code>urls</code> array parameter must have a non-zero length for the notifi
 Status | Meaning | Description | Schema
 ------ | ------- | ----------- | ------
 200 | OK | Success | [Notification Settings](#notification-settings)
-404 | Not Found | An admin user is required create notifications. |
+404 | Not Found | An admin user is required to create notifications. |
 
 
 ## Delete a Notification
@@ -361,7 +361,7 @@ ID | The ID of the notification.
 Status | Meaning | Description | Schema
 ------ | ------- | ----------- | ------
 200 | OK | Success | [Notification Settings](#notification-settings)
-404 | Not Found | An admin user is required delete notifications, or no notification with the given ID exists. |
+404 | Not Found | An admin user is required to delete notifications, or no notification with the given ID exists. |
 
 
 ## Update a Notification
@@ -439,7 +439,7 @@ The <code>id</code> parameter must be included for the notification to be saved.
 Status | Meaning | Description | Schema
 ------ | ------- | ----------- | ------
 200 | OK | Success | [Notification Settings](#notification-settings)
-404 | Not Found | An admin user is required update notifications, or no notification with the given ID exists. |
+404 | Not Found | An admin user is required to update notifications, or no notification with the given ID exists. |
 
 
 ## Send Notification Test

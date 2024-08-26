@@ -32,7 +32,7 @@ Parameter | Type | Default | Description
 Status | Meaning | Description
 ------ | ------- | -----------
 200 | OK | Success
-403 | Forbidden | The user is not allowed to access the library item, or an admin user is required to make an `.m4b` file.
+403 | Forbidden | The user is not allowed to access the library item, or an admin user is required to make a `.m4b` file.
 404 | Not Found | No library item with the given ID exists, or the library item has missing or invalid files.
 500 | Internal Server Error | The library item is not a book, or does not have audio tracks.
 
@@ -62,7 +62,7 @@ Status | Meaning | Description
 ------ | ------- | -----------
 200 | OK | Success
 403 | Forbidden | The user is not allowed to access the library item, or an admin user is required to cancel an M4B encode task.
-404 | Not Found | No library item with the given ID exists, or no M4B encode task is in-progress for the library item.
+404 | Not Found | No library item with the given ID exists, or no M4B encode task is in progress for the library item.
 
 
 ## Update a Library Item's Audio Files' Embedded Metadata
@@ -88,7 +88,7 @@ ID | The ID of the library item.
 
 Parameter | Type | Description
 --------- | ---- | -----------
-`backup` | Binary | Whether to backup original audio files in `/metadata/cache/items`. Default is true if not specified. `0` for false, `1` for true.
+`backup` | Binary | Whether to backup original audio files in `/metadata/cache/items`. The default is true if not specified. `0` for false, `1` for true.
 `forceEmbedChapters` | Binary | Chapters are not embedded in multi-track audiobooks by default. Enable this setting to embed chapters in every audio file. `0` for false, `1` for true.
 
 ### Response
