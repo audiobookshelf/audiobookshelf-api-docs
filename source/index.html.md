@@ -44,9 +44,7 @@ meta:
 
 # Introduction
 
-Audiobookshelf API and this documentation is a work in progress.
-
-Contributions to this documentation are welcome! [View API docs GitHub repo](https://github.com/advplyr/audiobookshelf-slate)
+<aside class="warning">These API docs are out-of-date and are no longer maintained. We hope to implement automated OpenAPI docs in the future.</aside>
 
 # Authentication
 
@@ -67,4 +65,3 @@ Optionally GET requests can use the API token like this:
 <aside class="notice">
 Your API token will be much longer then the one in the examples.
 </aside>
-
