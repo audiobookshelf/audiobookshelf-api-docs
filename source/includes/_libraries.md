@@ -640,7 +640,11 @@ curl "https://abs.example.com/api/libraries/lib_c1u6t4p45c35rf0nzd/series" \
               "subtitle": null,
               "authorName": "Terry Goodkind",
               "narratorName": "Sam Tsoutsouvas",
-              "seriesName": "Sword of Truth",
+              "series": {
+                "id": "df63f059-24d0-4939-98c5-76dcaacdfd8b",
+                "name": "Sword of Truth",
+                "sequence": "1"
+              },
               "genres": ["Fantasy"],
               "publishedYear": "2008",
               "publishedDate": null,
@@ -661,8 +665,7 @@ curl "https://abs.example.com/api/libraries/lib_c1u6t4p45c35rf0nzd/series" \
             "ebookFileFormat": null
           },
           "numFiles": 3,
-          "size": 96335771,
-          "sequence": "1"
+          "size": 96335771
         }
       ],
       "addedAt": 1650621073750,
